@@ -43,7 +43,7 @@ function library(){
  const counts={};
  for(const [id,assets,type,filter] of [['characters',C.characters,'character','character-category'],['backgrounds',C.backgrounds,'background','background-category'],['props',C.props,'prop','prop-category']]){
   $(id).replaceChildren();const category=$(filter).value;
-  let matches=assets.filter(a=>(category==='All categories'||a.category===category)&&(a.label+' '+a.category).toLowerCase().includes(query)&&(view==='all'||(view==='favorites'?favorites:recent).includes(type+':'+a.id)));
+  let matches=assets.filter(a=>(category==='All categories'||a.category===category)&&(a.label+' '+a.category+' '+(a.keywords||'')).toLowerCase().includes(query)&&(view==='all'||(view==='favorites'?favorites:recent).includes(type+':'+a.id)));
   if(view==='recent')matches.sort((a,b)=>recent.indexOf(type+':'+a.id)-recent.indexOf(type+':'+b.id));
   shown+=matches.length;counts[type]=matches.length;
   for(const asset of matches){

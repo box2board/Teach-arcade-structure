@@ -6,7 +6,7 @@ First creation-tool prototype at `/tools/comic-studio/`, linked from Teacher Too
 
 - 11 layouts: single, three-panel strip, two wide panels, three stacked panels, four, six, eight, nine, twelve, feature + two, and feature + four.
 - Twelve panels remain in each project; layout changes do not delete hidden panels. Exports include only visible panels.
-- 28 original SVG characters, 26 backgrounds, and 64 props (118 library items). Two backgrounds are generated illustrations. Human characters offer eight expressions and eight poses; animal/robot rigs offer standing and waving poses.
+- 52 original SVG characters, 44 backgrounds, and 104 props (200 library items). Two backgrounds are generated illustrations. Human characters offer eight expressions and eight poses; animal/robot rigs offer standing and waving poses.
 - Speech bubbles, thought bubbles, captions, and editable dialogue.
 - Pointer/touch dragging, arrow-key movement, size and numeric position controls, character/prop flipping, layer changes, duplication, and removal.
 - Copy a panel to the next panel, with fresh object IDs and undo support.
@@ -64,3 +64,9 @@ Speech/thought/caption objects can carry optional `box` metadata: width, height 
 Undo/redo covers geometry and dialogue; Ctrl/Cmd+D duplicates, Ctrl/Cmd+S saves a portable project, and Ctrl/Cmd+Z / Shift+Z handles history. Adding artwork returns drawing tools to selection mode. Pointer capture/cancellation is handled and secondary pointers are ignored during a gesture. Storyboard thumbnails and full-page preview do not rerender on every drag movement.
 
 Validation: existing automated interaction suite plus regressions for text reflow, independent resize, font sizes, custom tails, direct text editing, preview, layer selection, overflow, malformed geometry imports, and pointer cancellation. A four-panel SVG sample was rasterized and visually inspected. These are DOM-level interaction tests; canvas/download APIs are mocked. Browser security policy blocked native interactive QA, so actual Chromebook/iPad dragging, layout, and downloads remain unverified. The private Sites preview is a separate copy of these same editor files, with no backend or account integration.
+
+## Expanded classroom library — 200 items
+
+Added 24 character roles, 18 scene backgrounds, and 40 props (82 original SVG assets). Characters include civic roles, historical occupations, and modern careers, with distinct costume/accessory rendering on the existing pose/expression rig. Scenes include a colonial town, assembly chamber, factory, printing workshop, trading harbor, Nile landscape, classical forum, medieval market, trench shelter, newsroom, hospital, workshop, polling place, town square, greenhouse, volcano, river, and polar camp. Props cover civics, historical writing, engineering, science, nature, and economics. Historical costumes and scenes are simplified storytelling artwork, not authenticated period reconstructions.
+
+Asset IDs from existing projects are preserved. New catalog entries use the existing category/search/favorite/recent systems; metadata keywords are searchable. No external assets, downloads, accounts, or backend are needed for the vector expansion. All 82 new assets were rendered to contact sheets and visually inspected; the full editor interaction and asset-validation suites cover the 200-item catalog. Native browser/tablet verification remains outstanding.

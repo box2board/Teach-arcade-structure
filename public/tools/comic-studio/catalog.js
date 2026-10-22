@@ -307,6 +307,294 @@ window.ComicCatalog = {
       "shirt": "#89a99a",
       "role": "bear",
       "glasses": false
+    },
+    {
+      "id": "artist",
+      "label": "Artist",
+      "category": "Careers",
+      "hairStyle": "short",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#6d54d5",
+      "role": "artist",
+      "glasses": true,
+      "keywords": "Artist person career history dialogue"
+    },
+    {
+      "id": "engineer",
+      "label": "Engineer",
+      "category": "Careers",
+      "hairStyle": "curly",
+      "skin": "#80513c",
+      "hair": "#2f2630",
+      "shirt": "#eb8056",
+      "role": "engineer",
+      "glasses": false,
+      "keywords": "Engineer person career history dialogue"
+    },
+    {
+      "id": "journalist",
+      "label": "Journalist",
+      "category": "Careers",
+      "hairStyle": "swept",
+      "skin": "#f2c8a0",
+      "hair": "#82633b",
+      "shirt": "#2d9b98",
+      "role": "journalist",
+      "glasses": false,
+      "keywords": "Journalist person career history dialogue"
+    },
+    {
+      "id": "librarian",
+      "label": "Librarian",
+      "category": "Careers",
+      "hairStyle": "long",
+      "skin": "#b47a5a",
+      "hair": "#322d34",
+      "shirt": "#e7b843",
+      "role": "librarian",
+      "glasses": false,
+      "keywords": "Librarian person career history dialogue"
+    },
+    {
+      "id": "musician",
+      "label": "Musician",
+      "category": "Careers",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#683c2d",
+      "shirt": "#d46b93",
+      "role": "musician",
+      "glasses": false,
+      "keywords": "Musician person career history dialogue"
+    },
+    {
+      "id": "athlete",
+      "label": "Athlete",
+      "category": "Careers",
+      "hairStyle": "ponytail",
+      "skin": "#995d40",
+      "hair": "#362e29",
+      "shirt": "#507fbb",
+      "role": "athlete",
+      "glasses": true,
+      "keywords": "Athlete person career history dialogue"
+    },
+    {
+      "id": "judge",
+      "label": "Judge",
+      "category": "Government & civics",
+      "hairStyle": "short",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#6d54d5",
+      "role": "judge",
+      "glasses": false,
+      "keywords": "Judge person career history dialogue"
+    },
+    {
+      "id": "mayor",
+      "label": "Mayor",
+      "category": "Government & civics",
+      "hairStyle": "curly",
+      "skin": "#80513c",
+      "hair": "#2f2630",
+      "shirt": "#eb8056",
+      "role": "mayor",
+      "glasses": false,
+      "keywords": "Mayor person career history dialogue"
+    },
+    {
+      "id": "voter",
+      "label": "Voter",
+      "category": "Government & civics",
+      "hairStyle": "swept",
+      "skin": "#f2c8a0",
+      "hair": "#82633b",
+      "shirt": "#2d9b98",
+      "role": "voter",
+      "glasses": false,
+      "keywords": "Voter person career history dialogue"
+    },
+    {
+      "id": "delegate",
+      "label": "Delegate",
+      "category": "Government & civics",
+      "hairStyle": "long",
+      "skin": "#b47a5a",
+      "hair": "#322d34",
+      "shirt": "#e7b843",
+      "role": "delegate",
+      "glasses": false,
+      "keywords": "Delegate person career history dialogue"
+    },
+    {
+      "id": "colonial-resident",
+      "label": "Colonial resident",
+      "category": "Historical roles",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#683c2d",
+      "shirt": "#d46b93",
+      "role": "colonial-resident",
+      "glasses": true,
+      "keywords": "Colonial resident person career history dialogue"
+    },
+    {
+      "id": "blacksmith",
+      "label": "Blacksmith",
+      "category": "Historical roles",
+      "hairStyle": "ponytail",
+      "skin": "#995d40",
+      "hair": "#362e29",
+      "shirt": "#507fbb",
+      "role": "blacksmith",
+      "glasses": false,
+      "keywords": "Blacksmith person career history dialogue"
+    },
+    {
+      "id": "printer",
+      "label": "Printer",
+      "category": "Historical roles",
+      "hairStyle": "short",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#6d54d5",
+      "role": "printer",
+      "glasses": false,
+      "keywords": "Printer person career history dialogue"
+    },
+    {
+      "id": "sailor",
+      "label": "Sailor",
+      "category": "Historical roles",
+      "hairStyle": "curly",
+      "skin": "#80513c",
+      "hair": "#2f2630",
+      "shirt": "#eb8056",
+      "role": "sailor",
+      "glasses": false,
+      "keywords": "Sailor person career history dialogue"
+    },
+    {
+      "id": "scribe",
+      "label": "Scribe",
+      "category": "Historical roles",
+      "hairStyle": "swept",
+      "skin": "#f2c8a0",
+      "hair": "#82633b",
+      "shirt": "#2d9b98",
+      "role": "scribe",
+      "glasses": false,
+      "keywords": "Scribe person career history dialogue"
+    },
+    {
+      "id": "roman-senator",
+      "label": "Roman senator",
+      "category": "Historical roles",
+      "hairStyle": "long",
+      "skin": "#b47a5a",
+      "hair": "#322d34",
+      "shirt": "#e7b843",
+      "role": "roman-senator",
+      "glasses": true,
+      "keywords": "Roman senator person career history dialogue"
+    },
+    {
+      "id": "ancient-scholar",
+      "label": "Ancient scholar",
+      "category": "Historical roles",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#683c2d",
+      "shirt": "#d46b93",
+      "role": "ancient-scholar",
+      "glasses": false,
+      "keywords": "Ancient scholar person career history dialogue"
+    },
+    {
+      "id": "medieval-scholar",
+      "label": "Medieval scholar",
+      "category": "Historical roles",
+      "hairStyle": "ponytail",
+      "skin": "#995d40",
+      "hair": "#362e29",
+      "shirt": "#507fbb",
+      "role": "medieval-scholar",
+      "glasses": false,
+      "keywords": "Medieval scholar person career history dialogue"
+    },
+    {
+      "id": "factory-worker",
+      "label": "Factory worker",
+      "category": "Historical roles",
+      "hairStyle": "short",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#6d54d5",
+      "role": "factory-worker",
+      "glasses": false,
+      "keywords": "Factory worker person career history dialogue"
+    },
+    {
+      "id": "inventor",
+      "label": "Inventor",
+      "category": "Careers",
+      "hairStyle": "curly",
+      "skin": "#80513c",
+      "hair": "#2f2630",
+      "shirt": "#eb8056",
+      "role": "inventor",
+      "glasses": false,
+      "keywords": "Inventor person career history dialogue"
+    },
+    {
+      "id": "nurse",
+      "label": "Nurse",
+      "category": "Careers",
+      "hairStyle": "swept",
+      "skin": "#f2c8a0",
+      "hair": "#82633b",
+      "shirt": "#2d9b98",
+      "role": "nurse",
+      "glasses": true,
+      "keywords": "Nurse person career history dialogue"
+    },
+    {
+      "id": "geologist",
+      "label": "Geologist",
+      "category": "Careers",
+      "hairStyle": "long",
+      "skin": "#b47a5a",
+      "hair": "#322d34",
+      "shirt": "#e7b843",
+      "role": "geologist",
+      "glasses": false,
+      "keywords": "Geologist person career history dialogue"
+    },
+    {
+      "id": "pilot",
+      "label": "Pilot",
+      "category": "Careers",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#683c2d",
+      "shirt": "#d46b93",
+      "role": "pilot",
+      "glasses": false,
+      "keywords": "Pilot person career history dialogue"
+    },
+    {
+      "id": "builder",
+      "label": "Builder",
+      "category": "Careers",
+      "hairStyle": "ponytail",
+      "skin": "#995d40",
+      "hair": "#362e29",
+      "shirt": "#507fbb",
+      "role": "builder",
+      "glasses": false,
+      "keywords": "Builder person career history dialogue"
     }
   ],
   "backgrounds": [
@@ -441,6 +729,114 @@ window.ComicCatalog = {
       "label": "Future research lab (illustrated)",
       "category": "Illustrated scenes",
       "image": "/tools/comic-studio/assets/future-lab.jpg"
+    },
+    {
+      "id": "colonial-town",
+      "label": "Colonial town",
+      "category": "History",
+      "keywords": "Colonial town scene background"
+    },
+    {
+      "id": "assembly-hall",
+      "label": "Assembly chamber",
+      "category": "Government & civics",
+      "keywords": "Assembly chamber scene background"
+    },
+    {
+      "id": "factory-floor",
+      "label": "Factory floor",
+      "category": "History",
+      "keywords": "Factory floor scene background"
+    },
+    {
+      "id": "printing-shop",
+      "label": "Printing workshop",
+      "category": "History",
+      "keywords": "Printing workshop scene background"
+    },
+    {
+      "id": "harbor",
+      "label": "Trading harbor",
+      "category": "History",
+      "keywords": "Trading harbor scene background"
+    },
+    {
+      "id": "ancient-egypt",
+      "label": "Ancient Nile landscape",
+      "category": "History",
+      "keywords": "Ancient Nile landscape scene background"
+    },
+    {
+      "id": "roman-forum",
+      "label": "Classical forum",
+      "category": "History",
+      "keywords": "Classical forum scene background"
+    },
+    {
+      "id": "medieval-market",
+      "label": "Medieval market",
+      "category": "History",
+      "keywords": "Medieval market scene background"
+    },
+    {
+      "id": "trench",
+      "label": "Trench shelter",
+      "category": "History",
+      "keywords": "Trench shelter scene background"
+    },
+    {
+      "id": "newsroom",
+      "label": "Newsroom",
+      "category": "Community",
+      "keywords": "Newsroom scene background"
+    },
+    {
+      "id": "hospital",
+      "label": "Hospital room",
+      "category": "Community",
+      "keywords": "Hospital room scene background"
+    },
+    {
+      "id": "workshop",
+      "label": "Inventor workshop",
+      "category": "Community",
+      "keywords": "Inventor workshop scene background"
+    },
+    {
+      "id": "polling-place",
+      "label": "Polling place",
+      "category": "Government & civics",
+      "keywords": "Polling place scene background"
+    },
+    {
+      "id": "town-square",
+      "label": "Town square",
+      "category": "Community",
+      "keywords": "Town square scene background"
+    },
+    {
+      "id": "greenhouse",
+      "label": "Greenhouse",
+      "category": "Science & nature",
+      "keywords": "Greenhouse scene background"
+    },
+    {
+      "id": "volcano",
+      "label": "Volcanic landscape",
+      "category": "Science & nature",
+      "keywords": "Volcanic landscape scene background"
+    },
+    {
+      "id": "river",
+      "label": "River ecosystem",
+      "category": "Science & nature",
+      "keywords": "River ecosystem scene background"
+    },
+    {
+      "id": "arctic",
+      "label": "Polar research camp",
+      "category": "Science & nature",
+      "keywords": "Polar research camp scene background"
     }
   ],
   "props": [
@@ -763,6 +1159,246 @@ window.ComicCatalog = {
       "id": "boat",
       "label": "Boat",
       "category": "Transport & symbols"
+    },
+    {
+      "id": "gavel",
+      "label": "Gavel",
+      "category": "Government & civics",
+      "keywords": "Gavel object government & civics"
+    },
+    {
+      "id": "ballot-box",
+      "label": "Ballot box",
+      "category": "Government & civics",
+      "keywords": "Ballot box object government & civics"
+    },
+    {
+      "id": "document",
+      "label": "Historical document",
+      "category": "History & writing",
+      "keywords": "Historical document object history & writing"
+    },
+    {
+      "id": "quill",
+      "label": "Quill and ink",
+      "category": "History & writing",
+      "keywords": "Quill and ink object history & writing"
+    },
+    {
+      "id": "printing-press",
+      "label": "Printing press",
+      "category": "History & writing",
+      "keywords": "Printing press object history & writing"
+    },
+    {
+      "id": "newspaper",
+      "label": "Newspaper",
+      "category": "History & writing",
+      "keywords": "Newspaper object history & writing"
+    },
+    {
+      "id": "scales",
+      "label": "Balance scales",
+      "category": "Government & civics",
+      "keywords": "Balance scales object government & civics"
+    },
+    {
+      "id": "podium",
+      "label": "Speaking podium",
+      "category": "Government & civics",
+      "keywords": "Speaking podium object government & civics"
+    },
+    {
+      "id": "column",
+      "label": "Classical column",
+      "category": "History & writing",
+      "keywords": "Classical column object history & writing"
+    },
+    {
+      "id": "pyramid",
+      "label": "Pyramid",
+      "category": "History & writing",
+      "keywords": "Pyramid object history & writing"
+    },
+    {
+      "id": "wagon",
+      "label": "Wagon",
+      "category": "History & writing",
+      "keywords": "Wagon object history & writing"
+    },
+    {
+      "id": "lantern",
+      "label": "Lantern",
+      "category": "History & writing",
+      "keywords": "Lantern object history & writing"
+    },
+    {
+      "id": "hourglass",
+      "label": "Hourglass",
+      "category": "History & writing",
+      "keywords": "Hourglass object history & writing"
+    },
+    {
+      "id": "anchor",
+      "label": "Anchor",
+      "category": "History & writing",
+      "keywords": "Anchor object history & writing"
+    },
+    {
+      "id": "ship-wheel",
+      "label": "Ship wheel",
+      "category": "History & writing",
+      "keywords": "Ship wheel object history & writing"
+    },
+    {
+      "id": "gear",
+      "label": "Gear",
+      "category": "Engineering",
+      "keywords": "Gear object engineering"
+    },
+    {
+      "id": "wrench",
+      "label": "Wrench",
+      "category": "Engineering",
+      "keywords": "Wrench object engineering"
+    },
+    {
+      "id": "hammer",
+      "label": "Hammer",
+      "category": "Engineering",
+      "keywords": "Hammer object engineering"
+    },
+    {
+      "id": "brick",
+      "label": "Brick",
+      "category": "Engineering",
+      "keywords": "Brick object engineering"
+    },
+    {
+      "id": "bridge",
+      "label": "Bridge",
+      "category": "Engineering",
+      "keywords": "Bridge object engineering"
+    },
+    {
+      "id": "test-tubes",
+      "label": "Test tubes",
+      "category": "Science",
+      "keywords": "Test tubes object science"
+    },
+    {
+      "id": "petri-dish",
+      "label": "Petri dish",
+      "category": "Science",
+      "keywords": "Petri dish object science"
+    },
+    {
+      "id": "dna",
+      "label": "DNA model",
+      "category": "Science",
+      "keywords": "DNA model object science"
+    },
+    {
+      "id": "cell",
+      "label": "Cell model",
+      "category": "Science",
+      "keywords": "Cell model object science"
+    },
+    {
+      "id": "battery",
+      "label": "Battery",
+      "category": "Science",
+      "keywords": "Battery object science"
+    },
+    {
+      "id": "circuit",
+      "label": "Circuit",
+      "category": "Science",
+      "keywords": "Circuit object science"
+    },
+    {
+      "id": "prism",
+      "label": "Prism",
+      "category": "Science",
+      "keywords": "Prism object science"
+    },
+    {
+      "id": "thermometer",
+      "label": "Thermometer",
+      "category": "Science",
+      "keywords": "Thermometer object science"
+    },
+    {
+      "id": "fossil",
+      "label": "Fossil",
+      "category": "Science",
+      "keywords": "Fossil object science"
+    },
+    {
+      "id": "volcano-model",
+      "label": "Volcano model",
+      "category": "Science",
+      "keywords": "Volcano model object science"
+    },
+    {
+      "id": "water-drop",
+      "label": "Water droplet",
+      "category": "Nature",
+      "keywords": "Water droplet object nature"
+    },
+    {
+      "id": "leaf",
+      "label": "Leaf",
+      "category": "Nature",
+      "keywords": "Leaf object nature"
+    },
+    {
+      "id": "seedling",
+      "label": "Seedling",
+      "category": "Nature",
+      "keywords": "Seedling object nature"
+    },
+    {
+      "id": "coin",
+      "label": "Coin",
+      "category": "Economics",
+      "keywords": "Coin object economics"
+    },
+    {
+      "id": "banknote",
+      "label": "Play banknote",
+      "category": "Economics",
+      "keywords": "Play banknote object economics"
+    },
+    {
+      "id": "shopping-cart",
+      "label": "Shopping cart",
+      "category": "Economics",
+      "keywords": "Shopping cart object economics"
+    },
+    {
+      "id": "bar-chart",
+      "label": "Bar chart",
+      "category": "Economics",
+      "keywords": "Bar chart object economics"
+    },
+    {
+      "id": "envelope",
+      "label": "Envelope",
+      "category": "Everyday",
+      "keywords": "Envelope object everyday"
+    },
+    {
+      "id": "signpost",
+      "label": "Signpost",
+      "category": "Everyday",
+      "keywords": "Signpost object everyday"
+    },
+    {
+      "id": "chain",
+      "label": "Chain links",
+      "category": "Engineering",
+      "keywords": "Chain links object engineering"
     }
   ],
   "expressions": [
