@@ -22,6 +22,12 @@ function loadScript(src) {
 
 async function boot() {
   await loadScript(`/escape-v2/rooms/${roomId}/data.js`);
+  await loadScript('/escape-v2/js/puzzles.js');
+  const puzzleModules = window.ESCAPE_V2_DATA.puzzleModules || [];
+  if (!Array.isArray(puzzleModules) || puzzleModules.some((path) => typeof path !== 'string' || !path.startsWith('/escape-v2/'))) {
+    throw new Error('Room pack puzzleModules must be an array of /escape-v2/ module paths.');
+  }
+  for (const path of puzzleModules) await loadScript(path);
   if (!window.ESCAPE_V2_DATA || !Array.isArray(window.ESCAPE_V2_DATA.rooms)) {
     throw new Error('Room pack has no valid room data.');
   }
