@@ -26,3 +26,10 @@ The five existing questions and rewards remain in the French Revolution pack. Co
 - Three.js is loaded as a pinned browser ES module from jsDelivr.
 
 The former panorama/cubemap files remain as archived experiment artifacts and are not loaded by the V2 page.
+
+
+## Extending puzzle types
+
+Puzzle renderers are registered independently in `js/puzzles.js`. The core engine only dispatches by the puzzle's `type`, tracks attempts, and supplies shared answer/feedback helpers. A room pack can list additional renderer scripts in its optional `puzzleModules` array; each script calls `window.ESCAPE_V2_PUZZLES.register(type, render)` after the built-in registry loads.
+
+A renderer receives `(puzzle, context)`, where context includes `container`, `onAttempt()`, `onCorrect()`, `setFeedback(message, isCorrect)`, and `matchesAnswer(value, acceptedAnswers)`. Use DOM text properties for room content. The built-in `choice` and `text` renderers demonstrate the contract. This lets future sequencing, matching, code-entry, or evidence-selection interactions be added as modules without changing the game loop or 3D scene.
