@@ -167,48 +167,23 @@
   }
 
   function renderPuzzle(puzzle, onCorrect) {
-    if (puzzle.type === 'choice') {
-      const list = document.createElement('div');
-      list.className = 'choice-list';
-      puzzle.choices.forEach((choice, index) => {
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'choice-btn';
-        button.textContent = choice;
-        button.addEventListener('click', () => {
-          state.attempts += 1;
-          if (index === puzzle.answer) onCorrect();
-          else setFeedback('That does not fit the evidence. Try again.', false);
-        });
-        list.appendChild(button);
-      });
-      els.modalBody.appendChild(list);
+    const registry = window.ESCAPE_V2_PUZZLES;
+    const renderer = registry?.get(puzzle.type);
+    if (!renderer) {
+      const message = document.createElement('p');
+      message.className = 'puzzle-unavailable';
+      message.textContent = `This challenge type (“${puzzle.type || 'unspecified'}”) is not available in this room.`;
+      els.modalBody.appendChild(message);
+      console.error(`Escape Room V2 has no puzzle renderer registered for "${puzzle.type}".`);
       return;
     }
-
-    if (puzzle.type === 'text') {
-      const form = document.createElement('form');
-      form.className = 'answer-form';
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.placeholder = puzzle.placeholder || 'Enter your answer';
-      input.autocomplete = 'off';
-      input.spellcheck = false;
-      input.setAttribute('aria-label', puzzle.placeholder || 'Answer');
-      const submit = document.createElement('button');
-      submit.type = 'submit';
-      submit.className = 'primary-btn';
-      submit.textContent = 'Submit';
-      form.append(input, submit);
-      form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        state.attempts += 1;
-        if (matchesAnswer(input.value, puzzle.answer)) onCorrect();
-        else setFeedback('That does not unlock it. Recheck the clue and try again.', false);
-      });
-      els.modalBody.appendChild(form);
-      requestAnimationFrame(() => input.focus());
-    }
+    renderer(puzzle, {
+      container: els.modalBody,
+      onAttempt: () => { state.attempts += 1; },
+      onCorrect,
+      setFeedback,
+      matchesAnswer
+    });
   }
 
   function normalizeAnswer(value) {
