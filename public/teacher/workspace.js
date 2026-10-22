@@ -156,7 +156,7 @@ $('login-form').onsubmit=e=>{e.preventDefault();return requestCode();};
 $('resend-code').onclick=requestCode;
 $('email').oninput=()=>{paintCodeWait();if(codeTimer===null&&(codeCooldowns.get(loginEmail())||0)>Date.now())codeTimer=setInterval(paintCodeWait,1000);};
 $('back-login').onclick=()=>{$('verify-form').hidden=true;$('login-form').hidden=false;$('code').value='';$('auth-status').textContent='';paintCodeWait();};
-$('verify-form').onsubmit=async e=>{e.preventDefault();const button=e.submitter;button.disabled=true;try{await api('verify',{email:$('email').value,code:$('code').value});$('code').value='';await account();if(user){$('auth-status').textContent='';if(pendingSave)await finishPendingSave();else location.hash=returnRoute;}}catch(error){$('auth-status').textContent=error.message;}finally{button.disabled=false;}};
+$('verify-form').onsubmit=async e=>{e.preventDefault();const button=e.submitter;button.disabled=true;try{await api('verify',{email:$('email').value,code:$('code').value});$('code').value='';await account();if(user){$('auth-status').textContent='';if(pendingSave)await finishPendingSave();else if(new URLSearchParams(location.search).get('return')==='teacher-sets')location.assign('/teacher/sets/');else location.hash=returnRoute;}}catch(error){$('auth-status').textContent=error.message;}finally{button.disabled=false;}};
 $('retry-save').onclick=finishPendingSave;
 for(const [type,name] of [['game','my-games'],['tool','tools']]){ $(`${type}-saved`).onclick=()=>{location.hash=name;};$(`${type}-browse`).onclick=()=>{location.hash=`${name}&view=browse`;};}
 $('retry-account').onclick=async()=>{const button=$('retry-account');button.disabled=true;try{await account();}finally{button.disabled=false;}};

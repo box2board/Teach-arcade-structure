@@ -1,5 +1,6 @@
 import {BANK_SETS} from './bank-catalog.js';
 import {validateQuestionBank} from './question-banks.js';
+import {teacherBank,teacherSetId} from '../teacher/set-contract.js';
 
 // Shared banks are available automatically to games declaring supportsQuestionBank.
 const packs=[{
@@ -23,6 +24,22 @@ async function loadPortableSet(set){
  else {const response=await fetch(url);if(!response.ok)throw new Error('Question bank could not load.');raw=await response.json();}
  if(raw.id!==set.id||raw.subject!==set.subject||raw.questionCount!==set.questionCount)throw new Error('Question bank metadata mismatch.');
  return {default:{...raw,questions:raw.questions.map(q=>({...q,id:`${raw.id}--${q.id}`,answer:q.correctAnswer,explanation:q.explanation||''}))}};
+}
+// Resolve only the explicitly requested teacher set, never enumerate private sets.
+// An unavailable teacher set stays selected with a load error; it never switches topics silently.
+if(typeof window!=='undefined'&&typeof location!=='undefined'){
+ const requested=new URLSearchParams(location.search).get('set');
+ if(requested?.startsWith('teacher:')){
+  const id=requested.slice(8);
+  const load=async()=>{
+   if(!teacherSetId(id))throw Error('Invalid teacher-set link. Return to My Question Sets.');
+   const response=await fetch('/api/teacher-sets?action=detail&id='+encodeURIComponent(id),{credentials:'same-origin',cache:'no-store'});
+   const data=await response.json();if(!response.ok)throw Error(data.error||'Teacher set unavailable. Return to your Cabinet and sign in if this set is private.');
+   return {default:teacherBank(data.set)};
+  };
+  try{const {default:bank}=await load();packs.push({id:requested,title:bank.title,subject:bank.subject,category:'Teacher-created',questionCount:bank.questions.length,load});}
+  catch(error){packs.push({id:requested,title:'Teacher set unavailable · Return to My Question Sets',subject:'Teacher-created',category:'Teacher-created',questionCount:0,load:async()=>{throw error;}});}
+ }
 }
 export const QUESTION_SETS=Object.freeze(packs.map(({load,...metadata})=>Object.freeze(metadata)));
 export const GAMES=Object.freeze([Object.freeze({
