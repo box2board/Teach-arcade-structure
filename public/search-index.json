@@ -2492,5 +2492,39 @@
       "theme:arcade"
     ],
     "source": "manifest:store"
+  },
+  {
+    "title": "MovieMind — Five-Clue Deduction Game | Brain Arcade",
+    "url": "/brain-arcade/moviemind/",
+    "type": "game",
+    "description": "Guess the movie from clever, progressively clearer hints. Play five-film runs from a library of 500 movies. Fewer clues, higher scores.",
+    "subject": "",
+    "tags": [
+      "keyword:moviemind",
+      "keyword:five-clue",
+      "keyword:deduction",
+      "keyword:game",
+      "keyword:brain",
+      "keyword:guess",
+      "keyword:movie",
+      "keyword:clever",
+      "keyword:progressively",
+      "keyword:clearer",
+      "keyword:hints",
+      "keyword:play",
+      "keyword:five-film",
+      "keyword:runs",
+      "keyword:library",
+      "keyword:500",
+      "keyword:movies",
+      "keyword:fewer",
+      "keyword:clues",
+      "keyword:higher",
+      "keyword:scores",
+      "keyword:one",
+      "keyword:clue",
+      "keyword:time"
+    ],
+    "source": "content-index"
   }
 ]
