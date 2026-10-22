@@ -1,65 +1,73 @@
-# Panel Quest — reader engine milestone
+# Panel Quest — student and teacher gameplay pass
 
-Panel Quest is the interactive graphic-novel game. Comic Studio is a separate creation tool. This prototype does not alter the live site, catalog or navigation.
+Panel Quest is the interactive graphic-novel game, separate from Comic Studio. The isolated prototype is under `public/prototypes/panel-quest/`; no live catalog, navigation or games change.
+
+## What the role-based playthroughs exposed
+
+These are simulated student/teacher walkthroughs and browser checks, not a classroom study.
+
+| Perspective | Observed hole | Revision |
+| --- | --- | --- |
+| Student rushing through | Could finish without ever using the evidence file. | Three publication tasks require linking gathered evidence to specific claims. Unrelated evidence cannot publish. |
+| Student investigating | Source inspection awarded a note but led to no work product. | The commissioned pages use the ledger/market and rights/constitution routes. Completed pages can be read in the ending. |
+| Student making choices | Consequences were hidden until the end; witness anonymity did not affect any printed material. | Immediate consequence text, named witness with permission, and actual named/anonymous attribution in the final page. |
+| Student retrying | A wrong answer immediately displayed the whole correct explanation. | Conceptual retry hints, an optional context note, full explanations after resolving the question, and a record of context use. |
+| Teacher assessing | First-try score and completed questions could be mistaken for learning evidence. | A learning record contains claims, selected sources, student explanations, practice corrections, evidence-check attempts and context use. Written reasoning is explicitly for teacher review. |
+| Teacher following history | The monarchy disappeared between 1791 and 1793; the Directory appeared only when overthrown. | Briefing and chapter transitions explain elapsed time, republic, execution, fall of Robespierre, and establishment of the Directory. |
+| Teacher examining endings | Hidden care/first-try thresholds could produce an archive ending after choosing public publication. | Endings respect the final audience choice and earlier editorial/source route. Practice corrections never bar an ending. |
+| Laptop user | Adding the completed page to the whole form pushed Continue below the fold. | Compact page proofs after publication, source details on demand, and screen-fit checks. |
 
 ## Play and reproduce
 
-Open `public/prototypes/panel-quest/index.html` in a browser, or serve `public/` and visit `/prototypes/panel-quest/`. The game has no runtime dependencies, network calls, account requirement or backend. Build an offline preview with:
+Open `public/prototypes/panel-quest/index.html` directly in a browser, or serve `public/` and visit `/prototypes/panel-quest/`. No runtime dependencies, network calls, login or backend are required.
 
 ```
 node scripts/build-panel-quest-preview.mjs /absolute/path/panel-quest-paris-preview.html
 node scripts/test-panel-quest.mjs
-```
-
-Browser regression suite (Playwright required):
-
-```
 node scripts/test-panel-quest-browser.cjs
 ```
 
-Optional variables: `CHROMIUM_EXECUTABLE`, `PANEL_QUEST_URL` (offline or hosted URL), and `QA_DIR` (screenshots, not checked in).
+The browser suite requires Playwright. Optional environment variables: `CHROMIUM_EXECUTABLE`, `PANEL_QUEST_URL`, and `QA_DIR` for local screenshots.
 
-## Recovered foundation
+## Current gameplay
 
-The original `panel-quest-paris-preview.html` was found in the user's saved files, not in repository branches. It included a six-cell original comic illustration, ten question tuples, answer shuffling, retry scoring, clue text, two interludes and a summary. Its route variables only changed summary text. Its ending title was a score band; story outcomes were identical. Edition data and engine were separate inline blocks, rather than separate files.
+Players receive a commission to produce three evidence-backed pages:
 
-The illustration was preserved, cropped into six individual WebP assets, and reused. The ten-question backbone remains, with chronological order repaired (June 1791 flight precedes September 1791 constitution), clearer prompts, and plausible distractors. New story dialogue and documents are explicitly fictional. The second branch takes place in August 1789 and therefore investigates future constitutional questions rather than publishing the completed 1791 constitution too early.
+1. **Why anger grew:** identify the financial crisis and use either the ledger/inequality route or the market/hardship route.
+2. **Promises and limits:** support national sovereignty and the selected rights/exclusion or constitutional-limits emphasis.
+3. **Power, crisis and a new order:** connect the republic and Napoleon's coup to notes from the later chapters.
+
+Each page has two claims, source selectors, source-reading details and a short written connection. Evidence links are validated against relevant collected notes. A brief explanation is required, but its reasoning is not auto-graded; teacher review remains necessary. Draft links and writing survive reload. Valid publication grants one page exactly once. Printed pages and a downloadable text learning record remain available at the ending.
+
+The ten historical question scenes remain guided review. Optional context notes support unfamiliar content. They are not advertised as an independent mastery assessment. A teacher guide on the cover includes objectives, estimated duration, prerequisites, discussion questions and assessment limits.
+
+The story spans 1789–1799. Fictional characters, testimony, documents and personal outcomes are labeled separately from historical context. Madeleine's attribution choice affects the printed first page. The original six illustrations remain; additional scene-specific art and stronger character dramatization are still needed.
+
+Three cumulative epilogues remain:
+
+- **The neighborhood's voice:** public audience, market investigation and rights lead, after publishing three supported pages.
+- **The keeper of the record:** archive audience after publishing three supported pages, regardless of practice errors.
+- **The neighborhood's chronicle:** the other public editorial combinations.
 
 ## Reusable architecture
 
-- `panel-quest-engine.js`: edition validation; scene graph model; stable randomized answer ordering; retries and first-try scoring; idempotent clue grants; decision log; additive relationship/reputation values; flags; conditional ending rules; versioned device storage; shared rendering, evidence dialog, keyboard controls and replay.
-- `paris-print-shop.js`: the recovered academic rows plus all edition-specific scenes, dates, dialogue, sources, art descriptions, branching, effects, ending conditions and epilogues.
-- `panel-quest.css`: original ink/paper direction, with responsive side-by-side reading, narration overlays, speech panels, varied framing, reduced motion and accessible focus/answer contrast.
-- `index.html`: shared reader shell. Its document title, footer and brand are edition-specific integration text.
+- `panel-quest-engine.js`: validated scene graph, shared renderer, question practice, stable answer shuffling, evidence inventory, inspections, decisions, flags, values, conditional endings, publication drafts/checks, learning record, keyboard controls, replay and versioned device storage.
+- `paris-print-shop.js`: all story/subject text, dates, questions, context, characters, scenes, evidence, claims, acceptable source mappings, route consequences, ending rules, art, teacher guide and reference links.
+- `panel-quest.css`: responsive comic reader, narration/speech, source details, publication form and proof, finished pages, readable answers, focus and reduced motion.
+- `index.html`: reader shell and edition integration text.
 
-A scene has a stable ID and a `type`: `question`, `decision`, `dialogue`, `investigation` or `ending`. Destinations use `next`; choices use an `options` array. Investigation items must be inspected before advancing unless marked `optional`. Question scenes reference a question and a clue ID. A condition may require flags, clues, minimum values and/or a minimum first-try count. Ending definitions are ordered by priority, ending with an unconditional fallback.
+Scene types: `question`, `decision`, `dialogue`, `investigation`, `publication`, `ending`. Publication claims may have conditions based on flags; each defines acceptable evidence IDs. The shared engine checks only collected evidence and does not hardcode Paris-specific matches. Scene effects apply once when a page is published.
 
-State stores the current scene, answer permutations and attempts, evidence IDs, flags, values, visited scenes, inspected objects, and decision history. Saves are scoped to edition ID and version. Re-entering a resolved scene cannot award another point or duplicate a clue. Storage failure leaves play available. Saving is device/browser-specific; this is not teacher reporting or cross-device sync.
+State includes scene, answer permutations/attempts, evidence, flags/values, inspected objects, context support, decisions, visited scenes, publication drafts, written explanations and evidence-check attempts. This gameplay pass uses save version 3, separate from prior version 2 prototype saves. Saves are local to a browser/device. There is no teacher dashboard sync or automated grading of writing.
 
-## Current Paris story
+## Validation
 
-Ten historical questions follow 1789–1799. After three questions, investigate either a tax ledger or a market account. The market route adds a source-attribution dialogue. After six questions, investigate rights and exclusions or an unfinished constitutional planning sheet. Both branches converge, preserving decisions and evidence. A final editorial decision follows the tenth question.
+The model suite traverses all 24 route/retry combinations, including wrong-first answers, and confirms ten question resolutions, three supported pages, all three endings, no dead ends, stable save round trips, no duplicate rewards, rejection of unrelated/invented evidence, and consistent public/archive outcomes independent of practice score. A second non-history edition verifies model reuse.
 
-Three cumulative epilogues:
+The browser suite performs the 24 complete paths using actual controls. It checks reload/resume of answer order and publication writing, blank-page rejection, source selection, publication, evidence dialog/Escape, finished pages, learning-record download, replay resets, and layout at 1366×768, 1280×720, 1024×768, 768×1024 and 390×844. Phone layouts stack and scroll; device sizes are emulated rather than tested on physical hardware.
 
-- **The neighborhood's voice:** market source, rights editorial and public final issue, with the relevant evidence and voice value.
-- **The keeper of the record:** at least two care points and five first-try correct answers, when the first ending is not selected.
-- **A press that keeps asking:** a complete, constructive fallback ending with a replay hint.
+Reference links are included in the edition and ending, including the French National Assembly's account of the Convention/Directory and CHNM's Constitution of Year III. The original prototype's illustrations and historical question backbone were preserved.
 
-## Verification and limits
+## Preserved concurrent comic-panel work
 
-The model suite explores all 24 route/retry combinations, reaches all three endings, and checks ten resolved questions, no dead ends, stable save round trips, no duplicate rewards, randomized answer order, and reuse with a small non-history edition.
-
-The browser suite performs the same 24 complete runs through actual controls, including retry feedback, reload/resume, evidence dialog/Escape, replay resets, and 250 layout checks. Screens tested: 1366×768, 1280×720, 1024×768, 768×1024 and 390×844. Phone screens intentionally stack and scroll. Chromebook and iPad sizes are browser emulations, not physical hardware tests.
-
-Remaining art limitation: the issue still reuses the original six illustrations. Varying crops, framing and panel treatments improve pacing, but scene-specific artwork and richer multi-panel pages remain a future art pass. Sound is not included. New interaction modules and additional editions should follow the same data boundary.
-
-Historical reference links are included in the edition and visible in the ending's sources disclosure. Relevant chronology: https://revolution.chnm.org/items/show/537 and https://revolution.chnm.org/d/535/.
-
-## Sequential panels and route callbacks — October 22 follow-up
-
-Scene data can now supply `panels` (art or clearly labeled fictional document notes) and conditional `callbacks`, using the existing condition rules. Supporting beats appear below the establishing illustration and dialogue. Question-note text is revealed only after the question is resolved; `beforeText` supplies the unfinished-note state. The same renderer supports other editions without Paris-specific logic.
-
-The evidence dialog now includes the student's decision trail. Three convergence points recall the source/editorial route, and endings explain the cumulative conditions behind the result. Save schema and branch outcomes are unchanged; current saves remain compatible.
-
-Validation: the model suite still passes all 24 route/retry combinations and all three endings. A browser playthrough completed the market → protect source → rights → public route, including reload/resume, question-note reveal, investigations, conditional callbacks, the evidence decision trail and the explained ending. Existing viewport/browser regression results above describe the prior milestone; the full multi-viewport browser suite has not been rerun for this pass. Art remains the original six illustrations, with additional crops and document panels.
+A newer commit on this same prototype branch added data-driven sequential art/document panels, conditional route callbacks, an evidence-dialog decision trail and ending explanations. Those changes were preserved in this pass. Ending explanations were updated to match the new score-independent publication rules. Document panels can grow with their text instead of clipping longer fictional source notes.

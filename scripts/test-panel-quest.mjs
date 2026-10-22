@@ -15,18 +15,25 @@ function explore(m,wrong){
    const right=s.question.correctIndex;m.answer(right);const first=m.stats.first,clues=m.state.clues.length;m.answer(right);assert.equal(m.stats.first,first,'Duplicate submit does not award twice');assert.equal(m.state.clues.length,clues);assert(m.advance());
   }else if(s.type==='investigation'){
    assert.equal(m.advance(),false,'Must inspect source');for(const item of s.items)m.inspect(item.id);assert(m.advance());
+  }else if(s.type==='publication'){
+   assert.equal(m.advance(),false,'Unpublished page cannot skip');
+   const result=m.submitPublication();assert.equal(result.valid,false,'Blank page is not publishable');
+   for(const claim of m.activeClaims()){assert.equal(m.draftEvidence(claim.id,'unknown'),false,'Cannot invent evidence');const bad=m.state.clues.find(id=>!claim.accept.includes(id));if(bad)m.draftEvidence(claim.id,bad);}
+   m.draftNote('The selected source supports this particular claim.');assert.equal(m.submitPublication().valid,false,'Unrelated evidence cannot publish');
+   for(const claim of m.activeClaims())m.draftEvidence(claim.id,claim.accept.find(id=>m.state.clues.includes(id)));
+   m=new Model(e,JSON.parse(JSON.stringify(m.state)));assert.equal(m.submitPublication().valid,true);const pages=m.state.values.pages;assert.equal(m.submitPublication().ignored,true);assert.equal(m.state.values.pages,pages);assert(m.advance());
   }else{
    for(const o of s.options){const branch=new Model(e,JSON.parse(JSON.stringify(m.state)));assert(branch.choose(o.id));explore(branch,wrong);}return;
   }
   // Every transition must round-trip, preserving answer order and inventory.
   m=new Model(e,JSON.parse(JSON.stringify(m.state)));
  }
- paths++;endings.add(m.ending().id);assert.equal(m.stats.solved,10);assert.equal(m.stats.first,wrong?0:10);assert.equal(new Set(m.state.clues).size,m.state.clues.length);assert(m.state.clues.length>=12);assert(m.state.visited.includes('q6'));assert(m.state.visited.indexOf('q6')<m.state.visited.indexOf('q7'));
+ paths++;endings.add(m.ending().id);assert.equal(m.stats.solved,10);assert.equal(m.stats.first,wrong?0:10);assert.equal(new Set(m.state.clues).size,m.state.clues.length);assert(m.state.clues.length>=14);assert.equal(m.state.values.pages,3);assert.equal(Object.values(m.state.publications).filter(p=>p.submitted).length,3);if(m.state.flags.final==='archive')assert.equal(m.ending().id,'archive','Practice score cannot override archive choice');else assert.notEqual(m.ending().id,'archive','Public choice stays public');assert(m.state.visited.includes('q6'));assert(m.state.visited.indexOf('q6')<m.state.visited.indexOf('q7'));
 }
 explore(new Model(e),false);explore(new Model(e),true);
 assert.equal(endings.size,3);assert.equal(paths,24);
 const original=new Model(e);assert.throws(()=>new Model(e,{...original.state,version:1}));
-const permutations=new Set();for(let i=0;i<100;i++)permutations.add(new Model(e).answerState().order.join(''));assert(permutations.size>10);
+const permutations=new Set();for(let i=0;i<100;i++)permutations.add((()=>{const m=new Model(e);m.inspect('commission');m.advance();return m.answerState().order.join('')})());assert(permutations.size>10);
 // Engine independence: a different setting uses the same model without Paris data.
 const science={id:'lab',version:1,start:'source',scenes:{source:{type:'investigation',items:[{id:'a',clue:'observation'}],next:'decision'},decision:{type:'decision',options:[{id:'report',next:'done',effects:{flags:{reported:true}}}]},done:{type:'ending'}},clues:{observation:{text:'Measured water temperature'}},endings:[{id:'report',when:{flags:{reported:true},clues:['observation']}}]};
 const lab=new Model(science);lab.inspect('a');lab.advance();lab.choose('report');assert.equal(lab.ending().id,'report');

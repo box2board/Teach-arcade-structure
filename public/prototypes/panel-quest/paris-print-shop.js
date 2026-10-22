@@ -130,6 +130,69 @@ Object.assign(window.PANEL_QUEST_EDITION, {
  q[9].answers=['Napoleon helped overthrow the Directory and establish the Consulate','Deputies replaced the absolute monarchy with the 1791 Constitution','The National Convention abolished the monarchy and proclaimed a republic','The fall of Robespierre ended the Jacobin leadership of the Terror'];
 })();
 
+// Gameplay pass: the evidence now has a job. Players build three supported pages.
+(() => {
+ const e=window.PANEL_QUEST_EDITION;e.version=3;e.start='briefing';
+ e.description='You are a printer’s apprentice with a job to finish: build three evidence-backed pages explaining a revolution, then decide who should read them.';
+ e.mission='Finish three pages: why anger grew, what revolutionaries promised, and how power changed. Choose evidence for each claim and explain your reasoning. Your sources and editorial choices shape the shop’s legacy; retries do not lock you out of an ending.';
+ e.teacherGuide={duration:'About 15–25 minutes, depending on reading and discussion.',use:'Review or guided inquiry after introducing the French Revolution. A novice can consult each scene’s context note, but this short issue is not a complete unit.',goals:['Explain how financial pressure and unequal burdens contributed to unrest.','Compare declared rights with limits on equality in practice.','Trace the shift from monarchy through republic and Directory to the Consulate.','Match a historical claim with relevant evidence and explain the connection.'],debrief:['Which source most influenced your first page, and what could it not prove?','What changed in political power, and what promises remained contested?','How did your editorial choices affect the shop’s final publication?'],assessment:'Evidence matching is checked automatically. Written explanations need teacher review. Corrected multiple-choice answers are practice, not proof of independent mastery.'};
+ e.scenes.briefing={type:'investigation',title:'A commission for the press',date:'Paris · May 1789',art:0,caption:'The master printer clears a space beside the press. “Readers need more than rumors. We will keep a record as events unfold—and every page must have evidence.”',dialogue:'Your job: investigate, check the historical record, then assemble three pages. You cannot publish a claim until you connect it to a relevant note.',items:[{id:'commission',title:'Read the commission',text:e.mission}],next:'q0',sourceLabel:'Story briefing'};
+ e.scenes.ledger.next='publish-causes';e.scenes.source.options.forEach(o=>{o.next='publish-causes';o.consequence=o.id==='protect'?'The witness’s name stays out of print. Her account remains part of your first page.':'The witness agrees to named attribution. Her account remains part of your first page.';});
+ e.scenes['route-a'].options.forEach(o=>{o.consequence=o.id==='ledger'?'You take the ledger route. Your first page will examine unequal burdens.':'You take the market route. Your first page will examine food hardship.';});
+ e.scenes['route-b'].options.forEach(o=>{o.consequence=o.id==='rights'?'Your next page will compare declared rights with the people excluded in practice.':'Your next page will explain how a constitution can limit power.';});
+ e.scenes.market.dialogue='Listen to one customer’s experience. You will use her account as evidence of hardship, while acknowledging its limits.';
+ e.scenes['publish-causes']={type:'publication',title:'First page: Why is anger growing?',date:'May 1789',art:3,caption:'You return to the press with your chosen source. The printer sets two empty spaces in the layout. “Tell readers what is happening—and show them how you know.”',dialogue:'Choose a note for each claim. Open the evidence file if you need the full context. Then explain a connection in your own words.',pageTitle:'Why anger grew',claims:[{id:'debt',text:'The monarchy’s financial crisis helped bring the Estates-General together.',accept:['history-0']},{id:'burden',text:'Legal privileges and unequal burdens helped generate resentment.',accept:['ledger','history-2'],when:{flags:{routeA:'ledger'}}},{id:'bread',text:'Economic hardship affected daily life for people in the city.',accept:['market'],when:{flags:{routeA:'market'}}}],next:'q3',effects:{add:{pages:1}}};
+ e.scenes.rights.next='publish-promises';e.scenes.constitution.next='publish-promises';
+ e.scenes['publish-promises']={type:'publication',title:'Second page: Promises on paper',date:'August 1789',art:3,caption:'The new declaration lies beside your first page. The printer taps the margin: “A promise is not the same thing as its fulfillment. Make the distinction clear.”',dialogue:'Your lead story changes which claim this page needs to support.',pageTitle:'Promises and limits',claims:[{id:'sovereignty',text:'Revolutionaries asserted rights and political authority rooted in the nation.',accept:['history-5']},{id:'exclusion',text:'Declared equality did not give everyone equal political rights in practice.',accept:['rights'],when:{flags:{routeB:'rights'}}},{id:'limits',text:'A promised constitution raised the question of how royal power would be limited.',accept:['constitution','history-3'],when:{flags:{routeB:'constitution'}}}],next:'bridge-1791',effects:{add:{pages:1}}};
+ e.clues.republic={title:'The monarchy is abolished',date:'1792–1793',kind:'Historical context',text:'After war began in 1792 and the monarchy was overthrown, the National Convention abolished the monarchy and declared a republic in September 1792. Louis XVI was executed in January 1793.'};
+ e.clues.directory={title:'From Terror to Directory',date:'1794–1795',kind:'Historical context',text:'Robespierre fell in July 1794. The Constitution of 1795 established the Directory, a five-member executive, before Napoleon’s coup in 1799.'};
+ e.scenes['bridge-1791']={type:'investigation',title:'Two years at the press',date:'1789 → June 1791',art:4,caption:'The apprentice’s work continues through months of debate. The chronicle now turns to a crisis of trust in the king, while the constitution remains unfinished.',dialogue:'Follow the dates carefully: the flight comes in June 1791; the constitutional settlement follows in September.',items:[{id:'time',title:'Turn to the 1791 chapter',text:'The fictional shop keeps working between chapters. These scenes select important developments; they do not show every event in the Revolution.'}],next:'q6',sourceLabel:'Chapter transition'};
+ e.scenes.q7.next='bridge-republic';
+ e.scenes['bridge-republic']={type:'investigation',title:'The king is gone. The danger is not.',date:'1792 → 1793',art:2,caption:'War and political conflict overturn the fragile settlement. The press that once explained a king’s limited powers must now report the end of monarchy.',dialogue:'This context explains why the next scene takes place under a republic rather than under Louis XVI.',items:[{id:'republic',title:'Read the intervening events',text:e.clues.republic.text,clue:'republic'}],next:'q8',sourceLabel:'Historical context'};
+ e.scenes.q8.next='bridge-directory';
+ e.scenes['bridge-directory']={type:'investigation',title:'Another government, another test',date:'1794 → 1795',art:4,caption:'After the fall of Robespierre, a different constitution creates a new executive. The shop saves the announcement. Readers will need it to understand the next upheaval.',dialogue:'Keep this note. The Directory has to exist before it can be overthrown.',items:[{id:'directory',title:'Read the government notice',text:e.clues.directory.text,clue:'directory'}],next:'q9',sourceLabel:'Historical context'};
+ e.scenes.final.title='Who should read the finished chronicle?';e.scenes.final.dialogue='Two pages are complete. Choose the audience for your final page, then support its claims before publication. No quiz-score threshold controls this choice.';
+ e.scenes.final.options.forEach(o=>{o.next='publish-power';o.consequence=o.id==='public'?'The final page is intended for neighborhood readers. It still needs a supported account of how power changed.':'The final page is intended for the shop’s archive. It still needs a supported account of how power changed.';});
+ e.scenes['publish-power']={type:'publication',title:'Final page: What changed in power?',date:'November 1799',art:5,caption:'The printer sets the last two spaces. “Do not turn ten years into a single victory or a single failure. Explain the changes, and keep the record open to questions.”',dialogue:'Use the notes gathered across the later chapters. This page completes the work you were commissioned to do.',pageTitle:'Power, crisis and a new order',claims:[{id:'republic',text:'The constitutional monarchy did not last: France became a republic in 1792.',accept:['republic']},{id:'coup',text:'Napoleon’s 1799 coup overthrew the Directory and established a new order.',accept:['history-9']}],next:'ending',effects:{add:{pages:1}},candidates:['history-6','history-7','republic','history-8','directory','history-9']};
+ // Feedback helps students reconsider a concept; full explanations follow success.
+ const context=[
+ 'France’s government faced heavy debts and a revenue problem. The king called representatives to address the crisis. Think about why a ruler would need their support.',
+ 'The First Estate was the clergy; the Second was the nobility. The Third included peasants, city workers and much of the middle class, and contained the great majority of the population.',
+ 'The estates did not have equal legal privileges. Many members of the Third Estate faced taxes from which privileged groups had exemptions; hardship sharpened these grievances.',
+ 'In June 1789, deputies who formed the National Assembly sought a constitution. The Tennis Court Oath committed them to keep meeting until one was established.',
+ 'The Bastille was a fortress and prison associated with royal power. The crowd sought arms and gunpowder; its fall became a symbol of resistance.',
+ 'The declaration asserted liberty, legal equality and national sovereignty. These principles challenged inherited privilege without immediately ending every exclusion.',
+ 'The royal family’s attempted flight in June 1791 was discovered. Consider why a king trying to leave would affect trust in his support for revolutionary changes.',
+ 'The September 1791 Constitution retained a king but limited his powers and created a legislature. Classify the system by both features.',
+ 'France faced foreign war and internal revolt in 1793. Revolutionary leaders claimed extraordinary powers to meet these emergencies; repression and executions followed.',
+ 'The Directory was the executive established in 1795. In November 1799, Napoleon and his allies overthrew it and established the Consulate.'
+ ];
+ const hints=['Separate the monarchy’s money problem from later changes of government.','Classify clergy, nobility and everyone else before comparing population.','Distinguish legal privilege from a demand to restore royal power.','Look for the deputies’ commitment to a constitution, not a later form of government.','Distinguish the fortress from the assemblies that wrote political documents.','Ask where the declaration located political authority.','Think about the effect of the king’s action on public trust.','Does the arrangement retain a king, and is his power limited?','Separate the wartime emergency from earlier constitutional disputes.','Identify the government Napoleon displaced, rather than an earlier turning point.'];
+ for(let i=0;i<10;i++){e.scenes['q'+i].context=context[i];e.questions[i].retryHint=hints[i];}
+ // The fallback is a distinct public chronicle, not a penalty for practice errors.
+ e.endings[0].when={flags:{final:'public',routeA:'market',routeB:'rights'},clues:['market','rights'],min:{pages:3}};
+ e.endings[1].when={flags:{final:'archive'},min:{pages:3}};
+ e.endings[1].text='You preserve three supported pages in the shop’s archive. The source trail records economic grievances, revolutionary promises and repeated changes in power. Your final decision gives future readers a chronicle they can question and revisit.';
+ e.endings[2].title='The neighborhood’s chronicle';
+ e.endings[2].text='You publish three supported pages for neighborhood readers. The source you chose and the lead story you prepared give this chronicle its emphasis. The final page connects the earlier hopes of 1789 with the political order established in 1799.';
+ e.endings[2].hint='Follow the market witness and lead with rights for a different public edition, or preserve the chronicle as an archive.';
+ e.endings[1].hint='Publishing for the neighborhood opens a different legacy. Practice corrections never prevent either audience choice.';
+})();
+
+window.PANEL_QUEST_EDITION.sources.push({title:'French National Assembly: The Convention and transition to the Directory',url:'https://www2.assemblee-nationale.fr/15/evenements/2019/la-revolution-s-affiche/la-convention-septembre-1792-octobre-1795'},{title:'CHNM: Constitution of the Year III (1795)',url:'https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/item/409'});
+// Sources must be readable material, rather than buttons that merely award notes.
+(() => {
+ const e=window.PANEL_QUEST_EDITION;
+ e.clues.market.text='“After buying bread, there is little left for the household,” Madeleine tells you. This fictional account illustrates the strain of food costs; it does not establish a price for all of Paris.';
+ e.scenes.market.caption='At the bread stall, Madeleine counts out coins. “The household still needs to eat,” she tells you. “Write about that.”';
+ e.scenes.market.items[0].text=e.clues.market.text;
+ e.clues.ledger.text='Beside a payment entry, a fictional customer has written: “Why do some enjoy exemptions while we must pay?” This constructed note illustrates resentment of privileges; it is not a real archival ledger.';
+ e.scenes.ledger.items[0].text=e.clues.ledger.text;
+ e.scenes.source.caption='“You can use my account,” Madeleine says, “but must my name go into the pamphlet?”';
+ e.clues.attribution={title:'Permission to name the witness',date:'May 1789',kind:'Story decision',text:'Madeleine agrees to named attribution, provided you preserve her meaning and explain that hers is one account.'};
+ e.scenes.source.options.forEach(o=>{o.effects.flags={sourceName:o.id==='protect'?'private':'named'};if(o.id==='attribute')o.clue='attribution';});
+})();
+
 // Reusable comic beats and state-aware callbacks. Art is intentionally reused;
 // the supporting documents are fictional notes, not primary-source facsimiles.
 (() => {
@@ -173,3 +236,7 @@ Object.assign(window.PANEL_QUEST_EDITION, {
  e.endings[1].reason='You made at least two choices that favored care with the record and resolved at least five historical questions on the first try.';
  e.endings[2].reason='Your combination of editorial choices and first readings produced an open-ended chronicle. Your corrections and gathered sources remain part of its record.';
 })();
+
+// Endings explain editorial outcomes; practice scores never choose the audience.
+window.PANEL_QUEST_EDITION.endings[1].reason='You chose an archive audience and completed all three evidence-backed pages. Your earlier source and editorial choices are preserved in the record.';
+window.PANEL_QUEST_EDITION.endings[2].reason='You chose neighborhood readers and completed all three pages. Your investigation and lead story shape this public chronicle.';
