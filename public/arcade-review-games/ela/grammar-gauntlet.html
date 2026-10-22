@@ -302,6 +302,22 @@
       h1 { font-size: 0.8rem; }
       .subtitle { font-size: 0.7rem; }
     }
+    #gameContainer { width: min(1100px, 100%); }
+    canvas { width: 100%; height: auto; }
+    #questionOverlay, #endOverlay { position: fixed; padding: 16px; z-index: 30; }
+    .panel { max-height: 92dvh; overflow-y: auto; max-width: 640px; font-size: 1rem; }
+    .choice-btn { border-radius: 10px; min-height: 46px; font-size: 1rem; }
+    .choice-btn:focus-visible, button:focus-visible { outline: 3px solid #2563eb; outline-offset: 3px; }
+    .choice-btn:disabled { cursor: default; opacity: .8; }
+    #qFeedback { line-height: 1.5; }
+    #hud { font-family: system-ui, sans-serif; font-size: clamp(10px, 1.5vw, 15px); }
+    #touchControls { touch-action: none; }
+    .seo-block, .ta-value, .resource-connections { width: min(980px, 100%); }
+    .ta-value, .resource-connections { padding: 20px; line-height: 1.6; }
+    #gameContainer:fullscreen { background: #e0e5ff; display: flex; align-items: center; justify-content: center; width: 100%; }
+    #gameContainer:fullscreen canvas { width: min(100vw, 266.66dvh); }
+    @media (pointer: coarse) { #touchControls { display: flex; } }
+    @media (max-width: 600px) { #hudStatus { display: none; } .ctrl-btn { width: 46px; height: 46px; } }
   </style>
   <meta name="description" content="Teach Arcade · Grammar Gauntlet is a classroom-ready Teach Arcade activity with tips, standards-aligned skills, and teacher guidance for use in class." />
   <link rel="canonical" href="https://teacharcade.com/arcade-review-games/ela/grammar-gauntlet.html" />
@@ -320,11 +336,11 @@
   <p class="subtitle">
     Sprint through the notebook, dodge runaway red pens, and hit all 20 question markers
     to review grammar, punctuation, and sentence skills. Use ◀ ▶ / ▲ or on-screen buttons
-    to move and jump. Touch ? icons to answer.
+    to move and jump. Touch ? icons to answer. Use 1–4 for answers, Enter to resume, and P to pause.
   </p>
 
   <div id="modeBar">
-    <span>Question Mode:</span>
+    <button id="pauseBtn" class="pill-btn">Pause</button><button id="fullscreenBtn" class="pill-btn">Full screen</button><span>Question Mode:</span>
     <button id="modePreloaded" class="pill-btn active">Preloaded Grammar Bank</button>
     <button id="modeCustom" class="pill-btn">Custom (if configured)</button>
   </div>
@@ -350,7 +366,7 @@
         <p id="qText"></p>
         <div class="choices" id="choicesContainer"></div>
         <div class="panel-footer">
-          <span id="qFeedback"></span>
+          <span id="qFeedback" role="status" aria-live="polite"></span>
           <button id="qCloseBtn" class="primary-btn">Resume</button>
         </div>
       </div>
@@ -429,7 +445,7 @@
       { id: 9, text: "What type of sentence is this: 'Please close the door.'", choices: ["Declarative","Interrogative","Imperative","Exclamatory"], correctIndex: 2 },
       { id: 10, text: "What type of sentence is this: 'Did you finish your homework?'", choices: ["Declarative","Interrogative","Imperative","Exclamatory"], correctIndex: 1 },
       { id: 11, text: "Which sentence is punctuated correctly?", choices: ["I like pizza, but not pasta.","I like pizza but, not pasta.","I like pizza but not, pasta.","I like pizza, but, not pasta."], correctIndex: 0 },
-      { id: 12, text: "Choose the correct form: 'There _____ going to the movies.'", choices: ["there","theyre","their","they're"], correctIndex: 3 },
+      { id: 12, text: "Choose the correct form: '_____ going to the movies.'", choices: ["there","theyre","their","they're"], correctIndex: 3 },
       { id: 13, text: "Choose the correctly spelled word:", choices: ["definately","definitely","defanitely","definetly"], correctIndex: 1 },
       { id: 14, text: "Which sentence uses 'its' correctly?", choices: ["Its a sunny day.","The dog wagged it's tail.","The tree lost its leaves.","Its' cold outside."], correctIndex: 2 },
       { id: 15, text: "Which sentence is a fragment?", choices: ["Because I was tired.","I was tired after practice.","We walked home.","They ate dinner."], correctIndex: 0 },
@@ -441,14 +457,14 @@
       { id: 21, text: "Which sentence is in present progressive tense?", choices: ["He studies every day.","He studied yesterday.","He is studying now.","He will study later."], correctIndex: 2 },
 
       /* FIXED: single best answer is Chicago (and should be capitalized in the option) */
-      { id: 22, text: "Which word should be capitalized? 'we visited chicago last summer.'", choices: ["we","visited","Chicago","summer"], correctIndex: 2 },
+      { id: 22, text: "Which word should be capitalized? 'We visited chicago last summer.'", choices: ["we","visited","Chicago","summer"], correctIndex: 2 },
 
       { id: 23, text: "Which word is a proper noun?", choices: ["city","teacher","Columbus","river"], correctIndex: 2 },
       { id: 24, text: "Which sentence uses commas correctly?", choices: ["We bought apples, oranges and, grapes.","We bought apples, oranges, and grapes.","We bought, apples, oranges and grapes.","We bought apples oranges, and grapes."], correctIndex: 1 },
-      { id: 25, text: "Choose the best transition word: '_____, we packed our bags and left.'", choices: ["However","Meanwhile","First","Because"], correctIndex: 2 },
+      { id: 25, text: "Choose the best transition word: '_____ we packed our bags; second, we left.'", choices: ["However,","Meanwhile,","First,","Because"], correctIndex: 2 },
       { id: 26, text: "Which word is an adjective? 'The tall student answered quickly.'", choices: ["tall","student","answered","quickly"], correctIndex: 0 },
       { id: 27, text: "Which word is an adverb? 'The tall student answered quickly.'", choices: ["student","tall","answered","quickly"], correctIndex: 3 },
-      { id: 28, text: "Choose the correct pronoun: 'Each of the players brought _____ own water bottle.'", choices: ["their","his or her","they're","its"], correctIndex: 1 },
+      { id: 28, text: "Choose the correct pronoun: 'The players brought _____ own water bottles.'", choices: ["their","his or her","they're","its"], correctIndex: 0 },
       { id: 29, text: "Which word is a linking verb? 'The soup smells delicious.'", choices: ["soup","smells","delicious","none"], correctIndex: 1 },
       { id: 30, text: "Choose the correct word: 'I have _____ pencils than you.'", choices: ["less","few","fewer","little"], correctIndex: 2 },
       { id: 31, text: "Which sentence uses a semicolon correctly?", choices: ["I like tea; and I like coffee.","I like tea; I also like coffee.","I like tea; but coffee is better.","I like tea; because it is warm."], correctIndex: 1 },
@@ -457,7 +473,7 @@
       { id: 34, text: "Which sentence is in passive voice?", choices: ["The class wrote the essay.","The essay was written by the class.","The class will write the essay.","The class is writing the essay."], correctIndex: 1 },
       { id: 35, text: "Which sentence avoids a double negative?", choices: ["I don't need no help.","I can't find nothing.","I don't need any help.","I haven't never been there."], correctIndex: 2 },
       { id: 36, text: "Which word is a conjunction? 'You can have pizza or pasta.'", choices: ["You","pizza","or","pasta"], correctIndex: 2 },
-      { id: 37, text: "Choose the correct homophone: 'Please be _____ when you carry the glass.'", choices: ["careful","carefull","care less","carfull"], correctIndex: 0 },
+      { id: 37, text: "Choose the correctly spelled word: 'Please be _____ when you carry the glass.'", choices: ["careful","carefull","care less","carfull"], correctIndex: 0 },
       { id: 38, text: "Which sentence contains a compound subject?", choices: ["The dog barked loudly.","My brother and sister play soccer.","The team scored a goal.","The teacher smiled."], correctIndex: 1 },
       { id: 39, text: "Which sentence contains a compound predicate?", choices: ["The dog barked and ran.","The dog and cat ran.","The dog barked.","The dog."], correctIndex: 0 },
       { id: 40, text: "Which word is the object of the preposition? 'The ball rolled under the couch.'", choices: ["ball","rolled","under","couch"], correctIndex: 3 },
@@ -469,13 +485,27 @@
       { id: 46, text: "Which word is a gerund? 'Swimming is my favorite exercise.'", choices: ["Swimming","favorite","exercise","my"], correctIndex: 0 },
       { id: 47, text: "Which sentence correctly uses a colon?", choices: ["I need to buy: pencils, paper, and pens.","I need to buy three things: pencils, paper, and pens.","I need: to buy pencils, paper, and pens.","I: need to buy pencils, paper, and pens."], correctIndex: 1 },
       { id: 48, text: "Which word is the predicate adjective? 'The test was difficult.'", choices: ["test","was","difficult","none"], correctIndex: 2 },
-      { id: 49, text: "Which sentence correctly uses 'who' or 'whom'?", choices: ["Who did you invite to the party?","Whom is coming over?","Who did you give the book to?","Whom is your teacher?"], correctIndex: 0 },
+      { id: 49, text: "Which sentence uses 'whom' correctly in formal writing?", choices: ["Whom did you invite to the party?","Whom is coming over?","Who did you give the book to?","Whom is your teacher?"], correctIndex: 0 },
       { id: 50, text: "Which sentence is written in first person?", choices: ["You should study more.","They will study later.","I need to study for the test.","She needs to study."], correctIndex: 2 }
     ];
 
+    const GRAMMAR_EXPLANATIONS = ["A noun names a person, place, thing, or idea. Dog names an animal.", "Read expresses what the students do.", "Red describes the noun jacket.", "Quickly describes how he ran.", "They replaces a noun naming people.", "Under shows the relationship between the cat and the table.", "But joins two contrasting independent clauses.", "Wow expresses a sudden feeling.", "An imperative sentence gives a command or makes a request.", "An interrogative sentence asks a question.", "The comma marks a contrast before but not pasta.", "They\u2019re is a contraction of they are.", "Definitely is spelled with finite in the middle.", "Its shows possession; it\u2019s means it is or it has.", "Because I was tired is a dependent clause without an independent clause.", "Two independent clauses need appropriate punctuation or a conjunction.", "The singular subject group takes is.", "Brother is the simple subject; younger describes it.", "Ball receives the action of threw.", "Walked marks a completed action in the past.", "Is studying combines a form of be with an -ing verb.", "Chicago is the name of a particular city, so it needs a capital letter.", "Columbus names a particular person or place.", "Commas separate items in a series. The final serial comma is also correct.", "First and second explicitly signal the order of events.", "Tall describes student.", "Quickly describes answered.", "Their is the possessive form referring to the players.", "Smells links soup to the description delicious.", "Use fewer with countable plural nouns such as pencils.", "A semicolon can join two closely related independent clauses.", "The tail belongs to the cat: the cat\u2019s tail.", "On shows where the book is in relation to the desk.", "The subject essay receives the action in was written.", "In standard edited English, don\u2019t need any avoids the double negative.", "Or connects the alternatives pizza and pasta.", "Careful is the standard spelling.", "Brother and sister together form the compound subject.", "Barked and ran are two verbs sharing the subject dog.", "Couch is the noun following and completing the preposition under.", "Arrived very late avoids conversational fillers and slang.", "In American English, a comma introduces this direct quotation and the period goes inside the closing quotation mark.", "She stands in for a person\u2019s name. Him is another pronoun, but is not among these choices.", "Neither is singular here, so use is.", "To hike, swim, and bike uses matching verb forms.", "Swimming is an -ing verb form functioning as a noun, the subject.", "A complete independent clause can introduce a list with a colon.", "Difficult describes the subject test after the linking verb was.", "Whom functions as the object of invite in formal usage.", "I is a first-person pronoun referring to the speaker."];
+    GRAMMAR_BANK.forEach((q, i) => q.explanation = GRAMMAR_EXPLANATIONS[i]);
+
     function pickRandomQuestions(bank, count = 20) {
-      const shuffled = [...bank].sort(() => Math.random() - 0.5);
-      return shuffled.slice(0, count);
+      const shuffled = shuffle(bank);
+      return shuffled.slice(0, count).map(q => {
+        const answers = shuffle(q.choices.map((text, index) => ({text, correct: index === q.correctIndex})));
+        return {...q, choices: answers.map(a => a.text), correctIndex: answers.findIndex(a => a.correct)};
+      });
+    }
+    function shuffle(items) {
+      const result = [...items];
+      for (let i = result.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [result[i], result[j]] = [result[j], result[i]];
+      }
+      return result;
     }
 
     // ======================================================
@@ -558,6 +588,8 @@
     const keys = { left: false, right: false };
 
     let hitCooldown = 0;
+    let coyoteTime = 0;
+    let jumpBuffer = 0;
 
     let toastText = "";
     let toastTimer = 0;
@@ -607,8 +639,11 @@
     // JUMP HELPER
     // ======================================================
     function tryJump() {
-      if (player.onGround && !gamePaused && !inQuestion && !levelComplete) {
+      jumpBuffer = 0.12;
+      if ((player.onGround || coyoteTime > 0) && !gamePaused && !inQuestion && !levelComplete) {
         player.vy = -JUMP_STRENGTH;
+        jumpBuffer = 0;
+        coyoteTime = 0;
         player.onGround = false;
       }
     }
@@ -617,6 +652,15 @@
     // INPUT
     // ======================================================
     document.addEventListener('keydown', (e) => {
+      if (inQuestion) {
+        const number = Number(e.key);
+        if (number >= 1 && number <= 4) { e.preventDefault(); qChoices.children[number - 1]?.click(); }
+        if (e.code === 'Enter') { e.preventDefault(); qCloseBtn.click(); }
+        return;
+      }
+      if (['ArrowLeft','ArrowRight','ArrowUp','Space','ArrowDown'].includes(e.code)) e.preventDefault();
+      if (e.code === 'KeyP' || e.code === 'Escape') { togglePause(); return; }
+      if (e.repeat && ['ArrowUp','Space','KeyW'].includes(e.code)) return;
       if (e.code === 'ArrowLeft' || e.code === 'KeyA') keys.left = true;
       if (e.code === 'ArrowRight' || e.code === 'KeyD') keys.right = true;
       if (e.code === 'ArrowUp' || e.code === 'Space' || e.code === 'KeyW') {
@@ -651,6 +695,24 @@
       jumpBtn.addEventListener('mousedown', pressJump);
     }
 
+    function clearInput() { keys.left = keys.right = false; jumpBuffer = 0; }
+    function togglePause() {
+      if (inQuestion || levelComplete) return;
+      gamePaused = !gamePaused;
+      clearInput();
+      document.getElementById('pauseBtn').textContent = gamePaused ? 'Resume' : 'Pause';
+      hudStatus.textContent = gamePaused ? 'Status: Paused' : 'Status: Running';
+    }
+    document.getElementById('pauseBtn').addEventListener('click', togglePause);
+    document.getElementById('fullscreenBtn').addEventListener('click', async () => {
+      try {
+        if (document.fullscreenElement) await document.exitFullscreen();
+        else await document.getElementById('gameContainer').requestFullscreen();
+      } catch { showToast('Full screen unavailable'); }
+    });
+    window.addEventListener('blur', () => { clearInput(); if (!gamePaused) togglePause(); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) { clearInput(); if (!gamePaused) togglePause(); } });
+    if (!CUSTOM_QUESTIONS.length) modeCustomBtn.hidden = true;
     // Mode buttons
     modePreloadedBtn.addEventListener('click', () => {
       useCustomQuestions = false;
@@ -670,6 +732,10 @@
     // QUESTIONS
     // ======================================================
     function startNewRun() {
+      clearInput();
+      coyoteTime = 0;
+      document.getElementById('pauseBtn').textContent = 'Pause';
+      activeQuestionBlock = null;
       player.x = 80;
       player.y = 180;
       player.vx = 0;
@@ -700,7 +766,7 @@
       hudStatus.textContent = "Status: Running";
 
       if (useCustomQuestions && CUSTOM_QUESTIONS.length > 0) {
-        currentQuestions = CUSTOM_QUESTIONS.slice(0, 20);
+        currentQuestions = pickRandomQuestions(CUSTOM_QUESTIONS, 20);
       } else {
         currentQuestions = pickRandomQuestions(GRAMMAR_BANK, 20);
       }
@@ -734,6 +800,7 @@
 
     function openQuestion(block) {
       if (inQuestion || levelComplete) return;
+      clearInput();
       inQuestion = true;
       gamePaused = true;
       activeQuestionBlock = block;
@@ -741,7 +808,8 @@
       const q = currentQuestions[block.qIndex];
       qTitle.textContent = "Question " + block.id;
       qText.textContent = q.text;
-      qFeedback.textContent = "";
+      qCloseBtn.disabled = true;
+      qFeedback.textContent = "Use 1–4 or select an answer.";
       qChoices.innerHTML = "";
 
       q.choices.forEach((choice, idx) => {
@@ -753,14 +821,19 @@
       });
 
       qOverlay.classList.remove('hidden');
+      qChoices.firstElementChild.focus();
       hudStatus.textContent = "Status: Answering";
     }
 
     function handleAnswer(block, question, selectedIndex, btnEl) {
+      if (block !== activeQuestionBlock || block.completed || btnEl.disabled) return;
       const isCorrect = selectedIndex === question.correctIndex;
       if (isCorrect) {
         btnEl.classList.add('correct');
-        qFeedback.textContent = "Correct!";
+        qFeedback.textContent = "Correct. " + (question.explanation || "The correct answer is: " + question.choices[question.correctIndex]);
+        qCloseBtn.disabled = false;
+        [...qChoices.children].forEach(button => button.disabled = true);
+        qCloseBtn.focus();
         if (block.firstTry) {
           score += 25;
           firstTryCorrectCount++;
@@ -774,12 +847,10 @@
         updateHud();
         showBanner(`Question ${questionsAnsweredCount} / 20 complete`);
 
-        setTimeout(() => {
-          closeQuestion();
-          checkLevelComplete();
-        }, 500);
+
       } else {
         btnEl.classList.add('wrong');
+        btnEl.disabled = true;
         qFeedback.textContent = "Incorrect. Try again.";
         score -= 10;
         showToast("-10 | Fix the grammar");
@@ -799,6 +870,7 @@
     qCloseBtn.addEventListener('click', () => {
       if (activeQuestionBlock && activeQuestionBlock.completed) {
         closeQuestion();
+        checkLevelComplete();
       } else {
         qFeedback.textContent = "Answer correctly to continue.";
       }
@@ -842,6 +914,9 @@
     // ======================================================
     function update(dt) {
       if (gamePaused) return;
+      coyoteTime = player.onGround ? 0.1 : Math.max(0, coyoteTime - dt);
+      jumpBuffer = Math.max(0, jumpBuffer - dt);
+      if (jumpBuffer > 0 && (player.onGround || coyoteTime > 0)) tryJump();
 
       if (hitCooldown > 0) {
         hitCooldown -= dt;
@@ -964,8 +1039,8 @@
       const targetCameraX = player.x + player.w / 2 - halfCanvas;
       const maxCam = WORLD_WIDTH - canvas.width;
       const clampedTarget = Math.max(0, Math.min(targetCameraX, maxCam));
-      const SMOOTH = 0.12;
-      cameraX += (clampedTarget - cameraX) * SMOOTH;
+
+      cameraX += (clampedTarget - cameraX) * (1 - Math.exp(-8 * dt));
     }
 
     function rectIntersect(a, b) {
