@@ -5,19 +5,19 @@ First creation-tool prototype at `/tools/comic-studio/`, linked from Teacher Too
 ## Included
 
 - 11 layouts: single, three-panel strip, two wide panels, three stacked panels, four, six, eight, nine, twelve, feature + two, and feature + four.
-- Twelve panels remain in each project; layout changes do not delete hidden panels. Exports include only visible panels.
+- Up to 32 independent pages (including covers), each retaining twelve panels. Layout changes do not delete hidden panels. Exports include only visible panels in each page layout. The layout picker shows all eleven panel arrangements and three cover designs before selection.
 - 116 original SVG characters, 108 backgrounds, and 276 props (500 library items). Two backgrounds are generated illustrations. Human characters offer eight expressions and eight poses; animal/robot rigs offer standing and waving poses.
 - Speech bubbles, thought bubbles, captions, and editable dialogue.
-- Pointer/touch dragging, arrow-key movement, size and numeric position controls, character/prop flipping, layer changes, duplication, and removal.
+- Pointer/touch dragging, arrow-key movement, size and numeric position controls, character/prop/imported-image flipping, layer changes, duplication, and removal.
 - Copy a panel to the next panel, with fresh object IDs and undo support.
-- Undo/redo, browser autosave, JSON project download/import, and a replaceable example project.
-- Full comic preview, PNG download, and direct PDF download without a print dialog. PDF embeds the rendered comic page as an image; selectable-text PDF output is not part of this version.
+- Undo/redo, IndexedDB draft autosave and named browser projects, editable JSON project download/import, and a replaceable example project.
+- Paginated comic preview, current-page PNG download, all-page PNG ZIP download, and direct multi-page PDF download without a print dialog. PDF embeds the rendered comic page as an image; selectable-text PDF output is not part of this version.
 
 ## Files
 
 `catalog.js` owns asset names, categories, palettes, expressions, and poses. `library-art.js` supplies expanded original drawings. `model.js` owns project creation and strict import validation. `art.js` owns original artwork and scene/page SVG generation, with XML escaping of all user text. `studio.js` owns UI, history, editing, persistence, and exports. No third-party character or franchise artwork is used. The existing local jsPDF bundle handles PDF creation.
 
-Project limits: twelve panels, 80 objects per panel, 240 characters per bubble/caption, 120-character title, 80-character author, 2 MB import limit. Panel edges crop objects, including oversized speech bubbles; the editor and export apply the same cropping. The interface explicitly explains this behavior. Browser drafts do not sync between devices; project files do.
+Project limits: 32 pages including covers, twelve retained panels per page, 80 objects per panel, 240 characters per bubble/caption, 120-character title, 80-character author, and a 25 MB project-file import limit. Imported artwork supports up to 64 embedded raster images and 16 MB of encoded image data per project; uploads are normalized from PNG/JPEG/WebP/GIF inputs under 10 MB each. Panel edges crop objects, including oversized speech bubbles; the editor and export apply the same cropping. The interface explicitly explains this behavior. Browser drafts do not sync between devices; project files do.
 
 ## Validation
 
@@ -90,3 +90,17 @@ Added 12 original student characters, eight community/creative roles, 20 backgro
 Settings include domestic spaces, transit interiors, outdoor environments, a bakery/pottery studio, archive, radio studio, electrical controls, planning office, and counseling room. Props include furniture, vehicles, food/crafts, mobility aids, community/safety equipment, communication/design tools, and outdoor gear. These are original illustrative storytelling assets; safety equipment and technical illustrations are not instructional diagrams.
 
 The 100 additions were rendered to contact sheets and inspected. Automated checks validate all 500 catalog items and supported character expressions/poses, plus new asset IDs through project validation, transformations, layering, history, copying, and favorites. Native browser/tablet layout and real download verification remain pending following the earlier browser-policy block.
+
+## Multi-page comics, covers, drawing and image imports
+
+Version 3 stores a stable comic ID, title/author, update timestamp, ordered `pages`, and a deduplicated `assets` table. Every page owns its layout, kind (`comic` or `cover`), label, cover settings, and twelve retained panels. `book-model.js` migrates v1/v2 single-page projects and validates v3 files. IDs must be unique across the book, page count is 1–32 including covers, image sources must be embedded raster data, and external/SVG sources are rejected. Duplicating pages regenerates every object ID while retaining shared image references. Undo/redo snapshots copy page data while sharing immutable image strings to avoid duplicating megabytes per edit.
+
+The layout picker renders the same panel geometry used by export. Three original cover options (classic, banner, minimal) include a global comic title/author, per-cover subtitle and accent color, and an editable illustration panel. Cover illustration rendering preserves the entire scene. Each page can choose a different panel layout. Users can add, duplicate, reorder, name, delete, and preview pages; page deletion and layout changes support undo.
+
+New drawing options: marker, highlighter, arrow, triangle, diamond, star, opacity, and solid/dashed/dotted strokes, in addition to the previous pencil/line/rectangle/ellipse. The eraser still removes whole vector strokes. Imported images become normal movable, resizable, flippable, layered objects and appear in a project-specific image library. Imports validate file signatures, decode and normalize to PNG (flattening animation), resize to at most 1600px, and reduce detail until each image is below 1.5 MB. Imports never upload to a server. Preview blob URLs keep large data strings out of repeatedly redrawn SVGs; portable files and exports embed the original normalized image data.
+
+`project-store.js` provides async `put/get/list/saveDraft/loadDraft` methods backed by IndexedDB plus a small-project localStorage fallback. Named projects reopen through My saved projects; saving is device/browser specific. Versioned editable files preserve all pages and imported images for transfer. Account saving is explicitly labeled as future functionality. The storage adapter and serializable project envelope are ready for an authenticated account provider; no account/backend integration or claim of cloud saving is included in this change.
+
+Exports snapshot the book before rendering. PNG downloads one selected page; all-page PNG export produces a ZIP with ordered page-01.png names using `png-bundle.js`. PDF renders each page sequentially, includes all covers/story pages, fits pages to Letter with appropriate orientation, and uses compressed image data with the existing bundled jsPDF. The blank-layout PDF also exports every page without modifying the working project.
+
+Validation: the existing 500-item editor suite passes after adapting its state helper to the v3 book envelope. `TEACH_ARCADE_JSDOM=/path/to/jsdom/lib/api.js TEACH_ARCADE_FAKE_INDEXEDDB=/path/to/fake-indexeddb/build/esm/index.js node scripts/test-comic-book.mjs` covers migration, all layout/cover choices, independent pages, the 32-page limit, page history, raster-image import and rejection, embedding, new brushes/shapes, named local projects, IndexedDB persistence/restoration, PNG/PDF page counts, and a real ZIP with readable entries/CRCs. All eleven layout previews, three cover designs, a page with imported art, and an actual three-page PDF were rendered and visually inspected. PDF output was checked with pdfinfo; the representative three-page sample compresses to approximately 300 KB. Native browser/tablet interaction, actual image decoding and download behavior remain unverified after the earlier browser-policy block.

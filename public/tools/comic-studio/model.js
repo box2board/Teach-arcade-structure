@@ -7,14 +7,14 @@ const blankPanel=()=>({background:'blank',paperColor:'#fffaf1',backgroundView:vi
 const fresh=()=>({format:'teach-arcade-comic',version:2,title:'My comic',author:'',layout:'four',panels:Array.from({length:12},blankPanel)});
 const hex=v=>typeof v==='string'&&/^#[0-9a-fA-F]{6}$/.test(v);
 const number=(v,min,max)=>Number.isFinite(v)&&v>=min&&v<=max;
-function validate(p){
+function validate(p,assets={}){
  if(!p||p.format!=='teach-arcade-comic'||![1,2].includes(p.version)||!Object.hasOwn(layouts,p.layout)||!Array.isArray(p.panels)||!((p.version===1&&p.panels.length===6)||(p.version===2&&p.panels.length===12)))throw new Error('Choose a valid Teach Arcade comic project.');
  if(typeof p.title!=='string'||p.title.length>120||typeof p.author!=='string'||p.author.length>80)throw new Error('Invalid comic title or author.');
  const ids=new Set();const panels=p.panels.map(panel=>{
   if(!panel||!backgrounds.includes(panel.background)||!Array.isArray(panel.objects)||panel.objects.length>80)throw new Error('A panel supports up to 80 objects.');
   const paperColor=panel.paperColor??'#fffaf1',backgroundView=panel.backgroundView??view();if(!hex(paperColor)||!number(backgroundView.zoom,1,3)||!number(backgroundView.x,-600,600)||!number(backgroundView.y,-360,360))throw new Error('Invalid scene settings.');
   return {background:panel.background,paperColor,backgroundView:{zoom:backgroundView.zoom,x:backgroundView.x,y:backgroundView.y},objects:panel.objects.map(o=>{
-   if(!o||!['character','speech','thought','caption','prop','drawing'].includes(o.type)||typeof o.id!=='string'||!/^[a-zA-Z0-9-]{1,60}$/.test(o.id)||ids.has(o.id))throw new Error('Invalid comic object.');ids.add(o.id);
+   if(!o||!['character','speech','thought','caption','prop','drawing','image'].includes(o.type)||typeof o.id!=='string'||!/^[a-zA-Z0-9-]{1,60}$/.test(o.id)||ids.has(o.id))throw new Error('Invalid comic object.');ids.add(o.id);
    if(!number(o.x,0,580)||!number(o.y,0,340)||!number(o.scale,.15,4)||typeof o.flip!=='boolean'||typeof o.text!=='string'||o.text.length>240||!expressions.includes(o.expression)||!poses.includes(o.pose))throw new Error('Invalid object settings.');
    if(o.type==='character'&&!characters.includes(o.asset)||o.type==='prop'&&!props.includes(o.asset))throw new Error('Unknown comic artwork.');
    const custom=o.colors??colors();for(const key of ['primary','skin','hair'])if(custom[key]!==''&&!hex(custom[key]))throw new Error('Invalid artwork color.');
@@ -24,9 +24,14 @@ function validate(p){
     if(!number(box.width,80,560)||!number(box.height,0,340)||!number(box.fontSize,12,32)||!['left','right','custom','none'].includes(box.tail)||!number(box.tailX,-600,600)||!number(box.tailY,-360,360))throw new Error('Invalid text box.');
     result.box={width:box.width,height:box.height,fontSize:box.fontSize,tail:box.tail,tailX:box.tailX,tailY:box.tailY};
    }
+   if(o.type==='image'){
+    if(!Object.hasOwn(assets,o.asset)||!number(o.imageWidth,1,600)||!number(o.imageHeight,1,360))throw new Error('Invalid imported image reference.');
+    result.imageWidth=o.imageWidth;result.imageHeight=o.imageHeight;
+   }
    if(o.type==='drawing'){
-    if(!['pencil','line','rectangle','ellipse'].includes(o.drawKind)||!hex(o.stroke)||!(o.fill==='none'||hex(o.fill))||!number(o.strokeWidth,1,20)||!Array.isArray(o.points)||o.points.length<2||o.points.length>1500||o.points.some(pt=>!Array.isArray(pt)||pt.length!==2||!number(pt[0],0,600)||!number(pt[1],0,360)))throw new Error('Invalid drawing.');
-    Object.assign(result,{drawKind:o.drawKind,stroke:o.stroke,fill:o.fill,strokeWidth:o.strokeWidth,points:copy(o.points)});
+    if(!['pencil','marker','highlighter','line','arrow','rectangle','ellipse','triangle','diamond','star'].includes(o.drawKind)||!hex(o.stroke)||!(o.fill==='none'||hex(o.fill))||!number(o.strokeWidth,1,40)||!Array.isArray(o.points)||o.points.length<2||o.points.length>1500||o.points.some(pt=>!Array.isArray(pt)||pt.length!==2||!number(pt[0],0,600)||!number(pt[1],0,360)))throw new Error('Invalid drawing.');
+    if(!number(o.opacity??1,.1,1)||!['solid','dashed','dotted'].includes(o.dash??'solid'))throw new Error('Invalid brush settings.');
+    Object.assign(result,{opacity:o.opacity??1,dash:o.dash??'solid',drawKind:o.drawKind,stroke:o.stroke,fill:o.fill,strokeWidth:o.strokeWidth,points:copy(o.points)});
    }return result;
   })};
  });while(panels.length<12)panels.push(blankPanel());return {format:p.format,version:2,title:p.title,author:p.author,layout:p.layout,panels};
