@@ -3,7 +3,7 @@ import {enhanceTopicPicker} from '../topic-picker.js';
 import {prepareQuestionDeck} from '../question-decks.js';
 
 const $=id=>document.getElementById(id);
-const canvas=$('stage'),ctx=canvas.getContext('2d');
+const canvas=$('stage'),ctx=canvas.getContext('2d',{alpha:false});
 const arenaBackground=new Image();arenaBackground.src='./assets/slime-falls-arena-bg.webp';
 const rangeDeckSprite=new Image();rangeDeckSprite.src='./assets/slime-falls-range-deck.webp';
 const targetSprites=['blob','bot','dummy','dart'].map(name=>{const image=new Image();image.src=`./assets/slime-falls-target-${name}.webp`;return image;});
@@ -172,9 +172,16 @@ function drawAmbientMist(t){
  for(let i=0;i<4;i++){const x=300+i*110+Math.sin(t*.24+i*1.8)*24,y=340+(i%2)*18+Math.sin(t*.35+i)*7;ctx.globalAlpha=.055+.025*Math.sin(t*.7+i);ctx.fillStyle='#efffff';ctx.beginPath();ctx.ellipse(x,y,33+i%3*9,8+i%2*4,0,0,Math.PI*2);ctx.fill();}
  ctx.restore();
 }
+const sceneryLayer=document.createElement('canvas');
+sceneryLayer.width=W;sceneryLayer.height=H;
+const sceneryContext=sceneryLayer.getContext('2d',{alpha:false});
+let sceneryReady=false;
+arenaBackground.addEventListener('load',()=>{
+ sceneryContext.drawImage(arenaBackground,0,0,W,H);sceneryReady=true;
+});
 function drawBackground(t){
  if(!arenaBackground.complete||!arenaBackground.naturalWidth){drawBackgroundFallback(t);return;}
- ctx.drawImage(arenaBackground,0,0,W,H);
+ ctx.drawImage(sceneryReady?sceneryLayer:arenaBackground,0,0,W,H);
  drawAmbientFalls(t);drawAmbientLanterns(t);drawAmbientMist(t);
  // Quiet moving highlights keep the illustrated pool alive while the scenery stays crisp.
  ctx.save();ctx.beginPath();poly([[166,382],[794,382],[W,H],[0,H]]);ctx.clip();ctx.globalAlpha=.16;
@@ -254,7 +261,8 @@ function drawTarget(target,t){
  ctx.save();ctx.translate(p.x,p.y-r*.52-bounce-snap*r*.14+exit*r*.18);ctx.scale((.82+.18*pop)*(1+idle*.025+snap*.30-exit*.58),( .82+.18*pop)*(1-idle*.035-snap*.38-exit*.58));ctx.rotate(moveLean+sway+idle*.022*(1-exit)+(target.hitKick||0)*(snap*.26+exit*.12));
  ctx.globalAlpha=.38;ctx.fillStyle='#00131b';ctx.beginPath();ctx.ellipse(0,r*.72,r*.72,r*.17,0,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;
  if(special){ctx.globalAlpha=.20+.10*Math.sin(t*5+target.phase);ctx.fillStyle=special.color;ctx.shadowColor=special.color;ctx.shadowBlur=24*s;ctx.beginPath();ctx.arc(0,0,r*1.18,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1;ctx.shadowBlur=0;}
- ctx.shadowColor='#071d28aa';ctx.shadowBlur=12*s;ctx.shadowOffsetY=5*s;ctx.save();ctx.rotate(idle*.018*(1-exit));ctx.drawImage(specialTargetSprite(sprite,special?.id),-r*.94,-r*.96+Math.sin(t*rate+target.phase)*r*.014,r*1.88,r*1.78);ctx.restore();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
+ // Ground ellipse supplies depth without a costly per-sprite blur.
+ ctx.save();ctx.rotate(idle*.018*(1-exit));ctx.drawImage(specialTargetSprite(sprite,special?.id),-r*.94,-r*.96+Math.sin(t*rate+target.phase)*r*.014,r*1.88,r*1.78);ctx.restore();ctx.shadowBlur=0;ctx.shadowOffsetY=0;
  if(special?.id==='golden'){ctx.fillStyle='#ffd845';ctx.strokeStyle='#fff1a0';ctx.lineWidth=Math.max(1,2*s);poly([[-r*.40,-r*.82],[-r*.27,-r*1.16],[0,-r*.96],[r*.27,-r*1.16],[r*.40,-r*.82]]);ctx.fill();ctx.stroke();}
  if(special&&special.id!=='golden')drawSpecialEmblem(special.id,r,special.color);
  if(special?.id==='golden'){ctx.strokeStyle='#fff3aa';ctx.lineWidth=Math.max(1,1.4*s);for(let i=0;i<3;i++){const a=t*.65+i*Math.PI*2/3,xx=Math.cos(a)*r*1.15,yy=Math.sin(a)*r*.8-r*.3,len=(.09+.04*Math.sin(t*5+i))*r;ctx.beginPath();ctx.moveTo(xx-len,yy);ctx.lineTo(xx+len,yy);ctx.moveTo(xx,yy-len);ctx.lineTo(xx,yy+len);ctx.stroke();}}
@@ -271,7 +279,7 @@ function drawTargetFallback(target,t){const p=project(target.x,target.z),s=p.sca
  if(special?.id==='golden'){ctx.fillStyle='#ffd845';ctx.strokeStyle='#fff1a0';ctx.lineWidth=Math.max(1,2*s);poly([[-r*.45,-r*.86],[-r*.28,-r*1.23],[0,-r*.96],[r*.28,-r*1.23],[r*.45,-r*.86]]);ctx.fill();ctx.stroke();}
  if(special&&special.id!=='golden'){ctx.fillStyle='#07131ddd';ctx.beginPath();ctx.arc(0,r*.52,r*.22,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=`950 ${Math.max(10,r*.32)}px system-ui`;ctx.fillText(special.icon,0,r*.52);}
  const badge=special?(special.id==='golden'?special.value:special.label):target.value,txt=String(badge),bw=Math.max(42*s,txt.length*7*s);ctx.fillStyle='#24150def';rr(-bw/2,r*.72,bw,18*s,6*s);ctx.fill();ctx.strokeStyle=base;ctx.lineWidth=Math.max(1,1.7*s);ctx.stroke();ctx.fillStyle=special?.id==='golden'?'#ffe46a':'#fff';ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=`950 ${Math.max(8,11*s)}px system-ui`;ctx.fillText(txt,0,r*.72+9*s);ctx.restore();}
-function drawTargets(t){[...targets].sort((a,b)=>b.z-a.z).forEach(target=>drawTarget(target,t));}
+function drawTargets(t){for(const target of targets)drawTarget(target,t);}
 function targetUnderAim(){const candidates=targets.filter(t=>t.lane===aimLane&&!t.pendingRespawn).sort((a,b)=>Math.abs(a.x-aimX)-Math.abs(b.x-aimX));const hit=candidates[0];return hit&&Math.abs(hit.x-aimX)<=hit.r*.9+10?hit:null;}
 function drawAimGuide(){if(shotCamera)return;const lane=laneConfig[aimLane],end=project(aimX,lane.z),start={x:W/2,y:H-103},arc=lane.arc*(lane.name==='FAR'?.24:lane.name==='MID'?.19:.15);ctx.save();ctx.strokeStyle='#b9ff5f9a';ctx.lineWidth=3;ctx.setLineDash([9,8]);ctx.beginPath();ctx.moveTo(start.x,start.y);ctx.quadraticCurveTo(VP.x,(start.y+end.y)/2-arc,end.x,end.y);ctx.stroke();ctx.setLineDash([]);const hover=targetUnderAim(),color=hover?.special?.color||hover?.type?.color||'#c9ff71';ctx.strokeStyle=color;ctx.lineWidth=3.5;ctx.shadowColor=color;ctx.shadowBlur=hover?22:14;ctx.beginPath();ctx.arc(end.x,end.y,22*end.scale+9,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(end.x-31,end.y);ctx.lineTo(end.x-12,end.y);ctx.moveTo(end.x+12,end.y);ctx.lineTo(end.x+31,end.y);ctx.moveTo(end.x,end.y-31);ctx.lineTo(end.x,end.y-12);ctx.moveTo(end.x,end.y+12);ctx.lineTo(end.x,end.y+31);ctx.stroke();ctx.restore();}
 function drawProjectileAndEffects(){
@@ -313,7 +321,7 @@ function drawLauncher(){
  ctx.save();ctx.globalAlpha=reveal;ctx.translate(W/2,H+8+recoil*14);ctx.rotate(clamp(aimX/560,-1,1)*.055);
  const tank=clamp(ammo/8,0,1);
  if(shotGlow>0){const gx=0,gy=-height*.43,glow=ctx.createRadialGradient(gx,gy,2,gx,gy,width*.34);glow.addColorStop(0,`rgba(177,255,106,${.22*shotGlow})`);glow.addColorStop(1,'rgba(110,255,60,0)');ctx.fillStyle=glow;ctx.beginPath();ctx.ellipse(gx,gy,width*.42,height*.38,0,0,Math.PI*2);ctx.fill();}
- ctx.shadowColor='#050c0dcc';ctx.shadowBlur=18;ctx.drawImage(cannonSprite,-width/2,-height,width,height);ctx.shadowBlur=0;
+ ctx.drawImage(cannonSprite,-width/2,-height,width,height);ctx.shadowBlur=0;
  for(let i=0;i<Math.min(5,Math.ceil(tank*5));i++){const bx=Math.sin(performance.now()*.002+i*2.2)*width*.035,by=-height*.43-((performance.now()*.025+i*height*.13)%Math.max(10,height*.16));ctx.globalAlpha=.62*reveal;ctx.fillStyle='#eaffb8';ctx.beginPath();ctx.arc(bx,by,Math.max(1.5,width*.012),0,Math.PI*2);ctx.fill();}
  ctx.globalAlpha=reveal;
  // Brass-framed supply gauge sits on the carriage and tracks earned ammunition.
@@ -329,9 +337,21 @@ function drawLauncherFallback(){if(shotCamera)return;const x=W/2,y=H+8+recoil*14
 function drawDepthHUD(){if(shotCamera)return;ctx.save();const x=16,y=18,w=198,h=38;ctx.fillStyle='#3a2114d8';rr(x,y,w,h,14);ctx.fill();ctx.strokeStyle='#c88745';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#ffe8bc';ctx.font='900 9px system-ui';ctx.fillText('LANE',x+12,y+14);const labels=['FAR','MID','NEAR'];labels.forEach((lab,i)=>{const xx=x+66+i*43;ctx.fillStyle=i===aimLane?laneConfig[i].color:'#8d765f';ctx.beginPath();ctx.arc(xx,y+24,6,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.font='900 9px system-ui';ctx.textAlign='center';ctx.fillText(lab,xx,y+13);});ctx.restore();}
 function drawShotHUD(){if(!shotCamera)return;ctx.save();ctx.fillStyle='#3b2115df';rr(W/2-112,18,224,34,17);ctx.fill();ctx.strokeStyle=shotStage==='impact'?(impactFocus?.color||'#fff'):'#9dff75';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#fff4d9';ctx.textAlign='center';ctx.font='950 12px system-ui';ctx.fillText(shotStage==='flight'?'● FOLLOWING SLIME':shotStage==='impact'?'● SPLAT!':'● BACK TO THE CANNON',W/2,40);ctx.restore();}
 function drawRushOverlay(){if(performance.now()>=bonusRushUntil&&rushFlash<=0)return;ctx.save();ctx.globalAlpha=performance.now()<bonusRushUntil?.09:rushFlash*.09;ctx.fillStyle='#ff4fd8';ctx.fillRect(0,0,W,H);ctx.restore();}
-function drawVignette(){const v=ctx.createRadialGradient(W/2,H*.43,150,W/2,H*.52,620);v.addColorStop(0,'#0000');v.addColorStop(.72,'#00000005');v.addColorStop(1,'#2b130a66');ctx.fillStyle=v;ctx.fillRect(0,0,W,H);}
-function drawScene(t){ctx.clearRect(0,0,W,H);drawBackground(t);drawLanePlatforms();drawTargets(t);drawForeground();drawAimGuide();drawProjectileAndEffects();drawLauncher();drawDepthHUD();drawShotHUD();drawRushOverlay();drawVignette();}
-function loop(now){const dt=Math.min(.04,(now-lastFrame)/1000||0);lastFrame=now;if(state==='playing'){keyboardAim(dt);updateRoundEvents(now);updateTargets(dt,now/1000);updateEffects(dt);updateCamera(dt,now);}else updateEffects(dt);drawScene(now/1000);requestAnimationFrame(loop);}
+// Rasterize the fixed full-screen gradient once instead of shading it every frame.
+const vignetteLayer=document.createElement('canvas');vignetteLayer.width=W;vignetteLayer.height=H;
+const vignetteContext=vignetteLayer.getContext('2d');
+const vignette=vignetteContext.createRadialGradient(W/2,H*.43,150,W/2,H*.52,620);
+vignette.addColorStop(0,'#0000');vignette.addColorStop(.72,'#00000005');vignette.addColorStop(1,'#2b130a66');
+vignetteContext.fillStyle=vignette;vignetteContext.fillRect(0,0,W,H);
+function drawVignette(){ctx.drawImage(vignetteLayer,0,0);}
+
+function drawScene(t){drawBackground(t);drawLanePlatforms();drawTargets(t);drawForeground();drawAimGuide();drawProjectileAndEffects();drawLauncher();drawDepthHUD();drawShotHUD();drawRushOverlay();drawVignette();}
+let lastIdleDraw=0;
+function loop(now){const dt=Math.min(.1,(now-lastFrame)/1000||0);lastFrame=now;
+ // Keep the timer authoritative, but avoid painting a covered or hidden arena.
+ if(document.hidden){requestAnimationFrame(loop);return;}
+ if(state!=='playing'&&now-lastIdleDraw<100){requestAnimationFrame(loop);return;}
+ lastIdleDraw=now;if(state==='playing'){keyboardAim(dt);updateRoundEvents(now);updateTargets(dt,now/1000);updateEffects(dt);updateCamera(dt,now);}else updateEffects(dt);drawScene(now/1000);requestAnimationFrame(loop);}
 
 $('questions').onclick=()=>{if(state!=='playing'||shotCamera)return;nextQuestion('playing');};
 $('earn-more').onclick=()=>{if(state==='playing'&&!shotCamera)nextQuestion('playing');};
