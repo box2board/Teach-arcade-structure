@@ -83,3 +83,7 @@ body{background-color:#12334b;background-image:radial-gradient(#ffffff0d 1px,tra
 @media(max-width:650px){.detail-panel{height:126px}.hero-panel,.layout-splash .hero-panel,.layout-inset .hero-panel{height:300px}.route-memory{font-size:14px}}
 
 .detail-panel.document-panel{height:auto;min-height:98px}.document-panel figcaption{position:relative;min-height:98px}.detail-panel figcaption span{overflow-wrap:anywhere}
+
+/* Character voices and the consequences carried into the shop's epilogue. */
+.character-lines p{margin:0 0 9px;font:15px/1.4 Georgia}.character-lines p:last-child{margin-bottom:0}.character-lines strong{color:#8e1b21;font:800 11px Arial;letter-spacing:.03em;display:block;margin-bottom:3px}.scene-task{font:12px/1.4 Arial;margin-top:10px;color:#304c5c}.scene-task summary{cursor:pointer;font-weight:bold}.scene-task p{margin:7px 0 0}.character-guide{font:13px/1.5 Arial;margin:14px 0}.character-guide summary{cursor:pointer;font-weight:bold;color:#174b69}.character-guide p{margin:10px 0}.character-epilogue{margin:15px 0;padding:12px 14px;border-left:4px solid var(--red);background:#ffe4ac;font:14px/1.5 Georgia}.character-epilogue summary{font-weight:bold;cursor:pointer}.character-epilogue p{margin:12px 0}.character-epilogue strong{color:#8e1b21}.character-epilogue p:last-child{margin-bottom:0}
+@media(min-width:1000px) and (max-height:820px){.character-lines p{font-size:14px;line-height:1.35;margin-bottom:7px}.character-lines strong{font-size:10px;margin-bottom:2px}.scene-task{margin-top:8px}}

@@ -13,7 +13,7 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
   if(process.env.QA_DIR)await page.screenshot({path:path.join(process.env.QA_DIR,'panel-'+dims.join('x')+'.png'),fullPage:true});
  }
  await page.setViewportSize({width:1280,height:720});
- for(const route of ['ledger','market'])for(const edit of ['rights','constitution'])for(const source of route==='market'?['protect','attribute']:['none'])for(const final of ['public','archive'])for(const wrong of [false,true]){
+ for(const route of ['ledger','market'])for(const edit of ['rights','constitution'])for(const source of route==='market'?['protect','attribute']:['none'])for(const final of ['public','archive'])for(const wrong of [false,true])for(const notes of ['seal','copies']){
   await page.goto(url);await page.evaluate(()=>localStorage.clear());await page.reload();await page.click('#startBtn');let count=0;
   while(true){assert(++count<40);const saved=await state();const s=await page.evaluate(id=>window.PANEL_QUEST_EDITION.scenes[id],saved.scene);
    if(s.type==='ending')break;
@@ -31,12 +31,12 @@ const {chromium}=require('playwright');const assert=require('node:assert/strict'
     await page.click('#publish');assert(await page.locator('#next').isVisible());await checkFit(saved.scene+' printed');await page.click('#next');
    }else if(s.type==='investigation'){
     assert.equal(await page.locator('#next').isVisible(),false);for(const item of s.items)await page.click('[data-inspect="'+item.id+'"]');assert(await page.locator('#next').isVisible());await page.click('#next');
-   }else{const id=saved.scene==='route-a'?route:saved.scene==='route-b'?edit:saved.scene==='source'?source:final;await page.click('[data-choice="'+id+'"]');}
+   }else{const id=saved.scene==='route-a'?route:saved.scene==='route-b'?edit:saved.scene==='source'?source:saved.scene==='notes-decision'?notes:final;await page.click('[data-choice="'+id+'"]');}
   }
-  const saved=await state();assert.equal(Object.values(saved.answers).filter(a=>a.solved).length,10);assert.equal(Object.values(saved.answers).filter(a=>a.solved&&!a.wrong.length).length,wrong?0:10);endings.add(await page.locator('.ending-copy h1').innerText());assert(await page.locator('#replay').isVisible());assert.equal(saved.values.pages,3);assert.equal(saved.flags.final==='archive',await page.locator('.ending-copy h1').innerText()==='The keeper of the record');await page.locator('.finished-pages summary').click();assert.equal(await page.locator('.printed-page').count(),3);await page.locator('.learning-record summary').click();assert((await page.locator('#learningRecord').innerText()).includes('Student explanation:'));const downloaded=page.waitForEvent('download');await page.click('#downloadRecord');assert((await downloaded).suggestedFilename().endsWith('learning-record.txt'));
+  const saved=await state();assert.equal(Object.values(saved.answers).filter(a=>a.solved).length,10);assert.equal(Object.values(saved.answers).filter(a=>a.solved&&!a.wrong.length).length,wrong?0:10);endings.add(await page.locator('.ending-copy h1').innerText());assert(await page.locator('#replay').isVisible());assert.equal(saved.values.pages,3);assert.equal(saved.flags.notes,notes==='seal'?'sealed':'copies');assert((await page.locator('.character-epilogue').innerText()).includes('What became of the shop'));await page.locator('.character-epilogue summary').click();assert((await page.locator('.character-epilogue').innerText()).includes('Camille'));assert.equal(saved.flags.final==='archive',await page.locator('.ending-copy h1').innerText()==='The keeper of the record');await page.locator('.finished-pages summary').click();assert.equal(await page.locator('.printed-page').count(),3);await page.locator('.learning-record summary').click();assert((await page.locator('#learningRecord').innerText()).includes('Student explanation:'));const downloaded=page.waitForEvent('download');await page.click('#downloadRecord');assert((await downloaded).suggestedFilename().endsWith('learning-record.txt'));
   if(process.env.QA_DIR&&endings.size===3)await page.screenshot({path:path.join(process.env.QA_DIR,'ending.png'),fullPage:true});
   await page.click('#replay');assert.equal((await state()).scene,'briefing');assert.equal((await state()).clues.length,0);runs++;
  }
- assert.equal(runs,24);assert.equal(endings.size,3);assert.deepEqual(errors,[]);
+ assert.equal(runs,48);assert.equal(endings.size,3);assert.deepEqual(errors,[]);
  console.log(JSON.stringify({runs,endings:[...endings],errors,layoutChecks:fit.length,viewports:fit.slice(0,10)},null,2));await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

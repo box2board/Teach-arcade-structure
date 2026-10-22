@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const context=vm.createContext({window:{},console});
-for(const f of ['paris-print-shop.js','panel-quest-engine.js'])vm.runInContext(fs.readFileSync(new URL('../public/prototypes/panel-quest/'+f,import.meta.url),'utf8'),context);
+for(const f of ['paris-print-shop.js','paris-print-shop-story.js','panel-quest-engine.js'])vm.runInContext(fs.readFileSync(new URL('../public/prototypes/panel-quest/'+f,import.meta.url),'utf8'),context);
 const e=context.window.PANEL_QUEST_EDITION,{Model}=context.PanelQuest;
 let paths=0;const endings=new Set();
 function explore(m,wrong){
@@ -28,10 +28,10 @@ function explore(m,wrong){
   // Every transition must round-trip, preserving answer order and inventory.
   m=new Model(e,JSON.parse(JSON.stringify(m.state)));
  }
- paths++;endings.add(m.ending().id);assert.equal(m.stats.solved,10);assert.equal(m.stats.first,wrong?0:10);assert.equal(new Set(m.state.clues).size,m.state.clues.length);assert(m.state.clues.length>=14);assert.equal(m.state.values.pages,3);assert.equal(Object.values(m.state.publications).filter(p=>p.submitted).length,3);if(m.state.flags.final==='archive')assert.equal(m.ending().id,'archive','Practice score cannot override archive choice');else assert.notEqual(m.ending().id,'archive','Public choice stays public');assert(m.state.visited.includes('q6'));assert(m.state.visited.indexOf('q6')<m.state.visited.indexOf('q7'));
+ paths++;endings.add(m.ending().id);assert.equal(m.stats.solved,10);assert.equal(m.stats.first,wrong?0:10);assert.equal(new Set(m.state.clues).size,m.state.clues.length);assert(m.state.clues.length>=14);assert.equal(m.state.values.pages,3);assert(m.state.flags.notes==='sealed'||m.state.flags.notes==='copies');assert(m.state.clues.includes(m.state.flags.notes==='sealed'?'sealed-notes':'reading-copies'));assert(!m.state.clues.includes(m.state.flags.notes==='sealed'?'reading-copies':'sealed-notes'));assert.equal(Object.values(m.state.publications).filter(p=>p.submitted).length,3);if(m.state.flags.final==='archive')assert.equal(m.ending().id,'archive','Practice score cannot override archive choice');else assert.notEqual(m.ending().id,'archive','Public choice stays public');assert.equal(m.epilogue().filter(b=>b.speaker==='Camille').length,1);assert(m.epilogue().find(b=>b.speaker==='Camille').text.includes(m.state.flags.notes==='sealed'?'packet':'cop'));assert(m.state.visited.includes('q6'));assert(m.state.visited.indexOf('q6')<m.state.visited.indexOf('q7'));
 }
 explore(new Model(e),false);explore(new Model(e),true);
-assert.equal(endings.size,3);assert.equal(paths,24);
+assert.equal(endings.size,3);assert.equal(paths,48);
 const original=new Model(e);assert.throws(()=>new Model(e,{...original.state,version:1}));
 const permutations=new Set();for(let i=0;i<100;i++)permutations.add((()=>{const m=new Model(e);m.inspect('commission');m.advance();return m.answerState().order.join('')})());assert(permutations.size>10);
 // Engine independence: a different setting uses the same model without Paris data.

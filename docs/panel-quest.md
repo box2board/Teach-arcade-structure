@@ -62,12 +62,22 @@ State includes scene, answer permutations/attempts, evidence, flags/values, insp
 
 ## Validation
 
-The model suite traverses all 24 route/retry combinations, including wrong-first answers, and confirms ten question resolutions, three supported pages, all three endings, no dead ends, stable save round trips, no duplicate rewards, rejection of unrelated/invented evidence, and consistent public/archive outcomes independent of practice score. A second non-history edition verifies model reuse.
+The model suite traverses all 48 route/retry combinations, including wrong-first answers, and confirms ten question resolutions, three supported pages, all three endings, no dead ends, stable save round trips, no duplicate rewards, rejection of unrelated/invented evidence, and consistent public/archive outcomes independent of practice score. A second non-history edition verifies model reuse.
 
-The browser suite performs the 24 complete paths using actual controls. It checks reload/resume of answer order and publication writing, blank-page rejection, source selection, publication, evidence dialog/Escape, finished pages, learning-record download, replay resets, and layout at 1366×768, 1280×720, 1024×768, 768×1024 and 390×844. Phone layouts stack and scroll; device sizes are emulated rather than tested on physical hardware.
+The browser suite performs the 48 complete paths using actual controls. It checks reload/resume of answer order and publication writing, blank-page rejection, source selection, publication, evidence dialog/Escape, finished pages, learning-record download, replay resets, and layout at 1366×768, 1280×720, 1024×768, 768×1024 and 390×844. Phone layouts stack and scroll; device sizes are emulated rather than tested on physical hardware.
 
 Reference links are included in the edition and ending, including the French National Assembly's account of the Convention/Directory and CHNM's Constitution of Year III. The original prototype's illustrations and historical question backbone were preserved.
 
 ## Preserved concurrent comic-panel work
 
 A newer commit on this same prototype branch added data-driven sequential art/document panels, conditional route callbacks, an evidence-dialog decision trail and ending explanations. Those changes were preserved in this pass. Ending explanations were updated to match the new score-independent publication rules. Document panels can grow with their text instead of clipping longer fictional source notes.
+
+## Character and narrative revision
+
+`paris-print-shop-story.js` supplies an edition-specific narrative layer after the original content file. Laurent's motive is keeping the shop and its standards alive; Camille wants readers rather than untouched records; Madeleine controls how her testimony is attributed. The opening paper bill and limited print run establish the cost of publishing. The apprentice earns responsibility across the decade instead of remaining an anonymous quiz-taker.
+
+After the 1793 question, a new controlled branch asks whether to seal and catalogue originals or prepare anonymous reading copies. Both protect unpublished identities and preserve verified claims; one favors source context and the other access. They have separate follow-up scenes, exclusive clue IDs, callbacks and final character epilogues. A previously published name is explicitly not treated as something that can be erased. The fictional visitor and workshop incidents are not claims about a documented historical shop or legal rule.
+
+The shared renderer now supports named dialogue lines, conditional presentation variants and edition-defined epilogue beats. These features contain no Paris-specific rules. The chosen ending and learning record include the character consequences. No additional graded questions or writing tasks were added; the existing ten questions and three publications remain.
+
+Validation covers 48 route/retry combinations, exclusive source-handling clues, one matching Camille epilogue per outcome, original three endings, writing/resume/replay, and laptop/tablet/phone layouts. Existing version-3 saves remain readable. A saved issue already beyond 1793 does not retroactively insert the new decision; start a new issue to experience the whole narrative revision.
