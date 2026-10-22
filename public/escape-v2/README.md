@@ -33,3 +33,8 @@ The former panorama/cubemap files remain as archived experiment artifacts and ar
 Puzzle renderers are registered independently in `js/puzzles.js`. The core engine only dispatches by the puzzle's `type`, tracks attempts, and supplies shared answer/feedback helpers. A room pack can list additional renderer scripts in its optional `puzzleModules` array; each script calls `window.ESCAPE_V2_PUZZLES.register(type, render)` after the built-in registry loads.
 
 A renderer receives `(puzzle, context)`, where context includes `container`, `onAttempt()`, `onCorrect()`, `setFeedback(message, isCorrect)`, and `matchesAnswer(value, acceptedAnswers)`. Use DOM text properties for room content. The built-in `choice` and `text` renderers demonstrate the contract. This lets future sequencing, matching, code-entry, or evidence-selection interactions be added as modules without changing the game loop or 3D scene.
+
+
+## Room-pack scene props
+
+The 3D viewer provides room-shell rendering and generic box, sphere, and cylinder primitives. Room-specific prop builders live with their room pack. A scene can load optional ES modules through `scene.propModules`; each exports `registerEscapeRoomProps(registry)` and registers named builders. Builders receive the Three.js namespace, scene group, shared materials, and primitive helpers. Room packs can therefore define themed props while the renderer stays independent of any one setting. Simple configured geometry remains available for packs that do not need custom models.
