@@ -641,6 +641,15 @@
     "source": "sitemap"
   },
   {
+    "title": "Educational Games",
+    "url": "/educational-games/",
+    "type": "page",
+    "description": "",
+    "subject": "",
+    "tags": [],
+    "source": "sitemap"
+  },
+  {
     "title": "Escape",
     "url": "/escape/",
     "type": "game",
