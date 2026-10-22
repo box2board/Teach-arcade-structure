@@ -10,6 +10,7 @@ vm.runInContext(fs.readFileSync(new URL('js/validate-pack.js', root), 'utf8'), c
 
 const validate = context.window.ESCAPE_V2_VALIDATE_PACK;
 const source = context.window.ESCAPE_V2_DATA;
+const validateRenderers = context.window.ESCAPE_V2_VALIDATE_PUZZLE_RENDERERS;
 assert.deepEqual(Array.from(validate(source)), [], 'French Revolution pack should satisfy the engine contract');
 
 const broken = structuredClone(source);
@@ -37,8 +38,11 @@ vm.runInContext(fs.readFileSync(new URL('js/puzzles.js', root), 'utf8'), puzzleC
 const puzzles = puzzleContext.window.ESCAPE_V2_PUZZLES;
 assert.equal(typeof puzzles.get('choice'), 'function');
 assert.equal(typeof puzzles.get('text'), 'function');
+assert.deepEqual(Array.from(validateRenderers(source, puzzles)), [], 'all current puzzle types should resolve before gameplay');
+assert.ok(Array.from(validateRenderers(extension, puzzles)).some((issue) => issue.includes('without a registered renderer')));
 const matchingRenderer = () => {};
 puzzles.register('matching', matchingRenderer);
+assert.deepEqual(Array.from(validateRenderers(extension, puzzles)), [], 'a registered extension puzzle should pass startup validation');
 assert.equal(puzzles.get('matching'), matchingRenderer, 'pack-specific puzzle renderers should register by type');
 
 console.log('PASS: current pack contract, invalid dimensions, clue/interactable mismatches, built-in puzzle validation, and extensible puzzle renderer registration.');

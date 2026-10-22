@@ -110,5 +110,19 @@
     return errors;
   }
 
+  function validatePuzzleRenderers(pack, registry) {
+    const issues = [];
+    if (!Array.isArray(pack?.rooms)) return ['Room pack has no rooms to validate.'];
+    pack.rooms.forEach((room, roomIndex) => {
+      const puzzles = [...(room.hotspots || []).map((puzzle, index) => ({ puzzle, path: `rooms[${roomIndex}].hotspots[${index}]` }))];
+      if (room.solution) puzzles.push({ puzzle: room.solution, path: `rooms[${roomIndex}].solution` });
+      puzzles.forEach(({ puzzle, path }) => {
+        if (!registry?.get(puzzle?.type)) issues.push(`${path} uses puzzle type "${puzzle?.type || 'unspecified'}" without a registered renderer.`);
+      });
+    });
+    return issues;
+  }
+
   window.ESCAPE_V2_VALIDATE_PACK = validatePack;
+  window.ESCAPE_V2_VALIDATE_PUZZLE_RENDERERS = validatePuzzleRenderers;
 })();

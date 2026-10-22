@@ -43,6 +43,8 @@ async function boot() {
     throw new Error('Room pack puzzleModules must be an array of /escape-v2/ module paths.');
   }
   for (const path of puzzleModules) await loadScript(path);
+  const missingPuzzleRenderers = window.ESCAPE_V2_VALIDATE_PUZZLE_RENDERERS(window.ESCAPE_V2_DATA, window.ESCAPE_V2_PUZZLES);
+  if (missingPuzzleRenderers.length) throw new Error(`Missing puzzle renderers:\n- ${missingPuzzleRenderers.join('\n- ')}`);
   if (!window.ESCAPE_V2_DATA || !Array.isArray(window.ESCAPE_V2_DATA.rooms)) {
     throw new Error('Room pack has no valid room data.');
   }
