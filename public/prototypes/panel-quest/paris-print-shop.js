@@ -129,3 +129,47 @@ Object.assign(window.PANEL_QUEST_EDITION, {
  q[8].answers=['To defend the Revolution during war and internal revolt','To negotiate the constitutional monarchy agreed upon in 1791','To resolve the voting dispute that opened the Estates-General','To draft the Declaration of Rights adopted in August 1789'];
  q[9].answers=['Napoleon helped overthrow the Directory and establish the Consulate','Deputies replaced the absolute monarchy with the 1791 Constitution','The National Convention abolished the monarchy and proclaimed a republic','The fall of Robespierre ended the Jacobin leadership of the Terror'];
 })();
+
+// Reusable comic beats and state-aware callbacks. Art is intentionally reused;
+// the supporting documents are fictional notes, not primary-source facsimiles.
+(() => {
+ const e=window.PANEL_QUEST_EDITION;
+ const beats=[
+  ['THE SUMMONS','A kingdom in debt. A meeting called.',0],
+  ['OUTSIDE THE SHOP','Whose voices reach the press?',1],
+  ['IN THE MARGIN','Tax burdens. Privileges. A grievance.',0],
+  ['DISPATCH FROM VERSAILLES','A promise to keep meeting.',0],
+  ['ACROSS PARIS','News travels faster than the ink dries.',2],
+  ['ON THE PRESS','Rights declared. Questions remain.',3],
+  ['RUMORS IN THE STREET','A royal flight deepens mistrust.',4],
+  ['A NEW SETTLEMENT','A crown with constitutional limits.',3],
+  ['THE CHRONICLE DARKENS','Record the crisis. Examine the violence.',4],
+  ['THE LAST DISPATCH','The Directory falls. The Consulate begins.',5]
+ ];
+ beats.forEach(([label,text,art],i)=>{
+  e.scenes['q'+i].panels=[{kind:'art',label,text,art},{kind:'document',label:'APPRENTICE’S NOTE',afterAnswer:true,beforeText:'Your conclusion belongs here. Check the source before filing it.',text:e.questions[i].clue}];
+ });
+ for(const id of ['route-a','route-b','final']){
+  const s=e.scenes[id];s.panels=s.options.map(o=>({kind:'art',art:id==='route-a'?(o.id==='market'?1:0):id==='route-b'?3:5,label:'A POSSIBLE PATH',text:o.title}));
+ }
+ for(const id of ['ledger','market','rights','constitution']){
+  e.scenes[id].panels=[{kind:'document',label:'FICTIONAL SHOP NOTE',text:e.clues[id].text}];
+ }
+ e.scenes.source.panels=[{kind:'art',art:1,label:'BEFORE THE INK DRIES',text:'A witness is a person, not just a source.'}];
+ e.scenes.q3.callbacks=[
+  {when:{flags:{routeA:'ledger'}},text:'You return with a ledger note. Your next report carries the question of unequal burdens.'},
+  {when:{flags:{routeA:'market'}},text:'You return with the market account. The household behind the political crisis stays in your story.'}
+ ];
+ e.scenes.q7.callbacks=[
+  {when:{flags:{routeB:'rights'}},text:'Your rights editorial asked who was included. Read this new settlement with that question in mind.'},
+  {when:{flags:{routeB:'constitution'}},text:'You left a constitutional question open in 1789. Now the 1791 settlement gives you something to examine.'}
+ ];
+ e.scenes.final.callbacks=[
+  {when:{flags:{routeA:'market',routeB:'rights'}},text:'The bread-line account and your rights editorial are on the desk beside your final sheet.'},
+  {when:{flags:{routeA:'ledger'}},text:'The ledger you inspected is still in the file. Decide how its evidence belongs in the final chronicle.'},
+  {when:{flags:{routeB:'constitution'}},text:'Your planning sheet now sits beside the record of the 1791 Constitution. Preserve both the hope and what followed.'}
+ ];
+ e.endings[0].reason='You listened in the bread line, led with rights, and published for the neighborhood. Those choices carried everyday voices into the final issue.';
+ e.endings[1].reason='You made at least two choices that favored care with the record and resolved at least five historical questions on the first try.';
+ e.endings[2].reason='Your combination of editorial choices and first readings produced an open-ended chronicle. Your corrections and gathered sources remain part of its record.';
+})();

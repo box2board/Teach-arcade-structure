@@ -55,3 +55,11 @@ The browser suite performs the same 24 complete runs through actual controls, in
 Remaining art limitation: the issue still reuses the original six illustrations. Varying crops, framing and panel treatments improve pacing, but scene-specific artwork and richer multi-panel pages remain a future art pass. Sound is not included. New interaction modules and additional editions should follow the same data boundary.
 
 Historical reference links are included in the edition and visible in the ending's sources disclosure. Relevant chronology: https://revolution.chnm.org/items/show/537 and https://revolution.chnm.org/d/535/.
+
+## Sequential panels and route callbacks — October 22 follow-up
+
+Scene data can now supply `panels` (art or clearly labeled fictional document notes) and conditional `callbacks`, using the existing condition rules. Supporting beats appear below the establishing illustration and dialogue. Question-note text is revealed only after the question is resolved; `beforeText` supplies the unfinished-note state. The same renderer supports other editions without Paris-specific logic.
+
+The evidence dialog now includes the student's decision trail. Three convergence points recall the source/editorial route, and endings explain the cumulative conditions behind the result. Save schema and branch outcomes are unchanged; current saves remain compatible.
+
+Validation: the model suite still passes all 24 route/retry combinations and all three endings. A browser playthrough completed the market → protect source → rights → public route, including reload/resume, question-note reveal, investigations, conditional callbacks, the evidence decision trail and the explained ending. Existing viewport/browser regression results above describe the prior milestone; the full multi-viewport browser suite has not been rerun for this pass. Art remains the original six illustrations, with additional crops and document panels.
