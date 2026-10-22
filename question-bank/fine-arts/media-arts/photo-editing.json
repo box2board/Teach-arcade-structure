@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--media-arts--photo-editing",
+  "title": "Photo Editing",
+  "subject": "Fine Arts",
+  "category": "Media Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does cropping primarily change?",
+      "choices": [
+        "Which parts of the image remain in the frame",
+        "The camera's shutter speed after capture",
+        "The photo's original location",
+        "The subject's identity"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Why should an editor preserve an original copy before major edits?",
+      "choices": [
+        "It guarantees the image is public domain",
+        "It allows comparison or recovery if the edit is unwanted",
+        "It increases color depth automatically",
+        "It prevents all compression"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does exposure adjustment control?",
+      "choices": [
+        "The number of subjects in a photo",
+        "The image's copyright status",
+        "The overall brightness of an image",
+        "The lens focal length after capture"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "If highlights are too bright and lack detail, which adjustment may help?",
+      "choices": [
+        "Increase sharpening to maximum",
+        "Crop the file name",
+        "Raise saturation fully",
+        "Lower highlights or exposure carefully"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "What does white balance help correct?",
+      "choices": [
+        "Color casts caused by the lighting",
+        "Perspective distortion",
+        "Missing image metadata",
+        "Motion blur in every case"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Why use a non-destructive adjustment layer when available?",
+      "choices": [
+        "It prevents a viewer from downloading the image",
+        "The edit can be changed or removed without altering original pixels",
+        "It removes the need to save versions",
+        "It automatically sharpens every subject"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What can excessive sharpening create?",
+      "choices": [
+        "More accurate focus than the lens captured",
+        "A wider camera angle",
+        "Halos and unnatural edges",
+        "A smaller crop"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What does saturation adjustment affect?",
+      "choices": [
+        "The placement of objects",
+        "The image's aspect ratio",
+        "The direction of light",
+        "The intensity of colors"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A portrait is intended to look natural. Which edit is most appropriate?",
+      "choices": [
+        "Make restrained adjustments that preserve skin texture and realistic color",
+        "Remove all texture and shadows",
+        "Push every color to maximum saturation",
+        "Apply a strong effect without checking details"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "When is a local adjustment preferable to a global adjustment?",
+      "choices": [
+        "When every pixel needs the same change",
+        "When only a specific region needs the change",
+        "When the file must be renamed",
+        "When a photo has no metadata"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "What does the histogram help an editor inspect?",
+      "choices": [
+        "The sequence of photos in a folder",
+        "The location of every face",
+        "The distribution of tonal values from dark to light",
+        "The copyright expiration date"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "How can an editor reduce a color cast from indoor lighting?",
+      "choices": [
+        "Increase image dimensions",
+        "Rotate the canvas",
+        "Add a vignette",
+        "Adjust white balance using a neutral reference or careful color correction"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Why should edits be checked at both fit-to-screen and close-up views?",
+      "choices": [
+        "The overall composition and small artifacts require different viewing scales",
+        "The image changes subject when zoomed",
+        "The file type depends on zoom",
+        "A close view always improves color"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is a common tradeoff when exporting a JPEG at very low quality?",
+      "choices": [
+        "Larger file size with no compression",
+        "Smaller file size but more visible compression artifacts",
+        "An automatic transparent background",
+        "A guaranteed vector format"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which format is often suitable when transparency must be preserved?",
+      "choices": [
+        "JPEG",
+        "MP3",
+        "PNG",
+        "CSV"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A photo looks too cool (blue). What might an editor try first?",
+      "choices": [
+        "Increase shadows to maximum",
+        "Change the image dimensions",
+        "Add more blue",
+        "Warm the white balance slightly and review the result"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Why should an editor avoid editing an image to misrepresent evidence?",
+      "choices": [
+        "It can deceive viewers and undermine trust in the image",
+        "It makes the image too large",
+        "It changes the camera model",
+        "It prevents all color correction"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What is a useful way to compare before and after edits?",
+      "choices": [
+        "Delete the original immediately",
+        "Toggle the adjustment or compare with an unchanged copy",
+        "Compare unrelated photos",
+        "Use only the export file name"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What does aspect ratio describe?",
+      "choices": [
+        "The image's color temperature",
+        "The amount of image noise",
+        "The proportional relationship between image width and height",
+        "The camera's battery level"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Before publishing an edited photo of another person, what should be considered?",
+      "choices": [
+        "Only the export resolution",
+        "The editor's favorite filter",
+        "Whether the file has a short title",
+        "Consent, context, and whether the edit changes the meaning"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

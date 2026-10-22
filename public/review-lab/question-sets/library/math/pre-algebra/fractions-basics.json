@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--fractions-basics",
+  "title": "Fractions (Basics)",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which fraction is equivalent to 3/4?",
+      "choices": [
+        "9/12",
+        "6/12",
+        "12/18",
+        "4/9"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Simplify 12/18.",
+      "choices": [
+        "3/4",
+        "2/3",
+        "6/9",
+        "4/5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which fraction is greater?",
+      "choices": [
+        "3/5",
+        "They are equal",
+        "5/8",
+        "1/2"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What is 1/4 + 2/4?",
+      "choices": [
+        "3/8",
+        "2/4",
+        "1/2",
+        "3/4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is 1/2 + 1/3?",
+      "choices": [
+        "5/6",
+        "2/5",
+        "2/6",
+        "1/6"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What is 5/6 − 1/3?",
+      "choices": [
+        "4/3",
+        "1/2",
+        "2/3",
+        "1/3"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is 2/3 × 3/5?",
+      "choices": [
+        "6/8",
+        "5/6",
+        "2/5",
+        "1/5"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What is 3/4 ÷ 1/2?",
+      "choices": [
+        "3/8",
+        "2/3",
+        "1/4",
+        "3/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A pizza is cut into 8 equal slices. If 3 are eaten, what fraction remains?",
+      "choices": [
+        "5/8",
+        "3/8",
+        "5/3",
+        "1/8"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Which fraction is the same as 0.25?",
+      "choices": [
+        "1/2",
+        "1/4",
+        "2/5",
+        "25/10"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is 7/4 written as a mixed number?",
+      "choices": [
+        "1 1/4",
+        "3 1/4",
+        "1 3/4",
+        "7 1/4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What is 2 1/3 + 1 1/3?",
+      "choices": [
+        "3 1/3",
+        "2 2/3",
+        "4",
+        "3 2/3"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is 4/5 of 30?",
+      "choices": [
+        "24",
+        "6",
+        "25",
+        "20"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Which fraction is closest to 1?",
+      "choices": [
+        "2/3",
+        "7/8",
+        "3/5",
+        "1/4"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "A ribbon is 3/4 m long. Maya uses 1/4 m. How much remains?",
+      "choices": [
+        "1/4 m",
+        "2/3 m",
+        "1/2 m",
+        "3/4 m"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which pair represents equivalent fractions?",
+      "choices": [
+        "2/3 and 6/12",
+        "3/5 and 9/20",
+        "1/4 and 4/12",
+        "2/3 and 8/12"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What is 5/8 + 1/8?",
+      "choices": [
+        "3/4",
+        "6/16",
+        "4/8",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which comparison is correct?",
+      "choices": [
+        "2/3 < 3/5",
+        "2/3 > 3/5",
+        "2/3 = 3/5",
+        "2/3 < 1/2"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A student says 1/2 + 1/4 = 2/6. What is the correct sum?",
+      "choices": [
+        "2/6",
+        "1/6",
+        "3/4",
+        "3/6"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A class has 24 students. If 3/8 ride the bus, how many students ride the bus?",
+      "choices": [
+        "8",
+        "12",
+        "18",
+        "9"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--addition-subtraction",
+  "title": "Addition & Subtraction",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 468 + 257?",
+      "choices": [
+        "725",
+        "615",
+        "715",
+        "735"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is 903 − 478?",
+      "choices": [
+        "435",
+        "425",
+        "525",
+        "475"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A library had 1,250 books and received 375 more. How many books does it have now?",
+      "choices": [
+        "1,525",
+        "1,675",
+        "1,625",
+        "875"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "What is 6.4 + 2.75?",
+      "choices": [
+        "8.115",
+        "9.05",
+        "9.75",
+        "9.15"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is 12.00 − 7.86?",
+      "choices": [
+        "4.14",
+        "5.14",
+        "4.24",
+        "5.86"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which expression equals 580?",
+      "choices": [
+        "760 − 280",
+        "760 − 180",
+        "680 − 180",
+        "860 − 180"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What is 3,487 + 2,906?",
+      "choices": [
+        "6,293",
+        "6,383",
+        "6,393",
+        "5,393"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A hiker walks 5.8 km in the morning and 3.65 km later. How far does the hiker walk in total?",
+      "choices": [
+        "8.145 km",
+        "9.35 km",
+        "10.45 km",
+        "9.45 km"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What is 2,000 − 1,357?",
+      "choices": [
+        "643",
+        "653",
+        "743",
+        "1,357"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which estimate is closest to 398 + 205?",
+      "choices": [
+        "500",
+        "600",
+        "700",
+        "800"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is 14.6 − 8.95?",
+      "choices": [
+        "6.35",
+        "5.75",
+        "5.65",
+        "6.65"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A class collected $86.75 on Monday and $94.50 on Tuesday. How much did it collect?",
+      "choices": [
+        "$171.25",
+        "$180.25",
+        "$191.25",
+        "$181.25"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Which number makes 728 + ___ = 1,000?",
+      "choices": [
+        "272",
+        "282",
+        "372",
+        "328"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is 50,000 − 27,846?",
+      "choices": [
+        "23,154",
+        "22,154",
+        "22,254",
+        "32,154"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A student calculates 602 − 187 as 525. What is the correct result?",
+      "choices": [
+        "425",
+        "515",
+        "415",
+        "485"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What is 7.08 + 0.9?",
+      "choices": [
+        "7.17",
+        "7.8",
+        "8.08",
+        "7.98"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What is 1,205 + 899?",
+      "choices": [
+        "2,104",
+        "2,094",
+        "2,114",
+        "1,994"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A tank holds 18.5 L. If 6.75 L is used, how much remains?",
+      "choices": [
+        "12.25 L",
+        "11.75 L",
+        "11.85 L",
+        "12.75 L"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which equation can check 734 − 286 = 448?",
+      "choices": [
+        "734 + 286 = 448",
+        "448 − 286 = 734",
+        "448 + 286 = 734",
+        "734 − 448 = 286"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A theater sold 1,486 tickets on Friday and 1,279 on Saturday. How many tickets were sold?",
+      "choices": [
+        "2,655",
+        "2,755",
+        "2,865",
+        "2,765"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

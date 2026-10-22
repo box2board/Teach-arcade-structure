@@ -55,12 +55,18 @@ export const GAMES=Object.freeze([Object.freeze({
   mode:'Solo + Local 2-player',facts:Object.freeze(['Choose any shared topic','One-player vs. CPU','Two players on one keyboard']),
   supportsQuestionBank:true,questionSetIds:Object.freeze([])
 }),Object.freeze({
+  id:'slime-slinger',title:'Slime Slinger',url:'/review-lab/slime-slinger/',
+  description:'Answer review questions to load slime, then aim across three depths and splat moving targets before the clock runs out.',
+  image:'/review-lab/slime-slinger-preview.svg',imageAlt:'Slime Slinger arcade arena with green slime, a crosshair, and targets at three depths.',
+  mode:'Solo',facts:Object.freeze(['Questions earn slime','3 target depths','2, 3 or 5 minute rounds']),
+  topicLabel:'Choose any shared review topic',launchLabel:'Load up & play',supportsQuestionBank:true,questionSetIds:Object.freeze([])
+}),Object.freeze({
   id:'snow-day-defenders',title:'Snow Day Defenders',url:'/review-lab/snow-day-defenders/',
   description:'Answer review questions to earn snow gear, recruit helpers, and protect your fort.',
   image:'/review-lab/snow-day-defenders-preview.svg',imageAlt:'Illustration of a snow fort, two scarf-wearing helpers, and playful snow creatures.',
   mode:'Solo',facts:Object.freeze(['3 waves','Automatic snowball tossing','Pause to study & upgrade']),
   supportsQuestionBank:true,questionSetIds:Object.freeze(['scientific-method','constitution-basics','linear-equations'])
-})]);
+}),Object.freeze({id:'treasure-trail',title:'Treasure Trail',url:'/review-lab/treasure-trail/',description:'Explore a woodland, earn juice at question chests, and dig for rare jewels before time runs out.',image:'/review-lab/treasure-trail/preview.png',imageAlt:'Treasure Trail woodland clearing with scattered earth patches and treasure chests.',mode:'Solo',facts:Object.freeze(['2–10 minute sessions','Regenerating treasure','All review topics']),supportsQuestionBank:true,questionSetIds:Object.freeze([])})]);
 export function gamesForSet(id){return GAMES.filter(game=>QUESTION_SETS.some(set=>set.id===id)&&(game.supportsQuestionBank||game.questionSetIds.includes(id)));}
 export function setsForGame(id){const game=GAMES.find(game=>game.id===id);return QUESTION_SETS.filter(set=>game&&(game.supportsQuestionBank||game.questionSetIds.includes(set.id)));}
 export function gameUrl(gameId,setId){
@@ -74,3 +80,4 @@ export async function loadQuestionSet(id){
   if(bank.id!==id||bank.questions.length!==pack.questionCount)throw new Error('The question set does not match its catalog entry.');
   return bank;
 }
+

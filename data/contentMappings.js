@@ -1,5 +1,10 @@
 export const contentMappings = [
   {
+    match: { canonicalUrl: "/simulations/colony-builder/" },
+    subjects: ["social-studies", "us-history"],
+    topics: ["colonial-america"],
+  },
+  {
     match: { id: "adventure-review-wwii" },
     subjects: ["us-history"],
     topics: ["world-war-ii"],
@@ -110,6 +115,7 @@ export const contentMappings = [
     match: { titleIncludes: "Schindler" },
     subjects: ["world-history"],
     topics: ["world-war-ii"],
+    keywords: ["holocaust", "Nazi persecution", "genocide", "Oskar Schindler"],
   },
   {
     match: { id: "wwi" },

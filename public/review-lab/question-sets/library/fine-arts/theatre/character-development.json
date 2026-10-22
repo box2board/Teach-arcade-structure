@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--theatre--character-development",
+  "title": "Character Development",
+  "subject": "Fine Arts",
+  "category": "Theatre",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a character trait?",
+      "choices": [
+        "A relatively consistent quality shown through choices or behavior",
+        "A stage prop",
+        "A scene transition",
+        "A theater seat"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How can an audience learn about a character without direct description?",
+      "choices": [
+        "Read the ticket price",
+        "Observe the character's actions, dialogue, and responses",
+        "Count the stage lights",
+        "Inspect the curtain"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does a character arc describe?",
+      "choices": [
+        "The shape of the stage",
+        "The order of costumes",
+        "How a character changes or develops over the course of a story",
+        "A line in the script"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A character begins fearful of speaking up and later challenges an unfair rule. What has changed?",
+      "choices": [
+        "The play's setting",
+        "The audience's seating",
+        "The character's costume alone",
+        "The character's confidence or willingness to act"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "Why is an objective important to character development?",
+      "choices": [
+        "It gives the character something to pursue and shapes choices",
+        "It sets the scene's lighting",
+        "It determines the play's length",
+        "It replaces obstacles"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which detail best reveals a character's generosity?",
+      "choices": [
+        "She owns a blue coat",
+        "She gives her only dry coat to a neighbor during the storm",
+        "She enters from stage left",
+        "She is named in the cast list"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What is a motivation?",
+      "choices": [
+        "A costume label",
+        "A lighting cue",
+        "A reason or need that helps explain a character's action",
+        "A stage measurement"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A character repeatedly avoids a conversation but finally initiates it. What can the change reveal?",
+      "choices": [
+        "A change in theater style",
+        "The audience's reaction",
+        "A new lighting instrument",
+        "A shift in the character's willingness or priorities"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Why should characters have both strengths and limitations?",
+      "choices": [
+        "Complex traits can make their choices and conflicts more believable",
+        "Every character must be a hero",
+        "Limitations remove the plot",
+        "Strengths prevent change"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A character wants to protect a friend but also tell the truth. What does this create?",
+      "choices": [
+        "A stage direction",
+        "An internal conflict between competing values or goals",
+        "A costume change",
+        "A resolution with no choice"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is backstory?",
+      "choices": [
+        "The scenery behind an actor",
+        "A scene performed backward",
+        "Relevant events from a character's past",
+        "An audience seating chart"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why should backstory be revealed selectively?",
+      "choices": [
+        "The audience should know every fact immediately",
+        "Past events cannot affect a play",
+        "Backstory replaces the current action",
+        "It is most useful when it deepens present choices or relationships"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "A character is described as brave, but consistently avoids every risk. What should a playwright revise?",
+      "choices": [
+        "Align the description with the character's actions or show the contradiction intentionally",
+        "Remove all action",
+        "Change the theater's location",
+        "Add an unrelated character"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "How can relationships reveal character?",
+      "choices": [
+        "Relationships affect only costumes",
+        "The way a character treats different people can show values and priorities",
+        "Every character behaves identically with everyone",
+        "Relationships remove objectives"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A character changes their mind after hearing new evidence. What supports a believable arc?",
+      "choices": [
+        "Make the change happen without context",
+        "Hide the character's earlier view",
+        "Show what evidence or experience influenced the change",
+        "Remove the conflict"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What is a foil character?",
+      "choices": [
+        "A stage manager",
+        "A costume designer",
+        "A narrator who speaks every line",
+        "A character whose contrasting qualities help highlight another character"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which question best supports character analysis?",
+      "choices": [
+        "What does the character want, and how do their choices affect others?",
+        "How many chairs are on stage?",
+        "What is the play's print size?",
+        "Which ticket section is cheapest?"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A character's public behavior differs from private thoughts. What can this create?",
+      "choices": [
+        "A lighting cue",
+        "Complexity between outward presentation and inner experience",
+        "A new scene location",
+        "A change in the script format"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should a character's choices have consequences?",
+      "choices": [
+        "They guarantee a tragic ending",
+        "They remove audience interpretation",
+        "Consequences help connect actions to the story's development",
+        "They replace dialogue"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Which statement best describes realistic character development?",
+      "choices": [
+        "A character changes randomly in every scene",
+        "A character never makes choices",
+        "A change is explained only by costume",
+        "A change is supported by experiences, choices, and relationships in the story"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

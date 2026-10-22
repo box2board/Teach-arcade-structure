@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--fact-fluency-games",
+  "title": "Fact Fluency Games",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 8 × 7?",
+      "choices": [
+        "56",
+        "54",
+        "48",
+        "64"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is 63 ÷ 9?",
+      "choices": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is 12 × 6?",
+      "choices": [
+        "62",
+        "68",
+        "72",
+        "78"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is 81 ÷ 9?",
+      "choices": [
+        "8",
+        "7",
+        "10",
+        "9"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is 15 + 28?",
+      "choices": [
+        "43",
+        "33",
+        "42",
+        "53"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is 54 − 27?",
+      "choices": [
+        "37",
+        "27",
+        "17",
+        "28"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is 9 × 8?",
+      "choices": [
+        "64",
+        "81",
+        "72",
+        "63"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is 42 ÷ 6?",
+      "choices": [
+        "6",
+        "8",
+        "9",
+        "7"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which number makes 7 × ___ = 84?",
+      "choices": [
+        "12",
+        "11",
+        "13",
+        "14"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is 100 − 46?",
+      "choices": [
+        "64",
+        "54",
+        "44",
+        "56"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What is 11 × 11?",
+      "choices": [
+        "111",
+        "101",
+        "121",
+        "131"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What is 96 ÷ 12?",
+      "choices": [
+        "6",
+        "9",
+        "12",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is 25 × 4?",
+      "choices": [
+        "100",
+        "75",
+        "125",
+        "1000"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A player earns 6 points in each of 8 rounds. How many points?",
+      "choices": [
+        "42",
+        "48",
+        "56",
+        "14"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which fact family includes 5 × 9 = 45?",
+      "choices": [
+        "45 + 5 = 50",
+        "9 − 5 = 4",
+        "45 ÷ 5 = 9",
+        "5 ÷ 45 = 9"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What is 7 + 8 + 9?",
+      "choices": [
+        "23",
+        "25",
+        "26",
+        "24"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What is 13 × 3?",
+      "choices": [
+        "39",
+        "36",
+        "33",
+        "49"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What is 72 ÷ 8?",
+      "choices": [
+        "8",
+        "9",
+        "7",
+        "10"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A score of 38 increases by 25 points. What is the new score?",
+      "choices": [
+        "53",
+        "73",
+        "63",
+        "62"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which strategy can help compute 6 × 9 mentally?",
+      "choices": [
+        "Use 6 + 9 and double it",
+        "Add 9 to 6",
+        "Divide 60 by 9",
+        "Use 6 × 10 and subtract 6"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

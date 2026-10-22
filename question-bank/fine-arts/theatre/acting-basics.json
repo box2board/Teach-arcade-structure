@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--theatre--acting-basics",
+  "title": "Acting Basics",
+  "subject": "Fine Arts",
+  "category": "Theatre",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a character objective?",
+      "choices": [
+        "What the character wants to achieve in a scene",
+        "The actor's costume size",
+        "The play's publication date",
+        "A lighting cue"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What are given circumstances?",
+      "choices": [
+        "The audience's opinions",
+        "Facts about the character, setting, and situation established by the play",
+        "A list of stage props only",
+        "A rehearsal schedule"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What is subtext?",
+      "choices": [
+        "The printed script's font",
+        "A stage direction in parentheses only",
+        "The underlying meaning or feeling beneath the spoken words",
+        "A character's costume"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Why should an actor listen and respond to scene partners?",
+      "choices": [
+        "It removes the need to learn lines",
+        "It guarantees the same performance every time",
+        "It changes the scene's setting",
+        "Believable interaction depends on responding to what happens in the moment"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A character says 'I'm fine' while avoiding eye contact and gripping a chair. What can the actor consider?",
+      "choices": [
+        "The words and physical behavior may reveal different layers of meaning",
+        "The character has no objective",
+        "The scene has ended",
+        "The prop determines the dialogue"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "What is a tactic in acting?",
+      "choices": [
+        "A costume change",
+        "A strategy a character uses to pursue an objective",
+        "A stage light",
+        "A type of theater"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Why might an actor mark beats in a scene?",
+      "choices": [
+        "To count the audience",
+        "To decide the ticket price",
+        "To identify shifts in thought, action, or emotional strategy",
+        "To replace rehearsal"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which action can improve vocal clarity?",
+      "choices": [
+        "Speak as quietly as possible",
+        "Turn away from the audience",
+        "Rush every line",
+        "Articulate words and support the voice with breath"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does physicality contribute to characterization?",
+      "choices": [
+        "The character's posture, gesture, and movement can communicate traits or intentions",
+        "It sets the theater's seating plan",
+        "It replaces the text",
+        "It determines the play's author"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "An actor wants to portray nervousness without announcing it. Which choice could help?",
+      "choices": [
+        "Stand motionless and show no change",
+        "Use specific physical behavior such as restless hands or interrupted focus",
+        "Read the stage directions aloud",
+        "Change the scene's lighting"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Why rehearse a line with different tactics?",
+      "choices": [
+        "It changes the play's genre automatically",
+        "It removes the need to understand the scene",
+        "It can reveal different ways the character pursues the same objective",
+        "It guarantees one tactic is correct"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is a character's obstacle?",
+      "choices": [
+        "A stage curtain",
+        "The audience's seat",
+        "The actor's line number",
+        "Something that makes achieving the objective difficult"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which question helps an actor analyze a scene?",
+      "choices": [
+        "What does my character want, and what changes during the scene?",
+        "What is the most expensive costume?",
+        "How many pages are in the play?",
+        "Which audience member arrived first?"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Why should actors understand the relationship between characters?",
+      "choices": [
+        "It determines the theater's location",
+        "It shapes how they speak, move, and respond to one another",
+        "It eliminates subtext",
+        "It makes every line literal"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A scene changes after one character reveals a secret. What may this moment be called?",
+      "choices": [
+        "A costume preset",
+        "A prop table",
+        "A turning point",
+        "A curtain call"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "What is projection in acting?",
+      "choices": [
+        "Shouting every line",
+        "Changing the script",
+        "Moving a spotlight",
+        "Making the voice clear and audible for the performance space"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Why should an actor avoid playing only a broad emotion such as 'angry'?",
+      "choices": [
+        "Specific objectives and tactics create more detailed, believable behavior",
+        "Emotions have no place in acting",
+        "The audience cannot notice behavior",
+        "Every character must be neutral"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "How can an actor use a pause?",
+      "choices": [
+        "As a substitute for every line",
+        "As a deliberate moment that can shape thought, tension, or response",
+        "To signal a missed cue only",
+        "To change the set"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What does ensemble awareness involve?",
+      "choices": [
+        "Focusing only on one's own lines",
+        "Ignoring stage spacing",
+        "Staying responsive to the whole group and shared performance",
+        "Avoiding rehearsal"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A character's objective is to persuade a friend, but the first tactic fails. What could the actor do?",
+      "choices": [
+        "Change the scene's ending without agreement",
+        "Stop responding",
+        "Repeat the tactic louder indefinitely",
+        "Try a different tactic while keeping the objective"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--literature-literary-analysis--rhyme-rhythm-meter",
+  "title": "Rhyme, Rhythm & Meter",
+  "subject": "English Language Arts",
+  "category": "Literature & Literary Analysis",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A poem repeats the end sounds light and night. What sound device is present?",
+      "choices": [
+        "End rhyme",
+        "Alliteration",
+        "Assonance",
+        "Onomatopoeia"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which description best defines meter in poetry?",
+      "choices": [
+        "The number of characters in a poem",
+        "A recurring pattern of stressed and unstressed syllables",
+        "The poem's line-ending punctuation",
+        "A comparison using like or as"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A line scans as da-DUM da-DUM da-DUM da-DUM da-DUM. Which meter does it most closely represent?",
+      "choices": [
+        "Trochaic tetrameter",
+        "Free verse",
+        "Iambic pentameter",
+        "Anapestic trimeter"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Why might a poet use internal rhyme?",
+      "choices": [
+        "To remove all rhythm from a poem",
+        "To make every line have the same number of words",
+        "To identify the speaker's point of view",
+        "To create sound links within a line"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which pair is a slant rhyme?",
+      "choices": [
+        "Shape / keep",
+        "Moon / June",
+        "Light / night",
+        "Stone / alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A poem's regular beat suddenly breaks at a moment of panic. What can that change do?",
+      "choices": [
+        "Prove the poem has no sound pattern",
+        "Make the disruption in feeling or action more noticeable",
+        "Show that the speaker is not present",
+        "Turn the poem into a sonnet"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Which feature is most useful for identifying a rhyme scheme?",
+      "choices": [
+        "The number of stanzas only",
+        "The first word of each line",
+        "The sounds at the ends of lines",
+        "The poem's title"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A poet repeats long vowel sounds in 'slow road home.' Which device is most evident?",
+      "choices": [
+        "Consonance",
+        "End rhyme",
+        "Refrain",
+        "Assonance"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which line contains alliteration?",
+      "choices": [
+        "Silver stars shimmer softly",
+        "The river bends toward the sea",
+        "A bird flew over the hill",
+        "The night was cold and clear"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A refrain is best described as",
+      "choices": [
+        "a pause within a metrical foot",
+        "a line or phrase repeated at intervals",
+        "a comparison between unlike things",
+        "the final couplet of every poem"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Why should a reader consider both rhythm and meaning when interpreting a poem?",
+      "choices": [
+        "Rhythm always tells the literal plot",
+        "Meaning is determined only by rhyme",
+        "Sound patterns can reinforce, complicate, or contrast with the ideas",
+        "Sound devices replace evidence from the words"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A line has 12 syllables, but its stresses do not form a steady pattern. What is the safest conclusion?",
+      "choices": [
+        "It must be iambic pentameter",
+        "It cannot be poetry",
+        "It has exactly six rhyming couplets",
+        "Syllable count alone does not establish a regular meter"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Which revision would most clearly create a couplet?",
+      "choices": [
+        "Add a second consecutive line that rhymes with the first",
+        "Split one line into two unrhymed lines",
+        "Repeat the title after every stanza",
+        "Remove the final word from the first line"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is a caesura?",
+      "choices": [
+        "A repeated stanza at the end",
+        "A pause within a line of poetry",
+        "A word that imitates a sound",
+        "A pair of lines with matching syllables"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A poet uses a steady beat in a marching scene. Which effect is most likely intended?",
+      "choices": [
+        "To make the speaker unreliable by definition",
+        "To create an unrelated rhyme scheme",
+        "To echo the scene's regular movement",
+        "To prove the poem is written in free verse"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which method best supports a claim about a poem's meter?",
+      "choices": [
+        "Count only the lines in the poem",
+        "Look up the poet's birthplace",
+        "Read only the final stanza",
+        "Mark syllables and stresses across several lines"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which statement distinguishes free verse from blank verse?",
+      "choices": [
+        "Free verse lacks a fixed meter; blank verse typically uses unrhymed iambic pentameter",
+        "Free verse always rhymes; blank verse never has rhythm",
+        "Free verse is prose; blank verse is drama only",
+        "They are two names for a sonnet"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "The repeated consonant sounds in 'blank and think' are an example of",
+      "choices": [
+        "assonance",
+        "consonance",
+        "refrain",
+        "meter"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A poem's final word choices create a repeated ABAB pattern. What does that pattern describe?",
+      "choices": [
+        "Point of view",
+        "Caesura",
+        "Rhyme scheme",
+        "Enjambment"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A poet shifts from smooth, regular lines to clipped, uneven lines as a speaker becomes angry. Which interpretation is strongest?",
+      "choices": [
+        "The poem has stopped using language devices",
+        "The poet has changed the poem's subject automatically",
+        "The uneven lines cannot be analyzed",
+        "The changing rhythm may mirror the speaker's emotional shift"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

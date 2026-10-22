@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--speaking-listening--presentations-speeches",
+  "title": "Presentations & Speeches",
+  "subject": "English Language Arts",
+  "category": "Speaking & Listening",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main function of an introduction in a speech?",
+      "choices": [
+        "Orient the audience, establish the topic, and preview the central idea",
+        "Present every supporting detail",
+        "Repeat the conclusion",
+        "Hide the speaker's purpose"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which organization best fits a speech explaining how a process works?",
+      "choices": [
+        "List unrelated facts",
+        "Present steps in a logical sequence",
+        "Arrange points by popularity only",
+        "Start with the conclusion and omit transitions"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A speaker cites a statistic but gives no source. What should be improved?",
+      "choices": [
+        "Increase the volume",
+        "Add a decorative title",
+        "Provide enough source information for the audience to evaluate it",
+        "Remove the supporting point"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "What is a useful role for a visual aid?",
+      "choices": [
+        "Display every sentence the speaker will say",
+        "Distract from unclear reasoning",
+        "Replace the speaker's evidence",
+        "Clarify or emphasize information that is difficult to understand from words alone"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A speaker talks too quickly for the audience to follow. Which revision is most useful?",
+      "choices": [
+        "Practice pacing and add purposeful pauses at key transitions",
+        "Remove all pauses",
+        "Raise the volume without changing pace",
+        "Add more slides"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "Which opening is most likely to engage an audience while connecting to the topic?",
+      "choices": [
+        "A long unrelated joke",
+        "A brief relevant scenario or question that leads into the central idea",
+        "A list of every source",
+        "An apology for being prepared"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Why should a speaker consider audience knowledge?",
+      "choices": [
+        "It lets the speaker avoid evidence",
+        "It guarantees everyone will agree",
+        "It helps determine what needs explanation and which examples will be clear",
+        "It sets the speech's font size"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which choice is the strongest thesis for a persuasive speech?",
+      "choices": [
+        "Bikes are interesting",
+        "This speech is about roads",
+        "Some people like transportation",
+        "The city should add protected bike lanes on two routes because safety data and ridership demand support them"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "A presentation contains six slides of dense paragraphs. What is the best improvement?",
+      "choices": [
+        "Reduce text and use concise points that support the spoken explanation",
+        "Read every paragraph aloud",
+        "Shrink the font until everything fits",
+        "Remove all headings"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "What does a transition do in a speech?",
+      "choices": [
+        "Proves the claim by itself",
+        "Shows how one point connects to the next",
+        "Introduces an unrelated topic",
+        "Replaces the conclusion"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A speaker's hands partly cover the projected chart. What should the speaker do?",
+      "choices": [
+        "Continue facing the screen",
+        "Add more text over the chart",
+        "Adjust position so the audience can see the visual",
+        "Turn off the lights"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which practice improves vocal clarity?",
+      "choices": [
+        "Speak in a monotone at any speed",
+        "Face away from the audience",
+        "Whisper all key terms",
+        "Articulate words and vary emphasis to make key ideas understandable"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What belongs in a conclusion?",
+      "choices": [
+        "A concise return to the central idea and a purposeful closing",
+        "A new major argument with no support",
+        "Every detail repeated word for word",
+        "An unrelated quotation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A student has five minutes for a talk and eight minutes of material. What should the student do?",
+      "choices": [
+        "Speak twice as fast",
+        "Prioritize the central claim and strongest supporting points",
+        "Skip the introduction and conclusion without planning",
+        "Add more material"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Why rehearse with the actual slides or visual aids?",
+      "choices": [
+        "To memorize the audience's response",
+        "To avoid revising the speech",
+        "To check timing, transitions, readability, and technical flow",
+        "To prove that no questions will arise"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Which visual is most useful for showing change over time?",
+      "choices": [
+        "A decorative word cloud",
+        "A photograph with no date",
+        "A list of unrelated quotations",
+        "A clearly labeled line graph"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "During questions, a speaker does not know an answer. What is the most responsible response?",
+      "choices": [
+        "Acknowledge the uncertainty and explain how the answer could be checked",
+        "Invent a statistic",
+        "Blame the audience",
+        "Pretend the question was not asked"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "How should a speaker handle a quotation on a slide?",
+      "choices": [
+        "Present it without context",
+        "Attribute it and explain how it supports the point",
+        "Use it as a substitute for the entire argument",
+        "Change its wording without notice"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A speaker notices the audience looks confused after a technical term. What is a useful response?",
+      "choices": [
+        "Repeat the term more loudly",
+        "Move to a more complex idea",
+        "Define the term with a brief example",
+        "Assume the audience is not listening"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which rehearsal strategy best reduces dependence on reading a script word for word?",
+      "choices": [
+        "Remove the main points",
+        "Memorize unrelated facts",
+        "Avoid practicing aloud",
+        "Practice from an outline and key phrases while maintaining the intended structure"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

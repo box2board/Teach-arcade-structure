@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--writing-composition--introductions-conclusions",
+  "title": "Introductions & Conclusions",
+  "subject": "English Language Arts",
+  "category": "Writing & Composition",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What should an effective introduction usually establish?",
+      "choices": [
+        "The topic and direction of the response",
+        "Every supporting detail",
+        "A new argument unrelated to the thesis",
+        "The final evidence only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which opening best introduces an essay about reducing food waste?",
+      "choices": [
+        "Food is a noun",
+        "Each year, usable food is discarded while many households face limited access to meals",
+        "I am going to write an essay",
+        "There are many things in the world"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "What is a thesis statement's main job?",
+      "choices": [
+        "List every source title",
+        "Repeat the assignment",
+        "State the central claim or focus of the writing",
+        "Provide a decorative opening"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Why might a writer use a brief anecdote in an introduction?",
+      "choices": [
+        "To replace the thesis",
+        "To avoid explaining the topic",
+        "To introduce an unrelated character",
+        "To provide a relevant example that draws readers into the topic"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A conclusion repeats the thesis word for word and stops. What could improve it?",
+      "choices": [
+        "Restate the idea in light of the evidence and show its significance",
+        "Add an unsupported claim",
+        "Start a new body paragraph",
+        "Remove the central idea"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "Which conclusion best fits an explanatory essay about pollinators?",
+      "choices": [
+        "Pollinators are insects",
+        "Understanding pollinator needs helps communities make habitat choices that support food systems",
+        "This essay is now over",
+        "The next topic is the history of trains"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What is a hook's purpose when used well?",
+      "choices": [
+        "Make any claim seem true",
+        "Replace evidence",
+        "Engage attention while connecting naturally to the topic",
+        "Distract readers from the thesis"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A writer begins with a dictionary definition that everyone already knows. What is a stronger alternative?",
+      "choices": [
+        "Repeat the definition three times",
+        "Add an unrelated joke",
+        "Skip directly to the bibliography",
+        "Open with a relevant problem, observation, or question"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What should an introduction avoid?",
+      "choices": [
+        "Making a claim the body of the writing cannot support",
+        "Naming the topic",
+        "Providing needed context",
+        "Previewing the central direction"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A conclusion introduces a new statistic that changes the argument. What is the best revision?",
+      "choices": [
+        "Leave it without context",
+        "Move and explain the evidence in the body, or remove it if it is not needed",
+        "Make it the title",
+        "Delete the thesis"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "In a short response, what is often the most effective introduction?",
+      "choices": [
+        "A long personal story unrelated to the question",
+        "A list of dictionary entries",
+        "A direct opening that answers the prompt and states the focus",
+        "A conclusion before the claim"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should a writer consider the audience when choosing an opening?",
+      "choices": [
+        "Audience determines whether evidence matters",
+        "Every audience prefers the same anecdote",
+        "The opening must include every detail",
+        "Different audiences may need different context or levels of explanation"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Which thesis is most focused?",
+      "choices": [
+        "Community gardens can improve access to produce and create outdoor learning spaces",
+        "Gardens are good and many things happen",
+        "There are many ways to spend time",
+        "This essay is about everything in the neighborhood"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "A writer wants a conclusion to call readers to action. What should the action do?",
+      "choices": [
+        "Introduce an unrelated demand",
+        "Follow logically from the argument and be realistic for the audience",
+        "Replace all evidence",
+        "Contradict the thesis"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What does background context in an introduction help readers do?",
+      "choices": [
+        "Skip the body paragraphs",
+        "Know the author's entire life story",
+        "Understand information needed to follow the central claim",
+        "Assume the claim is proven"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A narrative conclusion returns to an image from the opening, now changed by events. What effect can this create?",
+      "choices": [
+        "A new, unrelated conflict",
+        "A formal citation",
+        "A change to informational writing",
+        "A sense of closure and development"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which transition from introduction to thesis is most effective?",
+      "choices": [
+        "Move from relevant context toward the specific claim or focus",
+        "Insert a random fact",
+        "Repeat the opening sentence exactly",
+        "Add an unrelated quotation"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "What is a useful final check for an introduction?",
+      "choices": [
+        "Count how many adjectives it contains",
+        "Confirm it leads readers toward the response's actual focus",
+        "Make sure it states the conclusion's final sentence",
+        "Check whether every paragraph is summarized"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A conclusion says, 'In conclusion, I have explained my three points.' What is a stronger approach?",
+      "choices": [
+        "List the three points without connection",
+        "Add a fourth unrelated point",
+        "Synthesize what the points show about the central idea",
+        "Remove the main claim"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should an introduction and conclusion feel connected?",
+      "choices": [
+        "They must use identical wording",
+        "They replace the body",
+        "They determine the source's reliability",
+        "Their relationship can frame the writing's development and sense of purpose"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

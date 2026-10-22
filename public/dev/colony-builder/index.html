@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#253f3b">
+  <title>Colony Builder | Teach Arcade Prototype</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Teach Arcade"><span class="brand-mark">TA</span><span>TEACH ARCADE <i>FIELD SIMULATIONS</i></span></a>
+      <div class="top-actions"><span class="prototype-tag">PROTOTYPE</span></div>
+    </header>
+
+    <section id="startScreen" class="start-screen">
+      <div class="start-copy"><p class="eyebrow">A COLONIAL AMERICA STRATEGY GAME</p><h1>Build a colony.<br><em>Shape its future.</em></h1><p>Every year brings a new pressure. Decide what your settlement needs, live with the tradeoffs, and see what kind of community takes shape.</p><div class="start-note"><span>⌖</span><span>8 years · 3 regional starting points · choices that carry forward</span></div></div>
+      <div class="colony-picker"><div class="picker-heading"><span>CHOOSE YOUR STARTING POINT</span><span>01 / 03</span></div>
+        <p id="startupStatus" class="startup-status" role="status">The game has not started. If this message stays visible, open the playable web preview in Safari or Chrome. Some downloaded-file viewers do not run games.</p>
+        <noscript><p class="startup-status">JavaScript is disabled in this viewer. Open the playable web preview in a browser with JavaScript enabled.</p></noscript>
+        <div id="colonyChoices" class="colony-choices">
+          <button class="colony-card" type="button" data-colony="virginia" disabled><span class="colony-icon">⚓</span><span><strong>Virginia</strong><small>A Chesapeake settlement with a risky path to export wealth.</small></span><span class="colony-arrow">›</span></button>
+          <button class="colony-card" type="button" data-colony="massachusetts" disabled><span class="colony-icon">⌁</span><span><strong>Massachusetts</strong><small>A New England community built around the coast and a shared civic order.</small></span><span class="colony-arrow">›</span></button>
+          <button class="colony-card" type="button" data-colony="pennsylvania" disabled><span class="colony-icon">✳</span><span><strong>Pennsylvania</strong><small>A Middle Colony where grain, trade, and religious diversity meet.</small></span><span class="colony-arrow">›</span></button>
+        </div>
+      </div>
+      <footer class="start-footer"><span>HISTORICAL SIMULATION · SOLO MODE</span><span>Use touch, mouse, or keys <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></span></footer>
+    </section>
+
+    <section id="gameScreen" class="game-screen" hidden>
+      <header class="game-heading"><div><p class="eyebrow" id="regionLabel">VIRGINIA · 1612</p><h1 id="colonyTitle">Jamestown</h1><p id="colonySubtitle" class="colony-subtitle"></p></div><div class="year-box"><span>YEAR</span><strong id="yearLabel">1612</strong><span id="turnLabel">YEAR 1 OF 8</span></div></header>
+      <div class="game-grid">
+        <aside class="left-rail panel"><div class="panel-title"><span>SETTLEMENT</span><span class="status-dot"></span></div><div id="resourceList" class="resource-list"></div><div class="growth-wrap"><div class="panel-title small"><span>DEVELOPMENT</span><span id="stageLabel">CAMP</span></div><div class="growth-track"><span id="growthFill"></span></div><p id="growthHint">Your settlement begins small.</p></div><button id="chronicleToggle" class="chronicle-toggle"><span>COLONY CHRONICLE</span><span id="chronicleCount">0</span><span class="chevron">⌄</span></button><div id="chronicle" class="chronicle" hidden></div></aside>
+        <section class="center-column"><div class="settlement-frame"><div class="scene-label"><span id="sceneName">JAMESTOWN, VIRGINIA</span><span class="scene-weather"><i id="weatherIcon">☀</i><span id="weatherLabel">CLEAR SKIES</span></span></div><canvas id="settlementCanvas" aria-label="Illustrated view of your changing colonial settlement"></canvas><div class="scene-caption" id="sceneCaption">A small settlement sits beside the river.</div></div><article id="situationCard" class="situation-card"><div class="situation-top"><span id="situationTag" class="situation-tag">SETTLEMENT</span><span id="situationCounter" class="situation-counter">SITUATION 1</span></div><h2 id="situationTitle"></h2><p id="situationText" class="situation-text"></p><div id="choices" class="choices"></div><div id="outcome" class="outcome" hidden></div><div class="card-bottom"><span id="keyHelp">Choose a path <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd></span><span id="decisionFootnote">One year at a time</span></div></article><div id="endCard" class="end-card" hidden></div></section>
+        <aside class="right-rail panel"><div class="panel-title"><span>PRESSURES</span><span class="pressure-count" id="pressureCount">3 ACTIVE</span></div><div id="pressureList" class="pressure-list"></div><div class="regional-note"><span class="note-icon">✦</span><div><strong>REGIONAL REALITY</strong><p id="regionalNote"></p></div></div><div class="help-card"><span class="help-icon">i</span><p>Each choice can help in one area and strain another. Outcomes appear after you commit.</p></div><button id="restartButton" class="quiet-button">↺ &nbsp; Start a new colony</button></aside>
+      </div>
+      <footer class="game-footer"><span>COLONY BUILDER <i>FIELD TEST</i></span><span>Built for curiosity, consequence, and conversation.</span><button id="resetButton">RESET RUN</button></footer>
+    </section>
+  </main>
+  <script src="startup.js"></script>
+  <script src="scenarios.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

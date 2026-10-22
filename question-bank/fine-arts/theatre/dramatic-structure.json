@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--theatre--dramatic-structure",
+  "title": "Dramatic Structure",
+  "subject": "Fine Arts",
+  "category": "Theatre",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is exposition in a play?",
+      "choices": [
+        "Information that establishes characters, setting, and situation",
+        "The final resolution",
+        "A scene change",
+        "A costume preset"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is an inciting incident?",
+      "choices": [
+        "The last line of the play",
+        "An event that sets the central action or conflict in motion",
+        "A list of characters",
+        "A lighting transition"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Rising action generally includes",
+      "choices": [
+        "the conflict's full resolution",
+        "only background information",
+        "events that build tension and develop the conflict",
+        "the audience entering the theater"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What is the climax of a dramatic work?",
+      "choices": [
+        "The opening cast list",
+        "A scene with no action",
+        "The final costume change",
+        "A major turning point or moment of greatest tension"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What usually happens during falling action?",
+      "choices": [
+        "Consequences of the climax unfold as the story moves toward resolution",
+        "The conflict is introduced for the first time",
+        "The characters are listed",
+        "A new unrelated play begins"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What is resolution in dramatic structure?",
+      "choices": [
+        "The first stage direction",
+        "The outcome or settling of the central conflict",
+        "A character's costume",
+        "The audience's reaction"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why does a play's conflict matter?",
+      "choices": [
+        "It sets the theater's ticket price",
+        "It determines the script font",
+        "It creates the central tension that drives action",
+        "It replaces the characters"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A character wants to leave town, but a family obligation keeps them home. What does this create?",
+      "choices": [
+        "A stage direction",
+        "A costume plot",
+        "A scene transition",
+        "Conflict between a goal and an obstacle"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What is a subplot?",
+      "choices": [
+        "A secondary storyline that relates to or contrasts with the main plot",
+        "A list of stage props",
+        "The play's final resolution",
+        "A type of theater seating"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A scene ends with new information that changes what the audience expects. What function may it serve?",
+      "choices": [
+        "Remove the conflict",
+        "Create a turning point or increase tension",
+        "Establish the ticket price",
+        "End the entire play automatically"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Why might a playwright use dramatic irony?",
+      "choices": [
+        "The play has no audience",
+        "Every character knows the same facts",
+        "The audience knows information that one or more characters do not",
+        "The story contains no tension"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which sequence best represents a common dramatic arc?",
+      "choices": [
+        "Resolution, climax, exposition, rising action",
+        "Climax, cast list, costume plot, ending",
+        "Setting, ticket sale, rehearsal, applause",
+        "Exposition, rising action, climax, falling action, resolution"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A character makes a choice that creates greater difficulty. What can this do to the plot?",
+      "choices": [
+        "Escalate the conflict",
+        "Resolve every problem immediately",
+        "Remove the character's objective",
+        "Change the play's medium"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is a beat in a scene?",
+      "choices": [
+        "A theater seat",
+        "A small unit of action or a shift in thought or tactic",
+        "A costume measurement",
+        "A lighting instrument"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A play opens after a major event has already occurred. What structure may the playwright be using?",
+      "choices": [
+        "A chronological exposition only",
+        "A curtain call",
+        "Beginning the action in medias res",
+        "A silent tableau"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Why might a playwright delay revealing a key fact?",
+      "choices": [
+        "To remove all meaning",
+        "To avoid developing conflict",
+        "To guarantee a happy ending",
+        "To create suspense or shape the audience's understanding"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is a tragic flaw in traditional dramatic analysis?",
+      "choices": [
+        "A character trait or error that contributes to the character's downfall",
+        "A mistake made by the stage crew",
+        "A missing costume",
+        "A type of lighting cue"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How can a scene's objective connect to the larger dramatic structure?",
+      "choices": [
+        "It always determines the play's title",
+        "The character's immediate goal can advance or complicate the main conflict",
+        "It replaces the setting",
+        "It prevents a climax"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A final scene answers the central question but leaves a new issue open. What can this create?",
+      "choices": [
+        "A broken dramatic structure by definition",
+        "An exposition with no conflict",
+        "A sense of closure alongside continued possibility",
+        "A missing audience"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "When analyzing a play's structure, what evidence is most useful?",
+      "choices": [
+        "Only the number of pages",
+        "Only the costumes",
+        "The theater's location",
+        "Events, turning points, conflicts, and their effects on characters"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

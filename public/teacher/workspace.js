@@ -1,5 +1,5 @@
 import {QUESTION_SETS,GAMES,loadQuestionSet,gamesForSet,gameUrl} from '../review-lab/catalog.js';
-import {TOOLS} from './cabinet-catalog.js';
+import {TOOLS,CABINET_GAMES} from './cabinet-catalog.js';
 const $=id=>document.getElementById(id);
 let user=null,configured=false,saved=new Set(),savedView=false,limit=24,previewRequest=0;
 let selectedSet=null,preferredGame=null,pendingSave=null,returnRoute='sets';
@@ -58,7 +58,7 @@ function bookmarkButton(type,item){
 }
 function renderCollections(){
  $('sets-summary').textContent=user&&favoritesLoaded?`${saved.size} saved public question sets`:'Public topics are ready to explore';
- for(const [type,items,container,routeName] of [['game',GAMES,'cabinet-games','my-games'],['tool',TOOLS,'cabinet-tools','tools']]){
+ for(const [type,items,container,routeName] of [['game',CABINET_GAMES,'cabinet-games','my-games'],['tool',TOOLS,'cabinet-tools','tools']]){
   const params=new URLSearchParams(location.hash.slice(1)),browse=params.get('view')==='browse',ready=!!user&&cabinetLoaded;
   const savedItems=items.filter(item=>bookmarks.has(`${type}:${item.id}`));
   $(type==='game'?'games-summary':'tools-summary').textContent=ready?`${savedItems.length} saved ${type==='game'?'games':'tools'}`:type==='game'?'Explore games to find your favorites':'Free to open without an account';
@@ -68,11 +68,12 @@ function renderCollections(){
   if(!shown.length){const empty=node('div',undefined,'empty');empty.append(node('h2',ready?'Your shelf is ready for its first favorite.':'Make this shelf yours.'),node('p',ready?'Explore the public collection and choose Add to My Cabinet.':'Explore now. Your saved collection will appear here when account-backed saving is connected and you sign in.'));const link=node('a',type==='game'?'Explore games →':'Explore free tools →','primary');link.href=`#${routeName}&view=browse`;empty.append(link);$(container).replaceChildren(empty);continue;}
   $(container).replaceChildren(...shown.map(item=>{
    const card=node('article',undefined,type==='game'?'launch-game':'cabinet-tool');
-   if(type==='game'){const img=node('img');img.src=item.image;img.alt=item.imageAlt;img.loading='lazy';img.width=640;img.height=360;card.append(img);}else card.append(node('span',item.symbol,'tool-symbol'));
-   const content=node('div',undefined,'launch-game-content');content.append(node('p',type==='game'?'PUBLIC GAME':'FREE PUBLIC TOOL','eyebrow'),node('h2',item.title),node('p',item.description));
-   const open=node('a',type==='game'?'Choose a topic & play →':'Open free tool ↗','primary');
-   open.href=type==='game'?'#sets':item.url;
-   if(type==='game')open.onclick=()=>{preferredGame=item.id;savedView=false;render();};
+   if(type==='game'&&item.image){const img=node('img');img.src=item.image;img.alt=item.imageAlt;img.loading='lazy';img.width=640;img.height=360;card.append(img);}else {const art=node('span',item.symbol,type==='game'?'arcade-game-art':'tool-symbol');art.setAttribute('aria-hidden','true');card.append(art);}
+   const content=node('div',undefined,'launch-game-content');content.append(node('p',type==='game'?item.collection:'FREE PUBLIC TOOL','eyebrow'),node('h2',item.title),node('p',item.description));
+   if(item.subject)content.append(node('p',item.subject,'muted'));
+   const open=node('a',type==='game'?(item.chooseTopic?'Choose a topic & play →':'Open game ↗'):'Open free tool ↗','primary');
+   open.href=item.chooseTopic?'#sets':item.url;
+   if(item.chooseTopic)open.onclick=()=>{preferredGame=item.id;savedView=false;render();};
    else{open.target='_blank';open.rel='noopener';open.setAttribute('aria-label',`Open ${item.title} in a new tab`);}
    content.append(open,bookmarkButton(type,item));card.append(content);return card;
   }));

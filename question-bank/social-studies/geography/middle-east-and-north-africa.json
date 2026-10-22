@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--geography--middle-east-and-north-africa",
+  "title": "Middle East and North Africa (MENA)",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which large desert covers much of North Africa?",
+      "choices": [
+        "Gobi",
+        "Sahara",
+        "Kalahari",
+        "Atacama"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which river is essential to settlement and agriculture in Egypt?",
+      "choices": [
+        "Danube",
+        "Mekong",
+        "Nile",
+        "Colorado"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why is water availability a major planning issue across many parts of MENA?",
+      "choices": [
+        "Every country receives identical rainfall",
+        "The region has no rivers or aquifers",
+        "Water demand is unrelated to population or farming",
+        "Much of the region has arid or semi-arid climates and unevenly distributed water"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which pair of rivers is associated with the historical region of Mesopotamia?",
+      "choices": [
+        "Tigris and Euphrates",
+        "Nile and Niger",
+        "Indus and Ganges",
+        "Rhine and Seine"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Why is it inaccurate to describe MENA as culturally uniform?",
+      "choices": [
+        "Every country shares the same language and customs",
+        "The region includes diverse languages, ethnic groups, religions, histories, and national experiences",
+        "Geography prevents cultural exchange",
+        "The region has only one urban center"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A coastal city becomes a trade hub linking Europe, Africa, and Asia. Which geographic factor most directly supports this role?",
+      "choices": [
+        "Its distance from all ports",
+        "Its lack of transportation connections",
+        "Its location along important maritime routes",
+        "Its position in a remote inland desert"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Oil and natural gas are unevenly distributed across MENA. What is one effect of that uneven distribution?",
+      "choices": [
+        "All countries receive identical energy income",
+        "Natural resources have no influence on trade",
+        "Every region becomes equally wealthy",
+        "Countries can have different export revenues and economic structures"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Why do some states in the Gulf region invest in sectors beyond oil and gas?",
+      "choices": [
+        "Diversification can reduce dependence on volatile resource markets",
+        "Diversification makes world energy prices irrelevant",
+        "Resource revenues cannot fund new industries",
+        "Every country has identical labor markets"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "A city grows rapidly after rural-to-urban migration. Which service may face increased pressure?",
+      "choices": [
+        "Mountain formation",
+        "Housing, transportation, water, and sanitation",
+        "Ocean currents",
+        "The length of daylight"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Which geographic feature has historically supported movement and settlement between North Africa and Southwest Asia?",
+      "choices": [
+        "The polar ice cap",
+        "The Amazon River basin",
+        "The Mediterranean Sea and its connecting coastal routes",
+        "The Great Lakes"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Why are agricultural systems in dry areas often shaped by access to irrigation?",
+      "choices": [
+        "Irrigation has no effect on farming",
+        "Dry climates guarantee high crop yields",
+        "Water use is unrelated to food production",
+        "Reliable water can determine where crops can be grown and which crops are viable"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A country shares a river with upstream and downstream neighbors. Which issue may require cooperation?",
+      "choices": [
+        "Managing water quantity and quality across borders",
+        "Setting the climate of every neighboring state",
+        "Choosing the neighbors' national languages",
+        "Preventing all seasonal rainfall"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What does a population distribution map show?",
+      "choices": [
+        "How much rainfall falls each hour",
+        "Where people are concentrated or sparsely settled",
+        "The age of every building",
+        "The total value of all exports"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "An inland settlement lies near an oasis and a long-distance trade route. Why might that site support urban growth?",
+      "choices": [
+        "It is isolated from all economic activity",
+        "Oases prevent settlement",
+        "It combines access to water with a role in movement and exchange",
+        "Trade routes always avoid populated places"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which statement about MENA's languages is accurate?",
+      "choices": [
+        "Every MENA resident speaks only Arabic",
+        "Persian is spoken only in North Africa",
+        "Language patterns do not vary between countries",
+        "Arabic is widely used, while many other languages are also spoken across the region"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Why can a country's total oil output differ from the benefits experienced by its residents?",
+      "choices": [
+        "Revenue distribution, public policy, employment, and population size affect who benefits",
+        "Oil income automatically reaches every household equally",
+        "Production volume is the only measure of living standards",
+        "Oil prices never change"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "A map shows that most population is concentrated near a river valley while surrounding areas are dry. What is the best geographic explanation?",
+      "choices": [
+        "Deserts always have more farmland than river valleys",
+        "Water access and fertile land support denser settlement",
+        "Rivers prevent transportation",
+        "Population concentration is unrelated to resources"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Why should a regional study include local perspectives when examining urban growth or resource use?",
+      "choices": [
+        "Local knowledge prevents comparison across places",
+        "Only national averages can describe a city",
+        "Residents experience effects differently and hold knowledge about local needs",
+        "Outside analysis always includes every community's priorities"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Which connection best describes the Suez Canal's geographic significance?",
+      "choices": [
+        "It connects the Nile directly to the Atlantic",
+        "It separates North Africa from all trade",
+        "It links the Black Sea to the Pacific",
+        "It provides a shorter maritime route between the Mediterranean and Red Sea"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A map displays MENA boundaries, but different organizations define the region somewhat differently. What is the best practice?",
+      "choices": [
+        "State the geographic definition used and recognize that regional boundaries can vary",
+        "Assume one boundary is universally accepted",
+        "Treat the label as a natural landform",
+        "Avoid identifying included countries"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

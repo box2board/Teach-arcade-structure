@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--art-history--baroque-rococo",
+  "title": "Baroque & Rococo",
+  "subject": "Fine Arts",
+  "category": "Art History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What visual effect is commonly associated with Baroque art?",
+      "choices": [
+        "Dramatic movement, contrast, and emotional intensity",
+        "Strictly flat shapes without depth",
+        "Exclusive use of geometric abstraction",
+        "A ban on religious subject matter"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Caravaggio is known for strong contrasts of light and shadow called",
+      "choices": [
+        "sfumato",
+        "tenebrism",
+        "pointillism",
+        "frottage"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "In Baroque painting, diagonal compositions often create a sense of",
+      "choices": [
+        "stillness and symmetry only",
+        "flatness without depth",
+        "movement and dynamism",
+        "a repeating horizontal grid"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Bernini's sculpture often appears to",
+      "choices": [
+        "avoid depicting human emotion",
+        "use only uncarved blocks",
+        "imitate medieval stained glass",
+        "capture an energetic moment with expressive movement"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What was one purpose of Baroque art in Catholic regions during the Counter-Reformation?",
+      "choices": [
+        "Engage viewers emotionally and support religious devotion",
+        "Promote iconoclasm in every church",
+        "Replace worship with theater",
+        "Avoid communicating religious ideas"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which architectural feature is commonly associated with Baroque churches?",
+      "choices": [
+        "Minimal ornament and unbroken blank walls only",
+        "Elaborate decoration and dramatic spatial effects",
+        "Steel suspension roofs",
+        "Gothic flying buttresses as the sole feature"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is Rococo art often characterized by?",
+      "choices": [
+        "Monumental industrial machinery",
+        "Strict black-and-white geometry",
+        "Light, playful ornament, pastel colors, and elegant settings",
+        "A focus only on battlefield scenes"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Compared with many Baroque works, Rococo painting often emphasizes",
+      "choices": [
+        "religious drama alone",
+        "large public political ceremonies only",
+        "scientific diagrams",
+        "intimate, decorative, and leisure-oriented subjects"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which subject would be most typical of a Rococo fête galante?",
+      "choices": [
+        "An elegant group enjoying leisure in a landscaped setting",
+        "A factory strike",
+        "A prehistoric hunt",
+        "A courtroom trial"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What does chiaroscuro contribute to a Baroque composition?",
+      "choices": [
+        "A system of repeated arches",
+        "Contrast that can model form and direct attention",
+        "A method of carving stone",
+        "A printed color chart"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A viewer's eye is drawn toward a brightly lit figure in a dark scene. What is the likely compositional purpose?",
+      "choices": [
+        "Hide the subject completely",
+        "Establish a flat pattern with no focal point",
+        "Emphasize the figure and guide the viewer's attention",
+        "Indicate the painting is unfinished"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which artist is strongly associated with Rococo painting in France?",
+      "choices": [
+        "Giotto",
+        "Diego Rivera",
+        "Katsushika Hokusai",
+        "Jean-Honoré Fragonard"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is one way Baroque artists created theatrical effect?",
+      "choices": [
+        "Use gesture, lighting, and composition to heighten a dramatic moment",
+        "Remove all figures",
+        "Use identical poses and lighting throughout",
+        "Avoid narrative content"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is context useful when interpreting Rococo scenes of leisure?",
+      "choices": [
+        "It proves the scenes depict every social class equally",
+        "It can connect the imagery to the tastes and social world of its patrons",
+        "It replaces visual analysis",
+        "It identifies the exact weather"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which statement best distinguishes Baroque from Rococo as broad styles?",
+      "choices": [
+        "Baroque is always abstract; Rococo is always realistic",
+        "Baroque uses no color; Rococo uses only black",
+        "Baroque often favors dramatic grandeur; Rococo often favors lighter, more intimate ornament",
+        "They are identical styles with different names"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A sculpture seems to extend into the viewer's space. What effect may this create?",
+      "choices": [
+        "A flat, distant appearance",
+        "A smaller scale in the room",
+        "A lack of movement",
+        "A more immersive and dynamic encounter"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which visual choice is most likely to create Baroque tension?",
+      "choices": [
+        "A strong diagonal action crossing a sharply lit scene",
+        "A perfectly centered, motionless arrangement",
+        "A uniform field with no contrast",
+        "A repeated border pattern"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "What does patronage mean in art history?",
+      "choices": [
+        "A type of paintbrush",
+        "Financial or material support that enables an artist or workshop to create work",
+        "A method for carving marble",
+        "A museum display label"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Why might Rococo works use delicate, curling ornament?",
+      "choices": [
+        "To communicate industrial power",
+        "To imitate cave painting",
+        "To create an elegant decorative effect suited to the style's visual taste",
+        "To remove all visual emphasis"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "When comparing a Baroque altar painting and a Rococo salon painting, what should a viewer consider?",
+      "choices": [
+        "Only which one is larger",
+        "Which one has more figures",
+        "Which one uses the newer support",
+        "Their settings, audiences, purposes, and visual strategies"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

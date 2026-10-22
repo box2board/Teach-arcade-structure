@@ -3,8 +3,8 @@
   "subject": "Math",
   "status": "draft-for-review",
   "gradeBand": "7–12",
-  "setCount": 75,
-  "questionCount": 1500,
+  "setCount": 99,
+  "questionCount": 1980,
   "sets": [
     {
       "id": "math--pre-algebra--integers-and-rational-numbers",
@@ -530,6 +530,174 @@
       "category": "Statistics & Probability",
       "file": "statistics-probability/experimental-design-and-causation.json",
       "questionCount": 20
+    },
+    {
+      "id": "math--pre-algebra--addition-subtraction",
+      "title": "Addition & Subtraction",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/addition-subtraction.json"
+    },
+    {
+      "id": "math--pre-algebra--multiplication-division",
+      "title": "Multiplication & Division",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/multiplication-division.json"
+    },
+    {
+      "id": "math--pre-algebra--place-value-rounding",
+      "title": "Place Value & Rounding",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/place-value-rounding.json"
+    },
+    {
+      "id": "math--pre-algebra--fractions-basics",
+      "title": "Fractions (Basics)",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/fractions-basics.json"
+    },
+    {
+      "id": "math--pre-algebra--decimals-intro",
+      "title": "Decimals (Intro)",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/decimals-intro.json"
+    },
+    {
+      "id": "math--pre-algebra--measurement-data",
+      "title": "Measurement & Data",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/measurement-data.json"
+    },
+    {
+      "id": "math--pre-algebra--time",
+      "title": "Time",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/time.json"
+    },
+    {
+      "id": "math--pre-algebra--money",
+      "title": "Money",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/money.json"
+    },
+    {
+      "id": "math--geometry--geometry-shapes",
+      "title": "Geometry & Shapes",
+      "category": "Geometry",
+      "questionCount": 20,
+      "file": "geometry/geometry-shapes.json"
+    },
+    {
+      "id": "math--pre-algebra--word-problems-problem-solving",
+      "title": "Word Problems & Problem Solving",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/word-problems-problem-solving.json"
+    },
+    {
+      "id": "math--algebra-1--algebra-1",
+      "title": "Algebra 1",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/algebra-1.json"
+    },
+    {
+      "id": "math--algebra-2-functions--algebra-2",
+      "title": "Algebra 2",
+      "category": "Algebra II & Functions",
+      "questionCount": 20,
+      "file": "algebra-2-functions/algebra-2.json"
+    },
+    {
+      "id": "math--calculus--calculus",
+      "title": "Calculus",
+      "category": "Calculus",
+      "questionCount": 20,
+      "file": "calculus/calculus.json"
+    },
+    {
+      "id": "math--pre-algebra--integer-operations",
+      "title": "Integer Operations",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/integer-operations.json"
+    },
+    {
+      "id": "math--pre-algebra--percents",
+      "title": "Percents",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/percents.json"
+    },
+    {
+      "id": "math--pre-algebra--fact-fluency-games",
+      "title": "Fact Fluency Games",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/fact-fluency-games.json"
+    },
+    {
+      "id": "math--pre-algebra--fraction-integer-games",
+      "title": "Fraction & Integer Games",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/fraction-integer-games.json"
+    },
+    {
+      "id": "math--algebra-i--algebra-equation-games",
+      "title": "Algebra & Equation Games",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/algebra-equation-games.json"
+    },
+    {
+      "id": "math--pre-algebra--logic-puzzles-brain-teasers",
+      "title": "Logic Puzzles & Brain Teasers",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/logic-puzzles-brain-teasers.json"
+    },
+    {
+      "id": "math--pre-algebra--escape-room-adventure-review-games",
+      "title": "Escape Room & Adventure Review Games",
+      "category": "Pre-Algebra & Number Sense",
+      "questionCount": 20,
+      "file": "pre-algebra/escape-room-adventure-review-games.json"
+    },
+    {
+      "id": "math--algebra-1--inequalities",
+      "title": "Inequalities",
+      "category": "Algebra I",
+      "questionCount": 20,
+      "file": "algebra-1/inequalities.json"
+    },
+    {
+      "id": "math--algebra-2-functions--functions-graphs",
+      "title": "Functions & Graphs",
+      "category": "Algebra II & Functions",
+      "questionCount": 20,
+      "file": "algebra-2-functions/functions-graphs.json"
+    },
+    {
+      "id": "math--geometry--transformations-congruence",
+      "title": "Transformations & Congruence",
+      "category": "Geometry",
+      "questionCount": 20,
+      "file": "geometry/transformations-congruence.json"
+    },
+    {
+      "id": "math--statistics-probability--statistics-probability",
+      "title": "Statistics & Probability",
+      "category": "Statistics & Probability",
+      "questionCount": 20,
+      "file": "statistics-probability/statistics-probability.json"
     }
   ]
 }

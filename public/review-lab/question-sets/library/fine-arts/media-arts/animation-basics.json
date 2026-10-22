@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--media-arts--animation-basics",
+  "title": "Animation Basics",
+  "subject": "Fine Arts",
+  "category": "Media Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How does frame-by-frame animation create the illusion of movement?",
+      "choices": [
+        "A sequence of slightly changing images is shown in order",
+        "A single still image changes its file name",
+        "Audio is played backward",
+        "A camera lens zooms once"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "What is a keyframe?",
+      "choices": [
+        "The last image in every film",
+        "A frame marking an important pose or change in motion",
+        "A keyboard shortcut printed on screen",
+        "A sound effect synchronized to a scene"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why use an animation timeline?",
+      "choices": [
+        "To select a color palette only",
+        "To store copyright licenses",
+        "To arrange frames or events over time",
+        "To measure a character's height"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What is the purpose of an in-between frame?",
+      "choices": [
+        "To replace the storyboard",
+        "To show a separate location",
+        "To remove timing from a scene",
+        "To create smoother motion between key poses"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "How does changing frame rate affect animation?",
+      "choices": [
+        "It changes how many frames display each second and can affect motion feel",
+        "It changes the drawing's aspect ratio",
+        "It sets the story's point of view",
+        "It guarantees realistic movement"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A bouncing ball looks weightless. What animation principle could improve it?",
+      "choices": [
+        "Keep its shape and speed identical at all times",
+        "Show squash and stretch while preserving the ball's apparent volume",
+        "Remove the contact pose",
+        "Add unrelated background detail"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What is a storyboard used for?",
+      "choices": [
+        "Exporting final audio levels",
+        "Choosing the screen brightness",
+        "Planning shots and story beats before producing the animation",
+        "Measuring the computer's memory"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why is timing important in animation?",
+      "choices": [
+        "It determines the file's copyright owner",
+        "It makes all motion realistic",
+        "It replaces the need for poses",
+        "It affects the perceived weight, speed, and emotion of an action"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What does an anticipation pose do?",
+      "choices": [
+        "Prepares viewers for an upcoming action",
+        "Shows the action after it is finished",
+        "Keeps every character still",
+        "Hides the scene's setting"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which sequence best communicates a character picking up a heavy box?",
+      "choices": [
+        "Instantly move the box with no body change",
+        "Reach, brace, lift with effort, then settle under the weight",
+        "Move the box before the character reaches it",
+        "Keep the character still while the box floats"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "What is onion-skinning useful for?",
+      "choices": [
+        "Adding a permanent outline to every object",
+        "Editing a soundtrack",
+        "Seeing nearby frames faintly while drawing a new frame",
+        "Changing the camera angle automatically"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "How can an animator make a walk cycle feel less mechanical?",
+      "choices": [
+        "Use identical spacing for every body part",
+        "Remove contact with the ground",
+        "Add more frames without changing poses",
+        "Vary poses, timing, and weight shifts while keeping the cycle coherent"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Why should a scene's main action read clearly in silhouette?",
+      "choices": [
+        "A clear shape helps viewers understand the pose and action",
+        "Silhouette proves the colors are accurate",
+        "It increases frame rate",
+        "It removes the need for timing"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is easing in animation?",
+      "choices": [
+        "A way to erase a frame",
+        "Gradually changing speed at the start or end of motion",
+        "A type of sound recording",
+        "A fixed camera distance"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What can a limited animation test reveal early?",
+      "choices": [
+        "Whether the final film has a license",
+        "The exact audience size",
+        "Whether timing and poses communicate before detailed rendering",
+        "Whether the soundtrack is mixed"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "If an object moves too far between frames, what may viewers perceive?",
+      "choices": [
+        "A higher resolution",
+        "A new color space",
+        "A longer scene automatically",
+        "A sudden jump rather than smooth motion"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is a looping cycle?",
+      "choices": [
+        "A sequence designed to repeat smoothly",
+        "An animation that cannot be paused",
+        "A single title card",
+        "A sequence with no keyframes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why plan foreground, middle ground, and background layers?",
+      "choices": [
+        "They guarantee a 3D camera",
+        "They can create depth and organize visual attention",
+        "They remove all overlap",
+        "They determine the dialogue"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What should be checked before exporting an animation?",
+      "choices": [
+        "Only the project title",
+        "The computer wallpaper",
+        "Timing, playback, dimensions, and output format",
+        "The number of storyboard pages"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why is feedback useful during animation production?",
+      "choices": [
+        "Feedback always makes a project shorter",
+        "Feedback replaces planning",
+        "Feedback determines the frame rate",
+        "Viewers may notice unclear action or timing the creator overlooked"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

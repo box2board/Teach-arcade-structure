@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--music--world-instruments",
+  "title": "World Instruments",
+  "subject": "Fine Arts",
+  "category": "Music",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a sitar?",
+      "choices": [
+        "A plucked string instrument associated with South Asian musical traditions",
+        "A brass instrument from Brazil",
+        "A frame drum from Ireland",
+        "A keyboard instrument from Japan"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "The kora is traditionally associated with which region?",
+      "choices": [
+        "Northern Europe",
+        "West Africa",
+        "The Andes",
+        "Oceania"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What type of instrument is a djembe?",
+      "choices": [
+        "A bowed string instrument",
+        "A double-reed woodwind",
+        "A goblet-shaped hand drum",
+        "A struck keyboard"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "The shakuhachi is a Japanese instrument in which family?",
+      "choices": [
+        "Plucked lute",
+        "Frame drum",
+        "Brass horn",
+        "End-blown bamboo flute"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a didgeridoo traditionally made from?",
+      "choices": [
+        "A hollowed branch or tree trunk",
+        "A stretched hide over a frame",
+        "A set of metal strings",
+        "A fired clay vessel"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which instrument is strongly associated with Andean music?",
+      "choices": [
+        "Bagpipes",
+        "Panpipes such as siku",
+        "Koto",
+        "Erhu"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the erhu?",
+      "choices": [
+        "A Brazilian shaker",
+        "A West African harp-lute",
+        "A two-string bowed instrument from China",
+        "A Scottish bagpipe"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "The koto is a Japanese instrument commonly described as what?",
+      "choices": [
+        "A brass trumpet",
+        "A double-headed drum",
+        "A free-reed accordion",
+        "A long zither with strings"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is a mbira?",
+      "choices": [
+        "A lamellophone with metal keys attached to a board or resonator",
+        "A bowed bass",
+        "A bamboo flute",
+        "A pair of cymbals"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "How can a musician study an instrument respectfully across cultures?",
+      "choices": [
+        "Treat it as an ancient object with no current players",
+        "Learn its community context, names, uses, and living traditions",
+        "Assume every region uses it identically",
+        "Copy a style without attribution"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which instrument is associated with Scottish musical traditions?",
+      "choices": [
+        "Kora",
+        "Sitar",
+        "Bagpipes",
+        "Gamelan gong"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What is a gamelan?",
+      "choices": [
+        "A single European string instrument",
+        "A South American wind instrument",
+        "A West African vocal form",
+        "An Indonesian ensemble featuring tuned gongs and other instruments"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is a balalaika?",
+      "choices": [
+        "A Russian plucked string instrument with a triangular body",
+        "A Japanese bamboo flute",
+        "An Indian barrel drum",
+        "A Chinese bowed instrument"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "The tabla is best described as what?",
+      "choices": [
+        "A plucked African harp",
+        "A pair of tuned hand drums used in South Asian music",
+        "A Japanese zither",
+        "A South American panpipe"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What does instrument timbre depend on?",
+      "choices": [
+        "The instrument's country name alone",
+        "The audience's age",
+        "Sound source, materials, shape, and performance technique",
+        "The length of the concert"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Why may the same instrument have different roles in different musical traditions?",
+      "choices": [
+        "Every instrument has one universal role",
+        "Instrument design determines a single genre",
+        "Traditions never change",
+        "Musical roles and techniques depend on local practices and contexts"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is a balafon?",
+      "choices": [
+        "A West African wooden keyed percussion instrument",
+        "A European brass horn",
+        "A Chinese two-string fiddle",
+        "A Polynesian shell trumpet"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How is the shamisen commonly played?",
+      "choices": [
+        "With a bow on a single string",
+        "With a large plectrum on a three-string instrument",
+        "By blowing through a reed",
+        "By striking tuned metal bars"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A class hears a recording of an unfamiliar instrument. Which approach supports careful identification?",
+      "choices": [
+        "Guess only from the recording title",
+        "Assume it comes from the nearest country",
+        "Compare its sound and playing method with reliable cultural context",
+        "Identify it by volume alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why should a world-music lesson include living artists and communities?",
+      "choices": [
+        "It proves music never changes",
+        "It avoids discussing cultural context",
+        "It limits listening to old recordings",
+        "It presents traditions as active, varied, and shaped by people today"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

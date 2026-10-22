@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 import {QUESTION_SETS,GAMES,loadQuestionSet,gamesForSet,gameUrl} from '../public/review-lab/catalog.js';
-import {TOOLS} from '../public/teacher/cabinet-catalog.js';
+import {TOOLS,CABINET_GAMES} from '../public/teacher/cabinet-catalog.js';
 const html=await readFile(new URL('../public/teacher/index.html',import.meta.url),'utf8');
 const source=(await readFile(new URL('../public/teacher/workspace.js',import.meta.url),'utf8')).replace(/^import .*;\n/gm,'');
 class Element{
@@ -24,7 +24,7 @@ class Element{
 function setup(configured=false,fetchOverride){
  const elements=Object.fromEntries([...html.matchAll(/id="([^"]+)"/g)].map(m=>[m[1],new Element()]));
  let hash='';const location={search:'',get hash(){return hash;},set hash(value){hash=value.startsWith('#')?value:`#${value}`;}},handlers={};
- const context=vm.createContext({QUESTION_SETS,GAMES,TOOLS,loadQuestionSet,gamesForSet,gameUrl,URLSearchParams,
+ const context=vm.createContext({QUESTION_SETS,GAMES,TOOLS,CABINET_GAMES,loadQuestionSet,gamesForSet,gameUrl,URLSearchParams,
  document:{getElementById:id=>{assert.ok(elements[id],`Unknown element ${id}`);return elements[id];},createElement:tag=>new Element(tag),querySelectorAll:()=>[],querySelector:()=>null},
  Option:class extends Element{constructor(text,value){super('option',text);this.value=value;}},location,
  window:{addEventListener:(name,fn)=>{handlers[name]=fn;},scrollTo(){}},fetch:fetchOverride|| (async()=>({ok:true,json:async()=>({configured,user:null})}))});
@@ -100,14 +100,30 @@ test('HQ topic picker keeps chosen topic and makes reselection optional; public 
 test('Cabinet sections browse real public games and tools without account writes',()=>{
  const app=setup();app.location.hash='#tools&view=browse';app.route();assert.equal(app.elements.tools.hidden,false);assert.equal(app.elements['cabinet-tools'].children.length,TOOLS.length);
  for(const card of app.elements['cabinet-tools'].children){const content=card.children[1],open=content.children.at(-2),save=content.children.at(-1);assert.ok(TOOLS.some(t=>t.url===open.href));assert.equal(open.target,'_blank');assert.equal(save.disabled,true);}
- app.location.hash='#my-games&view=browse';app.route();assert.equal(app.elements['cabinet-games'].children.length,GAMES.length);
- const open=app.elements['cabinet-games'].children[0].children[1].children.at(-2);assert.equal(open.href,'#sets');
+ app.location.hash='#my-games&view=browse';app.route();assert.equal(app.elements['cabinet-games'].children.length,CABINET_GAMES.length);
+ for(const [i,game] of CABINET_GAMES.entries()){
+  const open=app.elements['cabinet-games'].children[i].children[1].children.at(-2);
+  assert.equal(open.href,game.chooseTopic?'#sets':game.url);
+  if(!game.chooseTopic){assert.equal(open.target,'_blank');assert.equal(open.onclick,undefined);}
+ }
 });
 test('saved games and tools use server bookmarks and are cleared on logout',async()=>{
  const app=setup(true,async url=>({ok:true,json:async()=>url.includes('action=favorites')?{ids:[]}:url.includes('action=cabinet')?{items:[{type:'tool',id:'timer'},{type:'game',id:'raceway-rivals'}]}:url.includes('action=logout')?{ok:true}:{configured:true,cabinetEnabled:true,user:{id:'teacher-a',email:'teacher@example.test',plan:'free'}}}));
  await new Promise(r=>setTimeout(r,0));app.location.hash='#tools';app.route();assert.equal(app.elements['cabinet-tools'].children.length,1);assert.match(app.elements['tools-summary'].textContent,/1 saved/);
  const remove=app.elements['cabinet-tools'].children[0].children[1].children.at(-1);assert.equal(remove.disabled,false);await remove.onclick();assert.equal(app.run("bookmarks.has('tool:timer')"),false);
  await app.elements.logout.onclick();assert.equal(app.run('bookmarks.size'),0);assert.equal(app.run('cabinetLoaded'),false);
+});
+test('a saved Arcade Review Game survives collection reload and opens directly',async()=>{
+ const game=CABINET_GAMES.find(g=>g.title==='WWI Trench Run');let items=[];
+ const app=setup(true,async(url,options)=>{
+  if(url.includes('action=save-item'))items=[JSON.parse(options.body)];
+  return {ok:true,json:async()=>url.includes('action=favorites')?{ids:[]}:url.includes('action=cabinet')?{items}:url.includes('action=save-item')?{ok:true}:{configured:true,cabinetEnabled:true,user:{id:'teacher-a'}}};
+ });
+ await new Promise(r=>setTimeout(r,0));app.location.hash='#my-games&view=browse';app.route();
+ const card=app.elements['cabinet-games'].children[CABINET_GAMES.indexOf(game)];await card.children[1].children.at(-1).onclick();
+ await app.run('account()');app.location.hash='#my-games';app.route();
+ const saved=app.elements['cabinet-games'].children;assert.equal(saved.length,1);assert.equal(saved[0].children[1].children.at(-2).href,game.url);
+ assert.equal(saved[0].children[1].children.at(-1).attributes['aria-pressed'],'true');
 });
 test('Cabinet tools point to real local resources and creation remains explicitly planned',async()=>{
  for(const tool of TOOLS){assert.ok(tool.url.startsWith('/'));const path=tool.url.endsWith('/')?tool.url+'index.html':tool.url;assert.ok((await readFile(new URL('../public'+path,import.meta.url),'utf8')).length>0);}

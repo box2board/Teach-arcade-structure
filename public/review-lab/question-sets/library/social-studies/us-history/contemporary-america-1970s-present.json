@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--us-history--contemporary-america-1970s-present",
+  "title": "Contemporary America: 1970s to Present",
+  "subject": "Social Studies",
+  "category": "U.S. History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What event led President Richard Nixon to resign from office in 1974?",
+      "choices": [
+        "The Iran hostage crisis",
+        "The Watergate scandal",
+        "The Cuban Missile Crisis",
+        "The September 11 attacks"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which constitutional amendment established a presidential term limit after Franklin Roosevelt's four elections?",
+      "choices": [
+        "Twenty-first Amendment",
+        "Twenty-fourth Amendment",
+        "Twenty-second Amendment",
+        "Twenty-sixth Amendment"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "The 1970s energy crisis was shaped in part by",
+      "choices": [
+        "the end of all domestic energy use",
+        "a permanent decline in global demand for oil",
+        "the creation of the interstate highway system",
+        "oil supply disruptions and rising energy prices"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What was one outcome of the Camp David Accords of 1978?",
+      "choices": [
+        "Egypt and Israel agreed to a framework for peace",
+        "The United States and Soviet Union ended the Cold War",
+        "The United Nations was founded",
+        "The Berlin Wall was built"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which economic condition affected the United States during the 1970s?",
+      "choices": [
+        "Deflation with no unemployment",
+        "Stagflation, with high inflation and weak economic growth",
+        "Rapid growth with no price increases",
+        "A permanent end to business cycles"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which policy is most associated with the Reagan administration's economic approach?",
+      "choices": [
+        "A complete nationalization of private industry",
+        "The creation of the New Deal",
+        "Tax reductions and deregulation alongside increased defense spending",
+        "An end to federal income taxes by constitutional amendment"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What change in U.S. foreign relations became possible after the Soviet Union dissolved in 1991?",
+      "choices": [
+        "The United States joined the Warsaw Pact",
+        "The United States ended all international trade",
+        "The North Atlantic Treaty Organization was dissolved immediately",
+        "The Cold War's central U.S.–Soviet rivalry ended"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What effect did deindustrialization have in many U.S. communities?",
+      "choices": [
+        "Some manufacturing jobs and factories moved or disappeared, requiring economic adjustment",
+        "All cities became manufacturing centers",
+        "Agriculture ended nationwide",
+        "Industrial employment increased equally in every region"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "The North American Free Trade Agreement (NAFTA), implemented in 1994, linked trade among",
+      "choices": [
+        "the United States, Japan, and China",
+        "the United States, Canada, and Mexico",
+        "Canada, the United Kingdom, and France",
+        "Mexico, Brazil, and Argentina"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What did the Americans with Disabilities Act of 1990 seek to address?",
+      "choices": [
+        "Limits on presidential terms",
+        "Voting rights for citizens aged 18 and older",
+        "Discrimination against people with disabilities in areas such as employment and public access",
+        "Federal regulation of all internet content"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why did the September 11, 2001 attacks lead to major changes in U.S. security policy?",
+      "choices": [
+        "They ended all U.S. military involvement abroad",
+        "They caused the Cold War to begin",
+        "They dissolved the federal government",
+        "The attacks prompted expanded counterterrorism measures and changes to domestic and foreign policy"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which event triggered the 2008 global financial crisis in the United States?",
+      "choices": [
+        "A housing-market collapse and failures in financial markets and institutions",
+        "The passage of the Civil Rights Act",
+        "The end of the Vietnam War",
+        "The launch of the first satellite"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A historian compares oral histories from workers in a factory town before and after a plant closure. What can this evidence help reveal?",
+      "choices": [
+        "The exact national unemployment rate without other data",
+        "How economic change affected people's experiences and communities",
+        "The cause of every factory closure nationwide",
+        "A complete record of every federal law"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Why did the 1973 War Powers Resolution become a subject of debate?",
+      "choices": [
+        "It created the Supreme Court",
+        "It set the minimum voting age",
+        "It addressed Congress's and the president's roles in deploying U.S. forces",
+        "It established the national park system"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which technology helped transform communication and commerce from the late twentieth century onward?",
+      "choices": [
+        "The cotton gin",
+        "The telegraph alone",
+        "The printing press of the fifteenth century",
+        "The internet and digital networks"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A community loses manufacturing jobs but gains health-care and logistics employment. What broader change does this illustrate?",
+      "choices": [
+        "A shift in the mix of industries and occupations",
+        "The disappearance of all economic activity",
+        "A return to subsistence agriculture",
+        "A change in the country's constitutional system"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which law prohibited discrimination based on race, color, religion, sex, or national origin in many areas of public life?",
+      "choices": [
+        "Homestead Act",
+        "Civil Rights Act of 1964",
+        "Pendleton Civil Service Act",
+        "National Labor Relations Act"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why do historians compare multiple sources when studying recent political events?",
+      "choices": [
+        "Every source contains the same information",
+        "A single source always explains motives completely",
+        "Different sources can provide distinct perspectives and help corroborate claims",
+        "Comparing sources removes the need to assess reliability"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Which statement best describes the purpose of the North American Free Trade Agreement?",
+      "choices": [
+        "To create a single government for North America",
+        "To eliminate all national borders",
+        "To establish a common currency for the member countries",
+        "To reduce many trade barriers among the three member countries"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A researcher studies changes in immigration laws and population patterns since 1970. Which approach is most useful?",
+      "choices": [
+        "Compare policy changes, demographic evidence, and the historical context of each period",
+        "Assume one law explains every migration pattern",
+        "Use current population data as proof of past conditions",
+        "Ignore differences among immigrant groups and destinations"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

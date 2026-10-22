@@ -1,0 +1,505 @@
+[
+  {
+    "id": "v3-money-01",
+    "category": "money",
+    "title": "The repair estimate is bigger than expected",
+    "prompt": "Your transport needs a $1,600 repair or replacement arrangement. The normal budget includes a routine repairs allowance, but this is an additional failure. You need reliable travel for work.",
+    "context": "All prices are scenario amounts. Financing here creates consumer debt at the model rate.",
+    "choices": [
+      {
+        "label": "Pay the full repair",
+        "text": "Spend $1,600 and keep the current travel arrangement.",
+        "effects": {
+          "cash": -1600,
+          "stress": -2
+        },
+        "feedback": "Travel is restored. The repair takes a large part of a small emergency buffer."
+      },
+      {
+        "label": "Finance the repair",
+        "text": "Add $1,600 consumer debt; keep cash available.",
+        "effects": {
+          "debt": 1600,
+          "stress": 4
+        },
+        "feedback": "The bill has not disappeared. Consumer interest and scheduled payments now enter later budgets."
+      },
+      {
+        "label": "Arrange a temporary workaround",
+        "text": "Spend $350 now and defer the unresolved problem.",
+        "effects": {
+          "cash": -350,
+          "flag": "repairDeferred",
+          "workLife": -6,
+          "stress": 4
+        },
+        "feedback": "You gain time rather than a permanent fix. A later transport decision will return to the problem."
+      }
+    ]
+  },
+  {
+    "id": "v3-money-02",
+    "category": "money",
+    "title": "The temporary repair was only temporary",
+    "prompt": "The transport problem you deferred is now harder to manage. A permanent solution costs $2,100. The workaround is still consuming time and may disrupt work.",
+    "context": "Your earlier decision kept cash available but did not remove this obligation.",
+    "choices": [
+      {
+        "label": "Fix it now",
+        "text": "Pay $2,100 and end the workaround.",
+        "effects": {
+          "cash": -2100,
+          "clearFlag": "repairDeferred",
+          "workLife": 4,
+          "stress": -2
+        },
+        "feedback": "You resolve the problem at a higher cost than the earlier estimate."
+      },
+      {
+        "label": "Borrow for the permanent fix",
+        "text": "Add $2,100 consumer debt and restore the usual commute.",
+        "effects": {
+          "debt": 2100,
+          "clearFlag": "repairDeferred",
+          "stress": 4
+        },
+        "feedback": "The problem is resolved, but the financing cost continues through the debt model."
+      },
+      {
+        "label": "Continue the workaround",
+        "text": "Spend another $450 and lose $800 gross from missed work.",
+        "effects": {
+          "cash": -450,
+          "income": -800,
+          "stress": 7,
+          "workLife": -5
+        },
+        "feedback": "The stopgap now costs both money and pay. The unresolved flag remains for a later year."
+      }
+    ],
+    "requires": "repairDeferred",
+    "minYear": 2
+  },
+  {
+    "id": "v3-money-03",
+    "category": "money",
+    "title": "Your lease renewal",
+    "prompt": "The housing-cost increase is larger than the normal model inflation already in your budget. You can accept an additional $120 monthly charge or spend money to find an alternative.",
+    "context": "The additional charge starts this year and recurs; normal annual inflation still applies.",
+    "choices": [
+      {
+        "label": "Accept the renewal",
+        "text": "Add $120/month to housing costs from now on.",
+        "effects": {
+          "monthly": {
+            "rent": 120
+          },
+          "stress": 3
+        },
+        "feedback": "You avoid moving costs while accepting an ongoing increase."
+      },
+      {
+        "label": "Move to another suitable place",
+        "text": "Spend $1,800 on moving costs and nonrefundable fees; avoid the extra charge.",
+        "effects": {
+          "cash": -1800,
+          "stress": 6,
+          "workLife": -4
+        },
+        "feedback": "The new place avoids the extra increase. Moving still requires cash and substantial effort."
+      },
+      {
+        "label": "Negotiate a smaller increase",
+        "text": "Spend time comparing alternatives; accept an extra $60/month.",
+        "effects": {
+          "monthly": {
+            "rent": 60
+          },
+          "communication": 3,
+          "stress": 4,
+          "workLife": -2
+        },
+        "feedback": "In this story the landlord accepts the smaller increase. Negotiation cannot be assumed to work in every real case."
+      }
+    ],
+    "minYear": 2
+  },
+  {
+    "id": "v3-money-04",
+    "category": "money",
+    "title": "A dental bill outside the routine budget",
+    "prompt": "A necessary dental procedure leaves $1,100 out of pocket after the fictional insurance benefit. Routine medical costs in the budget do not cover this additional bill.",
+    "context": "The payment arrangement below is a specific scenario offer, not a universal medical policy.",
+    "choices": [
+      {
+        "label": "Pay the bill",
+        "text": "Use $1,100 cash.",
+        "effects": {
+          "cash": -1100,
+          "stress": -2
+        },
+        "feedback": "You resolve the bill and reduce the cash available for the next unexpected cost."
+      },
+      {
+        "label": "Use the offered staged plan",
+        "text": "Pay $500 now and $50/month for the next year.",
+        "effects": {
+          "cash": -500,
+          "monthly": {
+            "medical": 50
+          },
+          "flag": "dentalPlan",
+          "stress": 2
+        },
+        "feedback": "You keep more cash now. The monthly commitment stays until the follow-up ends it."
+      },
+      {
+        "label": "Use consumer credit",
+        "text": "Add $1,100 consumer debt.",
+        "effects": {
+          "debt": 1100,
+          "stress": 4
+        },
+        "feedback": "Treatment is not delayed. Consumer interest makes carrying the balance costly."
+      }
+    ]
+  },
+  {
+    "id": "v3-money-05",
+    "category": "money",
+    "title": "The dental payment plan ends",
+    "prompt": "The staged dental plan has reached its final scheduled year. The $50 monthly payment can now come out of your regular budget. You also have other uses for that money.",
+    "context": "This follow-up removes the recurring cost introduced by your earlier choice.",
+    "choices": [
+      {
+        "label": "Return the payment to your buffer",
+        "text": "Remove the $50 monthly charge.",
+        "effects": {
+          "monthly": {
+            "medical": -50
+          },
+          "clearFlag": "dentalPlan",
+          "financialLiteracy": 3
+        },
+        "feedback": "Your normal budget improves. Savings appear through lower bills rather than an invented cash reward."
+      },
+      {
+        "label": "Keep part for routine care",
+        "text": "Reduce the monthly charge by $25 and keep $25 for care.",
+        "effects": {
+          "monthly": {
+            "medical": -25
+          },
+          "clearFlag": "dentalPlan",
+          "stress": -2
+        },
+        "feedback": "You improve cash flow and keep a little more room for ongoing health needs."
+      },
+      {
+        "label": "Redirect it to family support",
+        "text": "Remove the $50 medical charge; add $50/month to family support.",
+        "effects": {
+          "monthly": {
+            "medical": -50,
+            "care": 50
+          },
+          "clearFlag": "dentalPlan",
+          "happiness": 3
+        },
+        "feedback": "Your total commitment stays similar, but its purpose changes."
+      }
+    ],
+    "requires": "dentalPlan",
+    "minYear": 2
+  },
+  {
+    "id": "v3-money-06",
+    "category": "money",
+    "title": "Find room in the everyday budget",
+    "prompt": "Your food, household, and social budget is difficult to sustain. You can make recurring cuts, but each option changes how you spend time or connect with people.",
+    "context": "Savings reduce actual modeled categories; they are not free cash awards.",
+    "choices": [
+      {
+        "label": "Plan meals and reduce convenience spending",
+        "text": "Cut groceries by $60/month; spend more time planning.",
+        "effects": {
+          "monthly": {
+            "food": -60
+          },
+          "timeManagement": 3,
+          "workLife": -3
+        },
+        "feedback": "The lower grocery budget helps each year. Planning and preparation take time."
+      },
+      {
+        "label": "Reduce paid outings",
+        "text": "Cut social spending by $80/month and arrange lower-cost meetups.",
+        "effects": {
+          "monthly": {
+            "social": -80
+          },
+          "financialLiteracy": 3,
+          "happiness": -2
+        },
+        "feedback": "Spending falls while maintaining connections takes a little more effort."
+      },
+      {
+        "label": "Keep the current routine",
+        "text": "Make no category cuts this year.",
+        "effects": {
+          "happiness": 2,
+          "stress": 2
+        },
+        "feedback": "Convenience and familiar activities remain, along with the full bill."
+      }
+    ]
+  },
+  {
+    "id": "v3-money-07",
+    "category": "money",
+    "title": "A replacement phone is needed",
+    "prompt": "Your phone fails and is required for daily communication. Repair is no longer practical. You can replace it at different costs; the current phone/internet bill is already budgeted.",
+    "context": "A device installment is an additional recurring obligation, not a reduction in your normal bill.",
+    "choices": [
+      {
+        "label": "Buy a basic refurbished replacement",
+        "text": "Spend $280 cash.",
+        "effects": {
+          "cash": -280,
+          "problemSolving": 2
+        },
+        "feedback": "You restore the essential function without the premium features."
+      },
+      {
+        "label": "Buy a new premium device",
+        "text": "Spend $1,100 cash.",
+        "effects": {
+          "cash": -1100,
+          "happiness": 3
+        },
+        "feedback": "You enjoy the device while giving up a much larger amount of cash."
+      },
+      {
+        "label": "Choose a two-year installment offer",
+        "text": "Add $35/month to the phone category.",
+        "effects": {
+          "monthly": {
+            "phone": 35
+          },
+          "flag": "phonePlan",
+          "stress": 2
+        },
+        "feedback": "The upfront price is lower. This recurring bill continues until its follow-up ends it."
+      }
+    ]
+  },
+  {
+    "id": "v3-money-08",
+    "category": "money",
+    "title": "Your device installment is paid off",
+    "prompt": "The two-year phone installment is complete. Its $35 monthly charge can end. You can keep the working device or choose another upgrade.",
+    "context": "The follow-up ends the earlier installment before any new purchase is added.",
+    "choices": [
+      {
+        "label": "Keep the working device",
+        "text": "Remove $35/month from the phone bill.",
+        "effects": {
+          "monthly": {
+            "phone": -35
+          },
+          "clearFlag": "phonePlan",
+          "financialLiteracy": 3
+        },
+        "feedback": "Keeping the device creates recurring room in your budget."
+      },
+      {
+        "label": "Replace the battery and keep it",
+        "text": "Spend $90 and remove $35/month.",
+        "effects": {
+          "cash": -90,
+          "monthly": {
+            "phone": -35
+          },
+          "clearFlag": "phonePlan",
+          "problemSolving": 3
+        },
+        "feedback": "A smaller maintenance cost can extend the life of something you already own."
+      },
+      {
+        "label": "Start a new installment",
+        "text": "Keep the same $35 monthly charge for another device.",
+        "effects": {
+          "clearFlag": "phonePlan",
+          "happiness": 3
+        },
+        "feedback": "The old agreement ends, but a new ongoing charge takes its place. The model keeps that charge beyond this year."
+      }
+    ],
+    "requires": "phonePlan",
+    "minYear": 3,
+    "waitYears": 2
+  },
+  {
+    "id": "v3-money-09",
+    "category": "money",
+    "title": "Insurance costs more this year",
+    "prompt": "The fictional plan premium increases beyond the normal inflation already modeled. You can keep the plan or switch to a cheaper plan with a higher out-of-pocket burden.",
+    "context": "The cheaper premium is paired with a modeled increase in routine medical costs.",
+    "choices": [
+      {
+        "label": "Keep the current plan",
+        "text": "Add $65/month to health premiums.",
+        "effects": {
+          "monthly": {
+            "health": 65
+          },
+          "stress": 2
+        },
+        "feedback": "Predictable coverage costs more each month."
+      },
+      {
+        "label": "Choose the lower-premium plan",
+        "text": "Add $15/month to premiums and $45/month to expected medical spending.",
+        "effects": {
+          "monthly": {
+            "health": 15,
+            "medical": 45
+          },
+          "stress": 4,
+          "financialLiteracy": 2
+        },
+        "feedback": "The premium looks cheaper, but much of the difference moves to out-of-pocket spending."
+      },
+      {
+        "label": "Use a narrower provider network",
+        "text": "Add $30/month to premiums and $20/month to travel costs.",
+        "effects": {
+          "monthly": {
+            "health": 30,
+            "transport": 20
+          },
+          "workLife": -3,
+          "stress": 3
+        },
+        "feedback": "You trade provider convenience and travel time for a lower premium increase."
+      }
+    ],
+    "minYear": 2
+  },
+  {
+    "id": "v3-money-10",
+    "category": "money",
+    "title": "Debt payment or a cash buffer?",
+    "prompt": "You can choose whether to use up to $1,000 of cash toward debt. Required yearly payments will still be settled later. A small buffer may matter when the next bill arrives.",
+    "context": "Extra payments are capped by cash and the remaining debt; consumer debt is paid first.",
+    "choices": [
+      {
+        "label": "Pay extra toward debt",
+        "text": "Use up to $1,000 available cash.",
+        "effects": {
+          "extraPayment": 1000,
+          "financialLiteracy": 3,
+          "stress": -2
+        },
+        "feedback": "The actual payment reduces debt and cash together. You have less cash available for an emergency."
+      },
+      {
+        "label": "Keep the buffer",
+        "text": "Leave cash available and make only scheduled payments.",
+        "effects": {
+          "financialLiteracy": 2,
+          "stress": -2
+        },
+        "feedback": "Liquidity stays available. Debt interest continues to accrue."
+      },
+      {
+        "label": "Spend on a short break",
+        "text": "Spend $550 for time away.",
+        "effects": {
+          "cash": -550,
+          "happiness": 6,
+          "stress": -5
+        },
+        "feedback": "Recovery matters, and it comes with an opportunity cost in your budget."
+      }
+    ]
+  },
+  {
+    "id": "v3-money-11",
+    "category": "money",
+    "title": "A household essential breaks",
+    "prompt": "An essential appliance or household item fails. You are responsible for replacement in this scenario. The normal maintenance budget does not cover the whole additional cost.",
+    "context": "Sharing a household can distribute responsibility, but does not make every bill disappear.",
+    "choices": [
+      {
+        "label": "Buy a reliable replacement",
+        "text": "Spend $750 cash.",
+        "effects": {
+          "cash": -750,
+          "stress": -2
+        },
+        "feedback": "The problem is resolved and your reserve is smaller."
+      },
+      {
+        "label": "Choose a used replacement",
+        "text": "Spend $300 and accept more uncertainty about lifespan.",
+        "effects": {
+          "cash": -300,
+          "problemSolving": 3,
+          "stress": 2
+        },
+        "feedback": "The lower price preserves cash while leaving more uncertainty."
+      },
+      {
+        "label": "Use consumer financing",
+        "text": "Add $750 consumer debt.",
+        "effects": {
+          "debt": 750,
+          "stress": 3
+        },
+        "feedback": "The item is replaced. Carrying the cost forward adds interest and future payments."
+      }
+    ]
+  },
+  {
+    "id": "v3-money-12",
+    "category": "money",
+    "title": "An application fee you did not plan for",
+    "prompt": "A housing, credential, or administrative renewal costs $420 in this story. The deadline is approaching. A late extension adds a fee, so delaying is not free.",
+    "context": "This is an illustrative administrative cost, not a statement of a particular licensing fee.",
+    "choices": [
+      {
+        "label": "Pay on time",
+        "text": "Spend $420.",
+        "effects": {
+          "cash": -420,
+          "professionalism": 2
+        },
+        "feedback": "You avoid penalties, while the cost still reduces your buffer."
+      },
+      {
+        "label": "Take a short extension",
+        "text": "Spend $170 now and add $300 consumer debt for the remaining cost and fee.",
+        "effects": {
+          "cash": -170,
+          "debt": 300,
+          "stress": 3
+        },
+        "feedback": "The extension creates time at a higher total cost."
+      },
+      {
+        "label": "Reduce other spending to offset it",
+        "text": "Pay $420; cut social spending by $25/month going forward.",
+        "effects": {
+          "cash": -420,
+          "monthly": {
+            "social": -25
+          },
+          "financialLiteracy": 3,
+          "happiness": -2
+        },
+        "feedback": "The initial bill remains. A lasting budget cut helps absorb similar costs later."
+      }
+    ]
+  }
+]

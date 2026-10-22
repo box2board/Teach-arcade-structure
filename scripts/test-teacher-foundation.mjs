@@ -2,6 +2,19 @@ import {test,afterEach} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import handler from '../api/teacher.js';
+import {CABINET_GAMES} from '../public/teacher/cabinet-catalog.js';
+import {arcadeEntries} from './build-cabinet-catalog.mjs';
+test('all public arcade titles are in the shared Cabinet allowlist with real launch targets',async()=>{
+ const html=await readFile(new URL('../public/arcade-review-games/index.html',import.meta.url),'utf8');
+ const entries=arcadeEntries(html);
+ assert.ok(entries.length>=18);
+ assert.equal(new Set(CABINET_GAMES.map(g=>g.id)).size,CABINET_GAMES.length);
+ for(const entry of entries){
+  const game=CABINET_GAMES.find(g=>g.url===entry.href.replace(/index\.html$/,''));
+  assert.ok(game,entry.title);assert.equal(game.title,entry.title);assert.ok(!game.chooseTopic);assert.ok(game.id.length<=200);
+  assert.ok((await readFile(new URL('../public'+game.url+(game.url.endsWith('/')?'index.html':''),import.meta.url),'utf8')).length);
+ }
+});
 import {QUESTION_SETS,loadQuestionSet,gamesForSet,gameUrl} from '../public/review-lab/catalog.js';
 const originalFetch=global.fetch;
 const keys=['SUPABASE_URL','SUPABASE_ANON_KEY','TEACHER_APP_ORIGIN','TEACHER_AUTH_ENABLED','TEACHER_CABINET_ENABLED'];
@@ -10,6 +23,21 @@ afterEach(()=>{global.fetch=originalFetch;for(const k of keys)if(original[k]===u
 function configure(){Object.assign(process.env,{SUPABASE_URL:'https://test.supabase.co',SUPABASE_ANON_KEY:'publishable-test',TEACHER_APP_ORIGIN:'https://preview.test',TEACHER_AUTH_ENABLED:'true',TEACHER_CABINET_ENABLED:'false'});}
 async function call(action,method='GET',body={},headers={}){const result={headers:{}};const res={setHeader(k,v){result.headers[k]=v;},status(s){result.status=s;return this;},json(data){result.data=data;return this;}};await handler({method,query:{action},body,headers},res);return result;}
 const response=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json'}});
+test('every Cabinet game can save, reload and remove through the account API',async()=>{
+ configure();process.env.TEACHER_CABINET_ENABLED='true';const rows=new Map();
+ global.fetch=async(url,options)=>{
+  if(url.endsWith('/user'))return response({id:'teacher-a'});
+  const parsed=new URL(url);
+  if(options.method==='POST'){const row=JSON.parse(options.body);assert.equal(row.teacher_id,'teacher-a');rows.set(row.resource_id,row);return response([]);}
+  if(options.method==='DELETE'){rows.delete(parsed.searchParams.get('resource_id').slice(3));return response([]);}
+  return response([...rows.values()]);
+ };
+ const headers={origin:'https://preview.test',cookie:'__Host-ta_session=verified'};
+ for(const game of CABINET_GAMES)assert.equal((await call('save-item','POST',{type:'game',id:game.id},headers)).status,200,game.title);
+ assert.deepEqual((await call('cabinet','GET',{},headers)).data.items.map(g=>g.id),CABINET_GAMES.map(g=>g.id));
+ for(const game of CABINET_GAMES)assert.equal((await call('remove-item','POST',{type:'game',id:game.id},headers)).status,200);
+ assert.deepEqual((await call('cabinet','GET',{},headers)).data.items,[]);
+});
 test('email codes retain all digits and reject malformed input before verification',async()=>{
  configure();let sent=[];global.fetch=async(url,opts)=>{sent.push(JSON.parse(opts.body).token);return response({access_token:'test.jwt.token',expires_in:3600,user:{id:'teacher-a'}});};
  for(const code of ['012345','01234567','0123456789'])assert.equal((await call('verify','POST',{email:'teacher@example.com',code},{origin:'https://preview.test'})).status,200);

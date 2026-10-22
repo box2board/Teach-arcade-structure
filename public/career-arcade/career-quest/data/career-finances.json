@@ -1,0 +1,5017 @@
+{
+  "wageYear": 2025,
+  "sourceUrl": "https://www.bls.gov/oes/special-requests/oesm25nat.zip",
+  "sourceSha256": "852250997ceff9b721ff68f63e877d818f9c1ec8b1b69dd367958faedd5282b2",
+  "wageMethodUrl": "https://www.bls.gov/oes/earnings.htm",
+  "tuition": {
+    "sourceUrl": "https://nces.ed.gov/ipeds/search/viewtable?tableId=36557",
+    "year": "2023\u201324",
+    "twoYearInDistrict": 4074,
+    "fourYearInState": 9016,
+    "graduateInState": 11827,
+    "certificateExample": 10868,
+    "note": "Institutional averages, not enrollment weighted; graduate charges exclude professional-practice doctorates. Tuition only, not total attendance costs or debt."
+  },
+  "profiles": {
+    "registered-nurse": {
+      "socCode": "29-1141",
+      "title": "Registered Nurses",
+      "scope": "base occupation",
+      "annualPay": 80330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 80330,
+      "publishedHourly25": 38.62,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291141.htm"
+    },
+    "physical-therapist-assistant": {
+      "socCode": "31-2021",
+      "title": "Physical Therapist Assistants",
+      "scope": "base occupation",
+      "annualPay": 59820,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 59820,
+      "publishedHourly25": 28.76,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes312021.htm"
+    },
+    "radiologic-technologist": {
+      "socCode": "29-2034",
+      "title": "Radiologic Technologists and Technicians",
+      "scope": "base occupation",
+      "annualPay": 64810,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64810,
+      "publishedHourly25": 31.16,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes292034.htm"
+    },
+    "dental-hygienist": {
+      "socCode": "29-1292",
+      "title": "Dental Hygienists",
+      "scope": "base occupation",
+      "annualPay": 83570,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 83570,
+      "publishedHourly25": 40.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291292.htm"
+    },
+    "medical-laboratory-technician": {
+      "socCode": "29-2010",
+      "title": "Clinical Laboratory Technologists and Technicians",
+      "scope": "broader occupation",
+      "annualPay": 47650,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47650,
+      "publishedHourly25": 22.91,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes292010.htm"
+    },
+    "software-developer": {
+      "socCode": "15-1252",
+      "title": "Software Developers",
+      "scope": "base occupation",
+      "annualPay": 105210,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 105210,
+      "publishedHourly25": 50.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151252.htm"
+    },
+    "cybersecurity-analyst": {
+      "socCode": "15-1212",
+      "title": "Information Security Analysts",
+      "scope": "base occupation",
+      "annualPay": 97810,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 97810,
+      "publishedHourly25": 47.03,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151212.htm"
+    },
+    "network-technician": {
+      "socCode": "15-1231",
+      "title": "Computer Network Support Specialists",
+      "scope": "base occupation",
+      "annualPay": 58240,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58240,
+      "publishedHourly25": 28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151231.htm"
+    },
+    "data-analyst": {
+      "socCode": "15-2051",
+      "title": "Data Scientists",
+      "scope": "base occupation",
+      "annualPay": 85660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 85660,
+      "publishedHourly25": 41.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes152051.htm"
+    },
+    "ux-designer": {
+      "socCode": "15-1255",
+      "title": "Web and Digital Interface Designers",
+      "scope": "base occupation",
+      "annualPay": 73290,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 73290,
+      "publishedHourly25": 35.24,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151255.htm"
+    },
+    "project-coordinator": {
+      "socCode": "13-1082",
+      "title": "Project Management Specialists",
+      "scope": "base occupation",
+      "annualPay": 78440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 78440,
+      "publishedHourly25": 37.71,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131082.htm"
+    },
+    "operations-manager": {
+      "socCode": "11-1021",
+      "title": "General and Operations Managers",
+      "scope": "base occupation",
+      "annualPay": 72320,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 72320,
+      "publishedHourly25": 34.77,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes111021.htm"
+    },
+    "marketing-specialist": {
+      "socCode": "13-1161",
+      "title": "Market Research Analysts and Marketing Specialists",
+      "scope": "base occupation",
+      "annualPay": 58350,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58350,
+      "publishedHourly25": 28.05,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131161.htm"
+    },
+    "human-resources-assistant": {
+      "socCode": "43-4161",
+      "title": "Human Resources Assistants, Except Payroll and Timekeeping",
+      "scope": "base occupation",
+      "annualPay": 44030,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 44030,
+      "publishedHourly25": 21.17,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes434161.htm"
+    },
+    "sales-representative": {
+      "socCode": "41-4012",
+      "title": "Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products",
+      "scope": "base occupation",
+      "annualPay": 50470,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 50470,
+      "publishedHourly25": 24.27,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes414012.htm"
+    },
+    "accountant": {
+      "socCode": "13-2011",
+      "title": "Accountants and Auditors",
+      "scope": "base occupation",
+      "annualPay": 67020,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 67020,
+      "publishedHourly25": 32.22,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132011.htm"
+    },
+    "financial-analyst": {
+      "socCode": "13-2051",
+      "title": "Financial and Investment Analysts",
+      "scope": "base occupation",
+      "annualPay": 79290,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79290,
+      "publishedHourly25": 38.12,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132051.htm"
+    },
+    "loan-officer": {
+      "socCode": "13-2072",
+      "title": "Loan Officers",
+      "scope": "base occupation",
+      "annualPay": 52730,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 52730,
+      "publishedHourly25": 25.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132072.htm"
+    },
+    "tax-specialist": {
+      "socCode": "13-2081",
+      "title": "Tax Examiners and Collectors, and Revenue Agents",
+      "scope": "base occupation",
+      "annualPay": 49450,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 49450,
+      "publishedHourly25": 23.77,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132081.htm"
+    },
+    "insurance-underwriter": {
+      "socCode": "13-2053",
+      "title": "Insurance Underwriters",
+      "scope": "base occupation",
+      "annualPay": 64620,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64620,
+      "publishedHourly25": 31.07,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132053.htm"
+    },
+    "civil-engineering-technician": {
+      "socCode": "17-3022",
+      "title": "Civil Engineering Technologists and Technicians",
+      "scope": "base occupation",
+      "annualPay": 51490,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 51490,
+      "publishedHourly25": 24.76,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes173022.htm"
+    },
+    "mechanical-designer": {
+      "socCode": "17-3013",
+      "title": "Mechanical Drafters",
+      "scope": "base occupation",
+      "annualPay": 58080,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58080,
+      "publishedHourly25": 27.93,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes173013.htm"
+    },
+    "electrical-engineering-technician": {
+      "socCode": "17-3023",
+      "title": "Electrical and Electronic Engineering Technologists and Technicians",
+      "scope": "base occupation",
+      "annualPay": 61610,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 61610,
+      "publishedHourly25": 29.62,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes173023.htm"
+    },
+    "environmental-engineer": {
+      "socCode": "17-2081",
+      "title": "Environmental Engineers",
+      "scope": "base occupation",
+      "annualPay": 83570,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 83570,
+      "publishedHourly25": 40.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172081.htm"
+    },
+    "quality-engineer": {
+      "socCode": "17-2112",
+      "title": "Industrial Engineers",
+      "scope": "base occupation",
+      "annualPay": 83600,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 83600,
+      "publishedHourly25": 40.19,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172112.htm"
+    },
+    "elementary-teacher": {
+      "socCode": "25-2021",
+      "title": "Elementary School Teachers, Except Special Education",
+      "scope": "base occupation",
+      "annualPay": 57710,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 57710,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252021.htm"
+    },
+    "school-counselor": {
+      "socCode": "21-1012",
+      "title": "Educational, Guidance, and Career Counselors and Advisors",
+      "scope": "base occupation",
+      "annualPay": 51270,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 51270,
+      "publishedHourly25": 24.65,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211012.htm"
+    },
+    "instructional-designer": {
+      "socCode": "25-9031",
+      "title": "Instructional Coordinators",
+      "scope": "base occupation",
+      "annualPay": 60780,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 60780,
+      "publishedHourly25": 29.22,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes259031.htm"
+    },
+    "special-education-teacher": {
+      "socCode": "25-2058",
+      "title": "Special Education Teachers, Secondary School",
+      "scope": "base occupation",
+      "annualPay": 60180,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 60180,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252058.htm"
+    },
+    "graphic-designer": {
+      "socCode": "27-1024",
+      "title": "Graphic Designers",
+      "scope": "base occupation",
+      "annualPay": 49040,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 49040,
+      "publishedHourly25": 23.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes271024.htm"
+    },
+    "video-editor": {
+      "socCode": "27-4032",
+      "title": "Film and Video Editors",
+      "scope": "base occupation",
+      "annualPay": 52720,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 52720,
+      "publishedHourly25": 25.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes274032.htm"
+    },
+    "journalist": {
+      "socCode": "27-3023",
+      "title": "News Analysts, Reporters, and Journalists",
+      "scope": "base occupation",
+      "annualPay": 45370,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45370,
+      "publishedHourly25": 21.81,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes273023.htm"
+    },
+    "social-media-manager": {
+      "socCode": "27-3031",
+      "title": "Public Relations Specialists",
+      "scope": "base occupation",
+      "annualPay": 56260,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 56260,
+      "publishedHourly25": 27.05,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes273031.htm"
+    },
+    "animator": {
+      "socCode": "27-1014",
+      "title": "Special Effects Artists and Animators",
+      "scope": "base occupation",
+      "annualPay": 75490,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 75490,
+      "publishedHourly25": 36.29,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes271014.htm"
+    },
+    "hotel-manager": {
+      "socCode": "11-9081",
+      "title": "Lodging Managers",
+      "scope": "base occupation",
+      "annualPay": 49530,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 49530,
+      "publishedHourly25": 23.81,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119081.htm"
+    },
+    "event-planner": {
+      "socCode": "13-1121",
+      "title": "Meeting, Convention, and Event Planners",
+      "scope": "base occupation",
+      "annualPay": 46970,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46970,
+      "publishedHourly25": 22.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131121.htm"
+    },
+    "chef": {
+      "socCode": "35-1011",
+      "title": "Chefs and Head Cooks",
+      "scope": "base occupation",
+      "annualPay": 48440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48440,
+      "publishedHourly25": 23.29,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes351011.htm"
+    },
+    "travel-advisor": {
+      "socCode": "41-3041",
+      "title": "Travel Agents",
+      "scope": "base occupation",
+      "annualPay": 41950,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41950,
+      "publishedHourly25": 20.17,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes413041.htm"
+    },
+    "restaurant-supervisor": {
+      "socCode": "35-1012",
+      "title": "First-Line Supervisors of Food Preparation and Serving Workers",
+      "scope": "base occupation",
+      "annualPay": 35980,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35980,
+      "publishedHourly25": 17.3,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes351012.htm"
+    },
+    "social-worker": {
+      "socCode": "21-1021",
+      "title": "Child, Family, and School Social Workers",
+      "scope": "base occupation",
+      "annualPay": 48270,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48270,
+      "publishedHourly25": 23.21,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211021.htm"
+    },
+    "substance-abuse-counselor": {
+      "socCode": "21-1018",
+      "title": "Substance Abuse, Behavioral Disorder, and Mental Health Counselors",
+      "scope": "broader occupation",
+      "annualPay": 47100,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47100,
+      "publishedHourly25": 22.65,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211018.htm"
+    },
+    "community-outreach-specialist": {
+      "socCode": "21-1093",
+      "title": "Social and Human Service Assistants",
+      "scope": "base occupation",
+      "annualPay": 38150,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38150,
+      "publishedHourly25": 18.34,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211093.htm"
+    },
+    "childcare-director": {
+      "socCode": "11-9031",
+      "title": "Education and Childcare Administrators, Preschool and Daycare",
+      "scope": "base occupation",
+      "annualPay": 47040,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47040,
+      "publishedHourly25": 22.62,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119031.htm"
+    },
+    "case-manager": {
+      "socCode": "21-1022",
+      "title": "Healthcare Social Workers",
+      "scope": "base occupation",
+      "annualPay": 56710,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 56710,
+      "publishedHourly25": 27.27,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211022.htm"
+    },
+    "city-planner": {
+      "socCode": "19-3051",
+      "title": "Urban and Regional Planners",
+      "scope": "base occupation",
+      "annualPay": 72020,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 72020,
+      "publishedHourly25": 34.63,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193051.htm"
+    },
+    "public-health-inspector": {
+      "socCode": "19-5011",
+      "title": "Occupational Health and Safety Specialists",
+      "scope": "base occupation",
+      "annualPay": 69560,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 69560,
+      "publishedHourly25": 33.44,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes195011.htm"
+    },
+    "emergency-dispatcher": {
+      "socCode": "43-5031",
+      "title": "Public Safety Telecommunicators",
+      "scope": "base occupation",
+      "annualPay": 45210,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45210,
+      "publishedHourly25": 21.74,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes435031.htm"
+    },
+    "policy-analyst": {
+      "socCode": "19-3094",
+      "title": "Political Scientists",
+      "scope": "base occupation",
+      "annualPay": 114030,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 114030,
+      "publishedHourly25": 54.82,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193094.htm"
+    },
+    "parks-program-coordinator": {
+      "socCode": "39-9032",
+      "title": "Recreation Workers",
+      "scope": "base occupation",
+      "annualPay": 31780,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 31780,
+      "publishedHourly25": 15.28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes399032.htm"
+    },
+    "police-officer": {
+      "socCode": "33-3051",
+      "title": "Police and Sheriff's Patrol Officers",
+      "scope": "base occupation",
+      "annualPay": 59290,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 59290,
+      "publishedHourly25": 28.5,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333051.htm"
+    },
+    "firefighter": {
+      "socCode": "33-2011",
+      "title": "Firefighters",
+      "scope": "base occupation",
+      "annualPay": 44490,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 44490,
+      "publishedHourly25": 21.39,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes332011.htm"
+    },
+    "emt": {
+      "socCode": "29-2042",
+      "title": "Emergency Medical Technicians",
+      "scope": "base occupation",
+      "annualPay": 37960,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37960,
+      "publishedHourly25": 18.25,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes292042.htm"
+    },
+    "paramedic": {
+      "socCode": "29-2043",
+      "title": "Paramedics",
+      "scope": "base occupation",
+      "annualPay": 49660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 49660,
+      "publishedHourly25": 23.88,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes292043.htm"
+    },
+    "electrician": {
+      "socCode": "47-2111",
+      "title": "Electricians",
+      "scope": "base occupation",
+      "annualPay": 49430,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 49430,
+      "publishedHourly25": 23.76,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472111.htm"
+    },
+    "plumber": {
+      "socCode": "47-2152",
+      "title": "Plumbers, Pipefitters, and Steamfitters",
+      "scope": "base occupation",
+      "annualPay": 50190,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 50190,
+      "publishedHourly25": 24.13,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472152.htm"
+    },
+    "hvac-technician": {
+      "socCode": "49-9021",
+      "title": "Heating, Air Conditioning, and Refrigeration Mechanics and Installers",
+      "scope": "base occupation",
+      "annualPay": 48360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48360,
+      "publishedHourly25": 23.25,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499021.htm"
+    },
+    "welder": {
+      "socCode": "51-4121",
+      "title": "Welders, Cutters, Solderers, and Brazers",
+      "scope": "base occupation",
+      "annualPay": 46790,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46790,
+      "publishedHourly25": 22.5,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes514121.htm"
+    },
+    "carpenter": {
+      "socCode": "47-2031",
+      "title": "Carpenters",
+      "scope": "base occupation",
+      "annualPay": 48510,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48510,
+      "publishedHourly25": 23.32,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472031.htm"
+    },
+    "auto-mechanic": {
+      "socCode": "49-3023",
+      "title": "Automotive Service Technicians and Mechanics",
+      "scope": "base occupation",
+      "annualPay": 38900,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38900,
+      "publishedHourly25": 18.7,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493023.htm"
+    },
+    "diesel-mechanic": {
+      "socCode": "49-3031",
+      "title": "Bus and Truck Mechanics and Diesel Engine Specialists",
+      "scope": "base occupation",
+      "annualPay": 50540,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 50540,
+      "publishedHourly25": 24.3,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493031.htm"
+    },
+    "machinist": {
+      "socCode": "51-4041",
+      "title": "Machinists",
+      "scope": "base occupation",
+      "annualPay": 47570,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47570,
+      "publishedHourly25": 22.87,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes514041.htm"
+    },
+    "construction-manager": {
+      "socCode": "11-9021",
+      "title": "Construction Managers",
+      "scope": "base occupation",
+      "annualPay": 88550,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 88550,
+      "publishedHourly25": 42.57,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119021.htm"
+    },
+    "architect": {
+      "socCode": "17-1011",
+      "title": "Architects, Except Landscape and Naval",
+      "scope": "base occupation",
+      "annualPay": 77960,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 77960,
+      "publishedHourly25": 37.48,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes171011.htm"
+    },
+    "physician": {
+      "socCode": "29-1215",
+      "title": "Family Medicine Physicians",
+      "scope": "base occupation",
+      "annualPay": 162420,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 162420,
+      "publishedHourly25": 78.09,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291215.htm"
+    },
+    "dentist": {
+      "socCode": "29-1021",
+      "title": "Dentists, General",
+      "scope": "base occupation",
+      "annualPay": 125710,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 125710,
+      "publishedHourly25": 60.44,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291021.htm"
+    },
+    "pharmacist": {
+      "socCode": "29-1051",
+      "title": "Pharmacists",
+      "scope": "base occupation",
+      "annualPay": 129380,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 129380,
+      "publishedHourly25": 62.2,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291051.htm"
+    },
+    "physical-therapist": {
+      "socCode": "29-1123",
+      "title": "Physical Therapists",
+      "scope": "base occupation",
+      "annualPay": 86160,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 86160,
+      "publishedHourly25": 41.42,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291123.htm"
+    },
+    "veterinarian": {
+      "socCode": "29-1131",
+      "title": "Veterinarians",
+      "scope": "base occupation",
+      "annualPay": 101460,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 101460,
+      "publishedHourly25": 48.78,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291131.htm"
+    },
+    "veterinary-technician": {
+      "socCode": "29-2056",
+      "title": "Veterinary Technologists and Technicians",
+      "scope": "base occupation",
+      "annualPay": 38910,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38910,
+      "publishedHourly25": 18.71,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes292056.htm"
+    },
+    "farmer": {
+      "socCode": "11-9013",
+      "title": "Farmers, Ranchers, and Other Agricultural Managers",
+      "scope": "base occupation",
+      "annualPay": 66300,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 66300,
+      "publishedHourly25": 31.87,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119013.htm"
+    },
+    "pilot": {
+      "socCode": "53-2012",
+      "title": "Commercial Pilots",
+      "scope": "base occupation",
+      "annualPay": 84540,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 84540,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes532012.htm"
+    },
+    "truck-driver": {
+      "socCode": "53-3032",
+      "title": "Heavy and Tractor-Trailer Truck Drivers",
+      "scope": "base occupation",
+      "annualPay": 47960,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47960,
+      "publishedHourly25": 23.06,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes533032.htm"
+    },
+    "cosmetologist": {
+      "socCode": "39-5012",
+      "title": "Hairdressers, Hairstylists, and Cosmetologists",
+      "scope": "base occupation",
+      "annualPay": 30120,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 30120,
+      "publishedHourly25": 14.48,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes395012.htm"
+    },
+    "lawyer": {
+      "socCode": "23-1011",
+      "title": "Lawyers",
+      "scope": "base occupation",
+      "annualPay": 102990,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 102990,
+      "publishedHourly25": 49.51,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes231011.htm"
+    },
+    "civil-engineer": {
+      "socCode": "17-2051",
+      "title": "Civil Engineers",
+      "scope": "base occupation",
+      "annualPay": 79930,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79930,
+      "publishedHourly25": 38.43,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172051.htm"
+    },
+    "mechanical-engineer": {
+      "socCode": "17-2141",
+      "title": "Mechanical Engineers",
+      "scope": "base occupation",
+      "annualPay": 84130,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 84130,
+      "publishedHourly25": 40.45,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172141.htm"
+    },
+    "psychologist": {
+      "socCode": "19-3033",
+      "title": "Clinical and Counseling Psychologists",
+      "scope": "base occupation",
+      "annualPay": 73210,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 73210,
+      "publishedHourly25": 35.2,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193033.htm"
+    },
+    "high-school-teacher": {
+      "socCode": "25-2031",
+      "title": "Secondary School Teachers, Except Special and Career/Technical Education",
+      "scope": "base occupation",
+      "annualPay": 59980,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 59980,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252031.htm"
+    },
+    "athletic-trainer": {
+      "socCode": "29-9091",
+      "title": "Athletic Trainers",
+      "scope": "base occupation",
+      "annualPay": 55130,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 55130,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes299091.htm"
+    },
+    "soc-27-2011-00": {
+      "socCode": "27-2011",
+      "title": "Actors",
+      "scope": "base occupation",
+      "annualPay": 42307,
+      "method": "hourly-25th-times-2080",
+      "publishedAnnual25": "*",
+      "publishedHourly25": 20.34,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272011.htm"
+    },
+    "soc-15-2011-00": {
+      "socCode": "15-2011",
+      "title": "Actuaries",
+      "scope": "base occupation",
+      "annualPay": 97680,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 97680,
+      "publishedHourly25": 46.96,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes152011.htm"
+    },
+    "soc-29-1291-00": {
+      "socCode": "29-1291",
+      "title": "Acupuncturists",
+      "scope": "base occupation",
+      "annualPay": 55380,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 55380,
+      "publishedHourly25": 26.63,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291291.htm"
+    },
+    "soc-29-1141-01": {
+      "socCode": "29-1141",
+      "title": "Registered Nurses",
+      "scope": "broader occupation",
+      "annualPay": 80330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 80330,
+      "publishedHourly25": 38.62,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291141.htm"
+    },
+    "soc-25-2059-01": {
+      "socCode": "25-2059",
+      "title": "Special Education Teachers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 60930,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 60930,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252059.htm"
+    },
+    "soc-23-1021-00": {
+      "socCode": "23-1021",
+      "title": "Administrative Law Judges, Adjudicators, and Hearing Officers",
+      "scope": "base occupation",
+      "annualPay": 81140,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 81140,
+      "publishedHourly25": 39.01,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes231021.htm"
+    },
+    "soc-25-3011-00": {
+      "socCode": "25-3011",
+      "title": "Adult Basic Education, Adult Secondary Education, and English as a Second Language Instructors",
+      "scope": "base occupation",
+      "annualPay": 49100,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 49100,
+      "publishedHourly25": 23.61,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes253011.htm"
+    },
+    "soc-41-3011-00": {
+      "socCode": "41-3011",
+      "title": "Advertising Sales Agents",
+      "scope": "base occupation",
+      "annualPay": 47020,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47020,
+      "publishedHourly25": 22.61,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes413011.htm"
+    },
+    "soc-17-2011-00": {
+      "socCode": "17-2011",
+      "title": "Aerospace Engineers",
+      "scope": "base occupation",
+      "annualPay": 106110,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 106110,
+      "publishedHourly25": 51.02,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172011.htm"
+    },
+    "soc-17-2021-00": {
+      "socCode": "17-2021",
+      "title": "Agricultural Engineers",
+      "scope": "base occupation",
+      "annualPay": 82260,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82260,
+      "publishedHourly25": 39.55,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172021.htm"
+    },
+    "soc-45-2091-00": {
+      "socCode": "45-2091",
+      "title": "Agricultural Equipment Operators",
+      "scope": "base occupation",
+      "annualPay": 36810,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36810,
+      "publishedHourly25": 17.7,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes452091.htm"
+    },
+    "soc-45-2011-00": {
+      "socCode": "45-2011",
+      "title": "Agricultural Inspectors",
+      "scope": "base occupation",
+      "annualPay": 42330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 42330,
+      "publishedHourly25": 20.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes452011.htm"
+    },
+    "soc-53-2021-00": {
+      "socCode": "53-2021",
+      "title": "Air Traffic Controllers",
+      "scope": "base occupation",
+      "annualPay": 104520,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 104520,
+      "publishedHourly25": 50.25,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes532021.htm"
+    },
+    "soc-49-3011-00": {
+      "socCode": "49-3011",
+      "title": "Aircraft Mechanics and Service Technicians",
+      "scope": "base occupation",
+      "annualPay": 62630,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 62630,
+      "publishedHourly25": 30.11,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493011.htm"
+    },
+    "soc-39-3091-00": {
+      "socCode": "39-3091",
+      "title": "Amusement and Recreation Attendants",
+      "scope": "base occupation",
+      "annualPay": 27660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 27660,
+      "publishedHourly25": 13.3,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes393091.htm"
+    },
+    "soc-29-1211-00": {
+      "socCode": "29-1211",
+      "title": "Anesthesiologists",
+      "scope": "base occupation",
+      "annualPay": 207000,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 207000,
+      "publishedHourly25": 99.52,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291211.htm"
+    },
+    "soc-45-2021-00": {
+      "socCode": "45-2021",
+      "title": "Animal Breeders",
+      "scope": "base occupation",
+      "annualPay": 44320,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 44320,
+      "publishedHourly25": 21.31,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes452021.htm"
+    },
+    "soc-39-2021-00": {
+      "socCode": "39-2021",
+      "title": "Animal Caretakers",
+      "scope": "base occupation",
+      "annualPay": 29820,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 29820,
+      "publishedHourly25": 14.34,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes392021.htm"
+    },
+    "soc-33-9011-00": {
+      "socCode": "33-9011",
+      "title": "Animal Control Workers",
+      "scope": "base occupation",
+      "annualPay": 37750,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37750,
+      "publishedHourly25": 18.15,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes339011.htm"
+    },
+    "soc-19-1011-00": {
+      "socCode": "19-1011",
+      "title": "Animal Scientists",
+      "scope": "base occupation",
+      "annualPay": 49770,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 49770,
+      "publishedHourly25": 23.93,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191011.htm"
+    },
+    "soc-39-2011-00": {
+      "socCode": "39-2011",
+      "title": "Animal Trainers",
+      "scope": "base occupation",
+      "annualPay": 33740,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 33740,
+      "publishedHourly25": 16.22,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes392011.htm"
+    },
+    "soc-23-1022-00": {
+      "socCode": "23-1022",
+      "title": "Arbitrators, Mediators, and Conciliators",
+      "scope": "base occupation",
+      "annualPay": 57360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 57360,
+      "publishedHourly25": 27.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes231022.htm"
+    },
+    "soc-25-4011-00": {
+      "socCode": "25-4011",
+      "title": "Archivists",
+      "scope": "base occupation",
+      "annualPay": 50680,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 50680,
+      "publishedHourly25": 24.37,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes254011.htm"
+    },
+    "soc-27-1011-00": {
+      "socCode": "27-1011",
+      "title": "Art Directors",
+      "scope": "base occupation",
+      "annualPay": 82480,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82480,
+      "publishedHourly25": 39.65,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes271011.htm"
+    },
+    "soc-29-1129-01": {
+      "socCode": "29-1129",
+      "title": "Therapists, All Other",
+      "scope": "broader occupation",
+      "annualPay": 58850,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58850,
+      "publishedHourly25": 28.29,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291129.htm"
+    },
+    "soc-19-2011-00": {
+      "socCode": "19-2011",
+      "title": "Astronomers",
+      "scope": "base occupation",
+      "annualPay": 99920,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 99920,
+      "publishedHourly25": 48.04,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes192011.htm"
+    },
+    "soc-27-4011-00": {
+      "socCode": "27-4011",
+      "title": "Audio and Video Technicians",
+      "scope": "base occupation",
+      "annualPay": 46390,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46390,
+      "publishedHourly25": 22.3,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes274011.htm"
+    },
+    "soc-29-1181-00": {
+      "socCode": "29-1181",
+      "title": "Audiologists",
+      "scope": "base occupation",
+      "annualPay": 79340,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79340,
+      "publishedHourly25": 38.14,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291181.htm"
+    },
+    "soc-49-3021-00": {
+      "socCode": "49-3021",
+      "title": "Automotive Body and Related Repairers",
+      "scope": "base occupation",
+      "annualPay": 45750,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45750,
+      "publishedHourly25": 21.99,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493021.htm"
+    },
+    "soc-17-2141-02": {
+      "socCode": "17-2141",
+      "title": "Mechanical Engineers",
+      "scope": "broader occupation",
+      "annualPay": 84130,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 84130,
+      "publishedHourly25": 40.45,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172141.htm"
+    },
+    "soc-49-3022-00": {
+      "socCode": "49-3022",
+      "title": "Automotive Glass Installers and Repairers",
+      "scope": "base occupation",
+      "annualPay": 40110,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40110,
+      "publishedHourly25": 19.28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493022.htm"
+    },
+    "soc-53-6051-01": {
+      "socCode": "53-6051",
+      "title": "Transportation Inspectors",
+      "scope": "broader occupation",
+      "annualPay": 58780,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58780,
+      "publishedHourly25": 28.26,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes536051.htm"
+    },
+    "soc-49-2091-00": {
+      "socCode": "49-2091",
+      "title": "Avionics Technicians",
+      "scope": "base occupation",
+      "annualPay": 63900,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 63900,
+      "publishedHourly25": 30.72,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes492091.htm"
+    },
+    "soc-39-6011-00": {
+      "socCode": "39-6011",
+      "title": "Baggage Porters and Bellhops",
+      "scope": "base occupation",
+      "annualPay": 31200,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 31200,
+      "publishedHourly25": 15,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes396011.htm"
+    },
+    "soc-33-3011-00": {
+      "socCode": "33-3011",
+      "title": "Bailiffs",
+      "scope": "base occupation",
+      "annualPay": 43720,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43720,
+      "publishedHourly25": 21.02,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333011.htm"
+    },
+    "soc-51-3011-00": {
+      "socCode": "51-3011",
+      "title": "Bakers",
+      "scope": "base occupation",
+      "annualPay": 32660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 32660,
+      "publishedHourly25": 15.7,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes513011.htm"
+    },
+    "soc-39-5011-00": {
+      "socCode": "39-5011",
+      "title": "Barbers",
+      "scope": "base occupation",
+      "annualPay": 31570,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 31570,
+      "publishedHourly25": 15.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes395011.htm"
+    },
+    "soc-35-3023-01": {
+      "socCode": "35-3023",
+      "title": "Fast Food and Counter Workers",
+      "scope": "broader occupation",
+      "annualPay": 27700,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 27700,
+      "publishedHourly25": 13.32,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes353023.htm"
+    },
+    "soc-35-3011-00": {
+      "socCode": "35-3011",
+      "title": "Bartenders",
+      "scope": "base occupation",
+      "annualPay": 27400,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 27400,
+      "publishedHourly25": 13.17,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes353011.htm"
+    },
+    "soc-49-3091-00": {
+      "socCode": "49-3091",
+      "title": "Bicycle Repairers",
+      "scope": "base occupation",
+      "annualPay": 36360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36360,
+      "publishedHourly25": 17.48,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493091.htm"
+    },
+    "soc-43-3011-00": {
+      "socCode": "43-3011",
+      "title": "Bill and Account Collectors",
+      "scope": "base occupation",
+      "annualPay": 39010,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39010,
+      "publishedHourly25": 18.76,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes433011.htm"
+    },
+    "soc-43-3021-00": {
+      "socCode": "43-3021",
+      "title": "Billing and Posting Clerks",
+      "scope": "base occupation",
+      "annualPay": 42840,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 42840,
+      "publishedHourly25": 20.6,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes433021.htm"
+    },
+    "soc-19-1021-00": {
+      "socCode": "19-1021",
+      "title": "Biochemists and Biophysicists",
+      "scope": "base occupation",
+      "annualPay": 95000,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 95000,
+      "publishedHourly25": 45.67,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191021.htm"
+    },
+    "soc-51-8099-01": {
+      "socCode": "51-8099",
+      "title": "Plant and System Operators, All Other",
+      "scope": "broader occupation",
+      "annualPay": 48900,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48900,
+      "publishedHourly25": 23.51,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes518099.htm"
+    },
+    "soc-11-3051-03": {
+      "socCode": "11-3051",
+      "title": "Industrial Production Managers",
+      "scope": "broader occupation",
+      "annualPay": 98160,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 98160,
+      "publishedHourly25": 47.19,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes113051.htm"
+    },
+    "soc-15-2099-01": {
+      "socCode": "15-2099",
+      "title": "Mathematical Science Occupations, All Other",
+      "scope": "broader occupation",
+      "annualPay": 60750,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 60750,
+      "publishedHourly25": 29.21,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes152099.htm"
+    },
+    "soc-19-1029-04": {
+      "socCode": "19-1029",
+      "title": "Biological Scientists, All Other",
+      "scope": "broader occupation",
+      "annualPay": 76800,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 76800,
+      "publishedHourly25": 36.92,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191029.htm"
+    },
+    "soc-51-8013-03": {
+      "socCode": "51-8013",
+      "title": "Power Plant Operators",
+      "scope": "broader occupation",
+      "annualPay": 79690,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79690,
+      "publishedHourly25": 38.31,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes518013.htm"
+    },
+    "soc-15-2041-01": {
+      "socCode": "15-2041",
+      "title": "Statisticians",
+      "scope": "broader occupation",
+      "annualPay": 82220,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82220,
+      "publishedHourly25": 39.53,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes152041.htm"
+    },
+    "soc-15-1299-07": {
+      "socCode": "15-1299",
+      "title": "Computer Occupations, All Other",
+      "scope": "broader occupation",
+      "annualPay": 79370,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79370,
+      "publishedHourly25": 38.16,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151299.htm"
+    },
+    "soc-47-2011-00": {
+      "socCode": "47-2011",
+      "title": "Boilermakers",
+      "scope": "base occupation",
+      "annualPay": 64760,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64760,
+      "publishedHourly25": 31.13,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472011.htm"
+    },
+    "soc-47-2021-00": {
+      "socCode": "47-2021",
+      "title": "Brickmasons and Blockmasons",
+      "scope": "base occupation",
+      "annualPay": 51110,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 51110,
+      "publishedHourly25": 24.57,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472021.htm"
+    },
+    "soc-53-6011-00": {
+      "socCode": "53-6011",
+      "title": "Bridge and Lock Tenders",
+      "scope": "base occupation",
+      "annualPay": 38640,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38640,
+      "publishedHourly25": 18.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes536011.htm"
+    },
+    "soc-27-4012-00": {
+      "socCode": "27-4012",
+      "title": "Broadcast Technicians",
+      "scope": "base occupation",
+      "annualPay": 40320,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40320,
+      "publishedHourly25": 19.38,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes274012.htm"
+    },
+    "soc-43-4011-00": {
+      "socCode": "43-4011",
+      "title": "Brokerage Clerks",
+      "scope": "base occupation",
+      "annualPay": 58620,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58620,
+      "publishedHourly25": 28.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes434011.htm"
+    },
+    "soc-13-2031-00": {
+      "socCode": "13-2031",
+      "title": "Budget Analysts",
+      "scope": "base occupation",
+      "annualPay": 75320,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 75320,
+      "publishedHourly25": 36.21,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132031.htm"
+    },
+    "soc-53-3051-00": {
+      "socCode": "53-3051",
+      "title": "Bus Drivers, School",
+      "scope": "base occupation",
+      "annualPay": 38650,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38650,
+      "publishedHourly25": 18.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes533051.htm"
+    },
+    "soc-15-2051-01": {
+      "socCode": "15-2051",
+      "title": "Data Scientists",
+      "scope": "broader occupation",
+      "annualPay": 85660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 85660,
+      "publishedHourly25": 41.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes152051.htm"
+    },
+    "soc-25-1011-00": {
+      "socCode": "25-1011",
+      "title": "Business Teachers, Postsecondary",
+      "scope": "base occupation",
+      "annualPay": 64150,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64150,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes251011.htm"
+    },
+    "soc-51-3021-00": {
+      "socCode": "51-3021",
+      "title": "Butchers and Meat Cutters",
+      "scope": "base occupation",
+      "annualPay": 35510,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35510,
+      "publishedHourly25": 17.07,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes513021.htm"
+    },
+    "soc-49-9061-00": {
+      "socCode": "49-9061",
+      "title": "Camera and Photographic Equipment Repairers",
+      "scope": "base occupation",
+      "annualPay": 41630,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41630,
+      "publishedHourly25": 20.02,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499061.htm"
+    },
+    "soc-25-2023-00": {
+      "socCode": "25-2023",
+      "title": "Career/Technical Education Teachers, Middle School",
+      "scope": "base occupation",
+      "annualPay": 58690,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58690,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252023.htm"
+    },
+    "soc-25-2032-00": {
+      "socCode": "25-2032",
+      "title": "Career/Technical Education Teachers, Secondary School",
+      "scope": "base occupation",
+      "annualPay": 60590,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 60590,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252032.htm"
+    },
+    "soc-43-5011-00": {
+      "socCode": "43-5011",
+      "title": "Cargo and Freight Agents",
+      "scope": "base occupation",
+      "annualPay": 45710,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45710,
+      "publishedHourly25": 21.98,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes435011.htm"
+    },
+    "soc-47-2041-00": {
+      "socCode": "47-2041",
+      "title": "Carpet Installers",
+      "scope": "base occupation",
+      "annualPay": 41970,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41970,
+      "publishedHourly25": 20.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472041.htm"
+    },
+    "soc-41-2011-00": {
+      "socCode": "41-2011",
+      "title": "Cashiers",
+      "scope": "base occupation",
+      "annualPay": 28720,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 28720,
+      "publishedHourly25": 13.81,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes412011.htm"
+    },
+    "soc-17-2041-00": {
+      "socCode": "17-2041",
+      "title": "Chemical Engineers",
+      "scope": "base occupation",
+      "annualPay": 97820,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 97820,
+      "publishedHourly25": 47.03,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172041.htm"
+    },
+    "soc-19-4031-00": {
+      "socCode": "19-4031",
+      "title": "Chemical Technicians",
+      "scope": "base occupation",
+      "annualPay": 48530,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48530,
+      "publishedHourly25": 23.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes194031.htm"
+    },
+    "soc-19-2031-00": {
+      "socCode": "19-2031",
+      "title": "Chemists",
+      "scope": "base occupation",
+      "annualPay": 69460,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 69460,
+      "publishedHourly25": 33.39,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes192031.htm"
+    },
+    "soc-11-1011-00": {
+      "socCode": "11-1011",
+      "title": "Chief Executives",
+      "scope": "base occupation",
+      "annualPay": 129540,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 129540,
+      "publishedHourly25": 62.28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes111011.htm"
+    },
+    "soc-39-9011-00": {
+      "socCode": "39-9011",
+      "title": "Childcare Workers",
+      "scope": "base occupation",
+      "annualPay": 29360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 29360,
+      "publishedHourly25": 14.12,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes399011.htm"
+    },
+    "soc-29-1011-00": {
+      "socCode": "29-1011",
+      "title": "Chiropractors",
+      "scope": "base occupation",
+      "annualPay": 60070,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 60070,
+      "publishedHourly25": 28.88,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291011.htm"
+    },
+    "soc-27-2032-00": {
+      "socCode": "27-2032",
+      "title": "Choreographers",
+      "scope": "base occupation",
+      "annualPay": 41600,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41600,
+      "publishedHourly25": 20,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272032.htm"
+    },
+    "soc-21-2011-00": {
+      "socCode": "21-2011",
+      "title": "Clergy",
+      "scope": "base occupation",
+      "annualPay": 48260,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48260,
+      "publishedHourly25": 23.2,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes212011.htm"
+    },
+    "soc-15-2051-02": {
+      "socCode": "15-2051",
+      "title": "Data Scientists",
+      "scope": "broader occupation",
+      "annualPay": 85660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 85660,
+      "publishedHourly25": 41.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes152051.htm"
+    },
+    "soc-27-2022-00": {
+      "socCode": "27-2022",
+      "title": "Coaches and Scouts",
+      "scope": "base occupation",
+      "annualPay": 35330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35330,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272022.htm"
+    },
+    "soc-49-9092-00": {
+      "socCode": "49-9092",
+      "title": "Commercial Divers",
+      "scope": "base occupation",
+      "annualPay": 54810,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 54810,
+      "publishedHourly25": 26.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499092.htm"
+    },
+    "soc-21-1094-00": {
+      "socCode": "21-1094",
+      "title": "Community Health Workers",
+      "scope": "base occupation",
+      "annualPay": 45640,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45640,
+      "publishedHourly25": 21.94,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211094.htm"
+    },
+    "soc-11-9199-02": {
+      "socCode": "11-9199",
+      "title": "Managers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 102880,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 102880,
+      "publishedHourly25": 49.46,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119199.htm"
+    },
+    "soc-13-1041-00": {
+      "socCode": "13-1041",
+      "title": "Compliance Officers",
+      "scope": "base occupation",
+      "annualPay": 61280,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 61280,
+      "publishedHourly25": 29.46,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131041.htm"
+    },
+    "soc-15-1241-00": {
+      "socCode": "15-1241",
+      "title": "Computer Network Architects",
+      "scope": "base occupation",
+      "annualPay": 104620,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 104620,
+      "publishedHourly25": 50.3,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151241.htm"
+    },
+    "soc-15-1251-00": {
+      "socCode": "15-1251",
+      "title": "Computer Programmers",
+      "scope": "base occupation",
+      "annualPay": 75850,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 75850,
+      "publishedHourly25": 36.47,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151251.htm"
+    },
+    "soc-15-1211-00": {
+      "socCode": "15-1211",
+      "title": "Computer Systems Analysts",
+      "scope": "base occupation",
+      "annualPay": 82860,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82860,
+      "publishedHourly25": 39.84,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151211.htm"
+    },
+    "soc-39-6012-00": {
+      "socCode": "39-6012",
+      "title": "Concierges",
+      "scope": "base occupation",
+      "annualPay": 35660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35660,
+      "publishedHourly25": 17.15,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes396012.htm"
+    },
+    "soc-47-2061-00": {
+      "socCode": "47-2061",
+      "title": "Construction Laborers",
+      "scope": "base occupation",
+      "annualPay": 38620,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38620,
+      "publishedHourly25": 18.57,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472061.htm"
+    },
+    "soc-53-7011-00": {
+      "socCode": "53-7011",
+      "title": "Conveyor Operators and Tenders",
+      "scope": "base occupation",
+      "annualPay": 38180,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38180,
+      "publishedHourly25": 18.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes537011.htm"
+    },
+    "soc-35-2011-00": {
+      "socCode": "35-2011",
+      "title": "Cooks, Fast Food",
+      "scope": "base occupation",
+      "annualPay": 27260,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 27260,
+      "publishedHourly25": 13.11,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes352011.htm"
+    },
+    "soc-35-2012-00": {
+      "socCode": "35-2012",
+      "title": "Cooks, Institution and Cafeteria",
+      "scope": "base occupation",
+      "annualPay": 32440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 32440,
+      "publishedHourly25": 15.6,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes352012.htm"
+    },
+    "soc-35-2013-00": {
+      "socCode": "35-2013",
+      "title": "Cooks, Private Household",
+      "scope": "base occupation",
+      "annualPay": 40630,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40630,
+      "publishedHourly25": 19.54,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes352013.htm"
+    },
+    "soc-35-2014-00": {
+      "socCode": "35-2014",
+      "title": "Cooks, Restaurant",
+      "scope": "base occupation",
+      "annualPay": 34010,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34010,
+      "publishedHourly25": 16.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes352014.htm"
+    },
+    "soc-35-2015-00": {
+      "socCode": "35-2015",
+      "title": "Cooks, Short Order",
+      "scope": "base occupation",
+      "annualPay": 30610,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 30610,
+      "publishedHourly25": 14.71,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes352015.htm"
+    },
+    "soc-13-1041-06": {
+      "socCode": "13-1041",
+      "title": "Compliance Officers",
+      "scope": "broader occupation",
+      "annualPay": 61280,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 61280,
+      "publishedHourly25": 29.46,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131041.htm"
+    },
+    "soc-33-3012-00": {
+      "socCode": "33-3012",
+      "title": "Correctional Officers and Jailers",
+      "scope": "base occupation",
+      "annualPay": 48640,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48640,
+      "publishedHourly25": 23.38,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333012.htm"
+    },
+    "soc-43-4021-00": {
+      "socCode": "43-4021",
+      "title": "Correspondence Clerks",
+      "scope": "base occupation",
+      "annualPay": 38610,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38610,
+      "publishedHourly25": 18.56,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes434021.htm"
+    },
+    "soc-13-1051-00": {
+      "socCode": "13-1051",
+      "title": "Cost Estimators",
+      "scope": "base occupation",
+      "annualPay": 61150,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 61150,
+      "publishedHourly25": 29.4,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131051.htm"
+    },
+    "soc-39-3092-00": {
+      "socCode": "39-3092",
+      "title": "Costume Attendants",
+      "scope": "base occupation",
+      "annualPay": 38610,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38610,
+      "publishedHourly25": 18.56,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes393092.htm"
+    },
+    "soc-41-2021-00": {
+      "socCode": "41-2021",
+      "title": "Counter and Rental Clerks",
+      "scope": "base occupation",
+      "annualPay": 35630,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35630,
+      "publishedHourly25": 17.13,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes412021.htm"
+    },
+    "soc-43-5021-00": {
+      "socCode": "43-5021",
+      "title": "Couriers and Messengers",
+      "scope": "base occupation",
+      "annualPay": 36070,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36070,
+      "publishedHourly25": 17.34,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes435021.htm"
+    },
+    "soc-27-1012-00": {
+      "socCode": "27-1012",
+      "title": "Craft Artists",
+      "scope": "base occupation",
+      "annualPay": 35020,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35020,
+      "publishedHourly25": 16.84,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes271012.htm"
+    },
+    "soc-53-7021-00": {
+      "socCode": "53-7021",
+      "title": "Crane and Tower Operators",
+      "scope": "base occupation",
+      "annualPay": 52600,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 52600,
+      "publishedHourly25": 25.29,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes537021.htm"
+    },
+    "soc-13-2041-00": {
+      "socCode": "13-2041",
+      "title": "Credit Analysts",
+      "scope": "base occupation",
+      "annualPay": 65210,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 65210,
+      "publishedHourly25": 31.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132041.htm"
+    },
+    "soc-13-2071-00": {
+      "socCode": "13-2071",
+      "title": "Credit Counselors",
+      "scope": "base occupation",
+      "annualPay": 45720,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45720,
+      "publishedHourly25": 21.98,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132071.htm"
+    },
+    "soc-29-1141-03": {
+      "socCode": "29-1141",
+      "title": "Registered Nurses",
+      "scope": "broader occupation",
+      "annualPay": 80330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 80330,
+      "publishedHourly25": 38.62,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291141.htm"
+    },
+    "soc-33-9091-00": {
+      "socCode": "33-9091",
+      "title": "Crossing Guards and Flaggers",
+      "scope": "base occupation",
+      "annualPay": 34430,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34430,
+      "publishedHourly25": 16.55,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes339091.htm"
+    },
+    "soc-25-4012-00": {
+      "socCode": "25-4012",
+      "title": "Curators",
+      "scope": "base occupation",
+      "annualPay": 48870,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48870,
+      "publishedHourly25": 23.49,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes254012.htm"
+    },
+    "soc-13-1041-08": {
+      "socCode": "13-1041",
+      "title": "Compliance Officers",
+      "scope": "broader occupation",
+      "annualPay": 61280,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 61280,
+      "publishedHourly25": 29.46,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131041.htm"
+    },
+    "soc-33-3051-04": {
+      "socCode": "33-3051",
+      "title": "Police and Sheriff's Patrol Officers",
+      "scope": "broader occupation",
+      "annualPay": 59290,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 59290,
+      "publishedHourly25": 28.5,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333051.htm"
+    },
+    "soc-51-9031-00": {
+      "socCode": "51-9031",
+      "title": "Cutters and Trimmers, Hand",
+      "scope": "base occupation",
+      "annualPay": 34050,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34050,
+      "publishedHourly25": 16.37,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes519031.htm"
+    },
+    "soc-27-2031-00": {
+      "socCode": "27-2031",
+      "title": "Dancers",
+      "scope": "base occupation",
+      "annualPay": 35838,
+      "method": "hourly-25th-times-2080",
+      "publishedAnnual25": "*",
+      "publishedHourly25": 17.23,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272031.htm"
+    },
+    "soc-43-9021-00": {
+      "socCode": "43-9021",
+      "title": "Data Entry Keyers",
+      "scope": "base occupation",
+      "annualPay": 35760,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35760,
+      "publishedHourly25": 17.19,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes439021.htm"
+    },
+    "soc-15-1243-01": {
+      "socCode": "15-1243",
+      "title": "Database Architects",
+      "scope": "broader occupation",
+      "annualPay": 109370,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 109370,
+      "publishedHourly25": 52.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151243.htm"
+    },
+    "soc-15-1242-00": {
+      "socCode": "15-1242",
+      "title": "Database Administrators",
+      "scope": "base occupation",
+      "annualPay": 79610,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79610,
+      "publishedHourly25": 38.28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151242.htm"
+    },
+    "soc-15-1243-00": {
+      "socCode": "15-1243",
+      "title": "Database Architects",
+      "scope": "base occupation",
+      "annualPay": 109370,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 109370,
+      "publishedHourly25": 52.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151243.htm"
+    },
+    "soc-41-9011-00": {
+      "socCode": "41-9011",
+      "title": "Demonstrators and Product Promoters",
+      "scope": "base occupation",
+      "annualPay": 35160,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35160,
+      "publishedHourly25": 16.9,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes419011.htm"
+    },
+    "soc-31-9091-00": {
+      "socCode": "31-9091",
+      "title": "Dental Assistants",
+      "scope": "base occupation",
+      "annualPay": 44340,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 44340,
+      "publishedHourly25": 21.32,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes319091.htm"
+    },
+    "soc-51-9081-00": {
+      "socCode": "51-9081",
+      "title": "Dental Laboratory Technicians",
+      "scope": "base occupation",
+      "annualPay": 40420,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40420,
+      "publishedHourly25": 19.43,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes519081.htm"
+    },
+    "soc-29-1213-00": {
+      "socCode": "29-1213",
+      "title": "Dermatologists",
+      "scope": "base occupation",
+      "annualPay": 139990,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 139990,
+      "publishedHourly25": 67.3,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291213.htm"
+    },
+    "soc-43-9031-00": {
+      "socCode": "43-9031",
+      "title": "Desktop Publishers",
+      "scope": "base occupation",
+      "annualPay": 43730,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43730,
+      "publishedHourly25": 21.02,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes439031.htm"
+    },
+    "soc-33-3021-00": {
+      "socCode": "33-3021",
+      "title": "Detectives and Criminal Investigators",
+      "scope": "base occupation",
+      "annualPay": 69330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 69330,
+      "publishedHourly25": 33.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333021.htm"
+    },
+    "soc-29-2051-00": {
+      "socCode": "29-2051",
+      "title": "Dietetic Technicians",
+      "scope": "base occupation",
+      "annualPay": 33880,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 33880,
+      "publishedHourly25": 16.29,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes292051.htm"
+    },
+    "soc-15-1299-06": {
+      "socCode": "15-1299",
+      "title": "Computer Occupations, All Other",
+      "scope": "broader occupation",
+      "annualPay": 79370,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79370,
+      "publishedHourly25": 38.16,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151299.htm"
+    },
+    "soc-21-2021-00": {
+      "socCode": "21-2021",
+      "title": "Directors, Religious Activities and Education",
+      "scope": "base occupation",
+      "annualPay": 44010,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 44010,
+      "publishedHourly25": 21.16,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes212021.htm"
+    },
+    "soc-27-2091-00": {
+      "socCode": "27-2091",
+      "title": "Disc Jockeys, Except Radio",
+      "scope": "base occupation",
+      "annualPay": 35173,
+      "method": "hourly-25th-times-2080",
+      "publishedAnnual25": "*",
+      "publishedHourly25": 16.91,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272091.htm"
+    },
+    "soc-35-9021-00": {
+      "socCode": "35-9021",
+      "title": "Dishwashers",
+      "scope": "base occupation",
+      "annualPay": 29690,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 29690,
+      "publishedHourly25": 14.27,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes359021.htm"
+    },
+    "soc-41-9091-00": {
+      "socCode": "41-9091",
+      "title": "Door-to-Door Sales Workers, News and Street Vendors, and Related Workers",
+      "scope": "base occupation",
+      "annualPay": 36470,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36470,
+      "publishedHourly25": 17.54,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes419091.htm"
+    },
+    "soc-53-7031-00": {
+      "socCode": "53-7031",
+      "title": "Dredge Operators",
+      "scope": "base occupation",
+      "annualPay": 46430,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46430,
+      "publishedHourly25": 22.32,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes537031.htm"
+    },
+    "soc-53-3031-00": {
+      "socCode": "53-3031",
+      "title": "Driver/Sales Workers",
+      "scope": "base occupation",
+      "annualPay": 30200,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 30200,
+      "publishedHourly25": 14.52,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes533031.htm"
+    },
+    "soc-19-3011-00": {
+      "socCode": "19-3011",
+      "title": "Economists",
+      "scope": "base occupation",
+      "annualPay": 89330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 89330,
+      "publishedHourly25": 42.95,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193011.htm"
+    },
+    "soc-27-3041-00": {
+      "socCode": "27-3041",
+      "title": "Editors",
+      "scope": "base occupation",
+      "annualPay": 57300,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 57300,
+      "publishedHourly25": 27.55,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes273041.htm"
+    },
+    "soc-17-2071-00": {
+      "socCode": "17-2071",
+      "title": "Electrical Engineers",
+      "scope": "base occupation",
+      "annualPay": 92830,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 92830,
+      "publishedHourly25": 44.63,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172071.htm"
+    },
+    "soc-39-4011-00": {
+      "socCode": "39-4011",
+      "title": "Embalmers",
+      "scope": "base occupation",
+      "annualPay": 48010,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48010,
+      "publishedHourly25": 23.08,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes394011.htm"
+    },
+    "soc-31-9099-02": {
+      "socCode": "31-9099",
+      "title": "Healthcare Support Workers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 39470,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39470,
+      "publishedHourly25": 18.98,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes319099.htm"
+    },
+    "soc-47-4011-01": {
+      "socCode": "47-4011",
+      "title": "Construction and Building Inspectors",
+      "scope": "broader occupation",
+      "annualPay": 58860,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58860,
+      "publishedHourly25": 28.3,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes474011.htm"
+    },
+    "soc-19-1041-00": {
+      "socCode": "19-1041",
+      "title": "Epidemiologists",
+      "scope": "base occupation",
+      "annualPay": 71090,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 71090,
+      "publishedHourly25": 34.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191041.htm"
+    },
+    "soc-51-6092-00": {
+      "socCode": "51-6092",
+      "title": "Fabric and Apparel Patternmakers",
+      "scope": "base occupation",
+      "annualPay": 42620,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 42620,
+      "publishedHourly25": 20.49,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes516092.htm"
+    },
+    "soc-11-3013-00": {
+      "socCode": "11-3013",
+      "title": "Facilities Managers",
+      "scope": "base occupation",
+      "annualPay": 82020,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82020,
+      "publishedHourly25": 39.43,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes113013.htm"
+    },
+    "soc-45-4021-00": {
+      "socCode": "45-4021",
+      "title": "Fallers",
+      "scope": "base occupation",
+      "annualPay": 41360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41360,
+      "publishedHourly25": 19.89,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes454021.htm"
+    },
+    "soc-13-1074-00": {
+      "socCode": "13-1074",
+      "title": "Farm Labor Contractors",
+      "scope": "base occupation",
+      "annualPay": 35720,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35720,
+      "publishedHourly25": 17.17,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131074.htm"
+    },
+    "soc-25-9021-00": {
+      "socCode": "25-9021",
+      "title": "Farm and Home Management Educators",
+      "scope": "base occupation",
+      "annualPay": 46990,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46990,
+      "publishedHourly25": 22.59,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes259021.htm"
+    },
+    "soc-45-2092-00": {
+      "socCode": "45-2092",
+      "title": "Farmworkers and Laborers, Crop, Nursery, and Greenhouse",
+      "scope": "base occupation",
+      "annualPay": 34320,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34320,
+      "publishedHourly25": 16.5,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes452092.htm"
+    },
+    "soc-45-2093-00": {
+      "socCode": "45-2093",
+      "title": "Farmworkers, Farm, Ranch, and Aquacultural Animals",
+      "scope": "base occupation",
+      "annualPay": 31020,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 31020,
+      "publishedHourly25": 14.91,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes452093.htm"
+    },
+    "soc-27-1022-00": {
+      "socCode": "27-1022",
+      "title": "Fashion Designers",
+      "scope": "base occupation",
+      "annualPay": 51940,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 51940,
+      "publishedHourly25": 24.97,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes271022.htm"
+    },
+    "soc-35-3023-00": {
+      "socCode": "35-3023",
+      "title": "Fast Food and Counter Workers",
+      "scope": "base occupation",
+      "annualPay": 27700,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 27700,
+      "publishedHourly25": 13.32,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes353023.htm"
+    },
+    "soc-47-4031-00": {
+      "socCode": "47-4031",
+      "title": "Fence Erectors",
+      "scope": "base occupation",
+      "annualPay": 40400,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40400,
+      "publishedHourly25": 19.43,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes474031.htm"
+    },
+    "soc-43-4071-00": {
+      "socCode": "43-4071",
+      "title": "File Clerks",
+      "scope": "base occupation",
+      "annualPay": 36420,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36420,
+      "publishedHourly25": 17.51,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes434071.htm"
+    },
+    "soc-13-2061-00": {
+      "socCode": "13-2061",
+      "title": "Financial Examiners",
+      "scope": "base occupation",
+      "annualPay": 70660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 70660,
+      "publishedHourly25": 33.97,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132061.htm"
+    },
+    "soc-11-3031-00": {
+      "socCode": "11-3031",
+      "title": "Financial Managers",
+      "scope": "base occupation",
+      "annualPay": 125490,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 125490,
+      "publishedHourly25": 60.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes113031.htm"
+    },
+    "soc-33-2021-00": {
+      "socCode": "33-2021",
+      "title": "Fire Inspectors and Investigators",
+      "scope": "base occupation",
+      "annualPay": 58690,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58690,
+      "publishedHourly25": 28.22,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes332021.htm"
+    },
+    "soc-45-1011-00": {
+      "socCode": "45-1011",
+      "title": "First-Line Supervisors of Farming, Fishing, and Forestry Workers",
+      "scope": "base occupation",
+      "annualPay": 46670,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46670,
+      "publishedHourly25": 22.44,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes451011.htm"
+    },
+    "soc-37-1011-00": {
+      "socCode": "37-1011",
+      "title": "First-Line Supervisors of Housekeeping and Janitorial Workers",
+      "scope": "base occupation",
+      "annualPay": 40100,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40100,
+      "publishedHourly25": 19.28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes371011.htm"
+    },
+    "soc-37-1012-00": {
+      "socCode": "37-1012",
+      "title": "First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers",
+      "scope": "base occupation",
+      "annualPay": 47390,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47390,
+      "publishedHourly25": 22.79,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes371012.htm"
+    },
+    "soc-33-3031-00": {
+      "socCode": "33-3031",
+      "title": "Fish and Game Wardens",
+      "scope": "base occupation",
+      "annualPay": 61430,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 61430,
+      "publishedHourly25": 29.53,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333031.htm"
+    },
+    "soc-45-3031-00": {
+      "socCode": "45-3031",
+      "title": "Fishing and hunting workers",
+      "scope": "base occupation",
+      "annualPay": 30000,
+      "method": "illustrative-missing-wage",
+      "publishedAnnual25": null,
+      "publishedHourly25": null,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes453031.htm"
+    },
+    "soc-53-2031-00": {
+      "socCode": "53-2031",
+      "title": "Flight Attendants",
+      "scope": "base occupation",
+      "annualPay": 51760,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 51760,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes532031.htm"
+    },
+    "soc-47-2043-00": {
+      "socCode": "47-2043",
+      "title": "Floor Sanders and Finishers",
+      "scope": "base occupation",
+      "annualPay": 41600,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41600,
+      "publishedHourly25": 20,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472043.htm"
+    },
+    "soc-27-1023-00": {
+      "socCode": "27-1023",
+      "title": "Floral Designers",
+      "scope": "base occupation",
+      "annualPay": 32810,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 32810,
+      "publishedHourly25": 15.78,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes271023.htm"
+    },
+    "soc-51-3092-00": {
+      "socCode": "51-3092",
+      "title": "Food Batchmakers",
+      "scope": "base occupation",
+      "annualPay": 36350,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36350,
+      "publishedHourly25": 17.47,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes513092.htm"
+    },
+    "soc-35-2021-00": {
+      "socCode": "35-2021",
+      "title": "Food Preparation Workers",
+      "scope": "base occupation",
+      "annualPay": 29950,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 29950,
+      "publishedHourly25": 14.4,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes352021.htm"
+    },
+    "soc-35-3041-00": {
+      "socCode": "35-3041",
+      "title": "Food Servers, Nonrestaurant",
+      "scope": "base occupation",
+      "annualPay": 31190,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 31190,
+      "publishedHourly25": 14.99,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes353041.htm"
+    },
+    "soc-11-9051-00": {
+      "socCode": "11-9051",
+      "title": "Food Service Managers",
+      "scope": "base occupation",
+      "annualPay": 56870,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 56870,
+      "publishedHourly25": 27.34,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119051.htm"
+    },
+    "soc-19-4092-00": {
+      "socCode": "19-4092",
+      "title": "Forensic Science Technicians",
+      "scope": "base occupation",
+      "annualPay": 57830,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 57830,
+      "publishedHourly25": 27.81,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes194092.htm"
+    },
+    "soc-45-4011-00": {
+      "socCode": "45-4011",
+      "title": "Forest and Conservation Workers",
+      "scope": "base occupation",
+      "annualPay": 37440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37440,
+      "publishedHourly25": 18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes454011.htm"
+    },
+    "soc-19-1032-00": {
+      "socCode": "19-1032",
+      "title": "Foresters",
+      "scope": "base occupation",
+      "annualPay": 62710,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 62710,
+      "publishedHourly25": 30.15,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191032.htm"
+    },
+    "soc-51-4071-00": {
+      "socCode": "51-4071",
+      "title": "Foundry Mold and Coremakers",
+      "scope": "base occupation",
+      "annualPay": 41870,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41870,
+      "publishedHourly25": 20.13,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes514071.htm"
+    },
+    "soc-43-5011-01": {
+      "socCode": "43-5011",
+      "title": "Cargo and Freight Agents",
+      "scope": "broader occupation",
+      "annualPay": 45710,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45710,
+      "publishedHourly25": 21.98,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes435011.htm"
+    },
+    "soc-17-2141-01": {
+      "socCode": "17-2141",
+      "title": "Mechanical Engineers",
+      "scope": "broader occupation",
+      "annualPay": 84130,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 84130,
+      "publishedHourly25": 40.45,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172141.htm"
+    },
+    "soc-13-1131-00": {
+      "socCode": "13-1131",
+      "title": "Fundraisers",
+      "scope": "base occupation",
+      "annualPay": 57480,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 57480,
+      "publishedHourly25": 27.63,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131131.htm"
+    },
+    "soc-11-2033-00": {
+      "socCode": "11-2033",
+      "title": "Fundraising Managers",
+      "scope": "base occupation",
+      "annualPay": 95970,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 95970,
+      "publishedHourly25": 46.14,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes112033.htm"
+    },
+    "soc-39-4021-00": {
+      "socCode": "39-4021",
+      "title": "Funeral Attendants",
+      "scope": "base occupation",
+      "annualPay": 30380,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 30380,
+      "publishedHourly25": 14.61,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes394021.htm"
+    },
+    "soc-11-9171-00": {
+      "socCode": "11-9171",
+      "title": "Funeral Home Managers",
+      "scope": "base occupation",
+      "annualPay": 61890,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 61890,
+      "publishedHourly25": 29.75,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119171.htm"
+    },
+    "soc-51-7021-00": {
+      "socCode": "51-7021",
+      "title": "Furniture Finishers",
+      "scope": "base occupation",
+      "annualPay": 37670,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37670,
+      "publishedHourly25": 18.11,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes517021.htm"
+    },
+    "soc-43-3041-00": {
+      "socCode": "43-3041",
+      "title": "Gambling Cage Workers",
+      "scope": "base occupation",
+      "annualPay": 34510,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34510,
+      "publishedHourly25": 16.59,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes433041.htm"
+    },
+    "soc-41-2012-00": {
+      "socCode": "41-2012",
+      "title": "Gambling Change Persons and Booth Cashiers",
+      "scope": "base occupation",
+      "annualPay": 29630,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 29630,
+      "publishedHourly25": 14.25,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes412012.htm"
+    },
+    "soc-39-3011-00": {
+      "socCode": "39-3011",
+      "title": "Gambling Dealers",
+      "scope": "base occupation",
+      "annualPay": 25810,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 25810,
+      "publishedHourly25": 12.41,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes393011.htm"
+    },
+    "soc-11-9071-00": {
+      "socCode": "11-9071",
+      "title": "Gambling Managers",
+      "scope": "base occupation",
+      "annualPay": 72570,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 72570,
+      "publishedHourly25": 34.89,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119071.htm"
+    },
+    "soc-51-8092-00": {
+      "socCode": "51-8092",
+      "title": "Gas Plant Operators",
+      "scope": "base occupation",
+      "annualPay": 76870,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 76870,
+      "publishedHourly25": 36.96,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes518092.htm"
+    },
+    "soc-51-9071-06": {
+      "socCode": "51-9071",
+      "title": "Jewelers and Precious Stone and Metal Workers",
+      "scope": "broader occupation",
+      "annualPay": 39520,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39520,
+      "publishedHourly25": 19,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes519071.htm"
+    },
+    "soc-29-9092-00": {
+      "socCode": "29-9092",
+      "title": "Genetic Counselors",
+      "scope": "base occupation",
+      "annualPay": 88900,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 88900,
+      "publishedHourly25": 42.74,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes299092.htm"
+    },
+    "soc-19-1029-03": {
+      "socCode": "19-1029",
+      "title": "Biological Scientists, All Other",
+      "scope": "broader occupation",
+      "annualPay": 76800,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 76800,
+      "publishedHourly25": 36.92,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191029.htm"
+    },
+    "soc-17-1022-01": {
+      "socCode": "17-1022",
+      "title": "Surveyors",
+      "scope": "broader occupation",
+      "annualPay": 58170,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58170,
+      "publishedHourly25": 27.97,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes171022.htm"
+    },
+    "soc-19-3092-00": {
+      "socCode": "19-3092",
+      "title": "Geographers",
+      "scope": "base occupation",
+      "annualPay": 80290,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 80290,
+      "publishedHourly25": 38.6,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193092.htm"
+    },
+    "soc-49-9099-01": {
+      "socCode": "49-9099",
+      "title": "Installation, Maintenance, and Repair Workers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 42170,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 42170,
+      "publishedHourly25": 20.28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499099.htm"
+    },
+    "soc-47-2121-00": {
+      "socCode": "47-2121",
+      "title": "Glaziers",
+      "scope": "base occupation",
+      "annualPay": 46320,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46320,
+      "publishedHourly25": 22.27,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472121.htm"
+    },
+    "soc-45-2041-00": {
+      "socCode": "45-2041",
+      "title": "Graders and Sorters, Agricultural Products",
+      "scope": "base occupation",
+      "annualPay": 34320,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34320,
+      "publishedHourly25": 16.5,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes452041.htm"
+    },
+    "soc-21-1091-00": {
+      "socCode": "21-1091",
+      "title": "Health Education Specialists",
+      "scope": "base occupation",
+      "annualPay": 50620,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 50620,
+      "publishedHourly25": 24.34,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211091.htm"
+    },
+    "soc-15-1211-01": {
+      "socCode": "15-1211",
+      "title": "Computer Systems Analysts",
+      "scope": "broader occupation",
+      "annualPay": 82860,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82860,
+      "publishedHourly25": 39.84,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151211.htm"
+    },
+    "soc-47-3012-00": {
+      "socCode": "47-3012",
+      "title": "Helpers--Carpenters",
+      "scope": "base occupation",
+      "annualPay": 36730,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36730,
+      "publishedHourly25": 17.66,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes473012.htm"
+    },
+    "soc-47-3013-00": {
+      "socCode": "47-3013",
+      "title": "Helpers--Electricians",
+      "scope": "base occupation",
+      "annualPay": 36830,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36830,
+      "publishedHourly25": 17.71,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes473013.htm"
+    },
+    "soc-47-5081-00": {
+      "socCode": "47-5081",
+      "title": "Helpers--Extraction Workers",
+      "scope": "base occupation",
+      "annualPay": 41430,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41430,
+      "publishedHourly25": 19.92,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes475081.htm"
+    },
+    "soc-51-9198-00": {
+      "socCode": "51-9198",
+      "title": "Helpers--Production Workers",
+      "scope": "base occupation",
+      "annualPay": 35220,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35220,
+      "publishedHourly25": 16.93,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes519198.htm"
+    },
+    "soc-47-3016-00": {
+      "socCode": "47-3016",
+      "title": "Helpers--Roofers",
+      "scope": "base occupation",
+      "annualPay": 37030,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37030,
+      "publishedHourly25": 17.8,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes473016.htm"
+    },
+    "soc-47-4051-00": {
+      "socCode": "47-4051",
+      "title": "Highway Maintenance Workers",
+      "scope": "base occupation",
+      "annualPay": 43500,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43500,
+      "publishedHourly25": 20.91,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes474051.htm"
+    },
+    "soc-19-3093-00": {
+      "socCode": "19-3093",
+      "title": "Historians",
+      "scope": "base occupation",
+      "annualPay": 57290,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 57290,
+      "publishedHourly25": 27.54,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193093.htm"
+    },
+    "soc-25-1125-00": {
+      "socCode": "25-1125",
+      "title": "History Teachers, Postsecondary",
+      "scope": "base occupation",
+      "annualPay": 63920,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 63920,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes251125.htm"
+    },
+    "soc-53-7041-00": {
+      "socCode": "53-7041",
+      "title": "Hoist and Winch Operators",
+      "scope": "base occupation",
+      "annualPay": 42690,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 42690,
+      "publishedHourly25": 20.53,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes537041.htm"
+    },
+    "soc-49-9031-00": {
+      "socCode": "49-9031",
+      "title": "Home Appliance Repairers",
+      "scope": "base occupation",
+      "annualPay": 43780,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43780,
+      "publishedHourly25": 21.05,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499031.htm"
+    },
+    "soc-29-1229-02": {
+      "socCode": "29-1229",
+      "title": "Physicians, All Other",
+      "scope": "broader occupation",
+      "annualPay": 102930,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 102930,
+      "publishedHourly25": 49.48,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291229.htm"
+    },
+    "soc-11-3121-00": {
+      "socCode": "11-3121",
+      "title": "Human Resources Managers",
+      "scope": "base occupation",
+      "annualPay": 111110,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 111110,
+      "publishedHourly25": 53.42,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes113121.htm"
+    },
+    "soc-13-1071-00": {
+      "socCode": "13-1071",
+      "title": "Human Resources Specialists",
+      "scope": "base occupation",
+      "annualPay": 58610,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58610,
+      "publishedHourly25": 28.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131071.htm"
+    },
+    "soc-51-8013-04": {
+      "socCode": "51-8013",
+      "title": "Power Plant Operators",
+      "scope": "broader occupation",
+      "annualPay": 79690,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79690,
+      "publishedHourly25": 38.31,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes518013.htm"
+    },
+    "soc-19-2043-00": {
+      "socCode": "19-2043",
+      "title": "Hydrologists",
+      "scope": "base occupation",
+      "annualPay": 77210,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 77210,
+      "publishedHourly25": 37.12,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes192043.htm"
+    },
+    "soc-19-2041-03": {
+      "socCode": "19-2041",
+      "title": "Environmental Scientists and Specialists, Including Health",
+      "scope": "broader occupation",
+      "annualPay": 64490,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64490,
+      "publishedHourly25": 31.01,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes192041.htm"
+    },
+    "soc-41-3021-00": {
+      "socCode": "41-3021",
+      "title": "Insurance Sales Agents",
+      "scope": "base occupation",
+      "annualPay": 46870,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46870,
+      "publishedHourly25": 22.53,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes413021.htm"
+    },
+    "soc-33-3021-06": {
+      "socCode": "33-3021",
+      "title": "Detectives and Criminal Investigators",
+      "scope": "broader occupation",
+      "annualPay": 69330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 69330,
+      "publishedHourly25": 33.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333021.htm"
+    },
+    "soc-27-1025-00": {
+      "socCode": "27-1025",
+      "title": "Interior Designers",
+      "scope": "base occupation",
+      "annualPay": 51840,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 51840,
+      "publishedHourly25": 24.92,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes271025.htm"
+    },
+    "soc-27-3091-00": {
+      "socCode": "27-3091",
+      "title": "Interpreters and Translators",
+      "scope": "base occupation",
+      "annualPay": 46530,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46530,
+      "publishedHourly25": 22.37,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes273091.htm"
+    },
+    "soc-11-3031-03": {
+      "socCode": "11-3031",
+      "title": "Financial Managers",
+      "scope": "broader occupation",
+      "annualPay": 125490,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 125490,
+      "publishedHourly25": 60.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes113031.htm"
+    },
+    "soc-37-2011-00": {
+      "socCode": "37-2011",
+      "title": "Janitors and Cleaners, Except Maids and Housekeeping Cleaners",
+      "scope": "base occupation",
+      "annualPay": 32240,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 32240,
+      "publishedHourly25": 15.5,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes372011.htm"
+    },
+    "soc-23-1023-00": {
+      "socCode": "23-1023",
+      "title": "Judges, Magistrate Judges, and Magistrates",
+      "scope": "base occupation",
+      "annualPay": 85710,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 85710,
+      "publishedHourly25": 41.21,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes231023.htm"
+    },
+    "soc-23-1012-00": {
+      "socCode": "23-1012",
+      "title": "Judicial Law Clerks",
+      "scope": "base occupation",
+      "annualPay": 52870,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 52870,
+      "publishedHourly25": 25.42,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes231012.htm"
+    },
+    "soc-25-2012-00": {
+      "socCode": "25-2012",
+      "title": "Kindergarten Teachers, Except Special Education",
+      "scope": "base occupation",
+      "annualPay": 52180,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 52180,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252012.htm"
+    },
+    "soc-13-1075-00": {
+      "socCode": "13-1075",
+      "title": "Labor Relations Specialists",
+      "scope": "base occupation",
+      "annualPay": 71920,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 71920,
+      "publishedHourly25": 34.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131075.htm"
+    },
+    "soc-17-1012-00": {
+      "socCode": "17-1012",
+      "title": "Landscape Architects",
+      "scope": "base occupation",
+      "annualPay": 64170,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64170,
+      "publishedHourly25": 30.85,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes171012.htm"
+    },
+    "soc-37-3011-00": {
+      "socCode": "37-3011",
+      "title": "Landscaping and Groundskeeping Workers",
+      "scope": "base occupation",
+      "annualPay": 36190,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36190,
+      "publishedHourly25": 17.4,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes373011.htm"
+    },
+    "soc-51-6011-00": {
+      "socCode": "51-6011",
+      "title": "Laundry and Dry-Cleaning Workers",
+      "scope": "base occupation",
+      "annualPay": 30360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 30360,
+      "publishedHourly25": 14.6,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes516011.htm"
+    },
+    "soc-25-1112-00": {
+      "socCode": "25-1112",
+      "title": "Law Teachers, Postsecondary",
+      "scope": "base occupation",
+      "annualPay": 88700,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 88700,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes251112.htm"
+    },
+    "soc-51-4192-00": {
+      "socCode": "51-4192",
+      "title": "Layout Workers, Metal and Plastic",
+      "scope": "base occupation",
+      "annualPay": 50910,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 50910,
+      "publishedHourly25": 24.48,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes514192.htm"
+    },
+    "soc-25-4022-00": {
+      "socCode": "25-4022",
+      "title": "Librarians and Media Collections Specialists",
+      "scope": "base occupation",
+      "annualPay": 56310,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 56310,
+      "publishedHourly25": 27.07,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes254022.htm"
+    },
+    "soc-43-4121-00": {
+      "socCode": "43-4121",
+      "title": "Library Assistants, Clerical",
+      "scope": "base occupation",
+      "annualPay": 31820,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 31820,
+      "publishedHourly25": 15.3,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes434121.htm"
+    },
+    "soc-25-4031-00": {
+      "socCode": "25-4031",
+      "title": "Library Technicians",
+      "scope": "base occupation",
+      "annualPay": 35740,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35740,
+      "publishedHourly25": 17.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes254031.htm"
+    },
+    "soc-53-3033-00": {
+      "socCode": "53-3033",
+      "title": "Light Truck Drivers",
+      "scope": "base occupation",
+      "annualPay": 37270,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37270,
+      "publishedHourly25": 17.92,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes533033.htm"
+    },
+    "soc-43-4131-00": {
+      "socCode": "43-4131",
+      "title": "Loan Interviewers and Clerks",
+      "scope": "base occupation",
+      "annualPay": 45120,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45120,
+      "publishedHourly25": 21.69,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes434131.htm"
+    },
+    "soc-49-9094-00": {
+      "socCode": "49-9094",
+      "title": "Locksmiths and Safe Repairers",
+      "scope": "base occupation",
+      "annualPay": 43160,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43160,
+      "publishedHourly25": 20.75,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499094.htm"
+    },
+    "soc-53-4011-00": {
+      "socCode": "53-4011",
+      "title": "Locomotive Engineers",
+      "scope": "base occupation",
+      "annualPay": 75190,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 75190,
+      "publishedHourly25": 36.15,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes534011.htm"
+    },
+    "soc-45-4023-00": {
+      "socCode": "45-4023",
+      "title": "Log Graders and Scalers",
+      "scope": "base occupation",
+      "annualPay": 37780,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37780,
+      "publishedHourly25": 18.16,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes454023.htm"
+    },
+    "soc-45-4022-00": {
+      "socCode": "45-4022",
+      "title": "Logging Equipment Operators",
+      "scope": "base occupation",
+      "annualPay": 43970,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43970,
+      "publishedHourly25": 21.14,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes454022.htm"
+    },
+    "soc-13-1081-00": {
+      "socCode": "13-1081",
+      "title": "Logisticians",
+      "scope": "base occupation",
+      "annualPay": 64440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64440,
+      "publishedHourly25": 30.98,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131081.htm"
+    },
+    "soc-13-1081-02": {
+      "socCode": "13-1081",
+      "title": "Logisticians",
+      "scope": "broader occupation",
+      "annualPay": 64440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64440,
+      "publishedHourly25": 30.98,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131081.htm"
+    },
+    "soc-13-1081-01": {
+      "socCode": "13-1081",
+      "title": "Logisticians",
+      "scope": "broader occupation",
+      "annualPay": 64440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64440,
+      "publishedHourly25": 30.98,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131081.htm"
+    },
+    "soc-11-9199-08": {
+      "socCode": "11-9199",
+      "title": "Managers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 102880,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 102880,
+      "publishedHourly25": 49.46,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119199.htm"
+    },
+    "soc-37-2012-00": {
+      "socCode": "37-2012",
+      "title": "Maids and Housekeeping Cleaners",
+      "scope": "base occupation",
+      "annualPay": 30350,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 30350,
+      "publishedHourly25": 14.59,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes372012.htm"
+    },
+    "soc-49-9071-00": {
+      "socCode": "49-9071",
+      "title": "Maintenance and Repair Workers, General",
+      "scope": "base occupation",
+      "annualPay": 40840,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40840,
+      "publishedHourly25": 19.64,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499071.htm"
+    },
+    "soc-39-5091-00": {
+      "socCode": "39-5091",
+      "title": "Makeup Artists, Theatrical and Performance",
+      "scope": "base occupation",
+      "annualPay": 34530,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34530,
+      "publishedHourly25": 16.6,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes395091.htm"
+    },
+    "soc-13-1111-00": {
+      "socCode": "13-1111",
+      "title": "Management Analysts",
+      "scope": "base occupation",
+      "annualPay": 77950,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 77950,
+      "publishedHourly25": 37.48,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131111.htm"
+    },
+    "soc-39-5092-00": {
+      "socCode": "39-5092",
+      "title": "Manicurists and Pedicurists",
+      "scope": "base occupation",
+      "annualPay": 34010,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34010,
+      "publishedHourly25": 16.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes395092.htm"
+    },
+    "soc-17-2121-00": {
+      "socCode": "17-2121",
+      "title": "Marine Engineers and Naval Architects",
+      "scope": "base occupation",
+      "annualPay": 99250,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 99250,
+      "publishedHourly25": 47.71,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172121.htm"
+    },
+    "soc-11-2021-00": {
+      "socCode": "11-2021",
+      "title": "Marketing Managers",
+      "scope": "base occupation",
+      "annualPay": 123020,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 123020,
+      "publishedHourly25": 59.15,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes112021.htm"
+    },
+    "soc-21-1013-00": {
+      "socCode": "21-1013",
+      "title": "Marriage and Family Therapists",
+      "scope": "base occupation",
+      "annualPay": 50070,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 50070,
+      "publishedHourly25": 24.07,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211013.htm"
+    },
+    "soc-31-9011-00": {
+      "socCode": "31-9011",
+      "title": "Massage Therapists",
+      "scope": "base occupation",
+      "annualPay": 43480,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43480,
+      "publishedHourly25": 20.91,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes319011.htm"
+    },
+    "soc-17-2131-00": {
+      "socCode": "17-2131",
+      "title": "Materials Engineers",
+      "scope": "base occupation",
+      "annualPay": 88080,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 88080,
+      "publishedHourly25": 42.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172131.htm"
+    },
+    "soc-19-2032-00": {
+      "socCode": "19-2032",
+      "title": "Materials Scientists",
+      "scope": "base occupation",
+      "annualPay": 89990,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 89990,
+      "publishedHourly25": 43.26,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes192032.htm"
+    },
+    "soc-15-2021-00": {
+      "socCode": "15-2021",
+      "title": "Mathematicians",
+      "scope": "base occupation",
+      "annualPay": 88570,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 88570,
+      "publishedHourly25": 42.58,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes152021.htm"
+    },
+    "soc-49-9011-00": {
+      "socCode": "49-9011",
+      "title": "Mechanical Door Repairers",
+      "scope": "base occupation",
+      "annualPay": 46610,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46610,
+      "publishedHourly25": 22.41,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499011.htm"
+    },
+    "soc-17-2199-05": {
+      "socCode": "17-2199",
+      "title": "Engineers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 90970,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 90970,
+      "publishedHourly25": 43.73,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172199.htm"
+    },
+    "soc-27-2012-03": {
+      "socCode": "27-2012",
+      "title": "Producers and Directors",
+      "scope": "broader occupation",
+      "annualPay": 62670,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 62670,
+      "publishedHourly25": 30.13,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272012.htm"
+    },
+    "soc-51-9082-00": {
+      "socCode": "51-9082",
+      "title": "Medical Appliance Technicians",
+      "scope": "base occupation",
+      "annualPay": 42210,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 42210,
+      "publishedHourly25": 20.29,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes519082.htm"
+    },
+    "soc-31-9092-00": {
+      "socCode": "31-9092",
+      "title": "Medical Assistants",
+      "scope": "base occupation",
+      "annualPay": 38470,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38470,
+      "publishedHourly25": 18.5,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes319092.htm"
+    },
+    "soc-29-2036-00": {
+      "socCode": "29-2036",
+      "title": "Medical Dosimetrists",
+      "scope": "base occupation",
+      "annualPay": 132080,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 132080,
+      "publishedHourly25": 63.5,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes292036.htm"
+    },
+    "soc-31-9093-00": {
+      "socCode": "31-9093",
+      "title": "Medical Equipment Preparers",
+      "scope": "base occupation",
+      "annualPay": 39800,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39800,
+      "publishedHourly25": 19.13,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes319093.htm"
+    },
+    "soc-49-9062-00": {
+      "socCode": "49-9062",
+      "title": "Medical Equipment Repairers",
+      "scope": "base occupation",
+      "annualPay": 47470,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47470,
+      "publishedHourly25": 22.82,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499062.htm"
+    },
+    "soc-31-9094-00": {
+      "socCode": "31-9094",
+      "title": "Medical Transcriptionists",
+      "scope": "base occupation",
+      "annualPay": 34150,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34150,
+      "publishedHourly25": 16.42,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes319094.htm"
+    },
+    "soc-21-1023-00": {
+      "socCode": "21-1023",
+      "title": "Mental Health and Substance Abuse Social Workers",
+      "scope": "base occupation",
+      "annualPay": 47070,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47070,
+      "publishedHourly25": 22.63,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211023.htm"
+    },
+    "soc-43-5041-00": {
+      "socCode": "43-5041",
+      "title": "Meter Readers, Utilities",
+      "scope": "base occupation",
+      "annualPay": 39410,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39410,
+      "publishedHourly25": 18.95,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes435041.htm"
+    },
+    "soc-19-1022-00": {
+      "socCode": "19-1022",
+      "title": "Microbiologists",
+      "scope": "base occupation",
+      "annualPay": 67100,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 67100,
+      "publishedHourly25": 32.26,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191022.htm"
+    },
+    "soc-29-9099-01": {
+      "socCode": "29-9099",
+      "title": "Healthcare Practitioners and Technical Workers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 47750,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47750,
+      "publishedHourly25": 22.96,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes299099.htm"
+    },
+    "soc-49-9044-00": {
+      "socCode": "49-9044",
+      "title": "Millwrights",
+      "scope": "base occupation",
+      "annualPay": 56390,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 56390,
+      "publishedHourly25": 27.11,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499044.htm"
+    },
+    "soc-51-4061-00": {
+      "socCode": "51-4061",
+      "title": "Model Makers, Metal and Plastic",
+      "scope": "base occupation",
+      "annualPay": 47360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47360,
+      "publishedHourly25": 22.77,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes514061.htm"
+    },
+    "soc-51-7031-00": {
+      "socCode": "51-7031",
+      "title": "Model Makers, Wood",
+      "scope": "base occupation",
+      "annualPay": 37660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37660,
+      "publishedHourly25": 18.1,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes517031.htm"
+    },
+    "soc-39-3021-00": {
+      "socCode": "39-3021",
+      "title": "Motion Picture Projectionists",
+      "scope": "base occupation",
+      "annualPay": 30040,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 30040,
+      "publishedHourly25": 14.44,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes393021.htm"
+    },
+    "soc-49-3051-00": {
+      "socCode": "49-3051",
+      "title": "Motorboat Mechanics and Service Technicians",
+      "scope": "base occupation",
+      "annualPay": 46750,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46750,
+      "publishedHourly25": 22.48,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493051.htm"
+    },
+    "soc-53-5022-00": {
+      "socCode": "53-5022",
+      "title": "Motorboat Operators",
+      "scope": "base occupation",
+      "annualPay": 42760,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 42760,
+      "publishedHourly25": 20.56,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes535022.htm"
+    },
+    "soc-49-3052-00": {
+      "socCode": "49-3052",
+      "title": "Motorcycle Mechanics",
+      "scope": "base occupation",
+      "annualPay": 39550,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39550,
+      "publishedHourly25": 19.01,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493052.htm"
+    },
+    "soc-25-4013-00": {
+      "socCode": "25-4013",
+      "title": "Museum Technicians and Conservators",
+      "scope": "base occupation",
+      "annualPay": 41050,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41050,
+      "publishedHourly25": 19.73,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes254013.htm"
+    },
+    "soc-27-2041-00": {
+      "socCode": "27-2041",
+      "title": "Music Directors and Composers",
+      "scope": "base occupation",
+      "annualPay": 53110,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 53110,
+      "publishedHourly25": 25.53,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272041.htm"
+    },
+    "soc-29-1129-02": {
+      "socCode": "29-1129",
+      "title": "Therapists, All Other",
+      "scope": "broader occupation",
+      "annualPay": 58850,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58850,
+      "publishedHourly25": 28.29,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291129.htm"
+    },
+    "soc-49-9063-00": {
+      "socCode": "49-9063",
+      "title": "Musical Instrument Repairers and Tuners",
+      "scope": "base occupation",
+      "annualPay": 37670,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37670,
+      "publishedHourly25": 18.11,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499063.htm"
+    },
+    "soc-27-2042-00": {
+      "socCode": "27-2042",
+      "title": "Musicians and Singers",
+      "scope": "base occupation",
+      "annualPay": 57346,
+      "method": "hourly-25th-times-2080",
+      "publishedAnnual25": "*",
+      "publishedHourly25": 27.57,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272042.htm"
+    },
+    "soc-39-9011-01": {
+      "socCode": "39-9011",
+      "title": "Childcare Workers",
+      "scope": "broader occupation",
+      "annualPay": 29360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 29360,
+      "publishedHourly25": 14.12,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes399011.htm"
+    },
+    "soc-17-2199-09": {
+      "socCode": "17-2199",
+      "title": "Engineers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 90970,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 90970,
+      "publishedHourly25": 43.73,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172199.htm"
+    },
+    "soc-11-9121-00": {
+      "socCode": "11-9121",
+      "title": "Natural Sciences Managers",
+      "scope": "base occupation",
+      "annualPay": 119430,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 119430,
+      "publishedHourly25": 57.42,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119121.htm"
+    },
+    "soc-29-1217-00": {
+      "socCode": "29-1217",
+      "title": "Neurologists",
+      "scope": "base occupation",
+      "annualPay": 155990,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 155990,
+      "publishedHourly25": 75,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291217.htm"
+    },
+    "soc-19-3039-02": {
+      "socCode": "19-3039",
+      "title": "Psychologists, All Other",
+      "scope": "broader occupation",
+      "annualPay": 68850,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 68850,
+      "publishedHourly25": 33.1,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193039.htm"
+    },
+    "soc-43-4141-00": {
+      "socCode": "43-4141",
+      "title": "New Accounts Clerks",
+      "scope": "base occupation",
+      "annualPay": 43920,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43920,
+      "publishedHourly25": 21.12,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes434141.htm"
+    },
+    "soc-17-2161-00": {
+      "socCode": "17-2161",
+      "title": "Nuclear Engineers",
+      "scope": "base occupation",
+      "annualPay": 108690,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 108690,
+      "publishedHourly25": 52.26,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172161.htm"
+    },
+    "soc-51-8011-00": {
+      "socCode": "51-8011",
+      "title": "Nuclear Power Reactor Operators",
+      "scope": "base occupation",
+      "annualPay": 109440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 109440,
+      "publishedHourly25": 52.61,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes518011.htm"
+    },
+    "soc-19-4051-00": {
+      "socCode": "19-4051",
+      "title": "Nuclear Technicians",
+      "scope": "base occupation",
+      "annualPay": 99110,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 99110,
+      "publishedHourly25": 47.65,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes194051.htm"
+    },
+    "soc-29-1151-00": {
+      "socCode": "29-1151",
+      "title": "Nurse Anesthetists",
+      "scope": "base occupation",
+      "annualPay": 206730,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 206730,
+      "publishedHourly25": 99.39,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291151.htm"
+    },
+    "soc-29-1161-00": {
+      "socCode": "29-1161",
+      "title": "Nurse Midwives",
+      "scope": "base occupation",
+      "annualPay": 116510,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 116510,
+      "publishedHourly25": 56.01,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291161.htm"
+    },
+    "soc-29-1171-00": {
+      "socCode": "29-1171",
+      "title": "Nurse Practitioners",
+      "scope": "base occupation",
+      "annualPay": 117990,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 117990,
+      "publishedHourly25": 56.73,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291171.htm"
+    },
+    "soc-31-1131-00": {
+      "socCode": "31-1131",
+      "title": "Nursing Assistants",
+      "scope": "base occupation",
+      "annualPay": 37260,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37260,
+      "publishedHourly25": 17.91,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes311131.htm"
+    },
+    "soc-31-2012-00": {
+      "socCode": "31-2012",
+      "title": "Occupational Therapy Aides",
+      "scope": "base occupation",
+      "annualPay": 35920,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35920,
+      "publishedHourly25": 17.27,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes312012.htm"
+    },
+    "soc-43-9061-00": {
+      "socCode": "43-9061",
+      "title": "Office Clerks, General",
+      "scope": "base occupation",
+      "annualPay": 36350,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36350,
+      "publishedHourly25": 17.48,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes439061.htm"
+    },
+    "soc-13-1199-06": {
+      "socCode": "13-1199",
+      "title": "Business Operations Specialists, All Other",
+      "scope": "broader occupation",
+      "annualPay": 62640,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 62640,
+      "publishedHourly25": 30.12,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131199.htm"
+    },
+    "soc-15-2031-00": {
+      "socCode": "15-2031",
+      "title": "Operations Research Analysts",
+      "scope": "base occupation",
+      "annualPay": 68360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 68360,
+      "publishedHourly25": 32.86,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes152031.htm"
+    },
+    "soc-51-9083-00": {
+      "socCode": "51-9083",
+      "title": "Ophthalmic Laboratory Technicians",
+      "scope": "base occupation",
+      "annualPay": 36470,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36470,
+      "publishedHourly25": 17.53,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes519083.htm"
+    },
+    "soc-29-1041-00": {
+      "socCode": "29-1041",
+      "title": "Optometrists",
+      "scope": "base occupation",
+      "annualPay": 109400,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 109400,
+      "publishedHourly25": 52.59,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291041.htm"
+    },
+    "soc-43-4151-00": {
+      "socCode": "43-4151",
+      "title": "Order Clerks",
+      "scope": "base occupation",
+      "annualPay": 39660,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39660,
+      "publishedHourly25": 19.07,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes434151.htm"
+    },
+    "soc-31-1132-00": {
+      "socCode": "31-1132",
+      "title": "Orderlies",
+      "scope": "base occupation",
+      "annualPay": 35570,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35570,
+      "publishedHourly25": 17.1,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes311132.htm"
+    },
+    "soc-29-1023-00": {
+      "socCode": "29-1023",
+      "title": "Orthodontists",
+      "scope": "base occupation",
+      "annualPay": 146580,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 146580,
+      "publishedHourly25": 70.47,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291023.htm"
+    },
+    "soc-29-1299-02": {
+      "socCode": "29-1299",
+      "title": "Healthcare Diagnosing or Treating Practitioners, All Other",
+      "scope": "broader occupation",
+      "annualPay": 83780,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 83780,
+      "publishedHourly25": 40.28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291299.htm"
+    },
+    "soc-53-7064-00": {
+      "socCode": "53-7064",
+      "title": "Packers and Packagers, Hand",
+      "scope": "base occupation",
+      "annualPay": 32220,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 32220,
+      "publishedHourly25": 15.49,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes537064.htm"
+    },
+    "soc-23-2011-00": {
+      "socCode": "23-2011",
+      "title": "Paralegals and Legal Assistants",
+      "scope": "base occupation",
+      "annualPay": 50340,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 50340,
+      "publishedHourly25": 24.2,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes232011.htm"
+    },
+    "soc-19-1031-03": {
+      "socCode": "19-1031",
+      "title": "Conservation Scientists",
+      "scope": "broader occupation",
+      "annualPay": 57700,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 57700,
+      "publishedHourly25": 27.74,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191031.htm"
+    },
+    "soc-53-6021-00": {
+      "socCode": "53-6021",
+      "title": "Parking Attendants",
+      "scope": "base occupation",
+      "annualPay": 29960,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 29960,
+      "publishedHourly25": 14.41,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes536021.htm"
+    },
+    "soc-33-3041-00": {
+      "socCode": "33-3041",
+      "title": "Parking Enforcement Workers",
+      "scope": "base occupation",
+      "annualPay": 39870,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39870,
+      "publishedHourly25": 19.17,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333041.htm"
+    },
+    "soc-41-2022-00": {
+      "socCode": "41-2022",
+      "title": "Parts Salespersons",
+      "scope": "base occupation",
+      "annualPay": 33110,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 33110,
+      "publishedHourly25": 15.92,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes412022.htm"
+    },
+    "soc-53-6061-00": {
+      "socCode": "53-6061",
+      "title": "Passenger Attendants",
+      "scope": "base occupation",
+      "annualPay": 31240,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 31240,
+      "publishedHourly25": 15.02,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes536061.htm"
+    },
+    "soc-51-4062-00": {
+      "socCode": "51-4062",
+      "title": "Patternmakers, Metal and Plastic",
+      "scope": "base occupation",
+      "annualPay": 49070,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 49070,
+      "publishedHourly25": 23.59,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes514062.htm"
+    },
+    "soc-51-7032-00": {
+      "socCode": "51-7032",
+      "title": "Patternmakers, Wood",
+      "scope": "base occupation",
+      "annualPay": 41170,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41170,
+      "publishedHourly25": 19.79,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes517032.htm"
+    },
+    "soc-15-1299-04": {
+      "socCode": "15-1299",
+      "title": "Computer Occupations, All Other",
+      "scope": "broader occupation",
+      "annualPay": 79370,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79370,
+      "publishedHourly25": 38.16,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151299.htm"
+    },
+    "soc-13-2052-00": {
+      "socCode": "13-2052",
+      "title": "Personal Financial Advisors",
+      "scope": "base occupation",
+      "annualPay": 72440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 72440,
+      "publishedHourly25": 34.83,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132052.htm"
+    },
+    "soc-37-2021-00": {
+      "socCode": "37-2021",
+      "title": "Pest Control Workers",
+      "scope": "base occupation",
+      "annualPay": 37440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37440,
+      "publishedHourly25": 18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes372021.htm"
+    },
+    "soc-37-3012-00": {
+      "socCode": "37-3012",
+      "title": "Pesticide Handlers, Sprayers, and Applicators, Vegetation",
+      "scope": "base occupation",
+      "annualPay": 39160,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39160,
+      "publishedHourly25": 18.83,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes373012.htm"
+    },
+    "soc-17-2171-00": {
+      "socCode": "17-2171",
+      "title": "Petroleum Engineers",
+      "scope": "base occupation",
+      "annualPay": 106270,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 106270,
+      "publishedHourly25": 51.09,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172171.htm"
+    },
+    "soc-31-9095-00": {
+      "socCode": "31-9095",
+      "title": "Pharmacy Aides",
+      "scope": "base occupation",
+      "annualPay": 34980,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34980,
+      "publishedHourly25": 16.82,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes319095.htm"
+    },
+    "soc-29-2052-00": {
+      "socCode": "29-2052",
+      "title": "Pharmacy Technicians",
+      "scope": "base occupation",
+      "annualPay": 37850,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37850,
+      "publishedHourly25": 18.2,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes292052.htm"
+    },
+    "soc-31-9097-00": {
+      "socCode": "31-9097",
+      "title": "Phlebotomists",
+      "scope": "base occupation",
+      "annualPay": 38190,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38190,
+      "publishedHourly25": 18.36,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes319097.htm"
+    },
+    "soc-27-4021-00": {
+      "socCode": "27-4021",
+      "title": "Photographers",
+      "scope": "base occupation",
+      "annualPay": 36050,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36050,
+      "publishedHourly25": 17.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes274021.htm"
+    },
+    "soc-17-2199-07": {
+      "socCode": "17-2199",
+      "title": "Engineers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 90970,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 90970,
+      "publishedHourly25": 43.73,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172199.htm"
+    },
+    "soc-17-3029-08": {
+      "socCode": "17-3029",
+      "title": "Engineering Technologists and Technicians, Except Drafters, All Other",
+      "scope": "broader occupation",
+      "annualPay": 60390,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 60390,
+      "publishedHourly25": 29.03,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes173029.htm"
+    },
+    "soc-31-2022-00": {
+      "socCode": "31-2022",
+      "title": "Physical Therapist Aides",
+      "scope": "base occupation",
+      "annualPay": 30410,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 30410,
+      "publishedHourly25": 14.62,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes312022.htm"
+    },
+    "soc-29-1071-00": {
+      "socCode": "29-1071",
+      "title": "Physician Assistants",
+      "scope": "base occupation",
+      "annualPay": 120670,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 120670,
+      "publishedHourly25": 58.02,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291071.htm"
+    },
+    "soc-19-2012-00": {
+      "socCode": "19-2012",
+      "title": "Physicists",
+      "scope": "base occupation",
+      "annualPay": 111720,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 111720,
+      "publishedHourly25": 53.71,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes192012.htm"
+    },
+    "soc-25-1054-00": {
+      "socCode": "25-1054",
+      "title": "Physics Teachers, Postsecondary",
+      "scope": "base occupation",
+      "annualPay": 74050,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 74050,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes251054.htm"
+    },
+    "soc-47-2072-00": {
+      "socCode": "47-2072",
+      "title": "Pile Driver Operators",
+      "scope": "base occupation",
+      "annualPay": 58510,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58510,
+      "publishedHourly25": 28.13,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472072.htm"
+    },
+    "soc-47-2151-00": {
+      "socCode": "47-2151",
+      "title": "Pipelayers",
+      "scope": "base occupation",
+      "annualPay": 43980,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43980,
+      "publishedHourly25": 21.15,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472151.htm"
+    },
+    "soc-47-2161-00": {
+      "socCode": "47-2161",
+      "title": "Plasterers and Stucco Masons",
+      "scope": "base occupation",
+      "annualPay": 47970,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47970,
+      "publishedHourly25": 23.06,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472161.htm"
+    },
+    "soc-29-1081-00": {
+      "socCode": "29-1081",
+      "title": "Podiatrists",
+      "scope": "base occupation",
+      "annualPay": 103730,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 103730,
+      "publishedHourly25": 49.87,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291081.htm"
+    },
+    "soc-33-3021-02": {
+      "socCode": "33-3021",
+      "title": "Detectives and Criminal Investigators",
+      "scope": "broader occupation",
+      "annualPay": 69330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 69330,
+      "publishedHourly25": 33.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333021.htm"
+    },
+    "soc-43-5051-00": {
+      "socCode": "43-5051",
+      "title": "Postal Service Clerks",
+      "scope": "base occupation",
+      "annualPay": 56740,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 56740,
+      "publishedHourly25": 27.28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes435051.htm"
+    },
+    "soc-43-5052-00": {
+      "socCode": "43-5052",
+      "title": "Postal Service Mail Carriers",
+      "scope": "base occupation",
+      "annualPay": 48940,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48940,
+      "publishedHourly25": 23.53,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes435052.htm"
+    },
+    "soc-51-9195-05": {
+      "socCode": "51-9195",
+      "title": "Molders, Shapers, and Casters, Except Metal and Plastic",
+      "scope": "broader occupation",
+      "annualPay": 39280,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 39280,
+      "publishedHourly25": 18.88,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes519195.htm"
+    },
+    "soc-51-4052-00": {
+      "socCode": "51-4052",
+      "title": "Pourers and Casters, Metal",
+      "scope": "base occupation",
+      "annualPay": 45190,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45190,
+      "publishedHourly25": 21.73,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes514052.htm"
+    },
+    "soc-51-8013-00": {
+      "socCode": "51-8013",
+      "title": "Power Plant Operators",
+      "scope": "base occupation",
+      "annualPay": 79690,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79690,
+      "publishedHourly25": 38.31,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes518013.htm"
+    },
+    "soc-51-5111-00": {
+      "socCode": "51-5111",
+      "title": "Prepress Technicians and Workers",
+      "scope": "base occupation",
+      "annualPay": 40930,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40930,
+      "publishedHourly25": 19.68,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes515111.htm"
+    },
+    "soc-25-2011-00": {
+      "socCode": "25-2011",
+      "title": "Preschool Teachers, Except Special Education",
+      "scope": "base occupation",
+      "annualPay": 34530,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34530,
+      "publishedHourly25": 16.6,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252011.htm"
+    },
+    "soc-51-5112-00": {
+      "socCode": "51-5112",
+      "title": "Printing Press Operators",
+      "scope": "base occupation",
+      "annualPay": 37390,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37390,
+      "publishedHourly25": 17.98,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes515112.htm"
+    },
+    "soc-33-9021-00": {
+      "socCode": "33-9021",
+      "title": "Private Detectives and Investigators",
+      "scope": "base occupation",
+      "annualPay": 40700,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40700,
+      "publishedHourly25": 19.57,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes339021.htm"
+    },
+    "soc-21-1092-00": {
+      "socCode": "21-1092",
+      "title": "Probation Officers and Correctional Treatment Specialists",
+      "scope": "base occupation",
+      "annualPay": 54250,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 54250,
+      "publishedHourly25": 26.08,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211092.htm"
+    },
+    "soc-43-3061-00": {
+      "socCode": "43-3061",
+      "title": "Procurement Clerks",
+      "scope": "base occupation",
+      "annualPay": 43420,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 43420,
+      "publishedHourly25": 20.88,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes433061.htm"
+    },
+    "soc-27-2012-00": {
+      "socCode": "27-2012",
+      "title": "Producers and Directors",
+      "scope": "base occupation",
+      "annualPay": 62670,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 62670,
+      "publishedHourly25": 30.13,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272012.htm"
+    },
+    "soc-43-9081-00": {
+      "socCode": "43-9081",
+      "title": "Proofreaders and Copy Markers",
+      "scope": "base occupation",
+      "annualPay": 41170,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41170,
+      "publishedHourly25": 19.79,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes439081.htm"
+    },
+    "soc-29-1024-00": {
+      "socCode": "29-1024",
+      "title": "Prosthodontists",
+      "scope": "base occupation",
+      "annualPay": 252050,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 252050,
+      "publishedHourly25": 121.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291024.htm"
+    },
+    "soc-31-1133-00": {
+      "socCode": "31-1133",
+      "title": "Psychiatric Aides",
+      "scope": "base occupation",
+      "annualPay": 37750,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37750,
+      "publishedHourly25": 18.15,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes311133.htm"
+    },
+    "soc-29-1223-00": {
+      "socCode": "29-1223",
+      "title": "Psychiatrists",
+      "scope": "base occupation",
+      "annualPay": 154150,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 154150,
+      "publishedHourly25": 74.11,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291223.htm"
+    },
+    "soc-11-2032-00": {
+      "socCode": "11-2032",
+      "title": "Public Relations Managers",
+      "scope": "base occupation",
+      "annualPay": 106580,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 106580,
+      "publishedHourly25": 51.24,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes112032.htm"
+    },
+    "soc-11-3061-00": {
+      "socCode": "11-3061",
+      "title": "Purchasing Managers",
+      "scope": "base occupation",
+      "annualPay": 115550,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 115550,
+      "publishedHourly25": 55.55,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes113061.htm"
+    },
+    "soc-29-1224-00": {
+      "socCode": "29-1224",
+      "title": "Radiologists",
+      "scope": "base occupation",
+      "annualPay": 216800,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 216800,
+      "publishedHourly25": 104.23,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291224.htm"
+    },
+    "soc-49-3043-00": {
+      "socCode": "49-3043",
+      "title": "Rail Car Repairers",
+      "scope": "base occupation",
+      "annualPay": 54520,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 54520,
+      "publishedHourly25": 26.21,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493043.htm"
+    },
+    "soc-19-1031-02": {
+      "socCode": "19-1031",
+      "title": "Conservation Scientists",
+      "scope": "broader occupation",
+      "annualPay": 57700,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 57700,
+      "publishedHourly25": 27.74,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191031.htm"
+    },
+    "soc-41-9021-00": {
+      "socCode": "41-9021",
+      "title": "Real Estate Brokers",
+      "scope": "base occupation",
+      "annualPay": 46480,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46480,
+      "publishedHourly25": 22.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes419021.htm"
+    },
+    "soc-41-9022-00": {
+      "socCode": "41-9022",
+      "title": "Real Estate Sales Agents",
+      "scope": "base occupation",
+      "annualPay": 40040,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40040,
+      "publishedHourly25": 19.25,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes419022.htm"
+    },
+    "soc-49-3092-00": {
+      "socCode": "49-3092",
+      "title": "Recreational Vehicle Service Technicians",
+      "scope": "base occupation",
+      "annualPay": 44920,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 44920,
+      "publishedHourly25": 21.59,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493092.htm"
+    },
+    "soc-11-9199-01": {
+      "socCode": "11-9199",
+      "title": "Managers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 102880,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 102880,
+      "publishedHourly25": 49.46,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119199.htm"
+    },
+    "soc-21-1015-00": {
+      "socCode": "21-1015",
+      "title": "Rehabilitation Counselors",
+      "scope": "base occupation",
+      "annualPay": 38770,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38770,
+      "publishedHourly25": 18.64,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes211015.htm"
+    },
+    "soc-39-9041-00": {
+      "socCode": "39-9041",
+      "title": "Residential Advisors",
+      "scope": "base occupation",
+      "annualPay": 35510,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35510,
+      "publishedHourly25": 17.07,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes399041.htm"
+    },
+    "soc-33-9099-02": {
+      "socCode": "33-9099",
+      "title": "Protective Service Workers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 35420,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35420,
+      "publishedHourly25": 17.03,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes339099.htm"
+    },
+    "soc-41-2031-00": {
+      "socCode": "41-2031",
+      "title": "Retail Salespersons",
+      "scope": "base occupation",
+      "annualPay": 29900,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 29900,
+      "publishedHourly25": 14.38,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes412031.htm"
+    },
+    "soc-49-9096-00": {
+      "socCode": "49-9096",
+      "title": "Riggers",
+      "scope": "base occupation",
+      "annualPay": 48210,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 48210,
+      "publishedHourly25": 23.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499096.htm"
+    },
+    "soc-17-2199-08": {
+      "socCode": "17-2199",
+      "title": "Engineers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 90970,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 90970,
+      "publishedHourly25": 43.73,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172199.htm"
+    },
+    "soc-17-3024-01": {
+      "socCode": "17-3024",
+      "title": "Electro-Mechanical and Mechatronics Technologists and Technicians",
+      "scope": "broader occupation",
+      "annualPay": 59780,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 59780,
+      "publishedHourly25": 28.74,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes173024.htm"
+    },
+    "soc-47-5051-00": {
+      "socCode": "47-5051",
+      "title": "Rock Splitters, Quarry",
+      "scope": "base occupation",
+      "annualPay": 42670,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 42670,
+      "publishedHourly25": 20.51,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes475051.htm"
+    },
+    "soc-47-5043-00": {
+      "socCode": "47-5043",
+      "title": "Roof Bolters, Mining",
+      "scope": "base occupation",
+      "annualPay": 71390,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 71390,
+      "publishedHourly25": 34.32,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes475043.htm"
+    },
+    "soc-47-2181-00": {
+      "socCode": "47-2181",
+      "title": "Roofers",
+      "scope": "base occupation",
+      "annualPay": 46260,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46260,
+      "publishedHourly25": 22.24,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472181.htm"
+    },
+    "soc-47-5071-00": {
+      "socCode": "47-5071",
+      "title": "Roustabouts, Oil and Gas",
+      "scope": "base occupation",
+      "annualPay": 38850,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38850,
+      "publishedHourly25": 18.68,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes475071.htm"
+    },
+    "soc-53-5011-00": {
+      "socCode": "53-5011",
+      "title": "Sailors and Marine Oilers",
+      "scope": "base occupation",
+      "annualPay": 41430,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 41430,
+      "publishedHourly25": 19.92,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes535011.htm"
+    },
+    "soc-41-9031-00": {
+      "socCode": "41-9031",
+      "title": "Sales Engineers",
+      "scope": "base occupation",
+      "annualPay": 92890,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 92890,
+      "publishedHourly25": 44.66,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes419031.htm"
+    },
+    "soc-11-2022-00": {
+      "socCode": "11-2022",
+      "title": "Sales Managers",
+      "scope": "base occupation",
+      "annualPay": 100360,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 100360,
+      "publishedHourly25": 48.25,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes112022.htm"
+    },
+    "soc-33-9094-00": {
+      "socCode": "33-9094",
+      "title": "School Bus Monitors",
+      "scope": "base occupation",
+      "annualPay": 31760,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 31760,
+      "publishedHourly25": 15.27,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes339094.htm"
+    },
+    "soc-19-3034-00": {
+      "socCode": "19-3034",
+      "title": "School Psychologists",
+      "scope": "base occupation",
+      "annualPay": 77470,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 77470,
+      "publishedHourly25": 37.25,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193034.htm"
+    },
+    "soc-41-3031-00": {
+      "socCode": "41-3031",
+      "title": "Securities, Commodities, and Financial Services Sales Agents",
+      "scope": "base occupation",
+      "annualPay": 56540,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 56540,
+      "publishedHourly25": 27.18,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes413031.htm"
+    },
+    "soc-33-9032-00": {
+      "socCode": "33-9032",
+      "title": "Security Guards",
+      "scope": "base occupation",
+      "annualPay": 35210,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35210,
+      "publishedHourly25": 16.93,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes339032.htm"
+    },
+    "soc-11-3013-01": {
+      "socCode": "11-3013",
+      "title": "Facilities Managers",
+      "scope": "broader occupation",
+      "annualPay": 82020,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82020,
+      "publishedHourly25": 39.43,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes113013.htm"
+    },
+    "soc-49-2098-00": {
+      "socCode": "49-2098",
+      "title": "Security and Fire Alarm Systems Installers",
+      "scope": "base occupation",
+      "annualPay": 47820,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47820,
+      "publishedHourly25": 22.99,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes492098.htm"
+    },
+    "soc-25-3021-00": {
+      "socCode": "25-3021",
+      "title": "Self-Enrichment Teachers",
+      "scope": "base occupation",
+      "annualPay": 36380,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36380,
+      "publishedHourly25": 17.49,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes253021.htm"
+    },
+    "soc-27-1027-00": {
+      "socCode": "27-1027",
+      "title": "Set and Exhibit Designers",
+      "scope": "base occupation",
+      "annualPay": 52830,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 52830,
+      "publishedHourly25": 25.4,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes271027.htm"
+    },
+    "soc-51-6051-00": {
+      "socCode": "51-6051",
+      "title": "Sewers, Hand",
+      "scope": "base occupation",
+      "annualPay": 33330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 33330,
+      "publishedHourly25": 16.03,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes516051.htm"
+    },
+    "soc-47-2211-00": {
+      "socCode": "47-2211",
+      "title": "Sheet Metal Workers",
+      "scope": "base occupation",
+      "annualPay": 47830,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47830,
+      "publishedHourly25": 22.99,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472211.htm"
+    },
+    "soc-53-5031-00": {
+      "socCode": "53-5031",
+      "title": "Ship Engineers",
+      "scope": "base occupation",
+      "annualPay": 82130,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82130,
+      "publishedHourly25": 39.49,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes535031.htm"
+    },
+    "soc-49-9097-00": {
+      "socCode": "49-9097",
+      "title": "Signal and Track Switch Repairers",
+      "scope": "base occupation",
+      "annualPay": 79720,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79720,
+      "publishedHourly25": 38.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499097.htm"
+    },
+    "soc-39-5094-00": {
+      "socCode": "39-5094",
+      "title": "Skincare Specialists",
+      "scope": "base occupation",
+      "annualPay": 36040,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36040,
+      "publishedHourly25": 17.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes395094.htm"
+    },
+    "soc-19-3041-00": {
+      "socCode": "19-3041",
+      "title": "Sociologists",
+      "scope": "base occupation",
+      "annualPay": 82300,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82300,
+      "publishedHourly25": 39.57,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193041.htm"
+    },
+    "soc-47-2231-00": {
+      "socCode": "47-2231",
+      "title": "Solar Photovoltaic Installers",
+      "scope": "base occupation",
+      "annualPay": 46700,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46700,
+      "publishedHourly25": 22.45,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472231.htm"
+    },
+    "soc-41-4011-07": {
+      "socCode": "41-4011",
+      "title": "Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products",
+      "scope": "broader occupation",
+      "annualPay": 75030,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 75030,
+      "publishedHourly25": 36.07,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes414011.htm"
+    },
+    "soc-11-9179-02": {
+      "socCode": "11-9179",
+      "title": "Personal Service Managers, All Other",
+      "scope": "broader occupation",
+      "annualPay": 54130,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 54130,
+      "publishedHourly25": 26.03,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119179.htm"
+    },
+    "soc-25-2057-00": {
+      "socCode": "25-2057",
+      "title": "Special Education Teachers, Middle School",
+      "scope": "base occupation",
+      "annualPay": 60000,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 60000,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252057.htm"
+    },
+    "soc-25-2051-00": {
+      "socCode": "25-2051",
+      "title": "Special Education Teachers, Preschool",
+      "scope": "base occupation",
+      "annualPay": 52210,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 52210,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252051.htm"
+    },
+    "soc-43-9111-00": {
+      "socCode": "43-9111",
+      "title": "Statistical Assistants",
+      "scope": "base occupation",
+      "annualPay": 42840,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 42840,
+      "publishedHourly25": 20.6,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes439111.htm"
+    },
+    "soc-15-2041-00": {
+      "socCode": "15-2041",
+      "title": "Statisticians",
+      "scope": "base occupation",
+      "annualPay": 82220,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82220,
+      "publishedHourly25": 39.53,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes152041.htm"
+    },
+    "soc-53-7065-00": {
+      "socCode": "53-7065",
+      "title": "Stockers and Order Fillers",
+      "scope": "base occupation",
+      "annualPay": 34450,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34450,
+      "publishedHourly25": 16.56,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes537065.htm"
+    },
+    "soc-47-2022-00": {
+      "socCode": "47-2022",
+      "title": "Stonemasons",
+      "scope": "base occupation",
+      "annualPay": 45450,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45450,
+      "publishedHourly25": 21.85,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472022.htm"
+    },
+    "soc-25-3031-00": {
+      "socCode": "25-3031",
+      "title": "Substitute Teachers, Short-Term",
+      "scope": "base occupation",
+      "annualPay": 34170,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34170,
+      "publishedHourly25": 16.43,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes253031.htm"
+    },
+    "soc-11-3071-04": {
+      "socCode": "11-3071",
+      "title": "Transportation, Storage, and Distribution Managers",
+      "scope": "broader occupation",
+      "annualPay": 82440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 82440,
+      "publishedHourly25": 39.64,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes113071.htm"
+    },
+    "soc-29-9093-00": {
+      "socCode": "29-9093",
+      "title": "Surgical Assistants",
+      "scope": "base occupation",
+      "annualPay": 50170,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 50170,
+      "publishedHourly25": 24.12,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes299093.htm"
+    },
+    "soc-19-3022-00": {
+      "socCode": "19-3022",
+      "title": "Survey Researchers",
+      "scope": "base occupation",
+      "annualPay": 51270,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 51270,
+      "publishedHourly25": 24.65,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes193022.htm"
+    },
+    "soc-17-1022-00": {
+      "socCode": "17-1022",
+      "title": "Surveyors",
+      "scope": "base occupation",
+      "annualPay": 58170,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58170,
+      "publishedHourly25": 27.97,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes171022.htm"
+    },
+    "soc-13-1199-05": {
+      "socCode": "13-1199",
+      "title": "Business Operations Specialists, All Other",
+      "scope": "broader occupation",
+      "annualPay": 62640,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 62640,
+      "publishedHourly25": 30.12,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes131199.htm"
+    },
+    "soc-27-2012-04": {
+      "socCode": "27-2012",
+      "title": "Producers and Directors",
+      "scope": "broader occupation",
+      "annualPay": 62670,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 62670,
+      "publishedHourly25": 30.13,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes272012.htm"
+    },
+    "soc-47-2082-00": {
+      "socCode": "47-2082",
+      "title": "Tapers",
+      "scope": "base occupation",
+      "annualPay": 52730,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 52730,
+      "publishedHourly25": 25.35,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472082.htm"
+    },
+    "soc-13-2082-00": {
+      "socCode": "13-2082",
+      "title": "Tax Preparers",
+      "scope": "base occupation",
+      "annualPay": 38910,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 38910,
+      "publishedHourly25": 18.71,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes132082.htm"
+    },
+    "soc-27-3042-00": {
+      "socCode": "27-3042",
+      "title": "Technical Writers",
+      "scope": "base occupation",
+      "annualPay": 70880,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 70880,
+      "publishedHourly25": 34.08,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes273042.htm"
+    },
+    "soc-41-9041-00": {
+      "socCode": "41-9041",
+      "title": "Telemarketers",
+      "scope": "base occupation",
+      "annualPay": 29640,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 29640,
+      "publishedHourly25": 14.25,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes419041.htm"
+    },
+    "soc-43-2021-00": {
+      "socCode": "43-2021",
+      "title": "Telephone Operators",
+      "scope": "base occupation",
+      "annualPay": 36920,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 36920,
+      "publishedHourly25": 17.75,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes432021.htm"
+    },
+    "soc-43-3071-00": {
+      "socCode": "43-3071",
+      "title": "Tellers",
+      "scope": "base occupation",
+      "annualPay": 37040,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37040,
+      "publishedHourly25": 17.81,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes433071.htm"
+    },
+    "soc-47-2044-00": {
+      "socCode": "47-2044",
+      "title": "Tile and Stone Setters",
+      "scope": "base occupation",
+      "annualPay": 45200,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 45200,
+      "publishedHourly25": 21.73,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes472044.htm"
+    },
+    "soc-49-3093-00": {
+      "socCode": "49-3093",
+      "title": "Tire Repairers and Changers",
+      "scope": "base occupation",
+      "annualPay": 34690,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 34690,
+      "publishedHourly25": 16.68,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes493093.htm"
+    },
+    "soc-23-2093-00": {
+      "socCode": "23-2093",
+      "title": "Title Examiners, Abstractors, and Searchers",
+      "scope": "base occupation",
+      "annualPay": 47420,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47420,
+      "publishedHourly25": 22.8,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes232093.htm"
+    },
+    "soc-51-4111-00": {
+      "socCode": "51-4111",
+      "title": "Tool and Die Makers",
+      "scope": "base occupation",
+      "annualPay": 51490,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 51490,
+      "publishedHourly25": 24.75,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes514111.htm"
+    },
+    "soc-53-6041-00": {
+      "socCode": "53-6041",
+      "title": "Traffic Technicians",
+      "scope": "base occupation",
+      "annualPay": 46440,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 46440,
+      "publishedHourly25": 22.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes536041.htm"
+    },
+    "soc-33-3052-00": {
+      "socCode": "33-3052",
+      "title": "Transit and Railroad Police",
+      "scope": "base occupation",
+      "annualPay": 68990,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 68990,
+      "publishedHourly25": 33.17,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes333052.htm"
+    },
+    "soc-53-6051-00": {
+      "socCode": "53-6051",
+      "title": "Transportation Inspectors",
+      "scope": "base occupation",
+      "annualPay": 58780,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58780,
+      "publishedHourly25": 28.26,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes536051.htm"
+    },
+    "soc-33-9093-00": {
+      "socCode": "33-9093",
+      "title": "Transportation Security Screeners",
+      "scope": "base occupation",
+      "annualPay": 57050,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 57050,
+      "publishedHourly25": 27.43,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes339093.htm"
+    },
+    "soc-11-3031-01": {
+      "socCode": "11-3031",
+      "title": "Financial Managers",
+      "scope": "broader occupation",
+      "annualPay": 125490,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 125490,
+      "publishedHourly25": 60.33,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes113031.htm"
+    },
+    "soc-37-3013-00": {
+      "socCode": "37-3013",
+      "title": "Tree Trimmers and Pruners",
+      "scope": "base occupation",
+      "annualPay": 44840,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 44840,
+      "publishedHourly25": 21.56,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes373013.htm"
+    },
+    "soc-25-3041-00": {
+      "socCode": "25-3041",
+      "title": "Tutors",
+      "scope": "base occupation",
+      "annualPay": 35000,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 35000,
+      "publishedHourly25": 16.83,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes253041.htm"
+    },
+    "soc-51-6093-00": {
+      "socCode": "51-6093",
+      "title": "Upholsterers",
+      "scope": "base occupation",
+      "annualPay": 37340,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 37340,
+      "publishedHourly25": 17.95,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes516093.htm"
+    },
+    "soc-29-1229-03": {
+      "socCode": "29-1229",
+      "title": "Physicians, All Other",
+      "scope": "broader occupation",
+      "annualPay": 102930,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 102930,
+      "publishedHourly25": 49.48,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes291229.htm"
+    },
+    "soc-17-2112-02": {
+      "socCode": "17-2112",
+      "title": "Industrial Engineers",
+      "scope": "broader occupation",
+      "annualPay": 83600,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 83600,
+      "publishedHourly25": 40.19,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes172112.htm"
+    },
+    "soc-15-1255-01": {
+      "socCode": "15-1255",
+      "title": "Web and Digital Interface Designers",
+      "scope": "broader occupation",
+      "annualPay": 73290,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 73290,
+      "publishedHourly25": 35.24,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151255.htm"
+    },
+    "soc-35-3031-00": {
+      "socCode": "35-3031",
+      "title": "Waiters and Waitresses",
+      "scope": "base occupation",
+      "annualPay": 27750,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 27750,
+      "publishedHourly25": 13.34,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes353031.htm"
+    },
+    "soc-49-9064-00": {
+      "socCode": "49-9064",
+      "title": "Watch and Clock Repairers",
+      "scope": "base occupation",
+      "annualPay": 47650,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 47650,
+      "publishedHourly25": 22.91,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499064.htm"
+    },
+    "soc-11-9121-02": {
+      "socCode": "11-9121",
+      "title": "Natural Sciences Managers",
+      "scope": "broader occupation",
+      "annualPay": 119430,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 119430,
+      "publishedHourly25": 57.42,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes119121.htm"
+    },
+    "soc-15-1299-01": {
+      "socCode": "15-1299",
+      "title": "Computer Occupations, All Other",
+      "scope": "broader occupation",
+      "annualPay": 79370,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 79370,
+      "publishedHourly25": 38.16,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151299.htm"
+    },
+    "soc-15-1254-00": {
+      "socCode": "15-1254",
+      "title": "Web Developers",
+      "scope": "base occupation",
+      "annualPay": 64230,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 64230,
+      "publishedHourly25": 30.88,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes151254.htm"
+    },
+    "soc-53-7073-00": {
+      "socCode": "53-7073",
+      "title": "Wellhead Pumpers",
+      "scope": "base occupation",
+      "annualPay": 52330,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 52330,
+      "publishedHourly25": 25.16,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes537073.htm"
+    },
+    "soc-49-9081-00": {
+      "socCode": "49-9081",
+      "title": "Wind Turbine Service Technicians",
+      "scope": "base occupation",
+      "annualPay": 58840,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58840,
+      "publishedHourly25": 28.29,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes499081.htm"
+    },
+    "soc-43-9022-00": {
+      "socCode": "43-9022",
+      "title": "Word Processors and Typists",
+      "scope": "base occupation",
+      "annualPay": 40800,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 40800,
+      "publishedHourly25": 19.62,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes439022.htm"
+    },
+    "soc-27-3043-00": {
+      "socCode": "27-3043",
+      "title": "Writers and Authors",
+      "scope": "base occupation",
+      "annualPay": 58230,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58230,
+      "publishedHourly25": 28,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes273043.htm"
+    },
+    "soc-19-1023-00": {
+      "socCode": "19-1023",
+      "title": "Zoologists and Wildlife Biologists",
+      "scope": "base occupation",
+      "annualPay": 61180,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 61180,
+      "publishedHourly25": 29.41,
+      "sourceUrl": "https://www.bls.gov/oes/current/oes191023.htm"
+    },
+    "soc-25-2022-00": {
+      "socCode": "25-2022",
+      "title": "Middle School Teachers, Except Special and Career/Technical Education",
+      "scope": "base occupation",
+      "annualPay": 58530,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 58530,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252022.htm"
+    },
+    "soc-25-2056-00": {
+      "socCode": "25-2052",
+      "title": "Special Education Teachers, Kindergarten and Elementary School",
+      "scope": "broader occupation",
+      "annualPay": 59710,
+      "method": "annual-25th-percentile",
+      "publishedAnnual25": 59710,
+      "publishedHourly25": "*",
+      "sourceUrl": "https://www.bls.gov/oes/current/oes252052.htm"
+    }
+  }
+}

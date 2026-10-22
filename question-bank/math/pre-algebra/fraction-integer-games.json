@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--fraction-integer-games",
+  "title": "Fraction & Integer Games",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is −8 + 13?",
+      "choices": [
+        "5",
+        "−21",
+        "−5",
+        "21"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is 3/4 − 1/2?",
+      "choices": [
+        "2/2",
+        "1/4",
+        "1/2",
+        "1/6"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What is −6 × 7?",
+      "choices": [
+        "42",
+        "−13",
+        "−42",
+        "13"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which is greater, −2 or −5?",
+      "choices": [
+        "−5",
+        "They are equal",
+        "0 is less than both",
+        "−2"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is 2/3 + 1/6?",
+      "choices": [
+        "5/6",
+        "3/9",
+        "1/2",
+        "4/6"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Evaluate −15 ÷ 3.",
+      "choices": [
+        "5",
+        "−5",
+        "−12",
+        "12"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which fraction is equivalent to 4/5?",
+      "choices": [
+        "8/15",
+        "5/4",
+        "12/15",
+        "16/25"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What is −4 − (−9)?",
+      "choices": [
+        "−13",
+        "−5",
+        "13",
+        "5"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What is 5/6 × 3/10?",
+      "choices": [
+        "1/4",
+        "15/16",
+        "8/16",
+        "1/2"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A temperature of 2°C falls by 7°C. What is the new temperature?",
+      "choices": [
+        "5°C",
+        "−5°C",
+        "9°C",
+        "−9°C"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "What is 7/8 + 1/4?",
+      "choices": [
+        "8/12",
+        "1",
+        "1 1/8",
+        "1 3/8"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "What is (−3)²?",
+      "choices": [
+        "−9",
+        "6",
+        "−6",
+        "9"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which number is halfway between −4 and 2?",
+      "choices": [
+        "−1",
+        "−2",
+        "1",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is 3 ÷ 1/2?",
+      "choices": [
+        "1 1/2",
+        "6",
+        "3/2",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A diver is 12 m below sea level and rises 5 m. What is the diver's new position relative to sea level?",
+      "choices": [
+        "7 m",
+        "−17 m",
+        "−7 m",
+        "17 m"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which is the least value?",
+      "choices": [
+        "−1/2",
+        "0",
+        "1/4",
+        "−3/4"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What is 2 1/2 − 3/4?",
+      "choices": [
+        "1 3/4",
+        "1 1/4",
+        "2 1/4",
+        "1 1/2"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Evaluate −2 + 3(4).",
+      "choices": [
+        "4",
+        "10",
+        "−14",
+        "−10"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is the absolute value of −18?",
+      "choices": [
+        "−18",
+        "0",
+        "18",
+        "1/18"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which is equivalent to 0.6?",
+      "choices": [
+        "6/100",
+        "2/5",
+        "6/5",
+        "3/5"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

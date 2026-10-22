@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--algebra-2-functions--functions-graphs",
+  "title": "Functions & Graphs",
+  "subject": "Math",
+  "category": "Algebra II & Functions",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "If f(x) = 2x + 3, what is f(4)?",
+      "choices": [
+        "11",
+        "8",
+        "10",
+        "14"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which relation is a function?",
+      "choices": [
+        "{(1,2), (1,3), (2,4)}",
+        "{(1,2), (2,3), (3,4)}",
+        "{(0,1), (0,2), (1,3)}",
+        "{(2,1), (2,3), (2,4)}"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What is the slope of y = −3x + 5?",
+      "choices": [
+        "5",
+        "3",
+        "−3",
+        "−5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A line crosses the y-axis at 4 and rises 2 for every 1 unit right. What is its equation?",
+      "choices": [
+        "y = 4x + 2",
+        "y = −2x + 4",
+        "y = 2x − 4",
+        "y = 2x + 4"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is the domain of f(x) = √(x − 2) over the real numbers?",
+      "choices": [
+        "x ≥ 2",
+        "x ≤ 2",
+        "All real numbers",
+        "x > 2 only"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "What is the range of y = x² for real x?",
+      "choices": [
+        "y ≤ 0",
+        "y ≥ 0",
+        "All real numbers",
+        "y > 0 only"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "If g(x) = x² − 1, what is g(−3)?",
+      "choices": [
+        "−10",
+        "10",
+        "8",
+        "−8"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is the y-intercept of y = 4x − 7?",
+      "choices": [
+        "4",
+        "7",
+        "−4",
+        "−7"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which transformation changes y = x² to y = (x − 3)²?",
+      "choices": [
+        "Shift right 3 units",
+        "Shift left 3 units",
+        "Shift up 3 units",
+        "Reflect across the x-axis"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What does the graph of a linear function look like?",
+      "choices": [
+        "A circle",
+        "A straight line",
+        "A parabola",
+        "A V-shaped graph"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which point is on y = 2x − 1?",
+      "choices": [
+        "(3, 6)",
+        "(2, 5)",
+        "(3, 5)",
+        "(0, 1)"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A function table has inputs 1, 2, 3 and outputs 4, 7, 10. Which rule fits?",
+      "choices": [
+        "f(x) = x + 3",
+        "f(x) = 4x",
+        "f(x) = 2x + 2",
+        "f(x) = 3x + 1"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What is the average rate of change of f(x)=x² from x=1 to x=3?",
+      "choices": [
+        "4",
+        "8",
+        "3",
+        "2"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Which equation represents a vertical line?",
+      "choices": [
+        "y = 4",
+        "x = 4",
+        "y = 4x",
+        "y = x + 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "If f(x) = 3x and g(x) = x + 2, what is f(g(1))?",
+      "choices": [
+        "5",
+        "6",
+        "9",
+        "7"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What is the x-intercept of y = 2x − 6?",
+      "choices": [
+        "−3",
+        "6",
+        "−6",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which function is decreasing for all real x?",
+      "choices": [
+        "f(x) = −2x + 1",
+        "f(x) = 2x + 1",
+        "f(x) = x²",
+        "f(x) = 5"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "For a graph to represent y as a function of x, it must pass the",
+      "choices": [
+        "horizontal line test",
+        "vertical line test",
+        "circle test",
+        "slope test"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What does the point (2, 7) on a function graph mean?",
+      "choices": [
+        "The input is 7 when output is 2",
+        "The slope equals 2",
+        "The output is 7 when the input is 2",
+        "The y-intercept is 7"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A population model is P(t) = 500 + 20t. What does 20 represent?",
+      "choices": [
+        "The initial population",
+        "The final population",
+        "The time at which population is 20",
+        "The population increases by 20 per time unit"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

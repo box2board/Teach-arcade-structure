@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--language-grammar-vocabulary--synonyms-antonyms",
+  "title": "Synonyms & Antonyms",
+  "subject": "English Language Arts",
+  "category": "Language, Grammar & Vocabulary",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which word is closest in meaning to 'brief'?",
+      "choices": [
+        "Concise",
+        "Ancient",
+        "Fragile",
+        "Noisy"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which word is an antonym of 'scarce'?",
+      "choices": [
+        "Limited",
+        "Abundant",
+        "Rare",
+        "Insufficient"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "In 'The editor revised the article to make the argument clearer,' what does 'revised' most nearly mean?",
+      "choices": [
+        "Published for the first time",
+        "Read aloud",
+        "Changed or improved",
+        "Translated into another language"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which word is closest in meaning to 'reluctant'?",
+      "choices": [
+        "Eager",
+        "Certain",
+        "Careless",
+        "Hesitant"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which word is an antonym of 'expand'?",
+      "choices": [
+        "Contract",
+        "Enlarge",
+        "Extend",
+        "Increase"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "In 'The scientist's findings were preliminary, so further testing was planned,' what does 'preliminary' mean?",
+      "choices": [
+        "Unrelated to evidence",
+        "Early and not yet final",
+        "Completely disproven",
+        "Designed for the public"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Which word is closest in meaning to 'observe' in 'Researchers observed the birds for an hour'?",
+      "choices": [
+        "Change",
+        "Predict",
+        "Watch",
+        "Protect"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which word is an antonym of 'complex'?",
+      "choices": [
+        "Detailed",
+        "Layered",
+        "Complicated",
+        "Simple"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "In 'The hikers chose an alternate route after the bridge closed,' what does 'alternate' mean?",
+      "choices": [
+        "Different option",
+        "Dangerous weather",
+        "Shortest distance",
+        "Final destination"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which pair contains synonyms?",
+      "choices": [
+        "Diminish / increase",
+        "Assist / help",
+        "Silent / noisy",
+        "Permit / forbid"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which word is closest in meaning to 'diminish'?",
+      "choices": [
+        "Strengthen",
+        "Combine",
+        "Decrease",
+        "Announce"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which word is an antonym of 'generous'?",
+      "choices": [
+        "Giving",
+        "Charitable",
+        "Openhanded",
+        "Stingy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "In 'Her explanation was precise, naming the exact measurement,' what does 'precise' mean?",
+      "choices": [
+        "Accurate and exact",
+        "Unclear",
+        "Lengthy",
+        "Persuasive"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Which word is closest in meaning to 'conclude' in 'The report concludes that the plan is feasible'?",
+      "choices": [
+        "Begin without planning",
+        "Determine after considering evidence",
+        "Question repeatedly",
+        "Describe in detail"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which word is an antonym of 'temporary'?",
+      "choices": [
+        "Brief",
+        "Passing",
+        "Permanent",
+        "Short-lived"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "In 'The old rules were obsolete after the policy changed,' what does 'obsolete' mean?",
+      "choices": [
+        "Recently created",
+        "Widely debated",
+        "Carefully explained",
+        "No longer in use or useful"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which word is closest in meaning to 'essential'?",
+      "choices": [
+        "Necessary",
+        "Optional",
+        "Rare",
+        "Complicated"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which word is an antonym of 'visible'?",
+      "choices": [
+        "Clear",
+        "Hidden",
+        "Noticeable",
+        "Apparent"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "The word 'charge' can mean a fee, an accusation, or an attack. What determines which meaning is intended?",
+      "choices": [
+        "The word's spelling alone",
+        "Its number of letters",
+        "Context around the word",
+        "The font size"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Which replacement best preserves the meaning of 'The evidence supports the claim'?",
+      "choices": [
+        "The evidence avoids the claim",
+        "The evidence hides the claim",
+        "The evidence contradicts the claim",
+        "The evidence backs up the claim"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

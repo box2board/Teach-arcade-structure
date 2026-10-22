@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--research-argument-media-literacy--note-taking-organizers",
+  "title": "Note-Taking & Organizers",
+  "subject": "English Language Arts",
+  "category": "Research, Argument & Media Literacy",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main purpose of taking notes while reading or listening?",
+      "choices": [
+        "Capture useful ideas in a form that supports later understanding or work",
+        "Copy every word without selecting information",
+        "Replace reading or listening entirely",
+        "Record only the source's title"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which note is most useful for distinguishing a source's claim from its evidence?",
+      "choices": [
+        "School gardens",
+        "Claim: school gardens improve access; evidence: harvest records from three years",
+        "Very interesting",
+        "Page 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A student copies a paragraph into notes without quotation marks or a citation. What is the risk?",
+      "choices": [
+        "The notes will become too concise",
+        "The source will be easier to verify",
+        "The copied language may later be mistaken for the student's own writing",
+        "The main idea will be stated more clearly"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "Which organizer is best for comparing two proposed solutions across cost, time, and impact?",
+      "choices": [
+        "A plot diagram",
+        "A calendar with no labels",
+        "A single-column glossary",
+        "A comparison matrix"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A student researches a question and wants notes to preserve where each fact came from. What should be recorded alongside the note?",
+      "choices": [
+        "Source details or a citation key",
+        "Only the student's reaction",
+        "The color of the webpage",
+        "The number of paragraphs in the source"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which note-taking method best supports a later summary?",
+      "choices": [
+        "Copy every sentence in order",
+        "Group key ideas by topic and record concise supporting details",
+        "Write isolated keywords with no context",
+        "Record only unfamiliar words"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "A concept map places 'erosion' at the center and links causes, effects, and examples. What does this structure show well?",
+      "choices": [
+        "A strict chronological sequence",
+        "The credibility of every source",
+        "Relationships among connected ideas",
+        "The correct spelling of terms"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "When is a timeline organizer most appropriate?",
+      "choices": [
+        "When comparing the reliability of websites",
+        "When identifying synonyms",
+        "When listing unrelated definitions",
+        "When the order and timing of events matter"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A student uses Cornell notes. What belongs in the cue column?",
+      "choices": [
+        "Questions or key terms that help prompt recall of the notes",
+        "A full copy of every source page",
+        "Decorative images unrelated to the lesson",
+        "A second copy of the title only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What is a useful reason to paraphrase a source in notes?",
+      "choices": [
+        "It removes the need to cite the source",
+        "It checks understanding and separates the student's wording from the source's wording",
+        "It guarantees the source is accurate",
+        "It preserves every phrase exactly"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A source gives a statistic but not the date or population measured. What should the note-taker do?",
+      "choices": [
+        "Record it as universally true",
+        "Delete all other notes",
+        "Mark the missing context and seek it before relying on the statistic",
+        "Invent a likely date"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which organizer helps sort evidence into reasons for and against a claim?",
+      "choices": [
+        "A character web",
+        "A number line",
+        "A sequence diagram",
+        "A pro-and-con or claim-evidence chart"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A student has notes from five sources. How can they reduce accidental overreliance on one source?",
+      "choices": [
+        "Track which ideas come from each source and compare evidence across them",
+        "Remove all source labels",
+        "Use only the longest source",
+        "Combine all wording into one paragraph"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Why should notes use labels or headings?",
+      "choices": [
+        "They prove the ideas are correct",
+        "They make ideas easier to locate and synthesize later",
+        "They remove the need for supporting details",
+        "They ensure all sources agree"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Which note is clearest and most useful?",
+      "choices": [
+        "Wetlands, county, maybe",
+        "Floods are bad",
+        "Flood risk rose after wetlands were drained; county map shows affected zones",
+        "Read more later"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What is the strongest reason to revise notes after a research session?",
+      "choices": [
+        "Make them look longer",
+        "Remove source information",
+        "Turn every note into a quotation",
+        "Clarify shorthand, group related ideas, and identify unanswered questions"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A Venn diagram is most useful for",
+      "choices": [
+        "showing shared and distinct features of two or more subjects",
+        "sequencing steps in an experiment",
+        "ranking events by date",
+        "calculating a percentage"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A student copies a quotation into notes for possible use. What should be included immediately?",
+      "choices": [
+        "A paraphrase that hides the original wording",
+        "Quotation marks and enough source information to locate it",
+        "The student's conclusion only",
+        "A new title for the quotation"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A research organizer has columns for claim, evidence, source, and limitation. What does the limitation column encourage?",
+      "choices": [
+        "Memorization of source titles",
+        "Removal of counterevidence",
+        "Evaluation of what the evidence can and cannot establish",
+        "Ranking sources by page length"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which action best turns notes into a synthesis?",
+      "choices": [
+        "Paste notes in the order they were collected",
+        "Choose the most dramatic quotation",
+        "List source titles without explaining them",
+        "Connect ideas across sources and explain how they answer the research question"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

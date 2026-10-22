@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--media-arts--introduction-to-media-arts",
+  "title": "Introduction to Media Arts",
+  "subject": "Fine Arts",
+  "category": "Media Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is media arts?",
+      "choices": [
+        "Creative work using forms such as images, sound, video, animation, or interactive media",
+        "Only painting on canvas",
+        "Only live theatre",
+        "A type of stage direction"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a storyboard used for?",
+      "choices": [
+        "Record ticket sales",
+        "Plan a sequence of images or shots before production",
+        "Mix paint colors",
+        "Measure a sculpture"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does framing determine in an image or video?",
+      "choices": [
+        "The file's legal license",
+        "The actor's objective",
+        "What is included or excluded within the view",
+        "The audience's location"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Why is sound important in a media project?",
+      "choices": [
+        "It only fills silence",
+        "It has no effect on meaning",
+        "It determines the frame size",
+        "It can provide information, mood, rhythm, or emphasis"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A video uses a low camera angle looking up at a subject. What effect can this create?",
+      "choices": [
+        "The subject may appear powerful or imposing",
+        "The subject becomes invisible",
+        "The image loses perspective",
+        "The clip is necessarily humorous"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "What does editing do in a video project?",
+      "choices": [
+        "Changes the audience's seats",
+        "Selects and arranges footage, sound, and timing into a sequence",
+        "Writes the actors' biographies",
+        "Determines the camera's brand"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why should a media creator consider the intended audience?",
+      "choices": [
+        "Audience determines whether facts matter",
+        "Every audience responds identically",
+        "Audience affects content, tone, accessibility, and format choices",
+        "It removes the need for a purpose"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What is copyright?",
+      "choices": [
+        "A camera setting",
+        "A type of image file",
+        "A video transition",
+        "Legal protection for an original work and its creator's rights"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A student wants to include a song in a public video. What should they check?",
+      "choices": [
+        "Permission or license terms and attribution requirements",
+        "Whether the song is popular",
+        "Whether the file is short",
+        "Whether the title matches the video"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "What is one benefit of captions in a video?",
+      "choices": [
+        "They replace all visuals",
+        "They support access for viewers who are deaf or hard of hearing and can clarify speech",
+        "They guarantee every claim is true",
+        "They change the video frame rate"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A creator edits a quote so that it reverses the speaker's meaning. What is the concern?",
+      "choices": [
+        "The video has too many transitions",
+        "The caption font is too large",
+        "The edit misrepresents the source",
+        "The clip is too short"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "What is visual hierarchy in a media design?",
+      "choices": [
+        "The order of actors in a cast",
+        "A camera's battery level",
+        "The legal status of a work",
+        "How visual elements guide attention by size, contrast, placement, or emphasis"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Why might a creator use a close-up shot?",
+      "choices": [
+        "To emphasize detail or emotion",
+        "To show the entire landscape",
+        "To establish every location at once",
+        "To remove the subject"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What is a transition in video editing?",
+      "choices": [
+        "A camera operator",
+        "A technique that connects one shot or scene to another",
+        "A copyright license",
+        "A sound source"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A media project presents a statistic. What should the creator include?",
+      "choices": [
+        "A dramatic effect only",
+        "An unrelated image",
+        "Reliable source information and context for interpreting it",
+        "A claim with no date or source"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "How can color grading affect a film scene?",
+      "choices": [
+        "It changes the script's plot",
+        "It automatically improves the camera focus",
+        "It determines the legal license",
+        "It can shape tone, atmosphere, and visual continuity"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Why should creators review a project before sharing it?",
+      "choices": [
+        "To check clarity, accuracy, permissions, accessibility, and technical quality",
+        "To guarantee universal approval",
+        "To remove all audience interpretation",
+        "To avoid planning"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A photo is cropped to remove important context. What should a viewer consider?",
+      "choices": [
+        "Crops never affect meaning",
+        "The crop may change how the image is interpreted",
+        "The photo must be fake",
+        "The photographer's camera is irrelevant"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is an interactive media work?",
+      "choices": [
+        "A printed poster",
+        "A fixed photograph",
+        "A work where a user's choices or actions affect the experience",
+        "A silent painting"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which question best evaluates a media artwork?",
+      "choices": [
+        "How many files were used?",
+        "What is the screen's size?",
+        "How long did the creator spend?",
+        "How do choices in image, sound, sequence, and audience interaction support its purpose?"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

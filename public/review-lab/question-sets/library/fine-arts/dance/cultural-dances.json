@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--dance--cultural-dances",
+  "title": "Cultural Dances",
+  "subject": "Fine Arts",
+  "category": "Dance",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Why should a cultural dance be studied in its social and historical context?",
+      "choices": [
+        "Context helps explain the dance's meanings, roles, and changes over time",
+        "It reveals one universal meaning for every dancer",
+        "It removes the need to observe movement",
+        "It proves that all members of a culture dance alike"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Hula is associated with which Indigenous culture?",
+      "choices": [
+        "Inuit culture",
+        "Native Hawaiian culture",
+        "Māori culture",
+        "Sámi culture"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Bharatanatyam is a classical dance tradition associated with",
+      "choices": [
+        "Peru",
+        "Norway",
+        "India",
+        "Mexico"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is one respectful practice when learning a dance from a culture different from one's own?",
+      "choices": [
+        "Treat the dance as a costume or joke",
+        "Claim the dance has no cultural meaning",
+        "Assume one video represents every community",
+        "Use reliable sources and acknowledge the tradition and its practitioners"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "Why is it important to distinguish a community's traditional practice from a commercial performance inspired by it?",
+      "choices": [
+        "The purpose, context, and cultural authority may differ",
+        "Commercial work is always more authentic",
+        "Traditional practices never change",
+        "The movement vocabulary must be unrelated"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A class studies a dance connected to a harvest celebration. Which question is useful?",
+      "choices": [
+        "What is the dancers' exact height?",
+        "How does the dance relate to the community's seasonal or ceremonial context?",
+        "Which costume is most expensive?",
+        "Can the dance be removed from its community?"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What can music, costume, and movement together communicate in a cultural dance?",
+      "choices": [
+        "A single meaning that applies to all cultures",
+        "Only the choreographer's age",
+        "Shared histories, identities, values, or occasions, depending on the tradition",
+        "A universal language with no context"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Why should a student avoid saying that one dance represents an entire continent?",
+      "choices": [
+        "Continents have no dance",
+        "All dances come from one country",
+        "Movement cannot be compared",
+        "Regions and communities contain many distinct traditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "A dance is passed through generations but changes over time. What does this show?",
+      "choices": [
+        "Traditions can be preserved and adapted by communities",
+        "Traditions must stay identical",
+        "The dance has lost all cultural value",
+        "Change prevents historical study"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "When presenting a cultural dance, what information should be credited when available?",
+      "choices": [
+        "Only the costume designer",
+        "The tradition, community or practitioners, and source of the learning material",
+        "No sources are needed",
+        "A made-up origin story"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Why might a dance be performed in a circle?",
+      "choices": [
+        "Every circle dance has the same origin",
+        "The shape proves the dance is ancient",
+        "The formation may support shared participation or a particular social meaning",
+        "Circles prevent audience viewing"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A dance includes gestures that carry culturally specific meaning. What should a learner do?",
+      "choices": [
+        "Assign a meaning from personal preference",
+        "Remove every gesture",
+        "Assume gestures mean the same thing everywhere",
+        "Learn the meaning from knowledgeable sources rather than guessing"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Which statement about cultural dance is most accurate?",
+      "choices": [
+        "Dance can be artistic, social, ceremonial, communal, or some combination",
+        "Every cultural dance is a stage performance",
+        "All traditions are religious",
+        "Cultural dances have no audiences"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Why is consent and community input important when documenting a cultural dance?",
+      "choices": [
+        "It makes the recording more colorful",
+        "It respects participants and can shape what should be recorded or shared",
+        "It proves every movement is public property",
+        "It replaces historical research"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What is a useful way to compare dances from two cultures?",
+      "choices": [
+        "Say they are the same because both use rhythm",
+        "Rank them by difficulty",
+        "Compare specific movement and performance features while preserving their distinct contexts",
+        "Ignore who performs them"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A dance is performed during a community procession. What can its setting contribute?",
+      "choices": [
+        "It proves the dance has no choreographer",
+        "It makes the dance a theater piece only",
+        "It determines the tempo",
+        "It may connect movement with place, public participation, and occasion"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What should a student do if sources disagree about a dance's origin?",
+      "choices": [
+        "Report the uncertainty and compare the sources' evidence and perspectives",
+        "Choose the most dramatic story",
+        "Invent a single answer",
+        "Ignore all sources"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Why might a cultural dance include repeated steps or patterns?",
+      "choices": [
+        "It proves the dance is simple",
+        "Repetition can support participation, structure, or symbolic meaning",
+        "It removes the role of music",
+        "It guarantees all dancers perform identically"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A dance is taught in a school assembly. What should the teacher consider?",
+      "choices": [
+        "Whether the dance can be shortened without context",
+        "Whether students can imitate costumes",
+        "Whether the context and teaching approach represent the tradition respectfully",
+        "Whether the tradition is currently popular"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What is the strongest way to describe a cultural dance?",
+      "choices": [
+        "Use broad stereotypes",
+        "Rely on a single costume image",
+        "Assume personal interpretation is fact",
+        "Name observable features and explain them using reliable cultural context"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

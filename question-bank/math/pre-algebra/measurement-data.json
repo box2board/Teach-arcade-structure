@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--measurement-data",
+  "title": "Measurement & Data",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "How many centimeters are in 2.5 meters?",
+      "choices": [
+        "250 cm",
+        "25 cm",
+        "2,500 cm",
+        "0.25 cm"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which unit is most appropriate for measuring the mass of a paper clip?",
+      "choices": [
+        "Kilometers",
+        "Grams",
+        "Liters",
+        "Hours"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A table records temperatures of 18°C, 21°C, and 24°C. What is the range?",
+      "choices": [
+        "3°C",
+        "21°C",
+        "6°C",
+        "63°C"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which graph is most suitable for showing how a plant's height changes each week?",
+      "choices": [
+        "Pie chart",
+        "Venn diagram",
+        "Frequency table only",
+        "Line graph"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "A bottle holds 750 mL. How many liters is that?",
+      "choices": [
+        "0.75 L",
+        "7.5 L",
+        "75 L",
+        "0.075 L"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the median of 4, 7, 9, 12, and 18?",
+      "choices": [
+        "7",
+        "9",
+        "10",
+        "12"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What is the mean of 6, 8, and 10?",
+      "choices": [
+        "6",
+        "9",
+        "8",
+        "24"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A rectangle has a length of 8 cm and width of 3 cm. What is its area?",
+      "choices": [
+        "22 cm²",
+        "11 cm²",
+        "24 cm",
+        "24 cm²"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A data set is 3, 4, 4, 7, 12. Which value is the mode?",
+      "choices": [
+        "4",
+        "3",
+        "6",
+        "12"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A 2.4-kg package is split into 6 equal portions. What is each portion's mass?",
+      "choices": [
+        "4 kg",
+        "0.4 kg",
+        "0.04 kg",
+        "1.4 kg"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A line plot shows most students read between 2 and 4 books. What does the plot help display?",
+      "choices": [
+        "The cause of reading habits",
+        "The exact order each book was read",
+        "The frequency of values in a data set",
+        "The author's opinion"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "How many milliliters are in 3 liters?",
+      "choices": [
+        "300 mL",
+        "30 mL",
+        "30,000 mL",
+        "3,000 mL"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is the perimeter of a rectangle 7 cm by 4 cm?",
+      "choices": [
+        "22 cm",
+        "28 cm",
+        "11 cm",
+        "22 cm²"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A thermometer reads 16°C at dawn and 23°C at noon. By how many degrees did the temperature rise?",
+      "choices": [
+        "39°C",
+        "7°C",
+        "6°C",
+        "8°C"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which measure changes most when one very high value is added to a data set?",
+      "choices": [
+        "Median",
+        "Mode",
+        "Mean",
+        "Minimum"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "A graph's vertical axis starts at 50 instead of 0. What should a reader consider?",
+      "choices": [
+        "The data must be false",
+        "The horizontal labels are unnecessary",
+        "The graph shows no values",
+        "The scale may make differences look larger than they are"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "How many grams are in 1.25 kilograms?",
+      "choices": [
+        "1,250 g",
+        "125 g",
+        "12,500 g",
+        "0.125 g"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which is a reasonable estimate for the height of a classroom door?",
+      "choices": [
+        "About 2 millimeters",
+        "About 2 meters",
+        "About 20 meters",
+        "About 2 kilometers"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A data table lists weekly rainfall in millimeters. What information should be included in the column heading?",
+      "choices": [
+        "A personal opinion",
+        "The table's color",
+        "The measured quantity and its unit",
+        "An unrelated location"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A student adds a missing value of 20 to data 2, 4, 6, and 8. What is the new mean?",
+      "choices": [
+        "6",
+        "10",
+        "40",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

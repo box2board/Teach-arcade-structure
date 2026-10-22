@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve('public');
-const site = 'https://teacharcade.com';
+const site = 'https://www.teacharcade.com';
 
 async function walk(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -56,14 +56,50 @@ for (const file of htmlFiles) {
       issues.push({ severity: 'CRITICAL', file: relative, issue: `Canonical does not match route (${values.canonical})` });
     }
   }
+  const openGraphUrl = attr(html, 'meta', 'property', 'og:url', 'content');
+  if (openGraphUrl && !openGraphUrl.startsWith(site)) {
+    issues.push({ severity: 'HIGH', file: relative, issue: `Open Graph URL must use ${site}` });
+  }
   for (const script of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
-    try { JSON.parse(script[1]); } catch { issues.push({ severity: 'HIGH', file: relative, issue: 'Malformed JSON-LD' }); }
+    try {
+      JSON.parse(script[1]);
+      if (script[1].includes('https://teacharcade.com')) {
+        issues.push({ severity: 'HIGH', file: relative, issue: 'JSON-LD contains a non-preferred bare-domain URL' });
+      }
+    } catch { issues.push({ severity: 'HIGH', file: relative, issue: 'Malformed JSON-LD' }); }
   }
   const baseHref = html.match(/<base\b[^>]*href=["']([^"']+)["']/i)?.[1];
   for (const link of html.matchAll(/\bhref=["']([^"']+)["']/gi)) {
     const href = baseHref && !/^(?:[a-z]+:|#|\/)/i.test(link[1]) ? `${baseHref}${link[1]}` : link[1];
     if (!resolves(href, file, allFiles)) issues.push({ severity: 'CRITICAL', file: relative, issue: `Broken link: ${link[1]}` });
   }
+}
+
+const sitemapPath = path.join(root, 'sitemap.xml');
+const robotsPath = path.join(root, 'robots.txt');
+const sitemap = await fs.readFile(sitemapPath, 'utf8');
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1].trim());
+const sitemapSet = new Set(sitemapUrls);
+if (!sitemapUrls.length) issues.push({ severity: 'CRITICAL', file: 'public/sitemap.xml', issue: 'Sitemap has no URLs' });
+if (sitemapSet.size !== sitemapUrls.length) issues.push({ severity: 'HIGH', file: 'public/sitemap.xml', issue: 'Sitemap contains duplicate URLs' });
+
+const expectedSitemapUrls = new Set();
+for (const file of htmlFiles) {
+  const relative = `/${path.relative(root, file).split(path.sep).join('/')}`;
+  if (relative === '/404.html') continue;
+  const html = await fs.readFile(file, 'utf8');
+  if (/\bnoindex\b/i.test(attr(html, 'meta', 'name', 'robots', 'content'))) continue;
+  expectedSitemapUrls.add(`${site}${routeFor(file)}`);
+}
+for (const url of expectedSitemapUrls) {
+  if (!sitemapSet.has(url)) issues.push({ severity: 'HIGH', file: 'public/sitemap.xml', issue: `Missing indexable page: ${url}` });
+}
+for (const url of sitemapSet) {
+  if (!expectedSitemapUrls.has(url)) issues.push({ severity: 'HIGH', file: 'public/sitemap.xml', issue: `Unexpected or non-indexable URL: ${url}` });
+}
+const robots = await fs.readFile(robotsPath, 'utf8');
+if (!robots.split(/\r?\n/).some(line => line.trim() === `Sitemap: ${site}/sitemap.xml`)) {
+  issues.push({ severity: 'HIGH', file: 'public/robots.txt', issue: `Sitemap directive must point to ${site}/sitemap.xml` });
 }
 
 for (const [field, values] of Object.entries(unique)) {
@@ -77,5 +113,5 @@ if (issues.length) {
   console.error(issues.map(item => `${item.severity}\t${item.file}\t${item.issue}`).join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Site audit passed: ${htmlFiles.length} HTML pages; internal links, indexable metadata, canonicals, H1s, uniqueness, and JSON-LD checked.`);
+  console.log(`Site audit passed: ${htmlFiles.length} HTML pages; internal links, indexable metadata, canonicals, H1s, uniqueness, JSON-LD, sitemap coverage, and robots sitemap host checked.`);
 }

@@ -1,3 +1,7 @@
+import {GAMES} from '../review-lab/catalog.js';
+import {ARCADE_GAMES} from './arcade-catalog.js';
+// Both the browser and API use this same allowlist and stable bookmark IDs.
+export const CABINET_GAMES=Object.freeze([...ARCADE_GAMES,...GAMES.map(game=>Object.freeze({...game,collection:'Review Lab',chooseTopic:true}))]);
 // Cabinet bookmarks point at public resources; they never copy tool/student data.
 export const TOOLS=Object.freeze([
  {id:'group-maker',title:'Group Maker',url:'/tools/group-maker.html',symbol:'◉',description:'Build classroom groups quickly.'},

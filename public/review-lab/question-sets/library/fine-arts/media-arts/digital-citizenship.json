@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--media-arts--digital-citizenship",
+  "title": "Digital Citizenship",
+  "subject": "Fine Arts",
+  "category": "Media Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a responsible first step before sharing someone else's photo online?",
+      "choices": [
+        "Get their permission",
+        "Add a filter",
+        "Tag more people",
+        "Post it privately"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 2,
+      "question": "A creator wants to use a song in a public video. What should they check?",
+      "choices": [
+        "Whether the song is popular",
+        "Whether they have permission or a license to use it",
+        "Whether the video is longer than a minute",
+        "Whether the file name is short"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "What does a strong password mainly help protect?",
+      "choices": [
+        "Image resolution",
+        "Video frame rate",
+        "Access to an account",
+        "A file's color palette"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which action best protects personal information?",
+      "choices": [
+        "Reuse a password on every site",
+        "Accept every message request",
+        "Turn off all software updates",
+        "Avoid posting a home address publicly"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "A message urges you to click a strange link immediately. What is safest?",
+      "choices": [
+        "Verify the sender and link before clicking",
+        "Forward it to all contacts",
+        "Reply with your password",
+        "Download its attachment first"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "What is a digital footprint?",
+      "choices": [
+        "A mark left by a computer mouse",
+        "The trace of information and activity connected to a person online",
+        "A folder of deleted files",
+        "A website's loading speed"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which is an example of cyberbullying?",
+      "choices": [
+        "Giving respectful feedback on a draft",
+        "Disagreeing once about a class project",
+        "Repeatedly sending targeted humiliating messages",
+        "Reporting a broken link"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "How should you respond if a classmate shares a hurtful post about you?",
+      "choices": [
+        "Post a more hurtful reply",
+        "Share the post more widely",
+        "Give the sender your account password",
+        "Save evidence and seek help from a trusted adult or platform"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What does copyright generally protect?",
+      "choices": [
+        "A creator's original expressive work",
+        "Every idea someone thinks of",
+        "All facts and dates",
+        "Any image found in a search"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What is a Creative Commons license used for?",
+      "choices": [
+        "Encrypting a web connection",
+        "Stating permissions for reuse under specified conditions",
+        "Measuring audience size",
+        "Proving an image is public domain"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which source is usually the most appropriate to reuse without asking, while still checking its terms?",
+      "choices": [
+        "A recent movie clip",
+        "A watermarked stock photo",
+        "A work explicitly released under a compatible reuse license",
+        "A classmate's private artwork"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Why should you cite media you use in a project?",
+      "choices": [
+        "To make the file larger",
+        "To prove the media has no owner",
+        "To prevent anyone from viewing it",
+        "To credit creators and help others locate the source"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What should a creator do when presenting an online claim as factual?",
+      "choices": [
+        "Check it against reliable sources and provide context",
+        "Rely on the first search result",
+        "Remove details that disagree",
+        "Assume a high view count proves it"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Which behavior shows respectful online collaboration?",
+      "choices": [
+        "Edit a teammate's work without telling them",
+        "Give constructive feedback and acknowledge teammates' contributions",
+        "Share private group messages publicly",
+        "Use all the speaking time"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Why are privacy settings worth reviewing?",
+      "choices": [
+        "They guarantee nobody can save a post",
+        "They replace the need for strong passwords",
+        "They help control who can see or interact with shared information",
+        "They make every source accurate"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A photo is altered to make a person appear to do something they did not. What is the key concern?",
+      "choices": [
+        "The image has too many pixels",
+        "The file uses a common format",
+        "The colors are saturated",
+        "The edit may mislead viewers and harm the subject"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is phishing?",
+      "choices": [
+        "A deceptive attempt to obtain sensitive information",
+        "A method of compressing video",
+        "A type of image collage",
+        "A rule for naming files"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which action helps make a media project accessible?",
+      "choices": [
+        "Use tiny low-contrast text",
+        "Add accurate captions or a transcript for spoken content",
+        "Put essential meaning only in color",
+        "Make audio play automatically at high volume"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What should you do if an online service asks for information unrelated to its purpose?",
+      "choices": [
+        "Provide it to unlock every feature",
+        "Post it in a public comment",
+        "Pause, question why it is needed, and avoid sharing unnecessarily",
+        "Send it to other users"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "How can a creator reduce the spread of misinformation in a media post?",
+      "choices": [
+        "Use an alarming headline",
+        "Remove attribution",
+        "Share an unverified screenshot",
+        "Check evidence, date, and original context before publishing"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

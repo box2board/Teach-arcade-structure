@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--writing-composition--narrative-writing",
+  "title": "Narrative Writing",
+  "subject": "English Language Arts",
+  "category": "Writing & Composition",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a narrative's plot?",
+      "choices": [
+        "The sequence and connection of events",
+        "A list of character traits",
+        "The author's purpose statement",
+        "A description of the setting only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which detail most effectively establishes a tense setting?",
+      "choices": [
+        "Mina was a student",
+        "The hallway lights flickered as a locked door clicked behind Mina",
+        "The school had three floors",
+        "It was Tuesday"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "A story's conflict is best described as",
+      "choices": [
+        "the lesson stated in the title",
+        "a list of places in the story",
+        "a central problem or tension that drives events",
+        "the narrator's vocabulary"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Why might a writer begin a story in the middle of an important action?",
+      "choices": [
+        "To avoid developing any characters",
+        "To explain every event before the story begins",
+        "To remove the need for a setting",
+        "To create immediate momentum and raise questions for the reader"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which choice best reveals a character indirectly?",
+      "choices": [
+        "He folded the map twice before handing it back without speaking",
+        "He was nervous",
+        "The character's name was Sam",
+        "The story takes place in a city"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A narrator describes events as 'I' and knows only their own thoughts. What point of view is this?",
+      "choices": [
+        "Second person",
+        "First person",
+        "Third-person omniscient",
+        "Third-person limited"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a turning point in a narrative?",
+      "choices": [
+        "The first descriptive sentence",
+        "A repeated character trait",
+        "An event that changes the direction or stakes of the story",
+        "A detail unrelated to the conflict"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A writer wants dialogue to reveal tension. Which exchange is most effective?",
+      "choices": [
+        "'Hello,' she said. 'Hello,' he replied.",
+        "'It is Tuesday,' he said. 'Yes,' she said.",
+        "'The sky is blue,' she said. 'It is.'",
+        "'You said you locked it.' 'I thought you did.'"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Why should a writer vary sentence length in a narrative?",
+      "choices": [
+        "Pacing and emphasis can change with the action or reflection",
+        "Every sentence must have a different subject",
+        "Long sentences are always more descriptive",
+        "Short sentences remove the need for plot"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A story's resolution should generally",
+      "choices": [
+        "introduce every character for the first time",
+        "show how the central conflict is addressed or left changed",
+        "repeat the opening without change",
+        "add a new conflict unrelated to the story"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A writer describes a character's hands shaking before an audition. What does this detail most directly do?",
+      "choices": [
+        "Explain the entire plot",
+        "Establish the story's historical period",
+        "Suggest emotion through physical behavior",
+        "Prove the narrator knows every thought"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which transition best signals a flashback?",
+      "choices": [
+        "At the same time, the train arrived",
+        "She closed the door",
+        "The station was crowded",
+        "Two years earlier, the same station had been their meeting place"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A narrative has many events but no clear focus. What should the writer do?",
+      "choices": [
+        "Select events that develop the central conflict or character change",
+        "Add more unrelated scenes",
+        "Remove the setting",
+        "Replace all actions with definitions"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is foreshadowing?",
+      "choices": [
+        "A return to an earlier event",
+        "A clue that hints at a later event",
+        "A direct statement of the theme",
+        "A description of the setting"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A narrator says, 'I never worry,' while nervously checking the window every minute. What can the contrast reveal?",
+      "choices": [
+        "The setting is a courtroom",
+        "The story has no conflict",
+        "The narrator's actions may contradict their words",
+        "The narrator is omniscient"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which ending creates the strongest sense of character development?",
+      "choices": [
+        "The story stops in the middle of a sentence",
+        "A new character appears without context",
+        "The conflict disappears without explanation",
+        "The character makes a choice that shows a changed understanding"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What should a writer consider when choosing a narrative point of view?",
+      "choices": [
+        "Which perspective best serves the story's information and effect",
+        "Which pronoun appears most often in the title",
+        "Whether the story has a dialogue line",
+        "How many pages the draft will be"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A scene feels rushed. Which revision is most likely to improve it?",
+      "choices": [
+        "Add a summary of unrelated events",
+        "Develop the key moment with action, sensory detail, and character response",
+        "Remove the central choice",
+        "Explain the ending before the scene"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why is a specific detail usually more effective than a general one?",
+      "choices": [
+        "It guarantees the story is true",
+        "It eliminates the need for sequence",
+        "It helps the reader imagine the scene and infer meaning",
+        "It makes every character identical"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A writer wants the climax to feel earned. What should earlier scenes do?",
+      "choices": [
+        "Hide all relevant information until after the ending",
+        "Include only background description",
+        "Avoid introducing the central conflict",
+        "Develop causes, stakes, and choices that lead toward it"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

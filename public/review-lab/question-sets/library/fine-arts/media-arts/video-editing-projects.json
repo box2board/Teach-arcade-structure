@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--media-arts--video-editing-projects",
+  "title": "Video Editing Projects",
+  "subject": "Fine Arts",
+  "category": "Media Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main purpose of a rough cut?",
+      "choices": [
+        "Arrange selected clips into an initial version of the story",
+        "Add final color grading before footage is chosen",
+        "Record a new camera",
+        "Create a transcript automatically"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "What is a jump cut?",
+      "choices": [
+        "A camera movement over a hill",
+        "An edit that skips part of continuous action, creating a noticeable time jump",
+        "A transition that fades to black",
+        "A change in audio pitch"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why use a continuity edit?",
+      "choices": [
+        "To make every shot the same length",
+        "To remove all background sound",
+        "To help action and space feel coherent across shots",
+        "To add a title to every frame"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "What does a cutaway shot often provide?",
+      "choices": [
+        "A replacement for the entire story",
+        "A louder soundtrack",
+        "A frame-rate setting",
+        "A view of related detail or reaction that can support context or cover an edit"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Why should dialogue usually be audible above background music?",
+      "choices": [
+        "Viewers need to understand the spoken content",
+        "Music must always be silent",
+        "Dialogue determines the video resolution",
+        "It prevents captions from appearing"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "What is a useful reason to add captions?",
+      "choices": [
+        "They replace visual storytelling",
+        "They support access and comprehension, including for viewers who cannot hear the audio",
+        "They increase the video's frame rate",
+        "They guarantee a factual script"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "What does a timeline track allow an editor to do?",
+      "choices": [
+        "Set a camera's aperture after filming",
+        "Choose the original location",
+        "Layer and arrange video, audio, titles, or effects over time",
+        "Change a subject's identity"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is a J-cut?",
+      "choices": [
+        "Video appears before any audio in every clip",
+        "A cut shaped like the letter J on screen",
+        "An edit that removes all dialogue",
+        "Audio from the next shot begins before its video appears"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A scene feels confusing because the shots change location without clues. What could improve it?",
+      "choices": [
+        "Add an establishing shot or clearer visual and audio continuity",
+        "Shorten every shot equally",
+        "Increase saturation",
+        "Remove all transitions and context"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Why should an editor organize and label footage?",
+      "choices": [
+        "It improves the camera sensor",
+        "It makes clips easier to find and reduces avoidable editing errors",
+        "It determines who owns the footage",
+        "It guarantees a smooth narrative"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What should a title card avoid?",
+      "choices": [
+        "Clear contrast",
+        "Enough time to read",
+        "Text that is too small or displayed too briefly to read",
+        "Consistent typography"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "How can an editor improve pacing in an interview video?",
+      "choices": [
+        "Cut every pause regardless of meaning",
+        "Use the fastest possible music",
+        "Show the same shot throughout",
+        "Remove repetition while preserving meaning and natural pauses"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What does color correction aim to do?",
+      "choices": [
+        "Make footage look consistent and correct unintended color or exposure differences",
+        "Add a new plot point",
+        "Change the order of dialogue",
+        "Set the export file name"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What is the difference between color correction and a creative grade?",
+      "choices": [
+        "Correction changes audio; grading changes captions",
+        "Correction addresses consistency and accuracy; grading shapes a chosen look",
+        "They are identical to exporting",
+        "Grading is only for black-and-white video"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why create a backup of project media?",
+      "choices": [
+        "It guarantees no viewer can copy the video",
+        "It increases playback speed",
+        "A lost or moved source file can break the edit",
+        "It removes the need to save the project"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What should a creator check before using music in a published video?",
+      "choices": [
+        "Whether the song has a catchy chorus",
+        "Whether it is louder than narration",
+        "Whether the file name includes a date",
+        "Rights, permissions, and any license conditions"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which export setting should match the intended viewing platform?",
+      "choices": [
+        "Resolution, aspect ratio, codec, and file-size requirements",
+        "The editor's favorite timeline color",
+        "The number of project folders",
+        "The camera's original battery level"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A sequence feels too slow. What is a sound editing decision?",
+      "choices": [
+        "Increase all clip volume",
+        "Trim redundant moments while keeping the action understandable",
+        "Add more unrelated footage",
+        "Remove the story's key setup"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why review a video after export?",
+      "choices": [
+        "The exported file always matches the timeline perfectly",
+        "Playback proves every claim is accurate",
+        "Exporting can reveal audio, caption, framing, or encoding problems",
+        "Reviewing changes ownership"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "What is a match-on-action edit?",
+      "choices": [
+        "Cutting whenever the music stops",
+        "Using the same actor in two scenes",
+        "Replacing all movement with a still image",
+        "Cutting between shots while an action continues to help the transition feel smooth"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

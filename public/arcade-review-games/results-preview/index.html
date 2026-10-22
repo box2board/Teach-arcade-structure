@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Arcade Results Preview | Teach Arcade</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#07111f;color:#eff6ff;font:16px/1.5 system-ui,sans-serif}main{max-width:900px;margin:auto;padding:30px 18px}a{color:#6ee7eb}h1{font-size:clamp(25px,5vw,36px);margin:14px 0 8px}p{color:#b7c8e1;margin:6px 0 20px}.controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0}label{font-size:13px;font-weight:700}select{display:block;width:100%;margin-top:7px;min-height:48px;padding:10px;border:1px solid #405676;border-radius:10px;background:#16263f;color:#fff;font:inherit}select:focus-visible{outline:3px solid #67e8f9;outline-offset:2px}#screen>.ta-results-card{max-height:none}#coverage{font-size:13px;margin-top:16px}@media(max-width:600px){.controls{grid-template-columns:1fr}main{padding-top:18px}}
+</style>
+<script src="/arcade-review-games/shared/arcade-results.js?v=2" defer></script>
+</head>
+<body><main>
+<a href="/arcade-review-games/">Teach Arcade / Arcade Review Games</a>
+<h1>Results screen preview</h1>
+<p>Choose a game and mode to compare the completion screens. These are sample scores. Play Again opens the selected game; Download results saves the sample report.</p>
+<div class="controls"><label>Game<select id="game" aria-label="Game"></select></label><label>Mode<select id="mode" aria-label="Mode"></select></label></div>
+<div id="screen" aria-live="polite"></div><p id="coverage"></p>
+</main>
+<script type="module">
+import {exampleFor} from './examples.js';
+const {games,render}=window.TAArcadeResults;
+const gameSelect=document.getElementById('game'),modeSelect=document.getElementById('mode'),screen=document.getElementById('screen');
+const params=new URLSearchParams(location.search);
+for(const game of games)gameSelect.add(new Option(game.title,game.id));
+gameSelect.value=games.some(game=>game.id===params.get('game'))?params.get('game'):'trench';
+function updateModes(){const game=games.find(game=>game.id===gameSelect.value);modeSelect.replaceChildren();game.modes.forEach((mode,i)=>modeSelect.add(new Option(mode,String(i))));}
+function update(){const game=games.find(game=>game.id===gameSelect.value);const result=exampleFor(game,game.modes[Number(modeSelect.value)]);screen.replaceChildren(render(result,()=>{location.href=game.route}));history.replaceState(null,'','?'+new URLSearchParams({game:game.id,mode:modeSelect.value}));}
+updateModes();if([...modeSelect.options].some(option=>option.value===params.get('mode')))modeSelect.value=params.get('mode');update();
+gameSelect.addEventListener('change',()=>{updateModes();update()});modeSelect.addEventListener('change',update);
+document.getElementById('coverage').textContent=games.length+' games · '+games.reduce((sum,game)=>sum+game.modes.length,0)+' game and mode combinations share this results layout.';
+</script></body></html>

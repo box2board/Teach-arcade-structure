@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--visual-arts--drawing-basics",
+  "title": "Drawing Basics",
+  "subject": "Fine Arts",
+  "category": "Visual Arts",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is contour drawing?",
+      "choices": [
+        "Drawing the visible edges and outlines of a subject",
+        "Shading only the background",
+        "Measuring color temperature",
+        "Cutting shapes from paper"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Why use gesture drawing?",
+      "choices": [
+        "To add final surface detail",
+        "To capture a subject's action, movement, and overall pose quickly",
+        "To choose a frame",
+        "To copy every contour exactly"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What is a vanishing point in linear perspective?",
+      "choices": [
+        "The darkest point in a drawing",
+        "The center of a circle",
+        "A point where parallel lines appear to meet in the distance",
+        "A point where a pencil is sharpened"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How does a horizon line relate to perspective drawing?",
+      "choices": [
+        "It marks the paper's bottom edge",
+        "It indicates the darkest shadow",
+        "It shows the subject's height",
+        "It represents the viewer's eye level"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What does shading help communicate?",
+      "choices": [
+        "Form, light, and depth",
+        "The subject's name",
+        "The page's orientation",
+        "A line's direction only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A cylinder looks flat. What can help show its volume?",
+      "choices": [
+        "A single straight outline only",
+        "An elliptical top and gradual value changes",
+        "A brighter signature",
+        "A thicker paper"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "What is proportion in drawing?",
+      "choices": [
+        "The pressure of a pencil",
+        "The order of materials",
+        "The relative size of parts within a subject",
+        "The color of the background"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why use a measuring method such as sighting?",
+      "choices": [
+        "To create automatic shading",
+        "To choose a subject",
+        "To erase perspective",
+        "To compare angles and relative dimensions more accurately"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What does foreshortening represent?",
+      "choices": [
+        "A form appearing compressed because it points toward or away from the viewer",
+        "A subject drawn smaller because it is unimportant",
+        "A technique for blending color",
+        "A way to repeat a pattern"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Why begin a complex drawing with simple shapes?",
+      "choices": [
+        "They add final texture immediately",
+        "They help establish placement, scale, and overall structure",
+        "They prevent revision",
+        "They identify the medium"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is negative space in drawing?",
+      "choices": [
+        "The darkest value",
+        "The blank back of the paper",
+        "The shapes formed by the areas around and between objects",
+        "An erased contour"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What can cross-contour lines communicate?",
+      "choices": [
+        "The subject's exact color",
+        "The artist's signature",
+        "A vanishing point only",
+        "How a surface turns through space"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A still-life drawing feels off-balance. What should be checked first?",
+      "choices": [
+        "Placement and proportion of the major shapes",
+        "The frame's color",
+        "The number of pencils",
+        "The paper's brand"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is a cast shadow?",
+      "choices": [
+        "The darkest value on the object itself",
+        "A shadow an object projects onto another surface",
+        "A highlight on a curved form",
+        "A line showing the horizon"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "How can line weight create depth?",
+      "choices": [
+        "Keep all lines identical",
+        "Erase every contour",
+        "Use varied weight to distinguish foreground, overlap, or emphasis",
+        "Use only horizontal lines"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Why should an artist compare the drawing with the subject while working?",
+      "choices": [
+        "It prevents any personal interpretation",
+        "It guarantees photorealism",
+        "It replaces planning",
+        "Repeated observation helps identify proportion and relationship errors"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What is a value scale used to study?",
+      "choices": [
+        "A range from light to dark",
+        "A list of object sizes",
+        "A set of perspective grids",
+        "The paper's texture"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How does a thumbnail sketch support a larger drawing?",
+      "choices": [
+        "It replaces observation",
+        "It tests composition and placement before detailed work",
+        "It fixes all proportions permanently",
+        "It adds final color"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What does a focal point do in a drawing?",
+      "choices": [
+        "Marks where the paper folds",
+        "Shows the horizon",
+        "Attracts attention to an important area",
+        "Identifies the drawing tool"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Why can continuous looking at the subject improve drawing?",
+      "choices": [
+        "It makes the drawing identical in every case",
+        "It removes the need for practice",
+        "It sets the subject's lighting",
+        "It trains observation of shape, angle, and spatial relationships"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

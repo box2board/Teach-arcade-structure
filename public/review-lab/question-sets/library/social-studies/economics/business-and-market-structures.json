@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--economics--business-and-market-structures",
+  "title": "Business and Market Structures",
+  "subject": "Social Studies",
+  "category": "Economics",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In a perfectly competitive market, an individual firm is usually described as a",
+      "choices": [
+        "price maker",
+        "price taker",
+        "single seller",
+        "government agency"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which feature is most characteristic of a monopoly?",
+      "choices": [
+        "Many small sellers offer identical products",
+        "Firms enter and exit with no barriers",
+        "One seller controls a market with no close substitute",
+        "Buyers set every firm's production level"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which market structure has a few large firms whose decisions can affect one another?",
+      "choices": [
+        "Perfect competition",
+        "Monopoly competition",
+        "Public ownership",
+        "Oligopoly"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A firm sells a product that is differentiated by brand but competes with many similar sellers. Which market structure is most likely?",
+      "choices": [
+        "Monopolistic competition",
+        "Monopoly",
+        "Perfect competition",
+        "Bilateral monopoly"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Why can high startup costs act as a barrier to entry?",
+      "choices": [
+        "They guarantee that every firm earns a profit",
+        "New firms may be unable to obtain the capital needed to compete",
+        "They prevent consumers from comparing products",
+        "They make demand perfectly elastic"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A single water utility serves a region because duplicating its pipes would be costly. This situation is often classified as",
+      "choices": [
+        "perfect competition",
+        "monopolistic competition",
+        "a natural monopoly",
+        "a labor union"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Two dominant airlines match each other's fare changes. This is evidence that",
+      "choices": [
+        "the market contains only price-taking firms",
+        "demand no longer affects prices",
+        "the firms have no strategic interaction",
+        "each firm's decisions may depend on competitors' responses"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "Which change would most likely increase competition in a market?",
+      "choices": [
+        "Reducing unnecessary legal barriers to entry",
+        "Granting one firm exclusive control of key inputs",
+        "Increasing switching costs for all customers",
+        "Banning new firms from entering"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "A company lowers its price, and rival firms quickly respond with similar cuts. What concern may this create for the firms?",
+      "choices": [
+        "The market becomes a monopoly immediately",
+        "Price competition can reduce each firm's profit margin",
+        "The product becomes a public good",
+        "All consumer demand disappears"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Which market outcome is most likely when a single seller faces little competition and consumers have few substitutes?",
+      "choices": [
+        "The seller must accept the market price",
+        "The seller cannot earn revenue",
+        "The seller may have greater power to influence price",
+        "Consumers determine the firm's production costs"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "What is a key difference between a public good and a private good?",
+      "choices": [
+        "Private goods are always supplied by governments",
+        "Public goods have no production costs",
+        "Private goods are available to everyone without payment",
+        "Public goods are generally nonexcludable and nonrival"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A company owns the only local patent for a specialized medicine. The patent may create a temporary barrier because it",
+      "choices": [
+        "limits other firms' legal ability to produce the same patented invention",
+        "guarantees the company unlimited demand",
+        "removes the need for safety testing",
+        "prevents consumers from seeking substitutes"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "If a market's firms can enter easily when profits rise, what is likely over time?",
+      "choices": [
+        "Existing firms will become permanent monopolies",
+        "New entry may increase supply and place pressure on prices and profits",
+        "Consumer demand will stop affecting output",
+        "All firms will face identical production costs"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Two companies combine and become the only sellers of a necessary local service. Which issue would regulators most likely examine?",
+      "choices": [
+        "Whether the companies have attractive logos",
+        "Whether every customer buys the same amount",
+        "Whether the merger substantially reduces competition or harms consumers",
+        "Whether market demand is completely fixed"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which measure best describes a firm's market share?",
+      "choices": [
+        "Its total number of employees worldwide",
+        "Its tax rate compared with the average",
+        "Its production cost per worker",
+        "Its portion of total sales in the relevant market"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A firm in a competitive market develops a process that lowers its costs. What can happen if rivals cannot copy it immediately?",
+      "choices": [
+        "The firm may earn higher profits until competition responds",
+        "The firm must raise its costs to match competitors",
+        "The market becomes a public good",
+        "Consumers lose all bargaining power"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Why do economists define the relevant product and geographic market when evaluating competition?",
+      "choices": [
+        "It determines the company's advertising style",
+        "The definition affects which sellers and substitutes count as competitors",
+        "It removes the need to measure market shares",
+        "It proves every large firm is a monopoly"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A new app makes it easy for customers to compare prices across sellers. What is one likely competitive effect?",
+      "choices": [
+        "It creates a legal barrier to all new firms",
+        "It guarantees equal market shares",
+        "It may reduce some sellers' ability to charge much more than rivals",
+        "It eliminates differences in product quality"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "A small town has one grocery store, but residents can shop online or drive to a nearby town. Why should those alternatives be considered before calling the store a monopoly?",
+      "choices": [
+        "A monopoly is defined by a store's building size",
+        "Online sales are never part of a market",
+        "A nearby competitor cannot affect local choices",
+        "Substitutes and the geographic market affect how much market power the store has"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which statement best describes competition in an oligopoly?",
+      "choices": [
+        "A few firms may compete while also anticipating each other's actions",
+        "Many firms act without considering rivals",
+        "One firm always has no influence on price",
+        "Prices are set only by consumers"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    }
+  ]
+}

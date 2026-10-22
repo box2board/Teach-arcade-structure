@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--art-history--19th-century-art-movements",
+  "title": "19th-Century Art Movements",
+  "subject": "Fine Arts",
+  "category": "Art History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which subject was especially important to Romantic artists?",
+      "choices": [
+        "Powerful emotion and the sublime force of nature",
+        "Only geometric diagrams",
+        "Industrial product catalogs",
+        "Strictly idealized classical scenes"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "What does 'the sublime' often describe in Romantic art?",
+      "choices": [
+        "A perfectly measured portrait",
+        "Awe mixed with fear before overwhelming natural forces or scale",
+        "A decorative border",
+        "A neutral inventory"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was a central aim of Realist artists such as Gustave Courbet?",
+      "choices": [
+        "Paint only mythological gods",
+        "Avoid social subjects",
+        "Depict contemporary life and ordinary people without idealizing them",
+        "Use photography as the only medium"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which subject would best fit a Realist painting?",
+      "choices": [
+        "A legendary hero in an imaginary battle",
+        "A purely abstract color field",
+        "A courtly fantasy with no contemporary reference",
+        "Workers doing everyday labor"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "How did industrialization affect some 19th-century artists?",
+      "choices": [
+        "It changed urban life and labor, providing new subjects and conditions to respond to",
+        "It ended all artistic production",
+        "It prevented artists from traveling",
+        "It eliminated new materials"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What was one goal of the Pre-Raphaelite Brotherhood?",
+      "choices": [
+        "Promote only machine-made images",
+        "Return to detailed observation and vivid color inspired by earlier art",
+        "Reject all narrative subjects",
+        "Develop digital animation"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which material became widely available to artists during the 19th century and supported outdoor painting?",
+      "choices": [
+        "LED panels",
+        "Synthetic spray paint",
+        "Portable paint tubes",
+        "Digital tablets"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What did photography challenge artists to reconsider?",
+      "choices": [
+        "Whether images could be made at all",
+        "The existence of portraiture",
+        "The use of color in every medium",
+        "How painting could represent reality, time, and viewpoint"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Which movement is associated with artists who emphasized emotion and dramatic nature?",
+      "choices": [
+        "Romanticism",
+        "Realism",
+        "Neoclassicism only",
+        "Minimalism"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A painting depicts a contemporary city street and its ordinary residents. Which movement may be relevant?",
+      "choices": [
+        "Rococo",
+        "Realism",
+        "Byzantine art",
+        "Surrealism"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is one reason artists formed groups and exhibited outside official salons?",
+      "choices": [
+        "They wanted to stop showing art publicly",
+        "All museums had closed",
+        "They sought new audiences and alternatives to established institutions",
+        "Group membership prevented experimentation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "How did the growth of cities influence some 19th-century art?",
+      "choices": [
+        "It eliminated landscape painting",
+        "It made all paintings religious",
+        "It ended the market for art",
+        "Artists responded to crowds, modern leisure, social change, and urban environments"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is an example of historical context affecting an artwork's interpretation?",
+      "choices": [
+        "Knowing the labor conditions surrounding a painting of workers can deepen its social meaning",
+        "Counting brushstrokes only",
+        "Ignoring the depicted subject",
+        "Using the frame's color"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Which statement about 19th-century art is most accurate?",
+      "choices": [
+        "It had one uniform style",
+        "It included several movements with different goals and responses to modern life",
+        "All artists rejected representation",
+        "It ended painting"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Why might a Romantic landscape show a tiny human figure beneath mountains or a storm?",
+      "choices": [
+        "To establish an exact population count",
+        "To hide the central subject accidentally",
+        "To contrast human scale with nature's vastness and power",
+        "To show a system of linear perspective only"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "What did many Realist artists challenge?",
+      "choices": [
+        "The use of all visible objects",
+        "The existence of contemporary life",
+        "The need for materials",
+        "Conventions that reserved serious art for idealized or heroic subjects"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which choice best describes an art movement?",
+      "choices": [
+        "A group or period of related artistic ideas and practices",
+        "A single museum room",
+        "A kind of canvas",
+        "A list of unrelated artists"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A painter chooses an unidealized scene of rural labor. What may the choice signal?",
+      "choices": [
+        "A requirement to paint mythology",
+        "Interest in representing ordinary work and lived conditions",
+        "A rejection of all observation",
+        "A focus on royal portraiture"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What is one way new technologies changed 19th-century artmaking?",
+      "choices": [
+        "They eliminated the need for artists",
+        "They made all styles identical",
+        "They affected materials, image production, and artists' relationship to observation",
+        "They stopped public exhibition"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "When comparing Romanticism and Realism, what is most helpful?",
+      "choices": [
+        "Rank the artists by fame",
+        "Compare only canvas sizes",
+        "Ignore historical context",
+        "Examine how each movement treats subject matter, emotion, and contemporary experience"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

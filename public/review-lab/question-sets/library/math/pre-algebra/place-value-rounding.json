@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--place-value-rounding",
+  "title": "Place Value & Rounding",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "In 5,482, what is the value of the digit 4?",
+      "choices": [
+        "400",
+        "4",
+        "40",
+        "4,000"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which is the expanded form of 3,206?",
+      "choices": [
+        "300 + 20 + 6",
+        "3,000 + 200 + 6",
+        "3,000 + 20 + 6",
+        "3,000 + 200 + 60"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Round 8,649 to the nearest hundred.",
+      "choices": [
+        "8,500",
+        "8,650",
+        "8,600",
+        "8,700"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Round 47.386 to the nearest tenth.",
+      "choices": [
+        "47.3",
+        "47.38",
+        "48",
+        "47.4"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Which number is greatest?",
+      "choices": [
+        "6.305",
+        "6.35",
+        "6.053",
+        "6.3"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What is 0.07 written as a fraction in simplest form?",
+      "choices": [
+        "7/10",
+        "7/100",
+        "70/100",
+        "1/7"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "In 92.418, which digit is in the hundredths place?",
+      "choices": [
+        "4",
+        "8",
+        "1",
+        "2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Round 152,741 to the nearest thousand.",
+      "choices": [
+        "152,000",
+        "152,700",
+        "160,000",
+        "153,000"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which comparison is true?",
+      "choices": [
+        "0.408 < 0.48",
+        "0.408 > 0.48",
+        "0.408 = 0.48",
+        "0.408 > 0.4080"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "What number is 6 hundreds, 2 tens, 9 ones, and 4 tenths?",
+      "choices": [
+        "6,294",
+        "629.4",
+        "692.4",
+        "629.04"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Round 3.995 to the nearest hundredth.",
+      "choices": [
+        "3.99",
+        "3.90",
+        "4.00",
+        "3.10"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which number has a 7 in the ten-thousands place?",
+      "choices": [
+        "247,018",
+        "27,418",
+        "724,018",
+        "274,018"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Round 0.746 to the nearest tenth.",
+      "choices": [
+        "0.7",
+        "0.8",
+        "0.75",
+        "1.0"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Arrange from least to greatest: 2.09, 2.9, 2.19.",
+      "choices": [
+        "2.9, 2.19, 2.09",
+        "2.09, 2.19, 2.9",
+        "2.19, 2.09, 2.9",
+        "2.09, 2.9, 2.19"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What is the value of the 5 in 0.052?",
+      "choices": [
+        "0.5",
+        "0.005",
+        "0.05",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Round 68,451 to the nearest ten thousand.",
+      "choices": [
+        "60,000",
+        "68,000",
+        "68,500",
+        "70,000"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which digit is in the thousandths place in 14.8276?",
+      "choices": [
+        "7",
+        "8",
+        "2",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A measurement is 19.96 cm. Rounded to the nearest whole centimeter, it is",
+      "choices": [
+        "19 cm",
+        "20 cm",
+        "19.9 cm",
+        "21 cm"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Which decimal is equivalent to 5 + 0.3 + 0.008?",
+      "choices": [
+        "5.38",
+        "5.038",
+        "5.308",
+        "5.800"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A store reports 12,483 visitors. To estimate to the nearest thousand, round to",
+      "choices": [
+        "13,000",
+        "12,500",
+        "10,000",
+        "12,000"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--geography--urban-geography-and-development",
+  "title": "Urban Geography and Development",
+  "subject": "Social Studies",
+  "category": "Geography",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Urbanization is the process by which",
+      "choices": [
+        "cities lose all connections to rural regions",
+        "a growing share of a population lives in urban areas",
+        "farms replace transportation networks",
+        "a country's population becomes evenly distributed"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a central business district (CBD)?",
+      "choices": [
+        "A rural area with few services",
+        "A boundary used only for national elections",
+        "A city's major concentration of commercial and office activity",
+        "A zone reserved for agriculture"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A city expands outward as residents move to homes farther from the center. This pattern is often called",
+      "choices": [
+        "counterurbanization",
+        "urban renewal",
+        "industrialization",
+        "suburbanization"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Why can access to public transit influence where people live and work?",
+      "choices": [
+        "Transit changes travel time and the set of places people can reach",
+        "Transit determines a city's climate",
+        "Transit removes the need for land-use planning",
+        "Transit makes all neighborhoods identical"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A neighborhood gains new investment and housing costs rise, pushing some long-time residents to move. This process may be described as",
+      "choices": [
+        "rural depopulation",
+        "gentrification",
+        "desertification",
+        "deindustrialization"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which condition most directly contributes to an urban heat island?",
+      "choices": [
+        "A city's elevation always increases its temperature",
+        "Urban areas receive no rainfall",
+        "Buildings and paved surfaces absorb and retain more heat than nearby vegetated areas",
+        "Trees release heat into every street"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A planner wants to reduce flood risk in a rapidly growing city. Which measure is most likely to help?",
+      "choices": [
+        "Cover open land with more pavement",
+        "Build homes only in low-lying flood zones",
+        "Remove drainage channels without alternatives",
+        "Protect wetlands and use permeable surfaces to absorb stormwater"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "Why might informal settlements develop at the edges of a fast-growing city?",
+      "choices": [
+        "Housing and infrastructure may not expand as quickly or affordably as the population",
+        "Residents prefer to live without access to services",
+        "Cities have no land-use decisions",
+        "Urban migration always results from one cause"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Which data would best help compare access to parks across neighborhoods?",
+      "choices": [
+        "The number of city council meetings held each year",
+        "The distance or travel time from residents' homes to public green space",
+        "The height of the tallest downtown building",
+        "The city's average annual rainfall alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "A city places homes, shops, and services near a train station. What goal does this pattern often support?",
+      "choices": [
+        "Greater dependence on long car trips",
+        "Lower access to public transportation",
+        "More compact, transit-oriented development",
+        "Separation of all daily activities"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why can zoning decisions affect social and economic patterns within a city?",
+      "choices": [
+        "They determine the national currency",
+        "They make land values unrelated to location",
+        "They eliminate the need for transportation",
+        "They shape which activities and buildings are allowed in different areas"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A new highway shortens commute times for one suburb but divides a nearby neighborhood. What should a planning review include?",
+      "choices": [
+        "Both transportation benefits and the distribution of social and environmental costs",
+        "Only the projected vehicle speed",
+        "Only the highway's construction materials",
+        "A decision to exclude affected residents from the analysis"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Which factor is most likely to attract businesses to a particular urban location?",
+      "choices": [
+        "Distance from every worker and customer",
+        "Access to customers, workers, transportation, and supporting services",
+        "Lack of reliable utilities",
+        "A location with no connection to suppliers"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "An urban population grows quickly, but the number of schools and water connections stays the same. What challenge may result?",
+      "choices": [
+        "Population density automatically declines",
+        "The city's tax base must disappear",
+        "Public services may not meet residents' needs",
+        "The region becomes rural"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which strategy can improve a neighborhood's walkability?",
+      "choices": [
+        "Separate homes from all daily services",
+        "Remove shade and pedestrian crossings",
+        "Require a car for every local trip",
+        "Create connected sidewalks, safe crossings, and nearby destinations"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A city measures the number of residents per square kilometer. What is it measuring?",
+      "choices": [
+        "Population density",
+        "Population growth rate",
+        "Natural increase",
+        "Net migration"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A downtown office district loses employers, while warehouses and service businesses grow in a nearby area. What geographic idea helps explain this shift?",
+      "choices": [
+        "A permanent uniform pattern of city development",
+        "Changes in land use and economic activity over time",
+        "A change in latitude",
+        "A movement of tectonic plates"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Why should urban development plans consider residents' access to clean water and sanitation?",
+      "choices": [
+        "They matter only in rural regions",
+        "They are unrelated to city infrastructure",
+        "These services affect health, opportunity, and quality of life",
+        "They make population data unnecessary"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A city is comparing two housing plans. Plan A adds more units near existing transit; Plan B expands into farmland far from services. Which comparison is most complete?",
+      "choices": [
+        "Compare only the number of buildings",
+        "Assume the larger land area always costs less",
+        "Ignore access to jobs and public services",
+        "Compare affordability, travel, infrastructure costs, land use, and environmental effects"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why do some cities adopt mixed-use zoning?",
+      "choices": [
+        "It can place housing, shops, and services closer together",
+        "It prevents people from walking between destinations",
+        "It requires every neighborhood to have the same density",
+        "It eliminates the need to manage traffic"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    }
+  ]
+}

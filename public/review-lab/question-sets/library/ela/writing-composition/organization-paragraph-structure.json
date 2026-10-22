@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--writing-composition--organization-paragraph-structure",
+  "title": "Organization & Paragraph Structure",
+  "subject": "English Language Arts",
+  "category": "Writing & Composition",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a paragraph's topic sentence meant to do?",
+      "choices": [
+        "State or signal the paragraph's main idea",
+        "Provide every detail",
+        "Introduce a new essay topic",
+        "Replace evidence"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which order is clearest for a paragraph explaining a process?",
+      "choices": [
+        "Place steps randomly",
+        "Present steps in the order they occur",
+        "Begin with a minor exception and omit the main step",
+        "Arrange steps alphabetically"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A paragraph's evidence supports a different claim from its topic sentence. What should the writer do?",
+      "choices": [
+        "Add more unrelated evidence",
+        "Keep both and avoid transitions",
+        "Revise the claim, evidence, or paragraph so they align",
+        "Remove the topic sentence only"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "What is paragraph unity?",
+      "choices": [
+        "Every paragraph has the same number of sentences",
+        "Every sentence begins with the same word",
+        "A paragraph contains only one source",
+        "The sentences in a paragraph support one main idea"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A writer shifts from one subtopic to another. Which device can help readers follow the shift?",
+      "choices": [
+        "A transition that shows the relationship between ideas",
+        "A repeated title",
+        "An unrelated example",
+        "A longer sentence with no signal"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which sequence best organizes a cause-and-effect paragraph?",
+      "choices": [
+        "List effects before naming the cause without connection",
+        "Explain the cause, then show its effects with evidence",
+        "Mix causes and examples randomly",
+        "End with an unrelated comparison"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "A paragraph contains three examples but no explanation. What is missing?",
+      "choices": [
+        "Another topic sentence",
+        "A new title",
+        "Commentary that shows how the examples support the main idea",
+        "More examples with no connection"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What does a concluding sentence often do within a paragraph?",
+      "choices": [
+        "Introduce several new topics",
+        "Replace all evidence",
+        "Repeat the first sentence without purpose",
+        "Reinforce the main point or connect it to the larger argument"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A comparison paragraph shifts between two subjects in each sentence. What structure can improve clarity?",
+      "choices": [
+        "Use a consistent point-by-point or subject-by-subject organization",
+        "Randomly alternate without signals",
+        "Remove all comparison criteria",
+        "List only one subject"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Which transition best signals a contrast?",
+      "choices": [
+        "For example",
+        "However",
+        "Similarly",
+        "As a result"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A paragraph starts with a quotation. What should usually follow it?",
+      "choices": [
+        "Another quotation without context",
+        "A new, unrelated topic",
+        "Context and explanation of how it supports the paragraph's point",
+        "The bibliography"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A long paragraph develops two unrelated main ideas. What is the best revision?",
+      "choices": [
+        "Add more sentences to the same paragraph",
+        "Delete all transitions",
+        "Remove both topic sentences",
+        "Separate the ideas into focused paragraphs with clear connections"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Which sentence best supports a paragraph about how sleep affects learning?",
+      "choices": [
+        "Students who sleep consistently may be better able to focus and retain new material",
+        "The school cafeteria opens at noon",
+        "Many students enjoy sports",
+        "A city bus stops near the school"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "What is the purpose of a transition between paragraphs?",
+      "choices": [
+        "Prove the next idea is true",
+        "Show how the next idea relates to what came before",
+        "Repeat the entire previous paragraph",
+        "Make the essay longer"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A paragraph lists details from most important to least important. Which organizational pattern is it using?",
+      "choices": [
+        "Chronological order",
+        "Spatial order",
+        "Order of importance",
+        "Problem-solution"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A writer explains a problem and then evaluates several responses. Which structure fits best?",
+      "choices": [
+        "Description with no focus",
+        "Chronological narrative only",
+        "A glossary entry",
+        "Problem and solution"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A paragraph's first sentence makes a broad claim, but the rest gives a different example. How can coherence improve?",
+      "choices": [
+        "Choose evidence and explanation that develop the stated claim",
+        "Add a heading between every sentence",
+        "Change the subject repeatedly",
+        "Remove the logical order"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which sequence best supports a paragraph describing a place?",
+      "choices": [
+        "List details by alphabet",
+        "Move through the space in a clear spatial order",
+        "Jump between distant locations without signals",
+        "State the conclusion first and stop"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Why should a writer vary paragraph length thoughtfully?",
+      "choices": [
+        "Every paragraph must look identical",
+        "Long paragraphs always contain better reasoning",
+        "Different ideas and emphasis may need different amounts of development",
+        "Short paragraphs cannot contain evidence"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A reader cannot tell how a statistic supports the claim. What should the writer add?",
+      "choices": [
+        "A new statistic on a different topic",
+        "A decorative image",
+        "A repeated title",
+        "An explanation connecting the statistic to the paragraph's point"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "subject": "Fine Arts",
+  "status": "draft-for-review",
+  "gradeBand": "7–12",
+  "setCount": 51,
+  "questionCount": 1020,
+  "sets": [
+    {
+      "id": "fine-arts--art-history--prehistoric-ancient-art",
+      "title": "Prehistoric & Ancient Art",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/prehistoric-ancient-art.json"
+    },
+    {
+      "id": "fine-arts--art-history--medieval-byzantine-art",
+      "title": "Medieval & Byzantine Art",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/medieval-byzantine-art.json"
+    },
+    {
+      "id": "fine-arts--art-history--renaissance-art",
+      "title": "Renaissance Art",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/renaissance-art.json"
+    },
+    {
+      "id": "fine-arts--art-history--baroque-rococo",
+      "title": "Baroque & Rococo",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/baroque-rococo.json"
+    },
+    {
+      "id": "fine-arts--art-history--19th-century-art-movements",
+      "title": "19th-Century Art Movements",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/19th-century-art-movements.json"
+    },
+    {
+      "id": "fine-arts--art-history--impressionism-post-impressionism",
+      "title": "Impressionism & Post-Impressionism",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/impressionism-post-impressionism.json"
+    },
+    {
+      "id": "fine-arts--art-history--modern-art-movements",
+      "title": "Modern Art Movements",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/modern-art-movements.json"
+    },
+    {
+      "id": "fine-arts--art-history--contemporary-art-artists",
+      "title": "Contemporary Art & Artists",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/contemporary-art-artists.json"
+    },
+    {
+      "id": "fine-arts--art-history--how-to-analyze-discuss-art",
+      "title": "How to Analyze & Discuss Art",
+      "category": "Art History",
+      "questionCount": 20,
+      "file": "art-history/how-to-analyze-discuss-art.json"
+    },
+    {
+      "id": "fine-arts--dance--elements-of-dance",
+      "title": "Elements of Dance",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/elements-of-dance.json"
+    },
+    {
+      "id": "fine-arts--dance--movement-basics",
+      "title": "Movement Basics",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/movement-basics.json"
+    },
+    {
+      "id": "fine-arts--dance--dance-styles-overview",
+      "title": "Dance Styles Overview",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/dance-styles-overview.json"
+    },
+    {
+      "id": "fine-arts--dance--cultural-dances",
+      "title": "Cultural Dances",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/cultural-dances.json"
+    },
+    {
+      "id": "fine-arts--dance--choreography-basics",
+      "title": "Choreography Basics",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/choreography-basics.json"
+    },
+    {
+      "id": "fine-arts--dance--expression-performance",
+      "title": "Expression & Performance",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/expression-performance.json"
+    },
+    {
+      "id": "fine-arts--dance--dance-technique-safety",
+      "title": "Dance Technique & Safety",
+      "category": "Dance",
+      "questionCount": 20,
+      "file": "dance/dance-technique-safety.json"
+    },
+    {
+      "id": "fine-arts--theatre--stage-directions-blocking",
+      "title": "Stage Directions & Blocking",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/stage-directions-blocking.json"
+    },
+    {
+      "id": "fine-arts--theatre--acting-basics",
+      "title": "Acting Basics",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/acting-basics.json"
+    },
+    {
+      "id": "fine-arts--theatre--improvisation-games",
+      "title": "Improvisation Games",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/improvisation-games.json"
+    },
+    {
+      "id": "fine-arts--theatre--dramatic-structure",
+      "title": "Dramatic Structure",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/dramatic-structure.json"
+    },
+    {
+      "id": "fine-arts--theatre--scriptwriting-dialogue",
+      "title": "Scriptwriting & Dialogue",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/scriptwriting-dialogue.json"
+    },
+    {
+      "id": "fine-arts--theatre--character-development",
+      "title": "Character Development",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/character-development.json"
+    },
+    {
+      "id": "fine-arts--theatre--set-costume-design",
+      "title": "Set & Costume Design",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/set-costume-design.json"
+    },
+    {
+      "id": "fine-arts--theatre--theatre-history-traditions",
+      "title": "Theatre History & Traditions",
+      "category": "Theatre",
+      "questionCount": 20,
+      "file": "theatre/theatre-history-traditions.json"
+    },
+    {
+      "id": "fine-arts--media-arts--introduction-to-media-arts",
+      "title": "Introduction to Media Arts",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/introduction-to-media-arts.json"
+    },
+    {
+      "id": "fine-arts--media-arts--digital-citizenship",
+      "title": "Digital Citizenship",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/digital-citizenship.json"
+    },
+    {
+      "id": "fine-arts--media-arts--graphic-design-basics",
+      "title": "Graphic Design Basics",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/graphic-design-basics.json"
+    },
+    {
+      "id": "fine-arts--media-arts--photo-editing",
+      "title": "Photo Editing",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/photo-editing.json"
+    },
+    {
+      "id": "fine-arts--media-arts--animation-basics",
+      "title": "Animation Basics",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/animation-basics.json"
+    },
+    {
+      "id": "fine-arts--media-arts--video-editing-projects",
+      "title": "Video Editing Projects",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/video-editing-projects.json"
+    },
+    {
+      "id": "fine-arts--music--rhythm-beat",
+      "title": "Rhythm & Beat",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/rhythm-beat.json"
+    },
+    {
+      "id": "fine-arts--music--melody-pitch",
+      "title": "Melody & Pitch",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/melody-pitch.json"
+    },
+    {
+      "id": "fine-arts--music--music-notation",
+      "title": "Music Notation",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/music-notation.json"
+    },
+    {
+      "id": "fine-arts--music--scales-keys",
+      "title": "Scales & Keys",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/scales-keys.json"
+    },
+    {
+      "id": "fine-arts--music--dynamics-tempo",
+      "title": "Dynamics & Tempo",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/dynamics-tempo.json"
+    },
+    {
+      "id": "fine-arts--music--instrument-families",
+      "title": "Instrument Families",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/instrument-families.json"
+    },
+    {
+      "id": "fine-arts--music--world-instruments",
+      "title": "World Instruments",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/world-instruments.json"
+    },
+    {
+      "id": "fine-arts--music--genres-styles-of-music",
+      "title": "Genres & Styles of Music",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/genres-styles-of-music.json"
+    },
+    {
+      "id": "fine-arts--music--composer-studies",
+      "title": "Composer Studies",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/composer-studies.json"
+    },
+    {
+      "id": "fine-arts--music--composition-music-creation",
+      "title": "Composition & Music Creation",
+      "category": "Music",
+      "questionCount": 20,
+      "file": "music/composition-music-creation.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--elements-of-art",
+      "title": "Elements of Art",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/elements-of-art.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--principles-of-design",
+      "title": "Principles of Design",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/principles-of-design.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--color-theory",
+      "title": "Color Theory",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/color-theory.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--drawing-basics",
+      "title": "Drawing Basics",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/drawing-basics.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--painting-techniques",
+      "title": "Painting Techniques",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/painting-techniques.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--mixed-media",
+      "title": "Mixed Media",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/mixed-media.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--sculpture-3d-art",
+      "title": "Sculpture & 3D Art",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/sculpture-3d-art.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--digital-illustration",
+      "title": "Digital Illustration",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/digital-illustration.json"
+    },
+    {
+      "id": "fine-arts--visual-arts--art-critique-creative-process",
+      "title": "Art Critique & Creative Process",
+      "category": "Visual Arts",
+      "questionCount": 20,
+      "file": "visual-arts/art-critique-creative-process.json"
+    },
+    {
+      "id": "fine-arts--media-arts--storyboarding-visual-storytelling",
+      "title": "Storyboarding & Visual Storytelling",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/storyboarding-visual-storytelling.json"
+    },
+    {
+      "id": "fine-arts--media-arts--digital-illustration",
+      "title": "Digital Illustration",
+      "category": "Media Arts",
+      "questionCount": 20,
+      "file": "media-arts/digital-illustration.json"
+    }
+  ]
+}

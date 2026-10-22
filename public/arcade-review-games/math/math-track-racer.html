@@ -400,6 +400,7 @@
 
   let score = 0;
   let streak = 0;
+  let bestStreak = 0, correctAnswers = 0, answeredQuestions = 0, missedQuestions = 0;
   let timeLeft = 60;
 
   let mode = "mixed";
@@ -654,10 +655,13 @@
     for (const t of answerTiles){
       const tileRect = { x: t.x - t.w/2, y: t.y - t.h/2, w: t.w, h: t.h };
       if (rectsOverlap(carRect.x,carRect.y,carRect.w,carRect.h, tileRect.x,tileRect.y,tileRect.w,tileRect.h)){
+        answeredQuestions += 1;
         if (t.isCorrect){
+          correctAnswers += 1;
           const add = 100 + Math.min(200, streak*15);
           score += add;
           streak += 1;
+          bestStreak = Math.max(bestStreak, streak);
           flashMessage(`Correct! +${add}`, "good");
         } else {
           score = Math.max(0, score - 50);
@@ -672,6 +676,7 @@
 
     const passed = answerTiles.length && answerTiles[0].y > car.y + 120;
     if (passed){
+      missedQuestions += 1;
       score = Math.max(0, score - 25);
       streak = 0;
       flashMessage(`Missed! -25`, "warn");
@@ -952,6 +957,7 @@
 
     score = 0;
     streak = 0;
+    bestStreak = correctAnswers = answeredQuestions = missedQuestions = 0;
     timeLeft = 60;
     accumSecond = 0;
 
@@ -966,11 +972,12 @@
   }
 
   function endGame(){
+    window.TA_ARCADE_PERFORMANCE = {score, bestStreak, correct:correctAnswers, answered:answeredQuestions, missed:missedQuestions};
     running = false;
     paused = false;
     setOverlay(true);
     overlayTitle.textContent = "Time!";
-    overlayText.innerHTML = `Final score: <b>${score}</b> • Best streak: <b>${streak}</b><br/>Choose settings and play again.`;
+    overlayText.innerHTML = `Final score: <b>${score}</b> • Best streak: <b>${bestStreak}</b><br/>Choose settings and play again.`;
     btnStart.textContent = "Play Again";
   }
 
@@ -1059,5 +1066,6 @@
   <p>Use these verified Teach Arcade paths to move from this activity into the surrounding lesson and resource collection.</p>
   <ul><li><a href="/subjects/math/math-games-puzzles/fact-fluency-games/">Addition Fact Fluency</a></li><li><a href="/subjects/math/">Math</a></li><li><a href="/arcade-review-games/">Arcade Review Games</a></li><li><a href="/arcade-review-games/math/math-rush-genesis-addition.html">Math Rush: Addition</a></li></ul>
 </section>
+<script src="/arcade-review-games/shared/arcade-results.js?v=2" defer></script>
 </body>
 </html>

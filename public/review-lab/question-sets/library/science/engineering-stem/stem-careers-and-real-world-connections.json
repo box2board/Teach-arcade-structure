@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "science--engineering-stem--stem-careers-and-real-world-connections",
+  "title": "STEM Careers and Real-World Connections",
+  "subject": "Science",
+  "category": "Engineering & STEM",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which professional most directly designs structures such as bridges and evaluates the forces they must withstand?",
+      "choices": [
+        "Civil engineer",
+        "Marine biologist",
+        "Epidemiologist",
+        "Astronomer"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A scientist studies how a new medicine affects cells in a controlled investigation. Which field is most directly related?",
+      "choices": [
+        "Urban planning",
+        "Biomedical science",
+        "Geology",
+        "Aerospace manufacturing"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What is a common difference between scientific inquiry and engineering design?",
+      "choices": [
+        "Science uses evidence, while engineering avoids testing",
+        "Engineering asks no questions about how systems work",
+        "Science often explains natural phenomena; engineering develops solutions to needs",
+        "Scientific work always produces a device"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A city wants to reduce flooding after heavy rain. Which team would most likely combine drainage design, land-use maps, and rainfall data?",
+      "choices": [
+        "Only professional athletes",
+        "Only graphic designers",
+        "A team that avoids local measurements",
+        "Civil engineers, planners, and environmental scientists"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "Why do many STEM projects benefit from collaboration across different specialties?",
+      "choices": [
+        "Different expertise can address connected parts of a complex problem",
+        "Team members can avoid sharing evidence",
+        "A single specialty always contains every needed skill",
+        "Collaboration eliminates the need to test a solution"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "An agricultural scientist compares crop growth under different watering schedules. Which skill is most important for a fair study?",
+      "choices": [
+        "Changing soil type and water amount together",
+        "Controlling other conditions and recording growth consistently",
+        "Selecting only the strongest-looking plant",
+        "Using a different measuring tool each day"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "A data analyst sees that hospital visits rise during a heat wave. What should the analyst do before claiming heat caused the increase?",
+      "choices": [
+        "Assume the two trends prove cause and effect",
+        "Discard days when visits did not rise",
+        "Examine timing, comparison data, and other possible contributing factors",
+        "Replace data analysis with a personal opinion"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "Which role most directly helps create software that turns satellite measurements into maps?",
+      "choices": [
+        "Veterinary technician",
+        "Food stylist",
+        "Stage manager",
+        "Geospatial software developer"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A biomedical engineer is designing a lightweight prosthetic hand. Which consideration belongs in the design evaluation?",
+      "choices": [
+        "Function, comfort, safety, cost, and access for intended users",
+        "Appearance alone",
+        "Whether the device uses the most parts",
+        "Whether the team can avoid feedback from users"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Why might an environmental scientist use a computer model of a watershed?",
+      "choices": [
+        "To replace all field observations permanently",
+        "To explore how changing conditions could affect water flow or quality",
+        "To guarantee every forecast is exact",
+        "To remove uncertainty from natural systems"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A technician notices that a machine's vibration increases over several weeks. Which response best uses STEM reasoning?",
+      "choices": [
+        "Wait for the machine to fail before recording evidence",
+        "Change several parts before identifying the problem",
+        "Collect consistent measurements and compare them with normal operating patterns",
+        "Ignore the trend if the machine still turns on"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "What is one reason engineers document design decisions and test results?",
+      "choices": [
+        "Documentation guarantees the design cannot fail",
+        "It removes the need for technical communication",
+        "It replaces testing with record keeping",
+        "Others can understand, evaluate, reproduce, or improve the work"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A public-health team tracks illness cases by location and date. Which tool is especially useful for recognizing geographic patterns?",
+      "choices": [
+        "A map-based data display",
+        "A list of unrelated product names",
+        "A mechanical torque wrench",
+        "A diagram of a cell membrane"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "When is a model's limitation especially important to report?",
+      "choices": [
+        "When the model has a title",
+        "When the model leaves out conditions that could change how its results apply",
+        "When its output matches the team's first guess",
+        "When the team used a computer"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A company collects information from wearable health devices. Which concern should guide responsible data use?",
+      "choices": [
+        "How to share every user's data publicly",
+        "How to remove all context from the measurements",
+        "Privacy, consent, security, and appropriate interpretation",
+        "How to treat every reading as a diagnosis"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "A renewable-energy project compares wind and solar installations. Which evidence best supports a community recommendation?",
+      "choices": [
+        "A national average alone with no local conditions",
+        "The cheapest equipment price only",
+        "A single sunny afternoon",
+        "Local energy output, cost, land use, reliability, and environmental impacts"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which professional most directly studies rocks, landforms, and processes that shape Earth's surface?",
+      "choices": [
+        "Geologist",
+        "Mechanical engineer",
+        "Speech-language pathologist",
+        "Accountant"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A team develops an app for people with limited vision. Which design practice best addresses accessibility?",
+      "choices": [
+        "Use color as the only way to communicate information",
+        "Test with intended users and provide options such as screen-reader support and adjustable contrast",
+        "Assume all users interact with screens in the same way",
+        "Remove text labels to create more space"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should a STEM recommendation include uncertainty when measurements are limited?",
+      "choices": [
+        "Uncertainty proves that all results are useless",
+        "It makes a recommendation impossible to understand",
+        "Decision makers need to know how confident the evidence is and what remains unknown",
+        "It allows unsupported claims to be stated as facts"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A robotics team is deciding whether to automate a repetitive warehouse task. Which question reflects a broad real-world analysis?",
+      "choices": [
+        "How quickly can the team remove all human oversight?",
+        "Which robot has the most impressive appearance?",
+        "Can the team skip a pilot test?",
+        "How will automation affect safety, reliability, workers, costs, and the task's quality?"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

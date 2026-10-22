@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--art-history--how-to-analyze-discuss-art",
+  "title": "How to Analyze & Discuss Art",
+  "subject": "Fine Arts",
+  "category": "Art History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which step is a useful starting point for analyzing an unfamiliar artwork?",
+      "choices": [
+        "Describe what is visibly present before interpreting it",
+        "Guess the artist's personality",
+        "Rank it against every other artwork",
+        "Decide whether it is expensive"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which sentence is an observation rather than an interpretation?",
+      "choices": [
+        "The figures are afraid",
+        "The image contains three figures and a red shape near the center",
+        "The red shape symbolizes anger",
+        "The artist criticizes society"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What does formal analysis examine?",
+      "choices": [
+        "Only the artist's biography",
+        "The work's sale price",
+        "Elements and principles such as line, color, shape, balance, and composition",
+        "The museum's opening hours"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A viewer claims a dark background creates a feeling of isolation. What would strengthen the interpretation?",
+      "choices": [
+        "Repeat the claim more loudly",
+        "Name the frame's material",
+        "Ask whether others agree without evidence",
+        "Point to visual evidence and explain how it supports that effect"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "What is composition?",
+      "choices": [
+        "The arrangement of visual elements within an artwork",
+        "The artwork's shipping method",
+        "A list of gallery rules",
+        "A type of pigment"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which principle describes how visual weight is distributed?",
+      "choices": [
+        "Tempo",
+        "Balance",
+        "Rhyme",
+        "Scale"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "How can context contribute to art analysis?",
+      "choices": [
+        "It determines one fixed meaning",
+        "It replaces looking closely",
+        "It can clarify historical, cultural, social, or material conditions around the work",
+        "It proves the artist's private thoughts"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "A painting uses repeated curved lines that guide the eye toward a figure. What can the viewer analyze?",
+      "choices": [
+        "The artist's height",
+        "The gallery's floor plan",
+        "The painting's shipping weight",
+        "How line directs attention and contributes to the composition"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "What is a defensible interpretation?",
+      "choices": [
+        "A claim about meaning supported by details in the artwork and relevant context",
+        "A guess without evidence",
+        "A statement that everyone must agree",
+        "A summary of the title only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Why can two viewers interpret the same artwork differently?",
+      "choices": [
+        "Artworks have no visible features",
+        "They may notice different evidence or bring different experiences and contexts",
+        "Only one viewer can understand art",
+        "Interpretation is always random"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which question best supports discussion of an artwork's use of color?",
+      "choices": [
+        "What is the museum's address?",
+        "How much does the frame weigh?",
+        "How do the color relationships affect emphasis or mood?",
+        "What time does the gallery close?"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "A student says, 'This is good art because I like it.' How can the response deepen?",
+      "choices": [
+        "Repeat the opinion",
+        "Avoid describing the work",
+        "Assume taste needs no explanation",
+        "Explain which choices create the response and support the view with evidence"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What is negative space?",
+      "choices": [
+        "The empty or unoccupied areas around and between forms",
+        "A dark pigment",
+        "A missing frame",
+        "A type of sculpture"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which statement best distinguishes subject from theme?",
+      "choices": [
+        "Subject and theme always mean the same thing",
+        "Subject is what is depicted; theme is an idea the work may explore",
+        "Theme is the material; subject is the frame",
+        "Subject is the artist's name"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A sculpture feels unstable because its forms lean diagonally. Which formal feature is relevant?",
+      "choices": [
+        "The title's spelling",
+        "The gallery's lighting schedule",
+        "The use of line, balance, and direction",
+        "The artist's birthplace"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Why should viewers avoid making unsupported claims about an artist's intention?",
+      "choices": [
+        "Artists never make choices",
+        "Intention cannot be discussed",
+        "All viewers know the artist personally",
+        "The work may support several readings, and intention requires evidence"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What does scale describe in visual analysis?",
+      "choices": [
+        "The size of forms in relation to one another or to the viewer",
+        "The work's color scheme",
+        "The order of brushstrokes",
+        "The story's time period"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which response best builds on a classmate's interpretation?",
+      "choices": [
+        "That is wrong",
+        "I see that pattern too; the repeated shapes also lead my eye toward the doorway",
+        "I like it",
+        "Let's discuss something else"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "What is one purpose of comparing artworks?",
+      "choices": [
+        "Prove one work is always superior",
+        "Avoid describing either work",
+        "Notice how different choices shape meaning or viewer experience",
+        "Make their contexts identical"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "A viewer recognizes a symbol but is unsure what it means in context. What should they do?",
+      "choices": [
+        "Apply one meaning automatically",
+        "Ignore the rest of the image",
+        "Assume it means the same thing everywhere",
+        "Consider the symbol's placement, related imagery, and cultural context"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

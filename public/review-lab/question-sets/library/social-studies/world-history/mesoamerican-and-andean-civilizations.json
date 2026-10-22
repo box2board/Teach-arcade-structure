@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--world-history--mesoamerican-and-andean-civilizations",
+  "title": "Mesoamerican and Andean Civilizations",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which crop became a foundation of many Mesoamerican societies?",
+      "choices": [
+        "Wheat",
+        "Maize",
+        "Barley",
+        "Potatoes only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which civilization built its capital, Tenochtitlan, on an island in Lake Texcoco?",
+      "choices": [
+        "The Inca",
+        "The Olmec",
+        "The Mexica, often called the Aztec",
+        "The Moche"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What were chinampas?",
+      "choices": [
+        "Inca record-keeping cords",
+        "Maya stone calendars",
+        "Andean mountain roads",
+        "Raised agricultural plots built in shallow lake areas"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which civilization created a large empire centered in the Andes with its capital at Cusco?",
+      "choices": [
+        "The Inca",
+        "The Maya",
+        "The Olmec",
+        "The Mexica"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Why did the Inca build extensive roads across the Andes?",
+      "choices": [
+        "To prevent all trade between settlements",
+        "To connect regions and support communication, administration, and movement",
+        "To replace agriculture with mining",
+        "To mark the edge of the Sahara"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "What were quipu used for in the Inca Empire?",
+      "choices": [
+        "Growing maize in lake gardens",
+        "Building stone arches",
+        "Recording information with knotted cords",
+        "Tracking European ships"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which civilization is known for early monumental sculpture and influence in the Gulf Coast region of Mesoamerica?",
+      "choices": [
+        "The Inca",
+        "The Songhai",
+        "The Hittite",
+        "The Olmec"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why did Maya city-states develop systems of writing and calendars?",
+      "choices": [
+        "They supported record keeping, ritual, political life, and tracking time",
+        "They replaced all local languages",
+        "They were used only to navigate the Atlantic",
+        "They ended the need for trade"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A farming community in the Andes builds terraces on a steep slope. What is the main agricultural purpose?",
+      "choices": [
+        "To make the mountain taller",
+        "To create level planting areas and manage soil and water on hillsides",
+        "To prevent all rainfall from reaching crops",
+        "To connect the Andes to the Nile"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "How did the geography of the Andes influence Inca society?",
+      "choices": [
+        "The mountains made agriculture impossible everywhere",
+        "The Andes prevented any centralized government",
+        "Mountain terrain shaped farming, transportation, and regional connections",
+        "The empire existed only on flat coastal plains"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What does the term Mesoamerica refer to?",
+      "choices": [
+        "The entire South American continent",
+        "A medieval European kingdom",
+        "A river valley in eastern Africa",
+        "A cultural region of present-day Mexico and Central America"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why was trade important among Mesoamerican societies?",
+      "choices": [
+        "It moved goods such as obsidian, cacao, textiles, and ideas across regions",
+        "It made local resources unnecessary",
+        "It prevented political alliances",
+        "It occurred only after Spanish conquest"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A historian compares Spanish accounts with Indigenous sources about the conquest of the Mexica Empire. Why use both?",
+      "choices": [
+        "Spanish accounts always contain every viewpoint",
+        "Different sources can reveal perspective, bias, and experiences omitted by one account",
+        "Indigenous sources cannot provide historical evidence",
+        "Comparing accounts eliminates the need for context"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Which statement about the Maya is accurate?",
+      "choices": [
+        "The Maya formed a single empire that controlled all of South America",
+        "Maya civilization began after the Spanish conquest",
+        "Maya peoples built city-states and developed writing, mathematics, and astronomy",
+        "The Maya had no agricultural systems"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What challenge did the Inca face in governing a large empire across varied terrain?",
+      "choices": [
+        "Maintaining contact across a single small island",
+        "Managing a navy on the Mediterranean Sea",
+        "Growing rice in the Nile Delta",
+        "Communicating and transporting people and goods across long distances and mountains"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Why were potatoes and other high-altitude crops important in the Andes?",
+      "choices": [
+        "They were adapted to local environments and supported food supplies",
+        "They could grow only in tropical rainforests",
+        "They replaced all trade",
+        "They were first introduced from Europe before the Inca"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which feature helped the Mexica expand their power in the Valley of Mexico?",
+      "choices": [
+        "A network of transatlantic steamships",
+        "Military alliances and control of tribute from subject communities",
+        "The construction of the Great Wall",
+        "Control of the Sahara's caravan routes"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A city grows on a lake island and uses raised fields to increase food production. Which example best fits this description?",
+      "choices": [
+        "Cusco and quipu",
+        "Machu Picchu and Roman aqueducts",
+        "Tenochtitlan and chinampas",
+        "Chichen Itza and Nile irrigation"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Why should the terms 'Aztec' and 'Mexica' be used carefully in historical writing?",
+      "choices": [
+        "They describe the Inca Empire",
+        "They are names for the Maya writing system",
+        "They were created by the Olmec",
+        "They can refer to related but not identical political or cultural groupings"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "What is one lasting effect of Spanish conquest on Indigenous communities in the Americas?",
+      "choices": [
+        "Population loss, political change, and cultural transformation, alongside continued Indigenous survival and adaptation",
+        "The disappearance of all Indigenous languages and traditions",
+        "No changes to land ownership or government",
+        "The end of all cultural exchange"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

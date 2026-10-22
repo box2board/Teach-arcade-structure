@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--theatre--scriptwriting-dialogue",
+  "title": "Scriptwriting & Dialogue",
+  "subject": "Fine Arts",
+  "category": "Theatre",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a stage play's dialogue consist of?",
+      "choices": [
+        "The spoken words assigned to characters",
+        "The lighting plan",
+        "The costume inventory",
+        "The audience's program"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a stage direction?",
+      "choices": [
+        "A character's spoken line",
+        "A written instruction about action, setting, or performance",
+        "A ticket price",
+        "A review of the play"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why should dialogue sound appropriate to a character and situation?",
+      "choices": [
+        "It guarantees every character speaks the same way",
+        "It removes the need for conflict",
+        "It helps reveal voice, relationship, and context",
+        "It determines the stage's size"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A character says, 'I didn't take it,' while hiding an object. What can this create?",
+      "choices": [
+        "A scene change",
+        "A lighting cue",
+        "A cast list",
+        "Subtext or dramatic irony"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "What is one purpose of a pause in dialogue?",
+      "choices": [
+        "Create emphasis, tension, or time for a response",
+        "Replace every stage direction",
+        "End the play automatically",
+        "Set the costume color"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Which line best reveals a character's goal through dialogue?",
+      "choices": [
+        "Hello, the room is large",
+        "I need to convince the council before the vote begins",
+        "The chair is wooden",
+        "That is a word"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 7,
+      "question": "Why read dialogue aloud during revision?",
+      "choices": [
+        "To measure the stage",
+        "To choose a lighting gel",
+        "To hear whether it sounds speakable and reveals the intended rhythm",
+        "To avoid editing the script"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "What is a monologue?",
+      "choices": [
+        "A conversation between two characters",
+        "A change of scene",
+        "A list of props",
+        "An extended speech by one character"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is an aside in theatre?",
+      "choices": [
+        "A brief remark intended for the audience or not heard by other characters",
+        "A stage entrance",
+        "A costume change",
+        "A line spoken by the chorus only"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A script has long speeches that all provide background facts. What could improve them?",
+      "choices": [
+        "Add more facts to each speech",
+        "Break information into purposeful exchanges shaped by character objectives",
+        "Remove every character response",
+        "Use the same voice for all characters"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "What is a beat in scriptwriting?",
+      "choices": [
+        "A page number",
+        "A stage platform",
+        "A small shift in action, thought, or tactic within a scene",
+        "A costume fitting"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why should a playwright consider what a character does not say?",
+      "choices": [
+        "Unspoken ideas have no dramatic effect",
+        "Every character must explain every thought",
+        "Silence removes all conflict",
+        "Silence and omission can shape tension or reveal subtext"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Which dialogue is most likely to create conflict?",
+      "choices": [
+        "You promised to keep it secret. I had to tell someone.",
+        "The lamp is on. Yes, it is.",
+        "We arrived at noon. It was noon.",
+        "The door is open. The door is open."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What is a useful way to format a script for rehearsal?",
+      "choices": [
+        "Place all text in one unlabeled paragraph",
+        "Clearly distinguish character names, dialogue, and stage directions",
+        "Hide character names",
+        "Remove scene divisions"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "A playwright wants a character's status to change in a conversation. What can the dialogue show?",
+      "choices": [
+        "A new costume only",
+        "A change in theater architecture",
+        "A shift in who persuades, controls information, or sets the terms",
+        "The audience's exact age"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Why should stage directions avoid unnecessary detail?",
+      "choices": [
+        "Actors cannot read directions",
+        "Playwrights may not describe action",
+        "Directions replace dialogue",
+        "They should support the action while leaving room for performance choices"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What is a dialogue tag or cue used for in a script?",
+      "choices": [
+        "Identify which character speaks",
+        "Set the ticket price",
+        "Describe the audience",
+        "Name the theater"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A character's speech uses short, interrupted sentences during an argument. What might this choice communicate?",
+      "choices": [
+        "A quiet setting by itself",
+        "Tension or difficulty completing thoughts",
+        "A change in costume",
+        "The number of scenes"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "How can revision improve dialogue?",
+      "choices": [
+        "Make every character use identical phrasing",
+        "Add unrelated explanation",
+        "Remove repetition that does not reveal character or advance the scene",
+        "Avoid reading the lines aloud"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "What is the strongest test of a stage direction?",
+      "choices": [
+        "Is it longer than the dialogue?",
+        "Does it name every audience member?",
+        "Does it explain the play's marketing plan?",
+        "Does it help performers or readers understand an action necessary to the scene?"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

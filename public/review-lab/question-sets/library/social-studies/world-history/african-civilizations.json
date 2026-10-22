@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--world-history--african-civilizations",
+  "title": "African Civilizations",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which West African empire became wealthy through trans-Saharan trade in gold and salt?",
+      "choices": [
+        "Byzantine Empire",
+        "Mali Empire",
+        "Inca Empire",
+        "Mughal Empire"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who was Mansa Musa, ruler of Mali, known for in the fourteenth century?",
+      "choices": [
+        "Founding the city of Constantinople",
+        "Leading the first voyage around Africa",
+        "His pilgrimage to Mecca and the display of Mali's wealth",
+        "Writing the Justinian Code"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why were salt and gold important in trans-Saharan trade?",
+      "choices": [
+        "They were the only goods traded in Africa",
+        "Gold was used only as decoration",
+        "Salt could not be preserved or transported",
+        "They were valuable goods exchanged across regions with different resources"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Which African kingdom was centered in present-day Zimbabwe and known for monumental stone structures?",
+      "choices": [
+        "Great Zimbabwe",
+        "Aksum",
+        "Benin",
+        "Kongo"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "The Swahili Coast connected East African cities to",
+      "choices": [
+        "the trans-Pacific fur trade",
+        "Indian Ocean trade networks",
+        "the Viking routes of the Baltic Sea",
+        "the Inca road system"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What was one role of griots in some West African societies?",
+      "choices": [
+        "They served as Roman emperors",
+        "They built irrigation canals in the Andes",
+        "They preserved and shared histories, genealogies, and cultural knowledge",
+        "They controlled every trans-Saharan caravan"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Why did the Niger River support settlement and trade in West Africa?",
+      "choices": [
+        "It isolated all inland communities",
+        "It prevented farming near its banks",
+        "It connected directly to the Mediterranean Sea",
+        "It provided water and transportation across parts of the region"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Which early African kingdom developed around the Red Sea trade routes and adopted Christianity in the fourth century?",
+      "choices": [
+        "Aksum",
+        "Songhai",
+        "Great Zimbabwe",
+        "Benin"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Timbuktu became an important center in Mali and Songhai partly because it",
+      "choices": [
+        "was a major port on the Indian Ocean",
+        "connected trade and scholarship in the trans-Saharan network",
+        "stood at the source of the Amazon River",
+        "served as the Byzantine capital"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "How did the spread of Islam affect some West African states?",
+      "choices": [
+        "It made every African society culturally identical",
+        "It ended trade across the Sahara",
+        "It influenced scholarship, trade, and political life while local practices and traditions continued",
+        "It replaced all existing languages immediately"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which statement about African geography is most accurate?",
+      "choices": [
+        "The entire continent is covered by rainforest",
+        "The Sahara is the only significant geographic feature",
+        "All African societies developed in the same way",
+        "The continent contains diverse climates, environments, and settlement patterns"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Why did control of trade routes strengthen some African states?",
+      "choices": [
+        "It could provide revenue, political influence, and access to valuable goods",
+        "It eliminated the need for agriculture",
+        "It guaranteed permanent peace",
+        "It made neighboring regions unable to trade"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "Which material is most closely associated with the surviving architecture of Great Zimbabwe?",
+      "choices": [
+        "Concrete poured by Roman engineers",
+        "Dry-stone masonry",
+        "Carved marble from the Alps",
+        "Timber imported from Scandinavia"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A historian studies coastal East African city-states that traded with Arabia, Persia, India, and China. Which network is most relevant?",
+      "choices": [
+        "Trans-Saharan trade only",
+        "Silk Road across Central Asia only",
+        "Indian Ocean trade",
+        "Atlantic triangular trade"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What role did the Songhai Empire play in West African history?",
+      "choices": [
+        "It ruled the Andes from Cusco",
+        "It created the Byzantine legal code",
+        "It controlled the Nile Delta throughout antiquity",
+        "It expanded power and trade along parts of the Niger and trans-Saharan routes"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Why do historians use oral traditions alongside written documents and archaeology?",
+      "choices": [
+        "They can preserve perspectives and histories not fully represented in written sources",
+        "Oral traditions are always identical and unchanging",
+        "They replace the need to evaluate evidence",
+        "They provide exact dates for every event"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Benin City is historically associated with which West African kingdom known for artistic bronze and brass works?",
+      "choices": [
+        "Mali Empire",
+        "Kingdom of Benin",
+        "Aksumite Empire",
+        "Kingdom of Kush"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How did camel caravans help trans-Saharan trade expand?",
+      "choices": [
+        "Camels made deserts permanently fertile",
+        "Caravans eliminated the need for trade centers",
+        "Camels could travel long distances in arid environments while carrying goods",
+        "Camels connected the Atlantic directly to China"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A community produces iron tools and trades them with neighboring farmers. What does this show?",
+      "choices": [
+        "Trade occurs only between empires",
+        "Iron tools prevented agriculture",
+        "Every community produced identical goods",
+        "Specialized production and exchange linked different communities"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Why is it important to name specific African societies rather than describe all of Africa as one civilization?",
+      "choices": [
+        "Distinct societies had different histories, institutions, and environments",
+        "The continent had no long-distance connections",
+        "All societies used the same political system",
+        "Regional differences began only in the twentieth century"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    }
+  ]
+}

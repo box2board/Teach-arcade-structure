@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "math--pre-algebra--logic-puzzles-brain-teasers",
+  "title": "Logic Puzzles & Brain Teasers",
+  "subject": "Math",
+  "category": "Pre-Algebra & Number Sense",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "A pattern is 2, 5, 8, 11. What is the next term?",
+      "choices": [
+        "14",
+        "13",
+        "15",
+        "22"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 2,
+      "question": "A number is even, greater than 20, less than 30, and divisible by 3. Which could it be?",
+      "choices": [
+        "22",
+        "24",
+        "25",
+        "27"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 3,
+      "question": "Three consecutive integers sum to 36. What is the middle integer?",
+      "choices": [
+        "11",
+        "13",
+        "12",
+        "9"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 4,
+      "question": "If all Bloops are Razzies and all Razzies are Lazzies, which must be true?",
+      "choices": [
+        "All Lazzies are Bloops",
+        "No Bloops are Lazzies",
+        "All Razzies are Bloops",
+        "All Bloops are Lazzies"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A 3-digit code has digits 2, 4, and 6. How many different codes use each digit once?",
+      "choices": [
+        "6",
+        "3",
+        "9",
+        "12"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "A clock shows 3:00. What is the smaller angle between its hands?",
+      "choices": [
+        "60°",
+        "90°",
+        "120°",
+        "180°"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "A farmer has chickens and rabbits: 8 heads and 22 legs total. How many rabbits?",
+      "choices": [
+        "2",
+        "4",
+        "3",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 8,
+      "question": "A sequence doubles each time: 3, 6, 12, 24. What is the next term?",
+      "choices": [
+        "36",
+        "30",
+        "72",
+        "48"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "If yesterday was Monday, what day will it be 10 days from today?",
+      "choices": [
+        "Friday",
+        "Thursday",
+        "Saturday",
+        "Sunday"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "A square's perimeter is 36 cm. What is its area?",
+      "choices": [
+        "36 cm²",
+        "81 cm²",
+        "72 cm²",
+        "324 cm²"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Four people each shake hands with every other person once. How many handshakes occur?",
+      "choices": [
+        "4",
+        "8",
+        "6",
+        "12"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "Which number completes the pattern 1, 4, 9, 16, __?",
+      "choices": [
+        "20",
+        "24",
+        "32",
+        "25"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "A bag has 3 red and 2 blue marbles. Without looking, what is the probability of drawing a blue marble?",
+      "choices": [
+        "2/5",
+        "3/5",
+        "1/2",
+        "2/3"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A puzzle has 5 rows with 5 tiles each. If 7 tiles are removed, how many remain?",
+      "choices": [
+        "20",
+        "18",
+        "25",
+        "12"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Two numbers have a sum of 15 and a difference of 3. What is the larger number?",
+      "choices": [
+        "6",
+        "12",
+        "9",
+        "8"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which shape comes next: triangle, square, pentagon, hexagon, __?",
+      "choices": [
+        "Octagon",
+        "Circle",
+        "Quadrilateral",
+        "Heptagon"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A number multiplied by itself is 49. What are the possible integer values?",
+      "choices": [
+        "7 and −7",
+        "7 only",
+        "−7 only",
+        "49 and −49"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "A code shifts each letter forward one place: CAT becomes DBU. What does DOG become?",
+      "choices": [
+        "CNG",
+        "EPH",
+        "EOG",
+        "DPH"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "You have 3 coins totaling 35 cents. One is not a nickel. What are the coins?",
+      "choices": [
+        "Three dimes and a nickel",
+        "Two quarters and a nickel",
+        "A quarter and two nickels",
+        "A quarter, a dime, and two pennies"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "A number leaves remainder 2 when divided by 5. Which could be the number?",
+      "choices": [
+        "15",
+        "18",
+        "20",
+        "17"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "ela--speaking-listening--listening-comprehension-tasks",
+  "title": "Listening Comprehension Tasks",
+  "subject": "English Language Arts",
+  "category": "Speaking & Listening",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "While listening to an explanation, what should a listener do first when a key term is unfamiliar?",
+      "choices": [
+        "Use context clues and note the term to clarify it",
+        "Stop listening to the rest",
+        "Assume it means the opposite",
+        "Change the subject"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 2,
+      "question": "A speaker gives a claim followed by two examples. Which note best captures the structure?",
+      "choices": [
+        "Write the examples without the claim",
+        "Record the claim and connect each example as supporting detail",
+        "Record only the speaker's name",
+        "Copy an unrelated phrase"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What is the difference between hearing and active listening?",
+      "choices": [
+        "Hearing always requires note-taking",
+        "Listening means agreeing",
+        "Active listening involves attention and interpretation, not just receiving sound",
+        "They are identical in every context"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A listener wants to check understanding after complex directions. What is the best strategy?",
+      "choices": [
+        "Begin immediately without checking",
+        "Ask an unrelated question",
+        "Repeat only the final word",
+        "Restate the key steps and ask whether the sequence is correct"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 5,
+      "question": "A speaker's tone sounds uncertain while the words state a firm conclusion. What should a listener do?",
+      "choices": [
+        "Consider both the wording and vocal cues before interpreting the message",
+        "Ignore the words entirely",
+        "Assume tone never matters",
+        "Conclude the speaker is lying"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 6,
+      "question": "Which note-taking choice best supports listening comprehension?",
+      "choices": [
+        "Write continuously without understanding",
+        "Use brief key words and relationships rather than trying to transcribe every word",
+        "Ignore transitions",
+        "Record only filler words"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "In a conversation, what is a clarifying question?",
+      "choices": [
+        "A question that changes the topic",
+        "A statement that repeats a rumor",
+        "A question that asks the speaker to explain an unclear point",
+        "A personal criticism"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A speaker uses 'first,' 'next,' and 'finally.' What do these words help a listener identify?",
+      "choices": [
+        "The speaker's credentials",
+        "A disagreement between sources",
+        "The conclusion's tone",
+        "The sequence of ideas or steps"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A listener summarizes a speaker's main point before responding. Why is this useful?",
+      "choices": [
+        "It checks comprehension and gives the speaker a chance to clarify",
+        "It proves the listener agrees",
+        "It ends the discussion",
+        "It replaces evidence"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A lecture includes a key claim and a counterexample. What should a listener record?",
+      "choices": [
+        "Only the first sentence",
+        "Both the claim and how the counterexample affects it",
+        "Only the counterexample's source",
+        "Neither, because they conflict"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "A speaker provides an example but does not state a conclusion. What can the listener reasonably do?",
+      "choices": [
+        "Treat any inference as a direct quotation",
+        "Assume the speaker has no purpose",
+        "Infer a possible point but distinguish inference from what was stated directly",
+        "Ignore the example"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 12,
+      "question": "During a peer's presentation, which action best demonstrates respectful listening?",
+      "choices": [
+        "Talk over the presentation",
+        "Use a phone throughout",
+        "Prepare a response unrelated to the talk",
+        "Attend to the speaker and save questions for an appropriate pause"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "What should a listener do when two speakers give conflicting information?",
+      "choices": [
+        "Compare their evidence, context, and claims before deciding",
+        "Choose the more confident voice",
+        "Assume both are equally accurate",
+        "Ignore both sources"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "A speaker signals a conclusion with 'therefore.' What does this transition suggest?",
+      "choices": [
+        "A new topic has started without connection",
+        "The speaker is drawing a result from earlier ideas",
+        "The speaker is giving a definition",
+        "The examples are in chronological order"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A podcast describes events in chronological order. Which organizer would best capture the information?",
+      "choices": [
+        "A two-circle comparison chart",
+        "A list of vocabulary words only",
+        "A timeline or sequence of events",
+        "A character map"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "A listener misses one sentence. What is the best way to recover?",
+      "choices": [
+        "Stop attending to the rest",
+        "Invent the missing sentence",
+        "Assume all later points are irrelevant",
+        "Use the next points and context, then ask for clarification if needed"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Why are nonverbal cues useful but limited evidence?",
+      "choices": [
+        "They can add context, but they do not reveal a person's thoughts with certainty",
+        "They always reveal exact meaning",
+        "They replace words in every situation",
+        "They prove a speaker's claim is true"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A speaker repeats a phrase before introducing a main point. What might the repetition signal?",
+      "choices": [
+        "A change of speaker",
+        "Emphasis or an upcoming important idea",
+        "A missing source",
+        "An unrelated conclusion"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "After listening to a science explanation, a student can restate the steps but not explain why they work. What is the best next move?",
+      "choices": [
+        "Memorize the wording without understanding",
+        "Change to an unrelated topic",
+        "Ask a question about the reasoning connecting the steps",
+        "Assume the steps are incorrect"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 20,
+      "question": "Which response best distinguishes a speaker's main idea from a supporting detail?",
+      "choices": [
+        "List the example alone",
+        "Repeat the title",
+        "Name the speaker's clothing",
+        "State the broad claim, then identify the example that illustrates it"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

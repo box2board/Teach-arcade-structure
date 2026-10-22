@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--art-history--medieval-byzantine-art",
+  "title": "Medieval & Byzantine Art",
+  "subject": "Fine Arts",
+  "category": "Art History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a mosaic?",
+      "choices": [
+        "An image or pattern assembled from small pieces of material",
+        "A drawing made only with charcoal",
+        "A sculpture carved from one stone",
+        "A printed book page"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Byzantine mosaics often use gold backgrounds. What effect can this create?",
+      "choices": [
+        "A realistic outdoor landscape",
+        "A luminous, otherworldly setting that emphasizes spiritual presence",
+        "A measurement of natural sunlight",
+        "A system of linear perspective"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "What was an icon in Byzantine art?",
+      "choices": [
+        "A secular map of trade routes",
+        "A type of Gothic arch",
+        "A devotional image, often of Christ, Mary, or a saint",
+        "A royal tax record"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Why were religious images important in many medieval communities?",
+      "choices": [
+        "They replaced all oral traditions",
+        "They were produced only as private decoration",
+        "They were forbidden in every church",
+        "They supported worship, teaching, devotion, and shared religious identity"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What is an illuminated manuscript?",
+      "choices": [
+        "A handwritten book decorated with painted images and ornament",
+        "A stone building lit by candles",
+        "A printed newspaper",
+        "A musical instrument"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "In an illuminated manuscript, gold leaf and vivid color could",
+      "choices": [
+        "prove the text was printed by machine",
+        "mark important passages and enhance the book's visual and devotional value",
+        "create a photographic record",
+        "serve as a map scale"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Which architectural feature is strongly associated with Gothic cathedrals?",
+      "choices": [
+        "Doric columns only",
+        "Concrete domes only",
+        "Pointed arches",
+        "Steel trusses"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How did stained glass contribute to many Gothic church interiors?",
+      "choices": [
+        "It supported the building's foundation alone",
+        "It replaced all sculpture",
+        "It created a flat, unlit wall",
+        "It admitted colored light and presented religious narratives or symbols"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "What is a flying buttress?",
+      "choices": [
+        "An exterior support that helps transfer the thrust of a high wall or vault",
+        "A decorative manuscript border",
+        "A type of mosaic tile",
+        "A free-standing altar"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Compared with many Gothic churches, Romanesque churches often have",
+      "choices": [
+        "glass curtain walls and steel frames",
+        "thick walls, rounded arches, and relatively small windows",
+        "pointed arches and extensive flying buttresses only",
+        "no stone construction"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why might a medieval church commission an altarpiece?",
+      "choices": [
+        "To replace the church's entire liturgy",
+        "To measure the building's height",
+        "To focus devotion and communicate sacred stories in a worship space",
+        "To record the daily weather"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Many medieval images use a hierarchical scale. What does that mean?",
+      "choices": [
+        "All figures are drawn to measured natural size",
+        "Figures are placed only by distance",
+        "Every image uses one vanishing point",
+        "More important figures may be shown larger than less important ones"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is one reason artists used symbolic attributes with saints?",
+      "choices": [
+        "The objects helped viewers identify the figures and their stories",
+        "The objects recorded the artist's signature only",
+        "The symbols prevented any religious interpretation",
+        "The objects showed exact geographic scale"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Why are many Byzantine figures shown frontally and with solemn expressions?",
+      "choices": [
+        "The artists could not draw profiles",
+        "The pose can convey authority, devotion, and a timeless sacred presence",
+        "The figures were always portraits from life",
+        "The style was designed to imitate photography"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "What did guilds often contribute to medieval art production?",
+      "choices": [
+        "A ban on apprenticeships",
+        "A system of digital image editing",
+        "Training, standards, and organization for craftspeople and workshops",
+        "The invention of oil paint in every region"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A cathedral's sculpted portal depicts biblical scenes. What could this communicate to visitors?",
+      "choices": [
+        "A private household budget",
+        "A sequence of royal elections",
+        "A scientific diagram of anatomy",
+        "Religious narratives and ideas at a prominent entrance"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "What does the term 'iconoclasm' refer to in historical discussions of Byzantine images?",
+      "choices": [
+        "Disputes or actions concerning the use or destruction of religious images",
+        "A method of mixing fresco pigment",
+        "A type of cathedral vault",
+        "A manuscript binding technique"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why should a viewer distinguish an original medieval work from a later restoration?",
+      "choices": [
+        "Restored works have no historical value",
+        "Restoration choices can affect what is visible and how the work is interpreted",
+        "Every restoration recreates the original exactly",
+        "Only the frame can be changed"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "Which feature best helps identify a Gothic cathedral interior?",
+      "choices": [
+        "Low ceilings and flat roofs only",
+        "A circular Roman amphitheater",
+        "Tall vertical spaces with pointed arches and ribbed vaults",
+        "A timber house with no openings"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "When comparing medieval and Byzantine art, what is a useful question?",
+      "choices": [
+        "Which artwork is objectively the most beautiful?",
+        "Which artist used the newest digital tool?",
+        "Which work has the largest canvas?",
+        "How do materials, religious purposes, and regional traditions shape the visual choices?"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

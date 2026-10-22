@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "fine-arts--art-history--modern-art-movements",
+  "title": "Modern Art Movements",
+  "subject": "Fine Arts",
+  "category": "Art History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What did Cubist artists often do with a subject?",
+      "choices": [
+        "Show it through fragmented forms and multiple viewpoints",
+        "Copy it from one fixed photographic viewpoint",
+        "Remove all geometry",
+        "Use only gold backgrounds"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Which artist is strongly associated with Cubism?",
+      "choices": [
+        "Claude Monet",
+        "Pablo Picasso",
+        "Raphael",
+        "Caravaggio"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What was one goal of Expressionist artists?",
+      "choices": [
+        "Reproduce surfaces with no interpretation",
+        "Avoid expressive choices",
+        "Use distortion and color to convey emotional experience",
+        "Show only mathematical diagrams"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Surrealist artists often explored",
+      "choices": [
+        "Roman engineering",
+        "medieval guild records",
+        "strictly naturalistic landscapes",
+        "dreams, the unconscious, and unexpected juxtapositions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is abstraction in visual art?",
+      "choices": [
+        "Reducing or transforming recognizable forms, or using nonrepresentational forms",
+        "Copying a subject exactly",
+        "Painting only portraits",
+        "Making every work a photograph"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Dada artists often used absurdity and chance to challenge",
+      "choices": [
+        "the use of color",
+        "traditional ideas about art and society",
+        "the existence of museums only",
+        "the practice of drawing"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Which description best fits a collage?",
+      "choices": [
+        "A bronze figure cast in one piece",
+        "A fresco on wet plaster",
+        "An artwork assembled from attached materials such as paper or images",
+        "A woven tapestry only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What was one aim of the Bauhaus school?",
+      "choices": [
+        "Separate art from all design",
+        "Promote only historical portraiture",
+        "Replace architecture with painting",
+        "Bring art, craft, design, and function into dialogue"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A Modernist artist simplifies a figure into geometric planes. Which movement could be relevant?",
+      "choices": [
+        "Cubism",
+        "Rococo",
+        "Impressionism",
+        "Medieval icon painting"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "Why did many modern artists experiment with unconventional materials?",
+      "choices": [
+        "Traditional materials were illegal",
+        "To expand what art could be and how it could communicate",
+        "New materials guaranteed realism",
+        "Artists were required to avoid ideas"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "What is a key difference between representation and abstraction?",
+      "choices": [
+        "Representation uses only sculpture",
+        "Abstraction always uses photographs",
+        "Representation refers to recognizable subjects; abstraction transforms or departs from them",
+        "They are identical terms"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A painting uses sharp color contrasts and distorted figures to express anxiety. Which approach may be relevant?",
+      "choices": [
+        "Neoclassicism",
+        "Rococo",
+        "Romanesque",
+        "Expressionism"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What is one reason historical context matters for Dada?",
+      "choices": [
+        "Its challenges responded to social and cultural upheaval",
+        "Dada works always depict one historic event",
+        "Context determines the exact color palette",
+        "Dada developed before all modern technology"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 14,
+      "question": "Which Modernist movement is associated with dreamlike scenes and illogical combinations?",
+      "choices": [
+        "Realism",
+        "Surrealism",
+        "Renaissance",
+        "Arts and Crafts"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A viewer sees a familiar object presented in an unexpected setting. What question could support analysis?",
+      "choices": [
+        "What is the object's retail price?",
+        "Which frame is the newest?",
+        "How does the new context change the object's meaning?",
+        "Can every object be named?"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Why should a viewer avoid treating 'modern art' as one single style?",
+      "choices": [
+        "All modern artworks use the same materials",
+        "The term refers only to sculpture",
+        "Modern art has no history",
+        "It includes many movements with distinct goals and methods"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which design principle emphasizes a focal point through unequal visual weight?",
+      "choices": [
+        "Emphasis",
+        "Meter",
+        "Rhyme",
+        "Scale bar"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "An artwork uses repeated shapes and strong contrasts to create visual movement. Which feature is being analyzed?",
+      "choices": [
+        "The artist's exact age",
+        "The organization of visual elements",
+        "The work's market price",
+        "The gallery's opening hours"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 19,
+      "question": "What does 'found object' mean in some Modernist art practices?",
+      "choices": [
+        "A sculpture discovered only underground",
+        "A lost painting returned to its owner",
+        "An ordinary object selected and presented as art",
+        "A tool used only for restoration"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "When comparing two Modernist works, what is most useful?",
+      "choices": [
+        "Assume they share one purpose",
+        "Rank them only by realism",
+        "Ignore their materials",
+        "Examine how each artist's choices relate to the movement's ideas and context"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

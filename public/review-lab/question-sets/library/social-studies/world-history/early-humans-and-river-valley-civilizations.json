@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 1,
+  "id": "social-studies--world-history--early-humans-and-river-valley-civilizations",
+  "title": "Early Humans and River Valley Civilizations",
+  "subject": "Social Studies",
+  "category": "World History",
+  "gradeBand": "7–12",
+  "questionCount": 20,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which development marks the beginning of the Neolithic Revolution?",
+      "choices": [
+        "The invention of steam-powered factories",
+        "The shift toward farming and settled communities",
+        "The creation of the first written constitutions",
+        "The spread of railroads"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Why did agriculture support the growth of permanent settlements?",
+      "choices": [
+        "Farming eliminated the need for water",
+        "Agriculture made trade impossible",
+        "Food production could create surpluses that supported larger communities",
+        "Crops could grow without labor or land"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Which river system supported early Mesopotamian civilizations?",
+      "choices": [
+        "Nile and Congo",
+        "Indus and Ganges",
+        "Yellow and Yangtze",
+        "Tigris and Euphrates"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Why were many early civilizations located near rivers?",
+      "choices": [
+        "Rivers provided water, fertile soils, transportation, and other resources",
+        "Rivers prevented floods in every season",
+        "Rivers made irrigation unnecessary",
+        "River valleys were isolated from trade"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "What was cuneiform?",
+      "choices": [
+        "An Egyptian pyramid",
+        "A writing system developed in Mesopotamia",
+        "A type of Chinese bronze",
+        "A system of Roman roads"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How did irrigation help early farmers in dry regions?",
+      "choices": [
+        "It removed the need to plant crops",
+        "It prevented all seasonal floods",
+        "It carried water to fields when rainfall was insufficient",
+        "It made soil fertility irrelevant"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Which ancient civilization developed along the Nile River in northeastern Africa?",
+      "choices": [
+        "The Indus Valley civilization",
+        "The Shang dynasty",
+        "The Olmec civilization",
+        "Ancient Egypt"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A settlement's food supply becomes more reliable, and some residents specialize as craftspeople or officials. What does this suggest?",
+      "choices": [
+        "Agricultural surplus can support occupational specialization",
+        "Trade must end when farming expands",
+        "Every resident must produce the same goods",
+        "Settlements become less organized"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 9,
+      "question": "Which feature is most associated with the Indus Valley cities of Harappa and Mohenjo-daro?",
+      "choices": [
+        "Stone castles built for medieval knights",
+        "Planned streets and drainage systems",
+        "Paved Roman aqueducts",
+        "A network of Inca roads"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What is one reason historians study artifacts from early societies?",
+      "choices": [
+        "Artifacts reveal every individual's thoughts",
+        "Artifacts replace all written evidence",
+        "Artifacts provide evidence about technology, trade, and daily life",
+        "Artifacts always identify their original owners"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Why did written records matter to some early states?",
+      "choices": [
+        "They ended the need for communication",
+        "They made government unnecessary",
+        "They guaranteed that every person could read",
+        "They helped record transactions, laws, taxes, or administration"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A river floods unpredictably, damaging fields. Which response could help a community reduce risk?",
+      "choices": [
+        "Build and maintain systems for managing water and storing food",
+        "Move every settlement into a desert",
+        "Stop observing seasonal patterns",
+        "Plant crops only after floods occur"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "What is a civilization's social hierarchy?",
+      "choices": [
+        "A map showing only rivers",
+        "An arrangement of groups with different status, roles, or access to power",
+        "A tool for measuring crop yields",
+        "A system that gives everyone identical authority"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which material was commonly used in Mesopotamia to make durable writing tablets?",
+      "choices": [
+        "Silk",
+        "Bamboo",
+        "Clay",
+        "Papyrus only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Why might control of a river valley become a source of political power?",
+      "choices": [
+        "It guarantees that no neighboring group can trade",
+        "It makes population growth impossible",
+        "It removes the need for organized labor",
+        "It can provide access to water, farmland, and transportation routes"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 16,
+      "question": "Which statement best describes the role of trade in early civilizations?",
+      "choices": [
+        "Trade moved resources and ideas between communities",
+        "Trade occurred only after industrialization",
+        "Trade prevented cultural contact",
+        "Trade eliminated local production"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "A historian finds evidence that an early town used standardized weights. What might this indicate?",
+      "choices": [
+        "The town had no market activity",
+        "People measured goods in ways that could support exchange and administration",
+        "Residents used a modern metric system",
+        "Weights were used only for building temples"
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which early Chinese dynasty is associated with oracle bones and bronze work?",
+      "choices": [
+        "Maya",
+        "Akkadian",
+        "Shang",
+        "Ptolemaic"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Why did some early governments organize labor for canals, walls, or temples?",
+      "choices": [
+        "Every project could be completed by one household",
+        "Public works eliminated social differences",
+        "Canals did not require planning or maintenance",
+        "Large projects required coordination of workers and resources"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "What is a limitation of using only written records to study early civilizations?",
+      "choices": [
+        "Records may reflect the views of literate elites and omit many people's experiences",
+        "Written records always describe every group equally",
+        "Written sources cannot be dated",
+        "Writing never provides historical evidence"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    }
+  ]
+}

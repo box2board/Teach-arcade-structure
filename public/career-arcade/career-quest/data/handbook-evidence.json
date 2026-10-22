@@ -1,0 +1,40 @@
+{
+  "financial-analyst": {
+    "file": "financial-analysts.html",
+    "url": "https://www.bls.gov/ooh/business-and-financial/financial-analysts.htm",
+    "sourceTitle": "Financial Analysts",
+    "sha256": "8594a3324b3adc99555bb80b26197a378e4c5556e473c8e0bd97d60f6a5b80a1",
+    "duties": [
+      "Research and recommend investments",
+      "Evaluate current and historical financial data",
+      "Study economic and business trends",
+      "Examine a company’s financial statements to determine its value and growth prospects"
+    ],
+    "workEnvironment": "Financial analysts typically work in an office setting. Most work full time, and some work more than 40 hours per week.",
+    "qualities": [
+      "Analytical skills. Financial analysts evaluate a range of information using financial modeling and statistical techniques.",
+      "Communication skills. Financial analysts must clearly explain their research and recommendations in writing and through presentations.",
+      "Computer skills. Financial analysts evaluate financial data and trends, measure risks, and make forecasts using software.",
+      "Decision-making skills. Financial analysts reach conclusions and make a determination on how to rate a security."
+    ]
+  },
+  "emt": {
+    "file": "emts-and-paramedics.html",
+    "url": "https://www.bls.gov/ooh/healthcare/emts-and-paramedics.htm",
+    "sourceTitle": "EMTs and Paramedics",
+    "sha256": "3ff2c93a8d4f55d1852a1ee87b6486c2b93bd86885cf2f726095eea000c0217d",
+    "duties": [
+      "Respond to calls for medical assistance, such as at the scene of a car accident in which someone is injured",
+      "Assess people’s condition and determine what treatment, if any, is needed",
+      "Provide treatment, such as first aid or life support care, to sick or injured patients",
+      "Prepare patients for and safely transport them to the emergency department of a hospital or other healthcare facility"
+    ],
+    "workEnvironment": "Most EMTs and paramedics work full time, and some work more than 40 hours per week. Schedules may vary to include nights, weekends, and holidays. Their work may be physically strenuous and stressful, sometimes involving life-or-death situations.",
+    "qualities": [
+      "Communication skills. EMTs and paramedics must listen to patients describe their injuries and illnesses and to dispatchers and others conveying information. They also need to provide clear instruction and explain procedures.",
+      "Compassion. EMTs and paramedics must be able to provide care and emotional support to patients who may be in life-threatening situations or under extreme mental distress.",
+      "Interpersonal skills. EMTs and paramedics must be able to coordinate activities with other members of their team. They also interact with a variety of people when responding to calls for assistance.",
+      "Physical strength. EMTs and paramedics must be comfortable bending, lifting, and kneeling over the course of their shift."
+    ]
+  }
+}

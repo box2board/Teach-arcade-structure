@@ -12,7 +12,7 @@
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
   <meta name="description" content="Search Teach Arcade for free classroom resources, games, tools, and topic pages." />
-  <link rel="canonical" href="https://teacharcade.com/search.html" />
+  <link rel="canonical" href="https://www.teacharcade.com/search.html" />
 
   <style>
     /* ===== Teach Arcade Smart Search (Premium-lite) ===== */
@@ -272,12 +272,12 @@
   </style>
   <meta property="og:title" content="Search | Teach Arcade" />
   <meta property="og:description" content="Search Teach Arcade for free classroom resources, games, tools, and topic pages." />
-  <meta property="og:url" content="https://teacharcade.com/search.html" />
-  <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta property="og:url" content="https://www.teacharcade.com/search.html" />
+  <meta property="og:image" content="https://www.teacharcade.com/assets/images/social/ta-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Search | Teach Arcade" />
   <meta name="twitter:description" content="Search Teach Arcade for free classroom resources, games, tools, and topic pages." />
-  <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
+  <meta name="twitter:image" content="https://www.teacharcade.com/assets/images/social/ta-social-card.png" />
 
 </head>
 
@@ -380,16 +380,25 @@
 
     // Synonyms / expansions (keep light)
     const SYNONYMS = {
-      "ww2": ["world war ii","world war 2","wwii"],
-      "wwii": ["world war ii","world war 2","ww2"],
-      "world war 2": ["world war ii","wwii","ww2"],
+      "ww1": ["world war i","world war 1","world war one"],
+      "world war 1": ["world war i","wwi","ww1","world war one"],
+      "world war one": ["world war i","wwi","ww1","world war 1"],
+      "world war i": ["world war 1","world war one","wwi","ww1"],
+      "wwi": ["world war i","world war 1","world war one","ww1"],
+      "ww2": ["world war ii","world war 2","world war two","wwii"],
+      "wwii": ["world war ii","world war 2","world war two","ww2"],
+      "world war 2": ["world war ii","world war two","wwii","ww2"],
+      "world war two": ["world war ii","world war 2","wwii","ww2"],
       "bio": ["biology"],
-      "ela": ["english language arts","language arts","english"],
-      "genocide": ["holocaust"],
-      "holocaust": ["genocide","world war ii","wwii","ww2"]
+      "ela": ["english language arts","language arts","english"]
     };
 
     const TYPE_BOOST = { topic: 90, resource: 80, game: 70, tool: 60, store: 40, page: 20 };
+    const QUERY_STOP_WORDS = new Set([
+      "a", "about", "and", "arcade", "as", "at", "class", "classroom", "for",
+      "free", "from", "in", "lesson", "of", "on", "ready", "students", "teach",
+      "teacher", "the", "this", "to", "with", "your"
+    ]);
 
     // ---------- utilities ----------
     function escapeHtml(s){
@@ -508,108 +517,60 @@
 
     // ---------- query expansion ----------
     function expandQuery(normQ){
-      const variants = new Set();
-      const tokens = new Set();
-      if (!normQ) return { variants: [], tokens };
-
-      variants.add(normQ);
-      normQ.split(" ").filter(Boolean).forEach(tok => tokens.add(tok));
-
-      // phrase expansions
-      for (const key of Object.keys(SYNONYMS)){
-        const k = normalizeText(key);
-        if (!k) continue;
-        if ((" " + normQ + " ").includes(" " + k + " ")){
-          (SYNONYMS[key] || []).forEach(v => {
-            const nv = normalizeText(v);
-            if (nv) variants.add(nv);
-          });
-        }
-      }
-
-      // token expansions
-      for (const tok of Array.from(tokens)){
-        const syn = SYNONYMS[tok] || SYNONYMS[tok.toLowerCase()];
-        if (syn && syn.length){
-          syn.forEach(v => {
-            const nv = normalizeText(v);
-            if (nv){
-              variants.add(nv);
-              nv.split(" ").forEach(t => { if (t) tokens.add(t); });
-            }
-          });
-        }
-      }
-
-      // plural -> singular (light)
-      Array.from(tokens).forEach(t => {
-        if (t.endsWith("s") && t.length > 3) tokens.add(t.slice(0, -1));
-      });
-
-      return { variants: Array.from(variants), tokens };
+      const variants = (SYNONYMS[normQ] || []).map(normalizeText).filter(Boolean);
+      return { variants, tokens: new Set(normQ.split(" ").filter(token => token && !QUERY_STOP_WORDS.has(token))) };
     }
 
     // ---------- scoring ----------
     function scoreRecord(rec, qInfo){
       const qNorm = qInfo.norm;
       if (!qNorm) return 0;
-
-      const type = String(rec.type || "page").toLowerCase();
-      const boost = TYPE_BOOST[type] || 0;
-
       const title = rec._titleNorm || "";
       const desc  = rec._descNorm  || "";
       const url   = rec._urlNorm   || "";
       const tags  = rec._tagsNorm  || "";
       const subj  = rec._subjectNorm || "";
+      const fields = [title, subj, tags, desc, url];
+      const hasPhrase = (field, phrase) => (` ${field} `).includes(` ${phrase} `);
+      const directTokens = Array.from(qInfo.tokens);
+      const aliases = qInfo.variants || [];
+      if (!directTokens.length && !aliases.length) return 0;
 
       let score = 0;
+      if (title === qNorm) score = 1200;
+      else if (hasPhrase(title, qNorm)) score = 900;
+      else if (hasPhrase(subj, qNorm) || hasPhrase(tags, qNorm)) score = 640;
+      else if (hasPhrase(desc, qNorm)) score = 420;
+      else if (hasPhrase(url, qNorm)) score = 220;
 
-      // Strong phrase hits
-      if (title === qNorm) score += 1200;
-      if (title.includes(qNorm)) score += 650;
-      if (tags.includes(qNorm)) score += 320;
-      if (subj.includes(qNorm)) score += 240;
-      if (desc.includes(qNorm)) score += 260;
-      if (url.includes(qNorm))  score += 180;
-
-      // Variant phrase hits
-      for (const v of qInfo.variants){
-        if (!v || v === qNorm) continue;
-        if (title.includes(v)) score += 260;
-        if (tags.includes(v))  score += 140;
-        if (desc.includes(v))  score += 120;
-        if (url.includes(v))   score += 90;
+      // A whole-query alias can bridge common spelling and numeral variants,
+      // such as "World War 1" and "World War I".
+      let aliasMatch = false;
+      for (const alias of aliases){
+        if (hasPhrase(title, alias)) { score = Math.max(score, 560); aliasMatch = true; }
+        else if (hasPhrase(subj, alias) || hasPhrase(tags, alias)) { score = Math.max(score, 400); aliasMatch = true; }
+        else if (hasPhrase(desc, alias)) { score = Math.max(score, 260); aliasMatch = true; }
       }
 
-      // Token hits
-      let hitsTitle = 0, hitsDesc = 0, hitsTags = 0, hitsUrl = 0, hitsSubj = 0;
-      for (const tok of qInfo.tokens){
-        if (!tok || tok.length < 2) continue;
-        if (title.includes(tok)) hitsTitle++;
-        if (desc.includes(tok)) hitsDesc++;
-        if (tags.includes(tok)) hitsTags++;
-        if (url.includes(tok)) hitsUrl++;
-        if (subj.includes(tok)) hitsSubj++;
-      }
-      score += hitsTitle * 70;
-      score += hitsTags  * 55;
-      score += hitsSubj  * 45;
-      score += hitsDesc  * 30;
-      score += hitsUrl   * 15;
+      // Multiword intent must be supported together by one field. Previously,
+      // separate words could be assembled across a subject, title, and unrelated
+      // description, causing broad and misleading matches.
+      const directMatch = directTokens.length <= 1 || fields.slice(0, 4).some(field =>
+        directTokens.every(token => hasPhrase(field, token))
+      );
+      if (!directMatch && !aliasMatch) return 0;
+      const weights = [180, 140, 110, 55, 20];
+      const tokenScores = directTokens.map(token => {
+        const index = fields.findIndex(field => hasPhrase(field, token));
+        return index < 0 ? 0 : weights[index];
+      });
+      if (directTokens.length === 1 && tokenScores[0] === 0 && !aliases.length) return 0;
+      score += tokenScores.reduce((sum, value) => sum + value, 0);
 
-      // “All tokens present” bonus
-      const tokenCount = Array.from(qInfo.tokens).filter(t => t.length >= 2).length;
-      if (tokenCount >= 2){
-        const allPresent = Array.from(qInfo.tokens).every(t => (title.includes(t) || desc.includes(t) || tags.includes(t)));
-        if (allPresent) score += 180;
-      }
-
-      // Small internal boost
-      const isExternal = /^https?:\/\//i.test(String(rec.url || ""));
-      if (!isExternal) score += 30;
-
-      score += boost;
+      // Small type preference only applies after a real text match.
+      if (score <= 0) return 0;
+      const type = String(rec.type || "page").toLowerCase();
+      score += Math.min(TYPE_BOOST[type] || 0, 45);
       return score;
     }
 
@@ -651,7 +612,6 @@
         const metaBits = [];
         if (subjLabel) metaBits.push(`<span>Subject: ${escapeHtml(subjLabel)}</span>`);
         if (r._gradeKey) metaBits.push(`<span>Grade: ${escapeHtml(r._gradeKey)}</span>`);
-        if (r.source) metaBits.push(`<span>Source: ${escapeHtml(r.source)}</span>`);
 
         return `
           <a class="result" href="${escapeHtml(r.url)}">
@@ -692,51 +652,75 @@
       `;
     }
 
-    // Pinning logic:
-    // - only pin from currently-filtered results
-    // - prioritize topic + strong score
-    // - then resource + strong score
-    function pickBestMatches(filtered, qInfo){
-      const qNorm = qInfo.norm;
-      if (!qNorm) return [];
+    // Collapse duplicate routes and resource format pages after scoring, so the
+    // version that best matches the query becomes the representative result.
+    function getResultFamilyKey(rec){
+      const type = String(rec.type || "page").toLowerCase();
+      let path = String(rec.url || "").split(/[?#]/)[0].toLowerCase().replace(/\/+$/, "");
+      if (type === "resource"){
+        path = path.replace(/\/(?:interactive|print|teacher|worksheet|answer-keys?|pdf|download)$/i, "");
+      }
+      return `${type}|${path || "/"}`;
+    }
 
-      // “Strong match” threshold (tunable)
-      const STRONG = 900;
-
-      const strong = filtered.filter(r => r._score >= STRONG);
-
-      // If none are "strong", still pin the best topic/resource if score is decent
-      const decent = filtered.filter(r => r._score >= 650);
-
-      const pool = strong.length ? strong : decent;
-
-      const isTopicStrong = (r) => String(r.type||"").toLowerCase() === "topic";
-      const isResourceStrong = (r) => String(r.type||"").toLowerCase() === "resource";
-
-      // Sort within pool for pin candidates:
-      // 1) Topic first
-      // 2) Then Resource
-      // 3) Then score desc
-      // 4) Then title
-      const candidates = pool.slice().sort((a,b) => {
-        const at = String(a.type||"page").toLowerCase();
-        const bt = String(b.type||"page").toLowerCase();
-
-        const aPri = at === "topic" ? 3 : at === "resource" ? 2 : 1;
-        const bPri = bt === "topic" ? 3 : bt === "resource" ? 2 : 1;
-
-        if (bPri !== aPri) return bPri - aPri;
-        if (b._score !== a._score) return b._score - a._score;
-        return String(a.title||"").localeCompare(String(b.title||""));
+    function dedupeSearchResults(list){
+      const seenFamilies = new Set();
+      const seenTitles = new Set();
+      return list.filter(rec => {
+        const type = String(rec.type || "page").toLowerCase();
+        const titleKey = `${type}|${normalizeText(rec.title || "")}`;
+        const familyKey = getResultFamilyKey(rec);
+        if (seenTitles.has(titleKey) || seenFamilies.has(familyKey)) return false;
+        seenTitles.add(titleKey);
+        seenFamilies.add(familyKey);
+        return true;
       });
+    }
 
-      // pick up to 3
-      const pinned = candidates.slice(0, 3);
+    // Broad topic searches surface the strongest result from each content type.
+    // Explicit type requests such as "WWI game" can show several games/resources.
+    function pickBestMatches(filtered, qInfo){
+      if (!qInfo.norm) return [];
 
-      // only show pin section if it's actually meaningful:
-      // - at least one topic/resource pinned OR a truly strong match exists
-      const meaningful = pinned.some(r => ["topic","resource"].includes(String(r.type||"").toLowerCase())) || strong.length > 0;
-      return meaningful ? pinned : [];
+      const DECENT = 650;
+      const candidates = filtered.filter(r => r._score >= DECENT).slice().sort((a,b) => {
+        if (b._score !== a._score) return b._score - a._score;
+        return String(a.title || "").localeCompare(String(b.title || ""));
+      });
+      if (!candidates.length) return [];
+
+      const typeIntent = {
+        game:"game", games:"game", play:"game", playable:"game", arcade:"game",
+        activity:"game", activities:"game",
+        resource:"resource", resources:"resource", worksheet:"resource",
+        worksheets:"resource", printable:"resource", lesson:"resource", lessons:"resource",
+        tool:"tool", tools:"tool", topic:"topic", topics:"topic", store:"store", shop:"store"
+      };
+      const requestedTypes = new Set(qInfo.norm.split(" ").map(token => typeIntent[token]).filter(Boolean));
+
+      let pinned;
+      if (requestedTypes.size){
+        pinned = candidates.filter(r => requestedTypes.has(String(r.type || "page").toLowerCase())).slice(0, 3);
+      } else {
+        const bestScore = candidates[0]._score;
+        const competitive = candidates.filter(r => r._score >= Math.max(DECENT, bestScore * 0.45));
+        pinned = [];
+        for (const rec of competitive){
+          const type = String(rec.type || "page").toLowerCase();
+          if (pinned.some(item => String(item.type || "page").toLowerCase() === type)) continue;
+          pinned.push(rec);
+          if (pinned.length === 3) break;
+        }
+        for (const rec of candidates){
+          if (pinned.length === 3) break;
+          if (!pinned.includes(rec)) pinned.push(rec);
+        }
+      }
+
+      const actionable = pinned.some(r =>
+        ["topic","resource","game","tool","store"].includes(String(r.type || "").toLowerCase())
+      );
+      return actionable ? pinned : [];
     }
 
     // ---------- main ----------
@@ -852,7 +836,7 @@
             return out;
           })();
 
-          setChipCounts(computeTypeCounts(base));
+          setChipCounts(computeTypeCounts(dedupeSearchResults(base)));
           return;
         }
 
@@ -862,7 +846,11 @@
 
         // score everything
         const scored = prepared.map(r => ({ ...r, _score: scoreRecord(r, qInfo) }))
-          .filter(r => r._score > 0);
+          .filter(r => r._score >= 145)
+          .sort((a,b) => {
+            if (b._score !== a._score) return b._score - a._score;
+            return String(a.title || "").localeCompare(String(b.title || ""));
+          });
 
         // counts should ignore type chip but respect subject/grade filters
         const baseForCounts = (function(){
@@ -871,12 +859,12 @@
           let out = scored;
           if (subjKey) out = out.filter(r => (r._subjectKey||"") === subjKey);
           if (gradeKey) out = out.filter(r => (r._gradeKey||"") === gradeKey);
-          return out;
+          return dedupeSearchResults(out);
         })();
         setChipCounts(computeTypeCounts(baseForCounts));
 
-        // apply all filters (including active type)
-        let filtered = applyFilters(scored);
+        // apply filters first, then collapse duplicate routes within those filters.
+        let filtered = dedupeSearchResults(applyFilters(scored));
 
         // sort
         const sortMode = sortSel.value || "relevance";
@@ -892,7 +880,7 @@
           });
         }
 
-        const top = filtered.slice(0, 80);
+        const top = filtered.slice(0, 25);
 
         if (!top.length){
           statusEl.textContent = `No results for “${q}”.`;
@@ -917,7 +905,7 @@
 
         const pinnedKeys = new Set(pinned.map(r => String(r.url||"") + "||" + String(r.title||"")));
         const rest = top.filter(r => !pinnedKeys.has(String(r.url||"") + "||" + String(r.title||"")))
-                        .slice(0, 60);
+                        .slice(0, 22);
 
         allWrap.style.display = "block";
         renderListInto(resultsEl, rest, qInfo);

@@ -1,6 +1,6 @@
 import {settings,backend,readToken,sessionCookie} from '../lib/teacher/backend.js';
-import {QUESTION_SETS,GAMES} from '../public/review-lab/catalog.js';
-import {TOOLS} from '../public/teacher/cabinet-catalog.js';
+import {QUESTION_SETS} from '../public/review-lab/catalog.js';
+import {TOOLS,CABINET_GAMES} from '../public/teacher/cabinet-catalog.js';
 const setIds=new Set(QUESTION_SETS.map(s=>s.id));
 export default async function handler(req,res){
  res.setHeader('Cache-Control','private, no-store');res.setHeader('Vary','Cookie, Origin');
@@ -42,7 +42,7 @@ export default async function handler(req,res){
    if(!cabinetEnabled)return send(503,{error:'Game and tool saving is not connected yet.'});
    const base=`/rest/v1/teacher_cabinet_items?teacher_id=eq.${encodeURIComponent(user.id)}`;
    if(action==='cabinet'){const rows=await backend(base+'&select=resource_type,resource_id',{token});return send(200,{items:rows.map(row=>({type:row.resource_type,id:row.resource_id}))});}
-   const catalog=body.type==='game'?GAMES:body.type==='tool'?TOOLS:[];
+   const catalog=body.type==='game'?CABINET_GAMES:body.type==='tool'?TOOLS:[];
    if(!catalog.some(item=>item.id===body.id))return send(400,{error:'Unknown Cabinet resource.'});
    if(action==='save-item'){
     try{await backend('/rest/v1/teacher_cabinet_items',{token,method:'POST',body:{teacher_id:user.id,resource_type:body.type,resource_id:body.id}});}catch(error){if(error.status!==409)throw error;}
