@@ -1,0 +1,79 @@
+{
+  "title": "The Revolutionary Spy Escape",
+  "version": "1.0",
+  "pages": 18,
+  "teacher_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    17,
+    18
+  ],
+  "team_pages": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "cuts_per_team": 11,
+  "dossiers": [
+    [
+      9
+    ],
+    [
+      10,
+      11
+    ],
+    [
+      12,
+      13
+    ],
+    [
+      14,
+      15
+    ]
+  ],
+  "checkpoints": [
+    {
+      "code": "VOICE",
+      "fragment": "BE",
+      "slots": [
+        3,
+        4
+      ]
+    },
+    {
+      "code": "41736",
+      "fragment": "LI",
+      "slots": [
+        1,
+        2
+      ]
+    },
+    {
+      "code": "285149",
+      "fragment": "RT",
+      "slots": [
+        5,
+        6
+      ]
+    },
+    {
+      "code": "6248",
+      "fragment": "Y",
+      "slots": [
+        7
+      ]
+    }
+  ],
+  "password": "LIBERTY"
+}
