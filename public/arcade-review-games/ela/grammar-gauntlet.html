@@ -318,6 +318,18 @@
     #gameContainer:fullscreen canvas { width: min(100vw, 266.66dvh); }
     @media (pointer: coarse) { #touchControls { display: flex; } }
     @media (max-width: 600px) { #hudStatus { display: none; } .ctrl-btn { width: 46px; height: 46px; } }
+    body { background: #101b32; color: #f1f5f9; padding: 24px 16px; gap: 14px; }
+    h1 { color: #fff; text-shadow: none; font-family: system-ui, sans-serif; font-size: clamp(24px, 4vw, 42px); letter-spacing: -.04em; text-transform: none; font-weight: 900; }
+    .subtitle { color: #c5d2e8; font-size: 14px; line-height: 1.6; max-width: 820px; }
+    #modeBar { color: #c5d2e8; } .pill-btn { font-family: system-ui, sans-serif; font-size: 12px; padding: 9px 15px; font-weight: 700; }
+    #gameContainer { border: 5px solid #314260; border-radius: 20px; box-shadow: 0 24px 70px #0008; }
+    #hud { border-radius: 9px; background: #142844ed; padding: 9px 14px; top: 10px; left: 10px; right: 10px; }
+    .panel { background: #fffdf5; border: 4px solid #f5b942; border-radius: 18px; padding: 24px; }
+    .panel h2 { font-family: system-ui, sans-serif; font-size: 21px; letter-spacing: -.02em; }
+    .choice-btn { background: #e8edf7; border: 2px solid #d6dfee; padding: 12px; }
+    .primary-btn { font-family: system-ui, sans-serif; font-size: 14px; padding: 12px 18px; border-radius: 8px; }
+    #editionLabel { color: #f6c85b; font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .seo-block { margin-top: 16px; }
   </style>
   <meta name="description" content="Teach Arcade · Grammar Gauntlet is a classroom-ready Teach Arcade activity with tips, standards-aligned skills, and teacher guidance for use in class." />
   <link rel="canonical" href="https://teacharcade.com/arcade-review-games/ela/grammar-gauntlet.html" />
@@ -332,7 +344,8 @@
 
 </head>
 <body>
-  <h1>Teach Arcade · Grammar Gauntlet</h1>
+  <div id="editionLabel">Arcade Review · Notebook Adventure · Updated Edition</div>
+  <h1>Grammar Gauntlet</h1>
   <p class="subtitle">
     Sprint through the notebook, dodge runaway red pens, and hit all 20 question markers
     to review grammar, punctuation, and sentence skills. Use ◀ ▶ / ▲ or on-screen buttons
@@ -1050,95 +1063,69 @@
     // ======================================================
     // DRAWING
     // ======================================================
+    function roundedBox(x, y, w, h, radius, color) {
+      ctx.fillStyle = color; ctx.beginPath(); ctx.roundRect(x, y, w, h, radius); ctx.fill();
+    }
     function drawBackground() {
-      ctx.fillStyle = "#f5f6fb";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.strokeStyle = "#c4d4ff";
-      ctx.lineWidth = 1;
-      for (let y = 40; y < canvas.height; y += 18) {
-        ctx.beginPath();
-        ctx.moveTo(0, y + 0.5);
-        ctx.lineTo(canvas.width, y + 0.5);
-        ctx.stroke();
+      ctx.fillStyle = '#fff9e9'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#c5daeb'; ctx.lineWidth = 1;
+      for (let y = 54; y < GROUND_Y; y += 22) {
+        ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(canvas.width,y); ctx.stroke();
       }
-
-      const marginXWorld = 120;
-      const marginScreenX = marginXWorld - cameraX * 0.3;
-      ctx.strokeStyle = "#ffb4b4";
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(marginScreenX, 0);
-      ctx.lineTo(marginScreenX, canvas.height);
-      ctx.stroke();
-
-      ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
-      ctx.fillStyle = "#9ca3af";
-      ctx.textAlign = "left";
-      ctx.fillText("GRAMMAR NOTES", 16, 20);
+      ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+      const chapter = Math.min(4, Math.floor(player.x / (WORLD_WIDTH / 4)) + 1);
+      ctx.font = 'bold 16px system-ui'; ctx.fillStyle = '#7992aa';
+      ctx.fillText('CHAPTER ' + chapter + ' / 4', 28, 83);
+      ctx.font = 'italic bold 24px Georgia'; ctx.fillStyle = '#a6b5c2';
+      ctx.fillText(['Parts of the page', 'Mind the margins', 'Sentence summit', 'The final draft'][chapter-1], 28, 113);
+      const decorations = ['Aa', 'Write your next chapter', ';', 'Keep going →', 'The power of words', '?!'];
+      for (let i=0;i<12;i++) {
+        const x=i*370+120-cameraX*.55;
+        if(x < -260 || x > 1050) continue;
+        ctx.save(); ctx.translate(x, 160 + (i%2)*30); ctx.rotate(i%2 ? .06 : -.06);
+        ctx.font = i%3===0 ? 'italic bold 44px Georgia' : 'italic 18px Georgia';
+        ctx.fillStyle = '#8ca6bb66'; ctx.fillText(decorations[i%6],0,0); ctx.restore();
+      }
+      ctx.fillStyle='#e9dac0';ctx.fillRect(0, 0, 12, GROUND_Y);
+      for(let y=55;y<GROUND_Y;y+=42){roundedBox(2,y,16,8,4,'#9daabb');}
     }
-
     function drawFloorAndPits() {
-      ctx.fillStyle = "#f0f1f8";
-      ctx.fillRect(0, GROUND_Y, canvas.width, canvas.height - GROUND_Y);
-
-      const startWorldX = cameraX;
-      const endWorldX = cameraX + canvas.width;
-      const tileStart = Math.floor(startWorldX / TILE_SIZE);
-      const tileEnd = Math.ceil(endWorldX / TILE_SIZE);
-
-      for (let t = tileStart; t < tileEnd; t++) {
-        const tileX = t * TILE_SIZE;
-        const screenX = tileX - cameraX;
-
-        const inPit = pits.some(p => tileX + TILE_SIZE > p.x && tileX < p.x + p.width);
-        if (!inPit) {
-          ctx.fillStyle = "#f0f1f8";
-          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
-          ctx.fillStyle = "#d3d7eb";
-          ctx.fillRect(screenX, GROUND_Y - 4, TILE_SIZE, 4);
-        } else {
-          ctx.fillStyle = "#cbd0e5";
-          ctx.fillRect(screenX, GROUND_Y, TILE_SIZE, canvas.height - GROUND_Y);
-        }
+      ctx.fillStyle='#263d53';ctx.fillRect(0,GROUND_Y,canvas.width,canvas.height-GROUND_Y);
+      let edge=0;
+      for (const gap of [...pits, {x:WORLD_WIDTH,width:0}]) {
+        const x=edge-cameraX, width=gap.x-edge;
+        ctx.fillStyle='#c89457';ctx.fillRect(x,GROUND_Y,width,80);
+        ctx.fillStyle='#f5d49b';ctx.fillRect(x,GROUND_Y,width,9);
+        ctx.fillStyle='#95673d';ctx.fillRect(x,GROUND_Y+9,width,4);
+        ctx.strokeStyle='#ad7945';ctx.lineWidth=1;
+        for(let y=GROUND_Y+25;y<360;y+=18){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+width,y);ctx.stroke();}
+        edge=gap.x+gap.width;
       }
+      for(const gap of pits){const x=gap.x-cameraX;ctx.fillStyle='#fff2';ctx.font='bold 12px system-ui';ctx.textAlign='center';ctx.fillText('GAP',x+gap.width/2,330);}
     }
-
     function drawPlatforms() {
-      platforms.forEach(p => {
-        const sx = p.x - cameraX;
-        ctx.fillStyle = "#ffffff";
-        ctx.fillRect(sx, p.y, p.width, p.height);
-        ctx.fillStyle = "#d3d7eb";
-        ctx.fillRect(sx, p.y + p.height - 4, p.width, 4);
+      platforms.forEach((p,i) => {
+        const x=p.x-cameraX;
+        const color=['#398c91','#8a60a8','#ce7058','#4b78b0'][i%4];
+        roundedBox(x+3,p.y+4,p.width,19,4,'#1c2d3930');
+        roundedBox(x,p.y,p.width,17,4,color);
+        ctx.fillStyle='#fff5dd';ctx.fillRect(x+10,p.y+5,p.width-18,7);
+        ctx.fillStyle=color;ctx.fillRect(x+5,p.y+1,7,16);
+        ctx.fillStyle='#ffffff66';ctx.fillRect(x+16,p.y+7,p.width-28,1);
+        ctx.fillStyle='#f3bc4c';ctx.fillRect(x+p.width-23,p.y+1,7,13);
       });
     }
-
     function drawQuestionBlocks() {
-      ctx.font = "10px 'Press Start 2P', system-ui, sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "top";
-
-      questionBlocks.forEach(block => {
-        const sx = block.x - cameraX;
-        const sy = block.y;
-
-        ctx.fillStyle = block.completed ? "#16a34a" : "#facc15";
-        ctx.fillRect(sx, sy, 32, 32);
-        ctx.strokeStyle = "rgba(15,23,42,0.4)";
-        ctx.strokeRect(sx + 0.5, sy + 0.5, 31, 31);
-
-        ctx.fillStyle = "#111827";
-        ctx.fillText("?", sx + 16, sy + 10);
-
-        ctx.fillStyle = "#111827";
-        ctx.fillText(block.id, sx + 16, sy - 10);
-
-        if (block.completed) {
-          ctx.fillStyle = "#f97316";
-          ctx.fillText("✓", sx + 26, sy - 10);
-        }
+      questionBlocks.forEach(block=>{
+        const x=block.x-cameraX,y=block.y;
+        roundedBox(x+2,y+4,32,32,7,'#263d5333');
+        roundedBox(x,y,32,32,7,block.completed?'#248d77':'#efa62c');
+        roundedBox(x+3,y+2,26,25,5,block.completed?'#4fb39c':'#ffdb75');
+        ctx.fillStyle=block.completed?'#fff':'#69431a';ctx.font='bold 22px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';
+        ctx.fillText(block.completed?'✓':'?',x+16,y+15);
+        ctx.font='bold 10px system-ui';ctx.fillStyle='#344b63';ctx.fillText(String(block.id).padStart(2,'0'),x+16,y-9);
       });
+      ctx.textBaseline='alphabetic';
     }
 
     function drawEnemies() {
@@ -1196,32 +1183,20 @@
     }
 
     function drawPlayer() {
-      const sx = player.x - cameraX;
-      const sy = player.y;
-
-      ctx.fillStyle = "#111827";
-      ctx.fillRect(sx + 4, sy + player.h - 10, 8, 10);
-      ctx.fillRect(sx + player.w - 12, sy + player.h - 10, 8, 10);
-
-      ctx.fillStyle = "#3b82f6";
-      ctx.fillRect(sx + 4, sy + 10, player.w - 8, 22);
-
-      ctx.fillStyle = "#1d4ed8";
-      ctx.fillRect(sx + player.w - 6, sy + 12, 4, 16);
-
-      ctx.fillStyle = "#fde68a";
-      ctx.fillRect(sx + 4, sy, player.w - 8, 10);
-
-      ctx.fillStyle = "#f59e0b";
-      ctx.fillRect(sx + 4, sy + 2, player.w - 8, 2);
-
-      ctx.fillStyle = "#3b82f6";
-      ctx.fillRect(sx, sy + 14, 4, 10);
-      ctx.fillRect(sx + player.w - 4, sy + 14, 4, 10);
-
-      ctx.fillStyle = "#111827";
-      ctx.fillRect(sx + 7, sy + 4, 2, 2);
-      ctx.fillRect(sx + 17, sy + 4, 2, 2);
+      const x=player.x-cameraX,y=player.y;
+      if(hitCooldown>0 && Math.floor(hitCooldown*14)%2===0)return;
+      const stride=player.onGround && Math.abs(player.vx)>0 ? Math.sin(player.x*.15)*4 : 0;
+      ctx.fillStyle='#23384a26';ctx.beginPath();ctx.ellipse(x+14,y+42,15,4,0,0,Math.PI*2);ctx.fill();
+      roundedBox(x+4,y+29,8,10+stride,3,'#24374f');roundedBox(x+17,y+29,8,10-stride,3,'#24374f');
+      roundedBox(x+1,y+37+stride,12,4,2,'#ed9f3d');roundedBox(x+16,y+37-stride,12,4,2,'#ed9f3d');
+      roundedBox(x+20,y+14,11,19,4,'#d69643');
+      roundedBox(x+3,y+13,23,21,6,'#318b9d');
+      roundedBox(x+1,y+16,6,13,3,'#51aeb7');
+      roundedBox(x+4,y+1,21,16,6,'#f4c895');
+      roundedBox(x+3,y,23,6,3,'#503e39');
+      ctx.fillStyle='#503e39';ctx.fillRect(x+4,y+4,4,5);
+      ctx.fillStyle='#23384a';ctx.fillRect(x+(player.vx<0?9:18),y+8,3,3);
+      ctx.fillStyle='#f6db9c';ctx.fillRect(x+11,y+19,9,2);
     }
 
     function drawOverlays() {
