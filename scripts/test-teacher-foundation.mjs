@@ -23,6 +23,28 @@ afterEach(()=>{global.fetch=originalFetch;for(const k of keys)if(original[k]===u
 function configure(){Object.assign(process.env,{SUPABASE_URL:'https://test.supabase.co',SUPABASE_ANON_KEY:'publishable-test',TEACHER_APP_ORIGIN:'https://preview.test',TEACHER_AUTH_ENABLED:'true',TEACHER_CABINET_ENABLED:'false'});}
 async function call(action,method='GET',body={},headers={}){const result={headers:{}};const res={setHeader(k,v){result.headers[k]=v;},status(s){result.status=s;return this;},json(data){result.data=data;return this;}};await handler({method,query:{action},body,headers},res);return result;}
 const response=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json'}});
+test('email cooldown forwards only sanitized retry duration, never provider details',async()=>{
+ configure();
+ for(const fixture of [
+  {data:{msg:'For security purposes, you can only request this after 19 seconds. sensitive-provider-detail'},headers:{},wait:19},
+  {data:{message:'internal-provider-message'},headers:{'Retry-After':'7'},wait:7},
+  {data:{message:'internal-provider-message'},headers:{'Retry-After':new Date(Date.now()+45000).toUTCString()},date:true},
+  {data:{msg:'after 999999999 seconds sensitive-provider-detail'},headers:{}},
+  {data:{message:'sensitive-provider-detail'},headers:{'Retry-After':'invalid'}}
+ ]){
+  global.fetch=async()=>new Response(JSON.stringify(fixture.data),{status:429,headers:fixture.headers});
+  const r=await call('login','POST',{email:'teacher@example.test'},{origin:'https://preview.test'});
+  assert.equal(r.status,429);assert.ok(!JSON.stringify(r.data).includes('provider'));
+  if(fixture.date){assert.ok(r.data.retryAfter>=43&&r.data.retryAfter<=45);}
+  else assert.equal(r.data.retryAfter,fixture.wait);
+  assert.equal(r.headers['Retry-After'],r.data.retryAfter?String(r.data.retryAfter):undefined);
+ }
+});
+test('successful email request provides a resend interval without exposing authentication data',async()=>{
+ configure();global.fetch=async()=>response({});
+ const r=await call('login','POST',{email:'teacher@example.test'},{origin:'https://preview.test'});
+ assert.deepEqual(r.data,{ok:true,retryAfter:60});
+});
 test('every Cabinet game can save, reload and remove through the account API',async()=>{
  configure();process.env.TEACHER_CABINET_ENABLED='true';const rows=new Map();
  global.fetch=async(url,options)=>{

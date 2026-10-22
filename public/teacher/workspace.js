@@ -4,10 +4,27 @@ const $=id=>document.getElementById(id);
 let user=null,configured=false,saved=new Set(),savedView=false,limit=24,previewRequest=0;
 let selectedSet=null,preferredGame=null,pendingSave=null,returnRoute='sets';
 let cabinetEnabled=false,cabinetLoaded=false,bookmarks=new Set(),favoritesLoaded=false;
+const codeCooldowns=new Map();let codeSending=false,codeTimer=null;
+const loginEmail=()=>$('email').value.trim().toLowerCase();
+function paintCodeWait(){
+ const remaining=Math.max(0,Math.ceil(((codeCooldowns.get(loginEmail())||0)-Date.now())/1000));
+ for(const id of ['send-code','resend-code'])$(id).disabled=!configured||codeSending||remaining>0;
+ $('send-code').textContent=codeSending?'Sending…':'Email a sign-in code';
+ $('resend-code').textContent=codeSending?'Sending…':'Send a new code';
+ $('code-wait').textContent=remaining?`You can request another code in ${remaining} ${remaining===1?'second':'seconds'}. You can enter your current code now.`:'';
+ $('code-wait').hidden=!!user;
+ if(!remaining&&codeTimer!==null){clearInterval(codeTimer);codeTimer=null;}
+}
+function startCodeWait(seconds){
+ if(!Number.isFinite(seconds)||seconds<=0||seconds>86400)return;
+ codeCooldowns.set(loginEmail(),Date.now()+Math.ceil(seconds)*1000);
+ if(codeTimer!==null)clearInterval(codeTimer);
+ codeTimer=setInterval(paintCodeWait,1000);paintCodeWait();
+}
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
 async function api(action,body){
  const response=await fetch(`/api/teacher?action=${action}`,{method:body?'POST':'GET',credentials:'same-origin',headers:body?{'Content-Type':'application/json'}:{},...(body?{body:JSON.stringify(body)}:{})});
- const data=await response.json();if(!response.ok){if(response.status===401){user=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();}const error=new Error(data.error||'Account request failed.');error.status=response.status;throw error;}return data;
+ const data=await response.json();if(!response.ok){if(response.status===401){user=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();}const error=new Error(data.error||'Account request failed.');error.status=response.status;error.retryAfter=data.retryAfter;throw error;}return data;
 }
 function notice(text){$('notice').textContent=text;}
 function route(){
@@ -30,7 +47,7 @@ function route(){
 function paintAccount(){
  $('account-button').textContent=user?'My account':configured?'Sign in / Create account':'Accounts coming soon';
  $('login-form').hidden=!!user||!configured;$('account-unavailable').hidden=configured||!!user;$('verify-form').hidden=true;$('profile').hidden=!user;$('logout').hidden=!user;
- $('send-code').disabled=!configured;
+ paintCodeWait();
  $('retry-save').hidden=!user||!pendingSave;
  if(user){$('profile').replaceChildren(node('h2','Your Arcade Cabinet'),node('p',user.email),node('p','Billing and creation limits are not enabled.'));notice('Signed in · Your Cabinet belongs to your teacher account.');}
  else notice(configured?'Browse the public library, or sign in to save question sets.':'Preview mode · The public library is live. Teacher sign-in and saving require the development account service to be connected.');
@@ -128,8 +145,17 @@ $('close-detail').onclick=()=>{$('detail').close();previewRequest++;};
 $('account-button').onclick=()=>{location.hash='account';};
 $('public-tab').onclick=()=>{limit=24;location.hash='sets';};$('saved-tab').onclick=()=>{limit=24;location.hash='saved';};
 $('search').oninput=()=>{limit=24;render();};$('subject').onchange=()=>{categories();limit=24;render();};$('category').onchange=()=>{limit=24;render();};$('more').onclick=()=>{const previous=limit;limit+=24;render();const card=$('catalog').children[previous];(card?.querySelector('button')||$('library-title')).focus();};
-$('login-form').onsubmit=async e=>{e.preventDefault();$('send-code').disabled=true;try{await api('login',{email:$('email').value});$('login-form').hidden=true;$('verify-form').hidden=false;$('auth-status').textContent='Check your inbox for your sign-in code.';$('code').focus();}catch(error){$('auth-status').textContent=error.message;}finally{$('send-code').disabled=false;}};
-$('back-login').onclick=()=>{$('verify-form').hidden=true;$('login-form').hidden=false;$('code').value='';$('auth-status').textContent='';};
+async function requestCode(){
+ if(!configured||codeSending||(codeCooldowns.get(loginEmail())||0)>Date.now())return;
+ codeSending=true;$('email').disabled=true;$('back-login').disabled=true;paintCodeWait();
+ try{const data=await api('login',{email:$('email').value});startCodeWait(data.retryAfter||60);$('login-form').hidden=true;$('verify-form').hidden=false;$('code').value='';$('auth-status').textContent='Check your inbox for your sign-in code. Use the most recent code sent to you.';$('code').focus();}
+ catch(error){if(error.status===429)startCodeWait(error.retryAfter);$('auth-status').textContent=error.message;}
+ finally{codeSending=false;$('email').disabled=false;$('back-login').disabled=false;paintCodeWait();}
+}
+$('login-form').onsubmit=e=>{e.preventDefault();return requestCode();};
+$('resend-code').onclick=requestCode;
+$('email').oninput=()=>{paintCodeWait();if(codeTimer===null&&(codeCooldowns.get(loginEmail())||0)>Date.now())codeTimer=setInterval(paintCodeWait,1000);};
+$('back-login').onclick=()=>{$('verify-form').hidden=true;$('login-form').hidden=false;$('code').value='';$('auth-status').textContent='';paintCodeWait();};
 $('verify-form').onsubmit=async e=>{e.preventDefault();const button=e.submitter;button.disabled=true;try{await api('verify',{email:$('email').value,code:$('code').value});$('code').value='';await account();if(user){$('auth-status').textContent='';if(pendingSave)await finishPendingSave();else location.hash=returnRoute;}}catch(error){$('auth-status').textContent=error.message;}finally{button.disabled=false;}};
 $('retry-save').onclick=finishPendingSave;
 for(const [type,name] of [['game','my-games'],['tool','tools']]){ $(`${type}-saved`).onclick=()=>{location.hash=name;};$(`${type}-browse`).onclick=()=>{location.hash=`${name}&view=browse`;};}

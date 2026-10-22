@@ -23,14 +23,37 @@ class Element{
 }
 function setup(configured=false,fetchOverride){
  const elements=Object.fromEntries([...html.matchAll(/id="([^"]+)"/g)].map(m=>[m[1],new Element()]));
- let hash='';const location={search:'',get hash(){return hash;},set hash(value){hash=value.startsWith('#')?value:`#${value}`;}},handlers={};
+ let now=Date.now(),hash='';const location={search:'',get hash(){return hash;},set hash(value){hash=value.startsWith('#')?value:`#${value}`;}},handlers={};
  const context=vm.createContext({QUESTION_SETS,GAMES,TOOLS,CABINET_GAMES,loadQuestionSet,gamesForSet,gameUrl,URLSearchParams,
  document:{getElementById:id=>{assert.ok(elements[id],`Unknown element ${id}`);return elements[id];},createElement:tag=>new Element(tag),querySelectorAll:()=>[],querySelector:()=>null},
  Option:class extends Element{constructor(text,value){super('option',text);this.value=value;}},location,
+ Date:class extends Date{static now(){return now;}},setInterval:fn=>{handlers.tick=fn;return 1;},clearInterval:()=>{delete handlers.tick;},
  window:{addEventListener:(name,fn)=>{handlers[name]=fn;},scrollTo(){}},fetch:fetchOverride|| (async()=>({ok:true,json:async()=>({configured,user:null})}))});
  vm.runInContext(source,context);
- return {elements,context,location,route:()=>vm.runInContext('route()',context),run:code=>vm.runInContext(code,context)};
+ return {elements,context,location,advance:seconds=>{now+=seconds*1000;handlers.tick?.();},route:()=>vm.runInContext('route()',context),run:code=>vm.runInContext(code,context)};
 }
+test('code requests block double submits, show a countdown, and allow code entry while waiting',async()=>{
+ let sends=0,resolveSend;
+ const app=setup(true,async url=>{
+  if(url.includes('action=login')){sends++;await new Promise(r=>{resolveSend=r;});return {ok:true,json:async()=>({ok:true,retryAfter:60})};}
+  return {ok:true,json:async()=>({configured:true,user:null})};
+ });
+ await new Promise(r=>setTimeout(r,0));app.elements.email.value='teacher@example.test';
+ const pending=app.elements['login-form'].onsubmit({preventDefault(){}});
+ await app.elements['login-form'].onsubmit({preventDefault(){}});assert.equal(sends,1);assert.equal(app.elements.email.disabled,true);
+ resolveSend();await pending;assert.equal(app.elements['verify-form'].hidden,false);assert.equal(app.elements['resend-code'].disabled,true);assert.ok(!app.elements.code.disabled);
+ assert.match(app.elements['code-wait'].textContent,/60 seconds/);
+ await app.elements['resend-code'].onclick();assert.equal(sends,1);
+ app.advance(59);assert.match(app.elements['code-wait'].textContent,/1 second\./);app.advance(1);assert.equal(app.elements['resend-code'].disabled,false);
+});
+test('server cooldown survives switching away from an email and back',async()=>{
+ let sends=0;const app=setup(true,async url=>url.includes('action=login')?(sends++,{ok:false,status:429,json:async()=>({error:'Please wait 19 seconds before trying again.',retryAfter:19})}):{ok:true,json:async()=>({configured:true,user:null})});
+ await new Promise(r=>setTimeout(r,0));app.elements.email.value='Teacher@example.test';await app.elements['login-form'].onsubmit({preventDefault(){}});
+ assert.match(app.elements['code-wait'].textContent,/19 seconds/);assert.equal(app.elements['send-code'].disabled,true);
+ app.elements.email.value='other@example.test';app.elements.email.oninput();assert.equal(app.elements['send-code'].disabled,false);
+ app.elements.email.value=' teacher@example.test ';app.elements.email.oninput();assert.equal(app.elements['send-code'].disabled,true);
+ app.advance(19);assert.equal(app.elements['send-code'].disabled,false);assert.equal(sends,1);
+});
 test('topic cards launch game selection directly; preview remains separate',()=>{
  const app=setup(),actions=app.elements.catalog.children[0].children.at(-1);
  assert.equal(actions.children[0].textContent,'Choose a game →');assert.equal(actions.children[1].textContent,'Preview questions');
