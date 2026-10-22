@@ -1123,6 +1123,246 @@ window.ComicCatalog = {
       "role": "lab-technician",
       "glasses": false,
       "keywords": "Lab technician STEM careers"
+    },
+    {
+      "id": "kai",
+      "label": "Kai",
+      "category": "People",
+      "hairStyle": "long",
+      "skin": "#80513c",
+      "hair": "#312a2d",
+      "shirt": "#41a79d",
+      "role": "kai",
+      "glasses": true,
+      "keywords": "Kai People"
+    },
+    {
+      "id": "nia",
+      "label": "Nia",
+      "category": "People",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#82633b",
+      "shirt": "#b78acb",
+      "role": "nia",
+      "glasses": false,
+      "keywords": "Nia People"
+    },
+    {
+      "id": "milo",
+      "label": "Milo",
+      "category": "People",
+      "hairStyle": "ponytail",
+      "skin": "#b47a5a",
+      "hair": "#362e29",
+      "shirt": "#e0b250",
+      "role": "milo",
+      "glasses": false,
+      "keywords": "Milo People"
+    },
+    {
+      "id": "zoe",
+      "label": "Zoe",
+      "category": "People",
+      "hairStyle": "short",
+      "skin": "#f2c8a0",
+      "hair": "#683c2d",
+      "shirt": "#7aa86b",
+      "role": "zoe",
+      "glasses": false,
+      "keywords": "Zoe People"
+    },
+    {
+      "id": "elena",
+      "label": "Elena",
+      "category": "People",
+      "hairStyle": "curly",
+      "skin": "#995d40",
+      "hair": "#282831",
+      "shirt": "#dc7e69",
+      "role": "elena",
+      "glasses": true,
+      "keywords": "Elena People"
+    },
+    {
+      "id": "diego",
+      "label": "Diego",
+      "category": "People",
+      "hairStyle": "swept",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#5b8ebf",
+      "role": "diego",
+      "glasses": false,
+      "keywords": "Diego People"
+    },
+    {
+      "id": "amina",
+      "label": "Amina",
+      "category": "People",
+      "hairStyle": "bun",
+      "skin": "#b47a5a",
+      "hair": "#382a27",
+      "shirt": "#d19364",
+      "role": "amina",
+      "glasses": false,
+      "keywords": "Amina People"
+    },
+    {
+      "id": "ishaan",
+      "label": "Ishaan",
+      "category": "People",
+      "hairStyle": "short",
+      "skin": "#995d40",
+      "hair": "#292d34",
+      "shirt": "#7e9f69",
+      "role": "ishaan",
+      "glasses": false,
+      "keywords": "Ishaan People"
+    },
+    {
+      "id": "grace",
+      "label": "Grace",
+      "category": "People",
+      "hairStyle": "ponytail",
+      "skin": "#e0ae87",
+      "hair": "#9b784c",
+      "shirt": "#ba88ab",
+      "role": "grace",
+      "glasses": true,
+      "keywords": "Grace People"
+    },
+    {
+      "id": "noah",
+      "label": "Noah",
+      "category": "People",
+      "hairStyle": "curly",
+      "skin": "#80513c",
+      "hair": "#4b3930",
+      "shirt": "#779eb5",
+      "role": "noah",
+      "glasses": false,
+      "keywords": "Noah People"
+    },
+    {
+      "id": "samira",
+      "label": "Samira",
+      "category": "People",
+      "hairStyle": "long",
+      "skin": "#b47a5a",
+      "hair": "#302a35",
+      "shirt": "#b1a267",
+      "role": "samira",
+      "glasses": false,
+      "keywords": "Samira People"
+    },
+    {
+      "id": "theo",
+      "label": "Theo",
+      "category": "People",
+      "hairStyle": "swept",
+      "skin": "#f2c8a0",
+      "hair": "#be9362",
+      "shirt": "#937db2",
+      "role": "theo",
+      "glasses": false,
+      "keywords": "Theo People"
+    },
+    {
+      "id": "counselor",
+      "label": "Counselor",
+      "category": "Community roles",
+      "hairStyle": "long",
+      "skin": "#80513c",
+      "hair": "#312a2d",
+      "shirt": "#41a79d",
+      "role": "counselor",
+      "glasses": true,
+      "keywords": "Counselor Community roles"
+    },
+    {
+      "id": "archivist",
+      "label": "Archivist",
+      "category": "Humanities & community",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#82633b",
+      "shirt": "#b78acb",
+      "role": "archivist",
+      "glasses": false,
+      "keywords": "Archivist Humanities & community"
+    },
+    {
+      "id": "electrician",
+      "label": "Electrician",
+      "category": "Community roles",
+      "hairStyle": "ponytail",
+      "skin": "#b47a5a",
+      "hair": "#362e29",
+      "shirt": "#e0b250",
+      "role": "electrician",
+      "glasses": false,
+      "keywords": "Electrician Community roles"
+    },
+    {
+      "id": "paramedic",
+      "label": "Paramedic",
+      "category": "Community roles",
+      "hairStyle": "short",
+      "skin": "#f2c8a0",
+      "hair": "#683c2d",
+      "shirt": "#7aa86b",
+      "role": "paramedic",
+      "glasses": false,
+      "keywords": "Paramedic Community roles"
+    },
+    {
+      "id": "potter",
+      "label": "Potter",
+      "category": "Arts & literature",
+      "hairStyle": "curly",
+      "skin": "#995d40",
+      "hair": "#282831",
+      "shirt": "#dc7e69",
+      "role": "potter",
+      "glasses": true,
+      "keywords": "Potter Arts & literature"
+    },
+    {
+      "id": "gardener",
+      "label": "Gardener",
+      "category": "Community roles",
+      "hairStyle": "swept",
+      "skin": "#e0ae87",
+      "hair": "#405774",
+      "shirt": "#5b8ebf",
+      "role": "gardener",
+      "glasses": false,
+      "keywords": "Gardener Community roles"
+    },
+    {
+      "id": "urban-planner",
+      "label": "Urban planner",
+      "category": "Government & civics",
+      "hairStyle": "long",
+      "skin": "#80513c",
+      "hair": "#312a2d",
+      "shirt": "#41a79d",
+      "role": "urban-planner",
+      "glasses": false,
+      "keywords": "Urban planner Government & civics"
+    },
+    {
+      "id": "stage-manager",
+      "label": "Stage manager",
+      "category": "Arts & literature",
+      "hairStyle": "bun",
+      "skin": "#d4a77b",
+      "hair": "#82633b",
+      "shirt": "#b78acb",
+      "role": "stage-manager",
+      "glasses": false,
+      "keywords": "Stage manager Arts & literature"
     }
   ],
   "backgrounds": [
@@ -1629,6 +1869,126 @@ window.ComicCatalog = {
       "label": "Recycling center",
       "category": "Community",
       "keywords": "Recycling center Community"
+    },
+    {
+      "id": "bedroom",
+      "label": "Bedroom",
+      "category": "Everyday places",
+      "keywords": "Bedroom Everyday places"
+    },
+    {
+      "id": "dining-room",
+      "label": "Dining room",
+      "category": "Everyday places",
+      "keywords": "Dining room Everyday places"
+    },
+    {
+      "id": "bus-interior",
+      "label": "Bus interior",
+      "category": "Travel & transport",
+      "keywords": "Bus interior Travel & transport"
+    },
+    {
+      "id": "subway-platform",
+      "label": "Subway platform",
+      "category": "Travel & transport",
+      "keywords": "Subway platform Travel & transport"
+    },
+    {
+      "id": "airport-terminal",
+      "label": "Airport terminal",
+      "category": "Travel & transport",
+      "keywords": "Airport terminal Travel & transport"
+    },
+    {
+      "id": "hospital-corridor",
+      "label": "Hospital corridor",
+      "category": "Community",
+      "keywords": "Hospital corridor Community"
+    },
+    {
+      "id": "rooftop",
+      "label": "City rooftop",
+      "category": "Everyday places",
+      "keywords": "City rooftop Everyday places"
+    },
+    {
+      "id": "rainy-street",
+      "label": "Rainy street",
+      "category": "Everyday places",
+      "keywords": "Rainy street Everyday places"
+    },
+    {
+      "id": "snow-village",
+      "label": "Snowy village",
+      "category": "Outdoors",
+      "keywords": "Snowy village Outdoors"
+    },
+    {
+      "id": "campsite",
+      "label": "Woodland campsite",
+      "category": "Outdoors",
+      "keywords": "Woodland campsite Outdoors"
+    },
+    {
+      "id": "mountain-cabin",
+      "label": "Mountain cabin",
+      "category": "Outdoors",
+      "keywords": "Mountain cabin Outdoors"
+    },
+    {
+      "id": "orchard",
+      "label": "Orchard",
+      "category": "Outdoors",
+      "keywords": "Orchard Outdoors"
+    },
+    {
+      "id": "bakery",
+      "label": "Bakery",
+      "category": "Community",
+      "keywords": "Bakery Community"
+    },
+    {
+      "id": "pottery-studio",
+      "label": "Pottery studio",
+      "category": "Arts & literature",
+      "keywords": "Pottery studio Arts & literature"
+    },
+    {
+      "id": "community-workshop",
+      "label": "Community workshop",
+      "category": "Community",
+      "keywords": "Community workshop Community"
+    },
+    {
+      "id": "archive-vault",
+      "label": "Archive room",
+      "category": "Humanities",
+      "keywords": "Archive room Humanities"
+    },
+    {
+      "id": "radio-studio",
+      "label": "Radio studio",
+      "category": "Arts & literature",
+      "keywords": "Radio studio Arts & literature"
+    },
+    {
+      "id": "electrical-control-room",
+      "label": "Electrical control room",
+      "category": "Engineering",
+      "keywords": "Electrical control room Engineering"
+    },
+    {
+      "id": "urban-planning-office",
+      "label": "Planning office",
+      "category": "Government & civics",
+      "keywords": "Planning office Government & civics"
+    },
+    {
+      "id": "counseling-room",
+      "label": "Counseling room",
+      "category": "School",
+      "keywords": "Counseling room School"
     }
   ],
   "props": [
@@ -2863,6 +3223,366 @@ window.ComicCatalog = {
       "label": "Donation box",
       "category": "Government & civics",
       "keywords": "Donation box Government & civics"
+    },
+    {
+      "id": "bed",
+      "label": "Bed",
+      "category": "Furniture",
+      "keywords": "Bed Furniture"
+    },
+    {
+      "id": "sofa",
+      "label": "Sofa",
+      "category": "Furniture",
+      "keywords": "Sofa Furniture"
+    },
+    {
+      "id": "dining-table",
+      "label": "Dining table",
+      "category": "Furniture",
+      "keywords": "Dining table Furniture"
+    },
+    {
+      "id": "bookshelf",
+      "label": "Bookshelf",
+      "category": "Furniture",
+      "keywords": "Bookshelf Furniture"
+    },
+    {
+      "id": "door",
+      "label": "Door",
+      "category": "Furniture",
+      "keywords": "Door Furniture"
+    },
+    {
+      "id": "window-frame",
+      "label": "Window frame",
+      "category": "Furniture",
+      "keywords": "Window frame Furniture"
+    },
+    {
+      "id": "stairs",
+      "label": "Stairs",
+      "category": "Furniture",
+      "keywords": "Stairs Furniture"
+    },
+    {
+      "id": "fence",
+      "label": "Fence",
+      "category": "Furniture",
+      "keywords": "Fence Furniture"
+    },
+    {
+      "id": "bench",
+      "label": "Bench",
+      "category": "Furniture",
+      "keywords": "Bench Furniture"
+    },
+    {
+      "id": "rug",
+      "label": "Rug",
+      "category": "Furniture",
+      "keywords": "Rug Furniture"
+    },
+    {
+      "id": "bus",
+      "label": "Bus",
+      "category": "Travel & transport",
+      "keywords": "Bus Travel & transport"
+    },
+    {
+      "id": "airplane",
+      "label": "Airplane",
+      "category": "Travel & transport",
+      "keywords": "Airplane Travel & transport"
+    },
+    {
+      "id": "helicopter",
+      "label": "Helicopter",
+      "category": "Travel & transport",
+      "keywords": "Helicopter Travel & transport"
+    },
+    {
+      "id": "delivery-van",
+      "label": "Delivery van",
+      "category": "Travel & transport",
+      "keywords": "Delivery van Travel & transport"
+    },
+    {
+      "id": "traffic-light",
+      "label": "Traffic light",
+      "category": "Travel & transport",
+      "keywords": "Traffic light Travel & transport"
+    },
+    {
+      "id": "stop-sign",
+      "label": "Stop sign",
+      "category": "Travel & transport",
+      "keywords": "Stop sign Travel & transport"
+    },
+    {
+      "id": "road-cone",
+      "label": "Traffic cone",
+      "category": "Travel & transport",
+      "keywords": "Traffic cone Travel & transport"
+    },
+    {
+      "id": "suitcase-cart",
+      "label": "Luggage cart",
+      "category": "Travel & transport",
+      "keywords": "Luggage cart Travel & transport"
+    },
+    {
+      "id": "parachute",
+      "label": "Parachute",
+      "category": "Travel & transport",
+      "keywords": "Parachute Travel & transport"
+    },
+    {
+      "id": "hot-air-balloon",
+      "label": "Hot air balloon",
+      "category": "Travel & transport",
+      "keywords": "Hot air balloon Travel & transport"
+    },
+    {
+      "id": "bread",
+      "label": "Bread loaf",
+      "category": "Food & crafts",
+      "keywords": "Bread loaf Food & crafts"
+    },
+    {
+      "id": "baguette",
+      "label": "Baguette",
+      "category": "Food & crafts",
+      "keywords": "Baguette Food & crafts"
+    },
+    {
+      "id": "cake",
+      "label": "Cake",
+      "category": "Food & crafts",
+      "keywords": "Cake Food & crafts"
+    },
+    {
+      "id": "mixing-bowl",
+      "label": "Mixing bowl",
+      "category": "Food & crafts",
+      "keywords": "Mixing bowl Food & crafts"
+    },
+    {
+      "id": "rolling-pin",
+      "label": "Rolling pin",
+      "category": "Food & crafts",
+      "keywords": "Rolling pin Food & crafts"
+    },
+    {
+      "id": "apron",
+      "label": "Apron",
+      "category": "Food & crafts",
+      "keywords": "Apron Food & crafts"
+    },
+    {
+      "id": "pottery-wheel",
+      "label": "Pottery wheel",
+      "category": "Food & crafts",
+      "keywords": "Pottery wheel Food & crafts"
+    },
+    {
+      "id": "vase",
+      "label": "Vase",
+      "category": "Food & crafts",
+      "keywords": "Vase Food & crafts"
+    },
+    {
+      "id": "teapot",
+      "label": "Teapot",
+      "category": "Food & crafts",
+      "keywords": "Teapot Food & crafts"
+    },
+    {
+      "id": "fruit-bowl",
+      "label": "Fruit bowl",
+      "category": "Food & crafts",
+      "keywords": "Fruit bowl Food & crafts"
+    },
+    {
+      "id": "first-aid-kit",
+      "label": "First aid kit",
+      "category": "Community & safety",
+      "keywords": "First aid kit Community & safety"
+    },
+    {
+      "id": "bandage",
+      "label": "Bandage",
+      "category": "Community & safety",
+      "keywords": "Bandage Community & safety"
+    },
+    {
+      "id": "stethoscope",
+      "label": "Stethoscope",
+      "category": "Community & safety",
+      "keywords": "Stethoscope Community & safety"
+    },
+    {
+      "id": "wheelchair",
+      "label": "Wheelchair",
+      "category": "Community & safety",
+      "keywords": "Wheelchair Community & safety"
+    },
+    {
+      "id": "crutches",
+      "label": "Crutches",
+      "category": "Community & safety",
+      "keywords": "Crutches Community & safety"
+    },
+    {
+      "id": "fire-extinguisher",
+      "label": "Fire extinguisher",
+      "category": "Community & safety",
+      "keywords": "Fire extinguisher Community & safety"
+    },
+    {
+      "id": "hard-hat",
+      "label": "Hard hat",
+      "category": "Community & safety",
+      "keywords": "Hard hat Community & safety"
+    },
+    {
+      "id": "toolbox",
+      "label": "Toolbox",
+      "category": "Community & safety",
+      "keywords": "Toolbox Community & safety"
+    },
+    {
+      "id": "paint-roller",
+      "label": "Paint roller",
+      "category": "Community & safety",
+      "keywords": "Paint roller Community & safety"
+    },
+    {
+      "id": "measuring-tape",
+      "label": "Measuring tape",
+      "category": "Community & safety",
+      "keywords": "Measuring tape Community & safety"
+    },
+    {
+      "id": "radio",
+      "label": "Radio",
+      "category": "Communication & design",
+      "keywords": "Radio Communication & design"
+    },
+    {
+      "id": "walkie-talkie",
+      "label": "Walkie talkie",
+      "category": "Communication & design",
+      "keywords": "Walkie talkie Communication & design"
+    },
+    {
+      "id": "speaker",
+      "label": "Loudspeaker",
+      "category": "Communication & design",
+      "keywords": "Loudspeaker Communication & design"
+    },
+    {
+      "id": "music-note",
+      "label": "Music note",
+      "category": "Communication & design",
+      "keywords": "Music note Communication & design"
+    },
+    {
+      "id": "book-cart",
+      "label": "Book cart",
+      "category": "Communication & design",
+      "keywords": "Book cart Communication & design"
+    },
+    {
+      "id": "archive-box",
+      "label": "Archive box",
+      "category": "Communication & design",
+      "keywords": "Archive box Communication & design"
+    },
+    {
+      "id": "blueprint",
+      "label": "Blueprint",
+      "category": "Communication & design",
+      "keywords": "Blueprint Communication & design"
+    },
+    {
+      "id": "floor-plan",
+      "label": "Floor plan",
+      "category": "Communication & design",
+      "keywords": "Floor plan Communication & design"
+    },
+    {
+      "id": "circuit-breaker",
+      "label": "Circuit breaker",
+      "category": "Communication & design",
+      "keywords": "Circuit breaker Communication & design"
+    },
+    {
+      "id": "power-pole",
+      "label": "Power pole",
+      "category": "Communication & design",
+      "keywords": "Power pole Communication & design"
+    },
+    {
+      "id": "tent",
+      "label": "Tent",
+      "category": "Outdoor living",
+      "keywords": "Tent Outdoor living"
+    },
+    {
+      "id": "sleeping-bag",
+      "label": "Sleeping bag",
+      "category": "Outdoor living",
+      "keywords": "Sleeping bag Outdoor living"
+    },
+    {
+      "id": "campfire",
+      "label": "Campfire",
+      "category": "Outdoor living",
+      "keywords": "Campfire Outdoor living"
+    },
+    {
+      "id": "hiking-boots",
+      "label": "Hiking boots",
+      "category": "Outdoor living",
+      "keywords": "Hiking boots Outdoor living"
+    },
+    {
+      "id": "walking-stick",
+      "label": "Walking stick",
+      "category": "Outdoor living",
+      "keywords": "Walking stick Outdoor living"
+    },
+    {
+      "id": "fishing-rod",
+      "label": "Fishing rod",
+      "category": "Outdoor living",
+      "keywords": "Fishing rod Outdoor living"
+    },
+    {
+      "id": "canoe",
+      "label": "Canoe",
+      "category": "Outdoor living",
+      "keywords": "Canoe Outdoor living"
+    },
+    {
+      "id": "apple-crate",
+      "label": "Apple crate",
+      "category": "Outdoor living",
+      "keywords": "Apple crate Outdoor living"
+    },
+    {
+      "id": "basket-flowers",
+      "label": "Flower basket",
+      "category": "Outdoor living",
+      "keywords": "Flower basket Outdoor living"
+    },
+    {
+      "id": "streetlamp",
+      "label": "Streetlamp",
+      "category": "Outdoor living",
+      "keywords": "Streetlamp Outdoor living"
     }
   ],
   "expressions": [

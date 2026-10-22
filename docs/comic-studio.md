@@ -6,7 +6,7 @@ First creation-tool prototype at `/tools/comic-studio/`, linked from Teacher Too
 
 - 11 layouts: single, three-panel strip, two wide panels, three stacked panels, four, six, eight, nine, twelve, feature + two, and feature + four.
 - Twelve panels remain in each project; layout changes do not delete hidden panels. Exports include only visible panels.
-- 96 original SVG characters, 88 backgrounds, and 216 props (400 library items). Two backgrounds are generated illustrations. Human characters offer eight expressions and eight poses; animal/robot rigs offer standing and waving poses.
+- 116 original SVG characters, 108 backgrounds, and 276 props (500 library items). Two backgrounds are generated illustrations. Human characters offer eight expressions and eight poses; animal/robot rigs offer standing and waving poses.
 - Speech bubbles, thought bubbles, captions, and editable dialogue.
 - Pointer/touch dragging, arrow-key movement, size and numeric position controls, character/prop flipping, layer changes, duplication, and removal.
 - Copy a panel to the next panel, with fresh object IDs and undo support.
@@ -82,3 +82,11 @@ Historical artwork and scientific models are simplified storytelling illustratio
 Added 20 characters, 20 backgrounds, and 60 props: 96 characters, 88 backgrounds, and 216 props total. `expansion-worlds.js` composes with `expansion-art.js` to add geography, field science, historical technology, humanities, community, and stage/storytelling artwork without changing old IDs. Geography and science props are schematic illustrations for comics, not measurement tools or authoritative diagrams. Character appearances and historical settings remain stylized.
 
 The expansion includes cartographer/historian/poet roles, field researchers, ancient and industrial occupations, early aviation, coastal/alpine/canyon/island scenery, research stations, archives and workshops, civic/community interiors, and literature/performance spaces. All 100 additions were rendered to contact sheets and visually inspected; the full catalog and interaction checks cover the 400-item collection. Native browser/tablet verification remains pending due to the previously reported browser-policy block.
+
+## Everyday storytelling expansion — 500 items
+
+Added 12 original student characters, eight community/creative roles, 20 backgrounds, and 60 props. Totals: 116 characters, 108 backgrounds, and 276 props. The new `expansion-everyday.js` module composes with the existing expansion renderers; all original asset IDs and project formats remain supported. The new student appearances use distinct combinations of hairstyle, palette, glasses, and clothing motifs.
+
+Settings include domestic spaces, transit interiors, outdoor environments, a bakery/pottery studio, archive, radio studio, electrical controls, planning office, and counseling room. Props include furniture, vehicles, food/crafts, mobility aids, community/safety equipment, communication/design tools, and outdoor gear. These are original illustrative storytelling assets; safety equipment and technical illustrations are not instructional diagrams.
+
+The 100 additions were rendered to contact sheets and inspected. Automated checks validate all 500 catalog items and supported character expressions/poses, plus new asset IDs through project validation, transformations, layering, history, copying, and favorites. Native browser/tablet layout and real download verification remain pending following the earlier browser-policy block.
