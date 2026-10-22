@@ -1,4 +1,7 @@
 import { buildScene } from './viewer-3d.js';
+import { registerPropType } from './prop-registry.js';
+
+window.ESCAPE_V2_PROPS = { register: registerPropType };
 
 window.ESCAPE_V2_VIEWER = {
   create(container, room, callbacks, solvedIds) {
@@ -23,6 +26,15 @@ function loadScript(src) {
 async function boot() {
   await loadScript(`/escape-v2/rooms/${roomId}/data.js`);
   await loadScript('/escape-v2/js/puzzles.js');
+  const propModules = window.ESCAPE_V2_DATA.rooms.flatMap((room) => room.scene?.propModules || []);
+  if (propModules.some((path) => typeof path !== 'string' || !path.startsWith('/escape-v2/'))) {
+    throw new Error('Room pack propModules must contain /escape-v2/ module paths.');
+  }
+  for (const path of [...new Set(propModules)]) {
+    const module = await import(path);
+    if (typeof module.registerEscapeRoomProps !== 'function') throw new Error(`Prop module has no registerEscapeRoomProps export: ${path}`);
+    module.registerEscapeRoomProps(window.ESCAPE_V2_PROPS);
+  }
   const puzzleModules = window.ESCAPE_V2_DATA.puzzleModules || [];
   if (!Array.isArray(puzzleModules) || puzzleModules.some((path) => typeof path !== 'string' || !path.startsWith('/escape-v2/'))) {
     throw new Error('Room pack puzzleModules must be an array of /escape-v2/ module paths.');
