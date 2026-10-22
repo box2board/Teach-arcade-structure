@@ -187,7 +187,7 @@
   }
 
   function normalizeAnswer(value) {
-    return String(value).toLowerCase().trim().replace(/[’']/g, '').replace(/[^a-z0-9:]+/g, ' ').replace(/\s+/g, ' ').trim();
+    return String(value).normalize('NFKC').toLowerCase().trim().replace(/[’']/g, '').replace(/[^\p{L}\p{N}]+/gu, ' ').replace(/\s+/g, ' ').trim();
   }
 
   function matchesAnswer(value, accepted) {
