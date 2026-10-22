@@ -19,6 +19,11 @@ function validate(p){
    if(o.type==='character'&&!characters.includes(o.asset)||o.type==='prop'&&!props.includes(o.asset))throw new Error('Unknown comic artwork.');
    const custom=o.colors??colors();for(const key of ['primary','skin','hair'])if(custom[key]!==''&&!hex(custom[key]))throw new Error('Invalid artwork color.');
    const result={id:o.id,type:o.type,asset:typeof o.asset==='string'?o.asset:'',x:o.x,y:o.y,scale:o.scale,flip:o.flip,text:o.text,expression:o.expression,pose:o.pose,colors:{primary:custom.primary,skin:custom.skin,hair:custom.hair}};
+   if(['speech','thought','caption'].includes(o.type)){
+    const box=o.box??{width:240,height:0,fontSize:16,tail:'left',tailX:43,tailY:24};
+    if(!number(box.width,80,560)||!number(box.height,0,340)||!number(box.fontSize,12,32)||!['left','right','custom','none'].includes(box.tail)||!number(box.tailX,-600,600)||!number(box.tailY,-360,360))throw new Error('Invalid text box.');
+    result.box={width:box.width,height:box.height,fontSize:box.fontSize,tail:box.tail,tailX:box.tailX,tailY:box.tailY};
+   }
    if(o.type==='drawing'){
     if(!['pencil','line','rectangle','ellipse'].includes(o.drawKind)||!hex(o.stroke)||!(o.fill==='none'||hex(o.fill))||!number(o.strokeWidth,1,20)||!Array.isArray(o.points)||o.points.length<2||o.points.length>1500||o.points.some(pt=>!Array.isArray(pt)||pt.length!==2||!number(pt[0],0,600)||!number(pt[1],0,360)))throw new Error('Invalid drawing.');
     Object.assign(result,{drawKind:o.drawKind,stroke:o.stroke,fill:o.fill,strokeWidth:o.strokeWidth,points:copy(o.points)});
@@ -26,6 +31,6 @@ function validate(p){
   })};
  });while(panels.length<12)panels.push(blankPanel());return {format:p.format,version:2,title:p.title,author:p.author,layout:p.layout,panels};
 }
-function create(type,asset=''){return {id:'o-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10),type,asset,x:type==='character'?190:60,y:type==='character'?120:30,scale:1,flip:false,text:type==='caption'?'Describe what happens…':type==='speech'||type==='thought'?'What should I say?':'',expression:'happy',pose:'stand',colors:colors()};}
+function create(type,asset=''){return {...(['speech','thought','caption'].includes(type)?{box:{width:240,height:0,fontSize:16,tail:'left',tailX:43,tailY:24}}:{}),id:'o-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10),type,asset,x:type==='character'?190:60,y:type==='character'?120:30,scale:1,flip:false,text:type==='caption'?'Describe what happens…':type==='speech'||type==='thought'?'What should I say?':'',expression:'happy',pose:'stand',colors:colors()};}
 return {layouts,backgrounds,characters,props,expressions,poses,copy,fresh,blankPanel,validate,create,hex};
 })();
