@@ -3,6 +3,26 @@
     "title": "Teacher Tools",
     "url": "/tools/",
     "description": "Classroom tools like spinners, randomizers, timers, and more.",
-    "tags": ["type:tool", "format:tool", "subject:all", "platform:web"]
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web"
+    ]
+  },
+  {
+    "title": "Comic Studio",
+    "url": "/tools/comic-studio/",
+    "description": "Create classroom comics with 500 library items, speech bubbles, image imports, covers, and up to 32 pages. Download editable projects, PNG images, or PDFs.",
+    "tags": [
+      "type:tool",
+      "format:tool",
+      "subject:all",
+      "platform:web",
+      "creation",
+      "comics",
+      "storytelling",
+      "writing"
+    ]
   }
 ]

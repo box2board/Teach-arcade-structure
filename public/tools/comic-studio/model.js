@@ -1,0 +1,43 @@
+window.ComicModel=(()=>{
+const layouts={single:{name:'Single panel',count:1,cols:1},strip:{name:'Three-panel strip',count:3,cols:3},two:{name:'Two wide panels',count:2,cols:1},three:{name:'Three stacked panels',count:3,cols:1},four:{name:'Four-panel page',count:4,cols:2},six:{name:'Six-panel page',count:6,cols:2},eight:{name:'Eight-panel page',count:8,cols:2},nine:{name:'Nine-panel grid',count:9,cols:3},twelve:{name:'Twelve-panel grid',count:12,cols:3},feature:{name:'Feature + two panels',count:3,cols:2,spans:[2,1,1]},story:{name:'Feature + four panels',count:5,cols:2,spans:[2,1,1,1,1]}};
+const C=window.ComicCatalog,backgrounds=C.backgrounds.map(a=>a.id),characters=C.characters.map(a=>a.id),props=C.props.map(a=>a.id),expressions=C.expressions,poses=C.poses;
+const fonts={sans:{label:'Clean sans',family:'Arial, sans-serif'},comic:{label:'Comic handwriting',family:'Comic Sans MS, Comic Sans, cursive'},serif:{label:'Storybook serif',family:'Georgia, serif'},mono:{label:'Typewriter',family:'Courier New, monospace'},rounded:{label:'Rounded',family:'Trebuchet MS, sans-serif'}};
+const copy=p=>JSON.parse(JSON.stringify(p));
+const colors=()=>({primary:'',skin:'',hair:''});const view=()=>({zoom:1,x:0,y:0});
+const blankPanel=()=>({background:'blank',paperColor:'#fffaf1',backgroundView:view(),objects:[]});
+const fresh=()=>({format:'teach-arcade-comic',version:2,title:'My comic',author:'',layout:'four',panels:Array.from({length:12},blankPanel)});
+const hex=v=>typeof v==='string'&&/^#[0-9a-fA-F]{6}$/.test(v);
+const number=(v,min,max)=>Number.isFinite(v)&&v>=min&&v<=max;
+function validate(p,assets={}){
+ if(!p||p.format!=='teach-arcade-comic'||![1,2].includes(p.version)||!Object.hasOwn(layouts,p.layout)||!Array.isArray(p.panels)||!((p.version===1&&p.panels.length===6)||(p.version===2&&p.panels.length===12)))throw new Error('Choose a valid Teach Arcade comic project.');
+ if(typeof p.title!=='string'||p.title.length>120||typeof p.author!=='string'||p.author.length>80)throw new Error('Invalid comic title or author.');
+ const ids=new Set();const panels=p.panels.map(panel=>{
+  if(!panel||!backgrounds.includes(panel.background)||!Array.isArray(panel.objects)||panel.objects.length>80)throw new Error('A panel supports up to 80 objects.');
+  const paperColor=panel.paperColor??'#fffaf1',backgroundView=panel.backgroundView??view();if(!hex(paperColor)||!number(backgroundView.zoom,1,3)||!number(backgroundView.x,-600,600)||!number(backgroundView.y,-360,360))throw new Error('Invalid scene settings.');
+  return {background:panel.background,paperColor,done:panel.done===true,backgroundView:{zoom:backgroundView.zoom,x:backgroundView.x,y:backgroundView.y},objects:panel.objects.map(o=>{
+   if(!o||!['character','speech','thought','caption','text','prop','drawing','image'].includes(o.type)||typeof o.id!=='string'||!/^[a-zA-Z0-9-]{1,60}$/.test(o.id)||ids.has(o.id))throw new Error('Invalid comic object.');ids.add(o.id);
+   if(!number(o.x,0,580)||!number(o.y,0,340)||!number(o.scale,.15,4)||typeof o.flip!=='boolean'||typeof o.text!=='string'||o.text.length>240||!expressions.includes(o.expression)||!poses.includes(o.pose))throw new Error('Invalid object settings.');
+   if(o.type==='character'&&!characters.includes(o.asset)||o.type==='prop'&&!props.includes(o.asset))throw new Error('Unknown comic artwork.');
+   const custom=o.colors??colors();for(const key of ['primary','skin','hair'])if(custom[key]!==''&&!hex(custom[key]))throw new Error('Invalid artwork color.');
+   const result={id:o.id,type:o.type,asset:typeof o.asset==='string'?o.asset:'',x:o.x,y:o.y,scale:o.scale,flip:o.flip,text:o.text,expression:o.expression,pose:o.pose,colors:{primary:custom.primary,skin:custom.skin,hair:custom.hair}};
+   if(['speech','thought','caption','text'].includes(o.type)){
+    const box=o.box??{width:240,height:0,fontSize:16,tail:'left',tailX:43,tailY:24};
+    if(!number(box.width,80,560)||!number(box.height,0,340)||!number(box.fontSize,12,32)||!['left','right','custom','none'].includes(box.tail)||!number(box.tailX,-600,600)||!number(box.tailY,-360,360))throw new Error('Invalid text box.');
+    if(!Object.hasOwn(fonts,box.font??'sans')||!['left','center','right'].includes(box.align??'left')||!hex(box.color??'#243148')||typeof (box.bold??false)!=='boolean')throw new Error('Invalid text formatting.');
+    result.box={font:box.font??'sans',align:box.align??'left',color:box.color??'#243148',bold:box.bold??false,width:box.width,height:box.height,fontSize:box.fontSize,tail:box.tail,tailX:box.tailX,tailY:box.tailY};
+   }
+   if(o.type==='image'){
+    if(!Object.hasOwn(assets,o.asset)||!number(o.imageWidth,1,600)||!number(o.imageHeight,1,360))throw new Error('Invalid imported image reference.');
+    const frame={fit:'fit',zoom:1,x:0,y:0,rotation:0,...o.frame};if(!['fit','fill'].includes(frame.fit)||!number(frame.zoom,1,4)||!number(frame.x,-1,1)||!number(frame.y,-1,1)||![0,90,180,270].includes(frame.rotation))throw new Error('Invalid image framing.');result.frame=frame;result.imageWidth=o.imageWidth;result.imageHeight=o.imageHeight;
+   }
+   if(o.type==='drawing'){
+    if(!['pencil','marker','highlighter','line','arrow','rectangle','ellipse','triangle','diamond','star'].includes(o.drawKind)||!hex(o.stroke)||!(o.fill==='none'||hex(o.fill))||!number(o.strokeWidth,1,40)||!Array.isArray(o.points)||o.points.length<2||o.points.length>1500||o.points.some(pt=>!Array.isArray(pt)||pt.length!==2||!number(pt[0],0,600)||!number(pt[1],0,360)))throw new Error('Invalid drawing.');
+    if(!number(o.opacity??1,.1,1)||!['solid','dashed','dotted'].includes(o.dash??'solid'))throw new Error('Invalid brush settings.');
+    Object.assign(result,{opacity:o.opacity??1,dash:o.dash??'solid',drawKind:o.drawKind,stroke:o.stroke,fill:o.fill,strokeWidth:o.strokeWidth,points:copy(o.points)});
+   }return result;
+  })};
+ });while(panels.length<12)panels.push(blankPanel());return {format:p.format,version:2,title:p.title,author:p.author,layout:p.layout,panels};
+}
+function create(type,asset=''){return {...(['speech','thought','caption','text'].includes(type)?{box:{width:240,height:0,fontSize:16,tail:'left',tailX:43,tailY:24}}:{}),id:'o-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10),type,asset,x:type==='character'?190:60,y:type==='character'?120:30,scale:1,flip:false,text:type==='caption'?'Describe what happens…':type==='text'?'Your text here':type==='speech'||type==='thought'?'What should I say?':'',expression:'happy',pose:'stand',colors:colors()};}
+return {fonts,layouts,backgrounds,characters,props,expressions,poses,copy,fresh,blankPanel,validate,create,hex};
+})();
