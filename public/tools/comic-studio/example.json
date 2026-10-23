@@ -1,0 +1,133 @@
+{
+  "format": "teach-arcade-comic",
+  "version": 1,
+  "title": "A new idea",
+  "author": "Comic Studio example",
+  "layout": "four",
+  "panels": [
+    {
+      "background": "classroom",
+      "objects": [
+        {
+          "id": "o-mv4ni5ng-r69rt52n",
+          "type": "character",
+          "asset": "alex",
+          "x": 100,
+          "y": 125,
+          "scale": 0.95,
+          "flip": false,
+          "text": "",
+          "expression": "happy",
+          "pose": "stand"
+        },
+        {
+          "id": "o-mv4ni5ng-gw9t2w2a",
+          "type": "speech",
+          "asset": "",
+          "x": 235,
+          "y": 28,
+          "scale": 1,
+          "flip": false,
+          "text": "Every story starts with an idea.",
+          "expression": "happy",
+          "pose": "stand"
+        }
+      ]
+    },
+    {
+      "background": "park",
+      "objects": [
+        {
+          "id": "o-mv4ni5ng-0ql27gll",
+          "type": "character",
+          "asset": "maya",
+          "x": 100,
+          "y": 125,
+          "scale": 0.95,
+          "flip": false,
+          "text": "",
+          "expression": "happy",
+          "pose": "wave"
+        },
+        {
+          "id": "o-mv4ni5ng-wmkptruv",
+          "type": "speech",
+          "asset": "",
+          "x": 235,
+          "y": 28,
+          "scale": 1,
+          "flip": false,
+          "text": "What if we try something new?",
+          "expression": "happy",
+          "pose": "stand"
+        }
+      ]
+    },
+    {
+      "background": "city",
+      "objects": [
+        {
+          "id": "o-mv4ni5ng-3houx0ra",
+          "type": "character",
+          "asset": "sam",
+          "x": 100,
+          "y": 125,
+          "scale": 0.95,
+          "flip": false,
+          "text": "",
+          "expression": "happy",
+          "pose": "stand"
+        },
+        {
+          "id": "o-mv4ni5ng-0w38p6la",
+          "type": "speech",
+          "asset": "",
+          "x": 235,
+          "y": 28,
+          "scale": 1,
+          "flip": false,
+          "text": "We can build it together.",
+          "expression": "happy",
+          "pose": "stand"
+        }
+      ]
+    },
+    {
+      "background": "space",
+      "objects": [
+        {
+          "id": "o-mv4ni5ng-ovovske7",
+          "type": "character",
+          "asset": "jules",
+          "x": 100,
+          "y": 125,
+          "scale": 0.95,
+          "flip": false,
+          "text": "",
+          "expression": "happy",
+          "pose": "wave"
+        },
+        {
+          "id": "o-mv4ni5ng-fozsmyok",
+          "type": "speech",
+          "asset": "",
+          "x": 235,
+          "y": 28,
+          "scale": 1,
+          "flip": false,
+          "text": "The possibilities are endless!",
+          "expression": "happy",
+          "pose": "stand"
+        }
+      ]
+    },
+    {
+      "background": "blank",
+      "objects": []
+    },
+    {
+      "background": "blank",
+      "objects": []
+    }
+  ]
+}
