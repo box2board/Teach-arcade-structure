@@ -82,3 +82,22 @@ test('all Review Lab games receive explicitly selected teacher sets; unavailable
   await assert.rejects(missing.loadQuestionSet('teacher:'+id),/private/);
  }finally{if(originalWindow===undefined)delete global.window;else global.window=originalWindow;if(originalLocation===undefined)delete global.location;else global.location=originalLocation;}
 });
+
+test('multiple correct answers survive validation and publication; legacy single answers still play',()=>{
+ const input=set();input.questions[0].answer=[2,0];
+ const published=setInput({...input,visibility:'public'});
+ assert.deepEqual(published.questions[0].answer,[0,2]);assert.equal(completeQuestion(published.questions[0]),true);
+ assert.throws(()=>teacherBank({...published,id}),/multiple correct answers/);
+ for(const answer of [[0,0],[4],[-1],['1'],null,[0,1,2,3,4]])assert.throws(()=>setInput({...set(),questions:[{...question(1),answer}]}));
+ assert.equal(completeQuestion({...question(1),answer:[]}),false);
+ assert.deepEqual(setInput({...set(),questions:[{...question(1),answer:[]}]}).questions[0].answer,[]);
+ assert.throws(()=>setInput({...set(),visibility:'public',questions:Array(12).fill({...question(1),answer:[]})}),/publish/);
+ const singles={...set(),questions:Array(12).fill({...question(1),answer:[2]})};
+ assert.equal(teacherBank(singles).questions[0].answer,2);validateQuestionBank(teacherBank(singles));
+});
+test('create and copy preserve multiple correct answer indices through the API',async()=>{
+ configure();const multiple=set();multiple.questions[0].answer=[0,2];let inserted;
+ global.fetch=async(url,options)=>{if(url.endsWith('/user'))return response({id:'teacher-a'});if(options.method==='POST'){inserted=JSON.parse(options.body);return response([multiple]);}return response([multiple]);};
+ assert.equal((await call('create',{method:'POST',authenticated:true,body:multiple})).status,201);assert.deepEqual(inserted.questions[0].answer,[0,2]);
+ assert.equal((await call('copy',{method:'POST',authenticated:true,body:{id}})).status,201);assert.deepEqual(inserted.questions[0].answer,[0,2]);
+});

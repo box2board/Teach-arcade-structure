@@ -1,8 +1,8 @@
 import {GAMES} from '../../review-lab/catalog.js';
-import {SET_SUBJECTS,completeQuestion,setInput,teacherBank,MAX_QUESTIONS} from '../set-contract.js';
+import {SET_SUBJECTS,completeQuestion,setInput,teacherBank,MAX_QUESTIONS,correctAnswers} from '../set-contract.js';
 const $=id=>document.getElementById(id),el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
 let user=null,view='mine',offset=0,version=0,editing=null,dirty=false,busy=false,search='',lastList=[];
-const blank=()=>({question:'',choices:['','','',''],answer:-1,explanation:''});
+const blank=()=>({question:'',choices:['','','',''],answer:[],explanation:''});
 async function api(action,body,params={}){
  const query=new URLSearchParams({action,...params});const response=await fetch('/api/teacher-sets?'+query,{method:body?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:body?{'Content-Type':'application/json'}:{},...(body?{body:JSON.stringify(body)}:{})});
  const data=await response.json();if(!response.ok){const error=new Error(data.error||'Question sets are unavailable.');error.status=response.status;throw error;}return data;
@@ -37,8 +37,8 @@ async function openSet(id){
   if(view==='saved')controls.append(action('Remove saved shortcut',async()=>{await api('unsave',{id:set.id});show('set-library');resetUrl();await list();}));
   $('teacher-set-games').replaceChildren();
   try{teacherBank(set);$('teacher-set-games').append(el('p','Play this set:'));for(const game of GAMES.filter(g=>g.supportsQuestionBank)){const a=el('a',game.title+' ↗');a.href=game.url+'?set='+encodeURIComponent('teacher:'+set.id)+'&from=teacher-hq';a.target='_blank';a.rel='noopener';$('teacher-set-games').append(a);}}
-  catch{$('teacher-set-games').append(el('p','Add at least 12 complete questions to play this draft.'));}
-  $('teacher-set-questions').replaceChildren(...set.questions.map((q,i)=>{const d=el('details');d.append(el('summary',`${i+1}. ${q.question||'Unfinished question'}`));const choices=el('ol');choices.type='A';for(const [n,text]of q.choices.entries())choices.append(el('li',(text||'Unfinished choice')+(n===q.answer?' ✓':'')));d.append(choices,el('p',q.explanation));return d;}));
+  catch(error){$('teacher-set-games').append(el('p',error.message));}
+  $('teacher-set-questions').replaceChildren(...set.questions.map((q,i)=>{const d=el('details');d.append(el('summary',`${i+1}. ${q.question||'Unfinished question'}`));const choices=el('ol');choices.type='A';for(const [n,text]of q.choices.entries())choices.append(el('li',(text||'Unfinished choice')+(correctAnswers(q).includes(n)?' ✓':'')));d.append(choices,el('p',q.explanation));return d;}));
   status(set.visibility==='private'?'Private · Only you can access this set.':'Public · Anyone with access to this library can read, play, and copy this set.');$('teacher-set-title').tabIndex=-1;$('teacher-set-title').focus();
  }catch(error){if(request===version)status(error.message);}
 }
@@ -56,14 +56,16 @@ function editorState(){
  $('save-set').textContent=isPublic?'Save public changes':'Save private draft';$('publish-set').hidden=isPublic;$('private-set').hidden=!isPublic;
  $('question-progress').textContent=`${editing.questions.filter(completeQuestion).length} complete / ${editing.questions.length} questions · ${dirty||!editing.id?'Unsaved changes':'Saved version'}`;
  $('add-question').disabled=editing.questions.length>=MAX_QUESTIONS;
+ $('answer-compatibility').textContent=editing.questions.some(q=>correctAnswers(q).length>1)?'Multiple correct answers selected. You can save and publish this set. Current Review Lab games require one correct answer per question.':'';
 }
 function renderQuestions(){
  $('question-editor').replaceChildren(...editing.questions.map((q,i)=>{
   const field=el('fieldset');field.className='question-edit';field.append(el('legend',`Question ${i+1}`));
   const input=(label,value,max,set,tag='input')=>{const wrap=el('label',label),control=el(tag);if(tag==='input')control.type='text';control.value=value;control.maxLength=max;control.oninput=()=>{set(control.value);dirty=true;editorState();};wrap.append(control);return wrap;};
   field.append(input('Question',q.question,1000,v=>q.question=v,'textarea'));
+  field.append(el('p','Check every correct answer. You can select more than one.'));
   const answers=el('div');answers.className='answer-list';
-  for(let c=0;c<4;c++){const row=el('div');row.className='answer-edit';const radio=el('input');radio.type='radio';radio.name=`correct-${i}`;radio.checked=q.answer===c;radio.setAttribute('aria-label',`Mark choice ${'ABCD'[c]} correct for question ${i+1}`);radio.onchange=()=>{q.answer=c;dirty=true;editorState();};row.append(radio,input(`Choice ${'ABCD'[c]}`,q.choices[c],500,v=>q.choices[c]=v));answers.append(row);}
+  for(let c=0;c<4;c++){const row=el('div');row.className='answer-edit';const radio=el('input');radio.type='checkbox';radio.name=`correct-${i}`;radio.checked=correctAnswers(q).includes(c);radio.setAttribute('aria-label',`Mark choice ${'ABCD'[c]} correct for question ${i+1}`);radio.onchange=()=>{q.answer=radio.checked?[...new Set([...correctAnswers(q),c])].sort((a,b)=>a-b):correctAnswers(q).filter(n=>n!==c);dirty=true;editorState();};row.append(radio,input(`Choice ${'ABCD'[c]}`,q.choices[c],500,v=>q.choices[c]=v));answers.append(row);}
   field.append(answers,input('Explanation (optional)',q.explanation,2000,v=>q.explanation=v,'textarea'));
   const tools=el('div');tools.className='question-tools';tools.append(action('Duplicate question',()=>{if(editing.questions.length>=MAX_QUESTIONS)return;editing.questions.splice(i+1,0,structuredClone(q));dirty=true;renderQuestions();editorState();}),action('Remove question',()=>{editing.questions.splice(i,1);dirty=true;renderQuestions();editorState();}));field.append(tools);return field;
  }));

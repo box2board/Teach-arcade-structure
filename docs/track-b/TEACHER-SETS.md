@@ -41,3 +41,11 @@ subscriptions, image uploads, moderation/reporting workflows, or the level build
 Community moderation and account export/deletion remain public-release work.
 Existing password-protection advisor warning concerns password auth; this preview
 uses email codes. Fresh-index unused notices are expected before real traffic.
+
+## Multiple correct answers
+
+Teacher questions now accept an answer index or an array of unique indices (0–3). The editor uses independent checkboxes. Empty selections may be saved privately; publication requires at least one correct answer per question. Existing scalar answers remain valid. Copies retain every correct answer.
+
+Current Review Lab engines still require a single correct answer. `teacherBank` converts one-element arrays to their scalar format and rejects multiple-answer sets with an explicit compatibility message; it never discards additional correct answers. The editor and detail page explain this limitation.
+
+The additive `teacher_multiple_correct_answers` development migration replaces only the existing private validation function, preserving ownership policies, grants, and stored sets. CLI use remains blocked by the earlier automatic review; the migration was created through the Supabase connector and its assigned version was saved here.

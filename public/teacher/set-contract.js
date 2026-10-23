@@ -3,8 +3,12 @@ export const SET_SUBJECTS=['Social Studies','Science','Math','ELA','Other'];
 export const MIN_PLAY_QUESTIONS=12;
 export const MAX_QUESTIONS=100;
 export const teacherSetId=id=>typeof id==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+export const correctAnswers=q=>Array.isArray(q?.answer)?q.answer:Number.isInteger(q?.answer)&&q.answer>=0?[q.answer]:[];
+export function validAnswer(answer){
+ return Array.isArray(answer)?answer.length<=4&&answer.every(n=>Number.isInteger(n)&&n>=0&&n<4)&&new Set(answer).size===answer.length:Number.isInteger(answer)&&answer>=-1&&answer<4;
+}
 export function completeQuestion(q){
- return !!q&&typeof q.question==='string'&&!!q.question.trim()&&Array.isArray(q.choices)&&q.choices.length===4&&q.choices.every(c=>typeof c==='string'&&!!c.trim())&&new Set(q.choices.map(c=>c.normalize('NFKC').trim().toLowerCase())).size===4&&Number.isInteger(q.answer)&&q.answer>=0&&q.answer<4;
+ return !!q&&typeof q.question==='string'&&!!q.question.trim()&&Array.isArray(q.choices)&&q.choices.length===4&&q.choices.every(c=>typeof c==='string'&&!!c.trim())&&new Set(q.choices.map(c=>c.normalize('NFKC').trim().toLowerCase())).size===4&&validAnswer(q.answer)&&correctAnswers(q).length>0;
 }
 export function setInput(input){
  const fail=message=>{const error=new Error(message);error.status=400;throw error;};
@@ -14,15 +18,16 @@ export function setInput(input){
  if(!SET_SUBJECTS.includes(subject))fail('Choose a subject.');
  if(!Array.isArray(input.questions)||input.questions.length>MAX_QUESTIONS)fail('A set can contain up to 100 questions.');
  const questions=input.questions.map((q,i)=>{
-  if(!q||!Array.isArray(q.choices)||q.choices.length!==4||!Number.isInteger(q.answer)||q.answer< -1||q.answer>3)fail(`Question ${i+1} needs four choices and a correct-answer selection.`);
-  return {question:text(q.question,1000,`Question ${i+1}`),choices:q.choices.map(c=>text(c,500,`Question ${i+1} answer`)),answer:q.answer,explanation:text(q.explanation??'',2000,`Question ${i+1} explanation`)};
+  if(!q||!Array.isArray(q.choices)||q.choices.length!==4||!validAnswer(q.answer))fail(`Question ${i+1} needs four choices and a correct-answer selection.`);
+  return {question:text(q.question,1000,`Question ${i+1}`),choices:q.choices.map(c=>text(c,500,`Question ${i+1} answer`)),answer:Array.isArray(q.answer)?[...q.answer].sort((a,b)=>a-b):q.answer,explanation:text(q.explanation??'',2000,`Question ${i+1} explanation`)};
  });
  const visibility=input.visibility??'private';
  if(!['private','public'].includes(visibility))fail('Choose private or public visibility.');
- if(visibility==='public'&&(questions.length<MIN_PLAY_QUESTIONS||!questions.every(completeQuestion)))fail('To publish, add at least 12 complete questions, each with four different answers and one correct answer.');
+ if(visibility==='public'&&(questions.length<MIN_PLAY_QUESTIONS||!questions.every(completeQuestion)))fail('To publish, add at least 12 complete questions, each with four different answers and at least one correct answer.');
  return {title,description,subject,questions,visibility};
 }
 export function teacherBank(set){
  if(set.questions.length<MIN_PLAY_QUESTIONS||!set.questions.every(completeQuestion))throw Error('This draft needs at least 12 complete questions before playing.');
- return {id:`teacher:${set.id}`,title:set.title,subject:set.subject,category:'Teacher-created',questionCount:set.questions.length,questions:set.questions.map((q,i)=>({...q,id:`${set.id}-${i+1}`}))};
+ if(set.questions.some(q=>correctAnswers(q).length>1))throw Error('This set includes questions with multiple correct answers. Saving and publishing are supported; these games currently require one correct answer per question.');
+ return {id:`teacher:${set.id}`,title:set.title,subject:set.subject,category:'Teacher-created',questionCount:set.questions.length,questions:set.questions.map((q,i)=>({...q,answer:correctAnswers(q)[0],id:`${set.id}-${i+1}`}))};
 }
