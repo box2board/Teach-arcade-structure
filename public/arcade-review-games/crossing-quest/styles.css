@@ -18,3 +18,11 @@
 @media(pointer:coarse) and (min-width:601px){canvas{max-height:calc(100dvh - 426px)}}
 #game-shell:fullscreen canvas{max-height:calc(100dvh - 365px)}
 @media(max-width:600px){.mission{padding:8px 12px}.mission strong{font-size:.8rem}#game-shell:fullscreen canvas{max-height:none}}
+
+/* The canvas is a camera viewport, independent of the park dimensions. */
+main{max-width:1240px;padding-top:10px}.heading{margin-bottom:8px}
+.dashboard{padding:8px 16px;gap:10px}.mission{min-height:50px;padding:6px 16px}
+canvas{aspect-ratio:14/9;max-height:calc(100dvh - 315px)!important;width:auto;max-width:100%;height:auto}
+.playfield{background:#14382e;border-color:#5a965f}.sprint-button{display:block;margin:6px auto;background:#427b33;border-color:#a5e46f;touch-action:none}
+#game-shell:fullscreen canvas{max-height:calc(100dvh - 265px)!important}
+@media(max-width:600px){canvas{width:100%;max-height:none!important}.dashboard{gap:8px}.sprint-button{width:100%}.touch-controls{padding:4px}}

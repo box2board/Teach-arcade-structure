@@ -2,10 +2,11 @@ import {enhanceTopicPicker} from '../../review-lab/topic-picker.js';
 import bank from './questions.js';
 import { QUESTION_SETS, loadQuestionSet } from './question-sets.js';
 import { CrossingWorld, roadShapes } from './engine.js';
-import { CELL, WIDTH, HEIGHT, ROUTES, DIFFICULTIES } from './config.js';
+import { CELL, WIDTH, REQUIRED_ACORNS, HEIGHT, VIEW_WIDTH, VIEW_HEIGHT, HOME_ROW, STUMP_ROW, ROUTES, DIFFICULTIES } from './config.js';
 
 const $=id=>document.getElementById(id),canvas=$('board'),ctx=canvas.getContext('2d');
 const panel=$('panel'),content=$('panel-content');
+let camera={x:512,y:HEIGHT-VIEW_HEIGHT};
 let world,activeBank=bank,mode='relaxed',selectedSet=bank.id,lastState='',lastFrame=0,held=null,repeatAt=0,noticeUntil=0,noticeText='';
 const requestedSet=new URLSearchParams(location.search).get('set');
 const presetSet=QUESTION_SETS.find(set=>set.id===requestedSet);
@@ -14,12 +15,12 @@ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const directions={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'};
 const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-function show(html){held=null;content.innerHTML=html;if(!panel.open)panel.showModal();}
+function show(html){held=null;if(world)world.sprinting=false;content.innerHTML=html;if(!panel.open)panel.showModal();}
 function close(){if(panel.open)panel.close();canvas.focus({preventScroll:true});held=null;}
 function button(id,label,primary=true){return `<button id="${id}" class="${primary?'primary':'secondary'}">${label}</button>`;}
-function newRun(){noticeText='';$('announcement').classList.remove('visible');world=new CrossingWorld(activeBank,mode);lastState='';sync();draw();}
+function newRun(){camera={x:(WIDTH-VIEW_WIDTH)/2,y:HEIGHT-VIEW_HEIGHT};noticeText='';$('announcement').classList.remove('visible');world=new CrossingWorld(activeBank,mode);lastState='';sync();draw();}
 function ready(){
-  show(`<div class="intro-mark" aria-hidden="true">🐿️</div><span class="pill">Acorn Dash${presetSet?'':' · step 1 of 2'}</span><h2 id="panel-title">Small paws.<br>Big acorn adventure.</h2><ul class="intro-rules"><li><b>1</b>Dodge cyclists, rolling balls, and timed sprinklers.</li><li><b>2</b>Gather at least 3 acorns. Review at the stump and old oak.</li><li><b>3</b>Return DOWN to your home tree to stash your acorns.</li></ul><label for="difficulty">Park difficulty</label><select id="difficulty">${Object.entries(DIFFICULTIES).map(([value,d])=>`<option value="${value}" ${value===mode?'selected':''}>${d.label}${value==='relaxed'?' · slower hazards':value==='challenge'?' · faster hazards, fewer hearts':''}</option>`).join('')}</select><p>You start with a shield. Questions pause everything.</p>${presetSet?`<p><strong>Review topic:</strong> ${escapeHTML(presetSet.title)} · <a href="/review-lab/#topics">Change topic</a></p>`:''}<p id="pack-error" class="fatal" role="alert"></p>${button('choose-set',presetSet?'Start acorn run':'Choose question set')}<p class="access-note">Arrow keys or WASD · touch controls on phones and tablets</p>`);
+  show(`<div class="intro-mark" aria-hidden="true">🐿️</div><span class="pill">Acorn Dash${presetSet?'':' · step 1 of 2'}</span><h2 id="panel-title">Small paws.<br>Big acorn adventure.</h2><ul class="intro-rules"><li><b>1</b>Explore a scrolling park. Follow acorn trails through moving hazards.</li><li><b>2</b>Chain pickups for points. Golden acorns give a magnet and slow time.</li><li><b>3</b>Review at the stump and oak, then return home. Shift / Sprint to move faster.</li></ul><label for="difficulty">Park difficulty</label><select id="difficulty">${Object.entries(DIFFICULTIES).map(([value,d])=>`<option value="${value}" ${value===mode?'selected':''}>${d.label}${value==='relaxed'?' · slower hazards':value==='challenge'?' · faster hazards, fewer hearts':''}</option>`).join('')}</select><p>You start with a shield. Questions pause everything.</p>${presetSet?`<p><strong>Review topic:</strong> ${escapeHTML(presetSet.title)} · <a href="/review-lab/#topics">Change topic</a></p>`:''}<p id="pack-error" class="fatal" role="alert"></p>${button('choose-set',presetSet?'Start acorn run':'Choose question set')}<p class="access-note">Arrow keys or WASD · touch controls on phones and tablets</p>`);
   $('choose-set').onclick=()=>{mode=$('difficulty').value;if(presetSet)startSelectedSet(presetSet.id,$('choose-set'));else chooseSet();};
 }
 function chooseSet(){
@@ -36,7 +37,7 @@ async function startSelectedSet(id,start,back,select){
   try{
     const loaded=await loadQuestionSet(id);
     const nextWorld=new CrossingWorld(loaded,mode);
-    activeBank=loaded;selectedSet=loaded.id;world=nextWorld;world.start();lastState='';close();sync();announce('Collect 3+ acorns · your first shield is ready');
+    activeBank=loaded;selectedSet=loaded.id;world=nextWorld;world.start();lastState='';close();sync();announce('Collect 8+ acorns · your first shield is ready');
   }catch(error){
     console.error(error);$('pack-error').textContent='This set could not load. Try again or choose another topic.';
     controls.forEach(c=>c.disabled=false);start.textContent='Try loading again';start.focus();
@@ -57,18 +58,18 @@ function feedback(){
 function summary(){
   const bank=activeBank;
   const won=world.state==='won',answered=world.records.length,accuracy=answered?Math.round(world.correct/answered*100):0;
-  show(`<span class="pill">${escapeHTML(bank.title)} · run summary</span><h2 id="panel-title">${won?'All three acorn trips complete!':'Your next crossing awaits.'}</h2><p>${won?'Acorns safely stashed. Here’s what you reviewed.':'You ran out of hearts. Try Gentle difficulty or use slow time before a tricky stretch.'}</p><div class="summary-stats"><div><strong>${world.correct} / ${answered}</strong><span>Correct answers</span></div><div><strong>${accuracy}%</strong><span>Review accuracy</span></div></div><p>Acorns stashed: ${world.stashed} · Questions answered: ${answered} / ${world.deck.length} · Crossings finished: ${won?3:world.stage} / 3</p>${answered?`<details><summary>Review your answers (${answered})</summary>${world.records.map(r=>`<div class="review-item"><span class="${r.correct?'feedback-correct':'feedback-missed'}">${r.correct?'Correct':'Review again'}</span><h3>${escapeHTML(r.question)}</h3><p>Your answer: ${escapeHTML(r.choices[r.selected])}</p>${r.correct?'':`<p>Correct answer: ${escapeHTML(r.choices[r.answer])}</p>`}<p>${escapeHTML(r.explanation)}</p></div>`).join('')}</details>`:''}${button('again','Play a new run')}<p class="access-note">This summary stays on this screen. Results are not sent to a teacher.</p>`);
+  show(`<span class="pill">${escapeHTML(bank.title)} · run summary</span><h2 id="panel-title">${won?'All three acorn trips complete!':'Your next crossing awaits.'}</h2><p>${won?'Acorns safely stashed. Here’s what you reviewed.':'You ran out of hearts. Try Gentle difficulty or use slow time before a tricky stretch.'}</p><div class="summary-stats"><div><strong>${world.correct} / ${answered}</strong><span>Correct answers</span></div><div><strong>${accuracy}%</strong><span>Review accuracy</span></div></div><p>Trail score: ${world.score} · Acorns stashed: ${world.stashed} · Questions answered: ${answered} / ${world.deck.length} · Crossings finished: ${won?3:world.stage} / 3</p>${answered?`<details><summary>Review your answers (${answered})</summary>${world.records.map(r=>`<div class="review-item"><span class="${r.correct?'feedback-correct':'feedback-missed'}">${r.correct?'Correct':'Review again'}</span><h3>${escapeHTML(r.question)}</h3><p>Your answer: ${escapeHTML(r.choices[r.selected])}</p>${r.correct?'':`<p>Correct answer: ${escapeHTML(r.choices[r.answer])}</p>`}<p>${escapeHTML(r.explanation)}</p></div>`).join('')}</details>`:''}${button('again','Play a new run')}<p class="access-note">This summary stays on this screen. Results are not sent to a teacher.</p>`);
   $('again').onclick=()=>{lastState='';newRun();};$('again').focus();
 }
 function pauseDialog(){show(`<span class="pill">Take a breather</span><h2 id="panel-title">Crossing paused</h2><p>Park obstacles and sprinklers are stopped.</p>${button('resume','Resume crossing')}${button('new','Start a new run',false)}`);$('resume').onclick=()=>{world.resume();sync();};$('new').onclick=()=>newRun();}
 function sync(){
   const setText=(id,text)=>{if($(id).textContent!==text)$(id).textContent=text;};
   setText('stage',`${world.stage+1} / ${ROUTES.length} · ${world.route.name}`);
-  setText('acorns',`${world.acorns}${world.returning?' carried':' / 3 needed'} · ${world.stashed} stashed`);
+  setText('acorns',`${world.acorns}${world.returning?' carried':` / ${REQUIRED_ACORNS} needed`} · ${world.stashed} stashed`);
   setText('review-set',`Review set: ${activeBank.title}`);
-  setText('route',world.returning?'Return DOWN to your home tree. Extra acorns are optional.':'Gather 3+ acorns. Review at the stump and old oak.');
-  setText('mission-step',world.returning?'3 / 3 · BRING THEM HOME':world.acorns>=3?'2 / 3 · VISIT THE OLD OAK':'1 / 3 · FILL YOUR POUCH');
-  setText('mission-goal',world.returning?'↓ Reach the bottom home area to finish this level.':world.acorns>=3?'↑ Reach the top safe area and finish its review.':`Collect ${Math.max(0,3-world.acorns)} more acorn${world.acorns===2?'':'s'}. The stump has two safe pickups.`);
+  setText('route',world.returning?'Return DOWN to your home tree. Extra acorns are optional.':'Gather 8+ acorns. Review at the stump and old oak.');
+  setText('mission-step',world.returning?'3 / 3 · BRING THEM HOME':world.acorns>=REQUIRED_ACORNS?'2 / 3 · VISIT THE OLD OAK':'1 / 3 · FILL YOUR POUCH');
+  setText('mission-goal',world.returning?'↓ Reach the bottom home area to finish this level.':world.acorns>=REQUIRED_ACORNS?'↑ Reach the top safe area and finish its review.':`Collect ${Math.max(0,REQUIRED_ACORNS-world.acorns)} more acorn${world.acorns===REQUIRED_ACORNS-1?'':'s'}. Follow the acorn trails. Gold acorns are worth three.`);
   $('mission').classList.toggle('returning',world.returning);
   document.body.dataset.scene=world.route.scene;
   document.body.style.setProperty('--park-glow',world.route.skin.glow);
@@ -87,7 +88,7 @@ function sync(){
   else if(world.state==='feedback')feedback();
   else if(world.state==='paused')pauseDialog();
   else if(world.state==='goal-help'){
-    show(`<span class="pill">Old oak reached · ${world.acorns} / 3 acorns</span><h2 id="panel-title">Your pouch needs ${3-world.acorns} more.</h2><p>Go back down to collect the remaining acorns, then return to this top safe area. The middle stump has two safe pickups.</p><p>The park is paused while you read.</p>${button('hunt','Keep collecting ↓')}`);
+    show(`<span class="pill">Old oak reached · ${world.acorns} / ${REQUIRED_ACORNS} acorns</span><h2 id="panel-title">Your pouch needs ${REQUIRED_ACORNS-world.acorns} more.</h2><p>Go back down to collect the remaining acorns, then return to this top safe area. Follow the trails or explore a golden-acorn detour.</p><p>The park is paused while you read.</p>${button('hunt','Keep collecting ↓')}`);
     $('hunt').onclick=()=>{world.continueHunt();sync();};$('hunt').focus();
   }
   else if(world.state==='return-ready'){
@@ -141,12 +142,12 @@ function parkScenery(row,lawn=false){
   const y=row*CELL,skin=world.route.skin,scene=world.route.scene;
   if(scene==='grove'){
     for(let i=0;i<11;i++){
-      const x=60+i*73;
+      const x=60+i*163;
       ctx.fillStyle=skin.leaf;ctx.beginPath();ctx.ellipse(x,y+12+(i%2)*39,5,2.5,i*.7,0,Math.PI*2);ctx.fill();
     }
-    if(row!==4){
-      round(797,y+18,17,44,4,'#80552e');
-      circle(805,y+14,27,skin.foliage);circle(783,y+23,20,skin.leaf);circle(828,y+22,22,skin.foliage);
+    if(row!==STUMP_ROW){
+      round(WIDTH/2+380,y+18,17,44,4,'#80552e');
+      circle(WIDTH/2+388,y+14,27,skin.foliage);circle(WIDTH/2+366,y+23,20,skin.leaf);circle(WIDTH/2+411,y+22,22,skin.foliage);
     }else{
       round(774,y+31,54,23,8,'#916438');round(771,y+25,60,13,5,'#ba8b54');
       ctx.strokeStyle='#79542d';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(801,y+31,19,4,0,0,Math.PI*2);ctx.stroke();
@@ -181,12 +182,21 @@ function bankRow(row,title,active){
   const y=row*CELL,skin=world.route.skin;ctx.fillStyle=skin.safe;ctx.fillRect(0,y,WIDTH,CELL);
   ctx.fillStyle='#ffffff08';ctx.fillRect(0,y,WIDTH,4);ctx.fillStyle='#061d2440';ctx.fillRect(0,y+60,WIDTH,4);
   parkScenery(row);
-  const w=title.length*8.5+28;round(20,y+18,w,29,14,active?'#173c32':'#233e37');label(title,20+w/2,y+38,active?'#d3efa5':'#bfd2c8',13);
-  if(row===0||row===8){
+  if(row===0||row===HOME_ROW){
+    const tx=WIDTH/2+230;
+    round(tx-25,y+12,50,48,12,'#805230');round(tx-8,y+29,22,31,10,'#342a20');
+    circle(tx,y+2,46,skin.foliage);circle(tx-39,y+4,30,skin.leaf);circle(tx+37,y+1,32,skin.foliage);
+    label(row===0?'OLD OAK':'HOME TREE',tx,y+55,'#fff2be',11);
+  }else{
+    round(WIDTH/2+210,y+24,63,34,9,'#936030');ctx.fillStyle='#ebc48b';ctx.beginPath();ctx.ellipse(WIDTH/2+241,y+25,34,12,0,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#a66f39';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(WIDTH/2+241,y+25,20,7,0,0,Math.PI*2);ctx.stroke();
+  }
+  const w=title.length*8.5+28;round(WIDTH/2-w/2,y+18,w,29,14,active?'#173c32':'#233e37');label(title,WIDTH/2,y+38,active?'#d3efa5':'#bfd2c8',13);
+  if(row===0||row===HOME_ROW){
     round(WIDTH-39,y+34,28,25,5,'#845735');round(WIDTH-43,y+29,36,9,4,'#ae814e');
     circle(WIDTH-25,y+45,5,'#392b22');
   }
-  if((world.returning&&row===8)||(!world.returning&&world.acorns>=3&&row===0)){
+  if((world.returning&&row===HOME_ROW)||(!world.returning&&world.acorns>=REQUIRED_ACORNS&&row===0)){
     ctx.strokeStyle=world.returning?'#9de7ec':'#d4ef89';ctx.lineWidth=3;ctx.strokeRect(2,y+2,WIDTH-4,CELL-4);
     label(world.returning?'↓ HOME':'↑ REVIEW',WIDTH-215,y+38,ctx.strokeStyle,16);
   }
@@ -209,11 +219,39 @@ function laneGround(lane,y){
     if(scene==='garden')for(let x=40;x<WIDTH;x+=73){circle(x,y+7,2,'#ccb4e4');circle(x+5,y+9,2,'#eac4d2');}
   }
 }
+function minimap(){
+  const mx=VIEW_WIDTH-162,my=16,mw=146,mh=126,sx=mw/WIDTH,sy=mh/HEIGHT;
+  round(mx-8,my-8,mw+16,mh+34,12,'#102b36ed');
+  for(const row of [0,STUMP_ROW,HOME_ROW]){ctx.fillStyle='#97cf5b';ctx.fillRect(mx,my+row*CELL*sy,mw,4);}
+  for(const n of world.nuts())if(!n.collected)circle(mx+n.x*sx,my+(n.row+.5)*CELL*sy,n.golden?3:1.5,n.golden?'#ffe05a':'#c8dda5');
+  ctx.strokeStyle='#ffffffaa';ctx.lineWidth=1;ctx.strokeRect(mx+camera.x*sx,my+camera.y*sy,VIEW_WIDTH*sx,VIEW_HEIGHT*sy);
+  circle(mx+world.player.x*sx,my+(world.player.row+.5)*CELL*sy,4,'#fff');
+  label(world.returning?'HOME ↓':'OLD OAK ↑',mx+mw/2,my+mh+18,'#d9efb6',11);
+}
+function forestBorder(row){
+  const y=row*CELL;
+  for(const x of [15,WIDTH-16]){
+    round(x-7,y+12,14,43,4,'#835235');
+    circle(x,y+12,30,'#0d6644');circle(x-16,y+5,22,world.route.skin.foliage);circle(x+12,y-2,22,world.route.skin.leaf);
+    circle(x+6,y-10,12,'#ffffff18');
+  }
+}
 function draw(){
-  if(!world)return;ctx.clearRect(0,0,WIDTH,HEIGHT);
-  for(let row=0;row<9;row++){
+  if(!world)return;ctx.clearRect(0,0,VIEW_WIDTH,VIEW_HEIGHT);
+  const targetX=Math.max(0,Math.min(WIDTH-VIEW_WIDTH,world.player.x-VIEW_WIDTH/2));
+  const targetY=Math.max(0,Math.min(HEIGHT-VIEW_HEIGHT,(world.player.row+.5)*CELL-VIEW_HEIGHT*.54));
+  camera.x+=(targetX-camera.x)*(reduced?1:.16);camera.y+=(targetY-camera.y)*(reduced?1:.16);
+  ctx.save();ctx.translate(-camera.x,-camera.y);
+  for(let row=0;row<=HOME_ROW;row++){
     const y=row*CELL,lane=world.route.lanes.find(l=>l.row===row);
-    if(!lane){bankRow(row,row===8?'HOME · STASH ACORNS':row===4?(world.checkpoint===4?'STUMP SAVED':'STUMP · REVIEW'):'OLD OAK · REVIEW',row===4&&world.checkpoint===4);continue;}
+    if(!lane){
+      if([0,STUMP_ROW,HOME_ROW].includes(row))bankRow(row,row===HOME_ROW?'HOME · STASH ACORNS':row===STUMP_ROW?(world.checkpoint===STUMP_ROW?'STUMP SAVED':'STUMP · REVIEW'):'OLD OAK · REVIEW',row===STUMP_ROW&&world.checkpoint===STUMP_ROW);
+      else {laneGround({type:'lawn'},y);parkScenery(row,true);
+        // Curving footpath links the three safe resting areas.
+        ctx.strokeStyle='#f4db9d30';ctx.lineWidth=48;ctx.beginPath();ctx.moveTo(WIDTH/2+Math.sin(row*.4)*220,y);ctx.lineTo(WIDTH/2+Math.sin((row+1)*.4)*220,y+CELL);ctx.stroke();
+      }
+      forestBorder(row);continue;
+    }
     laneGround(lane,y);
     if(lane.type==='road'){
       label(lane.speed>0?'›':'‹',20,y+37,'#f1e7ca77',24);
@@ -222,15 +260,38 @@ function draw(){
       world.sprinklers(lane).forEach(o=>sprinkler(o,y));
     }else parkScenery(row,true);
   }
-  for(const nut of world.nuts())if(!nut.collected)acorn(nut.x,nut.row*CELL+CELL/2);
+  ctx.strokeStyle='#ffed9e55';ctx.lineWidth=3;ctx.setLineDash([3,10]);
+  for(let group=0;group<7;group++){
+    const trail=world.nuts().slice(group*4,group*4+4);
+    if(trail.every(n=>n.collected))continue;
+    ctx.beginPath();trail.forEach((n,i)=>i?ctx.lineTo(n.x,n.row*CELL+32):ctx.moveTo(n.x,n.row*CELL+32));ctx.stroke();
+  }ctx.setLineDash([]);
+  for(const nut of world.nuts())if(!nut.collected){
+    const y=nut.row*CELL+CELL/2;
+    if(nut.golden){const glow=ctx.createRadialGradient(nut.x,y,3,nut.x,y,34);glow.addColorStop(0,'#ffed6a99');glow.addColorStop(1,'#ffed6a00');circle(nut.x,y,34,glow);}
+    ctx.save();ctx.translate(nut.x,y);if(nut.golden)ctx.scale(1.35,1.35);acorn(0,0);if(nut.golden)label('★',0,5,'#fff59d',13);ctx.restore();
+  }
+  for(const p of world.pickups)label(`+${p.points}`,p.x,p.row*CELL-20+(1-p.life)*-28,'#fff3a1',18);
 
   if(world.slowTime>0){ctx.fillStyle='#b6f4ff0b';ctx.fillRect(0,0,WIDTH,HEIGHT);ctx.strokeStyle='#a0e8f3';ctx.lineWidth=4;ctx.strokeRect(2,2,WIDTH-4,HEIGHT-4);}
   let x=world.player.x,y=world.player.row*CELL+CELL/2;
   if(world.hop>0&&!reduced){const t=1-world.hop/.11;const ease=1-(1-t)**2;x=world.from.x+(x-world.from.x)*ease;y=world.from.row*CELL+CELL/2+(y-world.from.row*CELL-CELL/2)*ease;}
   if(world.invulnerable>0&&world.state==='playing'&&!reduced){ctx.globalAlpha=.6+Math.sin(world.invulnerable*20)*.25;}
-  squirrel(x,y);ctx.globalAlpha=1;
+  if(world.sprinting&&world.energy>.08){for(let n=1;n<4;n++)circle(x+(world.from.x-x)*n*.3,y+(world.from.row*CELL+CELL/2-y)*n*.3,12-n*2,'#ffe5a54a');}
+  if(world.magnet>0){ctx.strokeStyle='#ffe56a';ctx.lineWidth=2;ctx.setLineDash([5,9]);ctx.beginPath();ctx.arc(x,y,105,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);}
+  squirrel(x,y);ctx.globalAlpha=1;ctx.restore();minimap();
+  round(16,16,220,67,12,'#102b36ed');label(`${world.score} PTS · ${world.combo} STREAK`,126,40,'#ffeb97',15);
+  round(30,54,190,12,6,'#061c26');round(30,54,Math.max(1,190*world.energy),12,6,world.energy>.2?'#a3ed68':'#ffae64');
+  label(world.magnet>0?`MAGNET ${Math.ceil(world.magnet)}s`:'SHIFT / SPRINT',126,78,'#ecf6db',10);
 }
 
+const sprintButton=$('sprint');
+if(sprintButton){
+  sprintButton.addEventListener('pointerdown',e=>{e.preventDefault();sprintButton.setPointerCapture(e.pointerId);if(world)world.sprinting=true;});
+  for(const type of ['pointerup','pointercancel','lostpointercapture'])sprintButton.addEventListener(type,()=>{if(world)world.sprinting=false;});
+  sprintButton.addEventListener('keydown',e=>{if(e.code==='Space'||e.code==='Enter'){e.preventDefault();world.sprinting=true;}});
+  sprintButton.addEventListener('keyup',()=>world.sprinting=false);
+}
 $('pause').onclick=()=>{world.pause();sync();};
 $('restart').onclick=()=>{
   if(world.state!=='playing')return;world.pause();lastState='paused';
@@ -253,22 +314,23 @@ document.addEventListener('keydown',event=>{
     }return;
   }
   if(world.state!=='playing')return;
+  if(event.key==='Shift'){event.preventDefault();world.sprinting=true;return;}
   const direction=directions[event.key]||directions[event.key.toLowerCase()];
   if(direction){event.preventDefault();if(!event.repeat){held=direction;repeatAt=performance.now()+175;world.move(direction);}}
   else if(event.code==='Space'){event.preventDefault();if(!event.repeat){world.activateSlow();sync();}}
   else if(event.key==='Escape'||event.key.toLowerCase()==='p'){event.preventDefault();world.pause();sync();}
 });
-document.addEventListener('keyup',event=>{if(directions[event.key]||directions[event.key.toLowerCase()])held=null;});
+document.addEventListener('keyup',event=>{if(event.key==='Shift'&&world)world.sprinting=false;if(directions[event.key]||directions[event.key.toLowerCase()])held=null;});
 document.querySelectorAll('[data-direction]').forEach(b=>{
   b.addEventListener('pointerdown',event=>{event.preventDefault();b.setPointerCapture(event.pointerId);held=b.dataset.direction;repeatAt=performance.now()+175;world.move(held);});
   ['pointerup','pointercancel','lostpointercapture'].forEach(type=>b.addEventListener(type,()=>held=null));
   b.addEventListener('click',event=>{if(event.detail===0)world.move(b.dataset.direction);});
 });
-function autoPause(){held=null;if(world?.pause())sync();}
+function autoPause(){held=null;if(world)world.sprinting=false;if(world?.pause())sync();}
 window.addEventListener('blur',autoPause);document.addEventListener('visibilitychange',()=>{if(document.hidden)autoPause();});
 function frame(now){
   const dt=lastFrame?Math.min((now-lastFrame)/1000,.05):0;lastFrame=now;
-  if(world){if(held&&world.state==='playing'&&now>=repeatAt){world.move(held);repeatAt=now+175;}world.update(dt);sync();draw();}
+  if(world){if(held&&world.state==='playing'&&now>=repeatAt){world.move(held);repeatAt=now+(world.sprinting&&world.energy>.08?100:175);}world.update(dt);sync();draw();}
   if(noticeText&&now>noticeUntil){$('announcement').classList.remove('visible');noticeText='';}
   requestAnimationFrame(frame);
 }
