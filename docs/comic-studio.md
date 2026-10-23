@@ -107,3 +107,11 @@ Validation: the existing 500-item editor suite passes after adapting its state h
 
 ### Page typography and full-page covers
 Each page has a `typography` record for an optional heading override, five system font families, heading size (24–72), alignment, color, and title/author visibility. Existing v3 projects receive defaults on validation. Dialogue boxes also persist a font key, alignment, text color, and bold flag. The four cover choices include `fullpage`, which fills a portrait cover with centered, cropped artwork; the editor shades cropped sides and preview/export show the exact result. Cover text has a light backing for readability. Fonts use local system fallbacks and may vary slightly by device.
+
+### Authoring workflow
+- The assembled page stays open under the panel editor; each story panel is clickable and keyboard selectable. The current panel is outlined only in the editor. **Done & next panel** stores a reversible progress marker and advances; the last panel opens Preview. Mark in progress reopens a completed panel. Completion does not lock artwork or alter exports.
+- Plain text uses the dialogue formatting controls with a transparent background and no tail.
+- Cover title, subtitle, and author have independent horizontal/vertical offsets. They are clamped inside the page and rendered above illustration layers.
+- Imported images have independent frame width/height, fit/fill, crop zoom and horizontal/vertical framing, plus 0/90/180/270 degree rotation. The original embedded asset is retained. Fill this panel sizes the frame to 600 × 360; reset restores uncropped fit and zero rotation.
+- Page thumbnails render actual artwork using cached page SVGs. Native drag/drop and Alt + Left/Right reorder pages, preserve the active page, and support undo. Move earlier/later buttons remain available on touch screens.
+- Book workflow tests exercise these behaviors, backward-compatible project validation, browser persistence, and all 32 pages through the PDF export path. Native tablet/browser interaction remains unverified because browser access was blocked in this environment.

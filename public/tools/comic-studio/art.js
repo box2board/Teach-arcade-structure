@@ -29,7 +29,7 @@ function object(o,selected=false,assets={}){
  let drawing,width=120,height=225;
  if(o.type==='character'){drawing=character(o.asset,o.expression,o.pose,o.colors);if(o.colors?.primary){for(const color of ({cat:['#d8a06c','#e2b487'],dog:['#c2a17d','#d4b48c'],robot:['#82a8b1']})[o.asset]||[])drawing=drawing.split(color).join(o.colors.primary);}}
  else if(o.type==='prop'){drawing=prop(o.asset);height=140;if(o.colors?.primary)drawing=drawing.replace(/fill="(?!none|#243148)[^"]+"/, 'fill="'+o.colors.primary+'"');}
- else if(o.type==='image'){width=o.imageWidth;height=o.imageHeight;drawing=assets[o.asset]?'<image href="'+escape(assets[o.asset].src)+'" width="'+width+'" height="'+height+'" preserveAspectRatio="xMidYMid meet"/>':'<rect width="'+width+'" height="'+height+'" fill="#e2ddeb"/>'; }
+ else if(o.type==='image'){width=o.imageWidth;height=o.imageHeight;const a=assets[o.asset],f={fit:'fit',zoom:1,x:0,y:0,rotation:0,...o.frame};if(a){const swap=f.rotation%180!==0,rw=swap?a.height:a.width,rh=swap?a.width:a.height,ratio=(f.fit==='fill'?Math.max(width/rw,height/rh):Math.min(width/rw,height/rh))*f.zoom,cw=rw*ratio,ch=rh*ratio,cx=(width-cw)*(f.x+1)/2+cw/2,cy=(height-ch)*(f.y+1)/2+ch/2;drawing='<svg width="'+width+'" height="'+height+'" viewBox="0 0 '+width+' '+height+'" overflow="hidden"><g transform="translate('+cx+' '+cy+') rotate('+f.rotation+')"><image href="'+escape(a.src)+'" x="'+(-a.width*ratio/2)+'" y="'+(-a.height*ratio/2)+'" width="'+(a.width*ratio)+'" height="'+(a.height*ratio)+'"/></g></svg>';}else drawing='<rect width="'+width+'" height="'+height+'" fill="#e2ddeb"/>'; }
  else if(o.type==='drawing'){
   const xs=o.points.map(p=>p[0]),ys=o.points.map(p=>p[1]);width=Math.max(5,...xs);height=Math.max(5,...ys);
   const start=o.points[0],end=o.points[o.points.length-1],x=Math.min(start[0],end[0]),y=Math.min(start[1],end[1]),w=Math.max(1,Math.abs(end[0]-start[0])),h=Math.max(1,Math.abs(end[1]-start[1]));
@@ -47,15 +47,15 @@ function object(o,selected=false,assets={}){
  else {
   const t=textGeometry(o);width=t.width;height=t.height;const fill=o.colors?.primary||(o.type==='caption'?'#ffe36e':'#fffdf8');
   const tailX=t.tail==='right'?width-43:t.tail==='custom'?t.tailX:43,tailY=height+(t.tail==='custom'?t.tailY:24);
-  drawing='<rect width="'+width+'" height="'+height+'" rx="'+(o.type==='caption'?3:24)+'" fill="'+fill+'" stroke="'+ink+'" stroke-width="3"/>';
-  if(o.type!=='caption'&&t.tail!=='none'){
+  drawing=o.type==='text'?'<rect width="'+width+'" height="'+height+'" fill="transparent"/>': '<rect width="'+width+'" height="'+height+'" rx="'+(o.type==='caption'?3:24)+'" fill="'+fill+'" stroke="'+ink+'" stroke-width="3"/>';
+  if(!['caption','text'].includes(o.type)&&t.tail!=='none'){
    const attach=Math.max(22,Math.min(width-22,tailX));
    drawing+=o.type==='thought'?'<circle cx="'+((attach+tailX)/2)+'" cy="'+(height+(tailY-height)*.4)+'" r="8" fill="'+fill+'" stroke="'+ink+'" stroke-width="2"/><circle cx="'+tailX+'" cy="'+tailY+'" r="4" fill="'+fill+'" stroke="'+ink+'" stroke-width="2"/>':'<path d="M'+(attach-12)+' '+(height-2)+'L'+tailX+' '+tailY+'L'+(attach+12)+' '+(height-2)+'" fill="'+fill+'" stroke="'+ink+'" stroke-width="3"/>';
   }
   const visible=t.lines.slice(0,Math.max(1,Math.floor((height-24)/t.lineHeight)));
   const tx=t.align==='center'?t.width/2:t.align==='right'?t.width-16:16;
   drawing+='<text x="'+tx+'" y="'+(16+t.fontSize)+'" text-anchor="'+(t.align==='center'?'middle':t.align==='right'?'end':'start')+'" font-family="'+window.ComicModel.fonts[t.font||'sans'].family+'" font-weight="'+(t.bold?'bold':'normal')+'" font-size="'+t.fontSize+'" fill="'+(t.color||ink)+'">'+visible.map((line,i)=>'<tspan x="'+tx+'" dy="'+(i?t.lineHeight:0)+'">'+escape(line)+'</tspan>').join('')+'</text>';
-  if(selected&&o.type!=='caption'&&t.tail!=='none')drawing+='<circle data-tail="true" cx="'+tailX+'" cy="'+tailY+'" r="10" fill="#f97316" stroke="white" stroke-width="2"/>';
+  if(selected&&!['caption','text'].includes(o.type)&&t.tail!=='none')drawing+='<circle data-tail="true" cx="'+tailX+'" cy="'+tailY+'" r="10" fill="#f97316" stroke="white" stroke-width="2"/>';
 
  }
  const handleX=Math.max(0,Math.min(width-7,(592-o.x)/o.scale-18)),handleY=Math.max(0,Math.min(height-7,(352-o.y)/o.scale-18));
@@ -74,7 +74,7 @@ function page(p){
  let cursor=0;const boxes=[];for(let i=0;i<layout.count;i++){const span=layout.spans?.[i]||1;if(cursor%layout.cols+span>layout.cols)cursor+=layout.cols-cursor%layout.cols;boxes.push({x:40+(cursor%layout.cols)*(cell+gap),y:top+Math.floor(cursor/layout.cols)*(h+gap),width:cell*span+gap*(span-1),height:h});cursor+=span;}
  const rowHeights=[];boxes.forEach(box=>{const row=Math.round((box.y-top)/(h+gap));box.row=row;box.height=box.width*.6;rowHeights[row]=Math.max(rowHeights[row]||0,box.height);});boxes.forEach(box=>box.y=top+rowHeights.slice(0,box.row).reduce((sum,height)=>sum+height+gap,0));const height=top+rowHeights.reduce((sum,height)=>sum+height+gap,0)+35;
  let content='<rect width="'+w+'" height="'+height+'" fill="#fffaf1"/>';if(titleLines.length)content+='<text x="'+tx+'" y="'+titleY+'" text-anchor="'+anchor+'" font-family="'+font+'" font-weight="bold" font-size="'+size+'" fill="'+(t.color||'#243148')+'">'+titleLines.map((line,i)=>'<tspan x="'+tx+'" dy="'+(i?size*1.2:0)+'">'+escape(line)+'</tspan>').join('')+'</text>';if(t.showAuthor!==false&&p.author)content+='<text x="'+tx+'" y="'+authorY+'" text-anchor="'+anchor+'" font-family="'+font+'" font-size="20" fill="'+(t.color||'#243148')+'">'+escape(p.author)+'</text>';
- boxes.forEach((box,i)=>{content+='<svg x="'+box.x+'" y="'+box.y+'" width="'+box.width+'" height="'+box.height+'" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" overflow="hidden">'+scene(p.panels[i],'',p.assets)+'</svg><rect x="'+box.x+'" y="'+box.y+'" width="'+box.width+'" height="'+box.height+'" fill="none" stroke="'+ink+'" stroke-width="4"/>';});
+ boxes.forEach((box,i)=>{content+='<svg data-page-panel="'+i+'" x="'+box.x+'" y="'+box.y+'" width="'+box.width+'" height="'+box.height+'" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid slice" overflow="hidden">'+scene(p.panels[i],'',p.assets)+'</svg><rect x="'+box.x+'" y="'+box.y+'" width="'+box.width+'" height="'+box.height+'" fill="none" stroke="'+ink+'" stroke-width="4"/>';});
  content+='<text x="40" y="'+(height-16)+'" font-family="Arial,sans-serif" font-size="12" fill="#637086">Created with Teach Arcade'+(p.pageNumber?' · '+p.pageNumber+' / '+p.totalPages:'')+'</text>';return {width:w,height,svg:'<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+height+'" viewBox="0 0 '+w+' '+height+'">'+content+'</svg>'};
 }
 return {escape,scene,page,character,prop,dimensions,textGeometry};

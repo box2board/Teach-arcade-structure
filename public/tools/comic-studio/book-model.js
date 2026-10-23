@@ -2,7 +2,8 @@
 const M=window.ComicModel,id=(prefix='page')=>prefix+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10);
 const coverStyles=['classic','banner','minimal','fullpage'];
 function pageText(input={}){const t={heading:'',font:'sans',size:36,align:'left',color:'#243148',showTitle:true,showAuthor:true,...input};if(typeof t.heading!=='string'||t.heading.length>120||!Object.hasOwn(M.fonts,t.font)||!Number.isFinite(t.size)||t.size<24||t.size>72||!['left','center','right'].includes(t.align)||!M.hex(t.color)||typeof t.showTitle!=='boolean'||typeof t.showAuthor!=='boolean')throw new Error('Invalid page text settings.');return t;}
-function freshPage(kind='comic',style='classic'){return {id:id(),kind,label:kind==='cover'?'Cover':'Story page',layout:kind==='cover'?'single':'four',typography:pageText(),cover:{style,subtitle:'',color:'#6546d7'},panels:Array.from({length:12},M.blankPanel)};}
+function coverPositions(input={}){const result={};for(const key of ['title','subtitle','author']){const pos={x:0,y:0,...input[key]};if(!Number.isFinite(pos.x)||!Number.isFinite(pos.y)||Math.abs(pos.x)>500||Math.abs(pos.y)>1300)throw new Error('Invalid cover text position.');result[key]=pos;}return result;}
+function freshPage(kind='comic',style='classic'){return {id:id(),kind,label:kind==='cover'?'Cover':'Story page',layout:kind==='cover'?'single':'four',typography:pageText(),cover:{style,subtitle:'',color:'#6546d7',positions:coverPositions()},panels:Array.from({length:12},M.blankPanel)};}
 function freshBook(){return {format:'teach-arcade-comic',version:3,id:id('comic'),title:'My comic',author:'',updatedAt:new Date().toISOString(),pages:[freshPage()],assets:{}};}
 function validateBook(input){
  if(!input||input.format!=='teach-arcade-comic')throw new Error('Choose a Teach Arcade comic project.');
@@ -19,7 +20,7 @@ function validateBook(input){
   const validated=M.validate({format:input.format,version:2,title:'',author:'',layout:p.layout,panels:p.panels},assets);
   const cover=p.cover??{style:'classic',subtitle:'',color:'#6546d7'};if(!coverStyles.includes(cover.style)||typeof cover.subtitle!=='string'||cover.subtitle.length>160||!M.hex(cover.color))throw new Error('Invalid cover settings.');
   for(const panel of validated.panels)for(const o of panel.objects){if(objectIds.has(o.id))throw new Error('Object IDs must be unique across pages.');objectIds.add(o.id);}
-  return {id:p.id,kind:p.kind,label:p.label,layout:p.kind==='cover'?'single':validated.layout,typography:pageText(p.typography),cover:{style:cover.style,subtitle:cover.subtitle,color:cover.color},panels:validated.panels};
+  return {id:p.id,kind:p.kind,label:p.label,layout:p.kind==='cover'?'single':validated.layout,typography:pageText(p.typography),cover:{style:cover.style,subtitle:cover.subtitle,color:cover.color,positions:coverPositions(cover.positions)},panels:validated.panels};
  });
  return {format:input.format,version:3,id:input.id,title:input.title,author:input.author,updatedAt:typeof input.updatedAt==='string'&&Number.isFinite(Date.parse(input.updatedAt))?input.updatedAt:new Date().toISOString(),pages,assets};
 }
