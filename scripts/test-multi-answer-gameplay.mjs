@@ -95,3 +95,8 @@ test('all current public banks still validate and load through every compatible 
  assert.equal(GAMES.filter(g=>g.supportsQuestionBank).length,8);
  for(const set of QUESTION_SETS)validateQuestionBank(await loadQuestionSet(set.id));
 });
+
+test('Category Clash standalone edition loads its shared engine as a module',async()=>{
+ const html=await readFile(new URL('../public/review-lab/category-clash/french-revolution/index.html',import.meta.url),'utf8');
+ const script=html.match(/<script[^>]*src="\.\.\/game\.js[^>]*>/)?.[0];assert.ok(script);assert.match(script,/type="module"/);
+});

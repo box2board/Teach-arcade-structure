@@ -172,11 +172,12 @@ import {bindAnswerChoices,clearAnswerChoices} from '../answer-picker.js';
     state.current={ci,qi};
     const q=data.categories[ci].questions[qi];
 
+    clearAnswerChoices($('individualControls'));
     $('individualControls').innerHTML='';
     $('individualControls').hidden=true;
     $('questionCategory').textContent=data.categories[ci].name;
     $('questionValue').textContent=`${q.points} points`;
-    $('questionText').textContent=q.question;
+    $('questionText').textContent=q.question+(q.answerIndices?.length>1?' (Select all correct answers.)':'');
     $('answerText').textContent=q.answer;
     $('answerArea').hidden=true;
     $('judgeControls').hidden=true;
