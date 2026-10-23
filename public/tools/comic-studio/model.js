@@ -1,6 +1,7 @@
 window.ComicModel=(()=>{
 const layouts={single:{name:'Single panel',count:1,cols:1},strip:{name:'Three-panel strip',count:3,cols:3},two:{name:'Two wide panels',count:2,cols:1},three:{name:'Three stacked panels',count:3,cols:1},four:{name:'Four-panel page',count:4,cols:2},six:{name:'Six-panel page',count:6,cols:2},eight:{name:'Eight-panel page',count:8,cols:2},nine:{name:'Nine-panel grid',count:9,cols:3},twelve:{name:'Twelve-panel grid',count:12,cols:3},feature:{name:'Feature + two panels',count:3,cols:2,spans:[2,1,1]},story:{name:'Feature + four panels',count:5,cols:2,spans:[2,1,1,1,1]}};
 const C=window.ComicCatalog,backgrounds=C.backgrounds.map(a=>a.id),characters=C.characters.map(a=>a.id),props=C.props.map(a=>a.id),expressions=C.expressions,poses=C.poses;
+const fonts={sans:{label:'Clean sans',family:'Arial, sans-serif'},comic:{label:'Comic handwriting',family:'Comic Sans MS, Comic Sans, cursive'},serif:{label:'Storybook serif',family:'Georgia, serif'},mono:{label:'Typewriter',family:'Courier New, monospace'},rounded:{label:'Rounded',family:'Trebuchet MS, sans-serif'}};
 const copy=p=>JSON.parse(JSON.stringify(p));
 const colors=()=>({primary:'',skin:'',hair:''});const view=()=>({zoom:1,x:0,y:0});
 const blankPanel=()=>({background:'blank',paperColor:'#fffaf1',backgroundView:view(),objects:[]});
@@ -22,7 +23,8 @@ function validate(p,assets={}){
    if(['speech','thought','caption'].includes(o.type)){
     const box=o.box??{width:240,height:0,fontSize:16,tail:'left',tailX:43,tailY:24};
     if(!number(box.width,80,560)||!number(box.height,0,340)||!number(box.fontSize,12,32)||!['left','right','custom','none'].includes(box.tail)||!number(box.tailX,-600,600)||!number(box.tailY,-360,360))throw new Error('Invalid text box.');
-    result.box={width:box.width,height:box.height,fontSize:box.fontSize,tail:box.tail,tailX:box.tailX,tailY:box.tailY};
+    if(!Object.hasOwn(fonts,box.font??'sans')||!['left','center','right'].includes(box.align??'left')||!hex(box.color??'#243148')||typeof (box.bold??false)!=='boolean')throw new Error('Invalid text formatting.');
+    result.box={font:box.font??'sans',align:box.align??'left',color:box.color??'#243148',bold:box.bold??false,width:box.width,height:box.height,fontSize:box.fontSize,tail:box.tail,tailX:box.tailX,tailY:box.tailY};
    }
    if(o.type==='image'){
     if(!Object.hasOwn(assets,o.asset)||!number(o.imageWidth,1,600)||!number(o.imageHeight,1,360))throw new Error('Invalid imported image reference.');
@@ -37,5 +39,5 @@ function validate(p,assets={}){
  });while(panels.length<12)panels.push(blankPanel());return {format:p.format,version:2,title:p.title,author:p.author,layout:p.layout,panels};
 }
 function create(type,asset=''){return {...(['speech','thought','caption'].includes(type)?{box:{width:240,height:0,fontSize:16,tail:'left',tailX:43,tailY:24}}:{}),id:'o-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10),type,asset,x:type==='character'?190:60,y:type==='character'?120:30,scale:1,flip:false,text:type==='caption'?'Describe what happens…':type==='speech'||type==='thought'?'What should I say?':'',expression:'happy',pose:'stand',colors:colors()};}
-return {layouts,backgrounds,characters,props,expressions,poses,copy,fresh,blankPanel,validate,create,hex};
+return {fonts,layouts,backgrounds,characters,props,expressions,poses,copy,fresh,blankPanel,validate,create,hex};
 })();
