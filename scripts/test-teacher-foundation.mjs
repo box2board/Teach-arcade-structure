@@ -2,7 +2,7 @@ import {test,afterEach} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import handler from '../api/teacher.js';
-import {CABINET_GAMES} from '../public/teacher/cabinet-catalog.js';
+import {CABINET_GAMES,TOOLS} from '../public/teacher/cabinet-catalog.js';
 import {arcadeEntries} from './build-cabinet-catalog.mjs';
 test('all public arcade titles are in the shared Cabinet allowlist with real launch targets',async()=>{
  const html=await readFile(new URL('../public/arcade-review-games/index.html',import.meta.url),'utf8');
@@ -45,7 +45,7 @@ test('successful email request provides a resend interval without exposing authe
  const r=await call('login','POST',{email:'teacher@example.test'},{origin:'https://preview.test'});
  assert.deepEqual(r.data,{ok:true,retryAfter:60});
 });
-test('every Cabinet game can save, reload and remove through the account API',async()=>{
+for(const [type,items] of [['game',CABINET_GAMES],['tool',TOOLS]])test(`every Cabinet ${type} can save, reload and remove through the account API`,async()=>{
  configure();process.env.TEACHER_CABINET_ENABLED='true';const rows=new Map();
  global.fetch=async(url,options)=>{
   if(url.endsWith('/user'))return response({id:'teacher-a'});
@@ -55,9 +55,9 @@ test('every Cabinet game can save, reload and remove through the account API',as
   return response([...rows.values()]);
  };
  const headers={origin:'https://preview.test',cookie:'__Host-ta_session=verified'};
- for(const game of CABINET_GAMES)assert.equal((await call('save-item','POST',{type:'game',id:game.id},headers)).status,200,game.title);
- assert.deepEqual((await call('cabinet','GET',{},headers)).data.items.map(g=>g.id),CABINET_GAMES.map(g=>g.id));
- for(const game of CABINET_GAMES)assert.equal((await call('remove-item','POST',{type:'game',id:game.id},headers)).status,200);
+ for(const game of items)assert.equal((await call('save-item','POST',{type,id:game.id},headers)).status,200,game.title);
+ assert.deepEqual((await call('cabinet','GET',{},headers)).data.items.map(g=>g.id),items.map(g=>g.id));
+ for(const game of items)assert.equal((await call('remove-item','POST',{type,id:game.id},headers)).status,200);
  assert.deepEqual((await call('cabinet','GET',{},headers)).data.items,[]);
 });
 test('email codes retain all digits and reject malformed input before verification',async()=>{

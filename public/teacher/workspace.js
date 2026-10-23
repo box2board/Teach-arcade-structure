@@ -85,7 +85,7 @@ function renderCollections(){
   if(!shown.length){const empty=node('div',undefined,'empty');empty.append(node('h2',ready?'Your shelf is ready for its first favorite.':'Make this shelf yours.'),node('p',ready?'Explore the public collection and choose Add to My Cabinet.':'Explore now. Your saved collection will appear here when account-backed saving is connected and you sign in.'));const link=node('a',type==='game'?'Explore games →':'Explore free tools →','primary');link.href=`#${routeName}&view=browse`;empty.append(link);$(container).replaceChildren(empty);continue;}
   $(container).replaceChildren(...shown.map(item=>{
    const card=node('article',undefined,type==='game'?'launch-game':'cabinet-tool');
-   if(type==='game'&&item.image){const img=node('img');img.src=item.image;img.alt=item.imageAlt;img.loading='lazy';img.width=640;img.height=360;card.append(img);}else {const art=node('span',item.symbol,type==='game'?'arcade-game-art':'tool-symbol');art.setAttribute('aria-hidden','true');card.append(art);}
+   if(item.image){const img=node('img');img.src=item.image;img.alt=item.imageAlt;img.loading='lazy';img.width=640;img.height=360;card.append(img);}else {const art=node('span',item.symbol,type==='game'?'arcade-game-art':'tool-symbol');art.setAttribute('aria-hidden','true');card.append(art);}
    const content=node('div',undefined,'launch-game-content');content.append(node('p',type==='game'?item.collection:'FREE PUBLIC TOOL','eyebrow'),node('h2',item.title),node('p',item.description));
    if(item.subject)content.append(node('p',item.subject,'muted'));
    const open=node('a',type==='game'?(item.chooseTopic?'Choose a topic & play →':'Open game ↗'):'Open free tool ↗','primary');

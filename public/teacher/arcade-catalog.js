@@ -1,5 +1,6 @@
 // Generated from the public Arcade Review Games library. Run node scripts/build-cabinet-catalog.mjs.
-export const ARCADE_GAMES=Object.freeze([
+import {validateCatalog} from './catalog-contract.js';
+export const ARCADE_GAMES=Object.freeze(validateCatalog([
   {
     "id": "arcade:/arcade-review-games/territory-takedown/",
     "title": "Territory Takedown",
@@ -162,4 +163,4 @@ export const ARCADE_GAMES=Object.freeze([
     "symbol": "≈",
     "collection": "Arcade Review Games"
   }
-].map(Object.freeze));
+],'ARCADE_GAMES').map(Object.freeze));

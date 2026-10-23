@@ -123,7 +123,7 @@ input::placeholder{color:#a9b3d2;opacity:1}
 .availability{padding:14px 18px;border:1px solid #464b6b;border-left:3px solid #b699dd;border-radius:6px;background:#1e2037;color:#d1d6eb;font-size:13px;line-height:1.7}
 .game-catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px}
 .launch-game{display:flex;flex-direction:column;min-width:0;border:1px solid #73618d;border-radius:12px;overflow:hidden;background:#191d35;box-shadow:0 5px 0 #080b19}
-.launch-game>img{display:block;width:calc(100% - 24px);height:170px;object-fit:cover;margin:12px 12px 0;border:5px solid #090e20;border-radius:9px;box-shadow:0 0 0 1px #595a7a;background:#10152b}
+.launch-game>img,.cabinet-tool>img{display:block;width:calc(100% - 24px);height:170px;object-fit:cover;margin:12px 12px 0;border:5px solid #090e20;border-radius:9px;box-shadow:0 0 0 1px #595a7a;background:#10152b}
 .launch-game-content{display:flex;flex:1;flex-direction:column;padding:22px;min-width:0}
 .launch-game h2{font-size:23px;margin:8px 0}
 .launch-game p,.cabinet-tool p{font-size:14px;line-height:1.7}
