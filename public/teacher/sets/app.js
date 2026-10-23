@@ -56,7 +56,7 @@ function editorState(){
  $('save-set').textContent=isPublic?'Save public changes':'Save private draft';$('publish-set').hidden=isPublic;$('private-set').hidden=!isPublic;
  $('question-progress').textContent=`${editing.questions.filter(completeQuestion).length} complete / ${editing.questions.length} questions · ${dirty||!editing.id?'Unsaved changes':'Saved version'}`;
  $('add-question').disabled=editing.questions.length>=MAX_QUESTIONS;
- $('answer-compatibility').textContent=editing.questions.some(q=>correctAnswers(q).length>1)?'Multiple correct answers selected. You can save and publish this set. Current Review Lab games require one correct answer per question.':'';
+ $('answer-compatibility').textContent=editing.questions.some(q=>correctAnswers(q).length>1)?'Multiple correct answers selected. Students must select every correct choice, then submit. No partial credit.':'';
 }
 function renderQuestions(){
  $('question-editor').replaceChildren(...editing.questions.map((q,i)=>{

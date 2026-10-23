@@ -87,7 +87,7 @@ test('multiple correct answers survive validation and publication; legacy single
  const input=set();input.questions[0].answer=[2,0];
  const published=setInput({...input,visibility:'public'});
  assert.deepEqual(published.questions[0].answer,[0,2]);assert.equal(completeQuestion(published.questions[0]),true);
- assert.throws(()=>teacherBank({...published,id}),/multiple correct answers/);
+ assert.deepEqual(teacherBank({...published,id}).questions[0].answer,[0,2]);validateQuestionBank(teacherBank({...published,id}));
  for(const answer of [[0,0],[4],[-1],['1'],null,[0,1,2,3,4]])assert.throws(()=>setInput({...set(),questions:[{...question(1),answer}]}));
  assert.equal(completeQuestion({...question(1),answer:[]}),false);
  assert.deepEqual(setInput({...set(),questions:[{...question(1),answer:[]}]}).questions[0].answer,[]);

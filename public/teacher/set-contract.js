@@ -28,6 +28,5 @@ export function setInput(input){
 }
 export function teacherBank(set){
  if(set.questions.length<MIN_PLAY_QUESTIONS||!set.questions.every(completeQuestion))throw Error('This draft needs at least 12 complete questions before playing.');
- if(set.questions.some(q=>correctAnswers(q).length>1))throw Error('This set includes questions with multiple correct answers. Saving and publishing are supported; these games currently require one correct answer per question.');
- return {id:`teacher:${set.id}`,title:set.title,subject:set.subject,category:'Teacher-created',questionCount:set.questions.length,questions:set.questions.map((q,i)=>({...q,answer:correctAnswers(q)[0],id:`${set.id}-${i+1}`}))};
+ return {id:`teacher:${set.id}`,title:set.title,subject:set.subject,category:'Teacher-created',questionCount:set.questions.length,questions:set.questions.map((q,i)=>({...q,answer:correctAnswers(q).length===1?correctAnswers(q)[0]:[...correctAnswers(q)],id:`${set.id}-${i+1}`}))};
 }

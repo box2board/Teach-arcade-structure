@@ -1,3 +1,5 @@
+import {isCorrectAnswer} from '../answers.js';
+import {bindAnswerChoices,clearAnswerChoices} from '../answer-picker.js';
 (() => {
   'use strict';
   const $ = (id) => document.getElementById(id);
@@ -22,7 +24,7 @@
       version:1, title:String(safe.title||'Untitled Clash').slice(0,80), timerEnabled:safe.timerEnabled!==false,
       timerSeconds:Math.min(300,Math.max(5,Number(safe.timerSeconds)||30)), finalEnabled:safe.finalEnabled!==false,
       teams:(Array.isArray(safe.teams)?safe.teams:sample.teams).slice(0,8).map((t,i)=>({name:String(t.name||`Team ${i+1}`).slice(0,30),color:/^#[0-9a-f]{6}$/i.test(t.color)?t.color:palette[i]})).concat([]).slice(0,8),
-      categories:(Array.isArray(safe.categories)?safe.categories:sample.categories).slice(0,6).map((c,ci)=>({name:String(c.name||`Category ${ci+1}`).slice(0,50),questions:(Array.isArray(c.questions)?c.questions:[]).slice(0,5).map((q,qi)=>({question:String(q.question||''),answer:String(q.answer||''),points:Math.max(0,Number(q.points)||((qi+1)*100)),power:Boolean(q.power),choices:Array.isArray(q.choices)?q.choices.slice(0,6).map(String):[],acceptedAnswers:(Array.isArray(q.acceptedAnswers)?q.acceptedAnswers:[q.answer]).filter(Boolean).map(String),answerIndex:Number.isInteger(q.answerIndex)&&q.choices?.[q.answerIndex]===q.answer?q.answerIndex:undefined,sourceId:q.sourceId,explanation:String(q.explanation||'')}))})),
+      categories:(Array.isArray(safe.categories)?safe.categories:sample.categories).slice(0,6).map((c,ci)=>({name:String(c.name||`Category ${ci+1}`).slice(0,50),questions:(Array.isArray(c.questions)?c.questions:[]).slice(0,5).map((q,qi)=>({question:String(q.question||''),answer:String(q.answer||''),points:Math.max(0,Number(q.points)||((qi+1)*100)),power:Boolean(q.power),choices:Array.isArray(q.choices)?q.choices.slice(0,6).map(String):[],acceptedAnswers:(Array.isArray(q.acceptedAnswers)?q.acceptedAnswers:[q.answer]).filter(Boolean).map(String),answerIndices:Array.isArray(q.answerIndices)?q.answerIndices.filter(i=>Number.isInteger(i)&&i>=0&&i<q.choices?.length):undefined,answerIndex:Number.isInteger(q.answerIndex)&&q.choices?.[q.answerIndex]===q.answer?q.answerIndex:undefined,sourceId:q.sourceId,explanation:String(q.explanation||'')}))})),
       final:{category:String(safe.final?.category||'Final Face-off').slice(0,50),question:String(safe.final?.question||''),answer:String(safe.final?.answer||'')}
     };
   }
@@ -286,7 +288,7 @@
     if(!state.current)return;
     const q=data.categories[state.current.ci].questions[state.current.qi];
     const wrap=$('individualControls');
-    wrap.innerHTML='';
+    clearAnswerChoices(wrap);wrap.innerHTML='';
     if(q.choices?.length){
       q.choices.forEach((choice,index)=>{
         const button=document.createElement('button');
@@ -296,6 +298,7 @@
         button.onclick=()=>submitIndividual(choice,index);
         wrap.appendChild(button);
       });
+      if(q.answerIndices?.length>1)bindAnswerChoices(wrap,{choices:q.choices,answer:q.answerIndices},selection=>submitIndividual('',selection));
     }else{
       wrap.innerHTML='<label class="field individual-answer"><span>Your answer</span><input id="individualAnswer" autocomplete="off" placeholder="Type your answer"><button id="submitIndividualBtn" class="btn primary" type="button">Submit answer</button></label>';
       $('submitIndividualBtn').onclick=()=>submitIndividual($('individualAnswer').value);
@@ -309,12 +312,13 @@
     const q=data.categories[state.current.ci].questions[state.current.qi];
     const accepted=[q.answer,...(q.acceptedAnswers||[])].map(cleanAnswer);
     const exact=value=>String(value||'').normalize('NFKC').trim().toLowerCase();
-    const correct=Number.isInteger(index)
+    const correct=Array.isArray(index)?isCorrectAnswer({choices:q.choices,answer:q.answerIndices},index):Number.isInteger(index)
       ? (Number.isInteger(q.answerIndex)&&q.choices[q.answerIndex]===q.answer
         ? index===q.answerIndex
         : [q.answer,...(q.acceptedAnswers||[])].map(exact).includes(exact(value)))
       : accepted.includes(cleanAnswer(value));
     $('answerArea').hidden=false;
+    clearAnswerChoices($('individualControls'));
     $('individualControls').innerHTML=`<div class="feedback ${correct?'correct-feedback':'incorrect-feedback'}"><strong>${correct?'✓ Correct!':'✕ Not quite'}</strong><p>${escapeHtml(q.answer)}</p>${q.explanation?`<p class="answer-explanation">${escapeHtml(q.explanation)}</p>`:''}<button id="continueIndividual" class="btn primary" type="button">Back to board →</button></div>`;
     $('continueIndividual').onclick=()=>judge(correct);
     sound(correct?'good':'bad');
@@ -447,7 +451,7 @@
       if(e.target.matches('input,textarea,select')||$('setupView').hidden===false)return;
       if(e.key.toLowerCase()==='f')toggleFullscreen();
       if(e.key.toLowerCase()==='m')$('soundBtn').click();
-      if(!$('questionView').hidden&&e.code==='Space'){e.preventDefault();revealAnswer();}
+      if(state.mode==='classroom'&&!$('questionView').hidden&&e.code==='Space'){e.preventDefault();revealAnswer();}
       if(state.mode==='classroom'&&!$('boardView').hidden&&(e.key==='ArrowLeft'||e.key==='ArrowRight')){
         const delta=e.key==='ArrowRight'?1:-1;
         state.activeTeam=(state.activeTeam+delta+data.teams.length)%data.teams.length;

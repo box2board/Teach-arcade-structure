@@ -1,3 +1,4 @@
+import {isCorrectAnswer,validSelection,remapAnswer} from '../../review-lab/answers.js';
 import {validateQuestionBank as validateBank} from '../../review-lab/question-banks.js';
 import { CELL, WIDTH, ROUTES, DIFFICULTIES } from './config.js';
 
@@ -31,7 +32,7 @@ export class CrossingWorld {
     this.difficulty = DIFFICULTIES[difficulty] || DIFFICULTIES.relaxed;
     this.deck = shuffle(bank.questions, random).slice(0, ROUTES.length*4).map(q => {
       const answers = shuffle(q.choices.map((text,index)=>({text,index})),random);
-      return {...q,choices:answers.map(a=>a.text),answer:answers.findIndex(a=>a.index===q.answer)};
+      return {...q,choices:answers.map(a=>a.text),answer:remapAnswer(q,answers.map(a=>a.index))};
     });
     this.returning=false;this.acorns=0;this.stashed=0;this.collected=new Set();
     this.state='ready';this.stage=0;this.lives=this.difficulty.lives;this.shield=1;this.charges=0;
@@ -99,9 +100,9 @@ export class CrossingWorld {
   }
   openCheckpoint(stop){this.stop=stop;this.checkpointAnswers=0;this.state='question';if(stop==='island')this.checkpoint=4;}
   answer(index){
-    if(this.state!=='question'||!Number.isInteger(index)||index<0||index>3)return false;
-    const q=this.question,correct=index===q.answer;
-    this.records.push({...q,selected:index,correct,stage:this.stage,stop:this.stop});
+    if(this.state!=='question'||!validSelection(index))return false;
+    const q=this.question,correct=isCorrectAnswer(q,index);
+    this.records.push({...q,selected:Array.isArray(index)?[...index]:index,correct,stage:this.stage,stop:this.stop});
     let reward='';
     if(correct){if(!this.shield){this.shield=1;reward='Shield earned · protects one heart';}else if(this.charges<2){this.charges++;reward='Slow-time charge earned · press Space during play';}else if(this.lives<6){this.lives++;reward='Bonus heart earned';}else{reward='All boosts stocked · nice work';}}
     this.feedback={correct,reward};this.state='feedback';return true;

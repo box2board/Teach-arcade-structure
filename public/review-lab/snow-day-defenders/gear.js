@@ -1,3 +1,4 @@
+import {validSelection} from '../answers.js';
 // Equipment and earnings are independent of the curriculum adapter.
 export const GEAR=Object.freeze({
  scoop:{slot:'toss',name:'Snow Scoop',description:'A fan of snowballs covers nearby lanes.'},
@@ -27,6 +28,6 @@ export function equipGear(state,id){if(!GEAR[id]||!state.levels[id])return false
 // Reject malformed sets before a student can earn rewards from them.
 export function validateQuestions(set){
  if(!set||!Array.isArray(set.questions)||!set.questions.length||typeof set.title!=='string')throw new Error('A question set needs a title and questions.');
- const ids=new Set();for(const q of set.questions){if(typeof q.id!=='string'||ids.has(q.id)||typeof q.prompt!=='string'||!q.prompt.trim()||!Array.isArray(q.choices)||q.choices.length<2||q.choices.length>4||q.choices.some(c=>typeof c!=='string'||!c.trim())||!Number.isInteger(q.answer)||q.answer<0||q.answer>=q.choices.length||typeof q.explanation!=='string')throw new Error('Invalid or duplicate question.');ids.add(q.id);}
+ const ids=new Set();for(const q of set.questions){if(typeof q.id!=='string'||ids.has(q.id)||typeof q.prompt!=='string'||!q.prompt.trim()||!Array.isArray(q.choices)||q.choices.length<2||q.choices.length>4||q.choices.some(c=>typeof c!=='string'||!c.trim())||!validSelection(q.answer,q.choices.length)||typeof q.explanation!=='string')throw new Error('Invalid or duplicate question.');ids.add(q.id);}
  return set;
 }

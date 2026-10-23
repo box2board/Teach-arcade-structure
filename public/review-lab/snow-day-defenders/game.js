@@ -1,3 +1,5 @@
+import {answerIndices,isCorrectAnswer,answerText,selectedIndices} from '../answers.js';
+import {bindAnswerChoices} from '../answer-picker.js';
 import { GEAR, REWARD_RULES, answerReward, freshGear, gearPrice, purchaseGear, equipGear, validateQuestions } from './gear.js?v=16';
 import { DEMO_QUESTIONS } from './questions.js?v=14';
 import * as THREE from '/assets/vendor/three-0.162.0/three.module.js';
@@ -313,6 +315,7 @@ $('fullscreen').addEventListener('click',async()=>{
 document.addEventListener('fullscreenchange',fullscreenHud);document.addEventListener('webkitfullscreenchange',fullscreenHud);
 // Snow Gear freezes the simulation; earnings never depend on surviving a wave.
 let equipmentEnabled=true,gearState=freshGear(),gearOpen=false,gearTab='toss',gearReturn='start';
+let reviewPicker=null;
 let questionSet=null,questionError='',reviewQueue=[],reviewIndex=0,reviewAnswered=false,questionCursor=0;
 let earnedQuestions=new Set(),reviewAttempts=[],reviewOpen=false,reviewRoundCorrect=0,reviewRoundStars=0;const studyBoostWaves=new Set();
 const supportCache=new Map();
@@ -344,8 +347,8 @@ function gearRender(){
  $('gear').textContent=gearSummary();updateShop();
 }
 function gearButtons(){
- if(reviewOpen)return reviewAnswered?[$('review-next')]:[0,1,2,3].map(i=>$(`answer-${i}`)).filter(b=>!b.hidden&&!b.disabled);
- return ['tab-toss','tab-support','tab-special',...Object.keys(GEAR).map(id=>`gear-${id}`),'gear-repair','gear-charge','gear-study','gear-resume'].map($).filter(b=>!b.hidden&&!b.disabled);
+ if(reviewOpen)return reviewAnswered?[$('review-next')]:[0,1,2,3].map(i=>$(`answer-${i}`)).filter(b=>!b.hidden&&!b.disabled).concat(reviewPicker?.submit&&!reviewPicker.submit.disabled?[reviewPicker.submit]:[]);
+ return ['tab-toss','tab-support','tab-special',...Object.keys(GEAR).map(id=>`gear-${id}`),'gear-repair','gear-charge','gear-study','gear-resume'].map($).filter(b=>!b.hidden&&!b.disabled).concat(reviewPicker?.submit&&!reviewPicker.submit.disabled?[reviewPicker.submit]:[]);
 }
 function gearFocus(){const b=gearButtons()[0]||$('gear-resume');b.focus({preventScroll:true});b.scrollIntoView?.({block:'nearest'});}
 function openGear(origin='resume'){
@@ -366,16 +369,16 @@ function startReview(){
 }
 function showQuestion(){
  const q=reviewQueue[reviewIndex];reviewAnswered=false;$('review-progress').textContent=`Question ${reviewIndex+1} of ${reviewQueue.length} · First try: 2 stars · Correct a missed question: 1 star`;$('review-prompt').textContent=q.prompt;$('review-feedback').textContent='Take your time. The field is paused.';$('review-next').hidden=true;
- for(let i=0;i<4;i++){const b=$(`answer-${i}`);b.hidden=i>=q.choices.length;b.disabled=false;b.textContent=q.choices[i]||'';b.dataset.result='';}gearFocus();
+ for(let i=0;i<4;i++){const b=$(`answer-${i}`);b.hidden=i>=q.choices.length;b.disabled=false;b.textContent=q.choices[i]||'';b.dataset.result='';}reviewPicker=bindAnswerChoices($('review-choices'),q,answerQuestion,[0,1,2,3].slice(0,q.choices.length).map(i=>$(`answer-${i}`)));gearFocus();
 }
 function answerQuestion(index){
  if(!gearOpen||!reviewOpen||reviewAnswered)return;
- const q=reviewQueue[reviewIndex];if(index>=q.choices.length)return;reviewAnswered=true;const correct=index===q.answer;
+ const q=reviewQueue[reviewIndex];reviewAnswered=true;const correct=isCorrectAnswer(q,index);
  const reward=answerReward(q.id,correct,earnedQuestions,reviewAttempts);
  reviewAttempts.push({id:q.id,correct,selected:index,wave});
  if(correct&&!earnedQuestions.has(q.id)){earnedQuestions.add(q.id);grantTokens(upgrades,reward);reviewRoundCorrect++;reviewRoundStars+=reward;}
- for(let i=0;i<q.choices.length;i++){const b=$(`answer-${i}`);b.disabled=true;b.dataset.result=i===q.answer?'correct':i===index?'wrong':'';}
- $('review-feedback').textContent=`${correct?`Correct! +${reward} Snow ${reward===1?'Star':'Stars'}.`:`The answer is: ${q.choices[q.answer]}.`} ${q.explanation}`;$('gear-wallet').textContent=`${upgrades.tokens} Snow Stars`;$('review-next').hidden=false;$('review-next').textContent=reviewIndex+1===reviewQueue.length?'Choose your gear':'Next question';gearFocus();
+ for(let i=0;i<q.choices.length;i++){const b=$(`answer-${i}`);b.disabled=true;b.dataset.result=answerIndices(q).includes(i)?'correct':selectedIndices(index).includes(i)?'wrong':'';}
+ $('review-feedback').textContent=`${correct?`Correct! +${reward} Snow ${reward===1?'Star':'Stars'}.`:`The answer is: ${answerText(q)}.`} ${q.explanation}`;$('gear-wallet').textContent=`${upgrades.tokens} Snow Stars`;$('review-next').hidden=false;$('review-next').textContent=reviewIndex+1===reviewQueue.length?'Choose your gear':'Next question';gearFocus();
 }
 $('review-next').addEventListener('click',()=>{
  if(!gearOpen||!reviewOpen||!reviewAnswered)return;
@@ -384,7 +387,7 @@ $('review-next').addEventListener('click',()=>{
  if(reviewRoundCorrect>0&&gearReturn!=='start'&&!studyBoostWaves.has(wave)&&(fort<100||burstCharges<2)){const oldFort=fort;fort=Math.min(100,fort+REWARD_RULES.studyRepair);const oldCharges=burstCharges;if(burstCharges<2)burstCharges++;studyBoostWaves.add(wave);syncFort();hud();boost=` Study boost: +${fort-oldFort}% fort${burstCharges>oldCharges?' and +1 special charge':''}. Once per wave.`;}
  gearRender();$('gear-feedback').textContent=`You earned ${reviewRoundStars} Snow Stars.${boost} Missed questions can be revisited later.`;gearFocus();}
 });
-for(let i=0;i<4;i++)$(`answer-${i}`).addEventListener('click',()=>answerQuestion(i));
+
 for(const slot of ['toss','support','special'])$(`tab-${slot}`).addEventListener('click',()=>{gearTab=slot;gearRender();$(`tab-${slot}`).focus({preventScroll:true});});
 for(const [id,rule] of Object.entries(GEAR))$(`gear-${id}`).addEventListener('click',()=>{
  if(!gearOpen||reviewOpen)return;

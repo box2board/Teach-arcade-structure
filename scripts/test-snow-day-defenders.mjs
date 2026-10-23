@@ -1,3 +1,5 @@
+import {answerIndices,isCorrectAnswer,answerText,selectedIndices} from '../public/review-lab/answers.js';
+import {bindAnswerChoices} from '../public/review-lab/answer-picker.js';
 import {GEAR,REWARD_RULES,answerReward,freshGear,gearPrice,purchaseGear,equipGear,validateQuestions} from '../public/review-lab/snow-day-defenders/gear.js';
 import {DEMO_QUESTIONS} from '../public/review-lab/snow-day-defenders/questions.js';
 import {loadQuestionSet,setsForGame} from '../public/review-lab/catalog.js';
@@ -15,11 +17,12 @@ import {DIFFICULTIES,WAVE_PATTERNS,buildWave} from '../public/review-lab/snow-da
 // Run actual gameplay against real Three.js scene objects. Only WebGL rendering
 // and DOM elements are stubbed; this does not verify pixels or device performance.
 class Element {
- constructor(){this.handlers={};this.dataset={};this.hidden=false;this.disabled=false;this.textContent='';}
+ constructor(){this.handlers={};this.dataset={};this.hidden=false;this.disabled=false;this.textContent='';this.style={};}
  addEventListener(k,f){(this.handlers[k]||=[]).push(f);}
- fire(k,e={}){for(const f of this.handlers[k]||[])f(e);}
+ fire(k,e={}){if(k==='click'&&!this.disabled)this.onclick?.(e);for(const f of this.handlers[k]||[])f(e);}
  querySelector(){return this.child||=new Element();}
  focus(){if(this.ownerDocument)this.ownerDocument.activeElement=this;}
+ before(){} after(){} remove(){} append(){} removeAttribute(name){delete this.attributes?.[name];}
  setAttribute(name,value){(this.attributes||={})[name]=value;}
  click(){if(!this.disabled)this.fire('click');}
  setPointerCapture(){}
@@ -29,13 +32,13 @@ function harness({fullscreen=false,equipment=false,questionSet}={}){
  const window=new Element(),document=new Element();window.SNOW_QUESTION_SET=questionSet;document.activeElement=null;
  const elements=new Map(),get=id=>{if(!elements.has(id))elements.set(id,Object.assign(new Element(),{ownerDocument:document}));return elements.get(id);};
  Object.assign(get('stage'),{clientWidth:1100,clientHeight:620});
- document.getElementById=get;document.hidden=false;
+ document.createElement=()=>Object.assign(new Element(),{ownerDocument:document});document.getElementById=get;document.hidden=false;
  if(fullscreen){get('game-panel').requestFullscreen=async()=>{document.fullscreenElement=get('game-panel');document.fire('fullscreenchange');};document.exitFullscreen=async()=>{document.fullscreenElement=null;document.fire('fullscreenchange');};}
  const inputs=['easy','medium','hard'].map(value=>Object.assign(new Element(),{value,checked:value==='easy'}));document.querySelectorAll=()=>inputs;
  let callback,scene,clock=0,seed=42;
  const math=Object.create(Math);math.random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
  class Renderer {constructor(){this.shadowMap={};}setPixelRatio(){}setSize(){}render(s){scene=s;}}
- const ctx={GEAR,REWARD_RULES,answerReward,freshGear,gearPrice,purchaseGear,equipGear,validateQuestions,DEMO_QUESTIONS,CREATURE_TYPES,advanceCreature,fitSnowCamera,THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
+ const ctx={answerIndices,isCorrectAnswer,answerText,selectedIndices,bindAnswerChoices,GEAR,REWARD_RULES,answerReward,freshGear,gearPrice,purchaseGear,equipGear,validateQuestions,DEMO_QUESTIONS,CREATURE_TYPES,advanceCreature,fitSnowCamera,THREE:{...THREE,WebGLRenderer:Renderer},UPGRADE_RULES,freshUpgrades,grantTokens,canBuy,buyUpgrade,DIFFICULTIES,WAVE_PATTERNS,buildWave:(d,w)=>buildWave(d,w,math.random),segmentSphereHit,window,document,Math:math,devicePixelRatio:1,ResizeObserver:class{observe(){}},performance:{now:()=>clock},requestAnimationFrame:f=>callback=f,console};
  vm.createContext(ctx);vm.runInContext(fs.readFileSync(new URL('../public/review-lab/snow-day-defenders/game.js',import.meta.url),'utf8').replace(/^import .*?;\n/gm,'').replace(/^export /gm,''),ctx);
  if(!equipment)vm.runInContext('equipmentEnabled=false;',ctx);
  const step=(n=1)=>{for(let i=0;i<n;i++){clock+=50;callback(clock);}};
@@ -301,3 +304,10 @@ for(const set of setsForGame('snow-day-defenders')){
  assert.equal(h.state().mode,'ready');assert.equal(h.state().academic.correct,0);assert.equal(h.state().stars,2);
  console.log('PASS: shared '+set.id+' bank launches, preserves shuffled correct answers, earns starting gear, and resets on topic change');
 }
+
+const multiBank={id:'multi',title:'Multiple-answer regression',questions:Array.from({length:12},(_,i)=>({id:'multi-'+i,question:'Which are even?',choices:['2','3','4','5'],answer:[0,2],explanation:'2 and 4.'}))};
+const multiSchool=harness({equipment:true,questionSet:prepareSnowQuestions(multiBank)});multiSchool.click('start');
+let correctIndices=multiSchool.fixture('reviewQueue[reviewIndex].answer');multiSchool.click('answer-'+correctIndices[0]);assert.equal(multiSchool.state().stars,2);assert.equal(multiSchool.state().academic.correct,0);
+multiSchool.fixture('reviewPicker.submit.click()');assert.equal(multiSchool.state().stars,2);multiSchool.click('review-next');
+correctIndices=multiSchool.fixture('reviewQueue[reviewIndex].answer');for(const i of correctIndices)multiSchool.click('answer-'+i);assert.equal(multiSchool.state().stars,2);multiSchool.fixture('reviewPicker.submit.click()');assert.equal(multiSchool.state().stars,4);multiSchool.fixture('reviewPicker.submit.click()');assert.equal(multiSchool.state().stars,4);
+console.log('PASS: multiple-answer Snow Gear selects without scoring, rejects partial answers, awards full selections once.');

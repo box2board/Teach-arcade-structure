@@ -1,3 +1,5 @@
+import {answerIndices,isCorrectAnswer,answerText,selectedIndices} from '../answers.js';
+import {bindAnswerChoices} from '../answer-picker.js';
 import {setsForGame,loadQuestionSet} from "../catalog.js";
 import {enhanceTopicPicker} from "../topic-picker.js";
 
@@ -165,13 +167,13 @@ import {enhanceTopicPicker} from "../topic-picker.js";
   function presentQuestion() {
     state.currentQuestion = pickQuestion();
     if (!state.currentQuestion) return;
-    const displayedChoices = state.currentQuestion.choices.map((text, sourceIndex) => ({ text, isCorrect: sourceIndex === state.currentQuestion.answer }));
+    const displayedChoices = state.currentQuestion.choices.map((text, sourceIndex) => ({ text, isCorrect: answerIndices(state.currentQuestion).includes(sourceIndex) }));
     for (let i = displayedChoices.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [displayedChoices[i], displayedChoices[j]] = [displayedChoices[j], displayedChoices[i]];
     }
     state.displayedChoices = displayedChoices;
-    state.displayAnswer = displayedChoices.findIndex((choice) => choice.isCorrect);
+    state.displayQuestion={choices:displayedChoices.map(c=>c.text),answer:displayedChoices.map((c,i)=>c.isCorrect?i:-1).filter(i=>i>=0)};
     state.feedbackLock = false;
     const p = fighters[state.activePlayer];
     $("question-phase").textContent = state.questionMode === "opening" ? "POWER ROUND" : "JUICE RECHARGE";
@@ -188,28 +190,30 @@ import {enhanceTopicPicker} from "../topic-picker.js";
       button.type = "button";
       button.className = "answer-button";
       button.textContent = `${String.fromCharCode(65 + index)}. ${choice.text}`;
-      button.addEventListener("click", () => answerQuestion(index, button));
+
       grid.append(button);
     });
+    bindAnswerChoices(grid,state.displayQuestion,answerQuestion);
   }
 
-  function answerQuestion(index, selectedButton) {
+  function answerQuestion(index) {
     if (state.feedbackLock) return;
     state.feedbackLock = true;
-    const correct = index === state.displayAnswer;
+    const correct = isCorrectAnswer(state.displayQuestion,index);
     const buttons = [...$("answer-grid").querySelectorAll("button")];
     buttons.forEach((button, i) => {
       button.disabled = true;
-      if (i === state.displayAnswer) button.classList.add("correct");
+      if(answerIndices(state.displayQuestion).includes(i))button.classList.add("correct");
+      else if(selectedIndices(index).includes(i))button.classList.add("incorrect");
     });
-    if (!correct) selectedButton.classList.add("incorrect");
+
     const player = fighters[state.activePlayer];
     if (correct) {
       player.juice = Math.min(100, player.juice + (state.questionMode === "opening" ? 10 : 25));
       $("question-feedback").textContent = `Correct! +${state.questionMode === "opening" ? 10 : 25} juice. ${state.currentQuestion.explanation}`;
       playTone(660);
     } else {
-      $("question-feedback").textContent = `Not quite. ${state.currentQuestion.explanation}`;
+      $("question-feedback").textContent = `Not quite. Correct answers: ${answerText(state.displayQuestion)}. ${state.currentQuestion.explanation}`;
       playTone(220);
     }
     syncHud();
@@ -217,7 +221,7 @@ import {enhanceTopicPicker} from "../topic-picker.js";
       if (state.questionMode === "opening") { state.roundQuestion += 1; askOpeningQuestion(); }
       else if (correct) { state.mode = "fight"; showScreen(""); $("round-state").textContent = "FIGHT!"; toast(`PLAYER ${player.id} recharged +25`); }
       else presentQuestion();
-    }, 1050);
+    }, answerIndices(state.displayQuestion).length>1?3000:1050);
   }
 
   function startTouchAction(event, button) {
