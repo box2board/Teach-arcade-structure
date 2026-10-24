@@ -1,4 +1,29 @@
-export function layout(name){const rows=name==='garden'?[[8,6],[6,4]]:name==='terrace'?[[10,6],[8,4],[4,4]]:[[12,8],[8,4],[4,4]];let id=0;const w=rows[0][0],h=rows[0][1];return rows.flatMap(([a,b],z)=>Array.from({length:a*b},(_,i)=>({id:id++,x:(w-a)/2+i%a,y:(h-b)/2+Math.floor(i/a),z,face:0,removed:false})));}
+// Layouts use explicit tile coordinates; gaps and silhouettes are part of play.
+export const layoutNames=['turtle','butterfly','dragon','fortress','hourglass'];
+export function layout(name){
+ const tiles=[];
+ const row=(x,y,n,z=0)=>{for(let i=0;i<n;i++)tiles.push({id:tiles.length,x:x+i,y,z,face:0,removed:false});};
+ const rect=(x,y,w,h,z)=>{for(let j=0;j<h;j++)row(x,y+j,w,z);};
+ if(name==='turtle'){
+  [8,10,12,14,14,12,10,8].forEach((n,y)=>row((14-n)/2,y,n));
+  rect(4,1,6,6,1);rect(5,2,4,4,2);rect(6,3,2,2,3);
+ }else if(name==='butterfly'){
+  [2,4,5,4,4,5,4,2].forEach((n,y)=>{row(0,y,n);row(14-n,y,n);row(6,y,2);});
+  rect(2,2,2,4,1);rect(10,2,2,4,1);rect(6,1,2,6,1);rect(6,2,2,4,2);
+ }else if(name==='dragon'){
+  [[0,0,8],[0,1,2],[0,2,12],[10,3,2],[2,4,10],[2,5,2],[2,6,12],[10,7,4]].forEach(([x,y,n])=>row(x,y,n));
+  row(2,0,4,1);row(2,2,8,1);row(4,4,6,1);row(4,6,8,1);row(5,2,4,2);row(6,6,4,2);
+ }else if(name==='fortress'){
+  for(let y=0;y<8;y++)if(y<2||y>5)row(0,y,12);else{row(0,y,2);row(10,y,2);}
+  for(const x of[0,8])for(const y of[0,6])rect(x,y,4,2,1);
+  for(const x of[0,10])for(const y of[0,6])rect(x,y,2,2,2);
+ }else if(name==='hourglass'){
+  [12,10,8,6,4,4,6,8,10,12].forEach((n,y)=>row((12-n)/2,y,n));
+  [8,6,4,2,2,4,6,8].forEach((n,y)=>row((12-n)/2,y+1,n,1));
+  rect(5,4,2,2,2);
+ }else throw Error('Unknown Mahjong layout: '+name);
+ return tiles;
+}
 export function free(t,tiles){return !t.removed&&!tiles.some(o=>!o.removed&&o.z>t.z&&Math.abs(o.x-t.x)<.99&&Math.abs(o.y-t.y)<.99)&&(!tiles.some(o=>!o.removed&&o.z===t.z&&Math.abs(o.x-(t.x-1))<.01&&Math.abs(o.y-t.y)<.99)||!tiles.some(o=>!o.removed&&o.z===t.z&&Math.abs(o.x-(t.x+1))<.01&&Math.abs(o.y-t.y)<.99));}
 export function pairs(tiles){const a=tiles.filter(t=>free(t,tiles)),p=[];for(let i=0;i<a.length;i++)for(let j=i+1;j<a.length;j++)if(a[i].face===a[j].face)p.push([a[i],a[j]]);return p;}
 export function mix(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
@@ -24,4 +49,4 @@ export function deal(tiles){
  for(const [face,n]of counts){if(n%2)throw Error('Unpaired face');for(let i=0;i<n/2;i++)faces.push(face);}mix(faces);
  const byId=new Map(tiles.map(t=>[t.id,t]));order.forEach(([a,b],i)=>byId.get(a).face=byId.get(b).face=faces[i]);return order;
 }
-export function fresh(name){const tiles=layout(name);tiles.forEach((t,i)=>t.face=Math.floor(i/4)%36);deal(tiles);return tiles;}
+export function fresh(name){const tiles=layout(name);tiles.forEach((t,i)=>t.face=Math.floor(i/2)%36);deal(tiles);return tiles;}
