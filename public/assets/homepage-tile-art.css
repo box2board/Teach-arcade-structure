@@ -26,7 +26,7 @@
   padding: 17px 18px 19px;
   background: #fff;
 }
-.more-tile.home-art-card strong { font-size: 16px; line-height: 1.3; }
+.more-tile.home-art-card strong { font-size: 16px; line-height: 1.3; color: #0f172a; }
 .more-tile.home-art-card .home-art-copy > span { font-size: 13px; line-height: 1.5; }
 .home-art-card:focus-visible { outline: 3px solid #0f766e; outline-offset: 4px; }
 .more-originals-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
