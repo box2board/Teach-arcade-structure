@@ -1,0 +1,1 @@
+window.ESCAPE_V2_HD_ART = { bastilleCell: { width: 1536, height: 768, format: 'webp' } };

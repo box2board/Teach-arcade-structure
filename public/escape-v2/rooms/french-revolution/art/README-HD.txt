@@ -1,0 +1,1 @@
+HD panorama asset upgrade in progress. Source replaces the temporary 512px prototype with a 1536x768 WebP render split into binary parts for browser assembly.
