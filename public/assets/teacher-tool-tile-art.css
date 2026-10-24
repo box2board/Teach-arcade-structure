@@ -1,0 +1,41 @@
+/* The approved Soft Mint background is shared by all 17 Teacher Tools tiles. */
+.grid.tools-art-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.card-link.tool-art-link {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  border-color: #cbded3;
+  background: #fff;
+}
+.tool-tile-art {
+  display: block;
+  flex: none;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background-color: #ddf3e6;
+  border-bottom: 1px solid #cbded3;
+}
+.tool-art-copy {
+  flex: 1;
+  padding: 18px 20px 20px;
+}
+.tool-art-copy h3 { overflow-wrap: anywhere; }
+.card-link.tool-art-link:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 4px;
+}
+@media (max-width: 900px) {
+  .grid.tools-art-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .grid.tools-art-grid { grid-template-columns: minmax(0, 1fr); }
+  .tool-art-copy { padding: 17px 18px 19px; }
+}
