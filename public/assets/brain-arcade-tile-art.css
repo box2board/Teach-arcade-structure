@@ -1,0 +1,33 @@
+/* Approved Flat Arcade Option D: Warm Peach. */
+#games .game-card::before { display: none; }
+.brain-tile-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: #ffe7d5;
+  flex: none;
+}
+#games .game-card .badge {
+  background: #fff;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+.featured-grid .featured-card {
+  padding: 0;
+  overflow: hidden;
+  background: #fff;
+  border-color: #e2e8f0;
+  color: #0f172a;
+}
+.featured-grid .featured-card strong { margin: 14px 14px 6px; }
+.featured-grid .featured-card span {
+  display: block;
+  margin: 0 14px 16px;
+  color: #475569;
+}
+.featured-card:focus-visible, #games .game-card:focus-visible {
+  outline: 3px solid #0f766e;
+  outline-offset: 3px;
+}
