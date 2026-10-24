@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { CrossingWorld } from '../public/arcade-review-games/crossing-quest/engine.js';
+import {HOME_ROW,STUMP_ROW} from '../public/arcade-review-games/crossing-quest/config.js';
 import bank from '../public/arcade-review-games/crossing-quest/questions.js';
 
 // Search with real move/update calls. No teleports, injected acorns, protection,
@@ -7,7 +8,7 @@ import bank from '../public/arcade-review-games/crossing-quest/questions.js';
 // rewards cannot hide an impossible route.
 function copy(w) {
   return Object.assign(Object.create(CrossingWorld.prototype), {
-    ...w, player: {...w.player}, from: {...w.from}, collected: new Set(w.collected), records: [...w.records]
+    ...w, player: {...w.player}, from: {...w.from}, collected: new Set(w.collected), records: [...w.records], pickups: w.pickups.map(p=>({...p}))
   });
 }
 function settleQuestions(w) {
@@ -44,16 +45,18 @@ for(const difficulty of ['relaxed','classic','challenge']) {
   for(let stage=0;stage<3;stage++) {
     let steps=0;
     for(const [row,x,goal] of [
-      [4,416,v=>v.checkpoint===4],
-      [4,w.route.nuts[3].x,v=>v.collected.has(3)],
-      [4,w.route.nuts[4].x,v=>v.collected.has(4)],
-      [0,w.route.nuts[8].x,v=>v.returning],
-      [8,416,v=>v.state==='transition'||v.state==='won']
+      ...w.route.nuts.slice(0,4).map((n,i)=>[n.row,n.x,v=>v.collected.has(i)]),
+      [STUMP_ROW,928,v=>v.checkpoint===STUMP_ROW],
+      [STUMP_ROW,800,v=>v.collected.has(28)],
+      [STUMP_ROW,864,v=>v.collected.has(29)],
+      [STUMP_ROW,928,v=>v.collected.has(30)],
+      [0,928,v=>v.returning],
+      [HOME_ROW,928,v=>v.state==='transition'||v.state==='won']
     ]) {
       const result=search(w,goal,v=>Math.abs(v.player.row-row)*3+Math.abs(v.player.x-x)/64);
       w=result.world;steps+=result.path.length;
     }
-    assert(w.stashed>=3*(stage+1));
+    assert(w.stashed>=8*(stage+1));
     console.log(`PASS: ${difficulty}, ${w.route.name}, outbound + pickups + return, ${steps} moves/waits, no collisions`);
     if(stage<2){w.nextStage();w.invulnerable=0;}
   }
