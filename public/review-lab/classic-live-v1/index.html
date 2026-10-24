@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Teach Arcade Classic Live V1</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./polish.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">TEACH ARCADE · REVIEW LAB PROTOTYPE</p>
+        <h1>Classic Live</h1>
+      </div>
+      <div class="top-actions">
+        <button id="pauseBtn" class="control secondary" type="button" disabled>Pause</button>
+        <button id="skipBtn" class="control primary" type="button" disabled>Skip →</button>
+      </div>
+    </header>
+
+    <section id="setupView" class="view active">
+      <div class="panel setup-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">GAME SETUP</p>
+            <h2>Build a class-wide round</h2>
+          </div>
+          <span class="badge">V1 · simulated live session</span>
+        </div>
+
+        <div class="setup-grid">
+          <label>
+            <span>Question set</span>
+            <select id="setSelect"></select>
+          </label>
+          <label>
+            <span>Questions</span>
+            <select id="countSelect">
+              <option value="10">10 questions</option>
+              <option value="15">15 questions</option>
+              <option value="20" selected>20 questions</option>
+            </select>
+          </label>
+          <label>
+            <span>Time per question</span>
+            <select id="timeSelect">
+              <option value="10">10 seconds</option>
+              <option value="15">15 seconds</option>
+              <option value="20">20 seconds</option>
+              <option value="30" selected>30 seconds</option>
+              <option value="45">45 seconds</option>
+              <option value="60">60 seconds</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="setMeta" class="set-meta">Loading Teach Arcade question sets…</div>
+
+        <div class="rules-strip">
+          <div><strong>Question</strong><span>Ends when all answer, timer expires, or teacher skips. Pause is available here.</span></div>
+          <div><strong>Reveal</strong><span>5 seconds · skip anytime.</span></div>
+          <div><strong>Leaderboard</strong><span>Stays up until the teacher starts the next question.</span></div>
+        </div>
+
+        <button id="openLobbyBtn" class="launch-button" type="button" disabled>Open Class Lobby</button>
+      </div>
+    </section>
+
+    <section id="lobbyView" class="view">
+      <div class="panel lobby-card">
+        <div class="join-code">
+          <p class="eyebrow">JOIN THE ARCADE</p>
+          <p class="join-url">teacharcade.com/join</p>
+          <div class="code">482 913</div>
+          <p class="muted">Prototype only — students below are simulated.</p>
+        </div>
+        <div class="roster-wrap">
+          <div class="section-heading compact">
+            <h2>Players</h2>
+            <span id="playerCount" class="badge">0 joined</span>
+          </div>
+          <div id="roster" class="roster"></div>
+          <button id="startGameBtn" class="launch-button" type="button">Start Game</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="gameView" class="view">
+      <div class="game-grid">
+        <section class="panel teacher-stage">
+          <div class="stage-header">
+            <div>
+              <p id="roundLabel" class="eyebrow">QUESTION 1</p>
+              <h2 id="topicLabel">Topic</h2>
+            </div>
+            <div class="timer-wrap">
+              <span id="phaseLabel">QUESTION</span>
+              <strong id="timerDisplay">30</strong>
+            </div>
+          </div>
+
+          <div id="questionPhase" class="phase active">
+            <div id="eventBanner" class="event-banner hidden"></div>
+            <h3 id="questionText" class="question-text"></h3>
+            <div id="teacherChoices" class="choice-grid"></div>
+            <div class="response-meter">
+              <div><span id="answeredCount">0 / 0 answered</span><span id="accuracyLive">Waiting for answers…</span></div>
+              <div class="meter"><span id="answeredBar"></span></div>
+            </div>
+          </div>
+
+          <div id="revealPhase" class="phase">
+            <p class="eyebrow">ANSWER REVEAL</p>
+            <h3 id="revealQuestion" class="question-text smaller"></h3>
+            <div id="distribution" class="distribution"></div>
+            <div id="classResult" class="class-result"></div>
+          </div>
+
+          <div id="leaderboardPhase" class="phase">
+            <p class="eyebrow">LEADERBOARD</p>
+            <h3>Top of the Arcade</h3>
+            <div id="leaderboard" class="leaderboard"></div>
+          </div>
+
+          <div id="resultsPhase" class="phase">
+            <p class="eyebrow">GAME COMPLETE</p>
+            <h3>Final Results</h3>
+            <div id="podium" class="podium"></div>
+            <div id="summaryStats" class="summary-stats"></div>
+            <button id="restartBtn" class="launch-button" type="button">Play Again</button>
+          </div>
+        </section>
+
+        <aside class="panel student-preview">
+          <div class="student-head">
+            <div>
+              <p class="eyebrow">STUDENT PREVIEW</p>
+              <h2>PixelFox</h2>
+            </div>
+            <div class="student-stats">
+              <span id="studentRank">#—</span>
+              <span id="studentTickets">0 🎟</span>
+              <span id="studentStreak">0 🔥</span>
+            </div>
+          </div>
+          <div id="cabinet" class="cabinet level-1" aria-label="Arcade cabinet progress">
+            <div class="marquee">PIXELFOX</div>
+            <div class="screen"><span id="cabinetLevel">LEVEL 1</span></div>
+            <div class="controls-art"><span></span><i></i><i></i></div>
+          </div>
+          <div id="studentPrompt" class="student-prompt">Waiting for the teacher to start…</div>
+          <div id="studentChoices" class="student-choices"></div>
+          <div id="studentFeedback" class="student-feedback" aria-live="polite"></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
