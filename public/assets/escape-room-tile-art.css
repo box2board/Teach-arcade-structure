@@ -1,0 +1,14 @@
+/* Flat Arcade mission artwork; isolated from the playable room styles. */
+.escape-hub .mission-card{margin-bottom:20px;background:#fff !important;border-color:#d7dfeb !important;border-radius:16px;box-shadow:0 12px 30px #0002 !important}
+.escape-hub .mission-art{display:flex;align-items:center;justify-content:center;min-height:0;background:#fff2cc;aspect-ratio:3/2;align-self:stretch;overflow:hidden}
+.escape-hub .mission-art::before,.escape-hub .mission-art::after{content:none}
+.escape-hub .mission-art img{display:block;width:100%;height:100%;object-fit:contain}
+.escape-hub .mission-info{background:#fff;color:#10264d}
+.escape-hub .mission-info h3{color:#10264d !important;font-family:'DM Sans',sans-serif;font-weight:700;text-shadow:none !important}
+.escape-hub .mission-summary{color:#40516b !important}
+.escape-hub .mission-tags span{color:#265d62 !important;background:#edf7f5;border-color:#cce3df !important}
+.escape-hub .mission-facts{color:#30445c !important;border-color:#dde5ee !important}
+.escape-hub .mission-facts strong{color:#53647b !important}
+.escape-hub .launch-mission{background:#0d656b;color:#fff}
+.escape-hub .launch-mission:focus-visible{outline:3px solid #0d656b;outline-offset:4px}
+@media(max-width:700px){.escape-hub .mission-art{width:100%}}
