@@ -1,8 +1,9 @@
-/* Flat Arcade mission artwork; isolated from the playable room styles. */
+/* Minimal Case File mission artwork; isolated from the playable room styles. */
 .escape-hub .mission-card{margin-bottom:20px;background:#fff !important;border-color:#d7dfeb !important;border-radius:16px;box-shadow:0 12px 30px #0002 !important}
-.escape-hub .mission-art{display:flex;align-items:center;justify-content:center;min-width:0;width:100%;min-height:0;background:#fff2cc;align-self:stretch;overflow:hidden}
-.escape-hub .mission-art::before,.escape-hub .mission-art::after{content:none}
-.escape-hub .mission-art img{display:block;width:100%;height:auto;object-fit:contain}
+.escape-hub .mission-art{display:flex;align-items:center;justify-content:center;min-width:0;width:100%;min-height:0;background:#f6f2e9;align-self:stretch;overflow:hidden}
+.escape-hub .mission-art::before{content:"";position:absolute;inset:24px 14px 14px;border:1px solid #bdb49f;border-radius:9px;pointer-events:none}
+.escape-hub .mission-art::after{content:"";position:absolute;top:14px;left:15px;width:65px;height:11px;background:#c7bea8;clip-path:polygon(0 0,85% 0,100% 100%,0 100%);pointer-events:none}
+.escape-hub .mission-art img{position:relative;display:block;width:100%;height:auto;object-fit:contain}
 .escape-hub .mission-info{background:#fff;color:#10264d}
 .escape-hub .mission-info h3{color:#10264d !important;font-family:'DM Sans',sans-serif;font-weight:700;text-shadow:none !important}
 .escape-hub .mission-summary{color:#40516b !important}
