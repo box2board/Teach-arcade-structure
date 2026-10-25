@@ -1,0 +1,23 @@
+/* Flat Arcade artwork on the Teacher Tools Soft Mint palette. */
+.go-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.go-card-link .go-card { padding: 0; gap: 0; overflow: hidden; }
+.go-tile-art {
+  display: block;
+  flex: none;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: #ddf3e6;
+}
+.go-art-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding: 17px 18px 18px;
+  background: #fff;
+}
+.go-card-link:focus-visible { outline: 3px solid #0f766e; outline-offset: 4px; border-radius: 18px; }
+@media (max-width: 900px) { .go-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .go-grid { grid-template-columns: 1fr; } }
