@@ -1,0 +1,52 @@
+[
+  {
+    "id": "crosswords",
+    "title": "Crosswords",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play tile for 'Crosswords'. Match approved mockup option C's calm Soft Arcade illustration. Draw a printable crossword sheet with a few large navy blocked squares and a muted teal pencil beside it; no letters or numbers. ONE compact centered grouping on landscape 3:2 canvas, around 65% canvas width, with generous empty margins. Clean flat shapes, moderately thin crisp navy outlines, white paper, muted slate-blue and teal details, tiny warm gold accents, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, title, tiny writing, image borders, footer, multiple panels, scenes, floating decorations, texture, gradients, glow, 3D or glossy highlights. Simple recognizable classroom printable object, restrained and approachable."
+  },
+  {
+    "id": "escape-style",
+    "title": "Escape-Style Games",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play tile for 'Escape-Style Games'. Match approved mockup option C's calm Soft Arcade illustration. Draw a folded paper clue sheet beside one small gold padlock with a navy keyhole. ONE compact centered grouping on landscape 3:2 canvas, around 65% canvas width, with generous empty margins. Clean flat shapes, moderately thin crisp navy outlines, white paper, muted slate-blue and teal details, tiny warm gold accents, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, title, tiny writing, image borders, footer, multiple panels, scenes, floating decorations, texture, gradients, glow, 3D or glossy highlights. Simple recognizable classroom printable object, restrained and approachable."
+  },
+  {
+    "id": "card-games",
+    "title": "Card Games",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play tile for 'Card Games'. Match approved mockup option C's calm Soft Arcade illustration. Draw a fan of three printable cards with simple teal circle, slate diamond and gold star symbols, no suits or words. ONE compact centered grouping on landscape 3:2 canvas, around 65% canvas width, with generous empty margins. Clean flat shapes, moderately thin crisp navy outlines, white paper, muted slate-blue and teal details, tiny warm gold accents, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, title, tiny writing, image borders, footer, multiple panels, scenes, floating decorations, texture, gradients, glow, 3D or glossy highlights. Simple recognizable classroom printable object, restrained and approachable."
+  },
+  {
+    "id": "board-games",
+    "title": "Board Games",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play tile for 'Board Games'. Match approved mockup option C's calm Soft Arcade illustration. Draw a compact printable game board with one simple winding path of large squares, one teal pawn and a small gold die. ONE compact centered grouping on landscape 3:2 canvas, around 65% canvas width, with generous empty margins. Clean flat shapes, moderately thin crisp navy outlines, white paper, muted slate-blue and teal details, tiny warm gold accents, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, title, tiny writing, image borders, footer, multiple panels, scenes, floating decorations, texture, gradients, glow, 3D or glossy highlights. Simple recognizable classroom printable object, restrained and approachable."
+  },
+  {
+    "id": "decision-scenarios",
+    "title": "Decision & Scenario Games",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play tile for 'Decision & Scenario Games'. Match approved mockup option C's calm Soft Arcade illustration. Draw a simple paper scenario card with a clean forked path symbol beside a small teal compass. ONE compact centered grouping on landscape 3:2 canvas, around 65% canvas width, with generous empty margins. Clean flat shapes, moderately thin crisp navy outlines, white paper, muted slate-blue and teal details, tiny warm gold accents, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, title, tiny writing, image borders, footer, multiple panels, scenes, floating decorations, texture, gradients, glow, 3D or glossy highlights. Simple recognizable classroom printable object, restrained and approachable."
+  },
+  {
+    "id": "revolutionary-spy-escape",
+    "title": "The Revolutionary Spy Escape",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play tile for 'The Revolutionary Spy Escape'. Match approved mockup option C's calm Soft Arcade illustration. Draw a folded sealed paper dispatch with a small muted gold seal beside a simple navy quill and teal ink bottle, subtle eighteenth-century spy mission motif. ONE compact centered grouping on landscape 3:2 canvas, around 65% canvas width, with generous empty margins. Clean flat shapes, moderately thin crisp navy outlines, white paper, muted slate-blue and teal details, tiny warm gold accents, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, title, tiny writing, image borders, footer, multiple panels, scenes, floating decorations, texture, gradients, glow, 3D or glossy highlights. Simple recognizable classroom printable object, restrained and approachable."
+  },
+  {
+    "id": "social-studies",
+    "title": "Social Studies",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play subject tile 'Social Studies'. Match approved reference option C Soft Arcade style. Draw a simple globe on a stand beside one small paper map as ONE compact centered grouping on landscape 3:2 canvas, about 65% canvas width, generous empty margins. Clean flat shapes, moderate crisp navy outlines, white paper where appropriate, muted slate-blue and teal fills, tiny warm gold details, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, text, title, numbers, labels, card borders, footer, multiple panels, scenes, floating decoration, texture, gradients, glow, 3D or glossy highlights."
+  },
+  {
+    "id": "science",
+    "title": "Science",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play subject tile 'Science'. Match approved reference option C Soft Arcade style. Draw a simple laboratory flask beside one small teal leaf as ONE compact centered grouping on landscape 3:2 canvas, about 65% canvas width, generous empty margins. Clean flat shapes, moderate crisp navy outlines, white paper where appropriate, muted slate-blue and teal fills, tiny warm gold details, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, text, title, numbers, labels, card borders, footer, multiple panels, scenes, floating decoration, texture, gradients, glow, 3D or glossy highlights."
+  },
+  {
+    "id": "math",
+    "title": "Math",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play subject tile 'Math'. Match approved reference option C Soft Arcade style. Draw a simple calculator beside a muted teal ruler as ONE compact centered grouping on landscape 3:2 canvas, about 65% canvas width, generous empty margins. Clean flat shapes, moderate crisp navy outlines, white paper where appropriate, muted slate-blue and teal fills, tiny warm gold details, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, text, title, numbers, labels, card borders, footer, multiple panels, scenes, floating decoration, texture, gradients, glow, 3D or glossy highlights."
+  },
+  {
+    "id": "ela",
+    "title": "ELA",
+    "prompt": "Use case: stylized-concept. Production Teach Arcade Print & Play subject tile 'ELA'. Match approved reference option C Soft Arcade style. Draw an open white book beside a muted teal pencil as ONE compact centered grouping on landscape 3:2 canvas, about 65% canvas width, generous empty margins. Clean flat shapes, moderate crisp navy outlines, white paper where appropriate, muted slate-blue and teal fills, tiny warm gold details, minimal shading. Genuinely transparent background; CSS supplies Pale Sage #E8EFE7. No words, text, title, numbers, labels, card borders, footer, multiple panels, scenes, floating decoration, texture, gradients, glow, 3D or glossy highlights."
+  }
+]
