@@ -69,6 +69,7 @@ export class CrossingWorld {
     const factor=this.slowTime>0?.38:1;
     this.time+=dt*factor;this.slowTime=Math.max(0,this.slowTime-dt);this.invulnerable=Math.max(0,this.invulnerable-dt);
     this.hop=Math.max(0,this.hop-dt);
+    this.hitFlash=Math.max(0,(this.hitFlash||0)-dt);
     this.energy=Math.min(1,this.energy+dt*.14);
     this.magnet=Math.max(0,this.magnet-dt);this.comboTime=Math.max(0,this.comboTime-dt);
     if(!this.comboTime)this.combo=0;
@@ -102,6 +103,7 @@ export class CrossingWorld {
     return lane.heads.map((x,i)=>{const cycle=(this.time*this.route.speed*this.difficulty.speed+lane.row*.9+i*1.6+(lane.phase||0))%7;return {x,radius:56,active:cycle>=2.5&&cycle<4.8,warning:cycle>=1.2&&cycle<2.5};});
   }
   hit(cause){
+    this.hitFlash=.35;
     this.combo=0;this.comboTime=0;
     if(this.shield){this.shield=0;this.notice=`${cause} · your shield saved a heart`;}else{this.lives--;this.notice=`${cause} · back to the checkpoint`;}
     this.player={x:WIDTH/2-CELL/2,row:this.checkpoint};this.from={...this.player};this.hop=0;this.invulnerable=1.5;

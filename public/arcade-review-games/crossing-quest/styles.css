@@ -26,3 +26,25 @@ canvas{aspect-ratio:14/9;max-height:calc(100dvh - 315px)!important;width:auto;ma
 .playfield{background:#14382e;border-color:#5a965f}.sprint-button{display:block;margin:6px auto;background:#427b33;border-color:#a5e46f;touch-action:none}
 #game-shell:fullscreen canvas{max-height:calc(100dvh - 265px)!important}
 @media(max-width:600px){canvas{width:100%;max-height:none!important}.dashboard{gap:8px}.sprint-button{width:100%}.touch-controls{padding:4px}}
+
+/* Compact chrome leaves room for the illustrated park and reachable touch controls. */
+.playfield{box-shadow:0 14px 40px #0003;border-color:#74956c}
+.control-dock{display:flex;align-items:center;justify-content:center;gap:22px}
+.sprint-button{border-radius:14px;background:linear-gradient(#759c47,#426b38);box-shadow:inset 0 1px #d9efa944,0 3px #1d3e2e}
+.sprint-button:active{transform:translateY(2px);box-shadow:none}
+@media(max-width:600px){
+ .sitebar{height:35px;padding:0 12px;font-size:.78rem}.brand img{width:24px;height:24px}
+ main{padding:6px 7px 10px}.heading{align-items:center;margin-bottom:6px}.eyebrow{font-size:.6rem}h1{font-size:1.25rem}
+ .actions{max-width:none;gap:4px}.actions button{min-height:32px;padding:4px 7px;font-size:.65rem}
+ .dashboard{display:grid;grid-template-columns:1fr 1fr 1fr;padding:7px 10px;gap:5px 8px}.dashboard>div{gap:1px;min-width:0}
+ .dashboard .label{font-size:.56rem}.dashboard strong{font-size:.7rem}#acorns{font-size:.65rem}#lives{letter-spacing:0}
+ #slow{width:auto;min-width:0;min-height:30px;padding:3px;display:grid;gap:0}#slow>span{font-size:.65rem}#slow small{font-size:.52rem}
+ .mission{min-height:40px;gap:2px;padding:6px 10px}.mission span{font-size:.57rem}.mission strong{font-size:.69rem}
+ canvas{max-height:calc(100dvh - 295px)!important;object-fit:contain}
+ #announcement{min-height:25px;padding:3px;font-size:.65rem}
+ .underboard,.access-note:not(#review-set){display:none}#review-set{font-size:.62rem;margin:5px}
+ .control-dock{justify-content:space-between;padding:0 16px;gap:12px}.control-dock .sprint-button{width:130px;max-width:38%;margin:0;min-height:50px;font-size:.7rem}
+ .touch-controls{display:grid;grid-template-columns:repeat(3,43px);grid-template-rows:repeat(2,34px);gap:4px;padding:0}.touch-controls>div{display:contents}
+ .touch-controls>button{grid-column:2}.touch-controls button{width:43px;height:34px;min-height:34px;font-size:1.1rem;padding:0;border-radius:10px}
+ #game-shell:fullscreen canvas{max-height:calc(100dvh - 240px)!important}
+}

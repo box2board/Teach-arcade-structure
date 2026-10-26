@@ -1,8 +1,9 @@
 // Park routes and scenery are independent of the selected academic question pack.
 export const CELL = 64;
 export const REQUIRED_ACORNS = 8;
-export const VIEW_WIDTH = 896;
-export const VIEW_HEIGHT = 576;
+const portraitPhone = typeof matchMedia !== 'undefined' && matchMedia('(max-width: 600px) and (orientation: portrait)').matches;
+export const VIEW_WIDTH = portraitPhone ? 640 : 896;
+export const VIEW_HEIGHT = portraitPhone ? 704 : 576;
 export const WIDTH = 1920;
 export const HOME_ROW = 25;
 export const STUMP_ROW = 12;
@@ -83,3 +84,6 @@ for (const [index, route] of ROUTES.entries()) {
     : index===1 ? {...route.skin,safe:'#579c43',grass:'#8bc950',path:'#f0c784',foliage:'#278956',leaf:'#d5ee67'}
     : {...route.skin,safe:'#4154a0',grass:'#496f9c',path:'#a794c8',foliage:'#335b9b',leaf:'#93a5ed'};
 }
+
+// Acorn Hollow is a three-row safe clearing; the first crossing begins above it.
+for (const route of ROUTES) route.lanes = route.lanes.filter(lane => lane.row < 23);
