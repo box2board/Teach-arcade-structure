@@ -20,7 +20,10 @@ function boot(){
  if(!document.getElementById('tt-dot-map-css')){const style=document.createElement('style');style.id='tt-dot-map-css';style.textContent=css;document.head.appendChild(style)}
  function ensureMap(){
   let img=arena.querySelector('#tt-map-image');
-  if(!img){img=document.createElementNS(NS,'image');img.id='tt-map-image';img.classList.add('tt-map-image');img.setAttribute('x','0');img.setAttribute('y','0');img.setAttribute('width','1536');img.setAttribute('height','1024');img.setAttribute('preserveAspectRatio','none');arena.insertBefore(img,arena.firstChild)}
+  if(!img){img=document.createElementNS(NS,'image');img.id='tt-map-image';img.classList.add('tt-map-image');img.setAttribute('x','0');img.setAttribute('y','0');arena.insertBefore(img,arena.firstChild)}
+  /* The source artwork contains unused gray canvas below the illustrated island.
+     Scale the useful upper ~2/3 to the full game canvas and let the SVG clip the remainder. */
+  img.setAttribute('width','1536');img.setAttribute('height','1536');img.setAttribute('preserveAspectRatio','none');
   if(map){img.setAttribute('href',map);img.setAttributeNS('http://www.w3.org/1999/xlink','href',map)}
  }
  let busy=false;
