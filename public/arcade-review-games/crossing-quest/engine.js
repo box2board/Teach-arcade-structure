@@ -1,5 +1,5 @@
 import {validateQuestionBank as validateBank} from '../../review-lab/question-banks.js';
-import { CELL, WIDTH, ROUTES, DIFFICULTIES } from './config.js';
+import { CELL, WIDTH, REQUIRED_ACORNS, HOME_ROW, STUMP_ROW, ROUTES, DIFFICULTIES } from './config.js';
 
 // Collision and drawing share these wheel/ball/frame positions. Rider heads,
 // the squirrel's decorative tail, and shadows do not enlarge the hit area.
@@ -33,10 +33,10 @@ export class CrossingWorld {
       const answers = shuffle(q.choices.map((text,index)=>({text,index})),random);
       return {...q,choices:answers.map(a=>a.text),answer:answers.findIndex(a=>a.index===q.answer)};
     });
-    this.returning=false;this.acorns=0;this.stashed=0;this.collected=new Set();
+    this.energy=1;this.sprinting=false;this.score=0;this.combo=0;this.comboTime=0;this.magnet=0;this.pickups=[];this.returning=false;this.acorns=0;this.stashed=0;this.collected=new Set();
     this.state='ready';this.stage=0;this.lives=this.difficulty.lives;this.shield=1;this.charges=0;
-    this.time=0;this.slowTime=0;this.invulnerable=1.5;this.hop=0;this.checkpoint=8;
-    this.player={x:WIDTH/2-CELL/2,row:8};this.from={...this.player};this.records=[];this.questionIndex=0;
+    this.time=0;this.slowTime=0;this.invulnerable=1.5;this.hop=0;this.checkpoint=HOME_ROW;
+    this.player={x:WIDTH/2-CELL/2,row:HOME_ROW};this.from={...this.player};this.records=[];this.questionIndex=0;
     this.checkpointAnswers=0;this.stop=null;this.notice='';this.feedback=null;
   }
   get route(){return ROUTES[this.stage];}
@@ -52,8 +52,9 @@ export class CrossingWorld {
     const delta={up:[0,-1],down:[0,1],left:[-CELL,0],right:[CELL,0]}[direction];if(!delta)return false;
     const x=this.player.x+delta[0],row=this.player.row+delta[1];
     // Both directions remain available for pickups and the trip home.
-    if(x<CELL*.35||x>WIDTH-CELL*.35||row<0||row>8)return false;
-    this.from={...this.player};this.player={x,row};this.hop=.11;
+    if(x<CELL*.35||x>WIDTH-CELL*.35||row<0||row>HOME_ROW)return false;
+    this.from={...this.player};this.player={x,row};this.hop=this.sprinting&&this.energy>.08?.075:.11;
+    if(this.sprinting&&this.energy>.08)this.energy=Math.max(0,this.energy-.08);
     return true;
   }
   activateSlow(){
@@ -68,6 +69,11 @@ export class CrossingWorld {
     const factor=this.slowTime>0?.38:1;
     this.time+=dt*factor;this.slowTime=Math.max(0,this.slowTime-dt);this.invulnerable=Math.max(0,this.invulnerable-dt);
     this.hop=Math.max(0,this.hop-dt);
+    this.hitFlash=Math.max(0,(this.hitFlash||0)-dt);
+    this.energy=Math.min(1,this.energy+dt*.14);
+    this.magnet=Math.max(0,this.magnet-dt);this.comboTime=Math.max(0,this.comboTime-dt);
+    if(!this.comboTime)this.combo=0;
+    this.pickups=this.pickups.filter(p=>(p.life-=dt)>0);
     if(this.hop>0)return;
     const lane=this.route.lanes.find(l=>l.row===this.player.row);
     if(lane?.type==='road'&&this.invulnerable<=0){
@@ -76,15 +82,19 @@ export class CrossingWorld {
     if(lane?.type==='sprinkler'&&this.invulnerable<=0){
       if(this.sprinklers(lane).some(o=>o.active&&Math.abs(this.player.x-o.x)<o.radius+14)){this.hit('Sprinkler splash');return;}
     }
-    for(const nut of this.nuts())if(!nut.collected&&nut.row===this.player.row&&Math.abs(nut.x-this.player.x)<27){
-      this.collected.add(nut.id);this.acorns++;this.notice='Acorn collected · '+this.acorns+' in your pouch';
+    for(const nut of this.nuts())if(!nut.collected&&Math.hypot(nut.x-this.player.x,(nut.row-this.player.row)*CELL)<(this.magnet>0?105:27)){
+      this.collected.add(nut.id);this.acorns+=nut.golden?3:1;this.combo++;this.comboTime=4;
+      const points=(nut.golden?150:25)*Math.min(4,Math.ceil(this.combo/3));this.score+=points;
+      this.energy=Math.min(1,this.energy+.18);this.pickups.push({...nut,points,life:1});
+      if(nut.golden){this.magnet=7;this.charges=Math.min(2,this.charges+1);this.notice='Golden acorn! 7s magnet + slow-time charge';}
+      else this.notice=`+${points} · ${this.combo} acorn streak · ${this.acorns} carried`;
     }
-    if(!this.returning&&this.player.row===4&&this.checkpoint===8)this.openCheckpoint('island');
+    if(!this.returning&&this.player.row===STUMP_ROW&&this.checkpoint===HOME_ROW)this.openCheckpoint('island');
     else if(!this.returning&&this.player.row===0){
-      if(this.acorns<3){if(!this.needNuts){this.needNuts=true;this.state='goal-help';}}
+      if(this.acorns<REQUIRED_ACORNS){if(!this.needNuts){this.needNuts=true;this.state='goal-help';}}
       else{this.needNuts=false;this.openCheckpoint('finish');}
     }else this.needNuts=false;
-    if(this.returning&&this.player.row===8){this.tripStashed=this.acorns;this.stashed+=this.acorns;this.acorns=0;this.state=this.stage===ROUTES.length-1?'won':'transition';}
+    if(this.returning&&this.player.row===HOME_ROW){this.tripStashed=this.acorns;this.stashed+=this.acorns;this.acorns=0;this.state=this.stage===ROUTES.length-1?'won':'transition';}
   }
   continueHunt(){if(this.state==='goal-help')this.state='playing';}
   beginReturn(){if(this.state==='return-ready')this.state='playing';}
@@ -93,11 +103,13 @@ export class CrossingWorld {
     return lane.heads.map((x,i)=>{const cycle=(this.time*this.route.speed*this.difficulty.speed+lane.row*.9+i*1.6+(lane.phase||0))%7;return {x,radius:56,active:cycle>=2.5&&cycle<4.8,warning:cycle>=1.2&&cycle<2.5};});
   }
   hit(cause){
+    this.hitFlash=.35;
+    this.combo=0;this.comboTime=0;
     if(this.shield){this.shield=0;this.notice=`${cause} · your shield saved a heart`;}else{this.lives--;this.notice=`${cause} · back to the checkpoint`;}
     this.player={x:WIDTH/2-CELL/2,row:this.checkpoint};this.from={...this.player};this.hop=0;this.invulnerable=1.5;
     if(this.lives<=0)this.state='lost';
   }
-  openCheckpoint(stop){this.stop=stop;this.checkpointAnswers=0;this.state='question';if(stop==='island')this.checkpoint=4;}
+  openCheckpoint(stop){this.stop=stop;this.checkpointAnswers=0;this.state='question';if(stop==='island')this.checkpoint=STUMP_ROW;}
   answer(index){
     if(this.state!=='question'||!Number.isInteger(index)||index<0||index>3)return false;
     const q=this.question,correct=index===q.answer;
@@ -115,7 +127,8 @@ export class CrossingWorld {
   }
   nextStage(){
     if(this.state!=='transition')return;
-    this.stage++;this.returning=false;this.collected=new Set();this.checkpoint=8;this.time=0;this.slowTime=0;this.invulnerable=1.5;this.hop=0;
-    this.player={x:WIDTH/2-CELL/2,row:8};this.from={...this.player};this.state='playing';this.notice=`Crossing ${this.stage+1} · ${this.route.name}`;
+    this.combo=0;this.comboTime=0;this.magnet=0;this.energy=1;this.sprinting=false;this.pickups=[];
+    this.stage++;this.returning=false;this.collected=new Set();this.checkpoint=HOME_ROW;this.time=0;this.slowTime=0;this.invulnerable=1.5;this.hop=0;
+    this.player={x:WIDTH/2-CELL/2,row:HOME_ROW};this.from={...this.player};this.state='playing';this.notice=`Crossing ${this.stage+1} · ${this.route.name}`;
   }
 }
