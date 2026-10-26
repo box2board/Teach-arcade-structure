@@ -5,6 +5,7 @@
 .pp-tile-copy{display:flex;flex-direction:column;gap:10px;padding:18px;width:100%;background:#fff;flex:1}
 .pp-tile-copy h3{color:#10264d;margin:0}
 .hub-grid .hub-tile:focus-visible,.pp-featured-art-card .btn:focus-visible{outline:3px solid #0d656b;outline-offset:4px}
+.featured-grid{align-items:start}
 .featured-grid .pp-featured-art-card{display:flex;flex-direction:column;padding:0;overflow:hidden;border-radius:16px}
 .pp-featured-art-card .pp-tile-copy{align-items:flex-start}
 .pp-featured-art-card .pp-tile-copy .btn{margin-top:auto}
