@@ -1,0 +1,10 @@
+/* Approved Soft Arcade tile art: muted objects on powder blue. */
+.subjects-grid .subject-tile{padding:0;overflow:hidden;justify-content:flex-start;border-radius:16px}
+.career-tile-art{display:block;width:100%;aspect-ratio:3/2;background:#e6eff5;flex:none}
+.career-tile-art img{display:block;width:100%;height:100%;object-fit:contain}
+.career-tile-copy{display:flex;flex-direction:column;align-items:center;flex:1;gap:10px;padding:20px 18px;background:#fff;width:100%}
+.career-tile-copy .subject-title{color:#10264d;margin:0}
+.career-tile-copy .subject-desc{margin:0}
+.career-tile-copy .status-live,.career-tile-copy .status-soon{margin:auto 0 0;padding-top:6px}
+.subjects-grid .subject-tile:focus-visible{outline:3px solid #0d656b;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.subjects-grid .subject-tile{transition:none}}
