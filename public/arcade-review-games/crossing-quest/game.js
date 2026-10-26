@@ -3,7 +3,7 @@ import bank from './questions.js';
 import {createParkArt} from './park-art.js';
 import { QUESTION_SETS, loadQuestionSet } from './question-sets.js';
 import { CrossingWorld, roadShapes } from './engine.js';
-import { CELL, WIDTH, REQUIRED_ACORNS, HEIGHT, VIEW_WIDTH, VIEW_HEIGHT, HOME_ROW, STUMP_ROW, ROUTES, DIFFICULTIES } from './config.js';
+import { CELL, WIDTH, REQUIRED_ACORNS, HEIGHT, VIEW_WIDTH, VIEW_HEIGHT, HOME_ROW, STUMP_ROW, ROUTES, DIFFICULTIES, refreshViewport } from './config.js';
 
 const $=id=>document.getElementById(id),canvas=$('board'),ctx=canvas.getContext('2d');
 const panel=$('panel'),content=$('panel-content');
@@ -368,6 +368,7 @@ document.querySelectorAll('[data-direction]').forEach(b=>{
   b.addEventListener('click',event=>{if(event.detail===0){world.facing=b.dataset.direction;world.move(b.dataset.direction);}});
 });
 function autoPause(){held=null;if(world)world.sprinting=false;if(world?.pause())sync();}
+window.addEventListener('resize',()=>{refreshViewport();canvas.width=VIEW_WIDTH;canvas.height=VIEW_HEIGHT;canvas.style.aspectRatio=`${VIEW_WIDTH} / ${VIEW_HEIGHT}`;draw();});
 window.addEventListener('blur',autoPause);document.addEventListener('visibilitychange',()=>{if(document.hidden)autoPause();});
 function frame(now){
   const dt=lastFrame?Math.min((now-lastFrame)/1000,.05):0;lastFrame=now;

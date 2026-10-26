@@ -1,9 +1,14 @@
 // Park routes and scenery are independent of the selected academic question pack.
 export const CELL = 64;
 export const REQUIRED_ACORNS = 8;
-const portraitPhone = typeof matchMedia !== 'undefined' && matchMedia('(max-width: 600px) and (orientation: portrait)').matches;
-export const VIEW_WIDTH = portraitPhone ? 640 : 896;
-export const VIEW_HEIGHT = portraitPhone ? 704 : 576;
+export let VIEW_WIDTH = 896;
+export let VIEW_HEIGHT = 576;
+export function refreshViewport(){
+  const portraitPhone = typeof matchMedia !== 'undefined' && matchMedia('(max-width: 600px) and (orientation: portrait)').matches;
+  VIEW_WIDTH = portraitPhone ? 640 : 896;
+  VIEW_HEIGHT = portraitPhone ? 704 : 576;
+}
+refreshViewport();
 export const WIDTH = 1920;
 export const HOME_ROW = 25;
 export const STUMP_ROW = 12;
