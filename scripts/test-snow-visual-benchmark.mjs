@@ -50,3 +50,20 @@ console.log('PASS: desktop, tablet, portrait and landscape fort + steering geome
 for(const type of ['normal','runner','tank','boss']){const g=vm.runInContext(`creature('${type}')`,ctx);assert.equal(g.children.filter(o=>o.isMesh).length,2,'one colored body + one transparent shadow');}
 const first=vm.runInContext('defender()',ctx),second=vm.runInContext('defender()',ctx);assert.ok(first.userData.arms.every(a=>a.parent===first));assert.equal(first.children.filter(o=>o.isMesh).length,4);assert.equal(first.children.at(-1).geometry,second.children.at(-1).geometry,'same outfit reuses cached geometry');
 console.log('PASS: creature body 1 draw + shadow; defender body 1 + 2 moving arms + shadow; shared cached outfit geometries');
+
+// Source reconciliation must never silently discard newer gameplay modules.
+const {createHash}=await import('node:crypto');
+const provenance=JSON.parse(fs.readFileSync(new URL('../visual-upgrades/provenance.json',import.meta.url)));
+for(const name of ['features.js','lab.js','questions.js']){
+ assert.equal(createHash('sha256').update(fs.readFileSync(root+name)).digest('hex'),provenance.sourceSha256[name]);
+ assert.equal(fs.readFileSync(root+name,'utf8'),fs.readFileSync(root+'before/'+name,'utf8'));
+}
+const gameSource=fs.readFileSync(root+'game.js','utf8');
+assert.ok(!gameSource.includes("$('wave-intro')"));
+vm.runInContext('start();hud()',ctx);assert.equal(els.get('lab-open').disabled,true);
+vm.runInContext('finishRecruitment();hud()',ctx);assert.equal(els.get('lab-open').disabled,false);
+vm.runInContext('nextWave()',ctx);assert.match(els.get('toast').textContent,/WAVE|FROST KING/);
+// Recruitment remains uncapped after the old 20-member threshold.
+ctx.testNow=0;vm.runInContext('start();recruitmentCorrect=25;finishRecruitment()',ctx);
+assert.equal(ctx.window.snowDiagnostics().state.squad,31);
+console.log('PASS: Site source hashes, unchanged feature/library modules, bottom wave notices, Lab academic lock and recruitment above 20');

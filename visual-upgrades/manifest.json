@@ -12,7 +12,7 @@
       "visualQualityTarget": "Polished classroom browser game; approval pending",
       "camera": "Snow-specific responsive framing + shared bounded impulse",
       "particles": "shared typed-array pool, bounded trails",
-      "transitions": "event-driven HUD pops and wave intro; no scene manager",
+      "transitions": "HUD/reward cues; wave notifications remain beside bottom controls",
       "lighting": "Snow-specific hemisphere/directional light; blob shadows",
       "HUD": "compact status strip, recruitment timer, fort rebuilding progress",
       "animation": "shared UI cues, cosmetic hit squash, eased fort rebuilding",
@@ -39,13 +39,15 @@
       },
       "benchmarkVisualsApproved": false,
       "reusableExtraction": "provisional; finalize after user approval",
-      "lastReviewed": "2026-10-26",
+      "lastReviewed": "2026-10-27",
       "notes": [
         "Latest squad prototype preserved; existing public Review Lab version untouched",
         "Scientific Method sample content preserved; public shared-bank integration not part of this visual pass",
         "No next game started; recommend Quest Arcade after approval",
         "No production merge/deployment"
-      ]
+      ],
+      "authoritativeImplementation": "public/dev/snow-day-visuals/",
+      "sourceReconciliation": "reconciliation.md"
     }
   }
 }

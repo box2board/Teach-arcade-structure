@@ -19,3 +19,6 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}#wave-intro[data-show]{display:none}}
 
 .card > .compare{display:inline-block;margin-bottom:18px;font-size:11px;color:#235d79;background:#e4f0f7;border:1px solid #c8dfe9;box-shadow:none}
+
+/* Keep setup controls reachable above the opening menu. Academic rounds lock Lab. */
+header{z-index:6}

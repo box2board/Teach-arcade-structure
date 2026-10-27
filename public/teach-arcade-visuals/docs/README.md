@@ -16,7 +16,7 @@ The engine owns simulation state. Visual systems receive events/state to present
 | `presets/quality.js` | Version plus explicit quality budgets | `qualityFor('standard')`; no device guessing, shadow maps or postprocessing |
 | `core/cues.js` | Independent cosmetic random stream, damped camera impulses, optional audio event callback | `createCues({reducedMotion,onAudio})`; call `impulse(.05)`, `tick(dt)`; reset on new run; does not move camera itself |
 | `core/particles-three.js` | Preallocated impact pool and three weather layers | Three.js 0.162 adapter; `createParticlePool(scene,random)` → `setLimit`, `burst`, `update`, `clear`, `dispose`; `createWeather` → `configure(count,layers)`, `update`, `dispose` |
-| `core/ui.js` | Short HUD/reward/wave cues | `uiCue(element,'pop'|'damage'|'intro',reducedMotion)`; cancels prior animation; static fallback without Web Animations |
+| `core/ui.js` | Short HUD/reward cues | `uiCue(element,'pop'|'damage',reducedMotion)`; cancels prior animation; static fallback without Web Animations |
 
 Example (adapt import paths to your static page):
 
