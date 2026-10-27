@@ -8,9 +8,9 @@ const {VERSION,qualityFor}=await import('../public/teach-arcade-visuals/presets/
 const {createCues}=await import('../public/teach-arcade-visuals/core/cues.js');
 const {uiCue}=await import('../public/teach-arcade-visuals/core/ui.js');
 const {createParticlePool,createWeather}=await import('../public/teach-arcade-visuals/core/particles-three.js');
-const {buildVillage,buildFort,dressDefender,dressCreature}=await import('../public/dev/snow-day-visuals/theme.js');
+const {buildVillage,buildFort,dressDefender,dressCreature,batchCharacter}=await import('../public/dev/snow-day-visuals/theme.js');
 const {fitBenchmarkCamera}=await import('../public/dev/snow-day-visuals/camera.js');
-const ctx={fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
+const ctx={fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,batchCharacter,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
 vm.runInContext('start();finishRecruitment();update(.016)',ctx);assert.equal(ctx.window.snowDiagnostics().modules.features.length,5);assert.ok(ctx.window.snowDiagnostics().bullets>0);
 vm.runInContext("S.wave=2;S.damage=3;S.health=1;addEnemy(0,18);update(.016)",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'rebuild');assert.equal(ctx.window.snowDiagnostics().state.health,0);
 function answer(correct){const i=vm.runInContext(`questionList[(questionIndex-1)%questionList.length].choices.find(c=>c.correct===${correct}).text`,ctx);const group=els.get('content').children[1];group.children.find(b=>b.textContent.slice(3)===i).onclick();}
@@ -46,3 +46,7 @@ for(const [w,h] of [[1366,768],[1024,768],[390,844],[844,390]]){
  for(const x of [-14,14])for(const z of [14,21])for(const y of [0,5.9]){const v=new THREE.Vector3(x,y,z).project(camera);assert.ok(Math.abs(v.x)<=1&&Math.abs(v.y)<=1,`${w}x${h}: fort and steering margins fit`);}
 }
 console.log('PASS: desktop, tablet, portrait and landscape fort + steering geometry framing');
+
+for(const type of ['normal','runner','tank','boss']){const g=vm.runInContext(`creature('${type}')`,ctx);assert.equal(g.children.filter(o=>o.isMesh).length,2,'one colored body + one transparent shadow');}
+const first=vm.runInContext('defender()',ctx),second=vm.runInContext('defender()',ctx);assert.ok(first.userData.arms.every(a=>a.parent===first));assert.equal(first.children.filter(o=>o.isMesh).length,4);assert.equal(first.children.at(-1).geometry,second.children.at(-1).geometry,'same outfit reuses cached geometry');
+console.log('PASS: creature body 1 draw + shadow; defender body 1 + 2 moving arms + shadow; shared cached outfit geometries');

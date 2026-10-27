@@ -41,7 +41,7 @@ pool.dispose();
 
 Uses the repository's existing `/assets/vendor/three-0.162.0/three.module.js` (MIT). No external graphics downloads, fonts, image requests, texture atlases or audio assets. Particle alpha texture is a shared 16×16 procedural DataTexture. Missing storage uses Standard for the session. Invalid saved quality falls back to Standard. Reduced-motion preference removes weather, camera shake, flag motion and UI cues; it also uses minimal impact counts. Performance never changes gameplay. WebGL failure keeps the existing clear unsupported-device message; there is no claimed 2D game fallback.
 
-Weather owns fixed typed arrays, draws only the selected subset, and costs one draw call per enabled layer. Impacts use one draw call, bounded memory and no per-burst mesh/material allocations. Dynamic snowmen/defenders still use multiple meshes: profile this existing bottleneck before adding shadows/bloom. All modes use blob shadows, with fixed scenery instanced. Dispose pools on unload; the shared tiny alpha texture lives for the module lifetime.
+Weather owns fixed typed arrays, draws only the selected subset, and costs one draw call per enabled layer. Impacts use one draw call, bounded memory and no per-burst mesh/material allocations. Snow-specific fixed character parts are baked into cached vertex-colored geometry: two base draws per creature and four per defender including shadow/animated arms. Profile large squads/crowds before adding shadows/bloom. All modes use blob shadows, with fixed scenery instanced. Dispose pools on unload; the shared tiny alpha texture lives for the module lifetime.
 
 ## Rollout
 

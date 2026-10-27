@@ -56,3 +56,21 @@ export function dressCreature(g,type,{mesh,box,sphere,cone}){
  if(type==='runner')for(const x of [-.2,.2])mesh(sphere,accent,x,2.05,0,.12,.35,.12,g);
  if(type==='boss'){for(const x of [-.36,0,.36])mesh(cone,0xb9eeff,x,2.55,0,.16,.65,.18,g);mesh(box,0x91d5ef,0,1.06,.45,1.05,.18,.1,g);}
 }
+
+// Cache one colored mesh per outfit/type. Accessories should not turn a crowd
+// into thousands of draw calls. Arms and transparent blob shadows stay separate.
+const characterGeometry=new Map();
+const characterMaterial=new THREE.MeshStandardMaterial({vertexColors:true,roughness:.85});
+export function batchCharacter(root,key,movable=[]){
+ const parts=root.children.filter(o=>o.isMesh&&o.material.isMeshStandardMaterial&&!movable.includes(o));
+ let geometry=characterGeometry.get(key);
+ if(!geometry){
+  const positions=[],normals=[],colors=[];
+  for(const part of parts){part.updateMatrix();const g=part.geometry.index?part.geometry.toNonIndexed():part.geometry.clone();g.applyMatrix4(part.matrix);const p=g.attributes.position.array,n=g.attributes.normal.array,c=part.material.color;
+   for(let i=0;i<p.length;i++)positions.push(p[i]);for(let i=0;i<n.length;i++)normals.push(n[i]);for(let i=0;i<p.length/3;i++)colors.push(c.r,c.g,c.b);g.dispose();}
+  geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geometry.setAttribute('normal',new THREE.Float32BufferAttribute(normals,3));geometry.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));geometry.computeBoundingSphere();characterGeometry.set(key,geometry);
+ }
+ for(const part of parts)root.remove(part);
+ root.add(new THREE.Mesh(geometry,characterMaterial));
+ return root;
+}
