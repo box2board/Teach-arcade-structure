@@ -4,7 +4,7 @@
   "games": {
     "snow-day-defender": {
       "status": "awaiting-visual-review",
-      "visualLevel": "benchmark-candidate-1",
+      "visualLevel": "approved-direction-playable-candidate-2",
       "visualSystemVersion": "0.1.0-preview",
       "route": "/dev/snow-day-visuals/",
       "beforeRoute": "/dev/snow-day-visuals/before/",
@@ -44,10 +44,13 @@
         "Latest squad prototype preserved; existing public Review Lab version untouched",
         "Scientific Method sample content preserved; public shared-bank integration not part of this visual pass",
         "No next game started; recommend Quest Arcade after approval",
-        "No production merge/deployment"
+        "No production merge/deployment",
+        "Approved concept translated into new modeled characters, beveled fort, warmer tone-mapped lighting, navy HUD; explicit playable art-test entry"
       ],
       "authoritativeImplementation": "public/dev/snow-day-visuals/",
-      "sourceReconciliation": "reconciliation.md"
+      "sourceReconciliation": "reconciliation.md",
+      "artDirectionApproved": true,
+      "approvedArtReference": "docs/design/snow-day-defenders/approved-target.webp"
     }
   }
 }

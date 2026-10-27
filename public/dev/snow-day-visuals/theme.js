@@ -32,9 +32,12 @@ export function buildVillage({scene,mesh,box,sphere,cone,cylinder,shadow,random}
  mesh(sphere,0x8ebdd7,-22,.025,-1,5,.04,7);mesh(sphere,0xb9ddea,-22,.04,-1,4,.025,6);
  return {update(time,reduced){if(!reduced)for(let i=0;i<flags.length;i++)flags[i].rotation.x=Math.sin(time*2+i*.5)*.14;}};
 }
-export function buildFort({scene,mesh,box,sphere,cone,cylinder}){
+const blockShape=new THREE.Shape();blockShape.moveTo(-.38,-.38);blockShape.lineTo(.38,-.38);blockShape.lineTo(.38,.38);blockShape.lineTo(-.38,.38);blockShape.closePath();
+const roundedBlock=new THREE.ExtrudeGeometry(blockShape,{depth:.76,bevelEnabled:true,bevelSize:.12,bevelThickness:.12,bevelSegments:3,steps:1});roundedBlock.translate(0,0,-.38);
+export function buildFort({scene,mesh,box:flatBox,sphere,cone,cylinder}){
+ const box=roundedBlock;
  const blocks=[];
- for(let i=0;i<10;i++){const g=new THREE.Group();scene.add(g);g.position.set((i-4.5)*2.2,0,21);for(let row=0;row<3;row++){mesh(box,row===0?0x9cc5de:0xc4dfef,0,.45+row*.65,0,2.12,.61,1.8,g);mesh(box,0xeff9ff,0,.76+row*.65,.04,2.12,.08,1.86,g);mesh(box,0xa9cfe4,(row%2?.55:-.55),.45+row*.65,.92,.035,.6,.02,g);}mesh(box,0xffffff,0,2.15,0,2.2,.27,1.95,g);if(i%2===0)mesh(box,0xe3f3ff,0,2.55,0,1.1,.65,1.7,g);blocks.push(g);}
+ for(let i=0;i<10;i++){const g=new THREE.Group();scene.add(g);g.position.set((i-4.5)*2.2,0,21);for(let row=0;row<3;row++){mesh(box,row===0?0x9cc5de:0xc4dfef,0,.45+row*.65,0,2.12,.61,1.8,g);mesh(box,0xeff9ff,0,.76+row*.65,.04,2.12,.08,1.86,g);mesh(box,0xa9cfe4,(row%2?.55:-.55),.45+row*.65,.92,.035,.6,.02,g);}mesh(box,0xffffff,0,2.15,0,2.2,.27,1.95,g);if(i%2===0)mesh(box,0xe3f3ff,0,2.55,0,1.1,.65,1.7,g);batchCharacter(g,'art-fort-'+i%2);blocks.push(g);}
  for(const side of [-1,1]){const x=side*11.8;mesh(cylinder,0xa5cce3,x,1.6,21,1.55,3.2,1.55);mesh(cylinder,0xeef9ff,x,3.2,21,1.7,.3,1.7);for(let i=0;i<5;i++){const a=i/5*Math.PI*2;mesh(box,0xf5fbff,x+Math.cos(a)*1.3,3.65,21+Math.sin(a)*1.3,.7,.7,.7);}mesh(cylinder,0x4c768c,x,4.5,21,.06,3,.06);mesh(box,0xf28d55,x+side*.65,5.6,21,1.3,.8,.06);}
  return blocks;
 }
