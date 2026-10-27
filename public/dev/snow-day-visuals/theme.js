@@ -1,15 +1,16 @@
 import * as THREE from '../../assets/vendor/three-0.162.0/three.module.js';
+import {snowTree} from './details.js';
 import {detailLandscape} from './landscape.js';
 // Snow-specific art composition. Shared modules never know about forts or snowmen.
 export function buildVillage({scene,mesh,box,sphere,cone,cylinder,shadow,random}){
  scene.background=new THREE.Color(0xbadcee);scene.fog=new THREE.Fog(0xbadcee,72,158);
  mesh(box,0xc8e0ef,0,-.65,-45,180,1,220);
- detailLandscape({scene,mesh,sphere,box,cylinder,random});
+ detailLandscape({scene,mesh,sphere,box,cylinder,random,shadow});
  // Rounded, irregular snowbanks frame the playable corridor without changing its width.
  for(const side of [-1,1])for(let z=-105;z<25;z+=4.2){const x=side*(12.8+random()*.5);mesh(sphere,0x9dbfdc,x,-.05,z,2.8,.95,3.6);mesh(sphere,0xf3f9ff,x,.18,z,2.5,.9,3.3);}
  // Sparse packed snow marks: no dark lane stripes competing with enemies.
  for(let i=0;i<40;i++){const z=-95+random()*114,x=(random()-.5)*20;const m=mesh(sphere,i%3?0xe1edf7:0xcbdfee,x,.012,z,.13+random()*.3,.012,.3+random()*.55);m.rotation.y=random()*3;}
- function pine(x,z,s){const g=new THREE.Group();g.position.set(x,0,z);g.scale.setScalar(s);scene.add(g);shadow(g,2);mesh(cylinder,0x725c57,0,1,0,.22,2,.22,g);for(let j=0;j<3;j++){mesh(cone,j%2?0x327d86:0x246675,0,2.1+j*1.25,0,2.1-j*.44,2.9,2.1-j*.44,g);mesh(cone,0xf5faff,0,2.65+j*1.25,0,1.78-j*.38,2.1,1.78-j*.38,g);}}
+ function pine(x,z,s){return snowTree({scene,mesh,sphere,cylinder,shadow,random},x,z,s);}
  for(let i=0;i<36;i++)pine((i%2?1:-1)*(18+random()*13),-108+i*3.7,.8+random()*.65);
  // Faceted alpine ridges and cool foothills behind the village.
  for(let i=0;i<9;i++){const x=(i-4)*13,z=-116-random()*12,h=19+random()*17;mesh(cone,0x7fa6c4,x,h*.45-2,z,17,h,13);mesh(cone,0xe6f3ff,x,h*.72,z,8,h*.45,6);}

@@ -4,7 +4,7 @@
   "games": {
     "snow-day-defender": {
       "status": "awaiting-visual-review",
-      "visualLevel": "close-view-composition-review",
+      "visualLevel": "trees-and-ice-shields-detail-review",
       "visualSystemVersion": "0.1.0-preview",
       "route": "/dev/snow-day-visuals/",
       "beforeRoute": "/dev/snow-day-visuals/before/",
@@ -47,7 +47,8 @@
         "No production merge/deployment",
         "Approved concept translated into new modeled characters, beveled fort, warmer tone-mapped lighting, navy HUD; explicit playable art-test entry",
         "Appearance pass 2: environment, fort caps and supply crate art; no dedicated animation pass started",
-        "Screenshot-driven composition pass: wider squad slightly widens volley footprint; camera no longer fits entire fort in portrait; balance/device review pending"
+        "Screenshot-driven composition pass: wider squad slightly widens volley footprint; camera no longer fits entire fort in portrait; balance/device review pending",
+        "Closer composition liked by user; detail pass adds irregular snow spruce and beveled ice shields with damage-state cracks; feature rules unchanged"
       ],
       "authoritativeImplementation": "public/dev/snow-day-visuals/",
       "sourceReconciliation": "reconciliation.md",

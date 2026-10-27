@@ -1,7 +1,8 @@
 import * as THREE from '../../assets/vendor/three-0.162.0/three.module.js';
+import {snowTree} from './details.js';
 // Static Snow-specific scenery. All meshes are consumed by the existing instancer.
 const rock=new THREE.IcosahedronGeometry(1,1);
-export function detailLandscape({scene,mesh,sphere,box,cylinder,random}){
+export function detailLandscape({scene,mesh,sphere,box,cylinder,random,shadow}){
  // A single gently sculpted surface: the play plane remains flat and unobstructed.
  const geo=new THREE.PlaneGeometry(90,145,44,68);geo.rotateX(-Math.PI/2);geo.translate(0,0,-43);
  const p=geo.attributes.position,colors=[];const tint=new THREE.Color();
@@ -16,14 +17,8 @@ export function detailLandscape({scene,mesh,sphere,box,cylinder,random}){
  // Small scallops break the snow/rock boundary rather than a floating flat lid.
  for(const a of [-.65,.1,.7])mesh(sphere,0xeef6ff,x+a*s,s*.95,z+s*.35,s*.35,s*.22,s*.35);
  }
- // Foreground spruce branches frame corners; no decorations enter steering lanes.
- for(const side of [-1,1])for(let i=0;i<4;i++){
- const z=8+i*4,x=side*(19+i*.6);mesh(cylinder,0x77523c,x,1,z,.24,2,.24);
- for(let tier=0;tier<3;tier++)for(let branch=0;branch<5;branch++){
- const a=branch/5*Math.PI*2,r=1.6-tier*.35,y=1.8+tier*1.1;
- const leaf=mesh(sphere,0x286b73,x+Math.cos(a)*r*.45,y,z+Math.sin(a)*r*.45,r,.38,r*.48);leaf.rotation.y=-a;
- const cap=mesh(sphere,0xf5faff,x+Math.cos(a)*r*.45,y+.24,z+Math.sin(a)*r*.45,r*.91,.2,r*.45);cap.rotation.y=-a;
- }}
+ // The same snow-loaded spruce art is used in foreground and background.
+ for(const side of [-1,1])for(let i=0;i<4;i++)snowTree({scene,mesh,sphere,cylinder,shadow,random},side*(19+i*.6),8+i*4,1.05+i*.06);
  // Cabin door approaches: shallow packed snow footprints off the battlefield.
  for(const side of [-1,1])for(let i=0;i<12;i++){const x=side*(16.5+i*.35),z=-18+i*.48;
  mesh(sphere,0xb2c9e1,x,.018,z,.16,.015,.3);mesh(sphere,0xb2c9e1,x+side*.4,.018,z+.45,.16,.015,.3);}

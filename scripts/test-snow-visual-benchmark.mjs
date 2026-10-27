@@ -12,7 +12,8 @@ const {buildVillage,buildFort,dressDefender,dressCreature,batchCharacter}=await 
 const {fitBenchmarkCamera}=await import('../public/dev/snow-day-visuals/camera.js');
 const {sculptDefender,sculptCreature,snowSurface}=await import('../public/dev/snow-day-visuals/art.js');
 const {softContactTexture,dressSupply}=await import('../public/dev/snow-day-visuals/landscape.js');
-const ctx={softContactTexture,dressSupply,sculptDefender,sculptCreature,snowSurface,fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,batchCharacter,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
+const {dressIceShield,updateIceShield,snowTree}=await import('../public/dev/snow-day-visuals/details.js');
+const ctx={dressIceShield,updateIceShield,softContactTexture,dressSupply,sculptDefender,sculptCreature,snowSurface,fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,batchCharacter,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
 vm.runInContext('start();finishRecruitment();update(.016)',ctx);assert.equal(ctx.window.snowDiagnostics().modules.features.length,5);assert.ok(ctx.window.snowDiagnostics().bullets>0);
 vm.runInContext("S.wave=2;S.damage=3;S.health=1;addEnemy(0,18);update(.016)",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'rebuild');assert.equal(ctx.window.snowDiagnostics().state.health,0);
 function answer(correct){const i=vm.runInContext(`questionList[(questionIndex-1)%questionList.length].choices.find(c=>c.correct===${correct}).text`,ctx);const group=els.get('content').children[1];group.children.find(b=>b.textContent.slice(3)===i).onclick();}
@@ -95,3 +96,13 @@ assert.ok(vm.runInContext('Math.max(...crew.map(g=>g.position.x))-Math.min(...cr
 vm.runInContext('S.x=8.3;resize();frame(1000)',ctx);
 assert.ok(Number.isFinite(vm.runInContext('camera.position.x',ctx)));
 console.log('PASS: wider two-row formation and camera frame integration');
+
+vm.runInContext("visualTestScene()",ctx);
+const shielded=vm.runInContext('enemies.find(e=>e.shield>0)',ctx);assert.ok(shielded.shieldVisual.userData.iceArt);const shieldRef=shielded.shieldVisual,health=shielded.hp;
+vm.runInContext('hitEnemy(enemies.find(e=>e.shield>0),2)',ctx);assert.equal(shielded.shield,3);assert.equal(shielded.hp,health);assert.equal(shieldRef.userData.cracks[0].visible,true);assert.equal(shieldRef.userData.cracks[1].visible,false);
+vm.runInContext('hitEnemy(enemies.find(e=>e.shield>0),2)',ctx);assert.equal(shielded.shield,1);assert.equal(shieldRef.userData.cracks[1].visible,true);
+vm.runInContext('hitEnemy(enemies.find(e=>e.shield>0),1)',ctx);assert.equal(shielded.shield,0);assert.equal(shielded.hp,health);assert.equal(shieldRef.parent,null);
+vm.runInContext('hitEnemy(enemies.find(e=>e.shield===0),1)',ctx);assert.equal(shielded.hp,health-1);
+const treeScene=new THREE.Scene();const fakeMesh=(geo,color,x,y,z,sx=1,sy=sx,sz=sx,parent=treeScene)=>{const m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color}));m.position.set(x,y,z);m.scale.set(sx,sy,sz);parent.add(m);return m;};
+const tree=snowTree({scene:treeScene,mesh:fakeMesh,sphere:new THREE.SphereGeometry(1,8,6),cylinder:new THREE.CylinderGeometry(1,1,1,8),shadow(){},random:()=>.5},18,-20,1);assert.equal(tree.userData.snowTree,true);assert.ok(tree.children.length<30);
+console.log('PASS: shield silhouette, cracks at 3/1 strength, same damage absorption/removal reference, post-break HP damage and bounded tree geometry');
