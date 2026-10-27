@@ -45,9 +45,13 @@ console.log('PASS: all three visual budgets, cosmetic update isolation, existing
 
 for(const [w,h] of [[1366,768],[1024,768],[390,844],[844,390]]){
  const camera=new THREE.PerspectiveCamera(48,w/h,.1,220);fitBenchmarkCamera(camera,w,h);
- for(const x of [-14,14])for(const z of [14,21])for(const y of [0,5.9]){const v=new THREE.Vector3(x,y,z).project(camera);assert.ok(Math.abs(v.x)<=1&&Math.abs(v.y)<=1,`${w}x${h}: fort and steering margins fit`);}
+ for(const center of [-8.3,0,8.3]){
+ camera.position.x=camera.userData.portraitFollow?center:0;camera.updateMatrixWorld();
+ for(const offset of [-4,4])for(const y of [0,3.8]){const v=new THREE.Vector3(center+offset,y,16).project(camera);assert.ok(Math.abs(v.x)<=1&&Math.abs(v.y)<=1,`${w}x${h}: squad remains visible at steering edge`);}
+ }
+ if(w===390){camera.position.x=0;camera.updateMatrixWorld();const feet=new THREE.Vector3(0,0,14).project(camera),head=new THREE.Vector3(0,3.8,14).project(camera);assert.ok((feet.y-head.y)*h/-2>70,'portrait character exceeds 70px instead of the previous roughly 40px');}
 }
-console.log('PASS: desktop, tablet, portrait and landscape fort + steering geometry framing');
+console.log('PASS: close-view squad bounds at all steering edges, portrait character scale');
 
 for(const type of ['normal','runner','tank','boss']){const g=vm.runInContext(`creature('${type}')`,ctx);assert.equal(g.children.filter(o=>o.isMesh).length,2,'one colored body + one transparent shadow');}
 const first=vm.runInContext('defender()',ctx),second=vm.runInContext('defender()',ctx);assert.ok(first.userData.arms.every(a=>a.parent===first));assert.equal(first.children.filter(o=>o.isMesh).length,4);assert.equal(first.children.at(-1).geometry,second.children.at(-1).geometry,'same outfit reuses cached geometry');
@@ -84,3 +88,10 @@ for(let i=0;i<terrainPosition.count;i++){
 const contact=softContactTexture(),alpha=contact.image.data;
 assert.equal(alpha[3],0);assert.ok(alpha[((16*32)+16)*4+3]>200,'contact shadows fade out rather than hard circles');
 console.log('PASS: instanced terrain, finite sculpted vertices, unchanged flat play plane and soft contact alpha');
+
+vm.runInContext("visualTestScene()",ctx);
+assert.equal(vm.runInContext('new Set(crew.map(g=>g.position.z)).size',ctx),2,'nine defenders use two readable rows');
+assert.ok(vm.runInContext('Math.max(...crew.map(g=>g.position.x))-Math.min(...crew.map(g=>g.position.x))',ctx)>5);
+vm.runInContext('S.x=8.3;resize();frame(1000)',ctx);
+assert.ok(Number.isFinite(vm.runInContext('camera.position.x',ctx)));
+console.log('PASS: wider two-row formation and camera frame integration');

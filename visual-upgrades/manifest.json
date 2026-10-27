@@ -4,17 +4,17 @@
   "games": {
     "snow-day-defender": {
       "status": "awaiting-visual-review",
-      "visualLevel": "appearance-pass-2-review",
+      "visualLevel": "close-view-composition-review",
       "visualSystemVersion": "0.1.0-preview",
       "route": "/dev/snow-day-visuals/",
       "beforeRoute": "/dev/snow-day-visuals/before/",
       "source": "Squad Prototype v7",
       "visualQualityTarget": "Polished classroom browser game; approval pending",
-      "camera": "Snow-specific responsive framing + shared bounded impulse",
+      "camera": "lower-angle close view; eased portrait squad follow and offscreen threat counts",
       "particles": "shared typed-array pool, bounded trails",
       "transitions": "HUD/reward cues; wave notifications remain beside bottom controls",
       "lighting": "warm/cool lights, emissive windows, soft contact shadow texture",
-      "HUD": "compact status strip, recruitment timer, fort rebuilding progress",
+      "HUD": "compact phone header, single-row HUD, shorter bottom controls",
       "animation": "shared UI cues, cosmetic hit squash, eased fort rebuilding",
       "environmentalEffects": "layered snow plus sculpted terrain, rock/spruce/cabin details; static instancing",
       "audioHooks": "CustomEvent interface only; no playback",
@@ -46,7 +46,8 @@
         "No next game started; recommend Quest Arcade after approval",
         "No production merge/deployment",
         "Approved concept translated into new modeled characters, beveled fort, warmer tone-mapped lighting, navy HUD; explicit playable art-test entry",
-        "Appearance pass 2: environment, fort caps and supply crate art; no dedicated animation pass started"
+        "Appearance pass 2: environment, fort caps and supply crate art; no dedicated animation pass started",
+        "Screenshot-driven composition pass: wider squad slightly widens volley footprint; camera no longer fits entire fort in portrait; balance/device review pending"
       ],
       "authoritativeImplementation": "public/dev/snow-day-visuals/",
       "sourceReconciliation": "reconciliation.md",
