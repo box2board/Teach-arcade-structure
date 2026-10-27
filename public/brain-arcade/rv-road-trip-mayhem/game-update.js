@@ -6,7 +6,7 @@ function updateLoop(dt){const sp=Math.max(500,R.vx);loop.theta+=sp/loop.r*dt;R.x
 function update(dt){
  if(R.finish)return;
  if(callTimer>0){callTimer-=dt;if(callTimer<=0)ui.call.style.opacity=0}
- R.inv=Math.max(0,R.inv-dt);
+ R.inv=Math.max(0,R.inv-dt);R.boost=Math.max(0,R.boost-dt);
  const sec=section();if(sec!==R.lastSection){R.lastSection=sec;popup(sec);R.checkpoint=Math.max(120,R.x-100);if(sec==='CARGO RATTLE')say('Rough road ahead. Slower driving keeps the cargo strapped down.');if(sec==='MUD RUN')say('Mud kills momentum. Carry speed in, then spend nitro only if needed.');if(sec==='CONSTRUCTION')say('Timing matters here. Brake for moving machinery or smash only the barrels.');if(sec==='ROUTE CHOICE')say('Jump onto the high road for rewards, or stay low through the mud.');if(sec==='OPTIONAL LOOP')say('Loop is optional. Enter fast for bonus, or stay on the road.');if(sec==='BROKEN BRIDGE')say('Two short gaps. Precision beats full throttle.');if(sec==='STORM SPRINT')say('Crosswind and debris. Control the RV, do not just floor it.');if(sec==='FINAL LAUNCH')say('One final jump. Build speed, then commit.');}
  if(loop.active){updateLoop(dt);updateHUD();cam+=(loop.cx-430-cam)*Math.min(1,dt*5);return;}
  R.jb=Math.max(0,R.jb-dt);if(R.on)R.coyote=.18;else R.coyote=Math.max(0,R.coyote-dt);
@@ -17,8 +17,8 @@ function update(dt){
  if(R.on){
    if(K.g)R.vx+=520*damagePenalty*dt;
    if(K.b){R.vx-=760*dt;settle(22*dt);}
-   const top=R.vx>normalMax?normalMax+(R.vx-normalMax)*Math.pow(.985,dt*60):normalMax;
-   if(R.vx>top)R.vx=top;
+   const top=R.boost>0?820:normalMax;
+   if(R.vx>top)R.vx=Math.max(top,R.vx-260*dt);
    if(ranges(R.x,lowerMud)&&R.route!=='upper'){R.vx*=Math.pow(.968,dt*60);if(K.g)R.vx+=135*dt;}
    else R.vx*=Math.pow(.995,dt*60);
    if(ranges(R.x,rough)){const over=Math.max(0,R.vx-390);destabilize(over/190*dt*16);R.vx*=Math.pow(.992,dt*60);}
@@ -34,7 +34,7 @@ function update(dt){
    else if(gy!=null&&R.y+38>=gy){const landing=R.vy;R.y=gy-38;R.vy=0;R.on=1;if(landing>560){R.damage=Math.min(100,R.damage+5);destabilize(12);R.combo=1;say('Hard landing — cargo straps took a hit.');}else if(R.air>.35){reward(Math.min(180,50+R.air*85),'CLEAN LANDING');settle(5);}R.air=0;}
    else if(!plat)R.on=0;
  }
- if(R.route!=='upper'&&R.x>5160&&R.x<5320&&!R.on&&R.vy<0&&R.vx>330){R.route='upper';R.vy=Math.min(R.vy,-360);popup('HIGH ROAD');say('High road chosen — collect the pickups and avoid the mud below.');}
+ if(R.route!=='upper'&&R.x>5080&&R.x<5400&&!R.on&&R.vy<0){R.route='upper';R.vy=Math.min(R.vy,-360);popup('HIGH ROAD');say('High road chosen — collect the pickups and avoid the mud below.');}
  if(!loop.done&&R.x>loop.start&&R.x<loop.start+120&&R.on&&R.vx>470&&K.g)enterLoop();
  for(const p of pickups){if(!pickupHit(p))continue;p.used=1;if(p.t==='nitro'){R.nitro=Math.min(100,R.nitro+35);reward(120,'NITRO PICKUP')}if(p.t==='repair'){R.damage=Math.max(0,R.damage-18);reward(140,'REPAIR PICKUP')}if(p.t==='score')reward(400,'STUNT TOKEN');}
  for(const o of obstacles){if(!obsHit(o))continue;if(o.breakable&&R.vx>470){o.dead=1;destabilize(4);reward(180,'SMASH')}else if(o.t==='pothole'){o.dead=1;R.vy=-150;R.vx*=.82;destabilize(16);R.damage=Math.min(100,R.damage+3);say('Pothole hit — a small jump would have cleared it.');R.inv=.45;}else{damage(o.t==='gate'?10:o.t==='crusher'?14:8,o.t==='gate'?'Gate hit — slowing down would have opened a safe window.':o.t==='crusher'?'Crusher hit — bad timing.':'Storm debris hit.');o.dead=1;R.x+=48;}}
