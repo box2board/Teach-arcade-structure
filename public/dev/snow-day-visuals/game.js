@@ -9,6 +9,7 @@ import {createCues} from '/teach-arcade-visuals/core/cues.js';
 import {createParticlePool,createWeather} from '/teach-arcade-visuals/core/particles-three.js';
 import {buildVillage,buildFort,dressDefender,dressCreature,batchCharacter} from './theme.js';
 import {sculptDefender,sculptCreature,snowSurface} from './art.js';
+import {softContactTexture,dressSupply} from './landscape.js';
 const $=id=>document.getElementById(id), canvas=$('field');
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;
 let qualityName='standard';
@@ -23,9 +24,9 @@ const camera=new THREE.PerspectiveCamera(43,1,.1,220);
 scene.add(new THREE.HemisphereLight(0xd9eaff,0x6b638d,1.65));const sun=new THREE.DirectionalLight(0xffdbac,3.3);sun.position.set(-25,45,15);scene.add(sun);
 const snowGrain=snowSurface();
 const materials=new Map(), sphere=new THREE.SphereGeometry(1,12,9), box=new THREE.BoxGeometry(1,1,1), cone=new THREE.ConeGeometry(1,1,8), cylinder=new THREE.CylinderGeometry(1,1,1,10);
-function mat(color){if(!materials.has(color))materials.set(color,new THREE.MeshStandardMaterial({color,roughness:.9,bumpMap:[0xf4f9ff,0xf3f9ff,0xf5faff,0xffffff,0xf6fbff].includes(color)?snowGrain:null,bumpScale:.045}));return materials.get(color);}
+function mat(color){if(!materials.has(color))materials.set(color,new THREE.MeshStandardMaterial({color,emissive:[0xffd38a,0xffdc91].includes(color)?color:0x000000,emissiveIntensity:.35,roughness:.9,bumpMap:[0xf4f9ff,0xf3f9ff,0xf5faff,0xffffff,0xf6fbff,0xeef6ff].includes(color)?snowGrain:null,bumpScale:.045}));return materials.get(color);}
 function mesh(g,color,x,y,z,sx=1,sy=sx,sz=sx,parent=scene){const o=new THREE.Mesh(g,mat(color));o.position.set(x,y,z);o.scale.set(sx,sy,sz);parent.add(o);return o;}
-const shadowMat=new THREE.MeshBasicMaterial({color:0x44518b,transparent:true,opacity:.28,depthWrite:false}),circle=new THREE.CircleGeometry(1,16);
+const shadowMat=new THREE.MeshBasicMaterial({color:0x3f437b,map:softContactTexture(),transparent:true,opacity:.48,depthWrite:false}),circle=new THREE.CircleGeometry(1,16);
 function shadow(parent,r=1){const s=new THREE.Mesh(circle,shadowMat);s.rotation.x=-Math.PI/2;s.position.y=.035;s.scale.set(r,r*.7,1);parent.add(s);}
 const village=buildVillage({scene,mesh,box,sphere,cone,cylinder,shadow,random:cues.random});
 // Batch fixed scenery into instanced meshes to reduce Chromebook draw calls.
@@ -43,9 +44,9 @@ const S={mode:'menu',wave:1,health:100,squad:6,score:0,time:0,x:0,target:0,coold
 let enemies=[],bullets=[],crates=[],particles=[],clock=0,low=false,toastUntil=0,uiSerial=0;let fortShown=100,fortPrevious=100,visualFrameMs=0;const keys=new Set();let dragging=false,questionList=[],questionIndex=0,earned=0,answered=false,reviewCount=0;
 const fx=createFeatures({S,scene,mesh,sphere,box,mat,label,toast,addEnemy,finish,losePlayer,enemies:()=>enemies,crates:()=>crates,status:t=>{$('module-status').textContent=t;}});let recruitmentDeadline=0,recruitmentCorrect=0;let rebuildProgress=0;let lab;let runConfig={enabled:[],seed:12345,density:1,speed:1,health:1,startWave:1,startSquad:5,randomize:true};
 function toast(t){$('toast').dataset.cue=String(++uiSerial);cues.emit('notice',{message:t});$('toast').textContent=t;$('toast').style.opacity=1;toastUntil=clock+2.5;}
-function label(text,color='#174963'){const c=document.createElement('canvas');c.width=256;c.height=128;const ctx=c.getContext('2d');ctx.fillStyle='white';ctx.beginPath();ctx.roundRect(10,14,236,98,22);ctx.fill();ctx.fillStyle=color;ctx.font='bold 58px system-ui';ctx.textAlign='center';ctx.fillText(text,128,84);const tex=new THREE.CanvasTexture(c);const material=new THREE.SpriteMaterial({map:tex,depthTest:false});const spr=new THREE.Sprite(material);spr.scale.set(3.4,1.7,1);return spr;}
+function label(text,color='#174963'){const c=document.createElement('canvas');c.width=256;c.height=128;const ctx=c.getContext('2d');ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(10,14,236,98,22);ctx.fill();ctx.fillStyle='white';ctx.font='bold 58px system-ui';ctx.textAlign='center';ctx.fillText(text,128,84);const tex=new THREE.CanvasTexture(c);const material=new THREE.SpriteMaterial({map:tex,depthTest:false});const spr=new THREE.Sprite(material);spr.scale.set(3.4,1.7,1);return spr;}
 function addEnemy(x,z,type='normal'){const g=creature(type),scale=type==='boss'?3.8:type==='tank'?1.35:type==='runner'?.8:1;g.position.set(x,0,z);g.scale.setScalar(scale*1.4);scene.add(g);const hp=type==='boss'?500:type==='tank'?12:type==='runner'?3:4;enemies.push({g,type,x,z,hp,max:hp,r:scale*.7,speed:type==='boss'?1.7:type==='runner'?6:3.1+S.wave*.3,phase:fx.random()*6});fx.spawn(enemies.at(-1));}
-function addCrate(){const g=new THREE.Group();g.position.set([-7,0,7][Math.floor(fx.random()*3)],0,-56);scene.add(g);shadow(g,1.6);mesh(box,0xeaa24c,0,1,0,2.5,2,2.2,g);mesh(box,0xffcd77,0,2.05,0,2.65,.25,2.35,g);mesh(box,0xffe5ae,0,1,1.13,.32,2,.06,g);mesh(box,0xffe5ae,0,1,1.13,2.5,.3,.07,g);const hp=9+S.wave*3;const l=label(String(hp));l.position.y=3.4;g.add(l);const bonus=label('+3','#168c7c');bonus.position.y=5;bonus.scale.set(2.5,1.25,1);g.add(bonus);crates.push({g,hp,max:hp,label:l,bonus,x:g.position.x,z:-56});fx.crate(crates.at(-1));}
+function addCrate(){const g=new THREE.Group();g.position.set([-7,0,7][Math.floor(fx.random()*3)],0,-56);scene.add(g);shadow(g,1.6);mesh(box,0xeaa24c,0,1,0,2.5,2,2.2,g);mesh(box,0xffcd77,0,2.05,0,2.65,.25,2.35,g);mesh(box,0xffe5ae,0,1,1.13,.32,2,.06,g);mesh(box,0xffe5ae,0,1,1.13,2.5,.3,.07,g);dressSupply(g,{mesh,box,sphere});const hp=9+S.wave*3;const l=label(String(hp));l.position.y=3.4;g.add(l);const bonus=label('+3','#168c7c');bonus.position.y=5;bonus.scale.set(2.5,1.25,1);g.add(bonus);crates.push({g,hp,max:hp,label:l,bonus,x:g.position.x,z:-56});fx.crate(crates.at(-1));}
 function disposeLabel(l){l.material.map.dispose();l.material.dispose();}
 function dropCrate(c){scene.remove(c.g);disposeLabel(c.label);disposeLabel(c.bonus);}
 function puff(x,y,z,color=0xffffff,count=10){particlePool.burst(x,y,z,color,low?Math.min(count,3):count);}

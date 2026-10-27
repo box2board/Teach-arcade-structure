@@ -11,7 +11,8 @@ const {createParticlePool,createWeather}=await import('../public/teach-arcade-vi
 const {buildVillage,buildFort,dressDefender,dressCreature,batchCharacter}=await import('../public/dev/snow-day-visuals/theme.js');
 const {fitBenchmarkCamera}=await import('../public/dev/snow-day-visuals/camera.js');
 const {sculptDefender,sculptCreature,snowSurface}=await import('../public/dev/snow-day-visuals/art.js');
-const ctx={sculptDefender,sculptCreature,snowSurface,fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,batchCharacter,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
+const {softContactTexture,dressSupply}=await import('../public/dev/snow-day-visuals/landscape.js');
+const ctx={softContactTexture,dressSupply,sculptDefender,sculptCreature,snowSurface,fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,batchCharacter,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
 vm.runInContext('start();finishRecruitment();update(.016)',ctx);assert.equal(ctx.window.snowDiagnostics().modules.features.length,5);assert.ok(ctx.window.snowDiagnostics().bullets>0);
 vm.runInContext("S.wave=2;S.damage=3;S.health=1;addEnemy(0,18);update(.016)",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'rebuild');assert.equal(ctx.window.snowDiagnostics().state.health,0);
 function answer(correct){const i=vm.runInContext(`questionList[(questionIndex-1)%questionList.length].choices.find(c=>c.correct===${correct}).text`,ctx);const group=els.get('content').children[1];group.children.find(b=>b.textContent.slice(3)===i).onclick();}
@@ -72,3 +73,14 @@ console.log('PASS: Site source hashes, unchanged feature/library modules, bottom
 vm.runInContext("S.mode='review';nextQuestion()",ctx);assert.equal(els.get('lab-open').disabled,true,'review panel locks Lab before the next frame');
 
 vm.runInContext("visualTestScene()",ctx);assert.equal(ctx.window.snowDiagnostics().state.squad,9);assert.equal(ctx.window.snowDiagnostics().state.mode,"play");assert.equal(ctx.window.snowDiagnostics().enemies,15);vm.runInContext("update(.02)",ctx);assert.ok(ctx.window.snowDiagnostics().bullets>0);vm.runInContext("start()",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,"recruit");console.log("PASS: representative art scene is playable; normal start still recruits");
+
+const terrain=vm.runInContext("scene.children.find(o=>o.isInstancedMesh&&o.geometry.attributes.position.count===45*69)",ctx);
+assert.ok(terrain,'sculpted landscape survives the static instancing pass');
+const terrainPosition=terrain.geometry.attributes.position;
+for(let i=0;i<terrainPosition.count;i++){
+ assert.ok(Number.isFinite(terrainPosition.getY(i)));
+ if(Math.abs(terrainPosition.getX(i))<=11.5)assert.ok(Math.abs(terrainPosition.getY(i)+.004)<.0001,'play plane remains flat');
+}
+const contact=softContactTexture(),alpha=contact.image.data;
+assert.equal(alpha[3],0);assert.ok(alpha[((16*32)+16)*4+3]>200,'contact shadows fade out rather than hard circles');
+console.log('PASS: instanced terrain, finite sculpted vertices, unchanged flat play plane and soft contact alpha');
