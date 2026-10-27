@@ -1,0 +1,16 @@
+{
+  "sourceSite": "appgprj_6adcd3f2f49c8191a22687e3fc61a565",
+  "sourceVersion": 7,
+  "sourceCommit": "f1745d13fafcbad44d3cab900a3d825a0f76ef38",
+  "sourceFiles": [
+    "index.html",
+    "style.css",
+    "game.js",
+    "features.js",
+    "lab.js",
+    "questions.js"
+  ],
+  "destination": "public/dev/snow-day-visuals",
+  "baseline": "public/dev/snow-day-visuals/before",
+  "vendor": "public/assets/vendor/three-0.162.0/three.module.js"
+}
