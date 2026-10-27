@@ -1,0 +1,5 @@
+/* Pixel Arcade covers: keep complete scenes visible at every card size. */
+.game-card{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.game-art{min-width:0;min-height:0;object-fit:contain;background:#07123d;image-rendering:pixelated}
+.game-details{min-width:0}
+@media(max-width:720px){.game-card{grid-template-columns:1fr}.game-art{aspect-ratio:3/2;height:auto}}
