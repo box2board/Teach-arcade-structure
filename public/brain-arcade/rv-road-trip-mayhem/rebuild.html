@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>RV Road Trip Mayhem</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b1218;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif;display:grid;place-items:center;min-height:100vh}.wrap{width:min(1120px,100%);padding:8px}.card{background:#15202b;border:1px solid #334454;border-radius:16px;overflow:hidden}.hud{display:flex;gap:8px;flex-wrap:wrap;padding:8px;background:#101820}.pill{background:#24313d;border-radius:999px;padding:6px 10px;font-size:12px}.stage{position:relative}canvas{width:100%;height:auto;display:block;background:#87bfe3;touch-action:none}.call{position:absolute;left:50%;top:68px;transform:translateX(-50%);font-weight:1000;font-size:clamp(20px,4vw,42px);text-shadow:0 3px 10px #000;opacity:0;transition:opacity .16s;white-space:nowrap;pointer-events:none;text-align:center}.meters{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px}.bar{height:10px;background:#293743;border-radius:999px;overflow:hidden}.fill{height:100%}.controls{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:8px}.controls button{min-height:54px;border:1px solid #46596a;border-radius:12px;background:#2b3946;color:#fff;font-weight:900;font-size:14px}.jump{background:#3769a8!important}.nitro{background:#9a6328!important}.msg{text-align:center;padding:8px 12px;font-weight:800;font-size:13px;min-height:36px}.legend{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:0 8px 10px;font-size:11px;color:#cbd6de}@media(max-width:700px){.meters{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<div class="hud">
+<span class="pill">Score <b id="score">0</b></span>
+<span class="pill">Cargo <b id="cargo">5</b>/5</span>
+<span class="pill">Speed <b id="speed">0</b></span>
+<span class="pill">Combo <b id="combo">x1.0</b></span>
+<span class="pill">Section <b id="section">OPEN ROAD</b></span>
+</div>
+<div class="stage"><canvas id="game" width="1000" height="560"></canvas><div id="call" class="call"></div></div>
+<div class="meters">
+<div><small>NITRO</small><div class="bar"><div id="nitroBar" class="fill" style="background:#f39b38;width:60%"></div></div></div>
+<div><small>STORM</small><div class="bar"><div id="stormBar" class="fill" style="background:#8057c7;width:12%"></div></div></div>
+<div><small>DAMAGE</small><div class="bar"><div id="damageBar" class="fill" style="background:#d85848;width:0%"></div></div></div>
+<div><small>CARGO STABILITY</small><div class="bar"><div id="stabilityBar" class="fill" style="background:#62c486;width:100%"></div></div></div>
+</div>
+<div class="controls"><button id="brake">◀ BRAKE</button><button id="jump" class="jump">⬆ JUMP</button><button id="gas">GAS ▶</button><button id="nitro" class="nitro">⚡ NITRO</button></div>
+<div class="msg" id="msg">Drive the RV, protect the roof cargo, and choose when speed is worth the risk.</div>
+<div class="legend"><span>Normal speed: controllable</span><span>Nitro speed: risky</span><span>Brake: settles cargo</span></div>
+</div></div>
+<script src="game-core.js"></script>
+<script src="game-update.js"></script>
+<script src="game-draw.js"></script>
+
+</body>
+</html>
