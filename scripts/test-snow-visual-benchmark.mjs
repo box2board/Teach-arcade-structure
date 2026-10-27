@@ -67,3 +67,5 @@ vm.runInContext('nextWave()',ctx);assert.match(els.get('toast').textContent,/WAV
 ctx.testNow=0;vm.runInContext('start();recruitmentCorrect=25;finishRecruitment()',ctx);
 assert.equal(ctx.window.snowDiagnostics().state.squad,31);
 console.log('PASS: Site source hashes, unchanged feature/library modules, bottom wave notices, Lab academic lock and recruitment above 20');
+
+vm.runInContext("S.mode='review';nextQuestion()",ctx);assert.equal(els.get('lab-open').disabled,true,'review panel locks Lab before the next frame');
