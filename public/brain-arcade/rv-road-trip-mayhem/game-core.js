@@ -38,7 +38,7 @@ const cargo=[
  {name:'Kayak',off:20,a:1,loose:12,color:'#65ad76'},
  {name:'Bike',off:40,a:1,loose:9,color:'#db8b3c'}
 ];
-const R={x:120,y:350,vx:0,vy:0,on:1,jb:0,coyote:.18,nitro:60,storm:12,damage:0,score:0,combo:1,finish:0,air:0,checkpoint:120,inv:0,route:'lower',lastSection:'OPEN ROAD',cleanTimer:0};
+const R={x:120,y:350,vx:0,vy:0,on:1,jb:0,coyote:.18,nitro:60,storm:12,damage:0,score:0,combo:1,finish:0,air:0,checkpoint:120,inv:0,route:'lower',lastSection:'OPEN ROAD',cleanTimer:0,boost:0};
 let last=performance.now(),cam=0,callTimer=0,windClock=0;
 function ranges(q,arr){return arr.some(r=>q>r[0]&&q<r[1])}
 function gap(q){return ranges(q,bridgeGaps)||ranges(q,finalGap)}
@@ -57,5 +57,5 @@ function loseCargo(reason){const candidates=activeCargo().filter(i=>i.loose>=95)
 function damage(amount,reason){if(R.inv>0)return;R.damage=Math.min(100,R.damage+amount);R.vx*=.68;R.vy=-65;R.storm=Math.min(100,R.storm+5);R.combo=1;R.inv=.8;destabilize(amount*2.1);say(reason);if(R.damage>=100)emergencyRecovery();}
 function emergencyRecovery(){R.score=Math.max(0,R.score-350);R.damage=55;R.storm=Math.min(100,R.storm+14);R.x=Math.max(120,R.checkpoint);R.y=(ground(R.x)||390)-70;R.vx=160;R.vy=-40;settle(18);popup('EMERGENCY RECOVERY -350');say('The RV was nearly destroyed. Recovery cost time and score.');}
 function jump(){R.jb=.2}
-function useNitro(){if(R.nitro<10||loop.active)return;R.nitro-=10;R.vx=Math.min(820,R.vx+150);destabilize(5);R.score+=25;popup('NITRO');}
-function reset(){Object.assign(R,{x:120,y:350,vx:0,vy:0,on:1,jb:0,coyote:.18,nitro:60,storm:12,damage:0,score:0,combo:1,finish:0,air:0,checkpoint:120,inv:0,route:'lower',lastSection:'OPEN ROAD',cleanTimer:0});cargo.forEach((i,idx)=>{i.a=1;i.loose=[8,5,10,12,9][idx]});obstacles.forEach(o=>o.dead=0);pickups.forEach(p=>p.used=0);loop.active=false;loop.done=false;loop.eligible=false;loop.theta=0;cam=0;}
+function useNitro(){if(R.nitro<10||loop.active)return;R.nitro-=10;R.boost=.9;R.vx=Math.min(820,R.vx+150);destabilize(5);R.score+=25;popup('NITRO');}
+function reset(){Object.assign(R,{x:120,y:350,vx:0,vy:0,on:1,jb:0,coyote:.18,nitro:60,storm:12,damage:0,score:0,combo:1,finish:0,air:0,checkpoint:120,inv:0,route:'lower',lastSection:'OPEN ROAD',cleanTimer:0,boost:0});cargo.forEach((i,idx)=>{i.a=1;i.loose=[8,5,10,12,9][idx]});obstacles.forEach(o=>o.dead=0);pickups.forEach(p=>p.used=0);loop.active=false;loop.done=false;loop.eligible=false;loop.theta=0;cam=0;}
