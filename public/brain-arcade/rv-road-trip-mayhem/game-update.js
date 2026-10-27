@@ -34,7 +34,7 @@ function update(dt){
    else if(gy!=null&&R.y+38>=gy){const landing=R.vy;R.y=gy-38;R.vy=0;R.on=1;if(landing>560){R.damage=Math.min(100,R.damage+5);destabilize(12);R.combo=1;say('Hard landing — cargo straps took a hit.');}else if(R.air>.35){reward(Math.min(180,50+R.air*85),'CLEAN LANDING');settle(5);}R.air=0;}
    else if(!plat)R.on=0;
  }
- if(R.x>5160&&R.x<5260&&R.on&&R.vx>360&&R.jb>0){R.route='upper';R.vy=-430;R.on=0;popup('HIGH ROAD');}
+ if(R.route!=='upper'&&R.x>5160&&R.x<5320&&!R.on&&R.vy<0&&R.vx>330){R.route='upper';R.vy=Math.min(R.vy,-360);popup('HIGH ROAD');say('High road chosen — collect the pickups and avoid the mud below.');}
  if(!loop.done&&R.x>loop.start&&R.x<loop.start+120&&R.on&&R.vx>470&&K.g)enterLoop();
  for(const p of pickups){if(!pickupHit(p))continue;p.used=1;if(p.t==='nitro'){R.nitro=Math.min(100,R.nitro+35);reward(120,'NITRO PICKUP')}if(p.t==='repair'){R.damage=Math.max(0,R.damage-18);reward(140,'REPAIR PICKUP')}if(p.t==='score')reward(400,'STUNT TOKEN');}
  for(const o of obstacles){if(!obsHit(o))continue;if(o.breakable&&R.vx>470){o.dead=1;destabilize(4);reward(180,'SMASH')}else if(o.t==='pothole'){o.dead=1;R.vy=-150;R.vx*=.82;destabilize(16);R.damage=Math.min(100,R.damage+3);say('Pothole hit — a small jump would have cleared it.');R.inv=.45;}else{damage(o.t==='gate'?10:o.t==='crusher'?14:8,o.t==='gate'?'Gate hit — slowing down would have opened a safe window.':o.t==='crusher'?'Crusher hit — bad timing.':'Storm debris hit.');o.dead=1;R.x+=48;}}
