@@ -15,10 +15,10 @@ function update(dt){
  const damagePenalty=1-Math.min(.38,R.damage*.0038);
  const normalMax=620*damagePenalty;
  if(R.on){
-   if(K.g)R.vx+=520*damagePenalty*dt;
+   if(K.g&&(R.vx<normalMax||R.boost>0))R.vx+=520*damagePenalty*dt;
    if(K.b){R.vx-=760*dt;settle(22*dt);}
    const top=R.boost>0?820:normalMax;
-   if(R.vx>top)R.vx=Math.max(top,R.vx-260*dt);
+   if(R.vx>top)R.vx=R.boost>0?Math.min(820,R.vx):normalMax;
    if(ranges(R.x,lowerMud)&&R.route!=='upper'){R.vx*=Math.pow(.968,dt*60);if(K.g)R.vx+=135*dt;}
    else R.vx*=Math.pow(.995,dt*60);
    if(ranges(R.x,rough)){const over=Math.max(0,R.vx-390);destabilize(over/190*dt*16);R.vx*=Math.pow(.992,dt*60);}
@@ -36,13 +36,13 @@ function update(dt){
  }
  if(R.route!=='upper'&&R.x>5080&&R.x<5400&&!R.on&&R.vy<0){R.route='upper';R.vy=Math.min(R.vy,-360);popup('HIGH ROAD');say('High road chosen — collect the pickups and avoid the mud below.');}
  if(!loop.done&&R.x>loop.start&&R.x<loop.start+120&&R.on&&R.vx>470&&K.g)enterLoop();
- for(const p of pickups){if(!pickupHit(p))continue;p.used=1;if(p.t==='nitro'){R.nitro=Math.min(100,R.nitro+35);reward(120,'NITRO PICKUP')}if(p.t==='repair'){R.damage=Math.max(0,R.damage-18);reward(140,'REPAIR PICKUP')}if(p.t==='score')reward(400,'STUNT TOKEN');}
+ for(const p of pickups){if(!pickupHit(p))continue;p.used=1;if(p.t==='nitro'){R.nitro=Math.min(100,R.nitro+35);reward(120,'NITRO PICKUP')}if(p.t==='strap'){settle(42);reward(160,'STRAPS TIGHTENED')}if(p.t==='score')reward(400,'STUNT TOKEN');}
  for(const o of obstacles){if(!obsHit(o))continue;if(o.breakable&&R.vx>470){o.dead=1;destabilize(4);reward(180,'SMASH')}else if(o.t==='pothole'){o.dead=1;R.vy=-150;R.vx*=.82;destabilize(16);R.damage=Math.min(100,R.damage+3);say('Pothole hit — a small jump would have cleared it.');R.inv=.45;}else{damage(o.t==='gate'?10:o.t==='crusher'?14:8,o.t==='gate'?'Gate hit — slowing down would have opened a safe window.':o.t==='crusher'?'Crusher hit — bad timing.':'Storm debris hit.');o.dead=1;R.x+=48;}}
  for(const i of activeCargo()){if(i.loose>100)loseCargo('the straps gave way');}
  R.cleanTimer+=dt;if(R.cleanTimer>4&&R.on&&R.vx>260&&R.damage<80){R.cleanTimer=0;R.nitro=Math.min(100,R.nitro+3);R.score+=35;}
  let stormRate=1.3+Math.max(0,(260-R.vx)/120);if(ranges(R.x,wind))stormRate+=1.6;R.storm+=stormRate*dt;if(R.vx>500)R.storm-=2.2*dt;R.storm=Math.max(0,Math.min(100,R.storm));if(R.storm>=100){R.storm=72;damage(12,'The storm caught the RV — major setback.');R.x=Math.max(120,R.x-180);}
  if(R.y>700){R.x=Math.max(120,R.checkpoint);R.y=(ground(R.x)||390)-90;R.vx=170;R.vy=-50;R.damage=Math.min(100,R.damage+6);R.storm=Math.min(100,R.storm+7);destabilize(12);say('Recovered from the drop.');}
- if(R.x>12350){R.finish=1;const kept=activeCargo().length;const condition=Math.max(0,100-R.damage);R.score+=kept*600+condition*12;popup(kept>=4&&R.damage<40?'GREAT RUN':'CAMPGROUND REACHED');say('Finish — '+kept+'/5 cargo, '+Math.round(R.damage)+' damage, score '+Math.round(R.score)+'.');}
+ if(R.x>12350){R.finish=1;const kept=activeCargo().length;const condition=Math.max(0,100-R.damage);R.score+=kept*600+condition*12;const grade=kept>=4&&R.damage<40?'GREAT RUN':kept>=2?'ROUGH ARRIVAL':'BARELY MADE IT';popup(grade);say('Finish — '+kept+'/5 cargo, '+Math.round(R.damage)+' damage, score '+Math.round(R.score)+'.');}
  cam+=(Math.max(0,R.x-(250-Math.min(55,R.vx/14)))-cam)*Math.min(1,dt*5);
  updateHUD();
 }
