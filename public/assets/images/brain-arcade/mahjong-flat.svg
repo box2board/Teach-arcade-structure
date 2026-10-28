@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 768 512" role="img" aria-labelledby="title desc">
+  <title id="title">Mahjong tile artwork</title>
+  <desc id="desc">Three stylized Mahjong tiles in the Brain Arcade flat illustration style.</desc>
+  <g stroke="#0f172a" stroke-width="12" stroke-linejoin="round" stroke-linecap="round">
+    <g transform="translate(164 118) rotate(-10 112 140)">
+      <rect x="0" y="0" width="224" height="280" rx="28" fill="#60a5fa"/>
+      <rect x="18" y="18" width="188" height="238" rx="20" fill="#ffffff"/>
+      <circle cx="76" cy="80" r="18" fill="#f6c453"/>
+      <circle cx="148" cy="80" r="18" fill="#f6c453"/>
+      <circle cx="76" cy="150" r="18" fill="#14b8a6"/>
+      <circle cx="148" cy="150" r="18" fill="#14b8a6"/>
+      <circle cx="112" cy="212" r="18" fill="#2563eb"/>
+    </g>
+    <g transform="translate(380 110) rotate(9 112 140)">
+      <rect x="0" y="0" width="224" height="280" rx="28" fill="#14b8a6"/>
+      <rect x="18" y="18" width="188" height="238" rx="20" fill="#ffffff"/>
+      <path d="M68 80v124M112 66v152M156 80v124" fill="none" stroke="#2563eb" stroke-width="18"/>
+      <path d="M53 110l30-18M97 126l30-18M141 110l30-18M53 170l30-18M97 186l30-18M141 170l30-18" fill="none" stroke="#f6c453" stroke-width="12"/>
+    </g>
+    <g transform="translate(274 154)">
+      <rect x="0" y="0" width="224" height="280" rx="28" fill="#2563eb"/>
+      <rect x="18" y="18" width="188" height="238" rx="20" fill="#ffffff"/>
+      <path d="M73 78h78M112 78v118M73 196h78" fill="none" stroke="#14b8a6" stroke-width="18"/>
+      <path d="M80 130h64" fill="none" stroke="#f6c453" stroke-width="18"/>
+      <circle cx="112" cy="222" r="16" fill="#f6c453"/>
+    </g>
+  </g>
+</svg>
