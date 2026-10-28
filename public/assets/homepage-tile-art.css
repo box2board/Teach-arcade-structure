@@ -40,8 +40,193 @@
   min-height: 146px;
   aspect-ratio: auto;
 }
+
+/* =========================================================
+   Featured Original Activities — Arcade Cabinet treatment
+   Scoped to this homepage section only.
+   ========================================================= */
+section[aria-labelledby="activities-title"] .subjects-grid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+section[aria-labelledby="activities-title"] .home-art-card {
+  --cabinet-accent: #22d3ee;
+  --cabinet-glow: rgba(34, 211, 238, .34);
+  position: relative;
+  overflow: visible;
+  padding: 48px 10px 12px;
+  border: 3px solid var(--cabinet-accent);
+  border-radius: 18px 18px 12px 12px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0) 28%),
+    linear-gradient(180deg, #172033 0%, #0f172a 42%, #111827 100%);
+  box-shadow:
+    0 14px 30px rgba(15, 23, 42, .22),
+    0 0 0 5px #0f172a,
+    0 0 22px var(--cabinet-glow);
+  color: #fff;
+  transform: translateY(0);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+section[aria-labelledby="activities-title"] .home-art-card:nth-child(2) {
+  --cabinet-accent: #fb923c;
+  --cabinet-glow: rgba(251, 146, 60, .34);
+}
+section[aria-labelledby="activities-title"] .home-art-card:nth-child(3) {
+  --cabinet-accent: #a78bfa;
+  --cabinet-glow: rgba(167, 139, 250, .34);
+}
+section[aria-labelledby="activities-title"] .home-art-card:nth-child(4) {
+  --cabinet-accent: #4ade80;
+  --cabinet-glow: rgba(74, 222, 128, .32);
+}
+section[aria-labelledby="activities-title"] .home-art-card:nth-child(5) {
+  --cabinet-accent: #facc15;
+  --cabinet-glow: rgba(250, 204, 21, .32);
+}
+
+section[aria-labelledby="activities-title"] .home-art-card::before {
+  content: "★  TEACH ARCADE ORIGINALS";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  right: 12px;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border: 2px solid var(--cabinet-accent);
+  border-radius: 8px 8px 5px 5px;
+  background: linear-gradient(180deg, #18243a 0%, #080d18 100%);
+  color: #fff;
+  box-shadow: inset 0 0 12px var(--cabinet-glow), 0 2px 0 rgba(0,0,0,.38);
+  font: 800 11px/1 Poppins, sans-serif;
+  letter-spacing: .75px;
+  text-align: center;
+}
+
+section[aria-labelledby="activities-title"] .home-art-card::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: -13px;
+  height: 12px;
+  border-radius: 0 0 8px 8px;
+  background: #0f172a;
+  border: 2px solid var(--cabinet-accent);
+  border-top: 0;
+  box-shadow: 0 5px 9px rgba(15,23,42,.18);
+}
+
+section[aria-labelledby="activities-title"] .home-art-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--cabinet-accent);
+  box-shadow:
+    0 18px 36px rgba(15, 23, 42, .28),
+    0 0 0 5px #0f172a,
+    0 0 30px var(--cabinet-glow);
+  filter: saturate(1.07);
+}
+
+section[aria-labelledby="activities-title"] .home-tile-art {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 4px solid #050a12;
+  border-radius: 9px;
+  background: #08111f;
+  box-shadow:
+    0 0 0 2px var(--cabinet-accent),
+    inset 0 0 18px rgba(255,255,255,.08),
+    0 7px 14px rgba(0,0,0,.36);
+}
+
+section[aria-labelledby="activities-title"] .home-art-copy {
+  position: relative;
+  min-height: 124px;
+  margin: 11px -2px -2px;
+  padding: 16px 18px 42px;
+  border-radius: 7px 7px 10px 10px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0) 35%),
+    #0b1220;
+  border-top: 2px solid var(--cabinet-accent);
+  text-align: center;
+}
+
+section[aria-labelledby="activities-title"] .home-art-copy::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  bottom: 14px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--cabinet-accent);
+  box-shadow:
+    26px 4px 0 -3px #ef4444,
+    45px 0 0 -3px #facc15,
+    64px 4px 0 -3px #22c55e,
+    0 0 0 4px #020617,
+    0 3px 0 5px rgba(255,255,255,.07);
+}
+
+section[aria-labelledby="activities-title"] .home-art-copy::after {
+  content: "PLAY";
+  position: absolute;
+  right: 16px;
+  bottom: 13px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--cabinet-accent), rgba(255,255,255,.08));
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.45);
+  font: 800 10px/1 Poppins, sans-serif;
+  letter-spacing: .6px;
+}
+
+section[aria-labelledby="activities-title"] .subject-title {
+  margin: 0 0 7px;
+  color: #fff;
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  text-shadow: 0 2px 0 #020617, 0 0 10px var(--cabinet-glow);
+}
+
+section[aria-labelledby="activities-title"] .subject-desc {
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+section[aria-labelledby="activities-title"] .home-art-card:focus-visible {
+  outline: 4px solid #fff;
+  outline-offset: 7px;
+}
+
 @media (max-width: 900px) {
   .more-originals-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  section[aria-labelledby="activities-title"] .subjects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  section[aria-labelledby="activities-title"] .subjects-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  section[aria-labelledby="activities-title"] .home-art-card {
+    max-width: 430px;
+    width: 100%;
+    margin-inline: auto;
+  }
 }
 @media (max-width: 480px) {
   .more-originals-grid { grid-template-columns: 1fr; }
