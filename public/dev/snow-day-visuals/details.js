@@ -41,3 +41,33 @@ export function updateIceShield(enemy){
  const cracks=enemy.shieldVisual?.userData.cracks;if(!cracks)return;
  cracks[0].visible=enemy.shield>0&&enemy.shield<=3;cracks[1].visible=enemy.shield>0&&enemy.shield<=1;
 }
+
+const warningRing=new THREE.TorusGeometry(1,.085,5,28);warningRing.rotateX(-Math.PI/2);
+const orange=new THREE.MeshBasicMaterial({color:0xffa43c});
+const shotMaterial=new THREE.MeshStandardMaterial({color:0xf17b3d,emissive:0x9a3213,emissiveIntensity:.25,roughness:.6});
+const frostWhite=new THREE.MeshBasicMaterial({color:0xeaffff});
+const coreGeo=new THREE.SphereGeometry(.5,8,5), badgeGeo=new THREE.CylinderGeometry(.55,.55,.14,12);badgeGeo.rotateX(Math.PI/2);
+const iconGeometries=new Map(),badgeMaterials=new Map();
+function iconGeometry(color){
+ if(iconGeometries.has(color))return iconGeometries.get(color);
+ const s=new THREE.Shape();
+ const paths={
+  0x44b98c:[[-.34,.16],[-.22,.3],[0,.17],[.22,.3],[.34,.16],[.28,-.05],[0,-.32],[-.28,-.05]],
+  0xffbd3f:[[.08,.36],[-.27,-.04],[-.04,-.04],[-.12,-.37],[.28,.1],[.05,.1]],
+  0xae75da:[[-.32,.25],[-.04,.08],[-.32,-.15],[-.22,-.25],[.09,.03],[.26,-.25],[.35,-.15],[.08,.25]],
+  0xd689d7:[[0,.35],[.3,0],[0,-.35],[-.3,0]]
+ };
+ const points=paths[color];s.moveTo(...points[0]);for(const p of points.slice(1))s.lineTo(...p);s.closePath();
+ const g=new THREE.ShapeGeometry(s);g.translate(0,0,.09);iconGeometries.set(color,g);return g;
+}
+export function dressFeatureObject(object,color,isMarker=false){
+ if(color===0xeab049){object.geometry=warningRing;object.material=orange;object.position.y=.055;object.userData.artKind='attack-warning';
+ const dot=new THREE.Mesh(coreGeo,orange);dot.scale.set(.19,1,.19);object.add(dot);
+ }else if(color===0xf09161){object.material=shotMaterial;const core=new THREE.Mesh(coreGeo,frostWhite);core.position.set(-.2,.2,.38);object.add(core);object.userData.artKind='enemy-snowball';
+ }else if(isMarker&&[0x44b98c,0xffbd3f,0xae75da,0xd689d7].includes(color)){
+ if(!badgeMaterials.has(color))badgeMaterials.set(color,new THREE.MeshStandardMaterial({color,roughness:.65}));
+ object.geometry=badgeGeo;object.material=badgeMaterials.get(color);object.scale.set(.85,.85,.85);object.position.y=3.15;
+ object.add(new THREE.Mesh(iconGeometry(color),frostWhite));object.userData.artKind='feature-badge';
+ }
+ return object;
+}

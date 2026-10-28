@@ -11,9 +11,9 @@ const {createParticlePool,createWeather}=await import('../public/teach-arcade-vi
 const {buildVillage,buildFort,dressDefender,dressCreature,batchCharacter}=await import('../public/dev/snow-day-visuals/theme.js');
 const {fitBenchmarkCamera}=await import('../public/dev/snow-day-visuals/camera.js');
 const {sculptDefender,sculptCreature,snowSurface}=await import('../public/dev/snow-day-visuals/art.js');
-const {softContactTexture,dressSupply}=await import('../public/dev/snow-day-visuals/landscape.js');
-const {dressIceShield,updateIceShield,snowTree}=await import('../public/dev/snow-day-visuals/details.js');
-const ctx={dressIceShield,updateIceShield,softContactTexture,dressSupply,sculptDefender,sculptCreature,snowSurface,fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,batchCharacter,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
+const {softContactTexture,dressSupply,updateSupplyStyle}=await import('../public/dev/snow-day-visuals/landscape.js');
+const {dressFeatureObject,dressIceShield,updateIceShield,snowTree}=await import('../public/dev/snow-day-visuals/details.js');
+const ctx={updateSupplyStyle,dressFeatureObject,dressIceShield,updateIceShield,softContactTexture,dressSupply,sculptDefender,sculptCreature,snowSurface,fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,batchCharacter,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
 vm.runInContext('start();finishRecruitment();update(.016)',ctx);assert.equal(ctx.window.snowDiagnostics().modules.features.length,5);assert.ok(ctx.window.snowDiagnostics().bullets>0);
 vm.runInContext("S.wave=2;S.damage=3;S.health=1;addEnemy(0,18);update(.016)",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'rebuild');assert.equal(ctx.window.snowDiagnostics().state.health,0);
 function answer(correct){const i=vm.runInContext(`questionList[(questionIndex-1)%questionList.length].choices.find(c=>c.correct===${correct}).text`,ctx);const group=els.get('content').children[1];group.children.find(b=>b.textContent.slice(3)===i).onclick();}
@@ -106,3 +106,17 @@ vm.runInContext('hitEnemy(enemies.find(e=>e.shield===0),1)',ctx);assert.equal(sh
 const treeScene=new THREE.Scene();const fakeMesh=(geo,color,x,y,z,sx=1,sy=sx,sz=sx,parent=treeScene)=>{const m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color}));m.position.set(x,y,z);m.scale.set(sx,sy,sz);parent.add(m);return m;};
 const tree=snowTree({scene:treeScene,mesh:fakeMesh,sphere:new THREE.SphereGeometry(1,8,6),cylinder:new THREE.CylinderGeometry(1,1,1,8),shadow(){},random:()=>.5},18,-20,1);assert.equal(tree.userData.snowTree,true);assert.ok(tree.children.length<30);
 console.log('PASS: shield silhouette, cracks at 3/1 strength, same damage absorption/removal reference, post-break HP damage and bounded tree geometry');
+
+for(const [color,marker,kind] of [[0xeab049,false,'attack-warning'],[0xf09161,false,'enemy-snowball'],[0x44b98c,true,'feature-badge'],[0xffbd3f,true,'feature-badge'],[0xae75da,true,'feature-badge'],[0xd689d7,true,'feature-badge']]){
+ const root=new THREE.Mesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshStandardMaterial());const original=root;
+ dressFeatureObject(root,color,marker);assert.equal(root,original);assert.equal(root.userData.artKind,kind);assert.ok(root.children.length<=1);
+}
+vm.runInContext("runConfig={enabled:['projectiles','charging','support','splitting'],randomize:false,seed:1,density:1,speed:1,health:1,startWave:1};start();finishRecruitment();addEnemy(0,-10);for(let i=0;i<210;i++)fx.update(.02)",ctx);
+assert.ok(vm.runInContext("scene.children.some(o=>o.userData.artKind==='attack-warning')",ctx),'actual timed warning uses art adapter');
+const stateBeforeArt=JSON.stringify(ctx.window.snowDiagnostics().state);vm.runInContext("featureMesh(sphere,0xf09161,0,.7,0,.4)",ctx);assert.equal(JSON.stringify(ctx.window.snowDiagnostics().state),stateBeforeArt);
+console.log('PASS: feature badge/shot/warning adapters preserve object identity and simulation state; real module warnings use ring art');
+
+vm.runInContext('addCrate();crates.at(-1).hp=crates.at(-1).max/2;updateSupplyStyle(crates.at(-1))',ctx);
+assert.equal(vm.runInContext('crates.at(-1).g.userData.targetBar.scale.x',ctx),1.05);
+assert.equal(vm.runInContext('crates.at(-1).g.userData.targetBar.position.x',ctx),-.525);
+console.log('PASS: crate durability bar reflects HP without changing crate rewards or hit points');

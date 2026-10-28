@@ -9,8 +9,8 @@ import {createCues} from '/teach-arcade-visuals/core/cues.js';
 import {createParticlePool,createWeather} from '/teach-arcade-visuals/core/particles-three.js';
 import {buildVillage,buildFort,dressDefender,dressCreature,batchCharacter} from './theme.js';
 import {sculptDefender,sculptCreature,snowSurface} from './art.js';
-import {softContactTexture,dressSupply} from './landscape.js';
-import {dressIceShield,updateIceShield} from './details.js';
+import {softContactTexture,dressSupply,updateSupplyStyle} from './landscape.js';
+import {dressFeatureObject,dressIceShield,updateIceShield} from './details.js';
 const $=id=>document.getElementById(id), canvas=$('field');
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;
 let qualityName='standard';
@@ -43,7 +43,8 @@ const crew=[];function syncSquad(){while(crew.length<S.squad){const g=defender()
 function creature(type){return sculptCreature(type,{mesh,sphere,box,cone,cylinder,shadow});}
 const S={mode:'menu',wave:1,health:100,squad:6,score:0,time:0,x:0,target:0,cooldown:0,burst:0,damage:1,rate:1,difficulty:'normal',elapsed:0,spawn:0,crateTimer:0,bossSpawned:false};
 let enemies=[],bullets=[],crates=[],particles=[],clock=0,low=false,toastUntil=0,uiSerial=0;let fortShown=100,fortPrevious=100,visualFrameMs=0;const keys=new Set();let dragging=false,questionList=[],questionIndex=0,earned=0,answered=false,reviewCount=0;
-const fx=createFeatures({S,scene,mesh,sphere,box,mat,label,toast,addEnemy,finish,losePlayer,enemies:()=>enemies,crates:()=>crates,status:t=>{$('module-status').textContent=t;}});let recruitmentDeadline=0,recruitmentCorrect=0;let rebuildProgress=0;let lab;let runConfig={enabled:[],seed:12345,density:1,speed:1,health:1,startWave:1,startSquad:5,randomize:true};
+function featureMesh(geo,color,...args){return dressFeatureObject(mesh(geo,color,...args),color,geo===box);}
+const fx=createFeatures({S,scene,mesh:featureMesh,sphere,box,mat,label,toast,addEnemy,finish,losePlayer,enemies:()=>enemies,crates:()=>crates,status:t=>{$('module-status').textContent=t;}});let recruitmentDeadline=0,recruitmentCorrect=0;let rebuildProgress=0;let lab;let runConfig={enabled:[],seed:12345,density:1,speed:1,health:1,startWave:1,startSquad:5,randomize:true};
 function toast(t){$('toast').dataset.cue=String(++uiSerial);cues.emit('notice',{message:t});$('toast').textContent=t;$('toast').style.opacity=1;toastUntil=clock+2.5;}
 function label(text,color='#174963'){const c=document.createElement('canvas');c.width=256;c.height=128;const ctx=c.getContext('2d');ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(10,14,236,98,22);ctx.fill();ctx.fillStyle='white';ctx.font='bold 58px system-ui';ctx.textAlign='center';ctx.fillText(text,128,84);const tex=new THREE.CanvasTexture(c);const material=new THREE.SpriteMaterial({map:tex,depthTest:false});const spr=new THREE.Sprite(material);spr.scale.set(3.4,1.7,1);return spr;}
 function addEnemy(x,z,type='normal'){const g=creature(type),scale=type==='boss'?3.8:type==='tank'?1.35:type==='runner'?.8:1;g.position.set(x,0,z);g.scale.setScalar(scale*1.4);scene.add(g);const hp=type==='boss'?500:type==='tank'?12:type==='runner'?3:4;enemies.push({g,type,x,z,hp,max:hp,r:scale*.7,speed:type==='boss'?1.7:type==='runner'?6:3.1+S.wave*.3,phase:fx.random()*6});fx.spawn(enemies.at(-1));dressIceShield(enemies.at(-1));}
@@ -92,7 +93,7 @@ S.spawn-=dt;if(S.spawn<=0&&S.time<30&&enemies.length<180){const count=fx.group()
 S.crateTimer-=dt;if(S.crateTimer<=0&&S.time<27){addCrate();S.crateTimer=8;}
 if(S.wave===3&&S.time>25&&!S.bossSpawned){S.bossSpawned=true;addEnemy(0,-46,'boss');toast('THE FROST KING HAS ARRIVED');}
 for(const e of [...enemies]){e.z+=dt*e.speed*factor*(S.wave===2?1.12:1)*fx.settings().speed;e.x+=Math.sin(S.elapsed*1.2+e.phase)*dt*(e.type==='runner'?.9:.12);e.g.position.set(e.x,Math.abs(Math.sin(clock*5+e.phase))*.12,e.z);e.g.rotation.z=Math.sin(clock*3+e.phase)*.045;if(e.z>17){fx.leak();S.health-=e.type==='boss'?100:e.type==='tank'?9:4;if(e.type==='boss'){e.z=-25;e.g.position.z=e.z;}else{scene.remove(e.g);enemies.splice(enemies.indexOf(e),1);}puff(e.x,.5,18,0x99d4ec,15);if(S.health<=0){finish(false);return;}}}
-for(const c of [...crates]){c.z+=dt*5;c.g.position.z=c.z;c.g.rotation.y=Math.sin(clock)*.04;if(c.z>19){dropCrate(c);crates.splice(crates.indexOf(c),1);}}
+for(const c of [...crates]){updateSupplyStyle(c);c.z+=dt*5;c.g.position.z=c.z;c.g.rotation.y=Math.sin(clock)*.04;if(c.z>19){dropCrate(c);crates.splice(crates.indexOf(c),1);}}
 for(const b of [...bullets]){b.z-=dt*48;b.life-=dt;b.g.position.z=b.z;let hit=false;for(const c of [...crates])if(Math.abs(b.x-c.x)<1.4&&Math.abs(b.z-c.z)<1.6){c.hp-=b.damage;hit=true;if(c.hp<=0){S.squad=S.squad+(c.reward||3);syncSquad();fx.reward();toast('+'+(c.reward||3)+' DEFENDERS · SQUAD UP!');puff(c.x,1,c.z,0xffcb74,22);dropCrate(c);crates.splice(crates.indexOf(c),1);}else{disposeLabel(c.label);c.g.remove(c.label);c.label=label(String(Math.ceil(c.hp)));c.label.position.y=3.4;c.g.add(c.label);}break;}
 if(!hit)for(const e of [...enemies])if(Math.abs(b.x-e.x)<e.r+.15&&Math.abs(b.z-e.z)<e.r+.5){if(b.hitIds.has(e.featureId))continue;b.hitIds.add(e.featureId);if(b.freeze)e.slowUntil=S.elapsed+2;hitEnemy(e,b.damage);hit=!b.pierce;break;}
 if(hit||b.life<=0||b.z< -80){scene.remove(b.g);bullets.splice(bullets.indexOf(b),1);}if(S.mode!=='play')return;}

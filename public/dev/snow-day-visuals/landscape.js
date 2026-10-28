@@ -29,9 +29,16 @@ export function softContactTexture(){
  const t=new THREE.DataTexture(data,n,n);t.needsUpdate=true;return t;
 }
 export function dressSupply(root,{mesh,box,sphere}){
+ mesh(box,0x183652,0,2.65,1.25,2.35,.24,.12,root);
+ const fill=mesh(box,0xffc36b,0,2.65,1.33,2.1,.11,.04,root);root.userData.targetBar=fill;
  for(const side of [-1,1])for(let i=0;i<4;i++)mesh(box,i%2?0xc58a4e:0xaa6b39,side*1.26,1, -.82+i*.55,.05,1.8,.48,root);
  for(let i=0;i<4;i++)mesh(box,i%2?0xd49a59:0xbd8045,-.93+i*.62,1,1.15,.57,1.8,.06,root);
  for(const side of [-1,1]){mesh(box,0x75472e,side*1.04,1,1.22,.18,2,.12,root);mesh(sphere,0x526477,side*1.04,1.68,1.3,.055,.055,.035,root);mesh(sphere,0x526477,side*1.04,.35,1.3,.055,.055,.035,root);}
  const brace=mesh(box,0xf2be77,0,1,1.24,2.2,.18,.1,root);brace.rotation.z=.56;
  for(let i=0;i<5;i++)mesh(sphere,0xf5faff,-1+i*.5,2.25+(i%2)*.06,0,.4,.18,.85,root);
+}
+
+export function updateSupplyStyle(crate){
+ const fill=crate.g.userData.targetBar;if(!fill)return;
+ const ratio=Math.max(0,Math.min(1,crate.hp/crate.max));fill.scale.x=2.1*Math.max(.001,ratio);fill.position.x=-1.05+1.05*ratio;
 }
