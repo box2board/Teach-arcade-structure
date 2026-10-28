@@ -74,3 +74,9 @@ Version 1 includes rig, body, face, eyeColor, brows, skin, hair, top, bottom, sh
 Run `node --test tests/character-studio/avatar.test.mjs` from repository root. Tests cover validated recipe round-trips, rejected invalid inputs, stable bone names, finite mesh positions, normalized skin weights, all animation modes at proportion extremes, disposal, and color-only updates.
 
 The first review must still judge silhouette, clothing deformation, face/hair quality, camera framing and touch ergonomics in the live preview. Automated geometry checks do not establish commercial visual quality. No production acceptance is implied by passing tests.
+
+## Color-pop customization update
+
+Adds four illustrated look presets (Electric, Bubblegum, Sunburst, Pixel pop), Ponytail/Mohawk hair, Headphones/Wristbands accessories, None/Bolt/Star/Arcade chest graphics with a separate color channel, vivid outfit/hair palettes, and four local studio backdrops. Presets preserve skin, body proportions and face. Backdrops are editor presentation only and are not exported as avatar appearance.
+
+Version 1 recipes remain supported: missing `top.graphic` defaults to `None`, missing `top.graphicColor` to white. New recipes include both fields. All new parts attach to the existing rig. Hair/headphone overlap remains a visual-review consideration for extreme silhouettes.

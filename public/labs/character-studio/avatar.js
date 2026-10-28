@@ -63,6 +63,25 @@ export function createAvatar(input){
  if(recipe.hair.style==='Bob'){for(const s of [-1,1])mesh(loft([[0,.045,.11],[.03,.065,.135],[.16,.066,.14],[.28,.052,.12],[.33,0,0]],16),hair,'head',[s*.18,.065,-.025]);mesh(loft([[0,0,0],[.025,.17,.045],[.08,.19,.06],[.13,.16,.06],[.16,0,0]],24),hair,'head',[0,.28,.14]);}
  if(recipe.accessories.includes('Glasses')){for(const s of [-1,1]){let pts=[];for(let i=0;i<=24;i++){const a=i/24*Math.PI*2;pts.push([s*.084+Math.sin(a)*.053,.235+Math.cos(a)*.045,.19]);}mesh(tube(pts,.007),channel('accessoryColor'),'head');mesh(tube([[s*.135,.235,.19],[s*.20,.245,.08],[s*.21,.22,-.02]],.006),channel('accessoryColor'),'head');}mesh(tube([[-.03,.24,.19],[0,.25,.20],[.03,.24,.19]],.006),channel('accessoryColor'),'head');}
  if(recipe.accessories.includes('Backpack')){mesh(loft([[-.35,0,0],[-.33,.14,.07],[-.28,.17,.09],[-.07,.17,.09],[.02,.12,.07],[.035,0,0]],20),channel('accessoryColor'),'chest',[0,0,-.20]);for(const s of [-1,1])mesh(tube([[s*.14,-.33,-.16],[s*.21,-.19,.08],[s*.21,.025,.10],[s*.14,.035,-.22]],.018),secondary,'chest');}
+ if(recipe.hair.style==='Ponytail'){
+ const tail=mesh(loft([[0,0,0],[.04,.055,.055],[.12,.082,.085],[.23,.09,.08],[.33,.065,.06],[.36,0,0]],18),hair,'head',[0,.26,-.21]);tail.rotation.x=-.55;
+ mesh(loft([[0,.05,.045],[.035,.055,.05],[.05,.05,.045]],16),secondary,'head',[0,.38,-.16]);
+ }
+ if(recipe.hair.style==='Mohawk'){
+ for(let i=0;i<6;i++){const z=-.13+i*.052;mesh(loft([[0,.045,.035],[.055,.052,.039],[.12,.032,.027],[.17,0,0]],12),hair,'head',[0,.43-Math.abs(z)*.35,z]);}
+ }
+ if(recipe.accessories.includes('Headphones')){
+ const arc=[];for(let i=0;i<=20;i++){const a=i/20*Math.PI;arc.push([Math.cos(a)*.255,.23+Math.sin(a)*.30,-.025]);}mesh(tube(arc,.022),channel('accessoryColor'),'head');
+ for(const side of [-1,1]){mesh(loft([[0,0,0],[.02,.041,.055],[.12,.041,.055],[.14,0,0]],16),channel('accessoryColor'),'head',[side*.24,.14,0]);mesh(loft([[0,0,0],[.02,.022,.04],[.09,.022,.04],[.11,0,0]],12),secondary,'head',[side*.27,.155,.006]);}
+ }
+ if(recipe.accessories.includes('Wristbands'))for(const side of ['L','R'])mesh(loft([[0,.05,.048],[.032,.052,.049],[.042,.05,.048]],16),channel('accessoryColor'),'hand.'+side,[0,.008,0]);
+ if(recipe.top.graphic!=='None'){
+ const shape=new T.Shape();let pts;
+ if(recipe.top.graphic==='Bolt')pts=[[-.01,.09],[-.065,-.015],[-.006,-.008],[-.035,-.10],[.07,.026],[.012,.02],[.035,.09]];
+ else if(recipe.top.graphic==='Star'){pts=[];for(let i=0;i<10;i++){const a=Math.PI/2+i*Math.PI/5,r=i%2?.041:.087;pts.push([Math.cos(a)*r,Math.sin(a)*r]);}}
+ else pts=[[-.08,-.06],[-.08,.04],[-.045,.04],[-.045,.08],[.045,.08],[.045,.04],[.08,.04],[.08,-.06],[.045,-.06],[.045,-.025],[-.045,-.025],[-.045,-.06]];
+ shape.moveTo(...pts[0]);pts.slice(1).forEach(p=>shape.lineTo(...p));shape.closePath();const g=new T.ShapeGeometry(shape);const m=mesh(g,channel('top.graphicColor'),'chest',[recipe.top.style==='Varsity'?-.12:0,-.11,.164]);if(recipe.top.style==='Varsity')m.scale.setScalar(.6);
+ }
  // Batch compatible meshes by attachment and material; retain bone-local transforms.
  function mergeGroup(list, isSkin=false){if(list.length<2)return;const names=isSkin?['position','normal','uv','skinIndex','skinWeight']:['position','normal','uv'];const arrays=Object.fromEntries(names.map(n=>[n,[]])),indices=[];let offset=0;
  for(const m of list){m.updateMatrix();const g=m.geometry.clone();if(!isSkin)g.applyMatrix4(m.matrix);for(const n of names)arrays[n].push(...(g.attributes[n]?.array||new Float32Array(g.attributes.position.count*2)));for(const i of g.index.array)indices.push(i+offset);offset+=g.attributes.position.count;g.dispose();}
