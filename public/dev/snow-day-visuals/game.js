@@ -11,6 +11,7 @@ import {buildVillage,buildFort,dressDefender,dressCreature,batchCharacter} from 
 import {sculptDefender,sculptCreature,snowSurface} from './art.js';
 import {softContactTexture,dressSupply,updateSupplyStyle} from './landscape.js';
 import {dressFeatureObject,dressIceShield,updateIceShield} from './details.js';
+import {bakeGroundShade} from './surfaces.js';
 const $=id=>document.getElementById(id), canvas=$('field');
 const reducedMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;
 let qualityName='standard';
@@ -18,11 +19,11 @@ try{const saved=localStorage.getItem('ta-visual-quality');qualityName=['performa
 const cues=createCues({reducedMotion,onAudio:detail=>window.dispatchEvent(new CustomEvent('teach-arcade:audio',{detail}))});
 let renderer;
 try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});}catch(e){$('cardtitle').textContent='3D graphics unavailable';$('copy').textContent='This browser could not start WebGL. Try enabling hardware acceleration or opening this link in Safari or Chrome.';$('go').hidden=true;$('visual-test').hidden=true;throw e;}
-renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;renderer.setClearColor(0xc8e4ef);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.02;renderer.setClearColor(0xc8e4ef);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));
 const scene=new THREE.Scene();scene.fog=new THREE.Fog(0xc8e4ef,65,145);
 const particlePool=createParticlePool(scene,cues.random);const weather=createWeather(scene,cues.random);
 const camera=new THREE.PerspectiveCamera(43,1,.1,220);
-scene.add(new THREE.HemisphereLight(0xd9eaff,0x6b638d,1.65));const sun=new THREE.DirectionalLight(0xffdbac,3.3);sun.position.set(-25,45,15);scene.add(sun);
+scene.add(new THREE.HemisphereLight(0xc8ddff,0x655b80,1.05));const sun=new THREE.DirectionalLight(0xffdbac,3.3);sun.position.set(-28,28,22);scene.add(sun);
 const snowGrain=snowSurface();
 const materials=new Map(), sphere=new THREE.SphereGeometry(1,12,9), box=new THREE.BoxGeometry(1,1,1), cone=new THREE.ConeGeometry(1,1,8), cylinder=new THREE.CylinderGeometry(1,1,1,10);
 function mat(color){if(!materials.has(color))materials.set(color,new THREE.MeshStandardMaterial({color,emissive:[0xffd38a,0xffdc91].includes(color)?color:0x000000,emissiveIntensity:.35,roughness:.9,bumpMap:[0xf4f9ff,0xf3f9ff,0xf5faff,0xffffff,0xf6fbff,0xeef6ff].includes(color)?snowGrain:null,bumpScale:.045}));return materials.get(color);}
@@ -30,13 +31,14 @@ function mesh(g,color,x,y,z,sx=1,sy=sx,sz=sx,parent=scene){const o=new THREE.Mes
 const shadowMat=new THREE.MeshBasicMaterial({color:0x3f437b,map:softContactTexture(),transparent:true,opacity:.48,depthWrite:false}),circle=new THREE.CircleGeometry(1,16);
 function shadow(parent,r=1){const s=new THREE.Mesh(circle,shadowMat);s.rotation.x=-Math.PI/2;s.position.y=.035;s.scale.set(r,r*.7,1);parent.add(s);}
 const village=buildVillage({scene,mesh,box,sphere,cone,cylinder,shadow,random:cues.random});
+const groundBake=bakeGroundShade(scene,snowGrain);
 // Batch fixed scenery into instanced meshes to reduce Chromebook draw calls.
 scene.updateMatrixWorld(true);
 const batches=new Map(), fixed=[];
 scene.traverse(o=>{if(o.isMesh&&!o.parent?.userData.dynamicVisual){const key=o.geometry.uuid+o.material.uuid;if(!batches.has(key))batches.set(key,[]);batches.get(key).push({geometry:o.geometry,material:o.material,matrix:o.matrixWorld.clone()});fixed.push(o);}});
 for(const o of fixed)o.parent.remove(o);
 for(const entries of batches.values()){const first=entries[0],batch=new THREE.InstancedMesh(first.geometry,first.material,entries.length);entries.forEach((e,i)=>batch.setMatrixAt(i,e.matrix));batch.computeBoundingSphere();scene.add(batch);}
-const fortBlocks=buildFort({scene,mesh,box,sphere,cone,cylinder});
+const fortBlocks=buildFort({scene,mesh,box,sphere,cone,cylinder,shadow});
 const squadGroup=new THREE.Group();scene.add(squadGroup);squadGroup.position.z=14;
 function defender(){return sculptDefender({mesh,sphere,box,shadow});}
 const crew=[];function syncSquad(){while(crew.length<S.squad){const g=defender();squadGroup.add(g);crew.push(g);}while(crew.length>S.squad)squadGroup.remove(crew.pop());crew.forEach((g,i)=>{const columns=Math.min(7,Math.ceil(Math.sqrt(S.squad*2.4))),row=Math.floor(i/columns),n=Math.min(columns,S.squad-row*columns);g.scale.setScalar(1.4);g.position.set(((i%columns)-(n-1)/2)*1.4,0,Math.min(row*1.7,4));});}

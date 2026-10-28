@@ -4,7 +4,7 @@
   "games": {
     "snow-day-defender": {
       "status": "awaiting-visual-review",
-      "visualLevel": "battlefield-markers-detail-review",
+      "visualLevel": "lighting-and-surface-depth-review",
       "visualSystemVersion": "0.1.0-preview",
       "route": "/dev/snow-day-visuals/",
       "beforeRoute": "/dev/snow-day-visuals/before/",
@@ -13,7 +13,7 @@
       "camera": "lower-angle close view; eased portrait squad follow and offscreen threat counts",
       "particles": "shared typed-array pool, bounded trails",
       "transitions": "HUD/reward cues; wave notifications remain beside bottom controls",
-      "lighting": "warm/cool lights, emissive windows, soft contact shadow texture",
+      "lighting": "warm directional key, reduced cool fill; cached static soft-shade map + contact shadows",
       "HUD": "compact phone header, single-row HUD, shorter bottom controls",
       "animation": "shared UI cues, cosmetic hit squash, eased fort rebuilding",
       "environmentalEffects": "layered snow plus sculpted terrain, rock/spruce/cabin details; static instancing",
@@ -49,7 +49,8 @@
         "Appearance pass 2: environment, fort caps and supply crate art; no dedicated animation pass started",
         "Screenshot-driven composition pass: wider squad slightly widens volley footprint; camera no longer fits entire fort in portrait; balance/device review pending",
         "Closer composition liked by user; detail pass adds irregular snow spruce and beveled ice shields with damage-state cracks; feature rules unchanged",
-        "Appearance detail: symbolic feature badges, aimed-shot ground rings, distinct enemy snowballs and crate durability bars; rule source unchanged"
+        "Appearance detail: symbolic feature badges, aimed-shot ground rings, distinct enemy snowballs and crate durability bars; rule source unchanged",
+        "Whole-scene depth pass: cached snow shade texture, grain, grounded trees/cabins and fort contact shadows; rendered/device approval pending"
       ],
       "authoritativeImplementation": "public/dev/snow-day-visuals/",
       "sourceReconciliation": "reconciliation.md",

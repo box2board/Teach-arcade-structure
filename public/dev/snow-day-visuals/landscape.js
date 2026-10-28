@@ -1,4 +1,5 @@
 import * as THREE from '../../assets/vendor/three-0.162.0/three.module.js';
+import {groundHeight} from './surfaces.js';
 import {snowTree} from './details.js';
 // Static Snow-specific scenery. All meshes are consumed by the existing instancer.
 const rock=new THREE.IcosahedronGeometry(1,1);
@@ -6,13 +7,13 @@ export function detailLandscape({scene,mesh,sphere,box,cylinder,random,shadow}){
  // A single gently sculpted surface: the play plane remains flat and unobstructed.
  const geo=new THREE.PlaneGeometry(90,145,44,68);geo.rotateX(-Math.PI/2);geo.translate(0,0,-43);
  const p=geo.attributes.position,colors=[];const tint=new THREE.Color();
- for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getZ(i),edge=Math.max(0,Math.abs(x)-11.5),height=edge>0?.12+Math.sin(x*.31+z*.12)*.24+Math.cos(z*.27)*.19+Math.min(2,edge*.065):-.004;
+ for(let i=0;i<p.count;i++){const x=p.getX(i),z=p.getZ(i),height=groundHeight(x,z);
  p.setY(i,height);const variation=(Math.sin(x*.7+z*.21)+Math.cos(x*.33-z*.49))*.012;tint.setRGB(.83+variation,.89+variation,.98+variation);colors.push(tint.r,tint.g,tint.b);}
  geo.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));geo.computeVertexNormals();
  const ground=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:0xffffff,vertexColors:true,roughness:1}));ground.userData.appearanceTerrain=true;scene.add(ground);
  for(const side of [-1,1])for(let i=0;i<16;i++){
  const z=-77+i*6.2,x=side*(14.6+random()*4),s=.8+random()*1.1;
- const b=mesh(rock,[0x7b8fa9,0x93a3b7,0x8b8b9f][i%3],x,s*.5,z,s,s*.9,s*.85);b.rotation.y=random()*6;
+ const b=mesh(rock,[0x7b8fa9,0x93a3b7,0x8b8b9f][i%3],x,s*.5,z,s,s*.9,s*.85);b.rotation.y=random()*6;b.userData.sceneryShadow={radius:1,height:1.2};
  mesh(sphere,0xf5faff,x,s*1.17,z,s*.94,s*.28,s*.8);
  // Small scallops break the snow/rock boundary rather than a floating flat lid.
  for(const a of [-.65,.1,.7])mesh(sphere,0xeef6ff,x+a*s,s*.95,z+s*.35,s*.35,s*.22,s*.35);

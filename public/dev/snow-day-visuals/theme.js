@@ -1,4 +1,5 @@
 import * as THREE from '../../assets/vendor/three-0.162.0/three.module.js';
+import {groundHeight} from './surfaces.js';
 import {snowTree} from './details.js';
 import {detailLandscape} from './landscape.js';
 // Snow-specific art composition. Shared modules never know about forts or snowmen.
@@ -14,7 +15,7 @@ export function buildVillage({scene,mesh,box,sphere,cone,cylinder,shadow,random}
  for(let i=0;i<36;i++)pine((i%2?1:-1)*(18+random()*13),-108+i*3.7,.8+random()*.65);
  // Faceted alpine ridges and cool foothills behind the village.
  for(let i=0;i<9;i++){const x=(i-4)*13,z=-116-random()*12,h=19+random()*17;mesh(cone,0x7fa6c4,x,h*.45-2,z,17,h,13);mesh(cone,0xe6f3ff,x,h*.72,z,8,h*.45,6);}
- function cabin(x,z,color,s=1){const g=new THREE.Group();g.position.set(x,0,z);g.scale.setScalar(s);scene.add(g);shadow(g,4.5);
+ function cabin(x,z,color,s=1){const g=new THREE.Group();g.position.set(x,groundHeight(x,z),z);g.scale.setScalar(s);g.userData.sceneryShadow={radius:4,height:6};scene.add(g);shadow(g,4.5);
  mesh(box,color,0,2.1,0,6.5,4.2,5.2,g);for(const y of [.4,1.2,2,2.8,3.6])mesh(box,0x956b60,0,y,2.63,6.5,.08,.06,g);
  // Two sloped snow-covered roof planes.
  for(const side of [-1,1]){const roof=mesh(box,0xfafcff,side*1.85,4.7,0,4.3,.38,6.2,g);roof.rotation.z=-side*.5;const edge=mesh(box,0x42657b,side*3.7,3.75,0,.2,.3,6.2,g);}
@@ -40,10 +41,10 @@ export function buildVillage({scene,mesh,box,sphere,cone,cylinder,shadow,random}
 }
 const blockShape=new THREE.Shape();blockShape.moveTo(-.38,-.38);blockShape.lineTo(.38,-.38);blockShape.lineTo(.38,.38);blockShape.lineTo(-.38,.38);blockShape.closePath();
 const roundedBlock=new THREE.ExtrudeGeometry(blockShape,{depth:.76,bevelEnabled:true,bevelSize:.12,bevelThickness:.12,bevelSegments:3,steps:1});roundedBlock.translate(0,0,-.38);
-export function buildFort({scene,mesh,box:flatBox,sphere,cone,cylinder}){
+export function buildFort({scene,mesh,box:flatBox,sphere,cone,cylinder,shadow}){
  const box=roundedBlock;
  const blocks=[];
- for(let i=0;i<10;i++){const g=new THREE.Group();scene.add(g);g.position.set((i-4.5)*2.2,0,21);for(let row=0;row<3;row++){mesh(box,row===0?0x9cc5de:0xc4dfef,0,.45+row*.65,0,2.12,.61,1.8,g);mesh(box,0xeff9ff,0,.76+row*.65,.04,2.12,.08,1.86,g);mesh(box,0xa9cfe4,(row%2?.55:-.55),.45+row*.65,.92,.035,.6,.02,g);}mesh(box,0xffffff,0,2.15,0,2.2,.27,1.95,g);if(i%2===0)mesh(box,0xe3f3ff,0,2.55,0,1.1,.65,1.7,g);for(let cap=0;cap<3;cap++)mesh(sphere,0xf5faff,-.7+cap*.7,2.28,0,.5,.16,.9,g);batchCharacter(g,'appearance-fort-'+i%2);blocks.push(g);}
+ for(let i=0;i<10;i++){const g=new THREE.Group();scene.add(g);g.position.set((i-4.5)*2.2,0,21);for(let row=0;row<3;row++){mesh(box,row===0?0x9cc5de:0xc4dfef,0,.45+row*.65,0,2.12,.61,1.8,g);mesh(box,0xeff9ff,0,.76+row*.65,.04,2.12,.08,1.86,g);mesh(box,0xa9cfe4,(row%2?.55:-.55),.45+row*.65,.92,.035,.6,.02,g);}mesh(box,0xffffff,0,2.15,0,2.2,.27,1.95,g);if(i%2===0)mesh(box,0xe3f3ff,0,2.55,0,1.1,.65,1.7,g);for(let cap=0;cap<3;cap++)mesh(sphere,0xf5faff,-.7+cap*.7,2.28,0,.5,.16,.9,g);batchCharacter(g,'appearance-fort-'+i%2);shadow(g,1.5);blocks.push(g);}
  for(const side of [-1,1]){const x=side*11.8;mesh(cylinder,0xa5cce3,x,1.6,21,1.55,3.2,1.55);mesh(cylinder,0xeef9ff,x,3.2,21,1.7,.3,1.7);for(let i=0;i<5;i++){const a=i/5*Math.PI*2;mesh(box,0xf5fbff,x+Math.cos(a)*1.3,3.65,21+Math.sin(a)*1.3,.7,.7,.7);}mesh(cylinder,0x4c768c,x,4.5,21,.06,3,.06);mesh(box,0xf28d55,x+side*.65,5.6,21,1.3,.8,.06);}
  return blocks;
 }

@@ -1,4 +1,5 @@
 import * as THREE from '../../assets/vendor/three-0.162.0/three.module.js';
+import {groundHeight} from './surfaces.js';
 // Reusable geometry within this Snow art theme, not a new framework API.
 function boughGeometry(){
  const positions=[],indices=[],n=16,radii=[1,.92,.51,.025],heights=[0,.14,.48,.85];
@@ -8,7 +9,7 @@ function boughGeometry(){
 }
 const bough=boughGeometry(),twig=new THREE.CylinderGeometry(.025,.04,1,5);
 export function snowTree({scene,mesh,sphere,cylinder,shadow,random},x,z,scale){
- const root=new THREE.Group();root.position.set(x,0,z);root.scale.setScalar(scale);scene.add(root);shadow(root,2.3);
+ const root=new THREE.Group();root.position.set(x,groundHeight(x,z),z);root.scale.setScalar(scale);scene.add(root);shadow(root,2.3);
  mesh(cylinder,0x74523b,0,1.25,0,.23,2.5,.23,root);
  for(let tier=0;tier<4;tier++){
  const width=2.25-tier*.43,y=1.1+tier*1.1,turn=tier*.71+random()*.18;
