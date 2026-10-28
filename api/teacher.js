@@ -1,4 +1,4 @@
-import {settings,backend,readToken,sessionCookie} from '../lib/teacher/backend.js';
+import {settings,backend,authenticate,writeSession,clearSession} from '../lib/teacher/backend.js';
 import {QUESTION_SETS} from '../public/review-lab/catalog.js';
 import {TOOLS,CABINET_GAMES} from '../public/teacher/cabinet-catalog.js';
 const setIds=new Set(QUESTION_SETS.map(s=>s.id));
@@ -22,16 +22,16 @@ export default async function handler(req,res){
    if(typeof body.code!=='string'||!/^\d{6,10}$/.test(body.code))return send(400,{error:'Enter the complete numeric code from your email.'});
    const session=await backend('/auth/v1/verify',{method:'POST',body:{email,token:body.code,type:'email'}});
    if(!session?.access_token||!session.user?.id)throw new Error('Invalid session');
-   res.setHeader('Set-Cookie',sessionCookie(session.access_token,session.expires_in));
+   writeSession(res,session);
    return send(200,{ok:true});
   }
-  if(action==='logout'){const token=readToken(req);if(token)await backend('/auth/v1/logout?scope=local',{token,method:'POST'}).catch(()=>{});res.setHeader('Set-Cookie',sessionCookie(''));return send(200,{ok:true});}
-  const token=readToken(req);
+  if(action==='logout'){
+   try{const {token}=await authenticate(req,res);if(token)await backend('/auth/v1/logout?scope=local',{token,method:'POST'});}finally{clearSession(res);}
+   return send(200,{ok:true});
+  }
+  const {token,user}=await authenticate(req,res);
   const cabinetEnabled=process.env.TEACHER_CABINET_ENABLED==='true';
-  if(!token)return send(action==='session'?200:401,{configured:true,cabinetEnabled,user:null,error:action==='session'?undefined:'Sign in to save to your Cabinet.'});
-  let user;
-  try{user=await backend('/auth/v1/user',{token});}catch(error){if(![401,403].includes(error.status))throw error;res.setHeader('Set-Cookie',sessionCookie(''));return send(401,{error:'Your session has ended. Please sign in again.'});}
-  if(!user?.id)return send(401,{error:'Please sign in again.'});
+  if(!user?.id)return send(action==='session'?200:401,{configured:true,cabinetEnabled,user:null,error:action==='session'?undefined:'Sign in to save to your Cabinet.'});
   if(action==='session'){
    const profiles=await backend(`/rest/v1/teachers?id=eq.${encodeURIComponent(user.id)}&select=id,plan`,{token});
    if(!profiles?.length)return send(503,{error:'Teacher profile is unavailable. Check the database migration.'});

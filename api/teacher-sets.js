@@ -1,4 +1,4 @@
-import {settings,backend,readToken} from '../lib/teacher/backend.js';
+import {settings,backend,authenticate} from '../lib/teacher/backend.js';
 import {setInput,teacherSetId} from '../public/teacher/set-contract.js';
 const metadata='id,owner_id,title,description,subject,visibility,question_count,revision,updated_at';
 export default async function handler(req,res){
@@ -16,9 +16,8 @@ export default async function handler(req,res){
  if(Buffer.byteLength(JSON.stringify(body),'utf8')>256000)return send(413,{error:'This set is too large. Shorten the question text.'});
  const id=req.method==='GET'?req.query?.id:body.id;
  if(['detail','update','copy','save','unsave'].includes(action)&&!teacherSetId(id))return send(400,{error:'Invalid question-set link.'});
- let token=readToken(req),user=null;
  try{
-  if(token){try{user=await backend('/auth/v1/user',{token});}catch(error){if(![401,403].includes(error.status))throw error;token=null;}}
+  const {token,user}=await authenticate(req,res);
   if(!['public','detail'].includes(action)&&!user?.id)return send(401,{error:'Sign in to create or save question sets.'});
   const options={...(token?{token}:{})},base='/rest/v1/teacher_question_sets';
   const get=async()=>{const rows=await backend(`${base}?id=eq.${id}&select=*`,options);return rows[0];};

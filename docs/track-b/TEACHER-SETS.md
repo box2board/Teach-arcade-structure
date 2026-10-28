@@ -36,7 +36,9 @@ Validation: `node --test scripts/test-teacher-sets.mjs scripts/test-teacher-set-
 Database ownership tests: `scripts/test-teacher-sets-rls.sql`, run against the
 development database. Test identities and content are rolled back.
 
-Not implemented here: persistent session renewal, Google login, student reporting,
+Session renewal is shared with the Cabinet API (see FOUNDATION.md).
+
+Not implemented here: Google login, student reporting,
 subscriptions, image uploads, moderation/reporting workflows, or the level builder.
 Community moderation and account export/deletion remain public-release work.
 Existing password-protection advisor warning concerns password auth; this preview
