@@ -26,3 +26,9 @@ A readable, cheerful winter village with blue snow shadows, warm timber cabins, 
 - [ ] Final visual review
 
 This is a candidate benchmark, not a completed catalog rollout. See performance.md for evidence and limitations.
+
+## Enemy outfit pass — 2026-10-27
+
+The Frost King now has his own blue-and-gold ice crown, navy cape, pale fur collar, faceted shoulder armor and chest gem instead of the tank bucket with three spikes. Tanks retain purple buckets and gain shoulder plates, front armor and rivets; runners gain mint skates and a trailing scarf; ordinary snowmen gain earmuffs and a ribbed hat band. Coal smiles and eye glints finish the faces. These are game-specific opaque geometry details batched into the same cached single body mesh per type; the transparent contact shadow stays separate. No additional body draw calls, asset fetches, animation loops or gameplay changes. Triangle counts increase, so actual device cost remains pending.
+
+A separate **Frost King visual test** entry on the opening card shows the boss immediately with nine defenders. Like the existing art fixture, it deliberately bypasses recruitment only for developer review; it is not a normal balanced run. Normal start retains recruitment and the three-wave boss progression. Full regression checks pass; browser WebGL and physical-device visual approval remain outstanding.

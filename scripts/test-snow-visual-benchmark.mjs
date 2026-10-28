@@ -128,3 +128,13 @@ const bytes=baked.image.data;let darkest=255,lightest=0;for(let k=0;k<bytes.leng
 assert.equal(groundHeight(0,0),-.004);assert.equal(tree.position.y,groundHeight(18,-20));
 const before=JSON.stringify(ctx.window.snowDiagnostics().state);vm.runInContext('frame(1050)',ctx);assert.equal(groundBatch.material.map,baked,'shade texture stays cached across frames');
 console.log('PASS: static shade texture, visible numerical contrast, opaque snow and terrain-grounded trees');
+
+// Developer boss entry must not alter normal-run recruitment or boss stats.
+vm.runInContext("visualTestScene(true)",ctx);
+assert.equal(ctx.window.snowDiagnostics().state.squad,9);
+assert.equal(vm.runInContext("enemies.length",ctx),1);
+assert.equal(vm.runInContext("enemies[0].type",ctx),'boss');
+assert.equal(vm.runInContext("enemies[0].hp",ctx),500);
+assert.equal(vm.runInContext("enemies[0].g.userData.outfit",ctx),'frost-royalty');
+vm.runInContext("start()",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'recruit');
+console.log('PASS: direct boss fixture preserves boss HP, cached outfit and normal recruitment');

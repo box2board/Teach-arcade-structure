@@ -4,7 +4,7 @@
   "games": {
     "snow-day-defender": {
       "status": "awaiting-visual-review",
-      "visualLevel": "lighting-and-surface-depth-review",
+      "visualLevel": "enemy-outfit-and-frost-king-review",
       "visualSystemVersion": "0.1.0-preview",
       "route": "/dev/snow-day-visuals/",
       "beforeRoute": "/dev/snow-day-visuals/before/",
@@ -50,7 +50,8 @@
         "Screenshot-driven composition pass: wider squad slightly widens volley footprint; camera no longer fits entire fort in portrait; balance/device review pending",
         "Closer composition liked by user; detail pass adds irregular snow spruce and beveled ice shields with damage-state cracks; feature rules unchanged",
         "Appearance detail: symbolic feature badges, aimed-shot ground rings, distinct enemy snowballs and crate durability bars; rule source unchanged",
-        "Whole-scene depth pass: cached snow shade texture, grain, grounded trees/cabins and fort contact shadows; rendered/device approval pending"
+        "Whole-scene depth pass: cached snow shade texture, grain, grounded trees/cabins and fort contact shadows; rendered/device approval pending",
+        "Distinct Frost King crown/cape/ice armor; tank plates, runner skates, normal earmuffs; separate boss art-test entry. Cached single body draw retained; visual/device review pending."
       ],
       "authoritativeImplementation": "public/dev/snow-day-visuals/",
       "sourceReconciliation": "reconciliation.md",
