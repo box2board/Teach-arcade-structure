@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Classroom Group Maker | Free Teacher Grouping Tool</title>
-  <meta name="description" content="Create random student groups, teams, or partners with this free classroom grouping tool. Choose group size or count, avoid prior pairings, and print your groups." />
+  <title>Classroom Group Maker | Random Group Generator for Teachers</title>
+  <meta name="description" content="Split your class into random student groups, teams, or partners. Choose group size or count, avoid repeat pairings, then copy, print, or project the groups." />
   <link rel="canonical" href="https://www.teacharcade.com/tools/group-maker.html" />
 
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
@@ -15,14 +15,14 @@
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
-  <meta property="og:title" content="Classroom Group Maker | Free Teacher Grouping Tool" />
-  <meta property="og:description" content="Create random student groups, teams, or partners with this free classroom grouping tool. Choose group size or count, avoid prior pairings, and print your groups." />
+  <meta property="og:title" content="Classroom Group Maker | Random Group Generator for Teachers" />
+  <meta property="og:description" content="Split your class into random student groups, teams, or partners. Choose group size or count, avoid repeat pairings, then copy, print, or project the groups." />
   <meta property="og:url" content="https://www.teacharcade.com/tools/group-maker.html" />
-  <meta property="og:image" content="https://www.teacharcade.com/assets/images/teach-arcade-logo.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Classroom Group Maker | Free Teacher Grouping Tool" />
-  <meta name="twitter:description" content="Create random student groups, teams, or partners with this free classroom grouping tool. Choose group size or count, avoid prior pairings, and print your groups." />
-  <meta name="twitter:image" content="https://www.teacharcade.com/assets/images/teach-arcade-logo.png" />
+  <meta property="og:image" content="https://www.teacharcade.com/assets/images/tools/group-maker-flat-768.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Classroom Group Maker | Random Group Generator for Teachers" />
+  <meta name="twitter:description" content="Split your class into random student groups, teams, or partners. Choose group size or count, avoid repeat pairings, then copy, print, or project the groups." />
+  <meta name="twitter:image" content="https://www.teacharcade.com/assets/images/tools/group-maker-flat-768.webp" />
 
   <script type="application/ld+json">
   {
@@ -30,12 +30,26 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "name": "Free Classroom Group Maker",
+        "name": "Teach Arcade Classroom Group Maker",
+        "alternateName": [
+          "Random Group Generator for Teachers",
+          "Student Group Generator",
+          "Random Partner Generator"
+        ],
         "url": "https://www.teacharcade.com/tools/group-maker.html",
-        "description": "A free browser-based classroom group maker for creating random student groups, partners, and teams.",
+        "description": "A free classroom group maker and random group generator for teachers. Split a class into student groups, teams, or partners by group size or number of groups, with optional repeat-pairing avoidance.",
         "applicationCategory": "EducationalApplication",
         "operatingSystem": "Any",
         "isAccessibleForFree": true,
+        "keywords": "classroom group maker, random group generator, student group generator, random partner generator, classroom groups, student teams",
+        "featureList": [
+          "Create random student groups",
+          "Create random partners and pairs",
+          "Choose students per group",
+          "Choose number of groups",
+          "Avoid prior pairings",
+          "Copy, print, or project groups"
+        ],
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -52,34 +66,42 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Is this classroom group maker free?",
+            "name": "How do I split my class into random groups?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Paste the student names, choose students per group or the number of groups, and select Generate Groups. The tool randomly splits the class and can reshuffle the same roster anytime."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I make random partners or pairs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Select Make Pairs or set students per group to 2 to create random classroom partners."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I choose the group size or number of groups?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Teachers can choose a specific number of students per group or specify how many groups they want."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the Group Maker avoid repeat pairings?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Turn on Avoid prior pairings and record pairings between rounds to reduce repeated student combinations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this random group generator free for teachers?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Yes. The Teach Arcade Classroom Group Maker is free to use and does not require an account or login."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I make random partners?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Use Make Pairs or set students per group to 2."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I choose the number of groups?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Choose Number of groups and enter how many groups you want."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I regenerate the groups?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Generate again anytime to reshuffle the same class list."
             }
           },
           {
@@ -101,7 +123,7 @@
     .tool-hero { text-align: center; padding: 18px 12px 14px; }
     .tool-hero h1 { margin: 0 0 6px; font-size: clamp(30px, 4vw, 42px); }
     .tool-hero .lead { margin: 0; font: 700 18px/1.45 Nunito, system-ui, sans-serif; color: #334155; }
-    .tool-hero .support { margin: 6px auto 0; max-width: 720px; color: #64748b; font: 400 14px/1.5 Nunito, system-ui, sans-serif; }
+    .tool-hero .support { margin: 6px auto 0; max-width: 780px; color: #64748b; font: 400 14px/1.5 Nunito, system-ui, sans-serif; }
     .trust-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .trust-badge { display: inline-flex; border: 1px solid #dbe3ee; border-radius: 999px; padding: 5px 9px; background: #fff; color: #475569; font: 700 12px/1 Nunito, system-ui, sans-serif; }
 
@@ -135,11 +157,15 @@
     .pill { display: inline-block; padding: 4px 8px; border-radius: 999px; font: 700 12px/1 Nunito, system-ui, sans-serif; background: #e0e7ff; color: #3730a3; }
     .empty-state { border: 1px dashed #cbd5e1; border-radius: 12px; padding: 36px 18px; text-align: center; color: #64748b; margin-top: 12px; }
 
-    .supporting-content { max-width: 860px; margin: 30px auto 18px; }
+    .supporting-content { max-width: 900px; margin: 30px auto 18px; }
     .supporting-content h2 { margin: 24px 0 8px; font-size: 22px; }
-    .supporting-content p { margin: 0; color: #475569; }
+    .supporting-content p { margin: 0; color: #475569; line-height: 1.65; }
     .use-list { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 10px 0 0; padding-left: 20px; }
     .use-list li { min-width: 180px; }
+    .intent-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+    .intent-card { border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; background: #f8fafc; }
+    .intent-card strong { display: block; margin-bottom: 3px; }
+    .intent-card span { color: #64748b; font-size: 14px; line-height: 1.45; }
     .how-steps { margin-bottom: 0; padding-left: 22px; }
     .how-steps li { margin-bottom: 4px; }
     .faq-list { display: grid; gap: 8px; margin-top: 10px; }
@@ -156,6 +182,9 @@
     .btn:focus-visible, textarea:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible, a:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
+    @media (max-width: 700px) {
+      .intent-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 560px) {
       .tool-shell { padding: 12px; }
       .controls { grid-template-columns: 1fr; }
@@ -177,7 +206,8 @@
     :root.dark .tool-hero .lead, :root.dark .output-head h2 { color: #e2e8f0; }
     :root.dark .tool-hero .support, :root.dark .supporting-content p, :root.dark .small, :root.dark .note, :root.dark .status { color: #cbd5e1; }
     :root.dark .group { background: #111827; border-color: #334155; }
-    :root.dark .trust-badge, :root.dark .btn.secondary, :root.dark .btn.subtle-danger { background: #111827; border-color: #334155; color: #e2e8f0; }
+    :root.dark .trust-badge, :root.dark .btn.secondary, :root.dark .btn.subtle-danger, :root.dark .intent-card { background: #111827; border-color: #334155; color: #e2e8f0; }
+    :root.dark .intent-card span { color: #cbd5e1; }
   </style>
 </head>
 <body>
@@ -190,17 +220,18 @@
     </nav>
 
     <section class="tool-hero" aria-labelledby="page-title">
-      <h1 id="page-title">Free Classroom Group Maker</h1>
-      <p class="lead">Create random student groups, partners, or teams in seconds.</p>
-      <p class="support">Use this classroom grouping tool to choose a group size or number of groups, make partners, and optionally avoid prior pairings.</p>
+      <h1 id="page-title">Classroom Group Maker &amp; Random Group Generator</h1>
+      <p class="lead">Split your class into random student groups, teams, or partners in seconds.</p>
+      <p class="support">Paste a class list, choose students per group or the number of groups, and generate a new mix instantly. Teachers can also make random pairs, avoid repeat pairings, and copy, print, or project the results.</p>
       <div class="trust-row" aria-label="Tool highlights">
         <span class="trust-badge">Free</span>
         <span class="trust-badge">No login</span>
+        <span class="trust-badge">Random groups &amp; partners</span>
         <span class="trust-badge">Fast classroom setup</span>
       </div>
     </section>
 
-    <section class="tool-shell" aria-label="Classroom Group Maker tool">
+    <section class="tool-shell" aria-label="Classroom Group Maker and random group generator">
       <div class="tool-grid">
         <section class="input-panel" aria-labelledby="input-heading">
           <h2 id="input-heading" class="sr-only">Enter students and choose group settings</h2>
@@ -249,7 +280,7 @@
           </div>
 
           <details class="secondary-actions">
-            <summary>Saved lists & pairing tools</summary>
+            <summary>Saved lists &amp; pairing tools</summary>
             <div class="button-row">
               <button id="save" class="btn secondary" type="button">Save List</button>
               <button id="restore" class="btn secondary" type="button">Restore Saved List</button>
@@ -282,42 +313,68 @@
       </div>
     </section>
 
-    <section class="supporting-content" aria-label="Group Maker help">
-      <h2>Ways to Use the Group Maker</h2>
+    <section class="supporting-content" aria-label="Classroom grouping help">
+      <h2>Random Groups, Teams, and Partners for the Classroom</h2>
+      <p>This free random group generator is built for the everyday classroom task of dividing students quickly and fairly. Use it when you need classroom groups for a project, random teams for a review game, discussion groups, lab groups, or a fast partner generator. You can group students by a specific group size or tell the tool exactly how many groups you need.</p>
+
       <ul class="use-list">
         <li>Random student groups</li>
-        <li>Partners and pairs</li>
+        <li>Random partners and pairs</li>
         <li>Project teams</li>
         <li>Discussion groups</li>
         <li>Lab groups</li>
         <li>Review-game teams</li>
       </ul>
 
-      <h2>How to Use It</h2>
+      <h2>Choose the Kind of Classroom Grouping You Need</h2>
+      <div class="intent-grid">
+        <div class="intent-card">
+          <strong>Split a class into random groups</strong>
+          <span>Paste the roster and choose how many students should be in each group.</span>
+        </div>
+        <div class="intent-card">
+          <strong>Create a set number of teams</strong>
+          <span>Tell the group maker how many groups you need and it will distribute students across them.</span>
+        </div>
+        <div class="intent-card">
+          <strong>Make random classroom partners</strong>
+          <span>Use Make Pairs to create random partners without rebuilding your class list.</span>
+        </div>
+        <div class="intent-card">
+          <strong>Reduce repeat student pairings</strong>
+          <span>Record previous pairings and use Avoid prior pairings when you want a different mix next time.</span>
+        </div>
+      </div>
+
+      <h2>How to Make Classroom Groups</h2>
       <ol class="how-steps">
         <li>Paste student names, one per line.</li>
-        <li>Choose students per group or number of groups.</li>
+        <li>Choose <strong>Students per group</strong> or <strong>Number of groups</strong>.</li>
         <li>Select <strong>Generate Groups</strong> or <strong>Make Pairs</strong>.</li>
-        <li>Copy, print, project, or generate again.</li>
+        <li>Copy, print, project, or generate again for a new random mix.</li>
       </ol>
 
       <h2>FAQ</h2>
       <div class="faq-list">
         <details>
-          <summary>Is this classroom group maker free?</summary>
+          <summary>How do I split my class into random groups?</summary>
+          <p>Paste the student names, choose students per group or the number of groups, and select <strong>Generate Groups</strong>. The tool randomly divides the class and can reshuffle the same roster anytime.</p>
+        </details>
+        <details>
+          <summary>Can I make random partners or pairs?</summary>
+          <p>Yes. Select <strong>Make Pairs</strong> or set Students per group to 2 to create random classroom partners.</p>
+        </details>
+        <details>
+          <summary>Can I choose the group size or number of groups?</summary>
+          <p>Yes. Choose a specific number of students per group or tell the tool exactly how many groups you want.</p>
+        </details>
+        <details>
+          <summary>Can the Group Maker avoid repeat pairings?</summary>
+          <p>Yes. Turn on <strong>Avoid prior pairings</strong> and record pairings between rounds to reduce repeated student combinations.</p>
+        </details>
+        <details>
+          <summary>Is this random group generator free for teachers?</summary>
           <p>Yes. It is free to use and does not require an account or login.</p>
-        </details>
-        <details>
-          <summary>Can I make random partners?</summary>
-          <p>Yes. Use <strong>Make Pairs</strong> or set Students per group to 2.</p>
-        </details>
-        <details>
-          <summary>Can I choose the number of groups?</summary>
-          <p>Yes. Choose <strong>Number of groups</strong> and enter how many groups you want.</p>
-        </details>
-        <details>
-          <summary>Can I regenerate the groups?</summary>
-          <p>Yes. Generate again anytime to reshuffle the same class list.</p>
         </details>
         <details>
           <summary>Does Teach Arcade save student names?</summary>
@@ -328,6 +385,7 @@
       <div class="related-tools">
         <a href="/tools/">More Teacher Tools</a>
         <a href="/tools/name-picker.html">Random Name Picker</a>
+        <a href="/tools/wheel.html">Spin the Wheel</a>
         <a href="/tools/timer.html">Classroom Timer</a>
       </div>
     </section>
