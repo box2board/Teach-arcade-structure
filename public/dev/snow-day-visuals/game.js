@@ -1,3 +1,4 @@
+import {poseDefender,poseEnemy,poseFort} from './motion.js';
 import * as THREE from '/assets/vendor/three-0.162.0/three.module.js';
 import {createFeatures,randomFive,FEATURES} from './features.js';
 import {fitBenchmarkCamera} from './camera.js';
@@ -100,7 +101,7 @@ for(const b of [...bullets]){b.z-=dt*48;b.life-=dt;b.g.position.z=b.z;let hit=fa
 if(!hit)for(const e of [...enemies])if(Math.abs(b.x-e.x)<e.r+.15&&Math.abs(b.z-e.z)<e.r+.5){if(b.hitIds.has(e.featureId))continue;b.hitIds.add(e.featureId);if(b.freeze)e.slowUntil=S.elapsed+2;hitEnemy(e,b.damage);hit=!b.pierce;break;}
 if(hit||b.life<=0||b.z< -80){scene.remove(b.g);bullets.splice(bullets.indexOf(b),1);}if(S.mode!=='play')return;}
 if(S.time>34&&enemies.length===0&&S.wave<3){review();return;}
-$('module-status').textContent='';fx.update(dt);if(S.mode!=='play')return;crew.forEach((g,i)=>{g.scale.setScalar(fx.canShoot(i)?1.4:1);g.position.y=Math.sin(clock*7+i)*.035;g.rotation.z=THREE.MathUtils.clamp((S.target-S.x)*-.04,-.12,.12);g.userData.kick=Math.max(0,(g.userData.kick||0)-dt*5);g.userData.arms.forEach(a=>{a.rotation.x=-g.userData.kick*.8;});});hud();}
+$('module-status').textContent='';fx.update(dt);if(S.mode!=='play')return;crew.forEach((g,i)=>{const frozen=!fx.canShoot(i);g.scale.setScalar(frozen?1:1.4);g.userData.kick=Math.max(0,(g.userData.kick||0)-dt*5);poseDefender(g,{time:clock,index:i,kick:g.userData.kick,steering:S.target-S.x,frozen,reduced:reducedMotion});});hud();}
 let cameraPan=0;const cameraBase=new THREE.Vector3(),edgePoint=new THREE.Vector3();
 function resize(){const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);fitBenchmarkCamera(camera,w,h);cameraBase.copy(camera.position);}window.addEventListener('resize',resize);resize();
 function visualTestScene(boss=false){runConfig={enabled:['projectiles','shields'],randomize:false,seed:3187,density:1,speed:1,health:1,startWave:1};start();finishRecruitment();S.squad=9;syncSquad();for(const e of enemies)scene.remove(e.g);enemies=[];for(let i=0;i<15;i++)addEnemy((i%5-2)*3,-5-Math.floor(i/5)*10,i%5===0?'tank':i%4===0?'runner':'normal');if(boss){for(const e of enemies)scene.remove(e.g);enemies=[];addEnemy(0,-15,'boss');}S.spawn=8;S.crateTimer=1;hud();toast(boss?'VISUAL TEST · FROST KING':'VISUAL TEST · NINE DEFENDERS');}
@@ -118,13 +119,10 @@ let last=performance.now();function frame(now){const dt=Math.min((now-last)/1000
  const frameStart=performance.now();if(S.mode==='recruit')recruitmentTick();if(S.mode==='play')update(dt);
  const active=S.mode==='play'||S.mode==='menu';
  if(active){particlePool.update(dt);if(!low){for(const b of bullets.slice(0,32)){b.visualTrail=(b.visualTrail||0)+dt;if(b.visualTrail>.075){b.visualTrail=0;particlePool.burst(b.x,1.3,b.z,0xd6f5ff,1);}}}weather.update(dt,clock,fx.on('weather')?1.8:1);village.update(clock,reducedMotion);
- for(const e of enemies){e.visualHit=Math.max(0,(e.visualHit||0)-dt);const base=e.type==='boss'?3.8:e.type==='tank'?1.35:e.type==='runner'?.8:1;
- // Keep mini-boss custom scale supplied by the gameplay module.
- const size=e.g.userData.visualScale||e.g.scale.x;e.g.userData.visualScale=size;
- const pulse=reducedMotion?0:Math.sin(e.visualHit/.18*Math.PI)*.1;e.g.scale.set(size*(1+pulse),size*(1-pulse),size*(1+pulse));}
+ for(const e of enemies)poseEnemy(e,clock,dt,reducedMotion);
  }
  fortShown=reducedMotion?S.health:THREE.MathUtils.damp(fortShown,S.health,9,dt);
- fortBlocks.forEach((g,i)=>{const amount=THREE.MathUtils.clamp((fortShown-i*10)/10,0,1);g.visible=amount>.015;g.scale.y=.12+amount*.88;});
+ fortBlocks.forEach((g,i)=>{const amount=THREE.MathUtils.clamp((fortShown-i*10)/10,0,1);poseFort(g,amount,reducedMotion);});
  const impulse=cues.tick(dt);cameraPan=THREE.MathUtils.damp(cameraPan,camera.userData.portraitFollow?S.x:0,8,S.mode==='play'?dt:0);camera.position.copy(cameraBase);camera.position.x+=cameraPan;camera.updateMatrixWorld();
  let edgeLeft=0,edgeRight=0;if(S.mode==='play')for(const e of enemies){if(e.z< -30)continue;edgePoint.set(e.x,1,e.z).project(camera);if(edgePoint.x< -1)edgeLeft++;if(edgePoint.x>1)edgeRight++;}
  $('edge-left').hidden=!edgeLeft;$('edge-left').textContent='◀ '+edgeLeft; $('edge-right').hidden=!edgeRight;$('edge-right').textContent=edgeRight+' ▶';

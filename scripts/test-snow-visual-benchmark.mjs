@@ -1,3 +1,4 @@
+import {poseDefender,poseEnemy,poseFort} from '../public/dev/snow-day-visuals/motion.js';
 import fs from 'node:fs';import {fileURLToPath} from 'node:url';import vm from 'node:vm';import assert from 'node:assert/strict';
 const root=fileURLToPath(new URL('../public/dev/snow-day-visuals/',import.meta.url));const THREE=await import(new URL('../public/assets/vendor/three-0.162.0/three.module.js',import.meta.url));const {DEMO_QUESTIONS}=await import(root+'questions.js');const {createFeatures,randomFive,FEATURES}=await import(root+'features.js');
 for(let seed=0;seed<1000;seed++){const ids=randomFive(seed);assert.equal(new Set(ids).size,5);assert.ok(!ids.includes('frozen')||ids.includes('projectiles'));assert.deepEqual(randomFive(seed),ids);}assert.notDeepEqual(randomFive(1),randomFive(2));
@@ -14,7 +15,7 @@ const {sculptDefender,sculptCreature,snowSurface}=await import('../public/dev/sn
 const {softContactTexture,dressSupply,updateSupplyStyle}=await import('../public/dev/snow-day-visuals/landscape.js');
 const {dressFeatureObject,dressIceShield,updateIceShield,snowTree}=await import('../public/dev/snow-day-visuals/details.js');
 const {bakeGroundShade,groundHeight}=await import('../public/dev/snow-day-visuals/surfaces.js');
-const ctx={bakeGroundShade,updateSupplyStyle,dressFeatureObject,dressIceShield,updateIceShield,softContactTexture,dressSupply,sculptDefender,sculptCreature,snowSurface,fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,batchCharacter,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
+const ctx={poseDefender,poseEnemy,poseFort,bakeGroundShade,updateSupplyStyle,dressFeatureObject,dressIceShield,updateIceShield,softContactTexture,dressSupply,sculptDefender,sculptCreature,snowSurface,fitBenchmarkCamera,VERSION,qualityFor,createCues,uiCue,createParticlePool,createWeather,buildVillage,buildFort,dressDefender,dressCreature,batchCharacter,localStorage:{getItem(){return null;},setItem(){}},CustomEvent:class{},THREE:{...THREE,WebGLRenderer:R},DEMO_QUESTIONS,createFeatures,randomFive,FEATURES,setupLab:()=>({config:()=>({enabled:[],randomize:true,seed:1,density:1,speed:1,health:1,startWave:1,startSquad:5}),record(){}}),document:doc,window:{addEventListener(){},dispatchEvent(){}},performance:{now:()=>ctx.testNow||0},requestAnimationFrame(){},devicePixelRatio:1,console};vm.createContext(ctx);vm.runInContext(fs.readFileSync(root+'game.js','utf8').replace(/^import .*;$/gm,''),ctx);
 vm.runInContext('start();finishRecruitment();update(.016)',ctx);assert.equal(ctx.window.snowDiagnostics().modules.features.length,5);assert.ok(ctx.window.snowDiagnostics().bullets>0);
 vm.runInContext("S.wave=2;S.damage=3;S.health=1;addEnemy(0,18);update(.016)",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'rebuild');assert.equal(ctx.window.snowDiagnostics().state.health,0);
 function answer(correct){const i=vm.runInContext(`questionList[(questionIndex-1)%questionList.length].choices.find(c=>c.correct===${correct}).text`,ctx);const group=els.get('content').children[1];group.children.find(b=>b.textContent.slice(3)===i).onclick();}
@@ -138,3 +139,13 @@ assert.equal(vm.runInContext("enemies[0].hp",ctx),500);
 assert.equal(vm.runInContext("enemies[0].g.userData.outfit",ctx),'frost-royalty');
 vm.runInContext("start()",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'recruit');
 console.log('PASS: direct boss fixture preserves boss HP, cached outfit and normal recruitment');
+
+// Poses must not move authoritative enemy coordinates or advance damage/health.
+const posed={g:new THREE.Group(),type:'runner',x:3,z:-12,hp:4,phase:1,visualHit:.18};
+posed.g.scale.setScalar(1.12);poseEnemy(posed,1,.016,false);
+assert.equal(posed.x,3);assert.equal(posed.z,-12);assert.equal(posed.hp,4);
+poseEnemy(posed,2,.016,true);assert.equal(posed.g.position.y,0);assert.equal(posed.g.rotation.z,0);assert.ok(Math.abs(posed.g.rotation.x)<1e-10);
+assert.equal(posed.g.scale.x,1.12);
+const fortPose=new THREE.Group();poseFort(fortPose,.5,false);assert.ok(fortPose.position.y>0);poseFort(fortPose,1,false);assert.ok(Math.abs(fortPose.position.y)<1e-10);assert.equal(fortPose.scale.y,1);
+const childPose=new THREE.Group();childPose.userData.arms=[new THREE.Group(),new THREE.Group()];poseDefender(childPose,{time:1,index:0,kick:1,steering:2,frozen:false,reduced:true});assert.ok(Math.abs(childPose.rotation.x)<1e-10);assert.equal(childPose.position.y,0);assert.ok(Math.abs(childPose.userData.arms[0].rotation.x)<1e-10);
+console.log('PASS: cosmetic motion preserves enemy coordinates/HP, reduced motion clears poses, rebuilt fort settles at original position');
