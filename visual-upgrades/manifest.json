@@ -3,8 +3,8 @@
   "visualSystemVersion": "0.1.0-preview",
   "games": {
     "snow-day-defender": {
-      "status": "awaiting-visual-review",
-      "visualLevel": "first-motion-pass-review",
+      "status": "device-validation-pending",
+      "visualLevel": "appearance-and-motion-approved",
       "visualSystemVersion": "0.1.0-preview",
       "route": "/dev/snow-day-visuals/",
       "beforeRoute": "/dev/snow-day-visuals/before/",
@@ -39,7 +39,7 @@
       },
       "benchmarkVisualsApproved": false,
       "reusableExtraction": "provisional; finalize after user approval",
-      "lastReviewed": "2026-10-27",
+      "lastReviewed": "2026-10-28",
       "notes": [
         "Latest squad prototype preserved; existing public Review Lab version untouched",
         "Scientific Method sample content preserved; public shared-bank integration not part of this visual pass",
@@ -52,12 +52,15 @@
         "Appearance detail: symbolic feature badges, aimed-shot ground rings, distinct enemy snowballs and crate durability bars; rule source unchanged",
         "Whole-scene depth pass: cached snow shade texture, grain, grounded trees/cabins and fort contact shadows; rendered/device approval pending",
         "Distinct Frost King crown/cape/ice armor; tank plates, runner skates, normal earmuffs; separate boss art-test entry. Cached single body draw retained; visual/device review pending.",
-        "Enemy appearance approved; first motion pass awaiting visual review. Game-specific motion.js leaves collision coordinates and gameplay timing untouched."
+        "Enemy appearance approved; first motion pass awaiting visual review. Game-specific motion.js leaves collision coordinates and gameplay timing untouched.",
+        "User approved appearance and motion. Connected simulated three-wave flow passes; overall benchmark remains incomplete pending device/browser validation."
       ],
       "authoritativeImplementation": "public/dev/snow-day-visuals/",
       "sourceReconciliation": "reconciliation.md",
       "artDirectionApproved": true,
-      "approvedArtReference": "docs/design/snow-day-defenders/approved-target.webp"
+      "approvedArtReference": "docs/design/snow-day-defenders/approved-target.webp",
+      "appearanceApproved": true,
+      "motionApproved": true
     }
   }
 }

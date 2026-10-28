@@ -1,6 +1,6 @@
 # Teach Arcade Visual System 0.1.0-preview
 
-This candidate system grows from the Snow Day Defender benchmark. The API is provisional until its first visual review is approved. No next game has been upgraded.
+This candidate system grows from the Snow Day Defender benchmark. Appearance and motion passes have user approval; the API remains provisional while device validation is pending. No next game has been upgraded.
 
 Game engine (rules, input, questions, timing)
 → Teach Arcade Visual System (cosmetic cues, bounded effects, quality)
@@ -45,6 +45,6 @@ Weather owns fixed typed arrays, draws only the selected subset, and costs one d
 
 ## Rollout
 
-The canonical tracker is `/visual-upgrades/manifest.json`; assessment, checklist, provenance and performance evidence live beside it. Status remains `awaiting-visual-review`, not complete. Finalize extraction/API only after benchmark approval. For another game: inspect → capture baseline → visual pass → preserve rules/tests → compare → approve → refine shared modules → update tracker.
+The canonical tracker is `/visual-upgrades/manifest.json`; assessment, checklist, provenance and performance evidence live beside it. Status is `device-validation-pending`, not complete. Appearance and motion were approved on 2026-10-28; finalize extraction/API after remaining benchmark validation. For another game: inspect → capture baseline → visual pass → preserve rules/tests → compare → approve → refine shared modules → update tracker.
 
 Next recommended test: Quest Arcade, after this benchmark is approved. Its slower top-down play would test screen readability, interaction/reward cues and a different environment without another projectile-heavy stress case. Gaps: 2D renderer adapter, reusable scene transitions, asset-loading conventions, real audio playback and physical Chromebook/browser measurements. Do not add these speculatively.

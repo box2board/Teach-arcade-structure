@@ -149,3 +149,25 @@ assert.equal(posed.g.scale.x,1.12);
 const fortPose=new THREE.Group();poseFort(fortPose,.5,false);assert.ok(fortPose.position.y>0);poseFort(fortPose,1,false);assert.ok(Math.abs(fortPose.position.y)<1e-10);assert.equal(fortPose.scale.y,1);
 const childPose=new THREE.Group();childPose.userData.arms=[new THREE.Group(),new THREE.Group()];poseDefender(childPose,{time:1,index:0,kick:1,steering:2,frozen:false,reduced:true});assert.ok(Math.abs(childPose.rotation.x)<1e-10);assert.equal(childPose.position.y,0);assert.ok(Math.abs(childPose.userData.arms[0].rotation.x)<1e-10);
 console.log('PASS: cosmetic motion preserves enemy coordinates/HP, reduced motion clears poses, rebuilt fort settles at original position');
+
+// Connected run: real recruitment, both review screens/upgrades, scheduled boss and victory.
+ctx.testNow=0;vm.runInContext("runConfig={enabled:[],randomize:false,seed:812,density:1,speed:1,health:1,startWave:1};start()",ctx);
+recruitAnswer(true);els.get('go').onclick();ctx.testNow=60000;vm.runInContext('recruitmentTick()',ctx);
+assert.equal(ctx.window.snowDiagnostics().state.squad,7);
+vm.runInContext("keys.add('a');update(.016);togglePause()",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'pause');assert.equal(vm.runInContext('keys.size',ctx),0);
+vm.runInContext('togglePause();burst()',ctx);assert.equal(ctx.window.snowDiagnostics().state.burst,14);
+for(const wave of [1,2]){
+ vm.runInContext('clearWorld();S.time=35;update(.016)',ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'review');
+ const reviewAnswer=correct=>{const text=vm.runInContext(`questionList[(questionIndex-1)%questionList.length].choices.find(c=>c.correct===${correct}).text`,ctx);els.get('content').children[0].children.find(b=>b.textContent.slice(3)===text).onclick();};
+ reviewAnswer(true);els.get('go').onclick();reviewAnswer(wave===1);els.get('go').onclick();
+ const choices=els.get('content').children[0];assert.equal(choices.children.length,3);
+ choices.children[wave===1?0:2].onclick();
+ assert.equal(ctx.window.snowDiagnostics().state.wave,wave+1);assert.equal(ctx.window.snowDiagnostics().state.mode,'play');
+}
+assert.equal(ctx.window.snowDiagnostics().state.squad,11);assert.equal(ctx.window.snowDiagnostics().state.damage,2);
+vm.runInContext('clearWorld();S.time=25.01;update(.016)',ctx);
+assert.equal(vm.runInContext("enemies.filter(e=>e.type==='boss').length",ctx),1);
+vm.runInContext("hitEnemy(enemies.find(e=>e.type==='boss'),10000)",ctx);assert.equal(ctx.window.snowDiagnostics().state.mode,'end');
+assert.match(els.get('cardtitle').textContent,/held the line/);
+els.get('go').onclick();assert.equal(ctx.window.snowDiagnostics().state.mode,'recruit');assert.equal(ctx.window.snowDiagnostics().state.damage,1);assert.equal(ctx.window.snowDiagnostics().state.wave,1);
+console.log('PASS: connected three-wave flow, recruitment, pause/resume, burst, both review/upgrade choices, scheduled boss, victory and restart reset (simulated renderer)');

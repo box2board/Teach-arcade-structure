@@ -18,7 +18,7 @@ A readable, cheerful winter village with blue snow shadows, warm timber cabins, 
 
 ## Approval checklist
 - [x] Gameplay regression suite passed after final edits
-- [ ] Benchmark visuals approved by user
+- [x] Appearance and motion passes approved by user (full benchmark/device sign-off pending)
 - [ ] Reusable candidates exercised; extraction finalized after approval
 - [x] All performance mode budgets tested (device performance pending)
 - [ ] Physical Chromebook / Safari / Chrome tested
@@ -38,3 +38,11 @@ A separate **Frost King visual test** entry on the opening card shows the boss i
 User approved the enemy appearance pass (overall animated benchmark/device approval still pending). Game-specific motion.js now owns cosmetic poses: asymmetric mitten throws and body recoil, quick runner strides, heavier restrained boss movement, hit squash/recoil, and fort sections lifting/settling during the existing health easing. No added assets, meshes, particles or render passes; reduced motion neutralizes the added poses, and frozen defenders do not throw visually. Collision x/z, throw cadence, damage, rewards, health and educational flow remain unchanged. Existing body batching and feature source hashes are preserved.
 
 Regression checks exercise unchanged enemy coordinates/HP, neutral reduced-motion poses and settled fort position in addition to the full gameplay suite. The cloud browser's disabled WebGL context still prevents rendered motion review and GPU/FPS measurement. Use the two opening visual-test entries for immediate squad/enemy and boss review. Motion stays game-specific until reviewed; shared candidates remain version 0.1.0-preview.
+
+## Gameplay verification and approval checkpoint — 2026-10-28
+
+User confirmed the appearance and motion work looks good and works. This approves those passes, not unmeasured hardware performance. Status is now device-validation-pending; overall benchmark completion remains open.
+
+Added a connected regression scenario using the actual game functions and simulated interface/renderer: one correct recruitment answer earns seven defenders; pause clears held keys; Snow Burst activates; wave-one completion opens two review questions and a two-star reinforcement choice; wave two opens review with one correct/one wrong and a one-star damage upgrade; scheduled wave-three boss spawns with its existing stats; defeating him wins; restart returns to wave-one recruitment and resets upgrades. Existing tests separately retain exact-ten-answer rebuild, same-wave/upgrades/boss recovery and all five-feature dependency checks. No game source changed in this checkpoint.
+
+Remaining device review: run normal recruitment through all three waves on a Chromebook; test Performance/Standard/Showcase, keyboard and touch, pause/restart, ten-correct rebuilding, portrait/landscape and reduced motion. Record browser/device/resolution and observed frame rate/input behavior. The existing snowDiagnostics().visuals.frameWorkMs measures CPU work only, not FPS. Cloud WebGL remains unavailable; no GPU/browser result is inferred from simulation checks. Shared module extraction stays provisional at 0.1.0-preview until validation is complete. No next game begins.
