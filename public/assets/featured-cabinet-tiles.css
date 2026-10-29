@@ -35,7 +35,7 @@
 .featured-cabinet .subject-title {
   margin: 0;
   color: #fff4d5;
-  font: 400 16px/1.5 'Press Start 2P', monospace;
+  font: 400 clamp(16px, 1.6vw, 22px)/1.5 'Press Start 2P', monospace;
   text-align: center;
   text-transform: uppercase;
   text-shadow: 2px 2px 0 #06152a;
@@ -76,4 +76,7 @@
 .featured-cabinet:focus-visible { outline: 3px solid #0f766e; outline-offset: 4px; }
 @media (max-width: 900px) { .featured-cabinets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 521px) and (max-width: 700px) { .featured-cabinet .subject-title { font-size: 14px; } }
-@media (max-width: 520px) { .featured-cabinets { grid-template-columns: 1fr; } }
+@media (max-width: 520px) {
+  .featured-cabinets { grid-template-columns: 1fr; }
+  .featured-cabinet .subject-title { font-size: clamp(17px, 4.5vw, 22px); }
+}
