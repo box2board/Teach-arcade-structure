@@ -88,3 +88,7 @@ Adds Jersey and Striped tee tops, Cargo pants with side pockets, and a Scarf. Ea
 ## Browser collection and history
 
 My characters saves up to 24 named recipes in this origin's localStorage. This is browser-local, not account or cloud persistence; clearing browser data removes the collection, and different preview origins have different collections. JSON export remains the portable backup. Loading a saved character enters the 60-state appearance undo/redo history. Removing a save can be reversed with Undo last removal during the editor session. Storage failures are reported without claiming success; unreadable collection data is not overwritten. Keyboard undo/redo uses Ctrl/Cmd+Z and Shift+Ctrl/Cmd+Z outside form fields and dialogs. Camera/backdrop changes are not appearance history. Ten model/recipe/storage/history tests pass.
+
+## Face customization checkpoint
+
+Face tab adds Classic/Round/Angular lower-face profiles, Button/Broad/Defined noses, Smile/Grin/Neutral mouths, freckles, and a close-up camera button. Upper-head envelope stays fixed for hair/head accessories. The optional `features` recipe object defaults to the original face when omitted, including old local collection entries. Reset view restores the full-body camera. All 27 shape/nose/mouth combinations with freckles and head accessories pass assembly/rig/round-trip tests. This is geometry validation, not visual clearance of every combination. Playable test area remains the next checkpoint.

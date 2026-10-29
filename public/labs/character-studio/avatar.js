@@ -20,16 +20,16 @@ export function createAvatar(input){
  skin(loft(torsoRows,24),primary,blend('hips','chest',hipY,hipY+.4));
  mesh(loft([[0,.065,.06],[.09,.068,.062],[.12,.06,.06]],16),skinColor,'neck',[0,-.02,0]);
  const headGroup=bones.head;headGroup.scale.setScalar(B.headScale);
- mesh(loft([[-.04,0,0],[0,.105,.105],[.055,.17,.135],[.12,.205,.16],[.23,.215,.175],[.34,.205,.16],[.41,.16,.13],[.445,.07,.065],[.45,0,0]],32),skinColor,'head');
+ const features=recipe.features;const jaw=features.shape==='Round'?1.13:features.shape==='Angular'?1.17:1;const cheek=features.shape==='Round'?1.035:1;mesh(loft([[-.04,0,0],[0,.105*jaw,.105],[.055,.17*jaw,.135],[.12,.205*cheek,.16],[.23,.215,.175],[.34,.205,.16],[.41,.16,.13],[.445,.07,.065],[.45,0,0]].map(r=>[...r,0,0,features.shape==='Angular'&&r[0]<.12?.83:1]),32),skinColor,'head');
  // Ears are contoured pinnae with inset centers, tucked into the cheek silhouette.
  for(const s of [-1,1]){mesh(loft([[0,0,0],[.015,.032,.02],[.055,.043,.03],[.09,.033,.026],[.105,0,0]],12),skinColor,'head',[s*.203,.14,0]);mesh(loft([[0,0,0],[.018,.017,.008],[.045,.02,.01],[.06,0,0]],10),'#b77562','head',[s*.225,.162,.023]);}
  // Small shaped nose, mouth and eyelids give the face a deliberate identity.
- mesh(loft([[0,0,0],[.013,.037,.027],[.035,.028,.041],[.068,.018,.024],[.078,0,0]],12),skinColor,'head',[0,.115,.159]);
+ const noseWidth=features.nose==='Broad'?1.3:features.nose==='Defined'?.8:1,noseDepth=features.nose==='Defined'?1.4:1;mesh(loft([[0,0,0],[.013,.037,.027],[.035,.028,.041],[.068,.018,.024],[.078,0,0]].map(r=>[r[0],r[1]*noseWidth,r[2]*noseDepth]),16),skinColor,'head',[0,.115,.159]);
  const eyeY=recipe.face==='Focused'?.242:.235,eyeH=recipe.face==='Easygoing'?.022:.032;
  for(const s of [-1,1]){let e=mesh(loft([[-eyeH,0,0],[-eyeH*.7,.027,.008],[0,.032,.013],[eyeH*.7,.027,.01],[eyeH,0,0]],16),'#fff9ed','head',[s*.083,eyeY,.158]);e.rotation.y=s*.2;
  mesh(loft([[-eyeH*.85,0,0],[0,.015,.009],[eyeH*.85,0,0]],12),channel('eyeColor'),'head',[s*.078,eyeY,.173]);mesh(loft([[-.015,0,0],[0,.007,.004],[.015,0,0]],10),'#182733','head',[s*.077,eyeY,.181]);mesh(loft([[-.004,0,0],[0,.004,.003],[.004,0,0]],8),'#ffffff','head',[s*.077-.004,eyeY+.009,.185]);
  const arch=recipe.brows==='Arched'?.014:.006,browY=eyeY+.057;mesh(tube([[s*.045,browY,.169],[s*.08,browY+arch,.17],[s*.12,browY+(recipe.face==='Focused'?.018:0),.154]],recipe.brows==='Bold'?.011:.007),channel('hair.color'),'head');}
- mesh(tube([[-.047,.09,.142],[0,.079,.153],[.047,.095,.142]],.006),'#6e3930','head');
+ const mouthPoints=features.mouth==='Neutral'?[[-.04,.09,.145],[0,.092,.153],[.04,.09,.145]]:features.mouth==='Grin'?[[-.058,.103,.141],[0,.076,.155],[.058,.103,.141]]:[[-.047,.09,.142],[0,.079,.153],[.047,.095,.142]];mesh(tube(mouthPoints,features.mouth==='Grin'?.012:.006),'#6e3930','head');if(features.mouth==='Grin')mesh(tube([[-.042,.099,.152],[0,.088,.163],[.042,.099,.152]],.006),'#fff9ed','head');if(features.freckles)for(const side of [-1,1])for(const [x,y,z]of [[.09,.165,.159],[.12,.156,.143],[.135,.177,.139],[.105,.183,.153]])mesh(loft([[-.003,0,0],[0,.003,.002],[.003,0,0]],8),'#81503b','head',[side*x,y,z]);
  // One closed profile for each arm, weighted over elbow and wrist. No exposed joint balls.
  for(const side of ['L','R']){const s=side==='L'?1:-1,w=B.torsoWidth;const armRows=[[hipY-.12,.034,.035,s*.43*w,.035],[hipY-.07,.048,.047,s*.43*w,.03],[hipY+.06,.056,.054,s*.415*w,.02],[hipY+.16,.058,.056,s*.4*w,.01],[hipY+.29,.073,.067,s*.365*w,0],[hipY+.39,.092,.08,s*.325*w,0],[hipY+.445,.066,.063,s*.29*w,0],[hipY+.45,0,0,s*.28*w,0]];
  const armWeight=p=>p.y<hipY+.16?['hand.'+side,'forearm.'+side,clamp((p.y-(hipY-.06))/.16,0,1)]:['forearm.'+side,'upperArm.'+side,clamp((p.y-(hipY+.12))/.13,0,1)];skin(loft(armRows,16),skinColor,armWeight);
