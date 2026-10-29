@@ -119,3 +119,17 @@ test('teacher-profile trigger stays outside exposed public API with execute revo
  assert.ok(sql.includes("set search_path=''"));
  assert.ok(!sql.includes('create function public.create_teacher_profile()'));
 });
+test('account deletion requires POST, exact origin, verified identity and typed confirmation',async()=>{
+ configure();let deleted=0;global.fetch=async(url,opts)=>{if(url.endsWith('/user'))return response({id:'teacher-a'});assert.ok(url.endsWith('/rpc/delete_teacher_account'));assert.equal(opts.headers.Authorization,'Bearer verified');assert.deepEqual(JSON.parse(opts.body),{});deleted++;return response(null);};
+ assert.equal((await call('delete-account')).status,405);
+ assert.equal((await call('delete-account','POST',{confirmation:'DELETE'},{origin:'https://evil.test'})).status,403);
+ assert.equal((await call('delete-account','POST',{confirmation:'DELETE'},{origin:'https://preview.test'})).status,401);
+ const headers={origin:'https://preview.test',cookie:'__Host-ta_session=verified'};
+ assert.equal((await call('delete-account','POST',{confirmation:'delete'},headers)).status,400);
+ const result=await call('delete-account','POST',{confirmation:'DELETE',owner_id:'victim'},headers);
+ assert.equal(result.status,200);assert.equal(deleted,1);assert.ok(result.headers['Set-Cookie'].every(c=>c.includes('Max-Age=0')));
+});
+test('stale deletion sign-in asks for fresh verification and outages never claim deletion',async()=>{
+ configure();const headers={origin:'https://preview.test',cookie:'__Host-ta_session=verified'};
+ for(const code of [403,500]){global.fetch=async url=>url.endsWith('/user')?response({id:'teacher-a'}):response({},code);const r=await call('delete-account','POST',{confirmation:'DELETE'},headers);assert.equal(r.status,code===403?403:502);assert.ok(!r.data.ok);assert.equal(r.headers['Set-Cookie'],undefined);}
+});

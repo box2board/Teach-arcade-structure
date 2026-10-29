@@ -45,6 +45,7 @@ function route(){
  window.scrollTo(0,0);
 }
 function paintAccount(){
+ $('delete-account-panel').hidden=!user;
  $('account-button').textContent=user?'My account':configured?'Sign in / Create account':'Accounts coming soon';
  $('login-form').hidden=!!user||!configured;$('account-unavailable').hidden=configured||!!user;$('verify-form').hidden=true;$('profile').hidden=!user;$('logout').hidden=!user;
  paintCodeWait();
@@ -178,3 +179,13 @@ async function account(){
 const subjects=[...new Set(QUESTION_SETS.map(s=>s.subject))].sort();subjects.forEach(s=>{$('subject').append(new Option(s,s));const row=node('a',undefined,'subject-row');row.href='#sets';row.dataset.subject=s;const symbols={'Social Studies':'◎',Science:'⚗',Math:'∑',ELA:'Aa'};row.append(node('span',symbols[s]||'✦','subject-symbol'),node('strong',s),node('span',`${QUESTION_SETS.filter(q=>q.subject===s).length} sets →`));row.onclick=()=>{savedView=false;limit=24;$('subject').value=s;$('search').value='';$('category').value='';categories();render();};$('subject-summary').append(row);});
 window.addEventListener('hashchange',route);categories();render();route();account().then(()=>{if(user)returnToQuestionSets();});
 document.querySelectorAll('[data-preferred-game]').forEach(a=>{a.onclick=()=>{preferredGame=a.dataset.preferredGame;savedView=false;render();};});
+
+$('delete-account-form').onsubmit=async event=>{
+ event.preventDefault();const button=event.submitter;
+ if($('delete-confirmation').value!=='DELETE')return;
+ if(!window.confirm('Permanently delete your teacher account and all your original question sets? This cannot be undone.'))return;
+ button.disabled=true;$('delete-status').textContent='Deleting account…';
+ try{await api('delete-account',{confirmation:'DELETE'});user=null;pendingSave=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;$('delete-confirmation').value='';paintAccount();render();notice('Your teacher account and original question sets have been deleted. Public games and tools remain available.');}
+ catch(error){$('delete-status').textContent=error.message;}
+ finally{button.disabled=false;}
+};
