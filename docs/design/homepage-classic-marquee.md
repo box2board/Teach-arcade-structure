@@ -1,5 +1,7 @@
 # Homepage — Classic Marquee
 
+Previous design, superseded by [Bold & Simple](homepage-bold-simple.md). Assets are retained for reference.
+
 Implements approved banner concept A: deep navy, a beveled cabinet-style frame, restrained gold rules, cream block headline and an original arcade joystick illustration. The headline, brand, subtitle and both links remain real HTML; only the decorative joystick uses generated artwork.
 
 The existing H1 and CTA destinations are preserved. The subtitle and secondary CTA label follow the approved mockup. Search retains its form, accessible label, input and handler immediately below the banner. Other homepage sections are unchanged.

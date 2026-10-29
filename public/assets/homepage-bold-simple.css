@@ -1,0 +1,55 @@
+/* Homepage — approved C: Bold & Simple, with live text and quiet pixel accents. */
+.homepage-hero { margin: 28px 0 0; }
+.home-brand-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 30px 24px 27px;
+  border-radius: 8px;
+  background: #d5f3ff;
+  color: #09223f;
+  text-align: center;
+}
+.home-brand-lockup { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0 auto 18px; max-width: 100%; }
+.home-brand-joystick { display: block; flex: none; width: 84px; height: auto; aspect-ratio: 1; object-fit: contain; image-rendering: pixelated; }
+.home-brand-wordmark {
+  position: relative;
+  min-width: 0;
+  padding-bottom: 7px;
+  font: 400 clamp(32px, 6.2vw, 82px)/1.1 Bungee, 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  text-shadow: 5px 5px 0 #fff0cb;
+  letter-spacing: .01em;
+}
+.home-brand-wordmark::after { content: ''; position: absolute; height: 6px; left: 0; right: 0; bottom: -3px; background: #1aa5a5; border-radius: 3px; }
+.home-brand-banner h1 { margin: 0 auto 5px; max-width: 1050px; color: #09223f; font: 400 clamp(20px, 2.15vw, 30px)/1.35 Bungee, 'Arial Black', sans-serif; text-wrap: balance; }
+.home-brand-banner p { margin: 0 auto 16px; max-width: 760px; color: #173953; font: 600 18px/1.5 Nunito, sans-serif; }
+.home-brand-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.home-brand-button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 46px; padding: 10px 22px; border: 2px solid #173953; border-radius: 6px; background: #ffd35e; color: #09223f; font: 700 15px/1.4 Poppins, sans-serif; text-decoration: none; }
+.home-brand-button.secondary { background: #fffaf0; }
+.home-brand-button:hover { background: #ffe48d; }
+.home-brand-button.secondary:hover { background: #fff; }
+.home-brand-button:focus-visible { outline: 3px solid #0f766e; outline-offset: 4px; }
+.hero-cloud { position: absolute; z-index: -1; display: block; width: 150px; height: 66px; background: #fff; opacity: .8; pointer-events: none; clip-path: polygon(0 65%, 16% 65%, 16% 35%, 32% 35%, 32% 0, 60% 0, 60% 25%, 80% 25%, 80% 60%, 100% 60%, 100% 100%, 0 100%); }
+.cloud-one { left: 25px; top: 42px; }
+.cloud-two { left: 10%; bottom: 28px; width: 110px; height: 45px; opacity: .65; }
+.cloud-three { right: 26px; top: 40px; transform: scaleX(-1); }
+.cloud-four { right: 7%; bottom: 32px; width: 95px; height: 40px; opacity: .65; }
+.homepage-search { padding: 5px 0 10px; text-align: center; }
+.homepage-search input:focus-visible, .homepage-search button:focus-visible { outline: 3px solid #0f766e; outline-offset: 3px; }
+@media (max-width: 1100px) { .hero-cloud { width: 90px; height: 40px; opacity: .5; } .cloud-two, .cloud-four { display: none; } }
+@media (max-width: 640px) {
+  .homepage-hero { margin-top: 18px; }
+  .home-brand-banner { padding: 27px 16px 24px; }
+  .home-brand-lockup { gap: 5px; margin-bottom: 18px; }
+  .home-brand-joystick { width: 42px; }
+  .home-brand-wordmark { font-size: clamp(26px, 7.4vw, 42px); text-shadow: 3px 3px 0 #fff0cb; }
+  .home-brand-wordmark::after { height: 4px; }
+  .home-brand-banner h1 { font-size: clamp(19px, 5vw, 24px); }
+  .home-brand-banner p { font-size: 16px; margin-top: 9px; }
+  .hero-cloud { display: none; }
+  .home-brand-actions { gap: 10px; }
+  .home-brand-button { width: 100%; padding-inline: 12px; }
+  .homepage-search #home-search { padding-inline: 3px; }
+  .homepage-search #q { min-width: 0 !important; width: 100%; flex-basis: 100% !important; }
+}
