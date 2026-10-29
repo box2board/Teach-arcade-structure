@@ -80,3 +80,7 @@ The first review must still judge silhouette, clothing deformation, face/hair qu
 Adds four illustrated look presets (Electric, Bubblegum, Sunburst, Pixel pop), Ponytail/Mohawk hair, Headphones/Wristbands accessories, None/Bolt/Star/Arcade chest graphics with a separate color channel, vivid outfit/hair palettes, and four local studio backdrops. Presets preserve skin, body proportions and face. Backdrops are editor presentation only and are not exported as avatar appearance.
 
 Version 1 recipes remain supported: missing `top.graphic` defaults to `None`, missing `top.graphicColor` to white. New recipes include both fields. All new parts attach to the existing rig. Hair/headphone overlap remains a visual-review consideration for extreme silhouettes.
+
+## Additional wardrobe pass
+
+Adds Jersey and Striped tee tops, Cargo pants with side pockets, and a Scarf. Each equipped accessory now has its own color override in optional `accessoryColors`; omitted overrides use the existing shared `accessoryColor`, preserving old recipes. Eight model/recipe tests pass; rendered appearance still requires live WebGL review.

@@ -15,7 +15,7 @@ export function createAvatar(input){
  function mesh(g,color,attach='root',pos=[0,0,0]){geometries.add(g);const m=new T.Mesh(g,mat(color));m.position.fromArray(pos);bones[attach].add(m);return m;}
  function skin(g,color,weight){geometries.add(g);const si=[],sw=[],p=g.attributes.position;for(let i=0;i<p.count;i++){let w=weight(new T.Vector3().fromBufferAttribute(p,i));si.push(ids.indexOf(w[0]),ids.indexOf(w[1]||w[0]),0,0);sw.push(1-(w[2]||0),w[2]||0,0,0);}g.setAttribute('skinIndex',new T.Uint16BufferAttribute(si,4));g.setAttribute('skinWeight',new T.Float32BufferAttribute(sw,4));const m=new T.SkinnedMesh(g,mat(color));root.add(m);m.bind(skeleton);skinned.push(m);return m;}
  const clamp=T.MathUtils.clamp;const rigid=n=>()=>[n];const blend=(a,b,y0,y1)=>p=>[a,b,clamp((p.y-y0)/(y1-y0),0,1)];
- const channel=key=>({key,color:key.split('.').reduce((o,k)=>o[k],recipe)});const skinColor=channel('skin'),primary=channel('top.primary'),secondary=channel('top.secondary'),leg=channel('bottom.color');
+ const channel=key=>({key,color:key.split('.').reduce((o,k)=>o?.[k],recipe)??recipe.accessoryColor});const skinColor=channel('skin'),primary=channel('top.primary'),secondary=channel('top.secondary'),leg=channel('bottom.color');
  const torsoRows=[[hipY-.07,.20,.125],[hipY-.045,.235,.145],[hipY+.02,.24,.15],[hipY+.17,.245,.15],[hipY+.34,.28,.155],[hipY+.40,.275,.145],[hipY+.46,.215,.125],[hipY+.51,.10,.095],[hipY+.515,.085,.08]].map(r=>[r[0],r[1]*B.torsoWidth,r[2],0,0,.72]);
  skin(loft(torsoRows,24),primary,blend('hips','chest',hipY,hipY+.4));
  mesh(loft([[0,.065,.06],[.09,.068,.062],[.12,.06,.06]],16),skinColor,'neck',[0,-.02,0]);
@@ -33,7 +33,7 @@ export function createAvatar(input){
  // One closed profile for each arm, weighted over elbow and wrist. No exposed joint balls.
  for(const side of ['L','R']){const s=side==='L'?1:-1,w=B.torsoWidth;const armRows=[[hipY-.12,.034,.035,s*.43*w,.035],[hipY-.07,.048,.047,s*.43*w,.03],[hipY+.06,.056,.054,s*.415*w,.02],[hipY+.16,.058,.056,s*.4*w,.01],[hipY+.29,.073,.067,s*.365*w,0],[hipY+.39,.092,.08,s*.325*w,0],[hipY+.445,.066,.063,s*.29*w,0],[hipY+.45,0,0,s*.28*w,0]];
  const armWeight=p=>p.y<hipY+.16?['hand.'+side,'forearm.'+side,clamp((p.y-(hipY-.06))/.16,0,1)]:['forearm.'+side,'upperArm.'+side,clamp((p.y-(hipY+.12))/.13,0,1)];skin(loft(armRows,16),skinColor,armWeight);
- const long=recipe.top.style!=='Tee';let sleeve=armRows.filter(r=>r[0]>hipY+(long?-.06:.24)).map(r=>[r[0],r[1]+.014,r[2]+.014,r[3],r[4],.83]);sleeve.unshift([hipY+(long?-.055:.235),long?.062:.09,long?.06:.08,s*(long?.43:.38)*w,.018,.83]);skin(loft(sleeve,16),recipe.top.style==='Varsity'?secondary:primary,armWeight);
+ const long=!['Tee','Jersey','Striped tee'].includes(recipe.top.style);let sleeve=armRows.filter(r=>r[0]>hipY+(long?-.06:.24)).map(r=>[r[0],r[1]+.014,r[2]+.014,r[3],r[4],.83]);sleeve.unshift([hipY+(long?-.055:.235),long?.062:.09,long?.06:.08,s*(long?.43:.38)*w,.018,.83]);skin(loft(sleeve,16),recipe.top.style==='Varsity'?secondary:primary,armWeight);
  if(long)skin(loft([[hipY-.07,.061,.059,s*.43*w,.027],[hipY-.025,.065,.061,s*.425*w,.027]],16),secondary,armWeight);
  mesh(loft([[-.115,0,0],[-.10,.035,.025],[-.075,.055,.037],[-.025,.059,.04],[.015,.042,.034],[.025,.035,.029]],16),skinColor,'hand.'+side,[0,-.015,.005]);
  let thumb=mesh(loft([[-.05,0,0],[-.035,.024,.022],[.015,.025,.025],[.025,0,0]],12),skinColor,'hand.'+side,[-s*.049,-.028,.022]);thumb.rotation.z=-s*.45;
@@ -61,8 +61,8 @@ export function createAvatar(input){
  if(recipe.hair.style==='Sweep'){const m=mesh(loft([[0,0,0],[.025,.125,.055],[.075,.17,.07],[.12,.16,.075],[.16,.11,.05],[.18,0,0]],24),hair,'head',[-.025,.30,.13]);m.rotation.z=-.24;for(let i=0;i<3;i++)mesh(tube([[-.14+i*.04,.38,.18],[-.07+i*.04,.45,.17],[.07+i*.025,.46,.11]],.004),'#50403a','head');}
  if(recipe.hair.style==='Crop'){for(let i=0;i<5;i++){const m=mesh(loft([[0,.033,.035],[.04,.04,.042],[.075,.025,.028],[.09,0,0]],10),hair,'head',[(i-2)*.065,.42,.03]);m.rotation.z=-.25;}}
  if(recipe.hair.style==='Bob'){for(const s of [-1,1])mesh(loft([[0,.045,.11],[.03,.065,.135],[.16,.066,.14],[.28,.052,.12],[.33,0,0]],16),hair,'head',[s*.18,.065,-.025]);mesh(loft([[0,0,0],[.025,.17,.045],[.08,.19,.06],[.13,.16,.06],[.16,0,0]],24),hair,'head',[0,.28,.14]);}
- if(recipe.accessories.includes('Glasses')){for(const s of [-1,1]){let pts=[];for(let i=0;i<=24;i++){const a=i/24*Math.PI*2;pts.push([s*.084+Math.sin(a)*.053,.235+Math.cos(a)*.045,.19]);}mesh(tube(pts,.007),channel('accessoryColor'),'head');mesh(tube([[s*.135,.235,.19],[s*.20,.245,.08],[s*.21,.22,-.02]],.006),channel('accessoryColor'),'head');}mesh(tube([[-.03,.24,.19],[0,.25,.20],[.03,.24,.19]],.006),channel('accessoryColor'),'head');}
- if(recipe.accessories.includes('Backpack')){mesh(loft([[-.35,0,0],[-.33,.14,.07],[-.28,.17,.09],[-.07,.17,.09],[.02,.12,.07],[.035,0,0]],20),channel('accessoryColor'),'chest',[0,0,-.20]);for(const s of [-1,1])mesh(tube([[s*.14,-.33,-.16],[s*.21,-.19,.08],[s*.21,.025,.10],[s*.14,.035,-.22]],.018),secondary,'chest');}
+ if(recipe.accessories.includes('Glasses')){for(const s of [-1,1]){let pts=[];for(let i=0;i<=24;i++){const a=i/24*Math.PI*2;pts.push([s*.084+Math.sin(a)*.053,.235+Math.cos(a)*.045,.19]);}mesh(tube(pts,.007),channel('accessoryColors.Glasses'),'head');mesh(tube([[s*.135,.235,.19],[s*.20,.245,.08],[s*.21,.22,-.02]],.006),channel('accessoryColors.Glasses'),'head');}mesh(tube([[-.03,.24,.19],[0,.25,.20],[.03,.24,.19]],.006),channel('accessoryColors.Glasses'),'head');}
+ if(recipe.accessories.includes('Backpack')){mesh(loft([[-.35,0,0],[-.33,.14,.07],[-.28,.17,.09],[-.07,.17,.09],[.02,.12,.07],[.035,0,0]],20),channel('accessoryColors.Backpack'),'chest',[0,0,-.20]);for(const s of [-1,1])mesh(tube([[s*.14,-.33,-.16],[s*.21,-.19,.08],[s*.21,.025,.10],[s*.14,.035,-.22]],.018),secondary,'chest');}
  if(recipe.hair.style==='Ponytail'){
  const tail=mesh(loft([[0,0,0],[.04,.055,.055],[.12,.082,.085],[.23,.09,.08],[.33,.065,.06],[.36,0,0]],18),hair,'head',[0,.26,-.21]);tail.rotation.x=-.55;
  mesh(loft([[0,.05,.045],[.035,.055,.05],[.05,.05,.045]],16),secondary,'head',[0,.38,-.16]);
@@ -71,10 +71,10 @@ export function createAvatar(input){
  for(let i=0;i<6;i++){const z=-.13+i*.052;mesh(loft([[0,.045,.035],[.055,.052,.039],[.12,.032,.027],[.17,0,0]],12),hair,'head',[0,.43-Math.abs(z)*.35,z]);}
  }
  if(recipe.accessories.includes('Headphones')){
- const arc=[];for(let i=0;i<=20;i++){const a=i/20*Math.PI;arc.push([Math.cos(a)*.255,.23+Math.sin(a)*.30,-.025]);}mesh(tube(arc,.022),channel('accessoryColor'),'head');
- for(const side of [-1,1]){mesh(loft([[0,0,0],[.02,.041,.055],[.12,.041,.055],[.14,0,0]],16),channel('accessoryColor'),'head',[side*.24,.14,0]);mesh(loft([[0,0,0],[.02,.022,.04],[.09,.022,.04],[.11,0,0]],12),secondary,'head',[side*.27,.155,.006]);}
+ const arc=[];for(let i=0;i<=20;i++){const a=i/20*Math.PI;arc.push([Math.cos(a)*.255,.23+Math.sin(a)*.30,-.025]);}mesh(tube(arc,.022),channel('accessoryColors.Headphones'),'head');
+ for(const side of [-1,1]){mesh(loft([[0,0,0],[.02,.041,.055],[.12,.041,.055],[.14,0,0]],16),channel('accessoryColors.Headphones'),'head',[side*.24,.14,0]);mesh(loft([[0,0,0],[.02,.022,.04],[.09,.022,.04],[.11,0,0]],12),secondary,'head',[side*.27,.155,.006]);}
  }
- if(recipe.accessories.includes('Wristbands'))for(const side of ['L','R'])mesh(loft([[0,.05,.048],[.032,.052,.049],[.042,.05,.048]],16),channel('accessoryColor'),'hand.'+side,[0,.008,0]);
+ if(recipe.accessories.includes('Wristbands'))for(const side of ['L','R'])mesh(loft([[0,.05,.048],[.032,.052,.049],[.042,.05,.048]],16),channel('accessoryColors.Wristbands'),'hand.'+side,[0,.008,0]);
  if(recipe.top.graphic!=='None'){
  const shape=new T.Shape();let pts;
  if(recipe.top.graphic==='Bolt')pts=[[-.01,.09],[-.065,-.015],[-.006,-.008],[-.035,-.10],[.07,.026],[.012,.02],[.035,.09]];
@@ -82,6 +82,10 @@ export function createAvatar(input){
  else pts=[[-.08,-.06],[-.08,.04],[-.045,.04],[-.045,.08],[.045,.08],[.045,.04],[.08,.04],[.08,-.06],[.045,-.06],[.045,-.025],[-.045,-.025],[-.045,-.06]];
  shape.moveTo(...pts[0]);pts.slice(1).forEach(p=>shape.lineTo(...p));shape.closePath();const g=new T.ShapeGeometry(shape);const m=mesh(g,channel('top.graphicColor'),'chest',[recipe.top.style==='Varsity'?-.12:0,-.11,.164]);if(recipe.top.style==='Varsity')m.scale.setScalar(.6);
  }
+ if(recipe.accessories.includes('Scarf')){mesh(loft([[0,.115,.105],[.055,.125,.115],[.08,.105,.095]],24),channel('accessoryColors.Scarf'),'neck',[0,-.06,0]);mesh(loft([[-.24,.034,.012],[-.22,.043,.015],[0,.04,.015],[.02,.03,.012]],12),channel('accessoryColors.Scarf'),'chest',[.09,.05,.168]);}
+ if(recipe.top.style==='Striped tee')for(let i=0;i<4;i++){const y=hipY+.04+i*.082,w=(.244+i*.008)*B.torsoWidth;skin(loft([[y,w,.156],[y+.024,w+.001,.157]],24),secondary,blend('hips','chest',hipY,hipY+.4));}
+ if(recipe.top.style==='Jersey')for(const side of [-1,1]){const x=side*.21*B.torsoWidth;skin(loft([[hipY-.01,.018,.013,x,.10],[hipY+.30,.018,.013,x,.115]],12),secondary,blend('hips','chest',hipY,hipY+.4));}
+ if(recipe.bottom.style==='Cargo')for(const side of ['L','R']){const sign=side==='L'?1:-1;mesh(loft([[-.21,.04,.045],[-.20,.055,.055],[-.08,.055,.055],[-.06,.04,.045]],12),leg,'thigh.'+side,[sign*.105,0,.025]);mesh(tube([[sign*.14,-.08,.075],[sign*.07,-.08,.075]],.007),secondary,'thigh.'+side);}
  // Batch compatible meshes by attachment and material; retain bone-local transforms.
  function mergeGroup(list, isSkin=false){if(list.length<2)return;const names=isSkin?['position','normal','uv','skinIndex','skinWeight']:['position','normal','uv'];const arrays=Object.fromEntries(names.map(n=>[n,[]])),indices=[];let offset=0;
  for(const m of list){m.updateMatrix();const g=m.geometry.clone();if(!isSkin)g.applyMatrix4(m.matrix);for(const n of names)arrays[n].push(...(g.attributes[n]?.array||new Float32Array(g.attributes.position.count*2)));for(const i of g.index.array)indices.push(i+offset);offset+=g.attributes.position.count;g.dispose();}
@@ -99,5 +103,5 @@ export function createAvatar(input){
  if(state==='Celebrate'){rise=Math.abs(Math.sin(t*5))*.07;for(const side of ['L','R']){rot('upperArm.'+side,0,0,(side==='L'?1:-1)*(2.4+Math.sin(t*5)*.15));rot('forearm.'+side,-.6); }rot('chest',0,Math.sin(t*5)*.12);}
  for(const [name,b]of Object.entries(bones))b.quaternion.slerp(pose[name]||rest[name].quaternion,1-Math.exp(-dt*16));bones.hips.position.y=T.MathUtils.lerp(bones.hips.position.y,rest.hips.position.y+rise+(state==='Idle'?Math.sin(t*2)*.006:0),1-Math.exp(-dt*18));
  }
- return {root,setColors(next){const validated=validateRecipe(next);for(const [key,m]of materials)if(!key.startsWith('literal:'))m.color.set(key.split('.').reduce((o,k)=>o[k],validated));Object.assign(recipe,validated);},rig:{version:'ta-humanoid-1',bones,skeleton},animations:{play,update,get state(){return state;}},recipe,dispose(){geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());skeleton.dispose();root.removeFromParent();},stats(){let triangles=0;root.traverse(m=>{if(m.isMesh)triangles+=(m.geometry.index?.count||m.geometry.attributes.position.count)/3;});return {triangles,materials:materials.size,bones:ids.length};}};
+ return {root,setColors(next){const validated=validateRecipe(next);for(const [key,m]of materials)if(!key.startsWith('literal:'))m.color.set(key.split('.').reduce((o,k)=>o?.[k],validated)??validated.accessoryColor);Object.assign(recipe,validated);},rig:{version:'ta-humanoid-1',bones,skeleton},animations:{play,update,get state(){return state;}},recipe,dispose(){geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());skeleton.dispose();root.removeFromParent();},stats(){let triangles=0;root.traverse(m=>{if(m.isMesh)triangles+=(m.geometry.index?.count||m.geometry.attributes.position.count)/3;});return {triangles,materials:materials.size,bones:ids.length};}};
 }
