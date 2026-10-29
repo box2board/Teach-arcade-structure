@@ -171,3 +171,13 @@ vm.runInContext("hitEnemy(enemies.find(e=>e.type==='boss'),10000)",ctx);assert.e
 assert.match(els.get('cardtitle').textContent,/held the line/);
 els.get('go').onclick();assert.equal(ctx.window.snowDiagnostics().state.mode,'recruit');assert.equal(ctx.window.snowDiagnostics().state.damage,1);assert.equal(ctx.window.snowDiagnostics().state.wave,1);
 console.log('PASS: connected three-wave flow, recruitment, pause/resume, burst, both review/upgrade choices, scheduled boss, victory and restart reset (simulated renderer)');
+
+// Browser cadence sampler uses real elapsed intervals, not clamped game dt.
+const {createFrameCheck}=await import('../public/dev/snow-day-visuals/device-check.js');
+const check=createFrameCheck();for(let i=0;i<=100;i++)check.tick(i*10,true,'standard');
+assert.equal(check.result().averageFps,100);assert.equal(check.result().p95FrameMs,10);
+check.tick(5000,false,'standard');check.tick(10000,true,'standard');assert.equal(check.result().frames,100);
+check.tick(11000,true,'standard');assert.equal(check.result().activeSeconds,2);assert.equal(check.result().averageFps,50.5);
+check.tick(12000,true,'performance');assert.equal(check.result().frames,0);
+for(let i=1;i<=17000;i++)check.tick(12000+i*10,true,'performance');assert.equal(check.result().retainedSamples,16384);assert.equal(check.result().frames,17000);
+console.log('PASS: cadence sampler excludes pauses, retains stalls, resets on quality change and bounds memory');
