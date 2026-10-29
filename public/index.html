@@ -13,7 +13,7 @@
 
   <!-- Styles & Fonts -->
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Nunito:wght@400;600&family=Press+Start+2P&family=Bungee&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/assets/images/teach-arcade-logo.png" />
 
   <!-- SEO & Social -->
@@ -216,6 +216,7 @@
   <link rel="stylesheet" href="/assets/subject-tile-art.css?v=1" />
 <link rel="stylesheet" href="/assets/homepage-tile-art.css?v=1">
 <link rel="stylesheet" href="/assets/featured-cabinet-tiles.css?v=1">
+<link rel="stylesheet" href="/assets/homepage-marquee.css?v=1">
 </head>
 
 <body>
@@ -247,17 +248,20 @@
     <div class="ad-slot ad-top" aria-label="Advertisement"></div>
 
     <!-- Hero -->
-    <section class="hero">
-      <h1>Original Classroom Resources, Ready to Use</h1>
-      <p>
-        Teach Arcade creates free learning games, classroom tools, simulations, escape rooms, and printables for teachers. Choose a subject or jump into an original activity built for real class time.
-      </p>
-
-      <div class="cta-row">
-        <a class="btn" href="/subjects/">Browse Subjects</a>
-        <a class="btn secondary" href="/educational-games/">Explore Games &amp; Activities</a>
+    <section class="homepage-hero" aria-labelledby="homepage-title">
+      <div class="homepage-marquee">
+        <img class="marquee-joystick" src="/assets/images/homepage/marquee-joystick-384.webp" srcset="/assets/images/homepage/marquee-joystick-192.webp 192w, /assets/images/homepage/marquee-joystick-384.webp 384w" sizes="(max-width: 640px) 72px, 150px" width="384" height="384" alt="" decoding="async" fetchpriority="high">
+        <div class="marquee-content">
+          <div class="marquee-brand" aria-hidden="true">Teach Arcade</div>
+          <h1 id="homepage-title">Original Classroom Resources, Ready to Use</h1>
+          <p>Games, tools, and activities built for real classrooms.</p>
+          <div class="marquee-actions">
+            <a class="marquee-button" href="/subjects/">Browse Subjects <span aria-hidden="true">›</span></a>
+            <a class="marquee-button secondary" href="/educational-games/">Explore Games <span aria-hidden="true">›</span></a>
+          </div>
+        </div>
       </div>
-
+      <div class="homepage-search">
       <form id="home-search" style="margin:16px auto 0; max-width:720px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
         <label class="sr-only" for="q">Search Teach Arcade resources</label>
         <input id="q" name="q" type="search" autocomplete="off"
@@ -268,6 +272,7 @@
       <p style="margin:10px auto 0; max-width:720px; color:#64748b; font:400 13px/1.5 Nunito, system-ui, sans-serif;">
         Search original games, tools, and activities by subject or topic.
       </p>
+      </div>
     </section>
 
     <!-- Mid Ad -->

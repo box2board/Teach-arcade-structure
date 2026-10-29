@@ -1,0 +1,55 @@
+/* Homepage hero — approved Classic Marquee, coordinated with cabinet tiles. */
+.homepage-hero { margin: 28px 0 0; }
+.homepage-marquee {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+  padding: 30px 34px;
+  border: 8px ridge #2b5275;
+  background: #082039;
+  color: #fff4d5;
+  clip-path: polygon(16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px), 0 16px);
+}
+.homepage-marquee::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 7px;
+  border: 2px solid #edbd4a;
+  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
+  pointer-events: none;
+}
+.marquee-joystick { display: block; width: 150px; height: auto; aspect-ratio: 1; object-fit: contain; }
+.marquee-content { min-width: 0; text-align: center; }
+.marquee-brand { display: flex; align-items: center; justify-content: center; gap: 18px; color: #ffc44d; text-transform: uppercase; font: 700 15px/1.5 Poppins, sans-serif; letter-spacing: .2em; }
+.marquee-brand::before, .marquee-brand::after { content: ''; height: 2px; max-width: 180px; flex: 1; background: #e9bc52; }
+.homepage-marquee h1 { margin: 10px auto 12px; max-width: 1050px; color: #fff4d5; font: 400 clamp(25px, 3.1vw, 44px)/1.2 Bungee, 'Arial Black', sans-serif; text-wrap: balance; }
+.homepage-marquee p { margin: 0 0 20px; color: #f0ede3; font: 600 18px/1.5 Nunito, sans-serif; }
+.marquee-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+.marquee-button { display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 46px; padding: 11px 22px; border: 2px solid #ffd35e; border-radius: 8px; background: #ffd35e; color: #092039; font: 700 15px/1.4 Poppins, sans-serif; text-decoration: none; }
+.marquee-button.secondary { background: transparent; border-color: #fff4d5; color: #fff4d5; }
+.marquee-button:hover { background: #ffe28e; border-color: #ffe28e; color: #092039; }
+.marquee-button.secondary:hover { background: #173c5d; color: #fff4d5; border-color: #fff4d5; }
+.marquee-button:focus-visible { outline: 3px solid #5be7ff; outline-offset: 4px; }
+.homepage-search { padding: 5px 0 10px; text-align: center; }
+.homepage-search input:focus-visible, .homepage-search button:focus-visible { outline: 3px solid #0f766e; outline-offset: 3px; }
+@media (max-width: 900px) {
+  .homepage-marquee { grid-template-columns: 100px minmax(0, 1fr); padding: 27px 25px; gap: 12px; }
+  .marquee-joystick { width: 100px; }
+  .homepage-marquee h1 { font-size: 28px; }
+}
+@media (max-width: 640px) {
+  .homepage-hero { margin-top: 18px; }
+  .homepage-marquee { grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 22px 18px; border-width: 6px; }
+  .marquee-joystick { width: 72px; margin: 0 auto; }
+  .marquee-brand { font-size: 12px; gap: 10px; }
+  .homepage-marquee h1 { font-size: clamp(22px, 6vw, 30px); }
+  .homepage-marquee p { font-size: 16px; margin-bottom: 16px; }
+  .marquee-actions { gap: 10px; }
+  .marquee-button { width: 100%; padding-inline: 12px; }
+  .homepage-search #home-search { padding-inline: 3px; }
+  .homepage-search #q { min-width: 0 !important; width: 100%; flex-basis: 100% !important; }
+}
