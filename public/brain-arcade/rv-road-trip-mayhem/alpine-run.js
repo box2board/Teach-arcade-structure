@@ -25,7 +25,7 @@ function nitro(){if(mode!=='running'||R.nitro<18)return;R.nitro-=18;R.boost=1.25
 function damage(o){if(R.inv>0)return;const cost=o.t==='car'?18:o.t==='barrier'?13:9;R.health=Math.max(0,R.health-cost);R.vx=Math.max(150,R.vx*.70);R.inv=.85;shake=5;metrics.hits++;emit(o.x,ground(o.x)-20,18,'#ffcd78',1.9);popup('OUCH! KEEP ROLLING');$('msg').textContent='Roadside hit — brake to set up the next jump.';if(!R.health){R.health=45;R.nitro=Math.max(20,R.nitro);popup('PATCHED UP!');$('msg').textContent='Quick roadside repair. Keep going!';}}
 function update(dt){clock+=dt;if(callT>0){callT-=dt;if(callT<=0)$('call').classList.remove('show');}shake=Math.max(0,shake-dt*12);if(mode!=='running')return;metrics.physicsSteps++;R.time+=dt;R.inv=Math.max(0,R.inv-dt);R.boost=Math.max(0,R.boost-dt);R.nitro=Math.min(100,R.nitro+dt*1.05);
  if(R.on){R.coyote=.12;R.jumps=0;}else R.coyote=Math.max(0,R.coyote-dt);
- if(R.buffer>0&&(R.on||R.coyote>0||R.jumps<2)){const first=R.on||R.coyote>0||R.jumps===0;R.vy=first?-505:-445;R.on=false;R.coyote=0;R.jumps=first?1:2;R.buffer=0;metrics.jumps++;if(!first){metrics.doubleJumps++;popup('DOUBLE JUMP');rings.push({x:R.x,y:R.y+24,life:.32});emit(R.x,R.y+22,8,'#c3faff',.6);}else emit(R.x,R.y+23,8,'#e7c299',.7);}
+ if(R.buffer>0&&(R.on||R.coyote>0||R.jumps<2)){const first=R.on||R.coyote>0||R.jumps===0;R.vy=first?-555:-485;R.on=false;R.coyote=0;R.jumps=first?1:2;R.buffer=0;metrics.jumps++;if(!first){metrics.doubleJumps++;popup('DOUBLE JUMP');rings.push({x:R.x,y:R.y+24,life:.32});emit(R.x,R.y+22,8,'#c3faff',.6);}else emit(R.x,R.y+23,8,'#e7c299',.7);}
  R.buffer=Math.max(0,R.buffer-dt);
  const oldX=R.x,wasOn=R.on,priorSpeed=R.vx;
  if(K.gas)R.vx+=(R.on?520:70)*dt;
