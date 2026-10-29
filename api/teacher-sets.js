@@ -5,7 +5,7 @@ export default async function handler(req,res){
  res.setHeader('Cache-Control','private, no-store');res.setHeader('Vary','Cookie, Origin');
  const send=(status,data)=>res.status(status).json(data),config=settings(),action=req.query?.action||'public';
  const reads=['public','mine','saved','detail'];
- const writes=['create','update','copy','save','unsave'];
+ const writes=['create','update','copy','save','unsave','report'];
  if(!reads.includes(action)&&!writes.includes(action))return send(404,{error:'Unknown question-set action.'});
  if(req.method!==(reads.includes(action)?'GET':'POST'))return send(405,{error:'Method not allowed.'});
  if(!config)return send(503,{error:'Teacher-created sets are not connected in this environment.'});
@@ -15,7 +15,7 @@ export default async function handler(req,res){
  if(!body||typeof body!=='object'||Array.isArray(body))return send(400,{error:'Invalid request.'});
  if(Buffer.byteLength(JSON.stringify(body),'utf8')>256000)return send(413,{error:'This set is too large. Shorten the question text.'});
  const id=req.method==='GET'?req.query?.id:body.id;
- if(['detail','update','copy','save','unsave'].includes(action)&&!teacherSetId(id))return send(400,{error:'Invalid question-set link.'});
+ if(['detail','update','copy','save','unsave','report'].includes(action)&&!teacherSetId(id))return send(400,{error:'Invalid question-set link.'});
  try{
   const {token,user}=await authenticate(req,res);
   if(!['public','detail'].includes(action)&&!user?.id)return send(401,{error:'Sign in to create or save question sets.'});
@@ -31,7 +31,7 @@ export default async function handler(req,res){
     const rows=await backend(`/rest/v1/teacher_set_saves?teacher_id=eq.${user.id}&select=teacher_question_sets!inner(${metadata})&order=created_at.desc,set_id.asc&limit=25&offset=${offset}${term?'&teacher_question_sets.title=ilike.'+encodeURIComponent('*'+term+'*'):''}`,options);
     return send(200,{sets:rows.map(r=>r.teacher_question_sets)});
    }
-   const rows=await backend(`${base}?${action==='mine'?'owner_id=eq.'+user.id:'visibility=eq.public'}${query}`,options);
+   const rows=await backend(`${base}?${action==='mine'?'owner_id=eq.'+user.id:'visibility=eq.public&moderation_hidden=eq.false'}${query}`,options);
    return send(200,{sets:rows});
   }
   if(action==='create'){
@@ -44,6 +44,12 @@ export default async function handler(req,res){
   const current=await get();
   if(!current)return send(404,{error:'This set is private or is no longer available.'});
   if(action==='detail')return send(200,{set:current});
+  if(action==='report'){
+   if(current.visibility!=='public'||current.moderation_hidden||current.owner_id===user.id)return send(400,{error:'Only another teacher’s public set can be reported.'});
+   if(!['incorrect','inappropriate','copyright','personal-data','other'].includes(body.reason))return send(400,{error:'Choose a report reason.'});
+   try{await backend('/rest/v1/teacher_set_reports',{...options,method:'POST',body:{set_id:id,reason:body.reason}});}catch(error){if(error.status!==409)throw error;}
+   return send(200,{ok:true});
+  }
   if(action==='copy'){
    const input=setInput({...current,title:(current.title+' (copy)').slice(0,120),visibility:'private'});delete input.visibility;
    const rows=await backend(base,{...options,method:'POST',body:input});return send(201,{set:rows[0]});

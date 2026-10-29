@@ -101,3 +101,13 @@ test('create and copy preserve multiple correct answer indices through the API',
  assert.equal((await call('create',{method:'POST',authenticated:true,body:multiple})).status,201);assert.deepEqual(inserted.questions[0].answer,[0,2]);
  assert.equal((await call('copy',{method:'POST',authenticated:true,body:{id}})).status,201);assert.deepEqual(inserted.questions[0].answer,[0,2]);
 });
+test('reports require sign-in and another visible public set; identity is server controlled and duplicates are safe',async()=>{
+ configure();let writes=[];let current={...set(),visibility:'public',owner_id:'teacher-b'};
+ global.fetch=async(url,opts)=>{if(url.endsWith('/user'))return response({id:'teacher-a'});if(url.includes('teacher_set_reports')){writes.push(JSON.parse(opts.body));return response([],writes.length>1?409:201);}return response([current]);};
+ assert.equal((await call('report',{method:'POST',body:{id,reason:'incorrect'}})).status,401);
+ for(let i=0;i<2;i++)assert.equal((await call('report',{method:'POST',authenticated:true,body:{id,reason:'incorrect',reporter_id:'forged',status:'resolved'}})).status,200);
+ assert.deepEqual(writes[0],{set_id:id,reason:'incorrect'});
+ for(const patch of [{visibility:'private'},{moderation_hidden:true},{owner_id:'teacher-a'}]){current={...set(),visibility:'public',owner_id:'teacher-b',...patch};assert.equal((await call('report',{method:'POST',authenticated:true,body:{id,reason:'other'}})).status,400);}
+ current={...set(),visibility:'public',owner_id:'teacher-b'};assert.equal((await call('report',{method:'POST',authenticated:true,body:{id,reason:'invalid'}})).status,400);
+ assert.equal(writes.length,2);
+});

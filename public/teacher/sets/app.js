@@ -35,11 +35,16 @@ async function openSet(id){
   else controls.append(action('Make a private copy',async()=>{if(!signedIn())return;const copied=await api('copy',{id:set.id});await editSet(copied.set.id);status('Private copy created. Your edits will not change the original.');}));
   controls.append(action('Save to My Question Sets',async()=>{if(!signedIn())return;await api('save',{id:set.id});status('Saved to your collection. This shortcut follows the creator’s updates.');}));
   if(view==='saved')controls.append(action('Remove saved shortcut',async()=>{await api('unsave',{id:set.id});show('set-library');resetUrl();await list();}));
+  if(set.visibility==='public'&&set.owner_id!==user?.id){
+   const label=el('label','Report reason');const reasons=el('select');reasons.setAttribute('aria-label','Report reason');
+   for(const [value,text]of [['incorrect','Incorrect answers'],['inappropriate','Inappropriate content'],['copyright','Copyright concern'],['personal-data','Personal information'],['other','Other concern']]){const option=el('option',text);option.value=value;reasons.append(option);}
+   label.append(reasons);controls.append(label,action('Report this set',async()=>{if(!signedIn())return;if(!window.confirm('Send this set for review? Reporting does not automatically hide it.'))return;await api('report',{id:set.id,reason:reasons.value});status('Report received. Thank you. A moderator can review it; this does not automatically hide the set.');}));
+  }
   $('teacher-set-games').replaceChildren();
   try{teacherBank(set);$('teacher-set-games').append(el('p','Play this set:'));for(const game of GAMES.filter(g=>g.supportsQuestionBank)){const a=el('a',game.title+' ↗');a.href=game.url+'?set='+encodeURIComponent('teacher:'+set.id)+'&from=teacher-hq';a.target='_blank';a.rel='noopener';$('teacher-set-games').append(a);}}
   catch(error){$('teacher-set-games').append(el('p',error.message));}
   $('teacher-set-questions').replaceChildren(...set.questions.map((q,i)=>{const d=el('details');d.append(el('summary',`${i+1}. ${q.question||'Unfinished question'}`));const choices=el('ol');choices.type='A';for(const [n,text]of q.choices.entries())choices.append(el('li',(text||'Unfinished choice')+(correctAnswers(q).includes(n)?' ✓':'')));d.append(choices,el('p',q.explanation));return d;}));
-  status(set.visibility==='private'?'Private · Only you can access this set.':'Public · Anyone with access to this library can read, play, and copy this set.');$('teacher-set-title').tabIndex=-1;$('teacher-set-title').focus();
+  status(set.moderation_hidden?'Hidden from the community by a moderator. You can edit your original; publishing cannot remove this restriction.':set.visibility==='private'?'Private · Only you can access this set.':'Public · Anyone with access to this library can read, play, and copy this set.');$('teacher-set-title').tabIndex=-1;$('teacher-set-title').focus();
  }catch(error){if(request===version)status(error.message);}
 }
 async function editSet(id){

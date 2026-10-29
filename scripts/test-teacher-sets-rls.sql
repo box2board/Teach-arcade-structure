@@ -48,5 +48,36 @@ do $$ begin
  if not exists(select 1 from public.teacher_question_sets where id=current_setting('test.copy_id')::uuid and visibility='private') then raise exception 'copy did not survive withdrawal';end if;
 end $$;
 reset role;
+
+-- Moderation/reporting: administrator actions use the database dashboard role.
+update public.teacher_question_sets set visibility='public' where id=current_setting('test.set_id')::uuid;
+set local role authenticated;
+select set_config('request.jwt.claim.sub',current_setting('test.teacher_b'),true);
+insert into public.teacher_set_reports(set_id,reason) values(current_setting('test.set_id')::uuid,'incorrect');
+do $$ begin
+ begin insert into public.teacher_set_reports(set_id,reason) values(current_setting('test.set_id')::uuid,'other');raise exception 'duplicate report allowed';exception when unique_violation then null;end;
+ begin update public.teacher_question_sets set moderation_hidden=true where id=current_setting('test.set_id')::uuid;raise exception 'teacher could moderate';exception when insufficient_privilege then null;end;
+end $$;
+select set_config('request.jwt.claim.sub',current_setting('test.teacher_a'),true);
+do $$ begin if exists(select 1 from public.teacher_set_reports) then raise exception 'reporter exposed to creator';end if;end $$;
+reset role;
+update public.teacher_question_sets set moderation_hidden=true where id=current_setting('test.set_id')::uuid;
+set local role authenticated;
+select set_config('request.jwt.claim.sub',current_setting('test.teacher_b'),true);
+do $$ begin
+ if exists(select 1 from public.teacher_question_sets where id=current_setting('test.set_id')::uuid) then raise exception 'hidden set exposed';end if;
+ if exists(select 1 from public.teacher_set_saves b join public.teacher_question_sets s on s.id=b.set_id where s.id=current_setting('test.set_id')::uuid) then raise exception 'hidden saved set exposed';end if;
+ if not exists(select 1 from public.teacher_question_sets where id=current_setting('test.copy_id')::uuid) then raise exception 'independent copy lost';end if;
+end $$;
+select set_config('request.jwt.claim.sub',current_setting('test.teacher_a'),true);
+do $$ begin
+ if not exists(select 1 from public.teacher_question_sets where id=current_setting('test.set_id')::uuid) then raise exception 'owner lost original';end if;
+ begin update public.teacher_question_sets set moderation_hidden=false where id=current_setting('test.set_id')::uuid;raise exception 'owner could unhide';exception when insufficient_privilege then null;end;
+end $$;
+reset role;
+set local role anon;
+do $$ begin if exists(select 1 from public.teacher_question_sets where id=current_setting('test.set_id')::uuid) then raise exception 'hidden anonymous exposure';end if;end $$;
+reset role;
+
 rollback;
 select 'All teacher-set RLS tests passed; no test records retained.' as result;
