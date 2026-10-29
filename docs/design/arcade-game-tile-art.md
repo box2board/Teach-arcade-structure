@@ -1,4 +1,8 @@
-# Arcade Review Games — Flat Arcade
+# Arcade Review Games — Tile Art
+
+The current collection uses [Classic Game Box](arcade-game-box-art.md) styling: black-and-gold packaging with simpler arcade scenes. The notes below describe the previous Flat Arcade set, whose assets remain available.
+
+## Previous Flat Arcade set
 
 All 18 game tiles use the approved Option C Pale Lavender (`#EAE3FA`) background. Each game has its own simple blue/teal/gold illustration with bold navy outlines and generous negative space.
 

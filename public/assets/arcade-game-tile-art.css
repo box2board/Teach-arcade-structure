@@ -1,18 +1,70 @@
-/* Flat Arcade collection: Option C, Pale Lavender. */
+/* Collector game boxes: classic black-and-gold packaging, clean arcade art. */
+.grid > .card { grid-column: span 4; border-radius: 10px; }
 .art {
+  display: flex;
+  flex-direction: column;
   height: auto;
-  aspect-ratio: 3 / 2;
-  background: #eae3fa;
+  aspect-ratio: auto;
+  padding: 20px 18px 15px;
+  background: #17191c;
+  border: 1px solid #8c7a4d;
+  border-radius: 8px 8px 0 0;
+  color: #fff4d5;
 }
 .art::before { content: none; }
+.box-brand, .box-title, .box-footer {
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+}
+.box-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.box-brand::before, .box-brand::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: #e9bc52;
+}
+.box-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 132px;
+  padding: 18px 0;
+  font-size: clamp(17px, 1.65vw, 21px);
+  line-height: 1.55;
+  text-transform: uppercase;
+  text-shadow: 2px 3px 0 #090b0e;
+  overflow-wrap: anywhere;
+}
+.box-title > span:first-child { color: #ffc44d; }
+.box-title small { margin-top: 10px; font-size: 10px; line-height: 1.6; color: #e9bc52; }
 .arcade-game-tile-art {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 1;
   object-fit: contain;
-  background: #eae3fa;
+  background: #151b2c;
+  border: 3px solid #e9bc52;
+  padding: 3px;
+  image-rendering: pixelated;
 }
-.art:focus-visible, .play:focus-visible {
-  outline: 3px solid #0f766e;
-  outline-offset: -4px;
+.box-footer { display: grid; justify-items: center; gap: 12px; padding-top: 14px; font-size: 9px; line-height: 1.6; text-transform: uppercase; letter-spacing: 1px; }
+.box-controller { display: block; width: 50px; padding: 5px; border: 2px solid #e9bc52; }
+.box-controller svg { display: block; width: 100%; height: auto; shape-rendering: crispEdges; }
+.art:focus-visible, .play:focus-visible { outline: 3px solid #5be7ff; outline-offset: -5px; }
+@media (max-width: 1100px) {
+  .grid > .card { grid-column: span 6; }
+  .box-title { font-size: 21px; }
+}
+@media (max-width: 680px) {
+  .grid > .card { grid-column: span 12; }
+  .box-title { font-size: clamp(17px, 5vw, 23px); }
 }
