@@ -1,0 +1,42 @@
+[
+  {
+    "id": "review-lab",
+    "title": "Review Lab",
+    "accent": "#ffc44d",
+    "prompt": "Use case: stylized-concept. Production square screen artwork for Teach Arcade's Review Lab homepage classic arcade cabinet tile. Reference image: ONLY option A left cabinet defines artwork style. Output ONE full-bleed square illustration for the INSIDE SCREEN ONLY: a clean bright pixel arcade racing course, one blue and gold racing car seen from behind on a simple curved gray track, one floating golden question-mark coin, bright sky and broad green hills. Clean flat 16-bit arcade-inspired illustration, broad bold flat colors, readable silhouettes, limited chunky pixel shading, simple uncluttered scene with breathing room. Match approved A screen art quality and nostalgic friendly mood. Entire subjects visible, avoid busy details. NO cabinet, marquee, frame, border, controller, buttons, title or footer; website adds cabinet framing separately. NO words, letters, logos or extra text; only specifically requested question symbol or die pips. Do not output comparison board. No realistic rendering, glow effects or dense textures.",
+    "tool": "built-in image generation",
+    "reference": "Approved Classic Cabinet, option A of Featured Original Activities comparison board"
+  },
+  {
+    "id": "arcade-review-games",
+    "title": "Arcade Review Games",
+    "accent": "#5bd4ee",
+    "prompt": "Use case: stylized-concept. Production square screen artwork for Teach Arcade's Arcade Review Games homepage classic arcade cabinet tile. Reference image: ONLY option A left cabinet defines artwork style. Output ONE full-bleed square illustration for the INSIDE SCREEN ONLY: an inviting colorful arcade platform adventure, three staggered blue and gold stone platforms across a green island, a single glowing question orb over the center platform, distant simple hills and bright cyan sky, no people. Clean flat 16-bit arcade-inspired illustration, broad bold flat colors, readable silhouettes, limited chunky pixel shading, simple uncluttered scene with breathing room. Match approved A screen art quality and nostalgic friendly mood. Entire subjects visible, avoid busy details. NO cabinet, marquee, frame, border, controller, buttons, title or footer; website adds cabinet framing separately. NO words, letters, logos or extra text; only specifically requested question symbol or die pips. Do not output comparison board. No realistic rendering, glow effects or dense textures.",
+    "tool": "built-in image generation",
+    "reference": "Approved Classic Cabinet, option A of Featured Original Activities comparison board"
+  },
+  {
+    "id": "escape-rooms",
+    "title": "Escape Rooms",
+    "accent": "#f4a782",
+    "prompt": "Use case: stylized-concept. Production square screen artwork for Teach Arcade's Escape Rooms homepage classic arcade cabinet tile. Reference image: ONLY option A left cabinet defines artwork style. Output ONE full-bleed square illustration for the INSIDE SCREEN ONLY: a mysterious but friendly stone puzzle chamber, one large closed teal door with a gold keyhole and a large golden key in the foreground, simple block walls, two warm lanterns, no people. Clean flat 16-bit arcade-inspired illustration, broad bold flat colors, readable silhouettes, limited chunky pixel shading, simple uncluttered scene with breathing room. Match approved A screen art quality and nostalgic friendly mood. Entire subjects visible, avoid busy details. NO cabinet, marquee, frame, border, controller, buttons, title or footer; website adds cabinet framing separately. NO words, letters, logos or extra text; only specifically requested question symbol or die pips. Do not output comparison board. No realistic rendering, glow effects or dense textures.",
+    "tool": "built-in image generation",
+    "reference": "Approved Classic Cabinet, option A of Featured Original Activities comparison board"
+  },
+  {
+    "id": "teacher-tools",
+    "title": "Teacher Tools",
+    "accent": "#8bd7b7",
+    "prompt": "Use case: stylized-concept. Production square screen artwork for Teach Arcade's Teacher Tools homepage classic arcade cabinet tile. Reference image: ONLY option A left cabinet defines artwork style. Output ONE full-bleed square illustration for the INSIDE SCREEN ONLY: a playful clean classroom command desk with a compact blue round timer, a simple four-segment teal gold and blue spinner wheel and a golden pencil, bright cyan wall, only these three focal objects, no people. Clean flat 16-bit arcade-inspired illustration, broad bold flat colors, readable silhouettes, limited chunky pixel shading, simple uncluttered scene with breathing room. Match approved A screen art quality and nostalgic friendly mood. Entire subjects visible, avoid busy details. NO cabinet, marquee, frame, border, controller, buttons, title or footer; website adds cabinet framing separately. NO words, letters, logos or extra text; only specifically requested question symbol or die pips. Do not output comparison board. No realistic rendering, glow effects or dense textures.",
+    "tool": "built-in image generation",
+    "reference": "Approved Classic Cabinet, option A of Featured Original Activities comparison board"
+  },
+  {
+    "id": "print-play-games",
+    "title": "Print & Play Games",
+    "accent": "#bdabef",
+    "prompt": "Use case: stylized-concept. Production square screen artwork for Teach Arcade's Print & Play Games homepage classic arcade cabinet tile. Reference image: ONLY option A left cabinet defines artwork style. Output ONE full-bleed square illustration for the INSIDE SCREEN ONLY: a compact cream tabletop board game, a blue and teal path of broad squares, one gold pawn, a single white six-sided die with blue pips and two stacked blue cards, warm bright simple backdrop, no people. Clean flat 16-bit arcade-inspired illustration, broad bold flat colors, readable silhouettes, limited chunky pixel shading, simple uncluttered scene with breathing room. Match approved A screen art quality and nostalgic friendly mood. Entire subjects visible, avoid busy details. NO cabinet, marquee, frame, border, controller, buttons, title or footer; website adds cabinet framing separately. NO words, letters, logos or extra text; only specifically requested question symbol or die pips. Do not output comparison board. No realistic rendering, glow effects or dense textures.",
+    "tool": "built-in image generation",
+    "reference": "Approved Classic Cabinet, option A of Featured Original Activities comparison board"
+  }
+]
