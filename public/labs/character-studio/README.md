@@ -84,3 +84,7 @@ Version 1 recipes remain supported: missing `top.graphic` defaults to `None`, mi
 ## Additional wardrobe pass
 
 Adds Jersey and Striped tee tops, Cargo pants with side pockets, and a Scarf. Each equipped accessory now has its own color override in optional `accessoryColors`; omitted overrides use the existing shared `accessoryColor`, preserving old recipes. Eight model/recipe tests pass; rendered appearance still requires live WebGL review.
+
+## Browser collection and history
+
+My characters saves up to 24 named recipes in this origin's localStorage. This is browser-local, not account or cloud persistence; clearing browser data removes the collection, and different preview origins have different collections. JSON export remains the portable backup. Loading a saved character enters the 60-state appearance undo/redo history. Removing a save can be reversed with Undo last removal during the editor session. Storage failures are reported without claiming success; unreadable collection data is not overwritten. Keyboard undo/redo uses Ctrl/Cmd+Z and Shift+Ctrl/Cmd+Z outside form fields and dialogs. Camera/backdrop changes are not appearance history. Ten model/recipe/storage/history tests pass.
