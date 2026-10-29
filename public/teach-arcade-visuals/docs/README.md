@@ -1,4 +1,4 @@
-# Teach Arcade Visual System 0.1.0-preview
+# Teach Arcade Visual System 0.1.0-rc.1
 
 This candidate system grows from the Snow Day Defender benchmark. Appearance and motion passes have user approval; the API remains provisional while device validation is pending. No next game has been upgraded.
 
@@ -45,6 +45,12 @@ Weather owns fixed typed arrays, draws only the selected subset, and costs one d
 
 ## Rollout
 
-The canonical tracker is `/visual-upgrades/manifest.json`; assessment, checklist, provenance and performance evidence live beside it. Status is `device-validation-pending`, not complete. Appearance and motion were approved on 2026-10-28; finalize extraction/API after remaining benchmark validation. For another game: inspect → capture baseline → visual pass → preserve rules/tests → compare → approve → refine shared modules → update tracker.
+The canonical tracker is `/visual-upgrades/manifest.json`; assessment, checklist, provenance and performance evidence live beside it. Status is `release-preview-awaiting-review`, not complete. Appearance and motion were approved on 2026-10-28; finalize extraction/API after remaining benchmark validation. For another game: inspect → capture baseline → visual pass → preserve rules/tests → compare → approve → refine shared modules → update tracker.
 
 Next recommended test: Quest Arcade, after this benchmark is approved. Its slower top-down play would test screen readability, interaction/reward cues and a different environment without another projectile-heavy stress case. Gaps: 2D renderer adapter, reusable scene transitions, asset-loading conventions, real audio playback and physical Chromebook/browser measurements. Do not add these speculatively.
+
+## Release candidate, 2026-10-29
+
+The public Snow Day entry now launches the same approved squad runtime with the existing shared Review Lab catalog and prepareSnowQuestions adapter. Development-only controls remain at /dev/snow-day-visuals/. No new generic systems were needed for release integration. The four actual shared modules above are the v0.1 API candidate; Snow motion, camera framing, outfits, fort, weather theme, static surface shading and feature decorations stay game-specific. Version 0.1.0-rc.1 identifies this release candidate, not production publication or completed Chromebook validation.
+
+Measured user report: iPhone Safari, Standard, 60.386 active seconds, 57.414 average requestAnimationFrame FPS, p95 frame interval 23ms. Independent peaks: 26 defenders and 138 enemies. Two-feature visual fixture, reaching wave two; no claim of normal random-five/boss/Chromebook coverage. Next benchmark remains Quest Arcade, only after separate authorization. The current gaps remain 2D adaptation, actual audio, general transitions and target-device evidence; no speculative implementations were added.

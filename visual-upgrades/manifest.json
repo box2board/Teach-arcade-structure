@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "visualSystemVersion": "0.1.0-preview",
+  "visualSystemVersion": "0.1.0-rc.1",
   "games": {
     "snow-day-defender": {
-      "status": "device-validation-pending",
+      "status": "release-preview-awaiting-review",
       "visualLevel": "appearance-and-motion-approved",
-      "visualSystemVersion": "0.1.0-preview",
+      "visualSystemVersion": "0.1.0-rc.1",
       "route": "/dev/snow-day-visuals/",
       "beforeRoute": "/dev/snow-day-visuals/before/",
       "source": "Squad Prototype v7",
@@ -35,11 +35,11 @@
         "projectionBounds": "passed",
         "webglBrowser": "blocked-context-disabled",
         "physicalChromebook": "pending",
-        "mobileTabletDevice": "pending"
+        "mobileTabletDevice": "iPhone Safari Standard: 57.4 FPS average, 60.4 active seconds, p95 23ms; visual fixture through wave two only"
       },
       "benchmarkVisualsApproved": false,
       "reusableExtraction": "provisional; finalize after user approval",
-      "lastReviewed": "2026-10-28",
+      "lastReviewed": "2026-10-29",
       "notes": [
         "Latest squad prototype preserved; existing public Review Lab version untouched",
         "Scientific Method sample content preserved; public shared-bank integration not part of this visual pass",
@@ -53,14 +53,16 @@
         "Whole-scene depth pass: cached snow shade texture, grain, grounded trees/cabins and fort contact shadows; rendered/device approval pending",
         "Distinct Frost King crown/cape/ice armor; tank plates, runner skates, normal earmuffs; separate boss art-test entry. Cached single body draw retained; visual/device review pending.",
         "Enemy appearance approved; first motion pass awaiting visual review. Game-specific motion.js leaves collision coordinates and gameplay timing untouched.",
-        "User approved appearance and motion. Connected simulated three-wave flow passes; overall benchmark remains incomplete pending device/browser validation."
+        "User approved appearance and motion. Connected simulated three-wave flow passes; overall benchmark remains incomplete pending device/browser validation.",
+        "Release launcher now imports the same approved runtime with shared topic-bank adapter; public mode omits Lab setup and hides test controls. Older engine retained behind noindex legacy-index.html. No production release."
       ],
       "authoritativeImplementation": "public/dev/snow-day-visuals/",
       "sourceReconciliation": "reconciliation.md",
       "artDirectionApproved": true,
       "approvedArtReference": "docs/design/snow-day-defenders/approved-target.webp",
       "appearanceApproved": true,
-      "motionApproved": true
+      "motionApproved": true,
+      "releaseRoute": "/review-lab/snow-day-defenders/"
     }
   }
 }

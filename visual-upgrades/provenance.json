@@ -23,5 +23,8 @@
     "lab.js": "d44f1cdac6d88321505f64209fc3658576cd6476e9c15a9f247f343e0c4034e4",
     "questions.js": "8e3518cc8bd5e084bf43d56ea952fe9c89bb100266a5dfcae11cada9f5f93744"
   },
-  "authoritativeCombinedSource": "public/dev/snow-day-visuals/"
+  "authoritativeCombinedSource": "public/dev/snow-day-visuals/",
+  "releaseEntry": "public/review-lab/snow-day-defenders/index.html",
+  "releaseLauncher": "public/review-lab/snow-day-defenders/release-launch.js",
+  "runtimeNote": "Release and development entries share public/dev/snow-day-visuals/game.js and its art modules; do not duplicate the engine. Before remains Site v7. Legacy public engine files are preserved for rollback."
 }

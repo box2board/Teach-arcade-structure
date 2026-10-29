@@ -181,3 +181,17 @@ check.tick(11000,true,'standard');assert.equal(check.result().activeSeconds,2);a
 check.tick(12000,true,'performance');assert.equal(check.result().frames,0);
 for(let i=1;i<=17000;i++)check.tick(12000+i*10,true,'performance');assert.equal(check.result().retainedSamples,16384);assert.equal(check.result().frames,17000);
 console.log('PASS: cadence sampler excludes pauses, retains stalls, resets on quality change and bounds memory');
+
+const {loadQuestionSet}=await import('../public/review-lab/catalog.js');
+const {prepareSnowQuestions}=await import('../public/review-lab/snow-day-defenders/question-adapter.js');
+for(const id of ['scientific-method','constitution-basics','linear-equations']){
+ const bank=await loadQuestionSet(id),prepared=prepareSnowQuestions(bank,()=>.5);
+ const releaseCtx={...ctx,window:{addEventListener(){},dispatchEvent(){},SNOW_RELEASE:true,SNOW_QUESTION_SET:prepared}};
+ vm.createContext(releaseCtx);vm.runInContext(gameSource.replace(/^import .*;$/gm,''),releaseCtx);vm.runInContext('start()',releaseCtx);
+ assert.equal(releaseCtx.window.snowDiagnostics().state.mode,'recruit');
+ assert.ok(bank.questions.some(q=>q.question===vm.runInContext('questionList[0].prompt',releaseCtx)));
+ vm.runInContext('finishRecruitment();review()',releaseCtx);assert.ok(bank.questions.some(q=>q.question===els.get('copy').textContent));
+ vm.runInContext("S.mode='play';beginRebuild()",releaseCtx);assert.ok(bank.questions.some(q=>q.question===els.get('copy').textContent));
+ assert.equal(vm.runInContext('lab',releaseCtx),null);
+}
+console.log('PASS: actual squad engine uses selected shared bank in recruitment, wave review and rebuild; public mode skips Snow Lab');
