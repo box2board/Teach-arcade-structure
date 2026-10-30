@@ -58,7 +58,7 @@ function scenery(){if(levelIndex===1){desertScenery();return;}const z=Math.min(4
  // Every midground tree shares the bank's coordinate system and scroll factor.
  const ridge=[];for(let x=-20;x<=W+20;x+=20)ridge.push([x,ridgeY(x+cam*.2)]);
  const start=Math.floor(cam*.2/113);for(let i=start-1;i<start+12;i++){const wx=i*113+noise(i)*30;pine(wx-cam*.2,ridgeY(wx)+7,.23+noise(i)*.22,i%4);}
- path([[0,H],...ridge,[W,H]],z===2?'#385a58':z===3?'#467e6b':'#678253');for(let wx=Math.floor(cam*.2/53)*53;wx<cam*.2+W+53;wx+=53){const x=wx-cam*.2,y=ridgeY(wx)+8,n=noise(wx);ellipse(x,y,14+n*16,3+n*2,z===2?'#4c6a5a':'#82905c');}
+ path([[0,H],...ridge,[W,H]],z===2?'#385a58':z===3?'#467e6b':'#678253');for(let wx=Math.floor(cam*.2/79)*79;wx<cam*.2+W+79;wx+=79){const n=noise(wx);if(n<.6)continue;const x=wx-cam*.2+n*22,y=ridgeY(wx+n*22)+4;rootTufts(x,y,5+n*5);}
  if(z===1){for(let i=Math.floor(cam*.35/430)-1;i<Math.floor(cam*.35/430)+4;i++){const wx=i*430+noise(i)*55,x=wx-cam*.35,y=hill(x+cam)-5;scenicSprite(i%2?'garage':'lodge',x,y,180+noise(i)*35);}}
  for(let i=Math.floor(cam*.66/225)-1;i<Math.floor(cam*.66/225)+7;i++){if(noise(i)<.25)continue;const wx=i*225+noise(i)*35,x=wx-cam*.66,y=hill(x+cam)+5,s=.42+noise(i)*.33;if(z!==3||i%3===0){pine(x,y,s,i%4);rootTufts(x,y,28*s);}}
  // Telegraph zones with roadside signs, independently of hazards.
