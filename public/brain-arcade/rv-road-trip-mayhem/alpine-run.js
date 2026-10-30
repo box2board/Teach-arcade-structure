@@ -97,7 +97,7 @@ function scenicSprite(name,x,ignoredY,width){const im=painted[name];if(x<-width|
  // A compacted, level terrace supports the complete sprite footprint.
  ellipse(x,base+10,width*.54,7,levelIndex?'#bb9a72':'#8c9270');line(x-half,base+11,x+half,base+11,levelIndex?'#dfc196':'#b3b497',2);
  for(let k=0;k<17;k++){const dx=(noise(wx+k)*2-1)*half;ellipse(x+dx,base+11+noise(k+wx)*6,1.6,1,levelIndex?'#a4835d':'#6d775b');}
- ellipse(x,base+6,width*.44,5,'#1a282751');ctx.drawImage(im,x-width/2,base+8-h,width,h);
+ ellipse(x,base+6,width*.44,5,'#1a282751');ctx.drawImage(im,x-width/2,base+14-h,width,h);
  // Hide the transparent/uneven lowest pixels behind a foreground planting strip.
  rootTufts(x-width*.44,base+12,10);rootTufts(x+width*.44,base+12,11);
 }
