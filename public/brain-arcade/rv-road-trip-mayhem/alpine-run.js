@@ -9,6 +9,7 @@ const sizes={car:[110,54],cart:[54,53],tire:[43,43],cones:[72,33],barrier:[88,48
 let renderMs=0;let obstacles=[],R,cam=0,clock=0,accum=0,last=0,mode='ready',callT=0,shake=0,hudClock=0,dustClock=0,uiState='',metrics={frames:0,slowFrames:0,physicsSteps:0,jumps:0,doubleJumps:0,landings:0,hits:0};
 const pineArt=new Image();pineArt.src='assets/alpine-pine.webp';const rv=new Image(),vista=new Image();rv.src='assets/rv-body.webp';vista.src='assets/alpine-vista.webp';
 const painted={};for(const name of ['car','cart','tire','barrier','cones','junk','branch','cooler','cactus','lodge','garage','diner','camp']){const im=new Image();im.src='assets/painted-'+name+'.webp';painted[name]=im;}
+const terrainMaterials={};for(const name of ['alpine','desert']){const im=new Image();im.src='assets/terrain-'+name+'.webp';terrainMaterials[name]={im,pattern:null};}
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),mix=(a,b,t)=>a+(b-a)*t,noise=n=>{const a=Math.sin(n*127.1+31.7)*43758.5453;return a-Math.floor(a)};
 function hill(x){return levelIndex===1?405+Math.sin(x/800)*42+Math.sin(x/2100)*22+Math.sin(x/340)*6:405+Math.sin(x/650)*38+Math.sin(x/1740)*25+Math.sin(x/255)*7;}
 function ground(x){let y=hill(x);for(const r of ramps)if(x>=r.x&&x<=r.x+r.w)y-=r.h*((x-r.x)/r.w);return y;}
@@ -58,8 +59,8 @@ function scenery(){if(levelIndex===1){desertScenery();return;}const z=Math.min(4
  // Every midground tree shares the bank's coordinate system and scroll factor.
  const ridge=[];for(let x=-20;x<=W+20;x+=20)ridge.push([x,ridgeY(x+cam*.2)]);
  const start=Math.floor(cam*.2/113);for(let i=start-1;i<start+12;i++){const wx=i*113+noise(i)*30;pine(wx-cam*.2,ridgeY(wx)+7,.23+noise(i)*.22,i%4);}
- path([[0,H],...ridge,[W,H]],z===2?'#385a58':z===3?'#467e6b':'#678253');for(let wx=Math.floor(cam*.2/79)*79;wx<cam*.2+W+79;wx+=79){const n=noise(wx);if(n<.6)continue;const x=wx-cam*.2+n*22,y=ridgeY(wx+n*22)+4;rootTufts(x,y,5+n*5);}
- if(z===1){for(let i=Math.floor(cam*.35/430)-1;i<Math.floor(cam*.35/430)+4;i++){const wx=i*430+noise(i)*55,x=wx-cam*.35,y=hill(x+cam)-5;scenicSprite(i%2?'garage':'lodge',x,y,180+noise(i)*35);}}
+ paintGround([[0,H],...ridge,[W,H]],'alpine',cam*.2,'#526c50',.7);for(let wx=Math.floor(cam*.2/79)*79;wx<cam*.2+W+79;wx+=79){const n=noise(wx);if(n<.6)continue;const x=wx-cam*.2+n*22,y=ridgeY(wx+n*22)+4;rootTufts(x,y,5+n*5);}
+ if(z===1){for(const [wx,name,width] of [[8200,'lodge',195],[9300,'garage',205],[10800,'lodge',210],[12200,'garage',190],[14000,'lodge',200]]){scenicSprite(name,wx-cam,0,width);}}
  for(let i=Math.floor(cam*.66/225)-1;i<Math.floor(cam*.66/225)+7;i++){if(noise(i)<.25)continue;const wx=i*225+noise(i)*35,x=wx-cam*.66,y=hill(x+cam)+5,s=.42+noise(i)*.33;if(z!==3||i%3===0){pine(x,y,s,i%4);rootTufts(x,y,28*s);}}
  // Telegraph zones with roadside signs, independently of hazards.
  for(let zt=0;zt<5;zt++){const x=zt*7600+550-cam;if(x>-200&&x<W+200)roadSign(x,hill(zt*7600+550),ZONES[zt],zt===4?'CAMP  ↗':'SCENIC ROUTE  07');}
@@ -67,8 +68,8 @@ function scenery(){if(levelIndex===1){desertScenery();return;}const z=Math.min(4
 }
 function roadSign(x,y,text,sub){line(x-44,y,x-44,y-117,'#8e9b98',5);line(x+44,y,x+44,y-117,'#8e9b98',5);round(x-82,y-130,164,55,5,'#234c49','#c9debf');ctx.textAlign='center';ctx.fillStyle='#f1ebcd';ctx.font='900 12px system-ui';ctx.fillText(text,x,y-106);ctx.font='8px system-ui';ctx.fillText(sub,x,y-89);}
 function roadPath(offset){ctx.beginPath();for(let x=-8;x<=W+8;x+=6){const y=hill(x+cam)+offset;x===-8?ctx.moveTo(x,y):ctx.lineTo(x,y);}}
-function terrain(){const z=Math.min(4,Math.floor(R.x/7600));const soil=ctx.createLinearGradient(0,350,0,560);soil.addColorStop(0,levelIndex===1?'#c99c6c':z===2?'#a28463':'#9a815b');soil.addColorStop(.3,levelIndex===1?'#ae7149':'#7e654b');soil.addColorStop(1,levelIndex===1?'#795340':'#3b4641');ctx.beginPath();ctx.moveTo(-8,H);for(let x=-8;x<=W+8;x+=6)ctx.lineTo(x,hill(x+cam));ctx.lineTo(W+8,H);ctx.fillStyle=soil;ctx.fill();
- roadPath(27);ctx.lineWidth=65;ctx.strokeStyle=levelIndex===1?'#cda56d':z===3?'#536859':'#7c874e';ctx.stroke();roadPath(19);ctx.lineWidth=43;ctx.strokeStyle=levelIndex===1?'#e3bb80':'#b19b70';ctx.stroke();roadPath(12);ctx.lineWidth=27;ctx.strokeStyle=levelIndex===1?'#655c54':z===3?'#435c65':'#4c5351';ctx.stroke();roadPath(2);ctx.lineWidth=2;ctx.strokeStyle='#e6d8a6';ctx.stroke();roadPath(21);ctx.lineWidth=1;ctx.strokeStyle='#c1c3ae';ctx.stroke();
+function terrain(){const z=Math.min(4,Math.floor(R.x/7600));const soil=ctx.createLinearGradient(0,350,0,560);soil.addColorStop(0,levelIndex===1?'#c99c6c':z===2?'#a28463':'#9a815b');soil.addColorStop(.3,levelIndex===1?'#ae7149':'#7e654b');soil.addColorStop(1,levelIndex===1?'#795340':'#3b4641');ctx.beginPath();ctx.moveTo(-8,H);for(let x=-8;x<=W+8;x+=6)ctx.lineTo(x,hill(x+cam));ctx.lineTo(W+8,H);ctx.fillStyle=soil;ctx.fill();const earth=[[0,H]];for(let x=-8;x<=W+8;x+=6)earth.push([x,hill(x+cam)]);earth.push([W,H]);paintGround(earth,'desert',cam,levelIndex?'#9c714c':'#6d7255',.45);
+ const verge=[];for(let x=-8;x<=W+8;x+=6)verge.push([x,hill(x+cam)+30]);for(let x=W+8;x>=-8;x-=6)verge.push([x,hill(x+cam)+48+Math.sin((x+cam)/19)*2+Math.sin((x+cam)/47)*3]);paintGround(verge,levelIndex?'desert':'alpine',cam,levelIndex?'#c8a16e':'#697b4e',.8);roadPath(19);ctx.lineWidth=43;ctx.strokeStyle=levelIndex===1?'#e3bb80':'#b19b70';ctx.stroke();roadPath(12);ctx.lineWidth=27;ctx.strokeStyle=levelIndex===1?'#655c54':z===3?'#435c65':'#4c5351';ctx.stroke();roadPath(2);ctx.lineWidth=2;ctx.strokeStyle='#e6d8a6';ctx.stroke();roadPath(21);ctx.lineWidth=1;ctx.strokeStyle='#c1c3ae';ctx.stroke();
  // Road stripe is below the tire contact edge, never on a green hill line.
  roadPath(12);ctx.lineWidth=2;ctx.strokeStyle='#e2bc70';ctx.setLineDash([28,23]);ctx.lineDashOffset=cam%51;ctx.stroke();ctx.setLineDash([]);
  for(let wx=Math.floor(cam/34)*34;wx<cam+W+34;wx+=34){const x=wx-cam,y=hill(wx);const n=noise(wx);line(x,y+36,x+4+n*6,y+33,'#d6c18d',1);if(n>.4){rootTufts(x,y+40,5+n*4);}if(n>.75)line(x,y+8,x+16,y+10,'#303b3d',1);}
@@ -83,8 +84,24 @@ function terrain(){const z=Math.min(4,Math.floor(R.x/7600));const soil=ctx.creat
  const fx=WORLD-cam;if(fx>-300&&fx<W+300){roadSign(fx,hill(WORLD),levelIndex===1?'ARCHWAY RV PARK':'PINE LAKE CAMP','YOU MADE IT');for(let j=-1;j<=1;j+=2){line(fx+j*130,hill(WORLD),fx+j*130,hill(WORLD)-150,'#ddd3b0',7);}for(let i=0;i<12;i++)round(fx-130+i*22,hill(WORLD)-150,22,20,0,i%2?'#e6dcc0':'#263f42');}
 }
 
+
+function paintGround(points,material,scroll,base,opacity){ctx.save();ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.clip();ctx.fillStyle=base;ctx.fillRect(0,0,W,H);const m=terrainMaterials[material];if(m.im.complete&&m.im.naturalWidth){if(!m.pattern)m.pattern=ctx.createPattern(m.im,'repeat');ctx.globalAlpha=opacity;ctx.translate(-(scroll%640),0);ctx.fillStyle=m.pattern;ctx.fillRect(-640,0,W+1280,H);ctx.translate(scroll%640,0);ctx.globalAlpha=1;}const shade=ctx.createLinearGradient(0,345,0,H);shade.addColorStop(0,'#f6d39110');shade.addColorStop(.45,'#1a302611');shade.addColorStop(1,'#132e3c55');ctx.fillStyle=shade;ctx.fillRect(0,0,W,H);ctx.restore();}
+
 function rootTufts(x,y,w){ellipse(x,y+1,w,3,'#334b343d');for(let k=0;k<9;k++){const dx=(noise(k+x)*2-1)*w;line(x+dx,y+2,x+dx-2,y-3-noise(k)*6,levelIndex?'#9c9867':'#80925c',1.4);}}
-function scenicSprite(name,x,y,width){const im=painted[name];if(x<-width||x>W+width||!im.complete||!im.naturalWidth)return;const h=width*im.naturalHeight/im.naturalWidth;ellipse(x,y+2,width*.42,5,'#243c393b');ctx.drawImage(im,x-width/2,y-h,width,h);rootTufts(x,y,width*.42);}
+// A wide building needs a level lot, not a single point on a curved hill.
+// Lots and houses share world coordinates; their height never follows the camera.
+function propertyLot(wx,width){const half=width*.57;let base=Infinity;for(let dx=-half;dx<=half;dx+=8)base=Math.min(base,hill(wx+dx));return {half,base:base-15};}
+function scenicSprite(name,x,ignoredY,width){const im=painted[name];if(x<-width||x>W+width||!im.complete||!im.naturalWidth)return;const wx=x+cam,{half,base}=propertyLot(wx,width),h=width*im.naturalHeight/im.naturalWidth;
+ const lot=ctx.createLinearGradient(0,base,0,base+65);lot.addColorStop(0,levelIndex?'#bd986e':'#8e8b69');lot.addColorStop(1,levelIndex?'#8c684b':'#536953');
+ const points=[[x-half,base+9],[x+half,base+9]];for(let dx=half;dx>=-half;dx-=8)points.push([x+dx,hill(wx+dx)+14]);path(points,lot);
+ // A compacted, level terrace supports the complete sprite footprint.
+ ellipse(x,base+10,width*.54,7,levelIndex?'#bb9a72':'#8c9270');line(x-half,base+11,x+half,base+11,levelIndex?'#dfc196':'#b3b497',2);
+ for(let k=0;k<17;k++){const dx=(noise(wx+k)*2-1)*half;ellipse(x+dx,base+11+noise(k+wx)*6,1.6,1,levelIndex?'#a4835d':'#6d775b');}
+ ellipse(x,base+6,width*.44,5,'#1a282751');ctx.drawImage(im,x-width/2,base+8-h,width,h);
+ // Hide the transparent/uneven lowest pixels behind a foreground planting strip.
+ rootTufts(x-width*.44,base+12,10);rootTufts(x+width*.44,base+12,11);
+}
+
 function drawRamp(r){const x=r.x-cam;if(x<-r.w-160||x>W+100)return;const surface=k=>hill(r.x+k)-r.h*k/r.w;
  const body=ctx.createLinearGradient(0,surface(r.w),0,hill(r.x+r.w));body.addColorStop(0,'#a27b50');body.addColorStop(.4,'#725239');body.addColorStop(1,'#443a30');
  const outline=[[x,hill(r.x)]];for(let k=0;k<=r.w;k+=8)outline.push([x+k,surface(k)]);outline.push([x+r.w,surface(r.w)],[x+r.w,hill(r.x+r.w)]);path(outline,body,'#443c32',2);
@@ -134,7 +151,7 @@ $('levelSelect').addEventListener('change',e=>selectLevel(Number(e.target.value)
 function cactus(x,y,h){const a=painted.cactus;if(a.complete&&a.naturalWidth){const w=h*a.naturalWidth/a.naturalHeight;ctx.drawImage(a,x-w/2,y-h,w,h);return;}ctx.save();ctx.translate(x,y);ctx.lineCap='round';const shade=ctx.createLinearGradient(-h*.15,0,h*.15,0);shade.addColorStop(0,'#9baf70');shade.addColorStop(.4,'#678550');shade.addColorStop(1,'#405c41');line(0,0,0,-h,shade,h*.14);for(const d of [-1,1]){const a=h*(d<0?.55:.7);ctx.beginPath();ctx.moveTo(0,-a);ctx.bezierCurveTo(d*h*.3,-a,d*h*.29,-a,d*h*.29,-a-h*.2);ctx.strokeStyle=shade;ctx.lineWidth=h*.10;ctx.stroke();}line(-h*.025,-8,-h*.025,-h+5,'#c0bd813b',1);ctx.restore();}
 function desertScenery(){ctx.fillStyle='#e4bd83';ctx.fillRect(0,0,W,H);if(vista.complete&&vista.naturalWidth){const dw=1660;const tile=Math.floor(cam*.045/dw);for(let i=-1;i<2;i++){const parity=((tile+i)%2+2)%2;ctx.save();ctx.translate(i*dw-(cam*.045%dw)+parity*dw,-28);if(parity)ctx.scale(-1,1);ctx.drawImage(vista,0,0,dw,554);ctx.restore();}}
  // Independently moving sand bank, sagebrush, cacti and roadside buildings.
- const points=[[0,H]];for(let x=-20;x<=W+20;x+=20)points.push([x,428+Math.sin((x+cam*.2)/250)*10]);points.push([W,H]);path(points,'#c69b66');
+ const points=[[0,H]];for(let x=-20;x<=W+20;x+=20)points.push([x,428+Math.sin((x+cam*.2)/250)*10]);points.push([W,H]);paintGround(points,'desert',cam*.2,'#b78d61',.65);
  for(let i=Math.floor(cam*.48/210)-1;i<Math.floor(cam*.48/210)+7;i++){const wx=i*210,x=wx-cam*.48,y=hill(wx+cam*.52)+12;if(noise(i)>.35)cactus(x,y,45+noise(i+7)*60);else{for(let k=0;k<7;k++){const a=k*.5;line(x,y,x+Math.cos(a)*18,y-Math.sin(a)*12,'#8a9060',2);}}}
  const z=Math.min(4,Math.floor(R.x/7600));if(z===1){const x=10400-cam;scenicSprite('diner',x,hill(10400)+3,270);}
  for(let zt=0;zt<5;zt++){const wx=zt*7600+550,x=wx-cam;if(x>-200&&x<W+200)roadSign(x,hill(wx),ZONES[zt],zt===4?'RV PARK  ↗':'RED ROCK ROUTE  08');}}
