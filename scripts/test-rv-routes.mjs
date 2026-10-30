@@ -20,12 +20,12 @@ const h=harness();h.click('start');h.key('ArrowRight');h.step(30);h.key(' ');h.s
 // Pause freezes route progress and clears held gas; resume needs a fresh input.
 h.click('pause');const parked=h.debug().x;h.step(90);assert.equal(h.debug().x,parked);h.click('pause');h.key('ArrowRight');
 const results=[];
-for(let level=0;level<2;level++){
+for(let level=0;level<3;level++){
  const zones=new Set();for(let frame=0;frame<12000&&h.debug().mode!=='finished';frame++){
   if(frame%55===0)h.key(' ');if(frame%55===7)h.key(' ');if(frame%480===0)h.key('Shift');h.step();const s=h.debug();zones.add(s.zone);assert(Number.isFinite(s.x)&&Number.isFinite(s.y));assert(s.health>0&&s.health<=100);assert(s.particles<=150);
  }
  const end=h.debug();assert.equal(end.mode,'finished');assert(end.x>=38000);assert.equal(zones.size,5);assert(end.metrics.jumps>0&&end.metrics.doubleJumps>0&&end.metrics.landings>0);results.push({level:level+1,time:end.time,zones:[...zones],cleared:end.cleared,health:end.health,metrics:end.metrics});
- h.click('start');assert.equal(h.debug().mode,'running');if(level===0)assert.equal(h.ids.get('levelSelect').value,'1');h.key('ArrowRight');
+ h.click('start');assert.equal(h.debug().mode,'running');if(level<2)assert.equal(h.ids.get('levelSelect').value,String(level+1));else assert.equal(h.ids.get('levelSelect').value,'2');h.key('ArrowRight');
 }
 h.click('restart');assert.equal(h.debug().x,120);assert.equal(h.debug().health,100);
 console.log(JSON.stringify({passed:true,kind:'logic simulation; not a browser playthrough',results},null,2));
