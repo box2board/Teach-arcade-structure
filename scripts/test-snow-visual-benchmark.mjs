@@ -195,3 +195,9 @@ for(const id of ['scientific-method','constitution-basics','linear-equations']){
  assert.equal(vm.runInContext('lab',releaseCtx),null);
 }
 console.log('PASS: actual squad engine uses selected shared bank in recruitment, wave review and rebuild; public mode skips Snow Lab');
+
+// Damage feedback must preserve the HUD's theme/background and text contrast.
+let cueFrames,canceled=0;const cueNode={animate(frames){cueFrames=frames;return {cancel(){canceled++;}};}};
+uiCue(cueNode,'damage');assert.ok(cueFrames.every(f=>!('backgroundColor' in f)&&!('color' in f)));assert.ok(cueFrames[0].boxShadow);
+uiCue(cueNode,'damage');assert.equal(canceled,1);uiCue(cueNode,'damage',true);assert.equal(canceled,2);
+console.log('PASS: damage cue preserves HUD background/text, replaces repeated pulses and cancels for reduced motion');
