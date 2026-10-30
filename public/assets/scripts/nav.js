@@ -289,6 +289,30 @@
       .ta-footer small{
         color: #cbd5e1;
       }
+
+      /* Classic Navy: visual treatment shared by every header instance. */
+      .ta-header.ta-header{
+        background:#0b2742 !important;
+        border-bottom:3px solid #ffd35e !important;
+        box-shadow:0 4px 14px rgba(8,30,50,.18) !important;
+        backdrop-filter:none;
+      }
+      .ta-header .ta-brand{color:#fff4d5 !important}
+      .ta-header .ta-brand span{color:#fff4d5 !important;text-shadow:none}
+      .ta-header .ta-links a{
+        color:#fff4d5 !important;
+        font-weight:800 !important;
+        text-shadow:none;
+        border-radius:6px;
+      }
+      .ta-header .ta-links a:hover,
+      .ta-header .ta-links a:focus-visible{background:#22445f !important;color:#fff !important}
+      .ta-header .ta-links a[data-ta-current],
+      .ta-header .ta-panel a[data-ta-current]{background:#ffd35e !important;color:#0b2742 !important;text-shadow:none}
+      .ta-header .ta-links a:focus-visible,
+      .ta-header .ta-brand:focus-visible,
+      .ta-header .ta-burger:focus-visible{outline:3px solid #68d9e8;outline-offset:3px}
+      .ta-header .ta-panel{background:#0b2742}
     `;
     document.head.appendChild(style);
   }
@@ -336,6 +360,17 @@
       </ul>
     </aside>
   `;
+
+  // The current-section highlight is decorative; navigation handlers stay unchanged.
+  const currentPath = window.location.pathname.replace(/\/index\.html$/, "/");
+  const currentLink = LINKS.find(link => link.href === "/"
+    ? currentPath === "/"
+    : currentPath === link.href || (link.href.endsWith("/") && currentPath.startsWith(link.href)));
+  if (currentLink) {
+    header.querySelectorAll(".ta-links a, .ta-panel a").forEach(link => {
+      if (link.getAttribute("href") === currentLink.href) link.setAttribute("data-ta-current", "");
+    });
+  }
 
   const mount = document.getElementById("site-header");
   if (mount) {
