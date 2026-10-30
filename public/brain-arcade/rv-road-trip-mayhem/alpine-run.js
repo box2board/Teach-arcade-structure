@@ -58,7 +58,7 @@ function scenery(){if(levelIndex===1){desertScenery();return;}const z=Math.min(4
  // Every midground tree shares the bank's coordinate system and scroll factor.
  const ridge=[];for(let x=-20;x<=W+20;x+=20)ridge.push([x,ridgeY(x+cam*.2)]);
  const start=Math.floor(cam*.2/113);for(let i=start-1;i<start+12;i++){const wx=i*113+noise(i)*30;pine(wx-cam*.2,ridgeY(wx)+7,.23+noise(i)*.22,i%4);}
- path([[0,H],...ridge,[W,H]],z===2?'#385a58':z===3?'#467e6b':'#678253');
+ path([[0,H],...ridge,[W,H]],z===2?'#385a58':z===3?'#467e6b':'#678253');for(let wx=Math.floor(cam*.2/53)*53;wx<cam*.2+W+53;wx+=53){const x=wx-cam*.2,y=ridgeY(wx)+8,n=noise(wx);ellipse(x,y,14+n*16,3+n*2,z===2?'#4c6a5a':'#82905c');}
  if(z===1){for(let i=Math.floor(cam*.35/430)-1;i<Math.floor(cam*.35/430)+4;i++){const wx=i*430+noise(i)*55,x=wx-cam*.35,y=hill(x+cam)-5;scenicSprite(i%2?'garage':'lodge',x,y,180+noise(i)*35);}}
  for(let i=Math.floor(cam*.66/225)-1;i<Math.floor(cam*.66/225)+7;i++){if(noise(i)<.25)continue;const wx=i*225+noise(i)*35,x=wx-cam*.66,y=hill(x+cam)+5,s=.42+noise(i)*.33;if(z!==3||i%3===0){pine(x,y,s,i%4);rootTufts(x,y,28*s);}}
  // Telegraph zones with roadside signs, independently of hazards.
@@ -71,7 +71,9 @@ function terrain(){const z=Math.min(4,Math.floor(R.x/7600));const soil=ctx.creat
  roadPath(27);ctx.lineWidth=65;ctx.strokeStyle=levelIndex===1?'#cda56d':z===3?'#536859':'#7c874e';ctx.stroke();roadPath(19);ctx.lineWidth=43;ctx.strokeStyle=levelIndex===1?'#e3bb80':'#b19b70';ctx.stroke();roadPath(12);ctx.lineWidth=27;ctx.strokeStyle=levelIndex===1?'#655c54':z===3?'#435c65':'#4c5351';ctx.stroke();roadPath(2);ctx.lineWidth=2;ctx.strokeStyle='#e6d8a6';ctx.stroke();roadPath(21);ctx.lineWidth=1;ctx.strokeStyle='#c1c3ae';ctx.stroke();
  // Road stripe is below the tire contact edge, never on a green hill line.
  roadPath(12);ctx.lineWidth=2;ctx.strokeStyle='#e2bc70';ctx.setLineDash([28,23]);ctx.lineDashOffset=cam%51;ctx.stroke();ctx.setLineDash([]);
- for(let wx=Math.floor(cam/34)*34;wx<cam+W+34;wx+=34){const x=wx-cam,y=hill(wx);const n=noise(wx);line(x,y+36,x+4+n*6,y+33,'#d6c18d',1);if(n>.4){path([[x,y+41],[x+3,y+33],[x+5,y+43]],'#8c9b5e');}if(n>.75)line(x,y+8,x+16,y+10,'#303b3d',1);}
+ for(let wx=Math.floor(cam/34)*34;wx<cam+W+34;wx+=34){const x=wx-cam,y=hill(wx);const n=noise(wx);line(x,y+36,x+4+n*6,y+33,'#d6c18d',1);if(n>.4){rootTufts(x,y+40,5+n*4);}if(n>.75)line(x,y+8,x+16,y+10,'#303b3d',1);}
+ // Broken gravel edges and low-contrast strata avoid flat, ruler-straight terrain bands.
+ for(let wx=Math.floor(cam/47)*47;wx<cam+W+47;wx+=47){const x=wx-cam,y=hill(wx),n=noise(wx);for(let k=0;k<3;k++){const dx=noise(wx+k)*38,yy=y+31+noise(wx+k+9)*19;ellipse(x+dx,yy,1+n*2,.7+n,levelIndex?'#ab875b':'#a7aa7b');}ctx.globalAlpha=.13;line(x,y+61+n*25,x+17+n*21,y+64+n*25,levelIndex?'#ead0a0':'#bac19e',1);ctx.globalAlpha=1;}
  // Sparse rounded stones sit on the shoulder; no repeated polygon boulders.
  for(let wx=Math.floor(cam/143)*143;wx<cam+W+143;wx+=143){const n=noise(wx);if(n<.42)continue;const x=wx-cam+n*34,y=hill(wx)+37+n*10,w=4+n*8,h=2+n*3;ellipse(x+1,y+2,w+2,2,'#253c3438');const stone=ctx.createLinearGradient(x,y-h,x,y+h);stone.addColorStop(0,'#a7a38b');stone.addColorStop(.45,'#838875');stone.addColorStop(1,'#5f7063');ellipse(x,y,w,h,stone);ctx.globalAlpha=.3;ellipse(x-w*.25,y-h*.35,w*.5,h*.25,'#e1d4b1');ctx.globalAlpha=1;}
 
