@@ -24,3 +24,13 @@ Full runs of both levels, final campsite/finish transition, physical iPad multi-
 
 ## Asset provenance
 Built-in image-generation tool. Prompts specified transparent side-view painted arcade realism atlases: nine roadside props (car, cart, tire, barrier, cones, junk, branch, cooler, cactus) and four buildings (lodge, garage, diner, campsite). Assets extracted to optimized WebP under public/brain-arcade/rv-road-trip-mayhem/assets/painted-*.webp. Original full atlases remain separate from production asset files.
+
+
+## House grounding and rolling terrain correction — 2026-10-30
+- Replaced camera-relative house placement with fixed world lots; lot elevation samples the entire building footprint, with a terrace that joins the hillside.
+- Browser review of the first fix caught residual transparent padding beneath house foundations. Trimmed meaningful alpha bounds on lodge, garage, diner and campsite, and inset their bases into the lot.
+- Added two cached, mirrored WebP terrain materials (about 306 KiB total) for grass/earth banks and sandy soil. Canvas clips textures to the terrain and irregular verge; no physics geometry changes.
+- Final preview aa333435: drove Alpine from the start through x=10734. Visually checked lodge at x=8200, garage at x=9300 and lodge at x=10800; foundations meet their lots, with no sky gap. Checked downhill/uphill road edges, hill crests and clean landing.
+- Final preview Red Rock: drove opening through x=2190; confirmed desert textures, shoulder readability, jump-button response and landing. This check did not record a successful double jump.
+- Full deterministic route simulations pass for both routes after these changes. These remain logic checks, not completed browser playthroughs.
+- Full-level browser completion and physical Chromebook/iPad/multi-touch validation remain outstanding.
