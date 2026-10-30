@@ -165,7 +165,8 @@ function desertScenery(){ctx.fillStyle='#e4bd83';ctx.fillRect(0,0,W,H);if(vista.
 
 // Dusk ocean, surf, rooted vegetation and grounded buildings scroll independently.
 function coastalScenery(){const z=Math.min(4,Math.floor(R.x/7600));const sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#7e8da0');sky.addColorStop(1,'#efb184');ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
- if(vista.complete&&vista.naturalWidth){const dw=1660,tile=Math.floor(cam*.045/dw);for(let i=-1;i<2;i++){const parity=((tile+i)%2+2)%2;ctx.save();ctx.translate(i*dw-(cam*.045%dw)+parity*dw,-28);if(parity)ctx.scale(-1,1);ctx.drawImage(vista,0,0,dw,554);ctx.restore();}}
+ // A single bounded pan avoids mirrored suns and duplicated coastal landmarks.
+ if(vista.complete&&vista.naturalWidth)ctx.drawImage(vista,-Math.min(cam*.017,660),-28,1660,554);
  // Low contrast wavelets on the distant ocean, never across the driving line.
  ctx.globalAlpha=.18;for(let i=0;i<14;i++){const x=(i*137-cam*.11+20000)%1200-100,y=318+(i%6)*12;line(x,y,x+35+noise(i)*45,y,'#e9d9c2',1);}ctx.globalAlpha=1;
  const bankY=x=>423+Math.sin(x/235)*9+Math.sin(x/83)*4,bank=[[0,H]];for(let x=-20;x<=W+20;x+=20)bank.push([x,bankY(x+cam*.24)]);bank.push([W,H]);
