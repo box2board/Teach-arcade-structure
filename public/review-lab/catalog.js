@@ -62,7 +62,7 @@ export const GAMES=Object.freeze([Object.freeze({
   topicLabel:'Choose any shared review topic',launchLabel:'Load up & play',supportsQuestionBank:true,questionSetIds:Object.freeze([])
 }),Object.freeze({
   id:'snow-day-defenders',title:'Snow Day Defenders',url:'/review-lab/snow-day-defenders/',
-  description:'Answer review questions to earn snow gear, recruit helpers, and protect your fort.',
+  description:'Answer questions to recruit your squad, defend through three snowball waves, and rebuild your fort.',
   image:'/assets/images/review-lab/snow-day-defenders-pixel-768.webp',imageSrcset:'/assets/images/review-lab/snow-day-defenders-pixel-384.webp 384w, /assets/images/review-lab/snow-day-defenders-pixel-768.webp 768w',imageAlt:'',
   mode:'Solo',facts:Object.freeze(['3 waves','Automatic snowball tossing','Pause to study & upgrade']),
   supportsQuestionBank:true,questionSetIds:Object.freeze(['scientific-method','constitution-basics','linear-equations'])

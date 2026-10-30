@@ -1,0 +1,30 @@
+{
+  "sourceSite": "appgprj_6adcd3f2f49c8191a22687e3fc61a565",
+  "sourceVersion": 7,
+  "sourceCommit": "f1745d13fafcbad44d3cab900a3d825a0f76ef38",
+  "sourceFiles": [
+    "index.html",
+    "style.css",
+    "game.js",
+    "features.js",
+    "lab.js",
+    "questions.js"
+  ],
+  "destination": "public/dev/snow-day-visuals",
+  "baseline": "public/dev/snow-day-visuals/before",
+  "vendor": "public/assets/vendor/three-0.162.0/three.module.js",
+  "verifiedSiteVersion": 7,
+  "verifiedDate": "2026-10-27",
+  "sourceSha256": {
+    "index.html": "45be5798a34721257df2c2c39d6165a975c7f0505b992c3a51c05590032a2e94",
+    "style.css": "f639aa9761e37373ce6da151000d93b94b2d06df21e5f0d85b9734e6df009235",
+    "game.js": "e7ea7e599dff99e2bcc63c9df45966462f9cdc7aad68167074e1ec3f8e831f5d",
+    "features.js": "b7938224e2860830cb00b9f9530c26fdb1098002674032e048ccbefbf1c448e3",
+    "lab.js": "d44f1cdac6d88321505f64209fc3658576cd6476e9c15a9f247f343e0c4034e4",
+    "questions.js": "8e3518cc8bd5e084bf43d56ea952fe9c89bb100266a5dfcae11cada9f5f93744"
+  },
+  "authoritativeCombinedSource": "public/dev/snow-day-visuals/",
+  "releaseEntry": "public/review-lab/snow-day-defenders/index.html",
+  "releaseLauncher": "public/review-lab/snow-day-defenders/release-launch.js",
+  "runtimeNote": "Release and development entries share public/dev/snow-day-visuals/game.js and its art modules; do not duplicate the engine. Before remains Site v7. Legacy public engine files are preserved for rollback."
+}

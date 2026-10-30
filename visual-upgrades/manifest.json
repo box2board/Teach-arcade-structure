@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "visualSystemVersion": "0.1.0-rc.1",
+  "games": {
+    "snow-day-defender": {
+      "status": "release-preview-awaiting-review",
+      "visualLevel": "appearance-and-motion-approved",
+      "visualSystemVersion": "0.1.0-rc.1",
+      "route": "/dev/snow-day-visuals/",
+      "beforeRoute": "/dev/snow-day-visuals/before/",
+      "source": "Squad Prototype v7",
+      "visualQualityTarget": "Polished classroom browser game; approval pending",
+      "camera": "lower-angle close view; eased portrait squad follow and offscreen threat counts",
+      "particles": "shared typed-array pool, bounded trails",
+      "transitions": "HUD/reward cues; wave notifications remain beside bottom controls",
+      "lighting": "warm directional key, reduced cool fill; cached static soft-shade map + contact shadows",
+      "HUD": "compact phone header, single-row HUD, shorter bottom controls",
+      "animation": "asymmetric throws/body recoil, typed enemy stride, hit squash, fort section settling; reduced motion supported",
+      "environmentalEffects": "layered snow plus sculpted terrain, rock/spruce/cabin details; static instancing",
+      "audioHooks": "CustomEvent interface only; no playback",
+      "performanceModes": [
+        "performance",
+        "standard",
+        "showcase"
+      ],
+      "modules": [
+        "core/cues.js",
+        "core/particles-three.js",
+        "core/ui.js",
+        "presets/quality.js"
+      ],
+      "performanceValidation": {
+        "budgetTests": "passed",
+        "gameplayRegression": "passed",
+        "projectionBounds": "passed",
+        "webglBrowser": "blocked-context-disabled",
+        "physicalChromebook": "pending",
+        "mobileTabletDevice": "iPhone Safari Standard: 57.4 FPS average, 60.4 active seconds, p95 23ms; visual fixture through wave two only"
+      },
+      "benchmarkVisualsApproved": false,
+      "reusableExtraction": "provisional; finalize after user approval",
+      "lastReviewed": "2026-10-29",
+      "notes": [
+        "Latest squad prototype preserved; existing public Review Lab version untouched",
+        "Scientific Method sample content preserved; public shared-bank integration not part of this visual pass",
+        "No next game started; recommend Quest Arcade after approval",
+        "No production merge/deployment",
+        "Approved concept translated into new modeled characters, beveled fort, warmer tone-mapped lighting, navy HUD; explicit playable art-test entry",
+        "Appearance pass 2: environment, fort caps and supply crate art; no dedicated animation pass started",
+        "Screenshot-driven composition pass: wider squad slightly widens volley footprint; camera no longer fits entire fort in portrait; balance/device review pending",
+        "Closer composition liked by user; detail pass adds irregular snow spruce and beveled ice shields with damage-state cracks; feature rules unchanged",
+        "Appearance detail: symbolic feature badges, aimed-shot ground rings, distinct enemy snowballs and crate durability bars; rule source unchanged",
+        "Whole-scene depth pass: cached snow shade texture, grain, grounded trees/cabins and fort contact shadows; rendered/device approval pending",
+        "Distinct Frost King crown/cape/ice armor; tank plates, runner skates, normal earmuffs; separate boss art-test entry. Cached single body draw retained; visual/device review pending.",
+        "Enemy appearance approved; first motion pass awaiting visual review. Game-specific motion.js leaves collision coordinates and gameplay timing untouched.",
+        "User approved appearance and motion. Connected simulated three-wave flow passes; overall benchmark remains incomplete pending device/browser validation.",
+        "Release launcher now imports the same approved runtime with shared topic-bank adapter; public mode omits Lab setup and hides test controls. Older engine retained behind noindex legacy-index.html. No production release."
+      ],
+      "authoritativeImplementation": "public/dev/snow-day-visuals/",
+      "sourceReconciliation": "reconciliation.md",
+      "artDirectionApproved": true,
+      "approvedArtReference": "docs/design/snow-day-defenders/approved-target.webp",
+      "appearanceApproved": true,
+      "motionApproved": true,
+      "releaseRoute": "/review-lab/snow-day-defenders/"
+    }
+  }
+}
