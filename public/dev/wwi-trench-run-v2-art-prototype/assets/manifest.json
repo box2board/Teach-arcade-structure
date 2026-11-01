@@ -1,24 +1,23 @@
 {
-  "version": "0.1.0-prototype",
-  "library": "asset-library.svg",
+  "version": "1.0.0-prototype",
+  "sourceOfTruth": "individual-files",
   "notes": "Prototype-only asset pack. Live WWI Trench Run v2 is unchanged.",
+  "directories": {
+    "character": "individual/character",
+    "terrain": "individual/terrain",
+    "obstacles_props": "individual/obstacles-props",
+    "effects_ui": "individual/effects-ui",
+    "backgrounds": "individual/backgrounds"
+  },
   "groups": {
-    "character": [
-      "soldier-idle", "soldier-run-1", "soldier-run-2", "soldier-run-3", "soldier-run-4", "soldier-run-5", "soldier-run-6",
-      "soldier-jump-takeoff", "soldier-jump-airborne", "soldier-landing", "soldier-recovery", "soldier-stumble", "soldier-fall", "soldier-victory"
-    ],
-    "terrain": [
-      "trench-straight", "trench-fork", "trench-left-turn", "trench-right-turn", "trench-entrance", "trench-exit", "trench-wall", "checkpoint-base",
-      "surface-duckboards", "surface-mud", "surface-puddle", "surface-ruts", "surface-sandbag-edge", "support-post", "cross-brace", "ladder", "lantern", "sandbag-stack"
-    ],
-    "obstacles_props": [
-      "crater-small", "crater-large", "low-barrier", "barbed-wire", "broken-timber", "damaged-sandbags", "dead-tree", "ammo-crate", "trench-sign", "fork-sign", "crate-stack", "wooden-posts", "broken-boards"
-    ],
-    "effects_ui": [
-      "smoke-puff", "fog-overlay", "mud-splash", "dust-burst", "checkpoint-glow",
-      "hud-distance", "hud-score", "hud-stamina", "hud-accuracy", "hud-streak", "hud-pause",
-      "icon-correct", "icon-incorrect", "icon-fog-warning", "progress-marker", "fx-score-burst", "fx-slowdown", "fx-hit-spark", "fx-lantern-glow", "fx-mist-fade"
-    ],
-    "backgrounds": ["bg-sky-clouds", "bg-distant-battlefield", "bg-ruined-trees-craters", "bg-trench-silhouettes"]
-  }
+    "character": ["soldier-idle","soldier-run-1","soldier-run-2","soldier-run-3","soldier-run-4","soldier-run-5","soldier-run-6","soldier-jump-takeoff","soldier-jump-airborne","soldier-landing","soldier-recovery","soldier-stumble","soldier-fall","soldier-victory"],
+    "terrain": ["trench-straight","trench-fork","trench-left-turn","trench-right-turn","trench-entrance","trench-exit","trench-wall","checkpoint-base","surface-duckboards","surface-mud","surface-puddle","surface-ruts","surface-sandbag-edge","support-post","cross-brace","ladder","lantern","sandbag-stack"],
+    "obstacles_props": ["crater-small","crater-large","low-barrier","barbed-wire","broken-timber","damaged-sandbags","dead-tree","ammo-crate","trench-sign","fork-sign","crate-stack","wooden-posts","broken-boards"],
+    "effects_ui": ["smoke-puff","fog-overlay","mud-splash","dust-burst","checkpoint-glow","hud-distance","hud-score","hud-stamina","hud-accuracy","hud-streak","hud-pause","icon-correct","icon-incorrect","icon-fog-warning","progress-marker","fx-score-burst","fx-slowdown","fx-hit-spark","fx-lantern-glow","fx-mist-fade"],
+    "backgrounds": ["bg-sky-clouds","bg-distant-battlefield","bg-ruined-trees-craters","bg-trench-silhouettes"]
+  },
+  "pathRule": "individual/<group-directory>/<asset-id>.svg",
+  "config": "game-config.json",
+  "contract": "ASSET_CONTRACT.md",
+  "legacyPrototypeLibrary": "asset-library.svg"
 }
