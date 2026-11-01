@@ -5,6 +5,7 @@ const player=document.querySelector('#player');
 const playerUse=document.querySelector('#playerUse');
 const fog=document.querySelector('#fog');
 const toast=document.querySelector('#toast');
+const particles=document.querySelector('#particles');
 const distanceEl=document.querySelector('#distance');
 const scoreEl=document.querySelector('#score');
 const staminaEl=document.querySelector('#stamina');
@@ -17,7 +18,7 @@ const explanation=document.querySelector('#explanation');
 const forkModal=document.querySelector('#forkModal');
 
 const laneLeft=[9,42.5,76];
-const state={running:false,paused:false,lane:1,distance:0,score:0,stamina:3,correct:0,total:0,streak:0,speed:0.19,jumping:false,last:0,nextSpawn:0,nextQuestion:420,nextFork:900,obstacleRate:1,fogUntil:0,runFrame:0,runTimer:0};
+const state={running:false,paused:false,lane:1,distance:0,score:0,stamina:3,correct:0,total:0,streak:0,speed:0.19,jumping:false,last:0,nextSpawn:0,nextQuestion:420,nextFork:900,obstacleRate:1,fogUntil:0,runFrame:0,runTimer:0,nextDust:0};
 let obstacles=[];let questions=[];let questionIndex=0;let raf=0;
 
 const obstacleDefs=[
@@ -29,23 +30,21 @@ const obstacleDefs=[
 
 function sprite(id,cls=''){
   const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-  svg.setAttribute('viewBox','0 0 256 256'); svg.classList.add(...cls.split(' ').filter(Boolean));
+  svg.setAttribute('viewBox','0 0 256 256');svg.classList.add(...cls.split(' ').filter(Boolean));
   const use=document.createElementNS('http://www.w3.org/2000/svg','use');
-  use.setAttribute('href',LIB+id); svg.append(use); return svg;
+  use.setAttribute('href',LIB+id);svg.append(use);return svg;
 }
 function setPlayer(id){playerUse.setAttribute('href',LIB+id)}
 function laneX(lane){return laneLeft[lane]}
-function updateHud(){
-  distanceEl.textContent=Math.floor(state.distance);scoreEl.textContent=Math.floor(state.score);staminaEl.textContent=state.stamina;
-  accuracyEl.textContent=(state.total?Math.round(state.correct/state.total*100):100)+'%';streakEl.textContent=state.streak;
-}
+function updateHud(){distanceEl.textContent=Math.floor(state.distance);scoreEl.textContent=Math.floor(state.score);staminaEl.textContent=state.stamina;accuracyEl.textContent=(state.total?Math.round(state.correct/state.total*100):100)+'%';streakEl.textContent=state.streak}
 function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),1100)}
+function burst(x=50,y=78,count=8){for(let i=0;i<count;i++){const p=document.createElement('i');p.className='particle';p.style.left=x+'%';p.style.top=y+'%';p.style.setProperty('--dx',(Math.random()*50-25)+'px');p.style.setProperty('--dy',(-15-Math.random()*40)+'px');particles.append(p);setTimeout(()=>p.remove(),760)}}
 function reset(){
-  obstacles.forEach(o=>o.el.remove());obstacles=[];Object.assign(state,{running:true,paused:false,lane:1,distance:0,score:0,stamina:3,correct:0,total:0,streak:0,speed:0.19,jumping:false,last:performance.now(),nextSpawn:performance.now()+900,nextQuestion:420,nextFork:900,obstacleRate:1,fogUntil:0,runFrame:0,runTimer:0});
+  obstacles.forEach(o=>o.el.remove());obstacles=[];particles.innerHTML='';Object.assign(state,{running:true,paused:false,lane:1,distance:0,score:0,stamina:3,correct:0,total:0,streak:0,speed:0.19,jumping:false,last:performance.now(),nextSpawn:performance.now()+900,nextQuestion:420,nextFork:900,obstacleRate:1,fogUntil:0,runFrame:0,runTimer:0,nextDust:performance.now()+180});
   player.style.left=laneX(1)+'%';setPlayer('soldier-run-1');fog.classList.add('hidden');qModal.classList.add('hidden');forkModal.classList.add('hidden');updateHud();cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)
 }
-function move(dir){if(!state.running||state.paused)return;state.lane=Math.max(0,Math.min(2,state.lane+dir));player.style.left=laneX(state.lane)+'%'}
-function jump(){if(!state.running||state.paused||state.jumping)return;state.jumping=true;player.classList.add('jump');setPlayer('soldier-jump-airborne');setTimeout(()=>{state.jumping=false;player.classList.remove('jump');setPlayer('soldier-run-1')},620)}
+function move(dir){if(!state.running||state.paused)return;state.lane=Math.max(0,Math.min(2,state.lane+dir));player.style.left=laneX(state.lane)+'%';burst(laneX(state.lane)+7,83,4)}
+function jump(){if(!state.running||state.paused||state.jumping)return;state.jumping=true;player.classList.add('jump');setPlayer('soldier-jump-airborne');burst(laneX(state.lane)+7,83,7);setTimeout(()=>{state.jumping=false;player.classList.remove('jump');setPlayer('soldier-run-1');burst(laneX(state.lane)+7,83,5)},620)}
 function spawnObstacle(){
   const def=obstacleDefs[Math.floor(Math.random()*obstacleDefs.length)];const lane=Math.floor(Math.random()*3);const el=sprite(def.id,'obstacle '+def.cls);el.style.left=(laneX(lane)-6)+'%';world.append(el);
   obstacles.push({el,lane,y:-28,def,hit:false});
@@ -54,7 +53,7 @@ function spawnCheckpoint(){const lane=state.lane;const el=sprite('checkpoint-bas
 function hit(o){
   if(o.hit)return;o.hit=true;if(o.checkpoint){o.el.remove();showQuestion();return}
   if(state.jumping&&o.def.jumpable)return;
-  state.stamina=Math.max(0,state.stamina-o.def.damage);state.streak=0;player.classList.add('hit');setPlayer('soldier-stumble');setTimeout(()=>{player.classList.remove('hit');setPlayer('soldier-run-1')},340);showToast('Obstacle hit — stamina lost');
+  state.stamina=Math.max(0,state.stamina-o.def.damage);state.streak=0;player.classList.add('hit');setPlayer('soldier-stumble');burst(laneX(state.lane)+7,76,12);setTimeout(()=>{player.classList.remove('hit');setPlayer('soldier-run-1')},340);showToast('Obstacle hit — stamina lost');
   if(state.stamina<=0){state.running=false;setPlayer('soldier-fall');showToast('Run ended')}
 }
 function showQuestion(){
@@ -68,14 +67,15 @@ function answer(q,i,b){
 function showFork(){state.paused=true;forkModal.classList.remove('hidden')}
 function chooseFork(risky){state.obstacleRate=risky?1.35:.78;state.score+=risky?200:50;forkModal.classList.add('hidden');state.paused=false;showToast(risky?'Risk route: 1.35× obstacles':'Safer route selected');setTimeout(()=>state.obstacleRate=1,9000)}
 function animatePlayer(dt){if(state.jumping)return;state.runTimer+=dt;if(state.runTimer>82){state.runTimer=0;state.runFrame=(state.runFrame+1)%6;setPlayer('soldier-run-'+(state.runFrame+1))}}
-function moveParallax(dt){document.querySelectorAll('.parallax').forEach((el,i)=>{const n=parseFloat(el.dataset.x||0)+dt*state.speed*(i+1)*.015;el.dataset.x=n;el.style.transform=`translateY(${(n%12)-6}px)`})}
+function moveParallax(dt){document.querySelectorAll('.parallax').forEach((el,i)=>{const n=parseFloat(el.dataset.x||0)+dt*state.speed*(i+1)*.012;el.dataset.x=n;const y=(n%10)-5;const x=Math.sin(n*.012)*(i+1)*2;el.style.transform=`translate(${x}px,${y}px)`})}
 function updateObstacles(dt){
-  const h=game.clientHeight;for(const o of obstacles){o.y+=dt*state.speed*.12;o.el.style.top=o.y+'%';if(o.y>57&&o.y<79&&o.lane===state.lane)hit(o)}
+  for(const o of obstacles){o.y+=dt*state.speed*.12;o.el.style.top=o.y+'%';const scale=.82+Math.max(0,Math.min(1,(o.y+20)/120))*.22;o.el.style.transform=`scale(${scale})`;if(o.y>57&&o.y<79&&o.lane===state.lane)hit(o)}
   obstacles=obstacles.filter(o=>{if(o.y>108){o.el.remove();return false}return true})
 }
+function ambientDust(now){if(now<state.nextDust||state.paused)return;state.nextDust=now+160+Math.random()*240;burst(laneX(state.lane)+7,85,2)}
 function loop(now){
   if(!state.running)return;const dt=Math.min(40,now-state.last||16);state.last=now;
-  if(!state.paused){state.distance+=dt*state.speed*.015;state.score+=dt*state.speed*.01;animatePlayer(dt);moveParallax(dt);updateObstacles(dt);
+  if(!state.paused){state.distance+=dt*state.speed*.015;state.score+=dt*state.speed*.01;animatePlayer(dt);moveParallax(dt);updateObstacles(dt);ambientDust(now);
     if(now>=state.nextSpawn){spawnObstacle();state.nextSpawn=now+(800+Math.random()*900)/state.obstacleRate}
     if(state.distance>=state.nextQuestion){state.nextQuestion+=520;spawnCheckpoint()}
     if(state.distance>=state.nextFork){state.nextFork+=1100;showFork()}
