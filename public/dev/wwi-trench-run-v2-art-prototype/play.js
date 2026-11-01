@@ -71,7 +71,7 @@ function answer(q,i,b){
 }
 function showFork(){state.paused=true;forkModal.classList.remove('hidden')}
 function chooseFork(risky){state.obstacleRate=risky?1.35:.78;state.score+=risky?200:50;forkModal.classList.add('hidden');state.paused=false;showToast(risky?'Risk route: 1.35× obstacles':'Safer route selected');setTimeout(()=>state.obstacleRate=1,9000)}
-function animatePlayer(dt){if(state.jumping)return;state.runTimer+=dt;if(state.runTimer>82){state.runTimer=0;state.runFrame=(state.runFrame+1)%6;setPlayer('soldier-run-'+(state.runFrame+1))}}
+function animatePlayer(dt){if(state.jumping)return;state.runTimer+=dt;if(state.runTimer>92){state.runTimer=0;state.runFrame=(state.runFrame+1)%3;setPlayer('soldier-run-'+(state.runFrame+1))}}
 function moveParallax(dt){document.querySelectorAll('.parallax').forEach((el,i)=>{const n=parseFloat(el.dataset.x||0)+dt*state.speed*(i+1)*.012;el.dataset.x=n;const y=(n%10)-5;const x=Math.sin(n*.012)*(i+1)*2;el.style.transform=`translate(${x}px,${y}px)`})}
 function updateObstacles(dt){
   for(const o of obstacles){o.y+=dt*state.speed*.12;o.el.style.top=o.y+'%';const scale=.82+Math.max(0,Math.min(1,(o.y+20)/120))*.22;o.el.style.transform=`scale(${scale})`;if(o.y>57&&o.y<79&&o.lane===state.lane)hit(o)}
