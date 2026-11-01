@@ -1,0 +1,25 @@
+{
+  "version":"1.0.0-prototype",
+  "assetRoot":"assets/individual",
+  "liveGameModified":false,
+  "animations":{
+    "idle":{"frames":["character/soldier-idle.svg"],"fps":1,"loop":true},
+    "run":{"frames":["character/soldier-run-1.svg","character/soldier-run-2.svg","character/soldier-run-3.svg","character/soldier-run-4.svg","character/soldier-run-5.svg","character/soldier-run-6.svg"],"fps":12,"loop":true},
+    "jump":{"frames":["character/soldier-jump-takeoff.svg","character/soldier-jump-airborne.svg","character/soldier-landing.svg","character/soldier-recovery.svg"],"fps":8,"loop":false},
+    "stumble":{"frames":["character/soldier-stumble.svg","character/soldier-recovery.svg"],"fps":6,"loop":false},
+    "fall":{"frames":["character/soldier-fall.svg"],"fps":1,"loop":false},
+    "victory":{"frames":["character/soldier-victory.svg"],"fps":1,"loop":false}
+  },
+  "player":{"anchor":{"x":0.5,"y":0.92},"nominalSize":{"w":128,"h":128},"collision":{"type":"capsule","width":48,"height":98,"offsetY":12}},
+  "terrain":{"tileSize":256,"seamOverlap":2,"repeatable":["trench-straight","surface-duckboards","surface-mud","surface-sandbag-edge","trench-wall"],"junctions":["trench-fork","trench-left-turn","trench-right-turn"],"transitions":["trench-entrance","trench-exit"],"checkpoint":"checkpoint-base"},
+  "hazards":{
+    "crater-small":{"collision":"slow-zone","severity":1},"crater-large":{"collision":"slow-zone","severity":2},"low-barrier":{"collision":"jump","severity":1},"barbed-wire":{"collision":"jump-or-dodge","severity":2},"broken-timber":{"collision":"dodge","severity":1},"damaged-sandbags":{"collision":"partial-block","severity":1}
+  },
+  "backgrounds":[
+    {"asset":"backgrounds/bg-sky-clouds.svg","speed":0.08,"z":0},
+    {"asset":"backgrounds/bg-distant-battlefield.svg","speed":0.18,"z":1},
+    {"asset":"backgrounds/bg-ruined-trees-craters.svg","speed":0.35,"z":2},
+    {"asset":"backgrounds/bg-trench-silhouettes.svg","speed":0.55,"z":3}
+  ],
+  "notes":"Prototype source-of-truth configuration. Stable paths are intended to survive future art replacement."
+}
