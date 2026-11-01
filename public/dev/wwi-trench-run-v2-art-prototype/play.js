@@ -1,8 +1,32 @@
 const PATHS={
   character:id=>`assets/individual/character/${id}.svg`,
   terrain:id=>`assets/individual/terrain/${id}.svg`,
-  obstacle:id=>`assets/individual/obstacles-props/${id}.svg`
+  obstacle:id=>`assets/individual/obstacles-props/${id}.svg`,
+  background:id=>`assets/individual/backgrounds/${id}.svg`
 };
+const ATLAS_CHUNKS=[1,2,3,4,5].map(n=>`assets/runtime-atlas/atlas.part${n}`);
+const ATLAS={
+  'bg-sky-clouds':[0,0,512,128],
+  'bg-distant-battlefield':[512,0,512,128],
+  'bg-ruined-trees-craters':[0,128,512,128],
+  'bg-trench-silhouettes':[512,128,512,128],
+  'soldier-idle':[0,256,128,128],
+  'soldier-run-1':[128,256,128,128],
+  'soldier-run-2':[256,256,128,128],
+  'soldier-run-3':[384,256,128,128],
+  'soldier-run-4':[512,256,128,128],
+  'soldier-run-5':[640,256,128,128],
+  'soldier-run-6':[768,256,128,128],
+  'soldier-jump-airborne':[896,256,128,128],
+  'soldier-stumble':[0,384,128,128],
+  'soldier-fall':[128,384,128,128],
+  'low-barrier':[256,384,128,128],
+  'barbed-wire':[384,384,128,128],
+  'crater-small':[512,384,128,128],
+  'broken-timber':[640,384,128,128],
+  'checkpoint-base':[768,384,128,128]
+};
+const ASSETS={};
 const game=document.querySelector('#game');
 const world=document.querySelector('#world');
 const player=document.querySelector('#player');
@@ -31,15 +55,16 @@ const obstacleDefs=[
   {id:'broken-timber',cls:'',jumpable:false,damage:1}
 ];
 
+function asset(id,category){return ASSETS[id]||PATHS[category](id)}
 function sprite(id,cls='',category='obstacle'){
   const img=new Image();
-  img.src=PATHS[category](id);
+  img.src=asset(id,category);
   img.alt='';
   img.draggable=false;
   img.classList.add(...cls.split(' ').filter(Boolean));
   return img;
 }
-function setPlayer(id){player.src=PATHS.character(id)}
+function setPlayer(id){player.src=asset(id,'character')}
 function laneX(lane){return laneLeft[lane]}
 function updateHud(){distanceEl.textContent=Math.floor(state.distance);scoreEl.textContent=Math.floor(state.score);staminaEl.textContent=state.stamina;accuracyEl.textContent=(state.total?Math.round(state.correct/state.total*100):100)+'%';streakEl.textContent=state.streak}
 function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),1100)}
@@ -71,7 +96,7 @@ function answer(q,i,b){
 }
 function showFork(){state.paused=true;forkModal.classList.remove('hidden')}
 function chooseFork(risky){state.obstacleRate=risky?1.35:.78;state.score+=risky?200:50;forkModal.classList.add('hidden');state.paused=false;showToast(risky?'Risk route: 1.35× obstacles':'Safer route selected');setTimeout(()=>state.obstacleRate=1,9000)}
-function animatePlayer(dt){if(state.jumping)return;state.runTimer+=dt;if(state.runTimer>92){state.runTimer=0;state.runFrame=(state.runFrame+1)%3;setPlayer('soldier-run-'+(state.runFrame+1))}}
+function animatePlayer(dt){if(state.jumping)return;state.runTimer+=dt;if(state.runTimer>82){state.runTimer=0;state.runFrame=(state.runFrame+1)%6;setPlayer('soldier-run-'+(state.runFrame+1))}}
 function moveParallax(dt){document.querySelectorAll('.parallax').forEach((el,i)=>{const n=parseFloat(el.dataset.x||0)+dt*state.speed*(i+1)*.012;el.dataset.x=n;const y=(n%10)-5;const x=Math.sin(n*.012)*(i+1)*2;el.style.transform=`translate(${x}px,${y}px)`})}
 function updateObstacles(dt){
   for(const o of obstacles){o.y+=dt*state.speed*.12;o.el.style.top=o.y+'%';const scale=.82+Math.max(0,Math.min(1,(o.y+20)/120))*.22;o.el.style.transform=`scale(${scale})`;if(o.y>57&&o.y<79&&o.lane===state.lane)hit(o)}
@@ -89,9 +114,28 @@ function loop(now){
   }
   raf=requestAnimationFrame(loop)
 }
-async function init(){
+
+async function cropAsset(image,[x,y,w,h]){
+  const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+  const ctx=canvas.getContext('2d');ctx.drawImage(image,x,y,w,h,0,0,w,h);
+  return await new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(URL.createObjectURL(blob)):reject(new Error('Crop failed')),'image/png'));
+}
+async function loadRuntimeArt(){
+  const buffers=await Promise.all(ATLAS_CHUNKS.map(async url=>{const r=await fetch(url);if(!r.ok)throw new Error(`Atlas chunk failed: ${url}`);return new Uint8Array(await r.arrayBuffer())}));
+  const total=buffers.reduce((n,b)=>n+b.length,0);const merged=new Uint8Array(total);let offset=0;for(const b of buffers){merged.set(b,offset);offset+=b.length}
+  const atlasUrl=URL.createObjectURL(new Blob([merged],{type:'image/webp'}));
+  const image=new Image();image.src=atlasUrl;await image.decode();
+  await Promise.all(Object.entries(ATLAS).map(async([id,rect])=>{ASSETS[id]=await cropAsset(image,rect)}));
+  URL.revokeObjectURL(atlasUrl);
+  player.src=ASSETS['soldier-idle'];
+  const bgIds=['bg-sky-clouds','bg-distant-battlefield','bg-ruined-trees-craters','bg-trench-silhouettes'];
+  document.querySelectorAll('.parallax img').forEach((img,i)=>{img.src=ASSETS[bgIds[i]]||img.src});
+  document.body.classList.add('runtime-art-ready');
+}
+async function loadQuestions(){
   try{questions=(await fetch('/arcade-review-games/social-studies/wwi-trench-run-v2/questions.json').then(r=>r.json())).questions}catch{questions=[{question:'Which factor is part of M.A.I.N.?',choices:['Militarism','Mercantilism','Migration','Monarchy'],answerIndex:0,explanation:'Militarism is one of the four M.A.I.N. causes.'}]}
 }
+async function init(){await Promise.allSettled([loadRuntimeArt(),loadQuestions()]);updateHud()}
 
 document.querySelector('#startBtn').onclick=reset;
 document.querySelector('#pauseBtn').onclick=()=>{if(!state.running)return;state.paused=!state.paused;showToast(state.paused?'Paused':'Resumed')};
@@ -99,4 +143,4 @@ document.querySelector('#leftBtn').onclick=()=>move(-1);document.querySelector('
 document.querySelector('#safeFork').onclick=()=>chooseFork(false);document.querySelector('#riskFork').onclick=()=>chooseFork(true);
 window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp',' '].includes(e.key))e.preventDefault();if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')move(-1);if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')move(1);if(e.key==='ArrowUp'||e.key.toLowerCase()==='w'||e.key===' ')jump();if(e.key.toLowerCase()==='p'&&state.running)state.paused=!state.paused});
 let touchX=0;game.addEventListener('pointerdown',e=>touchX=e.clientX);game.addEventListener('pointerup',e=>{const d=e.clientX-touchX;if(Math.abs(d)>35)move(d>0?1:-1);else jump()});
-init();updateHud();
+init();
