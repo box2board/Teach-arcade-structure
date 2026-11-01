@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WWI Trench Run v2 — Improved Prototype</title>
+<link rel="stylesheet" href="play.css">
+</head>
+<body>
+<header class="topbar">
+  <div><strong>Teach Arcade</strong> · WWI Trench Run v2</div>
+  <div class="prototype-badge">PROTOTYPE — live game unchanged</div>
+</header>
+<main>
+  <section class="intro">
+    <div><h1>Improved Trench Run Prototype</h1><p>Visual replacement test using the new repository asset system.</p></div>
+    <div class="actions"><button id="startBtn">Start Run</button><button id="pauseBtn" class="secondary">Pause</button></div>
+  </section>
+
+  <section class="hud" aria-label="Game status">
+    <div>Distance <b id="distance">0</b>m</div>
+    <div>Score <b id="score">0</b></div>
+    <div>Stamina <b id="stamina">3</b></div>
+    <div>Accuracy <b id="accuracy">100%</b></div>
+    <div>Streak <b id="streak">0</b></div>
+  </section>
+
+  <section id="game" class="game" aria-label="WWI trench runner prototype">
+    <div class="parallax p1"><svg viewBox="0 0 1024 256"><use href="assets/asset-library.svg#bg-sky-clouds"></use></svg></div>
+    <div class="parallax p2"><svg viewBox="0 0 1024 256"><use href="assets/asset-library.svg#bg-distant-battlefield"></use></svg></div>
+    <div class="parallax p3"><svg viewBox="0 0 1024 256"><use href="assets/asset-library.svg#bg-ruined-trees-craters"></use></svg></div>
+    <div class="parallax p4"><svg viewBox="0 0 1024 256"><use href="assets/asset-library.svg#bg-trench-silhouettes"></use></svg></div>
+    <div class="lane lane0"></div><div class="lane lane1"></div><div class="lane lane2"></div>
+    <div id="world" class="world"></div>
+    <svg id="player" class="player" viewBox="0 0 256 256" aria-label="Player"><use id="playerUse" href="assets/asset-library.svg#soldier-idle"></use></svg>
+    <div id="fog" class="fog hidden"></div>
+    <div id="toast" class="toast"></div>
+  </section>
+
+  <div class="controls" aria-label="Touch controls">
+    <button id="leftBtn">◀</button><button id="jumpBtn">JUMP</button><button id="rightBtn">▶</button>
+  </div>
+</main>
+
+<div id="questionModal" class="modal hidden" role="dialog" aria-modal="true">
+  <div class="modal-card"><h2>Trench Checkpoint</h2><p id="questionText"></p><div id="choices" class="choices"></div><p id="explanation" class="explanation"></p></div>
+</div>
+<div id="forkModal" class="modal hidden" role="dialog" aria-modal="true">
+  <div class="modal-card"><h2>Fork in the Trench</h2><p>Choose your next route.</p><div class="fork-grid"><button id="safeFork"><b>Safer Route</b><span>Fewer obstacles · normal scoring</span></button><button id="riskFork"><b>Risk Route</b><span>More obstacles · higher scoring</span></button></div></div>
+</div>
+<script type="module" src="play.js"></script>
+</body>
+</html>
