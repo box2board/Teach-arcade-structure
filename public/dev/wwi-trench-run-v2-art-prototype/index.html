@@ -8,29 +8,30 @@
 *{box-sizing:border-box}body{margin:0;background:#d4c7ad;color:var(--ink);font-family:system-ui,-apple-system,sans-serif}
 header{padding:18px 22px;background:var(--slate);color:white}header b{color:#f4c65a}.note{font-size:13px;opacity:.85}
 main{max-width:1180px;margin:auto;padding:18px}.scene{position:relative;aspect-ratio:16/7;overflow:hidden;border:6px solid #312d28;border-radius:18px;background:#aebdcc}
-.layer{position:absolute;inset:0;width:100%;height:100%}.layer svg{width:100%;height:100%}.asset{position:absolute}.runner{left:23%;bottom:9%;width:15%}.barrier{left:48%;bottom:7%;width:13%}.crater{left:64%;bottom:2%;width:17%}.wire{right:2%;bottom:7%;width:16%}.checkpoint{right:16%;bottom:16%;width:10%}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:18px}.card{background:var(--panel);border:2px solid #82745f;border-radius:12px;padding:10px;text-align:center}.card svg{width:100%;aspect-ratio:1;max-height:145px}.card.wide svg{aspect-ratio:4/1}.card code{font-size:11px;word-break:break-all}.group{margin-top:26px}h2{margin:0 0 10px}.hud{position:absolute;left:2%;right:2%;top:3%;display:flex;gap:1.2%;height:12%}.hud svg{height:100%;flex:1}
+.asset{position:absolute;object-fit:contain}.bg{inset:0;width:100%;height:100%;object-fit:fill}.runner{left:23%;bottom:9%;width:15%}.barrier{left:48%;bottom:7%;width:13%}.crater{left:64%;bottom:2%;width:17%}.wire{right:2%;bottom:7%;width:16%}.checkpoint{right:16%;bottom:16%;width:10%}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:18px}.card{background:var(--panel);border:2px solid #82745f;border-radius:12px;padding:10px;text-align:center}.card img{width:100%;aspect-ratio:1;object-fit:contain;max-height:145px}.card.wide img{aspect-ratio:4/1}.card code{font-size:11px;word-break:break-all}.group{margin-top:26px}h2{margin:0 0 10px}.hud{position:absolute;left:2%;right:2%;top:3%;display:flex;gap:1.2%;height:12%}.hud img{height:100%;flex:1;object-fit:contain}.status{margin:12px 0;padding:10px 12px;border-radius:10px;background:#f8f0df;border:2px solid #82745f}
 </style>
 </head>
 <body>
-<header><h1>WWI Trench Run v2 — <b>Art Prototype</b></h1><div class="note">Prototype branch only. The original live game is unchanged.</div></header>
+<header><h1>WWI Trench Run v2 — <b>Art Prototype</b></h1><div class="note">Isolated prototype only. The original live game is unchanged.</div></header>
 <main>
+<div class="status"><strong>Asset mode:</strong> individual game files. This page intentionally does not draw directly from the catalogue sheet or master symbol library.</div>
 <h2>Composed scene test</h2>
 <div class="scene">
-  <svg class="layer" viewBox="0 0 1024 256"><use href="assets/asset-library.svg#bg-sky-clouds"/></svg>
-  <svg class="layer" viewBox="0 0 1024 256"><use href="assets/asset-library.svg#bg-distant-battlefield"/></svg>
-  <svg class="layer" viewBox="0 0 1024 256"><use href="assets/asset-library.svg#bg-ruined-trees-craters"/></svg>
-  <svg class="layer" style="top:28%" viewBox="0 0 1024 256"><use href="assets/asset-library.svg#bg-trench-silhouettes"/></svg>
+  <img class="asset bg" src="assets/individual/backgrounds/bg-sky-clouds.svg" alt="">
+  <img class="asset bg" src="assets/individual/backgrounds/bg-distant-battlefield.svg" alt="">
+  <img class="asset bg" src="assets/individual/backgrounds/bg-ruined-trees-craters.svg" alt="">
+  <img class="asset bg" style="top:28%" src="assets/individual/backgrounds/bg-trench-silhouettes.svg" alt="">
   <div class="hud">
-    <svg viewBox="0 0 256 96"><use href="assets/asset-library.svg#hud-distance"/></svg>
-    <svg viewBox="0 0 256 96"><use href="assets/asset-library.svg#hud-score"/></svg>
-    <svg viewBox="0 0 256 96"><use href="assets/asset-library.svg#hud-stamina"/></svg>
+    <img src="assets/individual/effects-ui/hud-distance.svg" alt="Distance HUD">
+    <img src="assets/individual/effects-ui/hud-score.svg" alt="Score HUD">
+    <img src="assets/individual/effects-ui/hud-stamina.svg" alt="Stamina HUD">
   </div>
-  <svg class="asset runner" viewBox="0 0 256 256"><use href="assets/asset-library.svg#soldier-run-1"/></svg>
-  <svg class="asset barrier" viewBox="0 0 256 256"><use href="assets/asset-library.svg#low-barrier"/></svg>
-  <svg class="asset crater" viewBox="0 0 256 256"><use href="assets/asset-library.svg#crater-small"/></svg>
-  <svg class="asset wire" viewBox="0 0 256 256"><use href="assets/asset-library.svg#barbed-wire"/></svg>
-  <svg class="asset checkpoint" viewBox="0 0 256 256"><use href="assets/asset-library.svg#checkpoint-base"/></svg>
+  <img class="asset runner" src="assets/individual/character/soldier-run-1.svg" alt="Running soldier">
+  <img class="asset barrier" src="assets/individual/obstacles-props/low-barrier.svg" alt="Low barrier">
+  <img class="asset crater" src="assets/individual/obstacles-props/crater-small.svg" alt="Shell crater">
+  <img class="asset wire" src="assets/individual/obstacles-props/barbed-wire.svg" alt="Barbed wire">
+  <img class="asset checkpoint" src="assets/individual/terrain/checkpoint-base.svg" alt="Checkpoint">
 </div>
 <div id="catalogue"></div>
 </main>
@@ -39,11 +40,11 @@ const manifest=await fetch('assets/manifest.json').then(r=>r.json());
 const root=document.querySelector('#catalogue');
 for(const [group,ids] of Object.entries(manifest.groups)){
   const section=document.createElement('section');section.className='group';section.innerHTML=`<h2>${group.replaceAll('_',' ')}</h2><div class="grid"></div>`;
-  const grid=section.querySelector('.grid');
+  const grid=section.querySelector('.grid');const dir=manifest.directories[group];
   for(const id of ids){
     const card=document.createElement('div');card.className='card'+(id.startsWith('bg-')?' wide':'');
-    const vb=id.startsWith('bg-')?'0 0 1024 256':id.startsWith('hud-')?'0 0 256 96':'0 0 256 256';
-    card.innerHTML=`<svg viewBox="${vb}" aria-label="${id}"><use href="assets/asset-library.svg#${id}"/></svg><code>${id}</code>`;
+    const path=`assets/${dir}/${id}.svg`;
+    card.innerHTML=`<img src="${path}" loading="lazy" alt="${id}"><code>${path}</code>`;
     grid.append(card);
   }root.append(section);
 }
