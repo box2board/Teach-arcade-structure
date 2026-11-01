@@ -1,8 +1,11 @@
-const LIB='assets/asset-library.svg#';
+const PATHS={
+  character:id=>`assets/individual/character/${id}.svg`,
+  terrain:id=>`assets/individual/terrain/${id}.svg`,
+  obstacle:id=>`assets/individual/obstacles-props/${id}.svg`
+};
 const game=document.querySelector('#game');
 const world=document.querySelector('#world');
 const player=document.querySelector('#player');
-const playerUse=document.querySelector('#playerUse');
 const fog=document.querySelector('#fog');
 const toast=document.querySelector('#toast');
 const particles=document.querySelector('#particles');
@@ -28,13 +31,15 @@ const obstacleDefs=[
   {id:'broken-timber',cls:'',jumpable:false,damage:1}
 ];
 
-function sprite(id,cls=''){
-  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-  svg.setAttribute('viewBox','0 0 256 256');svg.classList.add(...cls.split(' ').filter(Boolean));
-  const use=document.createElementNS('http://www.w3.org/2000/svg','use');
-  use.setAttribute('href',LIB+id);svg.append(use);return svg;
+function sprite(id,cls='',category='obstacle'){
+  const img=new Image();
+  img.src=PATHS[category](id);
+  img.alt='';
+  img.draggable=false;
+  img.classList.add(...cls.split(' ').filter(Boolean));
+  return img;
 }
-function setPlayer(id){playerUse.setAttribute('href',LIB+id)}
+function setPlayer(id){player.src=PATHS.character(id)}
 function laneX(lane){return laneLeft[lane]}
 function updateHud(){distanceEl.textContent=Math.floor(state.distance);scoreEl.textContent=Math.floor(state.score);staminaEl.textContent=state.stamina;accuracyEl.textContent=(state.total?Math.round(state.correct/state.total*100):100)+'%';streakEl.textContent=state.streak}
 function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),1100)}
@@ -49,7 +54,7 @@ function spawnObstacle(){
   const def=obstacleDefs[Math.floor(Math.random()*obstacleDefs.length)];const lane=Math.floor(Math.random()*3);const el=sprite(def.id,'obstacle '+def.cls);el.style.left=(laneX(lane)-6)+'%';world.append(el);
   obstacles.push({el,lane,y:-28,def,hit:false});
 }
-function spawnCheckpoint(){const lane=state.lane;const el=sprite('checkpoint-base','checkpoint');el.style.left=(laneX(lane)-5)+'%';world.append(el);obstacles.push({el,lane,y:-28,checkpoint:true,hit:false})}
+function spawnCheckpoint(){const lane=state.lane;const el=sprite('checkpoint-base','checkpoint','terrain');el.style.left=(laneX(lane)-5)+'%';world.append(el);obstacles.push({el,lane,y:-28,checkpoint:true,hit:false})}
 function hit(o){
   if(o.hit)return;o.hit=true;if(o.checkpoint){o.el.remove();showQuestion();return}
   if(state.jumping&&o.def.jumpable)return;
