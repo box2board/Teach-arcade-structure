@@ -114,7 +114,20 @@ function drawRamp(r){const x=r.x-cam;if(x<-r.w-160||x>W+100)return;const surface
 }
 
 function wheel(x,y,r,spin=0){ctx.save();ctx.translate(x,y);ellipse(0,1,r,r,'#161f24');ellipse(-1,-1,r-2,r-2,'#2e383c');ctx.save();ctx.rotate(spin);for(let i=0;i<12;i++){ctx.rotate(Math.PI/6);line(-3,-r+2,3,-r+4,'#66716f',2);}ctx.restore();ellipse(0,0,r*.53,r*.53,'#81918e');ellipse(0,0,r*.35,r*.35,'#34474d');for(let i=0;i<5;i++){const a=spin+i*Math.PI*.4;ellipse(Math.cos(a)*r*.35,Math.sin(a)*r*.35,1.1,1.1,'#c5d2c8');}ellipse(0,0,2.5,2.5,'#d7d8c3');ctx.restore();}
-function obstacle(o){if(o.hit||o.passed)return;const x=o.x-cam;if(x<-160||x>W+160)return;const y=ground(o.x);const art=painted[o.t];if(art&&art.complete&&art.naturalWidth){const [w,h]=sizes[o.t];ellipse(x,y+1,w*.52,4,'#1b292e44');ctx.drawImage(art,x-w/2,y-h,w,h);return;}ctx.save();ctx.translate(x,y);ellipse(0,2,sizes[o.t][0]*.6,5,'#192d3055');
+// Bake hazard contrast once at its gameplay size. Frames still draw one sprite;
+// the thin silhouette rim and glow never change collision boxes or cover the art.
+const hazardSprites=new Map(),HAZARD_PAD=9;
+function hazardSprite(name,art){if(hazardSprites.has(name))return hazardSprites.get(name);const [w,h]=sizes[name],p=HAZARD_PAD;
+ const mask=document.createElement('canvas');mask.width=w+p*2;mask.height=h+p*2;const m=mask.getContext('2d');m.drawImage(art,p,p,w,h);m.globalCompositeOperation='source-in';m.fillStyle='#ffd17b';m.fillRect(0,0,mask.width,mask.height);m.globalCompositeOperation='source-over';
+ const sprite=document.createElement('canvas');sprite.width=mask.width;sprite.height=mask.height;const g=sprite.getContext('2d');
+ // A dark outer keyline retains contrast against pale desert shoulders.
+ const dark=document.createElement('canvas');dark.width=mask.width;dark.height=mask.height;const d=dark.getContext('2d');d.drawImage(mask,0,0);d.globalCompositeOperation='source-in';d.fillStyle='#403626';d.fillRect(0,0,dark.width,dark.height);
+ g.globalAlpha=.75;for(let i=0;i<12;i++){const a=i*Math.PI/6;g.drawImage(dark,Math.cos(a)*2.3,Math.sin(a)*2.3);}g.globalAlpha=1;
+ g.shadowColor='#ffbd5966';g.shadowBlur=5;g.drawImage(mask,0,0);g.shadowBlur=0;
+ for(let i=0;i<12;i++){const a=i*Math.PI/6;g.drawImage(mask,Math.cos(a)*1.25,Math.sin(a)*1.25);}
+ g.drawImage(art,p,p,w,h);hazardSprites.set(name,sprite);return sprite;
+}
+function obstacle(o){if(o.hit||o.passed)return;const x=o.x-cam;if(x<-160||x>W+160)return;const y=ground(o.x);const art=painted[o.t];if(art&&art.complete&&art.naturalWidth){const [w,h]=sizes[o.t];ellipse(x,y+1,w*.52,4,'#1b292e44');const sprite=hazardSprite(o.t,art);ctx.drawImage(sprite,x-w/2-HAZARD_PAD,y-h-HAZARD_PAD);return;}ctx.save();ctx.translate(x,y);ellipse(0,2,sizes[o.t][0]*.6,5,'#192d3055');
  switch(o.t){case 'car':{const g=ctx.createLinearGradient(0,-54,0,0);g.addColorStop(0,'#c37550');g.addColorStop(.55,'#904934');g.addColorStop(1,'#573c32');path([[-55,-12],[-51,-31],[-25,-35],[-14,-59],[20,-59],[38,-35],[55,-29],[57,-7],[-55,-7]],g,'#394447',2);path([[-21,-36],[-12,-54],[1,-54],[1,-36]],'#80b2bc','#324a52',2);path([[6,-54],[18,-54],[32,-36],[6,-36]],'#528e9e','#324a52',2);path([[8,-53],[15,-46],[9,-42],[19,-36]],null,'#dce8d9',1);path([[36,-35],[50,-51],[57,-30]],'#b4805d','#4c4b42',2);line(-50,-21,30,-21,'#d39a6a',2);round(-57,-18,8,6,1,'#ecd6a1');round(50,-19,7,5,1,Math.sin(clock*9)>0?'#ffd477':'#b36c39');wheel(-33,-8,13);ctx.save();ctx.scale(1,.6);wheel(35,-11,13);ctx.restore();line(-17,-29,-8,-29,'#e3bc8e',2);path([[71,-33],[58,-9],[84,-9]],'#e98d4d','#f4e6c4',2);path([[71,-25],[65,-14],[77,-14]],'#4c5857');break;}
  case 'cart':line(-21,-18,26,-18,'#99b4ad',3);path([[-28,-53],[27,-53],[20,-25],[-19,-25]],'#789f9f33','#c6d0b8',3);for(let k=-18;k<24;k+=8)line(k,-50,k+3,-27,'#6f939a',1.5);line(-23,-42,23,-42,'#9bb9b1',2);line(-20,-33,21,-33,'#9bb9b1',2);line(28,-53,38,-65,'#b9c5b4',3);line(37,-65,46,-65,'#db8c4f',5);round(-14,-44,16,12,2,'#c8a16d');wheel(-15,-7,6);wheel(23,-7,6);break;
  case 'tire':wheel(0,-23,23,clock*.4);break;
