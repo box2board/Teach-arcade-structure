@@ -219,12 +219,12 @@ function gorgeScenery(){ctx.fillStyle='#8ec0ca';ctx.fillRect(0,0,W,H);if(vista.c
  ctx.globalAlpha=.55;for(let i=0;i<7;i++){const x=(i*173-cam*.6+clock*12+20000)%1150-70,y=190+i*18+Math.sin(clock+i)*8;ellipse(x,y,2.5,1.2,i%2?'#e8b155':'#ad7040');}ctx.globalAlpha=1;
 }
 function drawGorge(){const left=GORGE.start-cam,right=GORGE.end-cam;if(right<-100||left>W+100)return;
- const y=405,depth=ctx.createLinearGradient(0,y,0,H);depth.addColorStop(0,'#697c80');depth.addColorStop(.5,'#3b5963');depth.addColorStop(1,'#193c50');path([[left,y+15],[right,y+15],[right,H],[left,H]],depth);
+ const y=405,depth=ctx.createLinearGradient(0,y,0,H);depth.addColorStop(0,'#324f5a18');depth.addColorStop(.5,'#3b59632b');depth.addColorStop(1,'#193c5060');path([[left,y+15],[right,y+15],[right,H],[left,H]],depth);
  // Jagged vertical rock faces frame an open chasm; road painting is clipped out.
  paintGround([[left-38,y-3],[left+7,y+6],[left-7,y+51],[left+16,y+100],[left+4,H],[left-80,H]],'desert',cam,'#8c7963',.6);
  paintGround([[right+38,y-3],[right-7,y+6],[right+8,y+55],[right-15,y+102],[right-4,H],[right+80,H]],'desert',cam,'#b09a74',.7);
  for(let i=0;i<6;i++){const yy=y+32+i*24;line(left-25,yy,left+5,yy+5,'#334c5155',2);line(right-5,yy,right+30,yy+5,'#544e4255',2);}
- ctx.save();ctx.beginPath();ctx.rect(left+16,H-29,Math.max(0,right-left-32),29);ctx.clip();ctx.fillStyle='#427e8d';ctx.fillRect(left,H-26,right-left,26);for(let i=0;i<9;i++){const xx=left+i*166-(clock*36%166);line(xx,H-14,xx+65,H-14,'#a1c3bb66',2);}ctx.restore();
+ ctx.save();ctx.beginPath();ctx.rect(left+16,H-29,Math.max(0,right-left-32),29);ctx.clip();ctx.fillStyle='#427e8d44';ctx.fillRect(left,H-26,right-left,26);for(let i=0;i<9;i++){const xx=left+i*166-(clock*36%166);line(xx,H-14,xx+65,H-14,'#a1c3bb66',2);}ctx.restore();
  for(const edge of [left,right]){line(edge,405,edge,365,'#e3ba69',5);line(edge-6,371,edge+6,382,'#564b38',4);}
 }
 
