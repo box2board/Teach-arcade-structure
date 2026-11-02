@@ -1,39 +1,24 @@
-# WWI Trench Run v2 — prototype art asset system
+# WWI Trench Run v2 — Art Prototype
 
-This directory is intentionally isolated from the live WWI Trench Run v2 implementation. Nothing here is wired into production.
+This directory is an isolated visual-development prototype for Teach Arcade's WWI Trench Run.
 
-## Source of truth
-The source of truth is now the set of individual files under `assets/individual/`.
+## Safety
 
-- `assets/individual/character/` — player animation frames
-- `assets/individual/terrain/` — trench modules and surfaces
-- `assets/individual/obstacles-props/` — hazards and set dressing
-- `assets/individual/effects-ui/` — HUD, feedback and atmosphere assets
-- `assets/individual/backgrounds/` — parallax layers
-- `assets/manifest.json` — stable registry and path rules
-- `assets/game-config.json` — animation, collision, tiling and parallax metadata
-- `assets/ASSET_CONTRACT.md` — rules for replacing art without breaking game code
-- `index.html` — prototype viewer that loads the individual files directly
+- The live/current WWI Trench Run is not modified by this prototype.
+- All work remains under `public/dev/wwi-trench-run-v2-art-prototype/` on the isolated prototype branch.
+- Do not merge this prototype to production until it has been explicitly approved.
 
-`assets/asset-library.svg` remains only as the current prototype drawing source used by the individual SVG wrappers. Game/prototype code should not reference its symbol IDs directly.
+## Runtime artwork
 
-## Why this structure
-The final illustrated art can be replaced asset-by-asset while keeping stable filenames. Gameplay code therefore does not need to change when a rough prototype drawing is replaced by a polished production asset.
+The prototype now uses illustrated runtime atlases for the player character and primary gameplay hazards/checkpoint. Stable individual SVG asset paths are preserved as lightweight crop wrappers so the existing game logic does not need to change when artwork is upgraded.
 
-Example:
-```html
-<img src="assets/individual/obstacles-props/barbed-wire.svg" alt="Barbed wire">
-```
+Runtime atlases:
 
-Animation frames are listed in `game-config.json`, so the renderer can preload them without hard-coding names.
+- `assets/runtime/character-atlas.webp`
+- `assets/runtime/obstacle-atlas.webp`
 
-## Implementation rules
-1. Do not point the live game at this directory until the prototype is approved.
-2. Do not rename stable individual asset files after gameplay code begins using them.
-3. Keep character anchor and nominal dimensions compatible with `game-config.json`.
-4. Keep collision data separate from artwork.
-5. Replace rough prototype drawings in place rather than creating new filenames for visual upgrades.
-6. Validate every replacement through the prototype viewer before any production integration.
+The environment, decorative terrain, UI, and background layers remain modular and can be upgraded independently while retaining their existing asset IDs.
 
-## Current status
-The structural correction is complete: each catalogue element has a stable individual game-facing file path and the prototype viewer loads those files directly. The next visual-development work can improve the artwork in place without changing the game-facing API.
+## Visual direction
+
+The target is a polished illustrated educational arcade game rather than primitive vector placeholder art. The current pass intentionally reduces procedural/CSS decoration so the illustrated assets remain visually dominant.
