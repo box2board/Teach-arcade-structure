@@ -25,17 +25,30 @@
     <div>Streak <b id="streak">0</b></div>
   </section>
 
-  <section id="game" class="game" aria-label="WWI trench runner prototype">
+  <section id="game" class="game phase-1" aria-label="WWI trench runner prototype">
     <div class="sky-wash"></div>
     <div class="parallax p1"><img src="assets/individual/backgrounds/bg-sky-clouds.svg" alt=""></div>
     <div class="parallax p2"><img src="assets/individual/backgrounds/bg-distant-battlefield.svg" alt=""></div>
     <div class="parallax p3"><img src="assets/individual/backgrounds/bg-ruined-trees-craters.svg" alt=""></div>
     <div class="parallax p4"><img src="assets/individual/backgrounds/bg-trench-silhouettes.svg" alt=""></div>
     <div class="smoke smoke-a"></div><div class="smoke smoke-b"></div><div class="smoke smoke-c"></div>
+
+    <div class="trench-wall trench-wall-left" aria-hidden="true">
+      <img src="assets/individual/terrain/trench-wall.svg" alt=""><img src="assets/individual/terrain/trench-wall.svg" alt=""><img src="assets/individual/terrain/trench-wall.svg" alt="">
+    </div>
+    <div class="trench-wall trench-wall-right" aria-hidden="true">
+      <img src="assets/individual/terrain/trench-wall.svg" alt=""><img src="assets/individual/terrain/trench-wall.svg" alt=""><img src="assets/individual/terrain/trench-wall.svg" alt="">
+    </div>
+
     <div class="ground-depth"></div>
+    <div id="floorDetailLayer" class="floor-detail-layer" aria-hidden="true"></div>
     <div class="duckboard duckboard-a"></div><div class="duckboard duckboard-b"></div><div class="duckboard duckboard-c"></div>
     <div class="lane lane0"></div><div class="lane lane1"></div><div class="lane lane2"></div>
+
+    <div id="decorBack" class="decor-layer decor-back" aria-hidden="true"></div>
     <div id="world" class="world"></div>
+    <div id="decorFront" class="decor-layer decor-front" aria-hidden="true"></div>
+
     <div id="playerShadow" class="player-shadow" aria-hidden="true"></div>
     <img id="player" class="player" src="assets/individual/character/soldier-idle.svg" alt="Player soldier">
     <div class="foreground-lip"><span></span><span></span><span></span><span></span><span></span></div>
