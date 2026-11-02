@@ -26,3 +26,9 @@ User approved appearance, motion and gameplay and requested proceeding with rele
 - Syntax and diff checks. Preview deployment build must pass before handoff.
 
 Before production: review the release-route preview, approve its topic selector/layout and normal run. Resolve any merge conflicts against current main while retaining unrelated work, then obtain explicit merge/release authorization. No next benchmark has begun.
+
+## Merge preparation — 2026-11-02
+
+User approved the final release preview. Combined branch head 70f47755bf8e2dc87fc2a860b4b1a8ce355de31a with current main 6b7b606a997e4705069b2a874d8a4630ca87510f in an isolated worktree. Main is ten commits beyond the original baseline; merge is conflict-free. All 79 files changed by those newer main commits remain byte-identical to main in the combined index, preserving the artwork/header and Territory Takedown changes. An unrelated pre-existing working-tree image modification in the older checkout was left untouched.
+
+Static npm build passed; unrelated generated SEO/search artifacts were restored from the combined index after checking the build. Public launcher and full squad benchmark regression suites passed, including shared-bank flows and the HUD contrast regression. No gameplay modifications made. Chromebook validation remains unverified; the previously recorded iPhone measurement is the available hardware evidence. Preview branch update only; actual merge into main and production release still require explicit authorization.

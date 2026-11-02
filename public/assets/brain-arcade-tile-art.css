@@ -9,6 +9,25 @@
   background: #ffe7d5;
   flex: none;
 }
+
+/* Mahjong landed after the original Flat Arcade art pass. Give its legacy
+   emoji card the same 3:2 Warm Peach artwork stage without touching gameplay. */
+#games .game-card[href="/brain-arcade/mahjong/"]::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  flex: none;
+  border-bottom: 0;
+  background-color: #ffe7d5;
+  background-image: url('/assets/images/brain-arcade/mahjong-flat.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+#games .game-card[href="/brain-arcade/mahjong/"] > .icon { display: none; }
+
 #games .game-card .badge {
   background: #fff;
   border-color: #cbd5e1;

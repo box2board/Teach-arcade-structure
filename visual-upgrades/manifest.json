@@ -3,7 +3,7 @@
   "visualSystemVersion": "0.1.0-rc.1",
   "games": {
     "snow-day-defender": {
-      "status": "release-preview-awaiting-review",
+      "status": "merge-ready-awaiting-authorization",
       "visualLevel": "appearance-and-motion-approved",
       "visualSystemVersion": "0.1.0-rc.1",
       "route": "/dev/snow-day-visuals/",
@@ -39,7 +39,7 @@
       },
       "benchmarkVisualsApproved": false,
       "reusableExtraction": "provisional; finalize after user approval",
-      "lastReviewed": "2026-10-29",
+      "lastReviewed": "2026-11-02",
       "notes": [
         "Latest squad prototype preserved; existing public Review Lab version untouched",
         "Scientific Method sample content preserved; public shared-bank integration not part of this visual pass",
@@ -54,7 +54,8 @@
         "Distinct Frost King crown/cape/ice armor; tank plates, runner skates, normal earmuffs; separate boss art-test entry. Cached single body draw retained; visual/device review pending.",
         "Enemy appearance approved; first motion pass awaiting visual review. Game-specific motion.js leaves collision coordinates and gameplay timing untouched.",
         "User approved appearance and motion. Connected simulated three-wave flow passes; overall benchmark remains incomplete pending device/browser validation.",
-        "Release launcher now imports the same approved runtime with shared topic-bank adapter; public mode omits Lab setup and hides test controls. Older engine retained behind noindex legacy-index.html. No production release."
+        "Release launcher now imports the same approved runtime with shared topic-bank adapter; public mode omits Lab setup and hides test controls. Older engine retained behind noindex legacy-index.html. No production release.",
+        "Final release preview approved. Current main combined without conflicts; build and release/gameplay suites pass. Main/production untouched; explicit authorization still required."
       ],
       "authoritativeImplementation": "public/dev/snow-day-visuals/",
       "sourceReconciliation": "reconciliation.md",
