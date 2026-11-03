@@ -1,0 +1,24 @@
+import {CropEditor} from './crop-editor.js';
+import {ImageEditor} from './image-editor.js';
+import {ResourceBuilders} from './resource-builders.js';
+import {CreationTools} from './creation-tools.js';
+import {SelectionTools} from './selection-tools.js';
+import {CanvasObjectMenu} from './object-menu.js';
+import {StudioState,newProject} from './state.js';
+import {buildTemplate} from './templates.js';
+import {StudioCanvas} from './canvas.js';
+import {StudioUI} from './ui.js';
+const root=document.getElementById('art-studio');
+const initial=newProject();initial.name='A little curiosity';initial.pages=[buildTemplate('Classroom Poster')];
+const state=new StudioState(initial);
+const canvas=new StudioCanvas(root,state);
+const ui=new StudioUI(root,state,canvas);
+ui.tools=new SelectionTools(ui);
+ui.creation=new CreationTools(ui);
+ui.resources=new ResourceBuilders(ui);
+ui.imageEditor=new ImageEditor(ui);
+ui.cropEditor=new CropEditor(ui);
+canvas.objectMenu=new CanvasObjectMenu(root,state,canvas,a=>ui.action(a));
+requestAnimationFrame(()=>canvas.fit());
+// Exposed only for local diagnostics; no authentication or server writes.
+root.studio={state,canvas,ui};
