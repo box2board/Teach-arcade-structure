@@ -31,7 +31,7 @@ function damage(o){if(R.inv>0)return;const cost=o.t==='car'?18:o.t==='barrier'?1
 function update(dt){clock+=dt;if(callT>0){callT-=dt;if(callT<=0)$('call').classList.remove('show');}shake=Math.max(0,shake-dt*12);if(mode!=='running')return;metrics.physicsSteps++;R.time+=dt;R.inv=Math.max(0,R.inv-dt);R.boost=Math.max(0,R.boost-dt);R.nitro=Math.min(100,R.nitro+dt*1.05);
  if(levelIndex===3&&!R.canyonBriefed&&R.x>=3500){R.canyonBriefed=true;R.nitro=Math.max(36,R.nitro);popup('GORGE AHEAD · NITRO READY');$('msg').textContent='Canyon ramp ahead: double jump in the air, or use nitro on the ramp. Misses resume safely beyond the gap.';}
  if(R.on){R.coyote=.12;R.jumps=0;}else R.coyote=Math.max(0,R.coyote-dt);
- if(R.buffer>0&&(R.on||R.coyote>0||R.jumps<2)){const first=R.on||R.coyote>0||R.jumps===0;R.vy=first?-555:-485;R.on=false;R.coyote=0;R.jumps=first?1:2;R.buffer=0;metrics.jumps++;if(!first){metrics.doubleJumps++;if(inGorge(R.x))R.vx=Math.max(R.vx,1050);popup('DOUBLE JUMP');rings.push({x:R.x,y:R.y+24,life:.32});emit(R.x,R.y+22,8,'#c3faff',.6);}else emit(R.x,R.y+23,8,'#e7c299',.7);}
+ if(R.buffer>0&&(R.on||R.coyote>0||R.jumps<2)){const first=R.on||R.coyote>0||R.jumps===0;R.vy=first?-555:-485;R.on=false;R.coyote=0;R.jumps=first?1:2;R.buffer=0;metrics.jumps++;if(!first){metrics.doubleJumps++;if(inGorge(R.x))R.vx=Math.max(R.vx,1250);popup('DOUBLE JUMP');rings.push({x:R.x,y:R.y+24,life:.32});emit(R.x,R.y+22,8,'#c3faff',.6);}else emit(R.x,R.y+23,8,'#e7c299',.7);}
  R.buffer=Math.max(0,R.buffer-dt);
  const oldX=R.x,wasOn=R.on,priorSpeed=R.vx;
  if(K.gas)R.vx+=(R.on?520:70)*dt;
