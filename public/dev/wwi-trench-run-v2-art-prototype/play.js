@@ -120,7 +120,7 @@ function updateObstacles(dt){
   obstacles=obstacles.filter(o=>{if(o.y>108){o.el.remove();o.glow?.remove();return false}return true})
 }
 function updateScenery(dt){
-  for(const o of scenery){o.y+=dt*state.speed*.095;o.el.style.top=o.y+'%';const progress=Math.max(0,Math.min(1,(o.y+26)/126)),scale=.66+progress*.55;o.el.style.transform=`translateX(-50%) scale(${scale})`;o.el.style.opacity=String(.38+progress*.48)}
+  for(const o of scenery){o.y+=dt*state.speed*.095;o.el.style.top=o.y+'%';const progress=Math.max(0,Math.min(1,(o.y+26)/126)),scale=.66+progress*.55,groundFade=Math.max(0,Math.min(1,(o.y-18)/6));o.el.style.transform=`translateX(-50%) scale(${scale})`;o.el.style.opacity=String((.38+progress*.48)*groundFade);o.el.style.visibility=o.y<18?'hidden':'visible'}
   scenery=scenery.filter(o=>{if(o.y>108){o.el.remove();return false}return true});
   for(const o of floorDetails){o.y+=dt*state.speed*.105;o.el.style.top=o.y+'%';const progress=Math.max(0,Math.min(1,(o.y-58)/48));o.el.style.scale=String(.72+progress*.55);o.el.style.opacity=String(.22+progress*.42)}
   floorDetails=floorDetails.filter(o=>{if(o.y>106){o.el.remove();return false}return true})
