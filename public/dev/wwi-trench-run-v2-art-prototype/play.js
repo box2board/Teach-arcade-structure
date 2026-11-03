@@ -80,13 +80,20 @@ function answer(q,index,btn){[...ui.choices.children].forEach(x=>x.disabled=true
 function triggerFork(){state.paused=true;ui.forkModal.classList.remove('hidden')}
 function chooseFork(risky){state.rate=risky?1.28:.82;state.score+=risky?200:50;if(risky){for(const [i,id] of ['barbed-wire','broken-timber','low-barrier'].entries()){const def=obstacleDefs.find(d=>d.id===id);hazards.push({x:2390+i*390,id,hit:false,def})}}ui.forkModal.classList.add('hidden');state.paused=false;showToast(risky?'Risk route: extra hazards and bonus score':'Safer route selected');}
 function drawImage(img,x,y,w,h,flip=false){if(!img)return;ctx.save();if(flip){ctx.translate(x+w,y);ctx.scale(-1,1);ctx.drawImage(img,0,0,w,h)}else ctx.drawImage(img,x,y,w,h);ctx.restore()}
-function tileLayer(img,y,h,factor,cam,alpha=1){if(!img)return;const dw=h*img.width/img.height;const off=(cam*factor)%(dw*2);ctx.save();ctx.globalAlpha=alpha;for(let x=-off-dw;x<W+dw;x+=dw*2){drawImage(img,x,y,dw,h,false);drawImage(img,x+dw,y,dw,h,true)}ctx.restore()}
+const layerBuffers=new Map();
+function tileLayer(img,y,h,factor,cam,alpha=1,fadeTop=.2){
+  if(!img)return;let buffer=layerBuffers.get(img);if(!buffer){buffer=document.createElement('canvas');buffer.width=W;buffer.height=h;layerBuffers.set(img,buffer)}
+  const layer=buffer.getContext('2d');layer.clearRect(0,0,W,h);const dw=h*img.width/img.height,off=(cam*factor)%(dw*2);
+  for(let x=-off-dw;x<W+dw;x+=dw*2){layer.drawImage(img,x,0,dw,h);layer.save();layer.translate(x+dw,0);layer.scale(-1,1);layer.drawImage(img,0,0,dw,h);layer.restore()}
+  layer.globalCompositeOperation='destination-in';const mask=layer.createLinearGradient(0,0,0,h);mask.addColorStop(0,'rgba(255,255,255,0)');mask.addColorStop(fadeTop,'rgba(255,255,255,1)');mask.addColorStop(1,'rgba(255,255,255,1)');layer.fillStyle=mask;layer.fillRect(0,0,W,h);layer.globalCompositeOperation='source-over';
+  ctx.save();ctx.globalAlpha=alpha;ctx.drawImage(buffer,0,y);ctx.restore();
+}
 function drawBackground(){
   ctx.fillStyle='#7d8b94';ctx.fillRect(0,0,W,H);
   if(art.sky)drawImage(art.sky,0,0,W,210);
-  tileLayer(art.far,58,152,.09,state.camera,.94);
-  tileLayer(art.mid,120,190,.22,state.camera,.93);
-  tileLayer(art.near,165,220,.48,state.camera,.98);
+  tileLayer(art.far,58,152,.09,state.camera,.94,.24);
+  tileLayer(art.mid,120,190,.22,state.camera,.93,.22);
+  tileLayer(art.near,165,220,.48,state.camera,.98,.18);
   if(art.floor){const h=205,w=h*art.floor.width/art.floor.height,offsetX=(state.camera*.94)%(w*2),top=GROUND-132;ctx.save();ctx.beginPath();ctx.rect(0,top-2,W,H-(top-2));ctx.clip();for(let x=-offsetX-w;x<W+w;x+=w*2){drawImage(art.floor,x,top,w,h);drawImage(art.floor,x+w,top,w,h,true)}ctx.restore()}
   const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(28,36,42,.05)');g.addColorStop(1,'rgba(23,20,17,.26)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
 }
