@@ -1,3 +1,19 @@
+# Current revision — missed-jump penalty and pickups removed
+
+Nitro pickups, their sprites/counter and collection rewards have been removed from Copper Gorge. Normal nitro controls, regeneration, speed sections and medals remain.
+
+A canyon miss relocates the RV to x6110 with zero speed and a two-second recovery countdown. The wait counts toward finish/medal time. Jump and nitro are ignored during recovery; pausing freezes the countdown. Recovery gives no canyon-clear or clean-landing credit. Driving resumes after the countdown. Replay resets recovery state. Only level four changes.
+
+Reviewed the uploaded 9.6-second iPad recording: the previous rapid relocation and immediate driving made a missed jump look successful. Replaced that response with an explicit CANYON MISSED panel and 2 → 1 countdown.
+
+Browser verified on code commit 20e0efe: drove from the beginning without jump/nitro; observed x6110, speed0, recoverySeconds1.32, canyonRecoveries1, canyonClears0; observed the display change from 2 to 1, then GO and driving resumed (x6201, speed291, recoverySeconds0). No pickups/counter visible. Health remained82 through recovery. Cloud screenshots can lag telemetry by a frame.
+
+Passed syntax, canyon trajectories/recovery tests, reward/speed/medal tests and all four route simulations. New tests check the full stopped wait, elapsed-time penalty, blocked jump/nitro, pause behavior and resumption. First three route simulation results remain unchanged. Device-specific performance/multitouch is not certified.
+
+Verified playable preview: https://teach-arcade-structure-8zmnurj34-ash-christies-projects.vercel.app/brain-arcade/rv-road-trip-mayhem/rolling-hills.html?level=gorge
+
+## Historical implementation notes (superseded where above differs)
+
 # Copper Gorge rewards — level four only
 
 ## Changes
@@ -24,3 +40,4 @@ Cloud browser rendering/input is throttled; physical Chromebook/iPad performance
 https://teach-arcade-structure-8nrzi38yc-ash-christies-projects.vercel.app/brain-arcade/rv-road-trip-mayhem/rolling-hills.html?level=gorge
 
 Work stays on prototype/rv-road-trip-mayhem-reboot. No main merge or production deployment.
+
