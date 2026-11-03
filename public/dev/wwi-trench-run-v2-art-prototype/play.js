@@ -112,8 +112,9 @@ function moveParallax(dt){document.querySelectorAll('.parallax').forEach((el,i)=
 function updateObstacles(dt){
   for(const o of obstacles){
     o.y+=dt*state.speed*.12;o.el.style.top=o.y+'%';
-    const progress=Math.max(0,Math.min(1,(o.y+28)/122)),scale=.7+progress*.42;o.el.style.transform=`translateX(-50%) scale(${scale})`;o.el.style.opacity=String(.5+progress*.5);
-    if(o.glow){o.glow.style.top=(o.y+7)+'%';o.glow.style.transform=`translateX(-50%) scale(${scale})`;o.glow.style.opacity=String(.25+progress*.45)}
+    const progress=Math.max(0,Math.min(1,(o.y+28)/122)),scale=.7+progress*.42,groundFade=Math.max(0,Math.min(1,(o.y-32)/6));o.el.style.transform=`translateX(-50%) scale(${scale})`;o.el.style.opacity=String((.5+progress*.5)*groundFade);
+    o.el.style.visibility=o.y<32?'hidden':'visible';
+    if(o.glow){o.glow.style.top=(o.y+7)+'%';o.glow.style.transform=`translateX(-50%) scale(${scale})`;o.glow.style.opacity=String((.25+progress*.45)*groundFade);o.glow.style.visibility=o.y<32?'hidden':'visible'}
     const start=o.checkpoint?61:o.def.hitStart,end=o.checkpoint?83:o.def.hitEnd;if(o.y>start&&o.y<end&&o.lane===state.lane)hit(o)
   }
   obstacles=obstacles.filter(o=>{if(o.y>108){o.el.remove();o.glow?.remove();return false}return true})
