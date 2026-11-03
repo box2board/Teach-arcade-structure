@@ -10,15 +10,22 @@ This directory is an isolated visual-development prototype for Teach Arcade's WW
 
 ## Runtime artwork
 
-The prototype now uses illustrated runtime atlases for the player character and primary gameplay hazards/checkpoint. Stable individual SVG asset paths are preserved as lightweight crop wrappers so the existing game logic does not need to change when artwork is upgraded.
+The prototype uses five optimized WebP runtime atlases extracted from the approved illustrated source sheets:
 
-Runtime atlases:
+- `assets/runtime/character-atlas.webp` — 12 consistent soldier poses
+- `assets/runtime/obstacle-atlas.webp` — barrier, barbed wire, crater, broken timber
+- `assets/runtime/terrain-atlas.webp` — trench wall, duckboards, checkpoint, sandbags
+- `assets/runtime/props-atlas.webp` — dead tree, ammo crate, ladder, lantern, signs, damaged sandbags
+- `assets/runtime/background-atlas.webp` — four battlefield and trench layers
 
-- `assets/runtime/character-atlas.webp`
-- `assets/runtime/obstacle-atlas.webp`
+The high-quality source WebP sheets and the reproducible conversion script live in `assets/source/`. Stable gameplay asset IDs and collision logic are preserved; the runtime loader crops the atlases into the existing asset IDs. Legacy individual SVGs remain as fallbacks.
 
-The environment, decorative terrain, UI, and background layers remain modular and can be upgraded independently while retaining their existing asset IDs.
+To rebuild the compact WebP files after replacing a source sheet, run:
+
+```bash
+python3 assets/source/build_runtime_atlases.py
+```
 
 ## Visual direction
 
-The target is a polished illustrated educational arcade game rather than primitive vector placeholder art. The current pass intentionally reduces procedural/CSS decoration so the illustrated assets remain visually dominant.
+The target is a polished illustrated educational arcade game rather than primitive vector placeholder art. This pass uses the WWI Trench Run Visual Style Guide as its reference and keeps the art readable at gameplay scale.

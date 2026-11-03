@@ -4,12 +4,27 @@ const PATHS={
   obstacle:id=>`assets/individual/obstacles-props/${id}.svg`,
   background:id=>`assets/individual/backgrounds/${id}.svg`
 };
-const ATLAS_CHUNKS=[1,2,3,4,5].map(n=>`assets/runtime-atlas/atlas.part${n}`);
-const ATLAS={
-  'bg-sky-clouds':[0,0,512,128],'bg-distant-battlefield':[512,0,512,128],'bg-ruined-trees-craters':[0,128,512,128],'bg-trench-silhouettes':[512,128,512,128],
-  'soldier-idle':[0,256,128,128],'soldier-run-1':[128,256,128,128],'soldier-run-2':[256,256,128,128],'soldier-run-3':[384,256,128,128],'soldier-run-4':[512,256,128,128],'soldier-run-5':[640,256,128,128],'soldier-run-6':[768,256,128,128],'soldier-jump-airborne':[896,256,128,128],
-  'soldier-stumble':[0,384,128,128],'soldier-fall':[128,384,128,128],'low-barrier':[256,384,128,128],'barbed-wire':[384,384,128,128],'crater-small':[512,384,128,128],'broken-timber':[640,384,128,128],'checkpoint-base':[768,384,128,128]
-};
+const ATLAS_SPECS=[
+  {url:'assets/runtime/character-atlas.webp',columns:3,rows:4,cells:[
+    ['soldier-idle',0,0],['soldier-run-1',1,0],['soldier-run-2',2,0],
+    ['soldier-run-3',0,1],['soldier-run-4',1,1],['soldier-run-5',2,1],
+    ['soldier-run-6',0,2],['soldier-jump-airborne',1,2],['soldier-stumble',2,2],
+    ['soldier-fall',0,3],['soldier-landing',1,3],['soldier-recovery',2,3]
+  ]},
+  {url:'assets/runtime/obstacle-atlas.webp',columns:2,rows:2,cells:[
+    ['low-barrier',0,0],['barbed-wire',1,0],['crater-small',0,1],['broken-timber',1,1]
+  ]},
+  {url:'assets/runtime/terrain-atlas.webp',columns:2,rows:2,cells:[
+    ['trench-wall',0,0],['surface-duckboards',1,0],['checkpoint-base',0,1],['sandbag-stack',1,1]
+  ]},
+  {url:'assets/runtime/props-atlas.webp',columns:3,rows:2,cells:[
+    ['dead-tree',0,0],['ammo-crate',1,0],['ladder',2,0],
+    ['lantern',0,1],['trench-sign',1,1],['damaged-sandbags',2,1]
+  ]},
+  {url:'assets/runtime/background-atlas.webp',columns:1,rows:4,cells:[
+    ['bg-sky-clouds',0,0],['bg-distant-battlefield',0,1],['bg-ruined-trees-craters',0,2],['bg-trench-silhouettes',0,3]
+  ]}
+];
 const ASSETS={};
 const game=document.querySelector('#game'),world=document.querySelector('#world'),decorBack=document.querySelector('#decorBack'),decorFront=document.querySelector('#decorFront'),floorDetailLayer=document.querySelector('#floorDetailLayer'),player=document.querySelector('#player'),playerShadow=document.querySelector('#playerShadow'),fog=document.querySelector('#fog'),toast=document.querySelector('#toast'),particles=document.querySelector('#particles'),distanceEl=document.querySelector('#distance'),scoreEl=document.querySelector('#score'),staminaEl=document.querySelector('#stamina'),accuracyEl=document.querySelector('#accuracy'),streakEl=document.querySelector('#streak'),qModal=document.querySelector('#questionModal'),qText=document.querySelector('#questionText'),choices=document.querySelector('#choices'),explanation=document.querySelector('#explanation'),forkModal=document.querySelector('#forkModal');
 const laneCenter=[16.667,50,83.333];
@@ -128,8 +143,9 @@ function loop(now){
   }
   raf=requestAnimationFrame(loop)
 }
-async function cropAsset(image,[x,y,w,h]){const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(image,x,y,w,h,0,0,w,h);return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(URL.createObjectURL(blob)):reject(new Error('Crop failed')),'image/png'))}
-async function loadRuntimeArt(){const buffers=await Promise.all(ATLAS_CHUNKS.map(async url=>{const r=await fetch(url);if(!r.ok)throw new Error(`Atlas chunk failed: ${url}`);return new Uint8Array(await r.arrayBuffer())}));const merged=new Uint8Array(buffers.reduce((n,b)=>n+b.length,0));let offset=0;for(const b of buffers){merged.set(b,offset);offset+=b.length}const atlasUrl=URL.createObjectURL(new Blob([merged],{type:'image/webp'})),image=new Image();image.src=atlasUrl;await image.decode();await Promise.all(Object.entries(ATLAS).map(async([id,rect])=>{ASSETS[id]=await cropAsset(image,rect)}));URL.revokeObjectURL(atlasUrl);player.src=ASSETS['soldier-idle'];const ids=['bg-sky-clouds','bg-distant-battlefield','bg-ruined-trees-craters','bg-trench-silhouettes'];document.querySelectorAll('.parallax img').forEach((img,i)=>{img.src=ASSETS[ids[i]]||img.src});document.body.classList.add('runtime-art-ready')}
+async function cropAsset(image,column,row,columns,rows){const x0=Math.round(column*image.naturalWidth/columns),x1=Math.round((column+1)*image.naturalWidth/columns),y0=Math.round(row*image.naturalHeight/rows),y1=Math.round((row+1)*image.naturalHeight/rows),canvas=document.createElement('canvas');canvas.width=x1-x0;canvas.height=y1-y0;canvas.getContext('2d').drawImage(image,x0,y0,x1-x0,y1-y0,0,0,canvas.width,canvas.height);return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(URL.createObjectURL(blob)):reject(new Error('Artwork crop failed')),'image/png'))}
+async function decodeAtlas(url){const response=await fetch(url);if(!response.ok)throw new Error(`Artwork atlas unavailable (${response.status}): ${url}`);const objectUrl=URL.createObjectURL(await response.blob()),image=new Image();image.src=objectUrl;await image.decode();return{image,objectUrl}}
+async function loadRuntimeArt(){try{await Promise.all(ATLAS_SPECS.map(async spec=>{const{image,objectUrl}=await decodeAtlas(spec.url);try{await Promise.all(spec.cells.map(async([id,column,row])=>{ASSETS[id]=await cropAsset(image,column,row,spec.columns,spec.rows)}))}finally{URL.revokeObjectURL(objectUrl)}}));Object.assign(ASSETS,{'crate-stack':ASSETS['ammo-crate'],'fork-sign':ASSETS['trench-sign'],'broken-boards':ASSETS['broken-timber'],'crater-large':ASSETS['crater-small'],'soldier-jump-takeoff':ASSETS['soldier-jump-airborne']});player.src=ASSETS['soldier-idle'];const ids=['bg-sky-clouds','bg-distant-battlefield','bg-ruined-trees-craters','bg-trench-silhouettes'];document.querySelectorAll('.parallax img').forEach((img,i)=>{img.src=ASSETS[ids[i]]});document.querySelectorAll('.duckboard').forEach(board=>{board.style.backgroundImage=`url("${ASSETS['surface-duckboards']}")`});document.body.classList.add('runtime-art-ready')}catch(error){console.error('Runtime art could not be loaded; using stable individual fallbacks.',error);document.body.dataset.artStatus='fallback'}}
 async function loadQuestions(){try{questions=(await fetch('/arcade-review-games/social-studies/wwi-trench-run-v2/questions.json').then(r=>r.json())).questions}catch{questions=[{question:'Which factor is part of M.A.I.N.?',choices:['Militarism','Mercantilism','Migration','Monarchy'],answerIndex:0,explanation:'Militarism is one of the four M.A.I.N. causes.'}]}}
 async function init(){setLaneVisual(1);updatePhase(true);await Promise.allSettled([loadRuntimeArt(),loadQuestions()]);updateHud()}
 document.querySelector('#startBtn').onclick=reset;document.querySelector('#pauseBtn').onclick=()=>{if(!state.running)return;state.paused=!state.paused;showToast(state.paused?'Paused':'Resumed')};document.querySelector('#leftBtn').onclick=()=>move(-1);document.querySelector('#rightBtn').onclick=()=>move(1);document.querySelector('#jumpBtn').onclick=jump;document.querySelector('#safeFork').onclick=()=>chooseFork(false);document.querySelector('#riskFork').onclick=()=>chooseFork(true);window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp',' '].includes(e.key))e.preventDefault();if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')move(-1);if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')move(1);if(e.key==='ArrowUp'||e.key.toLowerCase()==='w'||e.key===' ')jump();if(e.key.toLowerCase()==='p'&&state.running)state.paused=!state.paused});let touchX=0;game.addEventListener('pointerdown',e=>touchX=e.clientX);game.addEventListener('pointerup',e=>{const d=e.clientX-touchX;if(Math.abs(d)>35)move(d>0?1:-1);else jump()});init();
