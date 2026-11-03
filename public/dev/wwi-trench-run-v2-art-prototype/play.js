@@ -64,7 +64,7 @@ function movePlayer(dt){
   if(dir){state.x+=dir*speed*dt;state.runTime+=dt*10;state.frame=Math.floor(state.runTime)%6+1}else state.frame=0;
   state.x=Math.max(50,Math.min(FINISH,state.x));
   if(state.vy||state.jumpHeight>0){state.jumpHeight+=state.vy*dt;state.vy-=1500*dt;if(state.jumpHeight<=0){state.jumpHeight=0;state.vy=0;showDust(state.x,GROUND)}}
-  state.camera=Math.max(0,Math.min(FINISH-W+250,state.x-245));state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);
+  const cameraTarget=Math.max(0,Math.min(FINISH-W+250,state.x-245));state.camera+=(cameraTarget-state.camera)*(1-Math.exp(-dt*7));state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);
 }
 function jump(){if(!state.running||state.paused||state.jumpHeight>0)return;state.vy=590;showDust(state.x,GROUND)}
 function showDust(x,y){for(let i=0;i<5;i++)dust.push({x:x+(Math.random()-.5)*22,y:y-5,vx:(Math.random()-.5)*45,vy:-20-Math.random()*35,life:.45,size:3+Math.random()*4})}
