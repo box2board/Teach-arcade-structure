@@ -1,6 +1,6 @@
 // Network load only: this does not measure rendered FPS or Chromebook graphics.
 import assert from 'node:assert/strict';
-import { performance } from 'node:perf_hooks';
+import { performance, monitorEventLoopDelay } from 'node:perf_hooks';
 import { Client } from 'colyseus.js';
 import { start } from './server.mjs';
 
@@ -9,7 +9,8 @@ const duration=Number(process.env.WORLD_TEST_SECONDS)||60;
 assert(duration>=30&&duration<=300,'Duration must be 30–300 seconds');
 const local=process.env.WORLD_TEST_ENDPOINT?null:await start(2570);
 const worldId='load20-'+crypto.randomUUID(), rooms=[], samples={rtt:[],ack:[],patchGap:[],tickHz:[]};
-let timer, draining=false;
+let timer, draining=false, totalInputs=0, movementSeconds=0;
+const runnerDelay=monitorEventLoopDelay({resolution:20});runnerDelay.enable();
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 const until=async(fn,label)=>{for(let i=0;i<300;i++){if(fn())return;await wait(50);}throw Error('Timeout: '+label);};
 const deadline=setTimeout(()=>{console.error('Load test deadline');process.exit(1);},(duration+120)*1000);
@@ -42,11 +43,12 @@ try{
    if(item.paused)return;
    const phase=t*.8+index*.31;
    const input={seq:++item.seq,x:Math.cos(phase),z:Math.sin(phase),sprint:index%3===0,jump:Math.floor(t*30)%90===index};
-   item.sent.set(input.seq,now);item.sentCount++;item.room.send('input',input);
+   item.sent.set(input.seq,now);item.sentCount++;totalInputs++;item.room.send('input',input);
   });
   if(now-lastPing>1000){for(const i of rooms)if(!i.paused)i.room.send('ping',now);lastPing=now;}
  },1000/30);
- await wait(duration*1000);
+ await wait(duration*1000);movementSeconds=(performance.now()-began)/1000;
+ const sustainedInputs=totalInputs;
  // Keep 19 clients moving while one reconnects with its identity intact.
  const original=rooms[19],id=original.room.sessionId,token=original.room.reconnectionToken;
  original.paused=true;original.expectedLeave=true;original.room.connection.close();
@@ -70,7 +72,7 @@ try{
  b.room.send('delete',build.id);await wait(350);assert.equal(a.room.state.builds.size,1);
  a.room.send('delete',build.id);await until(()=>rooms.every(i=>i.room.state.builds.size===0),'owner deletion on all 20');
  draining=true;await rooms[19].room.leave();await until(()=>rooms[0].room.state.players.size===19,'leave cleanup');
- const stats=arr=>{arr.sort((a,b)=>a-b);assert(arr.length,'Missing samples');return {count:arr.length,p50:+arr[Math.floor(arr.length*.5)].toFixed(2),p95:+arr[Math.floor(arr.length*.95)].toFixed(2),max:+arr.at(-1).toFixed(2)};};
- console.log(JSON.stringify({endpoint,clients:20,durationSeconds:duration,sentInputs:rooms.reduce((n,i)=>n+i.sentCount,0),rttMs:stats(samples.rtt),inputAckMs:stats(samples.ack),patchGapMs:stats(samples.patchGap),serverTickHz:stats(samples.tickHz),reconnectMs:Math.round(reconnectMs),checks:'PASS: same room, sustained movement, presence, reconnect identity, all-client builds, ownership, leave cleanup',limitation:'Network clients only; rendered FPS and device smoothness not measured'},null,2));
+ const stats=arr=>{arr.sort((a,b)=>a-b);assert(arr.length,'Missing samples');return {count:arr.length,p05:+arr[Math.floor(arr.length*.05)].toFixed(2),p50:+arr[Math.floor(arr.length*.5)].toFixed(2),p95:+arr[Math.floor(arr.length*.95)].toFixed(2),max:+arr.at(-1).toFixed(2)};};
+ console.log(JSON.stringify({endpoint,clients:20,durationSeconds:duration,sustainedInputs,offeredInputsPerClientHz:+(sustainedInputs/20/movementSeconds).toFixed(2),runnerEventLoopDelayMs:{p95:runnerDelay.percentile(95)/1e6,max:runnerDelay.max/1e6},rttMs:stats(samples.rtt),inputAckMs:stats(samples.ack),patchGapMs:stats(samples.patchGap),serverTickHz:stats(samples.tickHz),reconnectMs:Math.round(reconnectMs),checks:'PASS: same room, sustained movement, presence, reconnect identity, all-client builds, ownership, leave cleanup',limitation:'Network clients only; rendered FPS and device smoothness not measured. Timing includes load-runner scheduling and network path.'},null,2));
 }catch(error){console.error(error);process.exitCode=1;}
 finally{clearInterval(timer);clearTimeout(deadline);draining=true;for(const i of rooms)i.room.connection.close();if(local)await local.game.gracefullyShutdown(false);process.exit(process.exitCode||0);}

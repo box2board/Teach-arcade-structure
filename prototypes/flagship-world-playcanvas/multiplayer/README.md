@@ -52,4 +52,3 @@ input acknowledgement delay, patch gaps and tick progression, reconnects one
 player while the others move, then checks building and ownership with all 20 present.
 These are network clients; rendered FPS, interpolation appearance, real classroom
 Wi-Fi and Chromebook graphics still require device testing.
-
