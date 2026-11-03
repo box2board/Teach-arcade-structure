@@ -17,8 +17,9 @@ The prototype uses five optimized WebP runtime atlases extracted from the approv
 - `assets/runtime/terrain-atlas.webp` — trench wall, duckboards, checkpoint, sandbags
 - `assets/runtime/props-atlas.webp` — dead tree, ammo crate, ladder, lantern, signs, damaged sandbags
 - `assets/runtime/background-atlas.webp` — four battlefield and trench layers
+- `assets/runtime/side-floor.webp` — seamless side-view muddy duckboard ground strip
 
-The high-quality source WebP sheets and the reproducible conversion script live in `assets/source/`. Stable gameplay asset IDs and collision logic are preserved; the runtime loader crops the atlases into the existing asset IDs. Legacy individual SVGs remain as fallbacks.
+The high-quality source WebP sheets and the reproducible conversion script live in `assets/source/`. The prototype is rendered as a horizontal side-scroller: the soldier runs across a shared ground plane while layered battlefield art moves at different parallax rates. Hazards sit on that same ground plane and are cleared by jumping. The current live game remains untouched. Legacy individual SVGs remain available for fallback use.
 
 To rebuild the compact WebP files after replacing a source sheet, run:
 
@@ -28,4 +29,4 @@ python3 assets/source/build_runtime_atlases.py
 
 ## Visual direction
 
-The target is a polished illustrated educational arcade game rather than primitive vector placeholder art. This pass uses the WWI Trench Run Visual Style Guide as its reference and keeps the art readable at gameplay scale.
+The art direction follows the supplied illustrated WWI assets: side-profile soldier sprites, a horizontal duckboard floor, layered battlefield scenery, and readable side-view obstacles. The prototype is a visual replacement study for the live side-scrolling Trench Run; its purpose is to make the existing game style feel like a cohesive illustrated game.

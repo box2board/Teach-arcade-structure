@@ -7,42 +7,8 @@
 <link rel="stylesheet" href="play.css">
 <style>
 button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none}
-/* Artwork-first quality pass. Gameplay remains the existing three-lane runner. */
-.game{background:#879aa4;box-shadow:0 18px 42px rgba(31,25,19,.38),inset 0 0 28px rgba(0,0,0,.16)}
-.parallax img{filter:saturate(1.04) contrast(1.025)!important}
-.p1{opacity:1!important}.p2{opacity:.92!important}.p3{opacity:.86!important}.p4{opacity:.72!important;filter:none!important}
-.trench-wall{width:12.5%!important;opacity:.58!important;filter:drop-shadow(0 7px 7px rgba(0,0,0,.18))!important}
-.trench-wall img{filter:saturate(.9) contrast(1.04) brightness(.86)!important}
-.duckboard{opacity:.38!important;box-shadow:none!important;border-width:3px!important}
-.lane{border-color:rgba(245,238,216,.035)!important}
-.foreground-lip{height:5.5%!important;background:linear-gradient(180deg,#57402f,#30231a)!important;border-top:2px solid rgba(112,82,56,.72)!important;box-shadow:0 -3px 9px rgba(0,0,0,.24)!important}
-.foreground-lip span{display:none!important}
-.player{width:17.5%!important;height:41%!important;bottom:1.6%!important;filter:drop-shadow(0 9px 5px rgba(0,0,0,.36))!important}
-.player-shadow{bottom:3.4%!important;width:11.5%!important}
-.obstacle.asset-low-barrier{width:18%!important;height:27%!important}
-.obstacle.asset-barbed-wire{width:22%!important;height:28%!important}
-.obstacle.asset-crater-small{width:22%!important;height:21%!important}
-.obstacle.asset-broken-timber{width:18%!important;height:28%!important}
-.checkpoint{width:18%!important;height:33%!important}
-.phase-3,.phase-4{filter:none!important}
-.phase-3 .p3,.phase-4 .p3{opacity:.9!important}.phase-4 .p4{filter:none!important;opacity:.76!important}
-.vignette{box-shadow:inset 0 0 46px rgba(27,28,27,.27),inset 0 -24px 42px rgba(28,20,15,.18)!important}
-.smoke{opacity:.55!important;filter:blur(12px)!important}
-/* Runtime atlas artwork replaces the rough vector scene pieces. */
-.parallax img{filter:none!important;object-fit:cover;object-position:center center}
-.p1{z-index:1;opacity:1!important}
-.p2{z-index:2;clip-path:inset(54% 0 0);opacity:.92!important}
-.p3{z-index:3;clip-path:inset(10% 0 0);opacity:.9!important}
-.p4{z-index:4;top:0!important;clip-path:inset(11% 0 0);opacity:.88!important}
-.trench-wall{display:none!important}
-.ground-depth{height:35%!important;background:linear-gradient(180deg,rgba(62,45,33,.02),rgba(53,38,29,.42) 43%,rgba(37,27,21,.79))!important}
-.duckboard{background-repeat:no-repeat!important;background-position:center!important;background-size:cover!important;border:0!important;opacity:.8!important;box-shadow:0 -5px 16px rgba(0,0,0,.24)!important}
-.duckboard:after{display:none!important}
-.runway-floor{position:absolute;left:0;top:-1%;width:100%;height:103%;z-index:6;object-fit:fill;pointer-events:none;filter:saturate(.88) brightness(.83) drop-shadow(0 -3px 8px rgba(28,20,14,.22))}
-.duckboard,.floor-detail-layer{display:none!important}
-.lane{border:0!important}
-.foreground-lip{background:linear-gradient(180deg,rgba(85,61,42,.82),rgba(43,30,22,.96))!important;border-top:2px solid rgba(146,109,72,.74)!important}
-@media(max-width:700px){.player{width:24%!important;height:42%!important}.trench-wall{width:14%!important}.foreground-lip{height:5%!important}.controls{gap:10px;margin-top:10px}.controls button{min-width:88px;min-height:60px;padding:12px 17px;font-size:19px}.intro{gap:9px;margin-bottom:9px}.intro p{font-size:14px}.actions button{min-height:44px}}
+.game{overflow:hidden;isolation:isolate;background:#87939b}
+.side-scene{display:block;width:100%;height:100%;object-fit:fill}
 </style>
 </head>
 <body>
@@ -52,7 +18,7 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-se
 </header>
 <main>
   <section class="intro">
-    <div><h1>Improved Trench Run Prototype</h1><p>Illustrated WWI artwork with the proven three-lane gameplay preserved.</p></div>
+    <div><h1>Improved Trench Run Prototype</h1><p>Side-scroll across the trench. Hold ◀ / ▶ to move and jump over hazards.</p></div>
   <div class="actions"><button type="button" id="startBtn">Start Run</button><button type="button" id="pauseBtn" class="secondary">Pause</button></div>
   </section>
 
@@ -64,39 +30,13 @@ button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-se
     <div>Streak <b id="streak">0</b></div>
   </section>
 
-  <section id="game" class="game phase-1" aria-label="WWI trench runner prototype">
-    <div class="sky-wash"></div>
-    <div class="parallax p1"><img src="assets/individual/backgrounds/bg-sky-clouds.svg" alt=""></div>
-    <div class="parallax p2"><img src="assets/individual/backgrounds/bg-distant-battlefield.svg" alt=""></div>
-    <div class="parallax p3"><img src="assets/individual/backgrounds/bg-ruined-trees-craters.svg" alt=""></div>
-    <div class="parallax p4"><img src="assets/individual/backgrounds/bg-trench-silhouettes.svg" alt=""></div>
-    <div class="smoke smoke-a"></div><div class="smoke smoke-b"></div><div class="smoke smoke-c"></div>
-
-    <div class="trench-wall trench-wall-left" aria-hidden="true"><img src="assets/individual/terrain/trench-wall.svg" alt=""></div>
-    <div class="trench-wall trench-wall-right" aria-hidden="true"><img src="assets/individual/terrain/trench-wall.svg" alt=""></div>
-
-    <div class="ground-depth"></div>
-    <img id="runwayFloor" class="runway-floor" src="assets/individual/terrain/surface-duckboards.svg" alt="">
-    <img id="runwayFloor" class="runway-floor" src="assets/individual/terrain/surface-duckboards.svg" alt="">
-    <div id="floorDetailLayer" class="floor-detail-layer" aria-hidden="true"></div>
-    <div class="duckboard duckboard-a"></div><div class="duckboard duckboard-b"></div><div class="duckboard duckboard-c"></div>
-    <div class="lane lane0"></div><div class="lane lane1"></div><div class="lane lane2"></div>
-
-    <div id="decorBack" class="decor-layer decor-back" aria-hidden="true"></div>
-    <div id="world" class="world"></div>
-    <div id="decorFront" class="decor-layer decor-front" aria-hidden="true"></div>
-
-    <div id="playerShadow" class="player-shadow" aria-hidden="true"></div>
-    <img id="player" class="player" src="assets/individual/character/soldier-idle.svg" alt="Player soldier">
-    <div class="foreground-lip"><span></span><span></span><span></span><span></span><span></span></div>
-    <div id="particles" class="particles"></div>
-    <div id="fog" class="fog hidden"></div>
-    <div class="vignette"></div>
+  <section id="game" class="game phase-1" aria-label="WWI side-scrolling trench runner prototype">
+    <canvas id="scene" class="side-scene" width="960" height="420" aria-label="Side-scrolling illustrated trench game"></canvas>
     <div id="toast" class="toast"></div>
   </section>
 
   <div class="controls" aria-label="Touch controls">
-    <button type="button" id="leftBtn" aria-label="Move left">◀</button><button type="button" id="jumpBtn">JUMP</button><button type="button" id="rightBtn" aria-label="Move right">▶</button>
+    <button type="button" id="leftBtn" aria-label="Move left">◀</button><button type="button" id="jumpBtn" aria-label="Jump">JUMP</button><button type="button" id="rightBtn" aria-label="Move right">▶</button>
   </div>
 </main>
 

@@ -1,161 +1,124 @@
-const PATHS={
-  character:id=>`assets/individual/character/${id}.svg`,
-  terrain:id=>`assets/individual/terrain/${id}.svg`,
-  obstacle:id=>`assets/individual/obstacles-props/${id}.svg`,
-  background:id=>`assets/individual/backgrounds/${id}.svg`
+const canvas=document.querySelector('#scene');
+const ctx=canvas.getContext('2d');
+const game=document.querySelector('#game');
+const toast=document.querySelector('#toast');
+const playerFrames=[];
+const art={};
+const ui={
+  distance:document.querySelector('#distance'),score:document.querySelector('#score'),stamina:document.querySelector('#stamina'),
+  accuracy:document.querySelector('#accuracy'),streak:document.querySelector('#streak'),
+  questionModal:document.querySelector('#questionModal'),questionText:document.querySelector('#questionText'),
+  choices:document.querySelector('#choices'),explanation:document.querySelector('#explanation'),forkModal:document.querySelector('#forkModal')
 };
-const ATLAS_SPECS=[
-  {url:'assets/runtime/character-atlas.webp',columns:3,rows:4,cells:[
-    ['soldier-idle',0,0],['soldier-run-1',1,0],['soldier-run-2',2,0],
-    ['soldier-run-3',0,1],['soldier-run-4',1,1],['soldier-run-5',2,1],
-    ['soldier-run-6',0,2],['soldier-jump-airborne',1,2],['soldier-stumble',2,2],
-    ['soldier-fall',0,3],['soldier-landing',1,3],['soldier-recovery',2,3]
-  ]},
-  {url:'assets/runtime/obstacle-atlas.webp',columns:2,rows:2,cells:[
-    ['low-barrier',0,0],['barbed-wire',1,0],['crater-small',0,1],['broken-timber',1,1]
-  ]},
-  {url:'assets/runtime/terrain-atlas.webp',columns:2,rows:2,cells:[
-    ['trench-wall',0,0],['surface-duckboards',1,0],['checkpoint-base',0,1],['sandbag-stack',1,1]
-  ]},
-  {url:'assets/runtime/props-atlas.webp',columns:3,rows:2,cells:[
-    ['dead-tree',0,0],['ammo-crate',1,0],['ladder',2,0],
-    ['lantern',0,1],['trench-sign',1,1],['damaged-sandbags',2,1]
-  ]},
-  {url:'assets/runtime/trench-floor.webp',columns:1,rows:1,cells:[['trench-floor',0,0]]},
-  {url:'assets/runtime/trench-floor.webp',columns:1,rows:1,cells:[['trench-floor',0,0]]},
-  {url:'assets/runtime/background-atlas.webp',columns:1,rows:4,cells:[
-    ['bg-sky-clouds',0,0],['bg-distant-battlefield',0,1],['bg-ruined-trees-craters',0,2],['bg-trench-silhouettes',0,3]
-  ]}
-];
-const ASSETS={};
-const game=document.querySelector('#game'),world=document.querySelector('#world'),decorBack=document.querySelector('#decorBack'),decorFront=document.querySelector('#decorFront'),floorDetailLayer=document.querySelector('#floorDetailLayer'),runwayFloor=document.querySelector('#runwayFloor'),player=document.querySelector('#player'),playerShadow=document.querySelector('#playerShadow'),fog=document.querySelector('#fog'),toast=document.querySelector('#toast'),particles=document.querySelector('#particles'),distanceEl=document.querySelector('#distance'),scoreEl=document.querySelector('#score'),staminaEl=document.querySelector('#stamina'),accuracyEl=document.querySelector('#accuracy'),streakEl=document.querySelector('#streak'),qModal=document.querySelector('#questionModal'),qText=document.querySelector('#questionText'),choices=document.querySelector('#choices'),explanation=document.querySelector('#explanation'),forkModal=document.querySelector('#forkModal');
-const laneCenter=[16.667,50,83.333];
-const PHASES=[
-  {id:1,min:0,label:'Early trench',decorEvery:[1500,2200],floorEvery:[1000,1500]},
-  {id:2,min:550,label:'Active sector',decorEvery:[1150,1800],floorEvery:[850,1300]},
-  {id:3,min:1100,label:'Damaged trench',decorEvery:[900,1450],floorEvery:[700,1100]},
-  {id:4,min:1650,label:'Ruined forward trench',decorEvery:[760,1250],floorEvery:[620,980]}
-];
-const state={running:false,paused:false,lane:1,distance:0,score:0,stamina:3,correct:0,total:0,streak:0,speed:.19,jumping:false,last:0,nextSpawn:0,nextQuestion:420,nextFork:900,obstacleRate:1,fogUntil:0,runFrame:0,runTimer:0,nextDust:0,nextDecor:0,nextFloor:0,phase:1};
-let obstacles=[],scenery=[],floorDetails=[],questions=[],questionIndex=0,raf=0;
+const W=960,H=420,GROUND=355,FINISH=3850;
+const keys={left:false,right:false};
+const questionFallback=[{question:'Which factor is part of M.A.I.N.?',choices:['Militarism','Mercantilism','Migration','Monarchy'],answerIndex:0,explanation:'Militarism is one of the four M.A.I.N. causes.'}];
+let questions=questionFallback,questionIndex=0,raf=0,last=0,toastTimer=0;
+let state={running:false,paused:false,x:110,y:0,vy:0,jumpHeight:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0};
+let hazards=[],scenery=[],dust=[];
 const obstacleDefs=[
-  {id:'low-barrier',cls:'',jumpable:true,damage:1,hitStart:61,hitEnd:82},
-  {id:'barbed-wire',cls:'wire',jumpable:true,damage:1,hitStart:60,hitEnd:82},
-  {id:'crater-small',cls:'crater',jumpable:false,damage:1,hitStart:64,hitEnd:84},
-  {id:'broken-timber',cls:'',jumpable:false,damage:1,hitStart:60,hitEnd:82}
+  {id:'low-barrier',w:126,h:80,kind:'barrier',damage:1},
+  {id:'barbed-wire',w:148,h:95,kind:'wire',damage:1},
+  {id:'crater-small',w:130,h:68,kind:'crater',damage:1},
+  {id:'broken-timber',w:132,h:86,kind:'timber',damage:1}
 ];
-const decorByPhase={
-  1:[['support-post','terrain'],['lantern','terrain'],['ammo-crate','obstacle'],['trench-sign','obstacle']],
-  2:[['support-post','terrain'],['lantern','terrain'],['ladder','terrain'],['crate-stack','obstacle'],['damaged-sandbags','obstacle'],['trench-sign','obstacle']],
-  3:[['support-post','terrain'],['ladder','terrain'],['damaged-sandbags','obstacle'],['dead-tree','obstacle'],['broken-boards','obstacle'],['ammo-crate','obstacle']],
-  4:[['support-post','terrain'],['lantern','terrain'],['damaged-sandbags','obstacle'],['dead-tree','obstacle'],['broken-boards','obstacle'],['fork-sign','obstacle'],['crate-stack','obstacle']]
-};
-const floorIds=['surface-puddle','surface-ruts','surface-duckboards','surface-mud'];
-function asset(id,category){return ASSETS[id]||PATHS[category](id)}
-function sprite(id,cls='',category='obstacle'){const img=new Image();img.src=asset(id,category);img.alt='';img.draggable=false;img.classList.add('asset-'+id,...cls.split(' ').filter(Boolean));return img}
-function setPlayer(id){player.src=asset(id,'character')}
-function laneX(lane){return laneCenter[lane]}
-function randomBetween([a,b]){return a+Math.random()*(b-a)}
-function currentPhase(){let p=PHASES[0];for(const phase of PHASES)if(state.distance>=phase.min)p=phase;return p}
-function setLaneVisual(lane){const x=laneX(lane)+'%';player.style.left=x;playerShadow.style.left=x}
-function updateHud(){distanceEl.textContent=Math.floor(state.distance);scoreEl.textContent=Math.floor(state.score);staminaEl.textContent=state.stamina;accuracyEl.textContent=(state.total?Math.round(state.correct/state.total*100):100)+'%';streakEl.textContent=state.streak}
-function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),1100)}
-function burst(x=50,y=78,count=8){for(let i=0;i<count;i++){const p=document.createElement('i');p.className='particle';p.style.left=x+'%';p.style.top=y+'%';p.style.setProperty('--dx',(Math.random()*50-25)+'px');p.style.setProperty('--dy',(-15-Math.random()*40)+'px');particles.append(p);setTimeout(()=>p.remove(),760)}}
-function clearScene(){
-  obstacles.forEach(o=>{o.el.remove();o.glow?.remove()});
-  scenery.forEach(o=>o.el.remove());
-  floorDetails.forEach(o=>o.el.remove());
-  obstacles=[];scenery=[];floorDetails=[];particles.innerHTML='';decorBack.innerHTML='';decorFront.innerHTML='';floorDetailLayer.innerHTML='';
+const initialHazards=[
+  [570,'low-barrier'],[890,'barbed-wire'],[1210,'crater-small'],[1540,'broken-timber'],
+  [1950,'low-barrier'],[2260,'barbed-wire'],[2570,'crater-small'],[2900,'broken-timber'],[3240,'low-barrier'],[3540,'barbed-wire']
+];
+function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),1250)}
+function updateHud(){ui.distance.textContent=Math.floor(state.distance);ui.score.textContent=Math.floor(state.score);ui.stamina.textContent=state.stamina;ui.accuracy.textContent=state.total?Math.round(state.correct/state.total*100)+'%':'100%';ui.streak.textContent=state.streak}
+function makeCrop(image,cx,cy,cw,ch,trim=false){
+  const tile=document.createElement('canvas');tile.width=cw;tile.height=ch;tile.getContext('2d').drawImage(image,cx,cy,cw,ch,0,0,cw,ch);
+  if(!trim)return tile;
+  const c=tile.getContext('2d'),data=c.getImageData(0,0,cw,ch).data;let minX=cw,minY=ch,maxX=-1,maxY=-1;
+  for(let y=0;y<ch;y++)for(let x=0;x<cw;x++){if(data[(y*cw+x)*4+3]>105){minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y)}}
+  if(maxX<0)return tile;const pad=5;minX=Math.max(0,minX-pad);minY=Math.max(0,minY-pad);maxX=Math.min(cw-1,maxX+pad);maxY=Math.min(ch-1,maxY+pad);
+  const out=document.createElement('canvas');out.width=maxX-minX+1;out.height=maxY-minY+1;out.getContext('2d').drawImage(tile,minX,minY,out.width,out.height,0,0,out.width,out.height);return out;
 }
-function updatePhase(force=false){
-  const phase=currentPhase();
-  if(!force&&phase.id===state.phase)return;
-  state.phase=phase.id;game.classList.remove('phase-1','phase-2','phase-3','phase-4');game.classList.add(`phase-${phase.id}`);
-  if(!force&&state.running)showToast(phase.label);
+async function decode(url){const image=new Image();image.src=url;await image.decode();return image}
+async function loadAtlas(url,cols,rows,trim=false){const image=await decode(url),out=[];const cw=image.naturalWidth/cols,ch=image.naturalHeight/rows;for(let y=0;y<rows;y++)for(let x=0;x<cols;x++)out.push(makeCrop(image,Math.round(x*cw),Math.round(y*ch),Math.round(cw),Math.round(ch),trim));return out}
+async function loadArt(){
+  const [characters,obstacles,terrain,props,backgrounds,floor]=await Promise.all([
+    loadAtlas('assets/runtime/character-atlas.webp',3,4,true),loadAtlas('assets/runtime/obstacle-atlas.webp',2,2,true),
+    loadAtlas('assets/runtime/terrain-atlas.webp',2,2,true),loadAtlas('assets/runtime/props-atlas.webp',3,2,true),
+    loadAtlas('assets/runtime/background-atlas.webp',1,4,false),decode('assets/runtime/side-floor.webp')
+  ]);
+  playerFrames.push(characters[0],...characters.slice(1,7));
+  art.jump=characters[7];art.stumble=characters[8];art.fall=characters[9];art.land=characters[10];art.recover=characters[11];
+  art.barrier=obstacles[0];art.wire=obstacles[1];art.crater=obstacles[2];art.timber=obstacles[3];
+  art.trenchWall=terrain[0];art.duckboards=terrain[1];art.checkpoint=terrain[2];art.sandbags=terrain[3];
+  art.tree=props[0];art.crate=props[1];art.ladder=props[2];art.lantern=props[3];art.sign=props[4];art.damage=props[5];
+  [art.sky,art.far,art.mid,art.near]=backgrounds;art.floor=floor;
 }
 function reset(){
-  clearScene();
-  Object.assign(state,{running:true,paused:false,lane:1,distance:0,score:0,stamina:3,correct:0,total:0,streak:0,speed:.19,jumping:false,last:performance.now(),nextSpawn:performance.now()+1700,nextQuestion:420,nextFork:900,obstacleRate:1,fogUntil:0,runFrame:0,runTimer:0,nextDust:performance.now()+180,nextDecor:performance.now()+900,nextFloor:performance.now()+600,phase:1});
-  updatePhase(true);setLaneVisual(1);playerShadow.classList.remove('jump');setPlayer('soldier-run-1');fog.classList.add('hidden');qModal.classList.add('hidden');forkModal.classList.add('hidden');updateHud();cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)
+  cancelAnimationFrame(raf);hazards=initialHazards.map(([x,id])=>({x,id,hit:false,def:obstacleDefs.find(d=>d.id===id)}));
+  scenery=[{x:280,id:'crate'},{x:1040,id:'ladder'},{x:1740,id:'lantern'},{x:2380,id:'tree'},{x:3020,id:'crate'},{x:3440,id:'damage'}];dust=[];
+  Object.assign(state,{running:true,paused:false,x:110,y:0,vy:0,jumpHeight:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0});
+  keys.left=keys.right=false;ui.questionModal.classList.add('hidden');ui.forkModal.classList.add('hidden');toast.classList.remove('show');updateHud();last=performance.now();raf=requestAnimationFrame(loop);
 }
-function move(dir){if(!state.running||state.paused)return;const next=Math.max(0,Math.min(2,state.lane+dir));if(next===state.lane)return;state.lane=next;setLaneVisual(state.lane);burst(laneX(state.lane),84,4)}
-function jump(){if(!state.running||state.paused||state.jumping)return;state.jumping=true;player.classList.add('jump');playerShadow.classList.add('jump');setPlayer('soldier-jump-airborne');burst(laneX(state.lane),84,7);setTimeout(()=>{state.jumping=false;player.classList.remove('jump');playerShadow.classList.remove('jump');if(state.running)setPlayer('soldier-run-1');burst(laneX(state.lane),84,6)},620)}
-function spawnObstacle(){const def=obstacleDefs[Math.floor(Math.random()*obstacleDefs.length)],lane=Math.floor(Math.random()*3),el=sprite(def.id,'obstacle '+def.cls);el.style.left=laneX(lane)+'%';world.append(el);obstacles.push({el,lane,y:-28,def,hit:false})}
-function spawnCheckpoint(){
-  const lane=state.lane,el=sprite('checkpoint-base','checkpoint','terrain'),glow=document.createElement('i');
-  el.style.left=laneX(lane)+'%';glow.className='checkpoint-glow';glow.style.left=laneX(lane)+'%';world.append(glow,el);obstacles.push({el,glow,lane,y:-28,checkpoint:true,hit:false});
-  spawnSpecificDecor('sandbag-stack','terrain','left',-22);spawnSpecificDecor('sandbag-stack','terrain','right',-22);spawnSpecificDecor('lantern','terrain',Math.random()<.5?'left':'right',-28);
+function movePlayer(dt){
+  if(performance.now()<state.hitUntil)return;
+  const dir=(keys.right?1:0)-(keys.left?1:0),speed=290;
+  if(dir){state.x+=dir*speed*dt;state.runTime+=dt*10;state.frame=Math.floor(state.runTime)%6+1}else state.frame=0;
+  state.x=Math.max(50,Math.min(FINISH,state.x));
+  if(state.vy||state.jumpHeight>0){state.jumpHeight+=state.vy*dt;state.vy-=1500*dt;if(state.jumpHeight<=0){state.jumpHeight=0;state.vy=0;showDust(state.x,GROUND)}}
+  state.camera=Math.max(0,Math.min(FINISH-W+250,state.x-245));state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);
 }
-function spawnSpecificDecor(id,category,side,y=-26){
-  const el=sprite(id,`trench-decor side-${side}`,category);const layer=id==='dead-tree'?decorBack:decorFront;layer.append(el);scenery.push({el,y,side,id});
-}
-function spawnDecor(){
-  const options=decorByPhase[state.phase]||decorByPhase[1];const [id,category]=options[Math.floor(Math.random()*options.length)],side=Math.random()<.5?'left':'right';
-  spawnSpecificDecor(id,category,side,-26-Math.random()*8);
-  if(state.phase>=3&&Math.random()<.22){const pairSide=side==='left'?'right':'left';const [id2,cat2]=options[Math.floor(Math.random()*options.length)];spawnSpecificDecor(id2,cat2,pairSide,-34-Math.random()*6)}
-}
-function spawnFloorDetail(){
-  const id=floorIds[Math.floor(Math.random()*floorIds.length)],lane=Math.floor(Math.random()*3),el=sprite(id,'floor-detail','terrain');
-  el.style.left=laneX(lane)+'%';floorDetailLayer.append(el);floorDetails.push({el,y:58,lane,id});
-}
-function hit(o){
-  if(o.hit)return;o.hit=true;
-  if(o.checkpoint){o.el.remove();o.glow?.remove();showQuestion();return}
-  if(state.jumping&&o.def.jumpable)return;
-  state.stamina=Math.max(0,state.stamina-o.def.damage);state.streak=0;player.classList.add('hit');setPlayer('soldier-stumble');burst(laneX(state.lane),77,12);setTimeout(()=>{player.classList.remove('hit');if(state.running)setPlayer('soldier-run-1')},340);showToast('Obstacle hit — stamina lost');
-  if(state.stamina<=0){state.running=false;setPlayer('soldier-fall');showToast('Run ended')}
-}
-function showQuestion(){state.paused=true;const q=questions[questionIndex++%questions.length];if(!q){state.paused=false;return}qText.textContent=q.question;choices.innerHTML='';explanation.textContent='';q.choices.forEach((c,i)=>{const b=document.createElement('button');b.textContent=c;b.onclick=()=>answer(q,i,b);choices.append(b)});qModal.classList.remove('hidden')}
-function answer(q,i,b){[...choices.children].forEach(x=>x.disabled=true);state.total++;const ok=i===q.answerIndex;if(ok){state.correct++;state.streak++;state.score+=150;b.classList.add('correct');explanation.textContent='Correct — '+q.explanation;showToast('Correct! +150')}else{state.streak=0;state.stamina=Math.max(0,state.stamina-1);b.classList.add('wrong');choices.children[q.answerIndex]?.classList.add('correct');explanation.textContent='Incorrect — '+q.explanation;state.fogUntil=performance.now()+7000;fog.classList.remove('hidden')}updateHud();setTimeout(()=>{qModal.classList.add('hidden');state.paused=false;if(state.stamina<=0){state.running=false;setPlayer('soldier-fall')}},1100)}
-function showFork(){state.paused=true;forkModal.classList.remove('hidden')}
-function chooseFork(risky){state.obstacleRate=risky?1.35:.78;state.score+=risky?200:50;forkModal.classList.add('hidden');state.paused=false;showToast(risky?'Risk route: 1.35× obstacles':'Safer route selected');setTimeout(()=>state.obstacleRate=1,9000)}
-function animatePlayer(dt){if(state.jumping)return;state.runTimer+=dt;if(state.runTimer>96){state.runTimer=0;state.runFrame=(state.runFrame+1)%6;setPlayer('soldier-run-'+(state.runFrame+1))}}
-function moveParallax(dt){document.querySelectorAll('.parallax').forEach((el,i)=>{const n=parseFloat(el.dataset.x||0)+dt*state.speed;el.dataset.x=n;const x=Math.sin(n*.0025+i*.9)*(i+1)*1.1;const y=Math.sin(n*.0017+i*.7)*.45;el.style.transform=`translate(${x}px,${y}px)`})}
-function updateObstacles(dt){
-  for(const o of obstacles){
-    o.y+=dt*state.speed*.12;o.el.style.top=o.y+'%';
-    const progress=Math.max(0,Math.min(1,(o.y+28)/122)),scale=.7+progress*.42,groundFade=Math.max(0,Math.min(1,(o.y-32)/6));o.el.style.transform=`translateX(-50%) scale(${scale})`;o.el.style.opacity=String((.5+progress*.5)*groundFade);
-    o.el.style.visibility=o.y<32?'hidden':'visible';
-    if(o.glow){o.glow.style.top=(o.y+7)+'%';o.glow.style.transform=`translateX(-50%) scale(${scale})`;o.glow.style.opacity=String((.25+progress*.45)*groundFade);o.glow.style.visibility=o.y<32?'hidden':'visible'}
-    const start=o.checkpoint?61:o.def.hitStart,end=o.checkpoint?83:o.def.hitEnd;if(o.y>start&&o.y<end&&o.lane===state.lane)hit(o)
+function jump(){if(!state.running||state.paused||state.jumpHeight>0)return;state.vy=590;showDust(state.x,GROUND)}
+function showDust(x,y){for(let i=0;i<5;i++)dust.push({x:x+(Math.random()-.5)*22,y:y-5,vx:(Math.random()-.5)*45,vy:-20-Math.random()*35,life:.45,size:3+Math.random()*4})}
+function collide(){
+  const px=state.x+25,py=GROUND-state.jumpHeight;
+  for(const hazard of hazards){if(hazard.hit)continue;const d=hazard.def;if(px+47<hazard.x+18||px+8>hazard.x+d.w-14)continue;if(py<GROUND-55)continue;
+    hazard.hit=true;state.stamina=Math.max(0,state.stamina-d.damage);state.streak=0;state.hitUntil=performance.now()+280;showToast('Obstacle hit — stamina lost');showDust(state.x,GROUND);updateHud();
+    if(state.stamina<=0){state.running=false;state.paused=true;showToast('Run ended')};break;
   }
-  obstacles=obstacles.filter(o=>{if(o.y>108){o.el.remove();o.glow?.remove();return false}return true})
 }
-function updateScenery(dt){
-  for(const o of scenery){o.y+=dt*state.speed*.095;o.el.style.top=o.y+'%';const progress=Math.max(0,Math.min(1,(o.y+26)/126)),scale=.66+progress*.55,groundFade=Math.max(0,Math.min(1,(o.y-18)/6));o.el.style.transform=`translateX(-50%) scale(${scale})`;o.el.style.opacity=String((.38+progress*.48)*groundFade);o.el.style.visibility=o.y<18?'hidden':'visible'}
-  scenery=scenery.filter(o=>{if(o.y>108){o.el.remove();return false}return true});
-  for(const o of floorDetails){o.y+=dt*state.speed*.105;o.el.style.top=o.y+'%';const progress=Math.max(0,Math.min(1,(o.y-58)/48));o.el.style.scale=String(.72+progress*.55);o.el.style.opacity=String(.22+progress*.42)}
-  floorDetails=floorDetails.filter(o=>{if(o.y>106){o.el.remove();return false}return true})
+function triggerCheckpoint(){state.paused=true;const q=questions[questionIndex++%questions.length];ui.questionText.textContent=q.question;ui.choices.replaceChildren();ui.explanation.textContent='';q.choices.forEach((text,index)=>{const btn=document.createElement('button');btn.type='button';btn.textContent=text;btn.addEventListener('click',()=>answer(q,index,btn),{once:true});ui.choices.append(btn)});ui.questionModal.classList.remove('hidden')}
+function answer(q,index,btn){[...ui.choices.children].forEach(x=>x.disabled=true);state.total++;const ok=index===q.answerIndex;if(ok){state.correct++;state.streak++;state.score+=150;btn.classList.add('correct');ui.explanation.textContent='Correct — '+q.explanation}else{state.streak=0;state.stamina=Math.max(0,state.stamina-1);btn.classList.add('wrong');ui.choices.children[q.answerIndex]?.classList.add('correct');ui.explanation.textContent='Incorrect — '+q.explanation}updateHud();setTimeout(()=>{ui.questionModal.classList.add('hidden');state.paused=false;if(state.stamina<=0){state.running=false;state.paused=true;showToast('Run ended')}drawWorld()},1000)}
+function triggerFork(){state.paused=true;ui.forkModal.classList.remove('hidden')}
+function chooseFork(risky){state.rate=risky?1.28:.82;state.score+=risky?200:50;if(risky){for(const [i,id] of ['barbed-wire','broken-timber','low-barrier'].entries()){const def=obstacleDefs.find(d=>d.id===id);hazards.push({x:2390+i*390,id,hit:false,def})}}ui.forkModal.classList.add('hidden');state.paused=false;showToast(risky?'Risk route: extra hazards and bonus score':'Safer route selected');}
+function drawImage(img,x,y,w,h,flip=false){if(!img)return;ctx.save();if(flip){ctx.translate(x+w,y);ctx.scale(-1,1);ctx.drawImage(img,0,0,w,h)}else ctx.drawImage(img,x,y,w,h);ctx.restore()}
+function tileLayer(img,y,h,factor,cam,alpha=1){if(!img)return;const dw=h*img.width/img.height;const off=(cam*factor)%(dw*2);ctx.save();ctx.globalAlpha=alpha;for(let x=-off-dw;x<W+dw;x+=dw*2){drawImage(img,x,y,dw,h,false);drawImage(img,x+dw,y,dw,h,true)}ctx.restore()}
+function drawBackground(){
+  ctx.fillStyle='#7d8b94';ctx.fillRect(0,0,W,H);
+  if(art.sky)drawImage(art.sky,0,0,W,210);
+  tileLayer(art.far,58,152,.09,state.camera,.94);
+  tileLayer(art.mid,120,190,.22,state.camera,.93);
+  tileLayer(art.near,165,220,.48,state.camera,.98);
+  if(art.floor){const h=205,w=h*art.floor.width/art.floor.height,offsetX=(state.camera*.94)%(w*2),top=GROUND-132;ctx.save();ctx.beginPath();ctx.rect(0,top-2,W,H-(top-2));ctx.clip();for(let x=-offsetX-w;x<W+w;x+=w*2){drawImage(art.floor,x,top,w,h);drawImage(art.floor,x+w,top,w,h,true)}ctx.restore()}
+  const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(28,36,42,.05)');g.addColorStop(1,'rgba(23,20,17,.26)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
 }
-function ambientDust(now){if(now<state.nextDust||state.paused)return;state.nextDust=now+190+Math.random()*260;burst(laneX(state.lane),85,2)}
-function updateEnvironment(now,dt){
-  updatePhase();updateScenery(dt);const phase=currentPhase();
-  if(now>=state.nextDecor){spawnDecor();state.nextDecor=now+randomBetween(phase.decorEvery)}
-  if(now>=state.nextFloor){spawnFloorDetail();state.nextFloor=now+randomBetween(phase.floorEvery)}
+function drawProps(){
+  for(const prop of scenery){const x=prop.x-state.camera;if(x<-180||x>W+180)continue;let img=art[prop.id],w=prop.id==='tree'?128:prop.id==='ladder'?74:prop.id==='lantern'?50:prop.id==='damage'?94:78,h=prop.id==='tree'?150:prop.id==='ladder'?128:prop.id==='lantern'?80:prop.id==='damage'?82:68;drawImage(img,x,GROUND-h,w,h)}
+  for(const d of dust){const x=d.x-state.camera;ctx.globalAlpha=Math.max(0,d.life/.45)*.62;ctx.fillStyle='#b6a18a';ctx.beginPath();ctx.ellipse(x,d.y,d.size*1.3,d.size*.75,0,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;
 }
-function loop(now){
-  if(!state.running)return;const dt=Math.min(40,now-state.last||16);state.last=now;
-  if(!state.paused){
-    state.distance+=dt*state.speed*.015;state.score+=dt*state.speed*.01;state.speed=Math.min(.215,.19+state.distance*.000012);
-    animatePlayer(dt);moveParallax(dt);updateObstacles(dt);updateEnvironment(now,dt);ambientDust(now);
-    if(now>=state.nextSpawn){spawnObstacle();state.nextSpawn=now+(1450+Math.random()*850)/state.obstacleRate}
-    if(state.distance>=state.nextQuestion){state.nextQuestion+=520;spawnCheckpoint()}
-    if(state.distance>=state.nextFork){state.nextFork+=1100;showFork()}
-    if(state.fogUntil&&now>state.fogUntil){state.fogUntil=0;fog.classList.add('hidden')}
-    updateHud()
-  }
-  raf=requestAnimationFrame(loop)
+function drawHazards(){for(const h of hazards){const x=h.x-state.camera;if(x<-220||x>W+220||h.hit)continue;const img=art[h.def.kind],y=GROUND-h.def.h;drawImage(img,x,y,h.def.w,h.def.h);ctx.fillStyle='rgba(15,12,9,.25)';ctx.beginPath();ctx.ellipse(x+h.def.w*.5,GROUND-2,h.def.w*.46,6,0,0,Math.PI*2);ctx.fill()}}
+function drawPlayer(){
+  let img=playerFrames[state.frame]||playerFrames[0];if(performance.now()<state.hitUntil)img=art.stumble||img;if(!state.running&&state.stamina<=0)img=art.fall||img;
+  const height=142,ratio=img?img.width/img.height:1.2,width=Math.min(178,height*ratio),x=state.x-state.camera-28,y=GROUND-height-state.jumpHeight;
+  ctx.fillStyle=`rgba(17,13,10,${Math.max(.16,.36-state.jumpHeight/900)})`;ctx.beginPath();ctx.ellipse(state.x-state.camera+31,GROUND-3,34*(1-Math.min(.4,state.jumpHeight/350)),8,0,0,Math.PI*2);ctx.fill();drawImage(img,x,y,width,height);
 }
-async function cropAsset(image,column,row,columns,rows){const x0=Math.round(column*image.naturalWidth/columns),x1=Math.round((column+1)*image.naturalWidth/columns),y0=Math.round(row*image.naturalHeight/rows),y1=Math.round((row+1)*image.naturalHeight/rows),canvas=document.createElement('canvas');canvas.width=x1-x0;canvas.height=y1-y0;canvas.getContext('2d').drawImage(image,x0,y0,x1-x0,y1-y0,0,0,canvas.width,canvas.height);return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(URL.createObjectURL(blob)):reject(new Error('Artwork crop failed')),'image/png'))}
-async function decodeAtlas(url){const response=await fetch(url);if(!response.ok)throw new Error(`Artwork atlas unavailable (${response.status}): ${url}`);const objectUrl=URL.createObjectURL(await response.blob()),image=new Image();image.src=objectUrl;await image.decode();return{image,objectUrl}}
-async function loadRuntimeArt(){try{await Promise.all(ATLAS_SPECS.map(async spec=>{const{image,objectUrl}=await decodeAtlas(spec.url);try{await Promise.all(spec.cells.map(async([id,column,row])=>{ASSETS[id]=await cropAsset(image,column,row,spec.columns,spec.rows)}))}finally{URL.revokeObjectURL(objectUrl)}}));Object.assign(ASSETS,{'crate-stack':ASSETS['ammo-crate'],'fork-sign':ASSETS['trench-sign'],'broken-boards':ASSETS['broken-timber'],'crater-large':ASSETS['crater-small'],'soldier-jump-takeoff':ASSETS['soldier-jump-airborne']});player.src=ASSETS['soldier-idle'];runwayFloor.src=ASSETS['trench-floor'];const ids=['bg-sky-clouds','bg-distant-battlefield','bg-ruined-trees-craters','bg-trench-silhouettes'];document.querySelectorAll('.parallax img').forEach((img,i)=>{img.src=ASSETS[ids[i]]});document.querySelectorAll('.duckboard').forEach(board=>{board.style.backgroundImage=`url("${ASSETS['surface-duckboards']}")`});document.body.classList.add('runtime-art-ready')}catch(error){console.error('Runtime art could not be loaded; using stable individual fallbacks.',error);document.body.dataset.artStatus='fallback'}}
-async function loadQuestions(){try{questions=(await fetch('/arcade-review-games/social-studies/wwi-trench-run-v2/questions.json').then(r=>r.json())).questions}catch{questions=[{question:'Which factor is part of M.A.I.N.?',choices:['Militarism','Mercantilism','Migration','Monarchy'],answerIndex:0,explanation:'Militarism is one of the four M.A.I.N. causes.'}]}}
-async function init(){setLaneVisual(1);updatePhase(true);await Promise.allSettled([loadRuntimeArt(),loadQuestions()]);updateHud()}
-function bindButton(id,action,{startRun=false}={}){
-  const button=document.querySelector('#'+id);if(!button)return;let lastTouch=0;
-  const activate=event=>{if(event?.cancelable)event.preventDefault();if(startRun&&!state.running)reset();action()};
-  button.addEventListener('pointerup',event=>{if(event.pointerType!=='touch'&&event.pointerType!=='pen')return;lastTouch=performance.now();activate(event)},{passive:false});
-  button.addEventListener('touchend',event=>{if(performance.now()-lastTouch<700)return;lastTouch=performance.now();activate(event)},{passive:false});
-  button.addEventListener('click',event=>{if(performance.now()-lastTouch<700){event.preventDefault();return}activate(event)});
+function drawWorld(){drawBackground();drawProps();drawHazards();drawPlayer();
+  if(state.x>=FINISH-20){ctx.fillStyle='rgba(20,18,15,.55)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fff3d4';ctx.font='bold 38px system-ui';ctx.textAlign='center';ctx.fillText('TRENCH RUN COMPLETE',W/2,H/2)}else if(!state.running&&state.stamina<=0){ctx.fillStyle='rgba(20,18,15,.54)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fff3d4';ctx.font='bold 34px system-ui';ctx.textAlign='center';ctx.fillText('RUN ENDED — START TO RETRY',W/2,H/2)}
+  if(state.paused&&state.running&&!ui.questionModal.classList.contains('hidden')===false&&!ui.forkModal.classList.contains('hidden')===false){/* modal is rendered in HTML */}
 }
-bindButton('startBtn',reset);bindButton('pauseBtn',()=>{if(!state.running)return;state.paused=!state.paused;showToast(state.paused?'Paused':'Resumed')});bindButton('leftBtn',()=>move(-1),{startRun:true});bindButton('rightBtn',()=>move(1),{startRun:true});bindButton('jumpBtn',jump,{startRun:true});bindButton('safeFork',()=>chooseFork(false));bindButton('riskFork',()=>chooseFork(true));window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp',' '].includes(e.key))e.preventDefault();if(e.key==='ArrowLeft'||e.key.toLowerCase()==='a')move(-1);if(e.key==='ArrowRight'||e.key.toLowerCase()==='d')move(1);if(e.key==='ArrowUp'||e.key.toLowerCase()==='w'||e.key===' ')jump();if(e.key.toLowerCase()==='p'&&state.running)state.paused=!state.paused});let touchX=0;game.addEventListener('pointerdown',e=>touchX=e.clientX);game.addEventListener('pointerup',e=>{const d=e.clientX-touchX;if(Math.abs(d)>35)move(d>0?1:-1);else jump()});init();
+function loop(now){if(!state.running)return;const dt=Math.min(.04,(now-last)/1000||.016);last=now;if(!state.paused){movePlayer(dt);collide();
+  if(state.x>=state.nextQuestion){state.nextQuestion+=1350;triggerCheckpoint()}
+  if(state.x>=state.nextFork&&!state.forkShown){state.forkShown=true;state.nextFork=Infinity;triggerFork()}
+  if(state.x>=FINISH){state.running=false;state.paused=true;showToast('Trench Run complete!')}
+  dust=dust.filter(p=>p.life>0);for(const p of dust){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=80*dt}
+  updateHud();}
+  drawWorld();raf=requestAnimationFrame(loop)
+}
+function bindHold(id,key){const b=document.querySelector('#'+id);const down=e=>{e.preventDefault();if(!state.running)reset();keys[key]=true};const up=e=>{e.preventDefault();keys[key]=false};b.addEventListener('pointerdown',down);for(const event of ['pointerup','pointercancel','pointerleave'])b.addEventListener(event,up);b.addEventListener('click',e=>e.preventDefault())}
+function bindJump(){const b=document.querySelector('#jumpBtn');b.addEventListener('pointerdown',e=>{e.preventDefault();if(!state.running)reset();jump()});b.addEventListener('click',e=>e.preventDefault())}
+bindHold('leftBtn','left');bindHold('rightBtn','right');bindJump();
+document.querySelector('#startBtn').addEventListener('click',reset);document.querySelector('#pauseBtn').addEventListener('click',()=>{if(!state.running)return;state.paused=!state.paused;showToast(state.paused?'Paused':'Resumed');last=performance.now()});
+document.querySelector('#safeFork').addEventListener('click',()=>chooseFork(false));document.querySelector('#riskFork').addEventListener('click',()=>chooseFork(true));
+window.addEventListener('keydown',e=>{const key=e.key.toLowerCase();if(['arrowleft','arrowright','arrowup',' ','a','d','w'].includes(key))e.preventDefault();if(key==='arrowleft'||key==='a')keys.left=true;if(key==='arrowright'||key==='d')keys.right=true;if(key==='arrowup'||key==='w'||key===' ')jump();if(key==='p'&&state.running){state.paused=!state.paused;last=performance.now()}});
+window.addEventListener('keyup',e=>{const key=e.key.toLowerCase();if(key==='arrowleft'||key==='a')keys.left=false;if(key==='arrowright'||key==='d')keys.right=false});
+canvas.addEventListener('pointerdown',e=>{if(!state.running)reset();else if(!state.paused){const bounds=canvas.getBoundingClientRect();if(e.clientY<bounds.top+bounds.height*.55)jump();else{const rel=(e.clientX-bounds.left)/bounds.width;if(rel<.34)keys.left=true;else if(rel>.66)keys.right=true;else jump()}}});
+canvas.addEventListener('pointerup',()=>{keys.left=keys.right=false});canvas.addEventListener('pointercancel',()=>{keys.left=keys.right=false});
+fetch('/arcade-review-games/social-studies/wwi-trench-run-v2/questions.json').then(r=>r.ok?r.json():Promise.reject()).then(d=>{if(Array.isArray(d.questions)&&d.questions.length)questions=d.questions}).catch(()=>{});
+loadArt().then(()=>{drawWorld()}).catch(error=>{console.error('Artwork atlas failed to load',error);document.body.dataset.artStatus='fallback';drawWorld()});drawWorld();
