@@ -21,12 +21,14 @@ const ATLAS_SPECS=[
     ['dead-tree',0,0],['ammo-crate',1,0],['ladder',2,0],
     ['lantern',0,1],['trench-sign',1,1],['damaged-sandbags',2,1]
   ]},
+  {url:'assets/runtime/trench-floor.webp',columns:1,rows:1,cells:[['trench-floor',0,0]]},
+  {url:'assets/runtime/trench-floor.webp',columns:1,rows:1,cells:[['trench-floor',0,0]]},
   {url:'assets/runtime/background-atlas.webp',columns:1,rows:4,cells:[
     ['bg-sky-clouds',0,0],['bg-distant-battlefield',0,1],['bg-ruined-trees-craters',0,2],['bg-trench-silhouettes',0,3]
   ]}
 ];
 const ASSETS={};
-const game=document.querySelector('#game'),world=document.querySelector('#world'),decorBack=document.querySelector('#decorBack'),decorFront=document.querySelector('#decorFront'),floorDetailLayer=document.querySelector('#floorDetailLayer'),player=document.querySelector('#player'),playerShadow=document.querySelector('#playerShadow'),fog=document.querySelector('#fog'),toast=document.querySelector('#toast'),particles=document.querySelector('#particles'),distanceEl=document.querySelector('#distance'),scoreEl=document.querySelector('#score'),staminaEl=document.querySelector('#stamina'),accuracyEl=document.querySelector('#accuracy'),streakEl=document.querySelector('#streak'),qModal=document.querySelector('#questionModal'),qText=document.querySelector('#questionText'),choices=document.querySelector('#choices'),explanation=document.querySelector('#explanation'),forkModal=document.querySelector('#forkModal');
+const game=document.querySelector('#game'),world=document.querySelector('#world'),decorBack=document.querySelector('#decorBack'),decorFront=document.querySelector('#decorFront'),floorDetailLayer=document.querySelector('#floorDetailLayer'),runwayFloor=document.querySelector('#runwayFloor'),player=document.querySelector('#player'),playerShadow=document.querySelector('#playerShadow'),fog=document.querySelector('#fog'),toast=document.querySelector('#toast'),particles=document.querySelector('#particles'),distanceEl=document.querySelector('#distance'),scoreEl=document.querySelector('#score'),staminaEl=document.querySelector('#stamina'),accuracyEl=document.querySelector('#accuracy'),streakEl=document.querySelector('#streak'),qModal=document.querySelector('#questionModal'),qText=document.querySelector('#questionText'),choices=document.querySelector('#choices'),explanation=document.querySelector('#explanation'),forkModal=document.querySelector('#forkModal');
 const laneCenter=[16.667,50,83.333];
 const PHASES=[
   {id:1,min:0,label:'Early trench',decorEvery:[1500,2200],floorEvery:[1000,1500]},
@@ -73,7 +75,7 @@ function updatePhase(force=false){
 }
 function reset(){
   clearScene();
-  Object.assign(state,{running:true,paused:false,lane:1,distance:0,score:0,stamina:3,correct:0,total:0,streak:0,speed:.19,jumping:false,last:performance.now(),nextSpawn:performance.now()+1050,nextQuestion:420,nextFork:900,obstacleRate:1,fogUntil:0,runFrame:0,runTimer:0,nextDust:performance.now()+180,nextDecor:performance.now()+900,nextFloor:performance.now()+600,phase:1});
+  Object.assign(state,{running:true,paused:false,lane:1,distance:0,score:0,stamina:3,correct:0,total:0,streak:0,speed:.19,jumping:false,last:performance.now(),nextSpawn:performance.now()+1700,nextQuestion:420,nextFork:900,obstacleRate:1,fogUntil:0,runFrame:0,runTimer:0,nextDust:performance.now()+180,nextDecor:performance.now()+900,nextFloor:performance.now()+600,phase:1});
   updatePhase(true);setLaneVisual(1);playerShadow.classList.remove('jump');setPlayer('soldier-run-1');fog.classList.add('hidden');qModal.classList.add('hidden');forkModal.classList.add('hidden');updateHud();cancelAnimationFrame(raf);raf=requestAnimationFrame(loop)
 }
 function move(dir){if(!state.running||state.paused)return;const next=Math.max(0,Math.min(2,state.lane+dir));if(next===state.lane)return;state.lane=next;setLaneVisual(state.lane);burst(laneX(state.lane),84,4)}
@@ -136,7 +138,7 @@ function loop(now){
   if(!state.paused){
     state.distance+=dt*state.speed*.015;state.score+=dt*state.speed*.01;state.speed=Math.min(.215,.19+state.distance*.000012);
     animatePlayer(dt);moveParallax(dt);updateObstacles(dt);updateEnvironment(now,dt);ambientDust(now);
-    if(now>=state.nextSpawn){spawnObstacle();state.nextSpawn=now+(900+Math.random()*1000)/state.obstacleRate}
+    if(now>=state.nextSpawn){spawnObstacle();state.nextSpawn=now+(1450+Math.random()*850)/state.obstacleRate}
     if(state.distance>=state.nextQuestion){state.nextQuestion+=520;spawnCheckpoint()}
     if(state.distance>=state.nextFork){state.nextFork+=1100;showFork()}
     if(state.fogUntil&&now>state.fogUntil){state.fogUntil=0;fog.classList.add('hidden')}
@@ -146,7 +148,7 @@ function loop(now){
 }
 async function cropAsset(image,column,row,columns,rows){const x0=Math.round(column*image.naturalWidth/columns),x1=Math.round((column+1)*image.naturalWidth/columns),y0=Math.round(row*image.naturalHeight/rows),y1=Math.round((row+1)*image.naturalHeight/rows),canvas=document.createElement('canvas');canvas.width=x1-x0;canvas.height=y1-y0;canvas.getContext('2d').drawImage(image,x0,y0,x1-x0,y1-y0,0,0,canvas.width,canvas.height);return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(URL.createObjectURL(blob)):reject(new Error('Artwork crop failed')),'image/png'))}
 async function decodeAtlas(url){const response=await fetch(url);if(!response.ok)throw new Error(`Artwork atlas unavailable (${response.status}): ${url}`);const objectUrl=URL.createObjectURL(await response.blob()),image=new Image();image.src=objectUrl;await image.decode();return{image,objectUrl}}
-async function loadRuntimeArt(){try{await Promise.all(ATLAS_SPECS.map(async spec=>{const{image,objectUrl}=await decodeAtlas(spec.url);try{await Promise.all(spec.cells.map(async([id,column,row])=>{ASSETS[id]=await cropAsset(image,column,row,spec.columns,spec.rows)}))}finally{URL.revokeObjectURL(objectUrl)}}));Object.assign(ASSETS,{'crate-stack':ASSETS['ammo-crate'],'fork-sign':ASSETS['trench-sign'],'broken-boards':ASSETS['broken-timber'],'crater-large':ASSETS['crater-small'],'soldier-jump-takeoff':ASSETS['soldier-jump-airborne']});player.src=ASSETS['soldier-idle'];const ids=['bg-sky-clouds','bg-distant-battlefield','bg-ruined-trees-craters','bg-trench-silhouettes'];document.querySelectorAll('.parallax img').forEach((img,i)=>{img.src=ASSETS[ids[i]]});document.querySelectorAll('.duckboard').forEach(board=>{board.style.backgroundImage=`url("${ASSETS['surface-duckboards']}")`});document.body.classList.add('runtime-art-ready')}catch(error){console.error('Runtime art could not be loaded; using stable individual fallbacks.',error);document.body.dataset.artStatus='fallback'}}
+async function loadRuntimeArt(){try{await Promise.all(ATLAS_SPECS.map(async spec=>{const{image,objectUrl}=await decodeAtlas(spec.url);try{await Promise.all(spec.cells.map(async([id,column,row])=>{ASSETS[id]=await cropAsset(image,column,row,spec.columns,spec.rows)}))}finally{URL.revokeObjectURL(objectUrl)}}));Object.assign(ASSETS,{'crate-stack':ASSETS['ammo-crate'],'fork-sign':ASSETS['trench-sign'],'broken-boards':ASSETS['broken-timber'],'crater-large':ASSETS['crater-small'],'soldier-jump-takeoff':ASSETS['soldier-jump-airborne']});player.src=ASSETS['soldier-idle'];runwayFloor.src=ASSETS['trench-floor'];const ids=['bg-sky-clouds','bg-distant-battlefield','bg-ruined-trees-craters','bg-trench-silhouettes'];document.querySelectorAll('.parallax img').forEach((img,i)=>{img.src=ASSETS[ids[i]]});document.querySelectorAll('.duckboard').forEach(board=>{board.style.backgroundImage=`url("${ASSETS['surface-duckboards']}")`});document.body.classList.add('runtime-art-ready')}catch(error){console.error('Runtime art could not be loaded; using stable individual fallbacks.',error);document.body.dataset.artStatus='fallback'}}
 async function loadQuestions(){try{questions=(await fetch('/arcade-review-games/social-studies/wwi-trench-run-v2/questions.json').then(r=>r.json())).questions}catch{questions=[{question:'Which factor is part of M.A.I.N.?',choices:['Militarism','Mercantilism','Migration','Monarchy'],answerIndex:0,explanation:'Militarism is one of the four M.A.I.N. causes.'}]}}
 async function init(){setLaneVisual(1);updatePhase(true);await Promise.allSettled([loadRuntimeArt(),loadQuestions()]);updateHud()}
 function bindButton(id,action,{startRun=false}={}){

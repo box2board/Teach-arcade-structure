@@ -7,7 +7,7 @@ HERE = Path(__file__).resolve().parent
 RUNTIME = HERE.parent / "runtime"
 RUNTIME.mkdir(parents=True, exist_ok=True)
 
-for stem in ("character", "obstacle", "terrain", "props", "background"):
+for stem in ("character", "obstacle", "terrain", "props", "background", "trench-floor"):
     source = HERE / f"{stem}-atlas.webp"
     target = RUNTIME / f"{stem}-atlas.webp"
     with Image.open(source) as image:
