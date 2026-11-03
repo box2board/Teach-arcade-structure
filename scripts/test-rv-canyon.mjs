@@ -6,5 +6,7 @@ function attempt(strategy){const h=harness({search:'?level=gorge',instrument:tru
 const plain=attempt(()=>{});assert.equal(plain.metrics.canyonRecoveries,1);assert.equal(plain.metrics.canyonClears,0);assert(plain.state.on&&plain.state.x>5950&&plain.state.vx>=360);
 const single=[];for(let offset=-200;offset<=1150;offset+=50){let fired=false;const r=attempt(h=>{if(!fired&&h.hooks.state().x>=4700+offset){h.key(' ');fired=true;}});assert.equal(r.metrics.canyonClears,0,`single jump unexpectedly clears at ${offset}`);single.push(offset);}
 let count=0;const double=attempt(h=>{const x=h.hooks.state().x;if(count===0&&x>=4900){h.key(' ');count++;}else if(count===1&&x>=5200){h.key(' ');count++;}});assert.equal(double.metrics.canyonClears,1);assert.equal(double.metrics.canyonRecoveries,0);assert.equal(double.metrics.doubleJumps,1);
+// Broad timing window for the canyon-specific second-jump forward correction.
+for(const [first,second] of [[4800,5000],[4900,5100],[4900,5300],[5000,5200]]){let n=0;const r=attempt(h=>{const x=h.hooks.state().x;if(n===0&&x>=first){h.key(' ');n++;}else if(n===1&&x>=second){h.key(' ');n++;}});assert.equal(r.metrics.canyonClears,1,`double jump ${first}/${second}`);}
 let boosted=false;const nitro=attempt(h=>{if(!boosted&&h.hooks.state().x>=4500){h.key('Shift');boosted=true;}});assert.equal(nitro.metrics.canyonClears,1);assert.equal(nitro.metrics.jumps,0);
 console.log(JSON.stringify({canyonPassed:true,singleJumpTimingsRejected:single.length,plain:plain.metrics,double:double.metrics,nitro:nitro.metrics},null,2));
