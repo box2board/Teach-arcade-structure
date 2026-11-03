@@ -1,6 +1,7 @@
 import {QUESTION_SETS,GAMES,loadQuestionSet,gamesForSet,gameUrl} from '../review-lab/catalog.js';
 import {TOOLS,CABINET_GAMES} from './cabinet-catalog.js';
 const $=id=>document.getElementById(id);
+let accountLoading=true,accountFailed=false;
 let user=null,configured=false,saved=new Set(),savedView=false,limit=24,previewRequest=0;
 let selectedSet=null,preferredGame=null,pendingSave=null,returnRoute='sets';
 let cabinetEnabled=false,cabinetLoaded=false,bookmarks=new Set(),favoritesLoaded=false;
@@ -39,7 +40,7 @@ function route(){
  else $(valid).hidden=false;
  renderCollections();
  document.querySelectorAll('nav a').forEach(a=>{if(a.hash===`#${valid}`)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
- $('breadcrumb').textContent={home:'My Cabinet',sets:'Question Library',saved:'My Question Sets',games:'Choose a Game','my-games':'My Games',tools:'My Tools',create:'Create a Game · Planned',account:'Account',assignments:'Coming later',classes:'Coming later',reports:'Coming later'}[valid];
+ $('breadcrumb').textContent={home:'My Cabinet',sets:'Question Library',saved:'Saved Teach Arcade Topics',games:'Choose a Game','my-games':'My Games',tools:'My Tools',create:'Create a Game · Planned',account:'Account',assignments:'Coming later',classes:'Coming later',reports:'Coming later'}[valid];
  if($('detail').open)$('detail').close();
  $('main').focus({preventScroll:true});
  window.scrollTo(0,0);
@@ -63,8 +64,8 @@ async function finishPendingSave(){
 function chooseGame(set){location.hash=`games&set=${encodeURIComponent(set.id)}`;}
 function bookmarkButton(type,item){
  const key=`${type}:${item.id}`,isSaved=bookmarks.has(key),button=node('button',isSaved?'Remove from My Cabinet':'Add to My Cabinet');
- button.disabled=!configured||!cabinetEnabled||(!!user&&!cabinetLoaded);
- if(button.disabled){button.textContent='Cabinet saving · not connected';button.title='You can open this resource without saving. Account-backed saving is not connected yet.';}
+ button.disabled=accountLoading||accountFailed||!configured||!cabinetEnabled||(!!user&&!cabinetLoaded);
+ if(button.disabled){button.textContent=accountLoading?'Loading your Cabinet…':accountFailed?'Saving unavailable · retry in Account':user&&!cabinetLoaded?'Collection unavailable · retry in Account':'Saving unavailable';button.title='You can still open this public resource.';}
  button.setAttribute('aria-pressed',String(isSaved));button.setAttribute('aria-label',`${isSaved?'Remove':'Add'} ${item.title} ${isSaved?'from':'to'} My Cabinet`);
  button.onclick=async()=>{
   if(!configured||!cabinetEnabled)return;
@@ -75,15 +76,15 @@ function bookmarkButton(type,item){
  };return button;
 }
 function renderCollections(){
- $('sets-summary').textContent=user&&favoritesLoaded?`${saved.size} saved public question sets`:'Public topics are ready to explore';
+ $('sets-summary').textContent='Create, save, and explore teacher sets';
  for(const [type,items,container,routeName] of [['game',CABINET_GAMES,'cabinet-games','my-games'],['tool',TOOLS,'cabinet-tools','tools']]){
   const params=new URLSearchParams(location.hash.slice(1)),browse=params.get('view')==='browse',ready=!!user&&cabinetLoaded;
   const savedItems=items.filter(item=>bookmarks.has(`${type}:${item.id}`));
   $(type==='game'?'games-summary':'tools-summary').textContent=ready?`${savedItems.length} saved ${type==='game'?'games':'tools'}`:type==='game'?'Explore games to find your favorites':'Free to open without an account';
   $(`${type}-saved`).setAttribute('aria-pressed',String(!browse));$(`${type}-browse`).setAttribute('aria-pressed',String(browse));
-  $(`${type}-availability`).textContent=!configured?'Preview mode · Account-backed saving is not connected. You can still explore and open public resources.':!cabinetEnabled?'Game and tool saving is not connected yet. Question-set saving is available with teacher sign-in.':user&&!cabinetLoaded?'Your collection could not load. Open Account to retry. Public resources remain available.':!user?'Sign in to add favorites to your Cabinet. Public resources need no sign-in.':'These are bookmarks. Removing one does not remove the public resource or change its content.';
+  $(`${type}-availability`).textContent=accountLoading?'Loading your saved collection…':accountFailed?'Your account could not be checked. Open Account to retry. Public resources remain available.':!configured?'Preview mode · Account-backed saving is not connected. You can still explore and open public resources.':!cabinetEnabled?'Game and tool saving is not connected yet. Question-set saving is available with teacher sign-in.':user&&!cabinetLoaded?'Your collection could not load. Open Account to retry. Public resources remain available.':!user?'Sign in to add favorites to your Cabinet. Public resources need no sign-in.':'These are bookmarks. Removing one does not remove the public resource or change its content.';
   const shown=browse?items:ready?savedItems:[];
-  if(!shown.length){const empty=node('div',undefined,'empty');empty.append(node('h2',ready?'Your shelf is ready for its first favorite.':'Make this shelf yours.'),node('p',ready?'Explore the public collection and choose Add to My Cabinet.':'Explore now. Your saved collection will appear here when account-backed saving is connected and you sign in.'));const link=node('a',type==='game'?'Explore games →':'Explore free tools →','primary');link.href=`#${routeName}&view=browse`;empty.append(link);$(container).replaceChildren(empty);continue;}
+  if(!shown.length){const empty=node('div',undefined,'empty');empty.append(node('h2',accountLoading?'Loading your collection…':accountFailed?'Your collection is temporarily unavailable.':ready?'Your shelf is ready for its first favorite.':'Make this shelf yours.'),node('p',accountLoading?'Your saved items will appear when the account check finishes.':accountFailed?'Retry the connection in Account. Your saved items have not been removed.':ready?'Explore the public collection and choose Add to My Cabinet.':'Sign in to see your saved collection, or explore public resources now.'));const link=node('a',type==='game'?'Explore games →':'Explore free tools →','primary');link.href=`#${routeName}&view=browse`;empty.append(link);$(container).replaceChildren(empty);continue;}
   $(container).replaceChildren(...shown.map(item=>{
    const card=node('article',undefined,type==='game'?'launch-game':'cabinet-tool');
    if(item.image){const img=node('img');img.src=item.image;img.alt=item.imageAlt;img.loading='lazy';img.width=640;img.height=360;card.append(img);}else {const art=node('span',item.symbol,type==='game'?'arcade-game-art':'tool-symbol');art.setAttribute('aria-hidden','true');card.append(art);}
@@ -113,9 +114,9 @@ function renderGames(){
 function categories(){const previous=$('category').value;const categories=[...new Set(QUESTION_SETS.filter(s=>!$('subject').value||s.subject===$('subject').value).map(s=>s.category||'Foundations'))].sort();$('category').replaceChildren(new Option('All categories',''),...categories.map(c=>new Option(c,c)));if(categories.includes(previous))$('category').value=previous;}
 function render(){
  renderCollections();
- $('library-title').textContent=savedView?'My Question Sets':'Question Library';
- $('saved-help').hidden=!savedView||!!user;
- $('saved-help').textContent=configured?'Sign in to save topics to your account. Public practice needs no sign-in.':'Saving is coming soon. Use the public library to choose a topic and play now.';
+ $('library-title').textContent=savedView?'Saved Teach Arcade Topics':'Teach Arcade Topics';
+ $('saved-help').hidden=!savedView||(!accountLoading&&!!user);
+ $('saved-help').textContent=accountLoading?'Loading your saved topics…':configured?'Sign in to save topics to your account. Public practice needs no sign-in.':'Saving is coming soon. Use the public library to choose a topic and play now.';
  $('preferred-note').hidden=!preferredGame;
  if(preferredGame){const game=GAMES.find(g=>g.id===preferredGame),clear=node('button','Show all games equally');clear.onclick=()=>{preferredGame=null;render();};$('preferred-note').replaceChildren(node('p',`Choose a topic for ${game.title}. You can still pick a different game next.`),clear);}
  $('public-tab').setAttribute('aria-pressed',String(!savedView));$('saved-tab').setAttribute('aria-pressed',String(savedView));
@@ -167,14 +168,14 @@ function returnToQuestionSets(){
  location.assign('/teacher/sets/'+(params.get('intent')==='create'?'?create=1':''));return true;
 }
 async function account(){
- $('retry-account').hidden=true;
+ accountLoading=true;accountFailed=false;render();$('retry-account').hidden=true;
  try{
   const data=await api('session');configured=data.configured;user=data.user;cabinetEnabled=data.cabinetEnabled===true;cabinetLoaded=false;bookmarks.clear();favoritesLoaded=false;
-  if(user){try{const favorites=await api('favorites');saved=new Set(favorites.ids);favoritesLoaded=true;}catch(error){saved.clear();paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again; public practice is still available.':'Signed in, but saved sets could not load. Open Account to retry the connection.');return;}
-   if(cabinetEnabled){try{const cabinet=await api('cabinet');bookmarks=new Set(cabinet.items.map(item=>`${item.type}:${item.id}`));cabinetLoaded=true;}catch(error){paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again.':'Your games and tools could not load. Open Account to retry.');return;}}
+  if(user){try{const favorites=await api('favorites');saved=new Set(favorites.ids);favoritesLoaded=true;}catch(error){saved.clear();accountLoading=false;paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again; public practice is still available.':'Signed in, but saved sets could not load. Open Account to retry the connection.');return;}
+   if(cabinetEnabled){try{const cabinet=await api('cabinet');bookmarks=new Set(cabinet.items.map(item=>`${item.type}:${item.id}`));cabinetLoaded=true;}catch(error){accountLoading=false;paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again.':'Your games and tools could not load. Open Account to retry.');return;}}
   }
-  paintAccount();render();
- }catch(error){configured=error.status===401;user=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again; public practice is still available.':'Account service unavailable. Browse topics and launch public practice without signing in.');}
+  accountLoading=false;paintAccount();render();
+ }catch(error){accountFailed=true;configured=error.status===401;user=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;accountLoading=false;paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again; public practice is still available.':'Account service unavailable. Browse topics and launch public practice without signing in.');}
 }
 const subjects=[...new Set(QUESTION_SETS.map(s=>s.subject))].sort();subjects.forEach(s=>{$('subject').append(new Option(s,s));const row=node('a',undefined,'subject-row');row.href='#sets';row.dataset.subject=s;const symbols={'Social Studies':'◎',Science:'⚗',Math:'∑',ELA:'Aa'};row.append(node('span',symbols[s]||'✦','subject-symbol'),node('strong',s),node('span',`${QUESTION_SETS.filter(q=>q.subject===s).length} sets →`));row.onclick=()=>{savedView=false;limit=24;$('subject').value=s;$('search').value='';$('category').value='';categories();render();};$('subject-summary').append(row);});
 window.addEventListener('hashchange',route);categories();render();route();account().then(()=>{if(user)returnToQuestionSets();});

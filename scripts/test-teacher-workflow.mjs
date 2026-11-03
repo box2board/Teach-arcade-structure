@@ -85,7 +85,7 @@ test('load-more moves keyboard focus to first newly revealed topic',()=>{
 });
 test('invalid game bookmark leaves saved-only view and restores public topics',()=>{
  const app=setup();app.location.hash='#saved';app.route();app.location.hash='#games&set=invalid';app.route();
- assert.equal(app.elements['library-title'].textContent,'Question Library');assert.equal(app.elements.catalog.children.length,24);
+ assert.equal(app.elements['library-title'].textContent,'Teach Arcade Topics');assert.equal(app.elements.catalog.children.length,24);
 });
 test('every compatible game receives the chosen topic in a clearly labeled new tab',()=>{
  const app=setup();
@@ -159,4 +159,18 @@ test('question-set sign-in return preserves create intent and only uses allowlis
  app.location.search='?return=teacher-sets&intent=create';assert.equal(app.run('returnToQuestionSets()'),true);assert.equal(app.location.assigned,'/teacher/sets/?create=1');
  app.location.search='?return=teacher-sets';app.run('returnToQuestionSets()');assert.equal(app.location.assigned,'/teacher/sets/');
  app.location.search='?return=https://example.test';assert.equal(app.run('returnToQuestionSets()'),false);
+});
+
+test('pending account check shows loading rather than disconnected or empty collections',async()=>{
+ let resolveSession;
+ const app=setup(true,()=>new Promise(resolve=>{resolveSession=resolve;}));
+ app.location.hash='#my-games';app.route();
+ assert.match(app.elements['game-availability'].textContent,/Loading/);
+ assert.match(app.elements['cabinet-games'].children[0].children[0].textContent,/Loading/);
+ const button=app.run("bookmarkButton('game',CABINET_GAMES[0])");
+ assert.equal(button.disabled,true);assert.match(button.textContent,/Loading/);
+ resolveSession({ok:true,json:async()=>({configured:true,user:null,cabinetEnabled:true})});
+ await new Promise(r=>setTimeout(r,0));
+ assert.match(app.elements['game-availability'].textContent,/Sign in/);
+ assert.doesNotMatch(app.elements['game-availability'].textContent,/not connected/);
 });
