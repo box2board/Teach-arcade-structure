@@ -34,7 +34,7 @@ function observe(room){
 try{
  for(let i=0;i<20;i++)rooms.push(observe(await new Client(endpoint).joinOrCreate('world',{worldId,displayName:'Load '+i})));
  assert.equal(new Set(rooms.map(i=>i.room.roomId)).size,1);
- await until(()=>rooms.every(i=>i.room.state.players.size===20),'20-client state');
+ await until(()=>rooms.every(i=>i.room.state.players?.size===20),'20-client initial state');
  console.log('20 clients in one room; starting sustained movement');
  const began=performance.now();let lastPing=0;
  timer=setInterval(()=>{
@@ -54,7 +54,9 @@ try{
  original.paused=true;original.expectedLeave=true;original.room.connection.close();
  await until(()=>rooms[0].room.state.players.get(id)?.connected===false,'disconnected presence');
  const reconnectStart=performance.now(),restored=await new Client(endpoint).reconnect(token);
- assert.equal(restored.sessionId,id);rooms[19]=observe(restored);
+ assert.equal(restored.sessionId,id);rooms[19]=observe(restored);rooms[19].paused=true;
+ await until(()=>restored.state.players?.get(id),'reconnect initial state');
+ rooms[19].paused=false;
  await until(()=>rooms[0].room.state.players.get(id)?.connected,'reconnected presence');
  const reconnectMs=performance.now()-reconnectStart;
  await wait(2000);clearInterval(timer);await wait(1000);
