@@ -50,7 +50,7 @@ async function loadArt(){
   art.barrier=obstacles[0];art.wire=obstacles[1];art.crater=obstacles[2];art.timber=obstacles[3];
   art.trenchWall=terrain[0];art.duckboards=terrain[1];art.checkpoint=terrain[2];art.sandbags=terrain[3];
   art.tree=props[0];art.crate=props[1];art.ladder=props[2];art.lantern=props[3];art.sign=props[4];art.damage=props[5];
-  art.sky=backgrounds[0];art.far=trimTop(backgrounds[1],62);art.mid=trimTop(backgrounds[2],20);art.near=trimTop(backgrounds[3],20);art.floor=floor;
+  art.sky=backgrounds[0];art.far=trimTop(backgrounds[1],88);art.mid=trimTop(backgrounds[2],12);art.near=trimTop(backgrounds[3],42);art.floor=floor;
 }
 function reset(){
   cancelAnimationFrame(raf);hazards=initialHazards.map(([x,id])=>({x,id,hit:false,def:obstacleDefs.find(d=>d.id===id)}));
