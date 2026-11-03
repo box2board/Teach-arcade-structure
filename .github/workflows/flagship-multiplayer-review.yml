@@ -1,0 +1,42 @@
+name: Flagship 20-client review
+on:
+  push:
+    branches: [prototype/flagship-3d-world-foundation]
+    paths:
+      - .github/workflows/flagship-multiplayer-review.yml
+      - prototypes/flagship-world-playcanvas/multiplayer/load-test.mjs
+permissions:
+  contents: read
+concurrency:
+  group: flagship-20-review
+  cancel-in-progress: false
+jobs:
+  hosted-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    defaults:
+      run:
+        shell: bash
+        working-directory: prototypes/flagship-world-playcanvas/multiplayer
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --omit=dev
+      - name: Wake isolated review server
+        run: curl --fail --retry 3 --max-time 45 https://flagship-world-review-review.up.railway.app/health
+      - name: Hosted 20-client load and shared building
+        env:
+          WORLD_TEST_ENDPOINT: wss://flagship-world-review-review.up.railway.app
+          WORLD_TEST_SECONDS: '60'
+        run: node load-test.mjs | tee review-output.txt
+      - name: Preserve test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flagship-20-client-review
+          path: prototypes/flagship-world-playcanvas/multiplayer/review-output.txt
+          retention-days: 7

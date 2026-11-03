@@ -618,7 +618,8 @@ app.on('update', (dt) => {
   updateCamera(safeDt);
   updateGhost();
   updateRemotes(safeDt);
-  updatePerformance(safeDt);
+  // Count real elapsed frame time: clamping here hides stalls and inflates FPS.
+  updatePerformance(dt);
 });
 
 updateCamera(1 / 60);
