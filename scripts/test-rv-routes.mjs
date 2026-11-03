@@ -8,7 +8,7 @@ const source=fs.readFileSync(new URL('../public/brain-arcade/rv-road-trip-mayhem
 function harness({search='',instrument=false}={}){
  const ids=new Map(),events=new Map();let nextFrame,now=0;
  const gradient={addColorStop(){}};
- const canvas=new Proxy({}, {get:(o,k)=>o[k]??(k==='createLinearGradient'?()=>gradient:()=>{}),set:(o,k,v)=>(o[k]=v,true)});
+ const canvas=new Proxy({getImageData:(x,y,w,h)=>({data:new Uint8ClampedArray(w*h*4)})}, {get:(o,k)=>o[k]??(k==='createLinearGradient'?()=>gradient:()=>{}),set:(o,k,v)=>(o[k]=v,true)});
  function element(id){if(!ids.has(id))ids.set(id,{id,style:{},dataset:{},classList:{add(){},remove(){}},value:'0',textContent:'',innerHTML:'',hidden:false,width:1000,height:560,children:new Map(),listeners:new Map(),addEventListener(k,fn){this.listeners.set(k,fn)},querySelector(k){if(!this.children.has(k))this.children.set(k,element(id+':'+k));return this.children.get(k)},getContext:()=>canvas});return ids.get(id)}
  const document={getElementById:element,createElement:()=>element('atlas'+ids.size),querySelectorAll:()=>[],addEventListener:(k,fn)=>events.set(k,fn)};
  const sandbox={document,console,URLSearchParams,location:{search},Image:class{complete=true;naturalWidth=600;naturalHeight=300},performance:{now:()=>now},requestAnimationFrame:fn=>nextFrame=fn,addEventListener:(k,fn)=>events.set(k,fn)};sandbox.window=sandbox;
