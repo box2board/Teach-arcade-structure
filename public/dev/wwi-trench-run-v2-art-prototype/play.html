@@ -6,6 +6,7 @@
 <title>WWI Trench Run v2 — Improved Prototype</title>
 <link rel="stylesheet" href="play.css">
 <style>
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none}
 /* Artwork-first quality pass. Gameplay remains the existing three-lane runner. */
 .game{background:#879aa4;box-shadow:0 18px 42px rgba(31,25,19,.38),inset 0 0 28px rgba(0,0,0,.16)}
 .parallax img{filter:saturate(1.04) contrast(1.025)!important}
@@ -49,7 +50,7 @@
 <main>
   <section class="intro">
     <div><h1>Improved Trench Run Prototype</h1><p>Illustrated WWI artwork with the proven three-lane gameplay preserved.</p></div>
-    <div class="actions"><button id="startBtn">Start Run</button><button id="pauseBtn" class="secondary">Pause</button></div>
+  <div class="actions"><button type="button" id="startBtn">Start Run</button><button type="button" id="pauseBtn" class="secondary">Pause</button></div>
   </section>
 
   <section class="hud" aria-label="Game status">
@@ -90,7 +91,7 @@
   </section>
 
   <div class="controls" aria-label="Touch controls">
-    <button id="leftBtn">◀</button><button id="jumpBtn">JUMP</button><button id="rightBtn">▶</button>
+    <button type="button" id="leftBtn" aria-label="Move left">◀</button><button type="button" id="jumpBtn">JUMP</button><button type="button" id="rightBtn" aria-label="Move right">▶</button>
   </div>
 </main>
 
@@ -100,6 +101,6 @@
 <div id="forkModal" class="modal hidden" role="dialog" aria-modal="true">
   <div class="modal-card"><h2>Fork in the Trench</h2><p>Choose your next route.</p><div class="fork-grid"><button id="safeFork"><b>Safer Route</b><span>Fewer obstacles · normal scoring</span></button><button id="riskFork"><b>Risk Route</b><span>More obstacles · higher scoring</span></button></div></div>
 </div>
-<script type="module" src="play.js"></script>
+<script defer src="play.js"></script>
 </body>
 </html>
