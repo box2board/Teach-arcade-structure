@@ -10,3 +10,5 @@ let count=0;const double=attempt(h=>{const x=h.hooks.state().x;if(count===0&&x>=
 for(const [first,second] of [[4800,5000],[4900,5100],[4900,5300],[5000,5200]]){let n=0;const r=attempt(h=>{const x=h.hooks.state().x;if(n===0&&x>=first){h.key(' ');n++;}else if(n===1&&x>=second){h.key(' ');n++;}});assert.equal(r.metrics.canyonClears,1,`double jump ${first}/${second}`);}
 let boosted=false;const nitro=attempt(h=>{if(!boosted&&h.hooks.state().x>=4500){h.key('Shift');boosted=true;}});assert.equal(nitro.metrics.canyonClears,1);assert.equal(nitro.metrics.jumps,0);
 console.log(JSON.stringify({canyonPassed:true,singleJumpTimingsRejected:single.length,plain:plain.metrics,double:double.metrics,nitro:nitro.metrics},null,2));
+
+for(const approachSpeed of [500,650,720]){const h=harness({search:'?level=gorge',instrument:true});h.hooks.seed();h.hooks.place({x:4475,y:h.hooks.road(4475)-23,vx:approachSpeed});h.key('Shift');for(let i=0;i<600&&!h.hooks.state().canyonDone;i++)h.hooks.tick(1/120);assert.equal(h.debug().metrics.canyonClears,1,`nitro approach ${approachSpeed}`);}
