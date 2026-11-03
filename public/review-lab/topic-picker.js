@@ -26,5 +26,14 @@ export function enhanceTopicPicker(select,sets){
  }
  subject.addEventListener('change',()=>{categories();filter();});category.addEventListener('change',filter);search.addEventListener('input',filter);
  categories();filter();
+ // HQ has already chosen a topic. Keep changes optional without altering game settings.
+ const query=new URLSearchParams(location.search);
+ if(query.get('from')==='teacher-hq'&&query.get('set')===select.value&&sets.some(s=>s.id===select.value)){
+  const details=document.createElement('details'),summary=document.createElement('summary');
+  details.className='hq-topic-confirmation';
+  const updateSummary=()=>{summary.textContent=`Topic ready: ${sets.find(s=>s.id===select.value)?.title||'Choose a topic'} · Change topic (optional)`;};
+  updateSummary();box.before(details);details.append(summary,box,select);
+  select.addEventListener('change',updateSummary);
+ }
  return {setDisabled(disabled){Object.values(controls).forEach(c=>c.disabled=disabled);select.disabled=disabled;}};
 }
