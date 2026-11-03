@@ -84,7 +84,7 @@ const layerBuffers=new Map();
 function tileLayer(img,y,h,factor,cam,alpha=1,fadeTop=.2){
   if(!img)return;let buffer=layerBuffers.get(img);if(!buffer){buffer=document.createElement('canvas');buffer.width=W;buffer.height=h;layerBuffers.set(img,buffer)}
   const layer=buffer.getContext('2d');layer.clearRect(0,0,W,h);const dw=h*img.width/img.height,off=(cam*factor)%(dw*2);
-  for(let x=-off-dw;x<W+dw;x+=dw*2){layer.drawImage(img,x,0,dw,h);layer.save();layer.translate(x+dw,0);layer.scale(-1,1);layer.drawImage(img,0,0,dw,h);layer.restore()}
+  for(let x=-off-dw;x<W+dw;x+=dw*2){layer.drawImage(img,x,0,dw,h);layer.save();layer.translate(x+2*dw,0);layer.scale(-1,1);layer.drawImage(img,0,0,dw,h);layer.restore()}
   layer.globalCompositeOperation='destination-in';const mask=layer.createLinearGradient(0,0,0,h);mask.addColorStop(0,'rgba(255,255,255,0)');mask.addColorStop(fadeTop,'rgba(255,255,255,1)');mask.addColorStop(1,'rgba(255,255,255,1)');layer.fillStyle=mask;layer.fillRect(0,0,W,h);layer.globalCompositeOperation='source-over';
   ctx.save();ctx.globalAlpha=alpha;ctx.drawImage(buffer,0,y);ctx.restore();
 }
