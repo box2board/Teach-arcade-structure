@@ -37,6 +37,7 @@ function makeCrop(image,cx,cy,cw,ch,trim=false){
   const out=document.createElement('canvas');out.width=maxX-minX+1;out.height=maxY-minY+1;out.getContext('2d').drawImage(tile,minX,minY,out.width,out.height,0,0,out.width,out.height);return out;
 }
 async function decode(url){const image=new Image();image.src=url;await image.decode();return image}
+function trimTop(img,pixels){const out=document.createElement('canvas');out.width=img.width;out.height=img.height-pixels;out.getContext('2d').drawImage(img,0,pixels,img.width,out.height,0,0,out.width,out.height);return out}
 async function loadAtlas(url,cols,rows,trim=false){const image=await decode(url),out=[];const cw=image.naturalWidth/cols,ch=image.naturalHeight/rows;for(let y=0;y<rows;y++)for(let x=0;x<cols;x++)out.push(makeCrop(image,Math.round(x*cw),Math.round(y*ch),Math.round(cw),Math.round(ch),trim));return out}
 async function loadArt(){
   const [characters,obstacles,terrain,props,backgrounds,floor]=await Promise.all([
@@ -49,7 +50,7 @@ async function loadArt(){
   art.barrier=obstacles[0];art.wire=obstacles[1];art.crater=obstacles[2];art.timber=obstacles[3];
   art.trenchWall=terrain[0];art.duckboards=terrain[1];art.checkpoint=terrain[2];art.sandbags=terrain[3];
   art.tree=props[0];art.crate=props[1];art.ladder=props[2];art.lantern=props[3];art.sign=props[4];art.damage=props[5];
-  [art.sky,art.far,art.mid,art.near]=backgrounds;art.floor=floor;
+  art.sky=backgrounds[0];art.far=trimTop(backgrounds[1],45);art.mid=trimTop(backgrounds[2],8);art.near=trimTop(backgrounds[3],7);art.floor=floor;
 }
 function reset(){
   cancelAnimationFrame(raf);hazards=initialHazards.map(([x,id])=>({x,id,hit:false,def:obstacleDefs.find(d=>d.id===id)}));
