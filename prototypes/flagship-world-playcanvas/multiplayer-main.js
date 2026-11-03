@@ -652,7 +652,7 @@ async function connect(){
    const builds=new Set();state.builds.forEach(b=>{builds.add(b.id);if(!buildEntities.has(b.id)){const r=b.toJSON();buildRecords.push(r);createBuildEntity(r);}});
    for(const [id,e]of buildEntities)if(!builds.has(id)){e.destroy();buildEntities.delete(id);const i=buildRecords.findIndex(b=>b.id===id);if(i>=0)buildRecords.splice(i,1);}
    objectsEl.textContent='Shared builds: '+buildRecords.length;
-   playersEl.textContent='Connected: '+[...state.players.values()].filter(p=>p.connected).length+' / 8';
+   playersEl.textContent='Connected: '+[...state.players.values()].filter(p=>p.connected).length+' / '+(state.capacity||8);
    const now=performance.now();if(now-previousTickTime>1000){measuredHz=Math.round((state.tick-previousTick)*1000/(now-previousTickTime));previousTick=state.tick;previousTickTime=now;}
    netEl.textContent='Ping: '+ping+' ms · server '+measuredHz+' Hz / sync target 20 Hz';
   });

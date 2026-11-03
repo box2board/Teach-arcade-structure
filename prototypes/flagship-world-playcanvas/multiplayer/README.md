@@ -37,3 +37,19 @@ Shared builds are server-created, capped at 250, snapped to the pad, range check
 Class instances are isolated by a high-entropy URL code, which acts as a bearer invitation. Teacher authentication/rosters are not implemented. Builds live in room memory only; room disposal/server restart clears them. No local saved builds are imported or overwritten. No Supabase. No production release. No 40-player performance claim.
 
 The external playable review gate remains pending until the Node/WebSocket process is hosted at a reachable HTTPS endpoint and tested with two real browsers.
+# Controlled 20-client review
+
+The default capacity remains eight. `WORLD_MAX_CLIENTS=20` enables the next
+review stage; other values do not raise capacity beyond eight. The health endpoint
+and client HUD report the actual configured capacity. No 40/64-player claim is made.
+
+Run `WORLD_MAX_CLIENTS=20 node load-test.mjs` for a local 60-second test, or
+`WORLD_TEST_ENDPOINT=wss://YOUR_REVIEW_HOST node load-test.mjs` against a review
+service configured for 20. `WORLD_TEST_SECONDS` accepts 30–300 seconds.
+The harness uses a unique disposable world and disconnects its clients afterward.
+It checks movement acknowledgements and presence on every client, records ping,
+input acknowledgement delay, patch gaps and tick progression, reconnects one
+player while the others move, then checks building and ownership with all 20 present.
+These are network clients; rendered FPS, interpolation appearance, real classroom
+Wi-Fi and Chromebook graphics still require device testing.
+
