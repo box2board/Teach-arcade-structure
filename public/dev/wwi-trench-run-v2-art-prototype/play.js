@@ -94,7 +94,7 @@ function spawnDecor(){
 }
 function spawnFloorDetail(){
   const id=floorIds[Math.floor(Math.random()*floorIds.length)],lane=Math.floor(Math.random()*3),el=sprite(id,'floor-detail','terrain');
-  el.style.left=laneX(lane)+'%';floorDetailLayer.append(el);floorDetails.push({el,y:-20,lane,id});
+  el.style.left=laneX(lane)+'%';floorDetailLayer.append(el);floorDetails.push({el,y:58,lane,id});
 }
 function hit(o){
   if(o.hit)return;o.hit=true;
@@ -121,7 +121,7 @@ function updateObstacles(dt){
 function updateScenery(dt){
   for(const o of scenery){o.y+=dt*state.speed*.095;o.el.style.top=o.y+'%';const progress=Math.max(0,Math.min(1,(o.y+26)/126)),scale=.66+progress*.55;o.el.style.transform=`translateX(-50%) scale(${scale})`;o.el.style.opacity=String(.38+progress*.48)}
   scenery=scenery.filter(o=>{if(o.y>108){o.el.remove();return false}return true});
-  for(const o of floorDetails){o.y+=dt*state.speed*.105;o.el.style.top=o.y+'%';const progress=Math.max(0,Math.min(1,(o.y+20)/122));o.el.style.scale=String(.72+progress*.55);o.el.style.opacity=String(.22+progress*.42)}
+  for(const o of floorDetails){o.y+=dt*state.speed*.105;o.el.style.top=o.y+'%';const progress=Math.max(0,Math.min(1,(o.y-58)/48));o.el.style.scale=String(.72+progress*.55);o.el.style.opacity=String(.22+progress*.42)}
   floorDetails=floorDetails.filter(o=>{if(o.y>106){o.el.remove();return false}return true})
 }
 function ambientDust(now){if(now<state.nextDust||state.paused)return;state.nextDust=now+190+Math.random()*260;burst(laneX(state.lane),85,2)}
