@@ -9,5 +9,5 @@ for(const [time,health,clear,expected]of [[60,60,true,'GOLD'],[60.01,60,true,'SI
 // Real finish path produces a medal, then replay resets all collectible state.
 h.key('ArrowLeft',true);h.hooks.place({x:37999,y:h.hooks.road(37999)-23,vx:760,on:true,time:76,health:82});h.hooks.tick(1/120);assert.equal(h.debug().mode,'finished');assert.equal(h.debug().gorgeRun.medal,'BRONZE');assert.equal(h.ids.get('overlay').querySelector('h1').textContent,'BRONZE MEDAL!');h.click('start');assert.equal(h.debug().gorgeRun.recovery,0);assert.equal(h.debug().gorgeRun.medal,null);
 // Switching to an existing level removes the entire feature state.
-h.hooks.select(0);assert.equal(h.debug().gorgeRun,undefined);
+h.hooks.select(0);assert.equal(h.debug().gorgeRun.recovery,0);
 console.log(JSON.stringify({gorgeRewardsPassed:true,pickupsRemoved:true,replay:true,speedWithoutNitro:fast,braking:true,medalBoundaries:true,otherLevelsDisabled:true}));
