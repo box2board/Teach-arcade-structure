@@ -2,6 +2,14 @@
 import {validateCatalog} from './catalog-contract.js';
 export const TOOLS=Object.freeze(validateCatalog([
   {
+    "id": "tool:art-studio",
+    "title": "Art Studio Beta",
+    "url": "/tools/art-studio/",
+    "description": "Create posters, worksheets, signs, and vocabulary cards. Edit layers, crop and mask photos, and export PNG, JPG, PDF, or editable project files.",
+    "symbol": "✦",
+    "collection": "Teacher Tools"
+  },
+  {
     "id": "tool:comic-studio",
     "title": "Comic Studio Beta",
     "url": "/tools/comic-studio/",
