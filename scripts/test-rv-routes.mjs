@@ -12,7 +12,7 @@ function harness({search='',instrument=false}={}){
  function element(id){if(!ids.has(id))ids.set(id,{id,style:{},dataset:{},classList:{add(){},remove(){}},value:'0',textContent:'',innerHTML:'',hidden:false,width:1000,height:560,children:new Map(),listeners:new Map(),addEventListener(k,fn){this.listeners.set(k,fn)},querySelector(k){if(!this.children.has(k))this.children.set(k,element(id+':'+k));return this.children.get(k)},getContext:()=>canvas});return ids.get(id)}
  const document={getElementById:element,createElement:()=>element('atlas'+ids.size),querySelectorAll:()=>[],addEventListener:(k,fn)=>events.set(k,fn)};
  const sandbox={document,console,URLSearchParams,location:{search},Image:class{complete=true;naturalWidth=600;naturalHeight=300},performance:{now:()=>now},requestAnimationFrame:fn=>nextFrame=fn,addEventListener:(k,fn)=>events.set(k,fn)};sandbox.window=sandbox;
- const code=instrument?source.replace(' // Read-only QA snapshot;',`window.__canyonTest={seed(){selectLevel(3);start();R.x=4300;R.vx=760;R.y=ground(R.x)-23;cam=R.x-305;K.gas=true;},state:()=>({...R}),tick:update};
+ const code=instrument?source.replace(' // Read-only QA snapshot;',`window.__canyonTest={seed(){selectLevel(3);start();R.x=4300;R.vx=760;R.y=ground(R.x)-23;cam=R.x-305;K.gas=true;},state:()=>({...R}),tick:update,place:v=>Object.assign(R,v),road:ground,reward:updateGorgeRewards,medal:gorgeMedal,pickups:()=>gorgePickups.map(p=>({...p})),select:selectLevel};
  // Read-only QA snapshot;`):source;
  vm.runInNewContext(code,sandbox);
  const key=(key,up=false)=>events.get(up?'keyup':'keydown')?.({key,repeat:false,preventDefault(){}});
