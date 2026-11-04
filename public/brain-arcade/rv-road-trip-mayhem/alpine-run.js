@@ -1,0 +1,293 @@
+/* Alpine Run: lightweight Canvas 2D renderer, fixed-step arcade physics.
+   Art, road, hazards, effects and HUD are independent reusable systems. */
+(()=>{'use strict';
+const $=id=>document.getElementById(id),c=$('game'),ctx=c.getContext('2d',{alpha:false}),W=1000,H=560;
+const WORLD=38000,STEP=1/120,GRAVITY=1450;
+let GORGE={start:4700,end:5950,ramp:4460};
+const GAP_ROUTES=[[],[{start:5650,end:6900,ramp:5410}],[{start:6440,end:7690,ramp:6200},{start:21960,end:23210,ramp:21720}],[{start:4700,end:5950,ramp:4460}],[{start:4200,end:4500,ramp:4200,small:true},{start:19500,end:19820,ramp:19500,small:true},{start:31000,end:31340,ramp:31000,small:true}],[{start:3000,end:3300,ramp:3000,small:true},{start:6240,end:7490,ramp:6000},{start:19000,end:19320,ramp:19000,small:true},{start:22440,end:23690,ramp:22200}]];
+let gapIndex=0;
+function hasGap(){return gapIndex<GAP_ROUTES[levelIndex].length;}
+function speedLanes(){return levelIndex===3?GORGE_SPEED:[{start:8000,end:11000},{start:15000,end:18000},{start:24500,end:27500}];}
+// Copper Gorge only: explicitly clear speed lanes.
+const GORGE_SPEED=[{start:6400,end:9800},{start:15000,end:18200},{start:23400,end:27800}];
+function gorgeSpeedLane(x){return speedLanes().find(s=>x>=s.start&&x<s.end);}
+
+function inGorge(x){return hasGap()&&x>GORGE.start&&x<GORGE.end;}let ZONES=['OPEN COUNTRY','TOWN OUTSKIRTS','MOUNTAIN PASS','LAKESIDE ROAD','CAMPGROUND'];
+const K={gas:false,brake:false},particles=[],rings=[];let ramps=[{x:4800,w:220,h:65},{x:12400,w:210,h:70},{x:19000,w:250,h:95},{x:27700,w:240,h:75},{x:36500,w:300,h:105}];
+let layout=[['cart',1450],['tire',2200],['cones',2700],['junk',3550],['car',5600],['tire',6100],['barrier',6850],['car',9800],['cart',10400],['barrier',11000],['junk',13200],['cones',13750],['car',14700],['tire',16800],['branch',17400],['barrier',18200],['car',20000],['tire',20550],['junk',21500],['branch',24100],['cart',24900],['barrier',25600],['car',28600],['junk',29400],['tire',30100],['cones',32500],['cooler',33200],['branch',33800],['cart',34600],['junk',37300]];
+const sizes={car:[110,54],cart:[54,53],tire:[43,43],cones:[72,33],barrier:[88,48],junk:[76,48],branch:[120,34],cooler:[62,39]};
+let renderMs=0;let obstacles=[],R,cam=0,clock=0,accum=0,last=0,mode='ready',callT=0,shake=0,hudClock=0,dustClock=0,uiState='',metrics={frames:0,slowFrames:0,physicsSteps:0,jumps:0,doubleJumps:0,landings:0,hits:0,canyonClears:0,canyonRecoveries:0};
+const autumnArt=new Image();autumnArt.src='assets/autumn-tree.webp';
+const pineArt=new Image();pineArt.src='assets/alpine-pine.webp';const rv=new Image(),vista=new Image();rv.src='assets/rv-body.webp';vista.src='assets/alpine-vista.webp';
+const painted={};for(const name of ['car','cart','tire','barrier','cones','junk','branch','cooler','cactus','lodge','garage','diner','camp','lighthouse','harbor']){const im=new Image();im.src='assets/painted-'+name+'.webp';painted[name]=im;}
+const terrainMaterials={};for(const name of ['alpine','desert']){const im=new Image();im.src='assets/terrain-'+name+'.webp';terrainMaterials[name]={im,pattern:null};}
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),mix=(a,b,t)=>a+(b-a)*t,noise=n=>{const a=Math.sin(n*127.1+31.7)*43758.5453;return a-Math.floor(a)};
+function naturalHill(x){if(levelIndex===5)return 405+Math.sin(x/800)*36+Math.sin(x/2000)*24+Math.sin(x/300)*8;if(levelIndex===4)return 404+Math.sin(x/840)*30+Math.sin(x/2100)*22+Math.sin(x/330)*8;if(levelIndex===3){const base=405+Math.sin(x/780)*34+Math.sin(x/1880)*26+Math.sin(x/290)*6,t=clamp(Math.min((x-3600)/400,(6800-x)/400),0,1);return mix(base,405,t*t*(3-2*t));}return levelIndex===2?405+Math.sin(x/740)*35+Math.sin(x/1900)*24+Math.sin(x/310)*7:levelIndex===1?405+Math.sin(x/800)*42+Math.sin(x/2100)*22+Math.sin(x/340)*6:405+Math.sin(x/650)*38+Math.sin(x/1740)*25+Math.sin(x/255)*7;}
+function hill(x){let y=naturalHill(x);if(levelIndex!==3)for(const gap of GAP_ROUTES[levelIndex]){const t=clamp(Math.min((x-gap.ramp+800)/400,(gap.end+850-x)/400),0,1);y=mix(y,naturalHill(gap.start),t*t*(3-2*t));}return y;}
+function ground(x){if(inGorge(x))return hill(x)+900;let y=hill(x);for(const r of ramps)if(x>=r.x&&x<=r.x+r.w)y-=r.h*((x-r.x)/r.w);return y;}
+function roadSlope(x){return clamp((hill(x+16)-hill(x-16))/32,-.55,.55);}
+function surfaceSlope(x){for(const r of ramps)if(x>=r.x&&x<r.x+r.w)return roadSlope(x)-r.h/r.w;return roadSlope(x);}
+function reset(){obstacles=layout.map(([t,x])=>({t,x,hit:false,passed:false}));R={x:120,y:ground(120)-23,vx:0,vy:0,on:true,jumps:0,buffer:0,coyote:.12,nitro:55,health:100,inv:0,air:0,bestAir:0,cleared:0,angle:0,spin:0,spring:0,springV:0,boost:0,time:0,canyonDone:false,canyonBriefed:false};gapIndex=0;GORGE=GAP_ROUTES[levelIndex][0]||{start:Infinity,end:Infinity,ramp:Infinity};R.gorgeRun={speedSeen:[],speedSeconds:0,medal:null,recovery:0};cam=0;clock=0;shake=0;particles.length=0;rings.length=0;mode='ready';callT=0;$('call').textContent='';$('call').classList.remove('show');metrics={frames:0,slowFrames:0,physicsSteps:0,jumps:0,doubleJumps:0,landings:0,hits:0,canyonClears:0,canyonRecoveries:0};$('pause').textContent='Ⅱ';updateHUD();}
+function popup(text){$('call').textContent=text;$('call').classList.add('show');callT=.85;}
+function start(){if(mode==='ready'){mode='running';R.vx=180;$('overlay').hidden=true;}else if(mode==='finished'){if(levelIndex<5)selectLevel(levelIndex+1);else reset();start();}}
+function release(){K.gas=K.brake=false;document.querySelectorAll('.held').forEach(b=>b.classList.remove('held'));}
+function pause(){if(mode==='running'){mode='paused';release();$('pause').textContent='▶';showOverlay('TAKE A BREATHER.','Your RV is parked. Ready when you are.','KEEP ROLLING');}else if(mode==='paused'){mode='running';$('overlay').hidden=true;$('pause').textContent='Ⅱ';}}
+function showOverlay(title,copy,button){$('overlay').hidden=false;$('overlay').querySelector('h1').textContent=title;$('overlay').querySelector('p').textContent=copy;$('start').innerHTML=button+' <span>➜</span>';}
+function emit(x,y,n,color,force=1){for(let i=0;i<n&&particles.length<150;i++){const a=noise(clock+i*3)*Math.PI*2,s=(35+noise(clock+i*7)*105)*force;particles.push({x,y,vx:Math.cos(a)*s-R.vx*.14,vy:-Math.abs(Math.sin(a)*s),life:.35+noise(clock+i)*.4,max:.75,size:2+noise(i+clock)*5,color});}}
+function jump(){if(mode!=='running'||(R.gorgeRun.recovery>0))return;R.buffer=.15;}
+function nitro(){if(mode!=='running'||R.nitro<18||(R.gorgeRun.recovery>0))return;R.nitro-=18;R.boost=1.25;const gorgeBoost=hasGap()&&!GORGE.small&&!R.canyonDone&&R.x>GORGE.ramp-300&&R.x<GORGE.end;if(hasGap()&&!GORGE.small&&!R.canyonDone&&R.x>GORGE.ramp&&R.x<GORGE.end&&!R.on)R.vy=Math.min(R.vy,-740);R.vx=gorgeBoost?Math.max(1200,Math.min(1250,R.vx+400)):Math.min(980,R.vx+145);popup('NITRO BURST');emit(R.x-95,R.y+2,12,'#6cf4ff',1.5);}
+function damage(o){if(R.inv>0)return;const cost=o.t==='car'?18:o.t==='barrier'?13:9;R.health=Math.max(0,R.health-cost);R.vx=Math.max(150,R.vx*.70);R.inv=.85;shake=5;metrics.hits++;emit(o.x,ground(o.x)-20,18,'#ffcd78',1.9);popup('OUCH! KEEP ROLLING');$('msg').textContent='Roadside hit — brake to set up the next jump.';if(!R.health){R.health=45;R.nitro=Math.max(20,R.nitro);popup('PATCHED UP!');$('msg').textContent='Quick roadside repair. Keep going!';}}
+function update(dt){clock+=dt;if(callT>0){callT-=dt;if(callT<=0)$('call').classList.remove('show');}shake=Math.max(0,shake-dt*12);if(mode!=='running')return;metrics.physicsSteps++;R.time+=dt;if(R.gorgeRun.recovery>0){R.gorgeRun.recovery=Math.max(0,R.gorgeRun.recovery-dt);if(R.gorgeRun.recovery===0){R.inv=1.2;popup('GO!');$('msg').textContent='Recovery complete. Build speed and keep rolling.';}return;}R.inv=Math.max(0,R.inv-dt);R.boost=Math.max(0,R.boost-dt);R.nitro=Math.min(100,R.nitro+dt*1.05);
+ if(levelIndex===3&&!R.canyonBriefed&&R.x>=GORGE.ramp-960){R.canyonBriefed=true;R.nitro=Math.max(36,R.nitro);popup(GORGE.small?'ROAD GAP AHEAD · JUMP':'GORGE AHEAD · NITRO READY');$('msg').textContent=GORGE.small?'Broken road ahead. Jump across; a miss costs a two-second recovery stop.':'Canyon ramp ahead: double jump in the air, or use nitro on the ramp. A miss stops you on the far bank for two seconds.';}
+ if(R.on){R.coyote=.12;R.jumps=0;}else R.coyote=Math.max(0,R.coyote-dt);
+ if(R.buffer>0&&(R.on||R.coyote>0||R.jumps<2)){const first=R.on||R.coyote>0||R.jumps===0;R.vy=first?-555:-485;R.on=false;R.coyote=0;R.jumps=first?1:2;R.buffer=0;metrics.jumps++;if(!first){metrics.doubleJumps++;if(inGorge(R.x)&&!GORGE.small)R.vx=Math.max(R.vx,1250);popup('DOUBLE JUMP');rings.push({x:R.x,y:R.y+24,life:.32});emit(R.x,R.y+22,8,'#c3faff',.6);}else emit(R.x,R.y+23,8,'#e7c299',.7);}
+ R.buffer=Math.max(0,R.buffer-dt);
+ const oldX=R.x,wasOn=R.on,priorSpeed=R.vx;
+ if(K.gas)R.vx+=(R.on?520:70)*dt;
+ if(K.gas&&R.on&&gorgeSpeedLane(R.x))R.vx+=225*dt;
+ if(K.brake)R.vx-=(R.on?1050:210)*dt;
+ if(R.on){R.vx+=surfaceSlope(R.x)*560*dt;R.vx-=R.vx*.23*dt;}else{R.vy+=GRAVITY*dt;R.air+=dt;}
+ const cap=R.boost>0?(hasGap()&&!R.canyonDone&&R.x>GORGE.ramp-300&&R.x<GORGE.end?1250:1000):(gorgeSpeedLane(R.x)?1000:760);R.vx=clamp(R.vx,0,Math.max(cap,priorSpeed-180*dt));R.x+=R.vx*dt;
+ if(wasOn){let launched=false;for(const r of ramps)if(oldX<=r.x+r.w&&R.x>r.x+r.w&&oldX>=r.x){R.on=false;R.vy=-Math.max(320,R.vx*r.h/r.w*(hasGap()&&r.x===GORGE.ramp&&R.boost>0?1.7:1.55));R.air=0;R.coyote=.1;launched=true;popup('SEND IT!');break;}if(!launched){if(inGorge(R.x)){R.on=false;R.vy=0;R.air=0;}else{R.y=ground(R.x)-23;R.vy=0;}}}
+ else {R.y+=R.vy*dt;const gy=ground(R.x)-23;if(R.y>=gy&&R.vy>=0&&!(hasGap()&&!R.canyonDone&&oldX<GORGE.end&&R.x>=GORGE.end&&R.y>gy)){const impact=R.vy,air=R.air;R.y=gy;R.vy=0;R.on=true;R.jumps=0;R.bestAir=Math.max(R.bestAir,air);R.air=0;R.springV=Math.min(130,impact*.16);metrics.landings++;if(air>.18){emit(R.x-45,gy+23,10,'#dac6a3');emit(R.x+62,gy+23,8,'#dac6a3');shake=Math.max(shake,impact>700?3.5:1.3);}if(air>.7){R.nitro=Math.min(100,R.nitro+5);popup(air>1.15?'BIG AIR · CLEAN LANDING':'CLEAN LANDING');}}}
+ if(hasGap()&&!R.canyonDone&&R.x>=GORGE.start){if(R.y>H+90||(R.x>=GORGE.end&&R.y>hill(R.x)-13)){recoverGorge();return;}else if(R.x>=GORGE.end){R.canyonDone=true;metrics.canyonClears++;const small=GORGE.small;advanceGap();popup(small?'ROAD GAP CLEARED!':'CANYON CLEARED!');$('msg').textContent='Gorge cleared. Enjoy the open road!';}}
+ const target=R.on?Math.atan(surfaceSlope(R.x)):(R.vy<0?-.13:.13);R.angle+= (target-R.angle)*Math.min(1,dt*9);R.springV+=(-R.spring*160-R.springV*15)*dt;R.spring+=R.springV*dt;R.spin+=R.vx*dt/16;
+ for(const o of obstacles){if(o.hit||o.passed||Math.abs(o.x-R.x)>210)continue;const [w,h]=sizes[o.t],g=ground(o.x);if(R.x-65>o.x+w/2){o.passed=true;R.cleared++;R.nitro=Math.min(100,R.nitro+2);continue;}const overlap=R.x+77>o.x-w*.43&&R.x-62<o.x+w*.43;const bottom=R.y+18;if(overlap&&bottom>g-h+7&&R.y-36<g){if(R.inv<=0){o.hit=true;damage(o);}}}
+ updateGorgeRewards(dt);
+ dustClock+=dt;if(R.on&&R.vx>100&&dustClock>.045){dustClock=0;emit(R.x-54,R.y+24,K.brake?3:1,K.brake?'#d6e0d7':'#d2b48a',.4);}if(R.boost>0&&dustClock>.018){dustClock=0;emit(R.x-100,R.y+3,2,noise(clock)>.5?'#7ef8ff':'#ffb74c',.6);}
+ for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=180*dt;if(p.life<=0)particles.splice(i,1);}for(let i=rings.length-1;i>=0;i--){rings[i].life-=dt;if(rings[i].life<=0)rings.splice(i,1);}
+ const desired=Math.max(0,R.x-240-clamp(R.vx/8,0,65));cam+= (desired-cam)*(1-Math.exp(-dt*6));
+ if(R.x>=WORLD){mode='finished';release();popup('CAMPGROUND!');showOverlay('MADE IT. MOSTLY.',`${Math.round(R.time)} seconds · ${R.cleared} hazards cleared · ${R.bestAir.toFixed(1)}s best air · ${Math.round(R.health)}% condition`,levelIndex===0?'NEXT: RED ROCK RALLY':levelIndex===1?'NEXT: SUNSET COAST':levelIndex===2?'NEXT: COPPER GORGE':'REPLAY COPPER GORGE');$('msg').textContent='Campground reached. Try for a cleaner, faster run.';finishGorgeRun();}
+}
+function updateHUD(){const z=Math.min(4,Math.floor(R.x/7600));$('zone').textContent=`0${z+1} / ${ZONES[z]}`;$('speed').textContent=Math.round(R.vx*.16);$('speedBar').style.width=clamp(R.vx/10,0,100)+'%';$('distance').textContent=Math.round(R.x/10);$('progress').style.width=clamp(R.x/WORLD*100,0,100)+'%';$('nitroBar').style.width=R.nitro+'%';$('healthBar').style.width=R.health+'%';$('nitroValue').textContent=Math.floor(R.nitro);$('healthValue').textContent=Math.round(R.health);$('cleared').textContent=R.cleared;$('air').textContent=R.bestAir.toFixed(1)+'s';const avail=R.on?2:2-R.jumps;const state=avail+' / '+mode;if(state!==uiState){uiState=state;$('jumpDots').textContent=avail===2?'● ●':avail===1?'● ○':'○ ○';$('jumpState').textContent=avail===2?'SPACE · 2 JUMPS READY':avail===1?'SPACE · DOUBLE JUMP READY':'LAND TO RECHARGE';}$('nitro').style.opacity=R.nitro<18?.55:1;c.dataset.qa=JSON.stringify({mode,x:Math.round(R.x),y:Math.round(R.y),speed:Math.round(R.vx),on:R.on,jumpsUsed:R.jumps,time:+R.time.toFixed(2),health:R.health,cleared:R.cleared,particles:particles.length,rv:rv.complete&&!!rv.naturalWidth,vista:vista.complete&&!!vista.naturalWidth,renderMs:+renderMs.toFixed(2),...metrics,...({recoverySeconds:+R.gorgeRun.recovery.toFixed(2),speedSection:!!gorgeSpeedLane(R.x),speedSeconds:+R.gorgeRun.speedSeconds.toFixed(1),medal:R.gorgeRun.medal})});}
+function path(points,fill,stroke,width=1){ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));if(fill){ctx.closePath();ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke();}}
+function line(x,y,x2,y2,color,width=1){ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x2,y2);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();}
+function round(x,y,w,h,r,fill,stroke){ctx.beginPath();ctx.roundRect(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=2;ctx.stroke();}}
+function ellipse(x,y,rx,ry,fill){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fillStyle=fill;ctx.fill();}
+// Trees are painted once into a small atlas; the frame only composites sprites.
+const trees=Array.from({length:4},(_,j)=>{const a=document.createElement('canvas');a.width=120;a.height=230;const g=a.getContext('2d');g.fillStyle='#5d5740';g.fillRect(57,75,8,155);for(let k=0;k<7;k++){const y=18+k*23,w=10+k*7;g.fillStyle=['#23554c','#2c6756','#396e50','#1d4c43'][j];g.beginPath();g.moveTo(60,y-17);g.lineTo(60-w,y+51);g.lineTo(60+w,y+51);g.fill();g.fillStyle='#8caa65';g.globalAlpha=.3;g.beginPath();g.moveTo(60,y-17);g.lineTo(60-w,y+51);g.lineTo(57,y+36);g.fill();g.globalAlpha=1;}return a;});
+function pine(x,y,s,v=0){if(levelIndex!==3&&y>hill(x+cam)-30&&layout.some(([t,hx])=>Math.abs(hx-x-cam)<sizes[t][0]/2+100))return;if(pineArt.complete&&pineArt.naturalWidth){const h=230*s,w=h*pineArt.naturalWidth/pineArt.naturalHeight;ctx.drawImage(pineArt,x-w/2,y-h,w,h);}else ctx.drawImage(trees[((v%4)+4)%4],x-60*s,y-230*s,120*s,230*s);}
+function ridgeY(x){return 393+Math.sin(x/190)*18+Math.sin(x/73)*7;}
+function scenery(){if(levelIndex===5){glacierScenery();return;}if(levelIndex===4){nightScenery();return;}if(levelIndex===3){gorgeScenery();return;}if(levelIndex===2){coastalScenery();return;}if(levelIndex===1){desertScenery();return;}const z=Math.min(4,Math.floor(R.x/7600));const sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#64b2d6');sky.addColorStop(1,'#d8e8cd');ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
+ if(vista.complete&&vista.naturalWidth){const dw=1660,dh=554,offset=(cam*.045)%(dw*2);let tile=Math.floor(cam*.045/dw);for(let i=-1;i<2;i++){const x=i*dw-(cam*.045%dw);ctx.save();ctx.translate(x+(tile+i)%2*dw,0);if((tile+i)%2)ctx.scale(-1,1);ctx.drawImage(vista,0,-28,dw,dh);ctx.restore();}}else{path([[0,310],[170,145],[290,240],[430,125],[620,300],[790,180],[1000,325],[1000,560],[0,560]],'#709ba4');}
+ // Independent lake shimmer, ridgeline, mid-distance pine stands and roadside settlements.
+ ctx.globalAlpha=.24;for(let i=0;i<18;i++){const x=(i*133-cam*.1+20000)%1180-90;line(x,320+(i%8)*11,x+40+noise(i)*70,320+(i%8)*11,'#d4f0db',1);}ctx.globalAlpha=1;
+ // Every midground tree shares the bank's coordinate system and scroll factor.
+ const ridge=[];for(let x=-20;x<=W+20;x+=20)ridge.push([x,ridgeY(x+cam*.2)]);
+ const start=Math.floor(cam*.2/113);for(let i=start-1;i<start+12;i++){const wx=i*113+noise(i)*30;pine(wx-cam*.2,ridgeY(wx)+7,.23+noise(i)*.22,i%4);}
+ paintGround([[0,H],...ridge,[W,H]],'alpine',cam*.2,'#526c50',.7);for(let wx=Math.floor(cam*.2/79)*79;wx<cam*.2+W+79;wx+=79){const n=noise(wx);if(n<.6)continue;const x=wx-cam*.2+n*22,y=ridgeY(wx+n*22)+4;rootTufts(x,y,5+n*5);}
+ if(z===1){for(const [wx,name,width] of [[8200,'lodge',195],[9300,'garage',205],[10800,'lodge',210],[12200,'garage',190],[14000,'lodge',200]]){scenicSprite(name,wx-cam,0,width);}}
+ for(let i=Math.floor(cam*.66/225)-1;i<Math.floor(cam*.66/225)+7;i++){if(noise(i)<.25)continue;const wx=i*225+noise(i)*35,x=wx-cam*.66,y=hill(x+cam)+5,s=.42+noise(i)*.33;if(z!==3||i%3===0){pine(x,y,s,i%4);rootTufts(x,y,28*s);}}
+ // Telegraph zones with roadside signs, independently of hazards.
+ for(let zt=0;zt<5;zt++){const x=zt*7600+550-cam;if(x>-200&&x<W+200)roadSign(x,hill(zt*7600+550),ZONES[zt],zt===4?'CAMP  ↗':'SCENIC ROUTE  07');}
+ if(z===4){for(let i=Math.floor(cam/1900);i<Math.floor(cam/1900)+2;i++){const wx=i*1900+400;scenicSprite('camp',wx-cam,hill(wx)+3,205);}}
+}
+function roadSign(x,y,text,sub){line(x-44,y,x-44,y-117,'#8e9b98',5);line(x+44,y,x+44,y-117,'#8e9b98',5);round(x-82,y-130,164,55,5,'#234c49','#c9debf');ctx.textAlign='center';ctx.fillStyle='#f1ebcd';ctx.font='900 12px system-ui';ctx.fillText(text,x,y-106);ctx.font='8px system-ui';ctx.fillText(sub,x,y-89);}
+function roadPath(offset){ctx.beginPath();for(let x=-8;x<=W+8;x+=6){const y=hill(x+cam)+offset;x===-8?ctx.moveTo(x,y):ctx.lineTo(x,y);}}
+function terrain(){const gaps=GAP_ROUTES[levelIndex];if(gaps.length){for(const gap of gaps)drawGap(gap);ctx.save();ctx.beginPath();let from=-10;for(const gap of gaps){const left=gap.start-cam,right=gap.end-cam;ctx.rect(from,-100,Math.max(0,left-from),H+200);from=Math.max(from,right);}ctx.rect(from,-100,W+20,H+200);ctx.clip();}const z=Math.min(4,Math.floor(R.x/7600));const soil=ctx.createLinearGradient(0,350,0,560);soil.addColorStop(0,levelIndex===1?'#c99c6c':z===2?'#a28463':'#9a815b');soil.addColorStop(.3,levelIndex===1?'#ae7149':'#7e654b');soil.addColorStop(1,levelIndex===1?'#795340':'#3b4641');ctx.beginPath();ctx.moveTo(-8,H);for(let x=-8;x<=W+8;x+=6)ctx.lineTo(x,hill(x+cam));ctx.lineTo(W+8,H);ctx.fillStyle=soil;ctx.fill();const earth=[[0,H]];for(let x=-8;x<=W+8;x+=6)earth.push([x,hill(x+cam)]);earth.push([W,H]);paintGround(earth,'desert',cam,levelIndex===5?'#a6c2d0':levelIndex===4?'#354951':levelIndex===3?'#89765b':levelIndex===2?'#67776d':levelIndex?'#9c714c':'#6d7255',levelIndex===2?.24:.45);
+ const verge=[];for(let x=-8;x<=W+8;x+=6)verge.push([x,hill(x+cam)+30]);for(let x=W+8;x>=-8;x-=6)verge.push([x,hill(x+cam)+48+Math.sin((x+cam)/19)*2+Math.sin((x+cam)/47)*3]);paintGround(verge,levelIndex===1?'desert':'alpine',cam,levelIndex===5?'#d9e8ec':levelIndex===4?'#52665c':levelIndex===3?'#9b895a':levelIndex===2?'#657f69':levelIndex?'#c8a16e':'#697b4e',.8);roadPath(19);ctx.lineWidth=43;ctx.strokeStyle=levelIndex===5?'#daeaf1':levelIndex===1?'#e3bb80':'#b19b70';ctx.stroke();roadPath(12);ctx.lineWidth=27;ctx.strokeStyle=levelIndex===4?'#293e50':levelIndex===1?'#655c54':levelIndex===2?'#40565c':z===3?'#435c65':'#4c5351';ctx.stroke();roadPath(2);ctx.lineWidth=2;ctx.strokeStyle='#e6d8a6';ctx.stroke();roadPath(21);ctx.lineWidth=1;ctx.strokeStyle='#c1c3ae';ctx.stroke();
+ // Road stripe is below the tire contact edge, never on a green hill line.
+ roadPath(12);ctx.lineWidth=2;ctx.strokeStyle='#e2bc70';ctx.setLineDash([28,23]);ctx.lineDashOffset=cam%51;ctx.stroke();ctx.setLineDash([]);
+ for(let wx=Math.floor(cam/34)*34;wx<cam+W+34;wx+=34){const x=wx-cam,y=hill(wx);const n=noise(wx);line(x,y+36,x+4+n*6,y+33,'#d6c18d',1);if(n>.4){rootTufts(x,y+40,5+n*4);}if(n>.75)line(x,y+8,x+16,y+10,'#303b3d',1);}
+ // Broken gravel edges and low-contrast strata avoid flat, ruler-straight terrain bands.
+ for(let wx=Math.floor(cam/47)*47;wx<cam+W+47;wx+=47){const x=wx-cam,y=hill(wx),n=noise(wx);for(let k=0;k<3;k++){const dx=noise(wx+k)*38,yy=y+31+noise(wx+k+9)*19;ellipse(x+dx,yy,1+n*2,.7+n,levelIndex?'#ab875b':'#a7aa7b');}ctx.globalAlpha=.13;line(x,y+61+n*25,x+17+n*21,y+64+n*25,levelIndex?'#ead0a0':'#bac19e',1);ctx.globalAlpha=1;}
+ // Sparse rounded stones sit on the shoulder; no repeated polygon boulders.
+ for(let wx=Math.floor(cam/143)*143;wx<cam+W+143;wx+=143){const n=noise(wx);if(n<.42)continue;const x=wx-cam+n*34,y=hill(wx)+37+n*10,w=4+n*8,h=2+n*3;ellipse(x+1,y+2,w+2,2,'#253c3438');const stone=ctx.createLinearGradient(x,y-h,x,y+h);stone.addColorStop(0,'#a7a38b');stone.addColorStop(.45,'#838875');stone.addColorStop(1,'#5f7063');ellipse(x,y,w,h,stone);ctx.globalAlpha=.3;ellipse(x-w*.25,y-h*.35,w*.5,h*.25,'#e1d4b1');ctx.globalAlpha=1;}
+
+ for(let wx=Math.floor(cam/180)*180;wx<cam+W+180;wx+=180){const x=wx-cam,y=hill(wx);if(z>=2||levelIndex===2||levelIndex===3){line(x,y-2,x,y-36,'#67736d',4);line(x,y-30,x+120,hill(wx+120)-30,'#adb7a3',7);line(x,y-32,x+120,hill(wx+120)-32,'#e6dcc2',2);}else{line(x,y-1,x,y-24,'#e4dfc6',4);line(x,y-21,x,y-14,'#ed9661',5);}}
+ if(levelIndex===0&&z===3){for(let wx=Math.floor(cam/1600)*1600;wx<cam+W+1600;wx+=1600){const x=wx-cam,y=hill(wx);if(x>-300&&x<W){round(x,y+29,280,14,1,'#8b8773');for(let k=0;k<4;k++)round(x+20+k*70,y+42,14,160,0,'#737e75');}}}
+ for(const r of ramps)drawRamp(r);
+ const fx=WORLD-cam;if(fx>-300&&fx<W+300){roadSign(fx,hill(WORLD),levelIndex===5?'GLACIER PASS CAMP':levelIndex===4?'MIDNIGHT PINES CAMP':levelIndex===3?'COPPER GORGE CAMP':levelIndex===2?'LIGHTHOUSE RV CAMP':levelIndex===1?'ARCHWAY RV PARK':'PINE LAKE CAMP','YOU MADE IT');for(let j=-1;j<=1;j+=2){line(fx+j*130,hill(WORLD),fx+j*130,hill(WORLD)-150,'#ddd3b0',7);}for(let i=0;i<12;i++)round(fx-130+i*22,hill(WORLD)-150,22,20,0,i%2?'#e6dcc0':'#263f42');}
+if(GAP_ROUTES[levelIndex].length)ctx.restore();
+}
+
+
+function paintGround(points,material,scroll,base,opacity){ctx.save();ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.clip();ctx.fillStyle=base;ctx.fillRect(0,0,W,H);const m=terrainMaterials[material];if(m.im.complete&&m.im.naturalWidth){if(!m.pattern)m.pattern=ctx.createPattern(m.im,'repeat');ctx.globalAlpha=opacity;ctx.translate(-(scroll%640),0);ctx.fillStyle=m.pattern;ctx.fillRect(-640,0,W+1280,H);ctx.translate(scroll%640,0);ctx.globalAlpha=1;}const shade=ctx.createLinearGradient(0,345,0,H);shade.addColorStop(0,'#f6d39110');shade.addColorStop(.45,'#1a302611');shade.addColorStop(1,'#132e3c55');ctx.fillStyle=shade;ctx.fillRect(0,0,W,H);ctx.restore();}
+
+function rootTufts(x,y,w){ellipse(x,y+1,w,3,'#334b343d');for(let k=0;k<9;k++){const dx=(noise(k+x)*2-1)*w;line(x+dx,y+2,x+dx-2,y-3-noise(k)*6,levelIndex?'#9c9867':'#80925c',1.4);}}
+// A wide building needs a level lot, not a single point on a curved hill.
+// Lots and houses share world coordinates; their height never follows the camera.
+function propertyLot(wx,width){const half=width*.57;let base=Infinity;for(let dx=-half;dx<=half;dx+=8)base=Math.min(base,hill(wx+dx));return {half,base:base-15};}
+function scenicSprite(name,x,ignoredY,width){if(GAP_ROUTES[levelIndex].some(g=>x+cam+width*.6>g.ramp-100&&x+cam-width*.6<g.end+300))return;const im=painted[name];if(x<-width||x>W+width||!im.complete||!im.naturalWidth)return;const wx=x+cam,{half,base}=propertyLot(wx,width),h=width*im.naturalHeight/im.naturalWidth;
+ const lot=ctx.createLinearGradient(0,base,0,base+65);lot.addColorStop(0,levelIndex?'#bd986e':'#8e8b69');lot.addColorStop(1,levelIndex?'#8c684b':'#536953');
+ const points=[[x-half,base+9],[x+half,base+9]];for(let dx=half;dx>=-half;dx-=8)points.push([x+dx,hill(wx+dx)+14]);path(points,lot);
+ // A compacted, level terrace supports the complete sprite footprint.
+ ellipse(x,base+10,width*.54,7,levelIndex?'#bb9a72':'#8c9270');line(x-half,base+11,x+half,base+11,levelIndex?'#dfc196':'#b3b497',2);
+ for(let k=0;k<17;k++){const dx=(noise(wx+k)*2-1)*half;ellipse(x+dx,base+11+noise(k+wx)*6,1.6,1,levelIndex?'#a4835d':'#6d775b');}
+ ellipse(x,base+6,width*.44,5,'#1a282751');ctx.drawImage(im,x-width/2,base+14-h,width,h);
+ // Hide the transparent/uneven lowest pixels behind a foreground planting strip.
+ rootTufts(x-width*.44,base+12,10);rootTufts(x+width*.44,base+12,11);
+}
+
+function drawRamp(r){const x=r.x-cam;if(x<-r.w-160||x>W+100)return;const surface=k=>hill(r.x+k)-r.h*k/r.w;
+ const body=ctx.createLinearGradient(0,surface(r.w),0,hill(r.x+r.w));body.addColorStop(0,'#a27b50');body.addColorStop(.4,'#725239');body.addColorStop(1,'#443a30');
+ const outline=[[x,hill(r.x)]];for(let k=0;k<=r.w;k+=8)outline.push([x+k,surface(k)]);outline.push([x+r.w,surface(r.w)],[x+r.w,hill(r.x+r.w)]);path(outline,body,'#443c32',2);
+ // Heavy uprights and diagonal braces with shaded edges and metal mounting plates.
+ for(let k=32;k<r.w;k+=44){const top=surface(k)+5,bottom=hill(r.x+k);line(x+k+2,top,x+k+2,bottom,'#453829',10);line(x+k-1,top,x+k-1,bottom,'#ae875a',5);const next=Math.min(r.w,k+44);line(x+k,top+3,x+next,hill(r.x+next)-3,'#b48c5c',5);line(x+k+1,top+5,x+next+1,hill(r.x+next)-2,'#5f4935',1);round(x+k-5,top,11,10,1,'#6d7167');ellipse(x+k,top+4,1.7,1.7,'#c5c3a8');}
+ // Individual weathered deck boards follow the collision surface exactly.
+ for(let k=0;k<r.w;k+=11){const next=Math.min(r.w,k+11),a=surface(k),b=surface(next),tone=noise(r.x+k);path([[x+k,a-3],[x+next,b-3],[x+next,b+4],[x+k,a+4]],tone>.5?'#c7a574':'#b28c5e','#75593c',.6);line(x+k+2,a,x+next-2,b,'#e0c795',.8);ellipse(x+k+4,a+2,.9,.9,'#4b4c43');}
+ for(let k=12;k<r.w;k+=20){const top=surface(k)+14,bottom=hill(r.x+k)-5;if(bottom>top){line(x+k,top,x+k+3,bottom,'#382f273d',1);}}
+ const sx=x-125,sy=hill(r.x-125);line(sx,sy,sx,sy-73,'#707d75',4);path([[sx-23,sy-61],[sx,sy-85],[sx+23,sy-61],[sx,sy-37]],'#edba55','#574b34',2);line(sx-16,sy-61,sx,sy-78,'#f6dd9a',1);ctx.fillStyle='#3e4235';ctx.font='bold 21px system-ui';ctx.textAlign='center';ctx.fillText('↗',sx,sy-53);
+}
+
+function wheel(x,y,r,spin=0){ctx.save();ctx.translate(x,y);ellipse(0,1,r,r,'#161f24');ellipse(-1,-1,r-2,r-2,'#2e383c');ctx.save();ctx.rotate(spin);for(let i=0;i<12;i++){ctx.rotate(Math.PI/6);line(-3,-r+2,3,-r+4,'#66716f',2);}ctx.restore();ellipse(0,0,r*.53,r*.53,'#81918e');ellipse(0,0,r*.35,r*.35,'#34474d');for(let i=0;i<5;i++){const a=spin+i*Math.PI*.4;ellipse(Math.cos(a)*r*.35,Math.sin(a)*r*.35,1.1,1.1,'#c5d2c8');}ellipse(0,0,2.5,2.5,'#d7d8c3');ctx.restore();}
+// Bake hazard contrast once at its gameplay size. Frames still draw one sprite;
+// the thin silhouette rim and glow never change collision boxes or cover the art.
+const hazardSprites=new Map(),HAZARD_PAD=9;
+function hazardSprite(name,art){return gorgeHazardSprite(name,art);}
+// Level-four variants are baked once; no pixel filters or outline loops in the frame path.
+function gorgeHazardSprite(name,art){const key='gorge:'+name;if(hazardSprites.has(key))return hazardSprites.get(key);const [w,h]=sizes[name],p=HAZARD_PAD;
+ const body=document.createElement('canvas');body.width=w;body.height=h;const b=body.getContext('2d',{willReadFrequently:true});b.drawImage(art,0,0,w,h);
+ const pixels=b.getImageData(0,0,w,h),v=pixels.data;for(let i=0;i<v.length;i+=4){if(!v[i+3])continue;let r=v[i],g=v[i+1],bl=v[i+2];
+ // Pull rusty orange car paint toward red so it separates from the autumn landscape.
+ if(name==='car'&&r>g*1.25&&g>bl*1.15){r=Math.min(255,r*1.15+12);g*=.65;bl*=.85;}
+ const l=.2126*r+.7152*g+.0722*bl,sat=['car','cones','barrier','cooler'].includes(name)?1.2:1.08;
+ v[i]=clamp((l+(r-l)*sat)*1.12+13,0,255);v[i+1]=clamp((l+(g-l)*sat)*1.12+13,0,255);v[i+2]=clamp((l+(bl-l)*sat)*1.12+15,0,255);}
+ b.putImageData(pixels,0,0);
+ const mask=document.createElement('canvas');mask.width=w+p*2;mask.height=h+p*2;const m=mask.getContext('2d');m.drawImage(body,p,p);m.globalCompositeOperation='source-in';m.fillStyle='#142b38';m.fillRect(0,0,mask.width,mask.height);
+ const sprite=document.createElement('canvas');sprite.width=mask.width;sprite.height=mask.height;const g=sprite.getContext('2d');
+ for(let i=0;i<20;i++){const a=i*Math.PI/10;g.drawImage(mask,Math.cos(a)*5,Math.sin(a)*5);}
+ m.fillStyle='#fff1bc';m.fillRect(0,0,mask.width,mask.height);for(let i=0;i<20;i++){const a=i*Math.PI/10;g.drawImage(mask,Math.cos(a)*3,Math.sin(a)*3);}
+ g.drawImage(body,p,p);hazardSprites.set(key,sprite);return sprite;
+}
+// A muted strip behind the driving line provides contrast without washing out the road or hazards.
+function gorgeRoadBackdrop(){for(let band=0;band<8;band++){const upper=-122+band*17,lower=upper+19,points=[];for(let x=-12;x<=W+12;x+=16)points.push([x,hill(x+cam)+upper]);for(let x=W+12;x>=-12;x-=16)points.push([x,hill(x+cam)+lower]);ctx.globalAlpha=.025+band*.027;path(points,'#9aaeb5');}ctx.globalAlpha=1;}
+function obstacle(o){if(o.hit||o.passed)return;const x=o.x-cam;if(x<-160||x>W+160)return;const y=ground(o.x);const art=painted[o.t];if(art&&art.complete&&art.naturalWidth){const [w,h]=sizes[o.t];ellipse(x,y+1,w*.52,4,'#1b292e44');const sprite=hazardSprite(o.t,art);ctx.drawImage(sprite,x-w/2-HAZARD_PAD,y-h-HAZARD_PAD);return;}ctx.save();ctx.translate(x,y);ellipse(0,2,sizes[o.t][0]*.6,5,'#192d3055');
+ switch(o.t){case 'car':{const g=ctx.createLinearGradient(0,-54,0,0);g.addColorStop(0,'#c37550');g.addColorStop(.55,'#904934');g.addColorStop(1,'#573c32');path([[-55,-12],[-51,-31],[-25,-35],[-14,-59],[20,-59],[38,-35],[55,-29],[57,-7],[-55,-7]],g,'#394447',2);path([[-21,-36],[-12,-54],[1,-54],[1,-36]],'#80b2bc','#324a52',2);path([[6,-54],[18,-54],[32,-36],[6,-36]],'#528e9e','#324a52',2);path([[8,-53],[15,-46],[9,-42],[19,-36]],null,'#dce8d9',1);path([[36,-35],[50,-51],[57,-30]],'#b4805d','#4c4b42',2);line(-50,-21,30,-21,'#d39a6a',2);round(-57,-18,8,6,1,'#ecd6a1');round(50,-19,7,5,1,Math.sin(clock*9)>0?'#ffd477':'#b36c39');wheel(-33,-8,13);ctx.save();ctx.scale(1,.6);wheel(35,-11,13);ctx.restore();line(-17,-29,-8,-29,'#e3bc8e',2);path([[71,-33],[58,-9],[84,-9]],'#e98d4d','#f4e6c4',2);path([[71,-25],[65,-14],[77,-14]],'#4c5857');break;}
+ case 'cart':line(-21,-18,26,-18,'#99b4ad',3);path([[-28,-53],[27,-53],[20,-25],[-19,-25]],'#789f9f33','#c6d0b8',3);for(let k=-18;k<24;k+=8)line(k,-50,k+3,-27,'#6f939a',1.5);line(-23,-42,23,-42,'#9bb9b1',2);line(-20,-33,21,-33,'#9bb9b1',2);line(28,-53,38,-65,'#b9c5b4',3);line(37,-65,46,-65,'#db8c4f',5);round(-14,-44,16,12,2,'#c8a16d');wheel(-15,-7,6);wheel(23,-7,6);break;
+ case 'tire':wheel(0,-23,23,clock*.4);break;
+ case 'barrier':line(-32,0,-26,-46,'#555b52',6);line(32,0,26,-46,'#555b52',6);round(-44,-43,88,27,2,'#ddd6ac','#595d4d');ctx.save();ctx.beginPath();ctx.rect(-43,-42,86,25);ctx.clip();for(let k=-65;k<60;k+=25)path([[k,-42],[k+12,-42],[k+30,-16],[k+18,-16]],'#d9753c');ctx.restore();for(const k of [-30,30]){round(k-6,-55,12,12,3,'#775c35');ellipse(k,-51,4,4,Math.sin(clock*8)>0?'#ffe780':'#d69d43');}break;
+ case 'cones':for(let i=-26;i<=26;i+=26){round(i-13,-5,26,5,2,'#633f29');path([[i,-35],[i-10,-5],[i+10,-5]],'#e78138','#9c5429',1);path([[i-5,-22],[i+5,-22],[i+7,-16],[i-7,-16]],'#f4e6c0');line(i,-32,i-7,-8,'#f4b15c',1);}break;
+ case 'branch':line(-57,-7,52,-18,'#635242',13);line(-22,-12,-39,-33,'#826a4b',6);line(11,-15,30,-37,'#8c7655',5);line(-55,-10,45,-21,'#b49862',2);ellipse(51,-18,5,7,'#c6ab76');path([[24,-37],[34,-45],[37,-33]],'#71815b');break;
+ case 'cooler':cooler(-29,-37,58,33);break;
+ default:round(-37,-31,35,29,2,'#ad8050','#554e3d');line(-35,-29,-5,-5,'#d9ac70',3);line(-4,-29,-35,-4,'#d9ac70',3);cooler(1,-29,35,23);round(-13,-48,33,17,2,'#6a7974','#c1c4aa');line(-7,-46,15,-46,'#d6d0b2',2);wheel(-31,-6,7);path([[19,-10],[39,-25],[48,-8]],'#7b8a83','#d3c8a1',2);
+ }ctx.restore();}
+function cooler(x,y,w,h){round(x,y,w,h,3,'#337b84','#274c57');round(x-2,y-3,w+4,8,3,'#e8dcc1','#7c9d99');line(x+w*.3,y+10,x+w*.7,y+10,'#d3d8c4',3);}
+function drawRV(){const x=R.x-cam,y=R.y;const shadowScale=clamp(1-(ground(R.x)-R.y-23)/250,.25,1);ellipse(x,ground(R.x)+5,91*shadowScale,7*shadowScale,'#1a2f3560');ctx.save();ctx.translate(x,y);ctx.rotate(R.angle);if(R.inv>0&&Math.floor(clock*18)%2===0)ctx.globalAlpha=.65;
+ // Axles and wheels stay independent from the sprung body art.
+ line(-50,2,65,2,'#172d36',7);wheel(-51,7,16,R.spin);wheel(68,7,16,R.spin);ctx.translate(0,R.spring);
+ if(rv.complete&&rv.naturalWidth)ctx.drawImage(rv,-112,-65,205,68);else{round(-100,-56,190,58,9,'#e6d6b6','#475957');round(45,-48,30,24,3,'#72a8b8');round(-80,-49,45,23,3,'#537b88');round(-100,-9,185,7,0,'#ce743b');}
+ if(R.boost>0){const g=ctx.createLinearGradient(-155,0,-96,0);g.addColorStop(0,'#61e9ff00');g.addColorStop(.65,'#5edbffcc');g.addColorStop(1,'#fff9c5');path([[-98,1],[-151-noise(clock)*15,5],[-103,11]],g);}
+ ctx.restore();}
+function effects(){for(const p of particles){const x=p.x-cam;if(x<-20||x>W+20)continue;ctx.globalAlpha=clamp(p.life/p.max,0,.7);ellipse(x,p.y,p.size*(1.5-p.life),p.size*(1.2-p.life*.5),p.color);}ctx.globalAlpha=1;for(const r of rings){ctx.strokeStyle='#b2f7ff';ctx.globalAlpha=r.life*2;ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(r.x-cam,r.y,25+(1-r.life/.32)*34,7+(1-r.life/.32)*9,0,0,Math.PI*2);ctx.stroke();}ctx.globalAlpha=1;if(R.vx>660){ctx.strokeStyle='#e8f9ee';ctx.globalAlpha=clamp((R.vx-650)/1200,0,.25);ctx.lineWidth=1;for(let i=0;i<8;i++){const x=(i*157-clock*R.vx*1.4)%1200+100,y=130+i*39;line(x,y,x+45,y,'#eef8eb',1);}ctx.globalAlpha=1;}}
+function draw(){const began=performance.now();ctx.save();if(shake>0)ctx.translate(Math.sin(clock*75)*shake,Math.cos(clock*91)*shake*.5);scenery();if(levelIndex!==3){gorgeRoadBackdrop();drawGapWarnings();}terrain();drawGorgeRewards();for(const o of obstacles)obstacle(o);effects();drawRV();ctx.restore();const vignette=ctx.createLinearGradient(0,0,0,H);vignette.addColorStop(0,'#0c263333');vignette.addColorStop(.2,'#00000000');vignette.addColorStop(.85,'#00000000');vignette.addColorStop(1,'#102b3b44');ctx.fillStyle=vignette;ctx.fillRect(0,0,W,H);if(R.gorgeRun.recovery>0&&mode==='running'){round(W/2-205,160,410,175,12,'#102b3bf0','#efb971');ctx.textAlign='center';ctx.fillStyle='#ffd38c';ctx.font='900 25px system-ui';ctx.fillText((levelIndex===4||(levelIndex===5&&R.lastGapSmall))?'ROAD GAP MISSED':'CANYON MISSED',W/2,199);ctx.fillStyle='#ffffff';ctx.font='900 62px system-ui';ctx.fillText(Math.ceil(R.gorgeRun.recovery),W/2,264);ctx.font='14px system-ui';ctx.fillText('Recovering on far bank · +2 seconds',W/2,303);}renderMs=performance.now()-began;}
+function frame(t){const elapsed=last?Math.min(.1,(t-last)/1000):0;last=t;metrics.frames++;if(elapsed>.025)metrics.slowFrames++;accum+=elapsed;let n=0;while(accum>=STEP&&n++<12){update(STEP);accum-=STEP;}hudClock+=elapsed;if(hudClock>.05){hudClock=0;updateHUD();}draw();requestAnimationFrame(frame);}
+function hold(id,k){const b=$(id);b.addEventListener('pointerdown',e=>{e.preventDefault();if(mode!=='running')return;b.setPointerCapture(e.pointerId);K[k]=true;b.classList.add('held');});for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,()=>{K[k]=false;b.classList.remove('held');});}
+ hold('gas','gas');hold('brake','brake');for(const [id,action]of [['jump',jump],['nitro',nitro]])$(id).addEventListener('pointerdown',e=>{e.preventDefault();action();});
+ $('start').onclick=()=>{if(mode==='paused')pause();else start();};$('pause').onclick=pause;$('restart').onclick=()=>{release();reset();start();};
+ addEventListener('keydown',e=>{const k=e.key.toLowerCase();if(['arrowright','arrowleft',' ','shift','p'].includes(k))e.preventDefault();if(mode==='ready'&&(k==='enter'||k===' ')){start();return;}if(k==='p'&&!e.repeat){pause();return;}if(mode!=='running')return;if(k==='d'||k==='arrowright')K.gas=true;if(k==='a'||k==='arrowleft')K.brake=true;if(!e.repeat&&k===' ')jump();if(!e.repeat&&k==='shift')nitro();});
+ addEventListener('keyup',e=>{const k=e.key.toLowerCase();if(k==='d'||k==='arrowright')K.gas=false;if(k==='a'||k==='arrowleft')K.brake=false;});addEventListener('blur',()=>{release();if(mode==='running')pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden){release();if(mode==='running')pause();}last=0;accum=0;});
+
+// Level definitions share vehicle physics and renderer helpers; each owns its route and scenery.
+const alpineRoute={ramps:ramps.map(r=>({...r})),layout:layout.map(o=>[...o]),zones:[...ZONES]};
+const coastalRoute={
+ zones:['WINDSWEPT BLUFFS','HARBOR VILLAGE','SEA CLIFFS','COASTAL CAUSEWAY','LIGHTHOUSE CAMP'],
+ ramps:[{x:6200,w:240,h:65},{x:13900,w:240,h:75},{x:21700,w:260,h:85},{x:30100,w:250,h:75},{x:36500,w:300,h:100}],
+ layout:[['branch',1800],['cooler',2750],['cones',3450],['car',7000],['tire',7600],['cart',11200],['barrier',11900],['car',12700],['branch',18400],['junk',19000],['tire',19700],['car',26000],['barrier',26800],['cooler',27700],['branch',34000],['junk',35000],['cones',37400]]
+};
+const gorgeRoute={zones:['AUTUMN HIGHWAY','RIVER OVERLOOK','COPPER CLIFFS','RANGER STATION','GORGE CAMPGROUND'],ramps:[{x:4460,w:240,h:90},{x:12500,w:230,h:65},{x:21100,w:240,h:75},{x:29200,w:250,h:80},{x:36500,w:290,h:95}],layout:[['branch',1500],['cooler',2500],['cones',11200],['cart',11900],['car',10400],['junk',13700],['tire',14500],['barrier',19200],['car',22200],['cooler',23000],['junk',28300],['cones',28800],['tire',30300],['branch',32400],['cart',33700],['junk',35000],['cooler',37400]]};
+const nightRoute={zones:['MOONRISE TRAIL','SILVER LAKE','LOGGING ROAD','BROKEN ROAD','LANTERN CAMPGROUND'],ramps:[{x:5100,w:220,h:60},{x:12600,w:230,h:70},{x:29100,w:245,h:72},{x:36500,w:290,h:95}],layout:[['cooler',1750],['branch',2750],['cart',3600],['tire',5900],['car',6800],['cones',11900],['junk',13400],['cooler',14200],['barrier',18800],['car',22600],['tire',23500],['junk',28400],['cones',30200],['branch',32200],['cart',33800],['cooler',35100],['junk',37400]]};
+const glacierRoute={zones:['SNOWLINE HIGHWAY','FROZEN LAKE','PINE RIDGE','GLACIER RAVINE','SUNRISE BASECAMP'],ramps:[{x:6000,w:240,h:90},{x:12600,w:235,h:68},{x:22200,w:240,h:90},{x:29200,w:240,h:72},{x:36500,w:290,h:100}],layout:[['cones',1600],['tire',2700],['car',3900],['cooler',11700],['junk',13800],['cart',19000],['barrier',20500],['car',28200],['tire',30400],['branch',32200],['cooler',33500],['cart',34800],['junk',37400]]};
+let levelIndex=0;
+function selectLevel(index){release();index=clamp(Math.trunc(Number(index)||0),0,5);levelIndex=index;$('levelSelect').value=String(index);
+ if(index===0){ramps=alpineRoute.ramps;layout=alpineRoute.layout;ZONES=alpineRoute.zones;vista.src='assets/alpine-vista.webp';}
+ else if(index===1){ramps=[{x:5400,w:250,h:65},{x:13100,w:240,h:72},{x:21600,w:260,h:82},{x:28900,w:240,h:75},{x:36500,w:300,h:95}];layout=[['tire',1600],['cones',2450],['junk',3350],['car',6300],['barrier',7000],['cart',9900],['tire',10700],['junk',11600],['car',14000],['cones',14900],['branch',17700],['tire',18400],['barrier',19700],['junk',22600],['car',23400],['cones',26000],['cart',27000],['tire',28000],['car',30000],['barrier',31000],['junk',33700],['tire',34500],['cones',35300],['cooler',37400]];ZONES=['MESA COUNTRY','ROADSIDE DINER','PAINTED CANYON','ARCHWAY HIGHWAY','SUNSET CAMP'];vista.src='assets/red-rock-vista.webp';}
+ else if(index===2){ramps=coastalRoute.ramps;layout=coastalRoute.layout;ZONES=coastalRoute.zones;vista.src='assets/coastal-vista.webp';}
+ else if(index===5){ramps=glacierRoute.ramps;layout=glacierRoute.layout;ZONES=glacierRoute.zones;vista.src='assets/glacier-vista.webp';}
+ else if(index===4){ramps=nightRoute.ramps;layout=nightRoute.layout;ZONES=nightRoute.zones;vista.src='assets/midnight-vista.webp';}
+ else{ramps=gorgeRoute.ramps;layout=gorgeRoute.layout;ZONES=gorgeRoute.zones;vista.src='assets/gorge-vista.webp';}
+ if(index!==3){ramps=ramps.map(r=>({...r}));for(const gap of GAP_ROUTES[index]){if(gap.small)continue;const ramp=ramps.find(r=>Math.abs(r.x-gap.ramp)<100);if(ramp)Object.assign(ramp,{x:gap.ramp,w:240,h:90});}
+ layout=layout.filter(([,x])=>!speedLanes().some(l=>x>l.start-180&&x<l.end+250)&&!GAP_ROUTES[index].some(g=>x>g.ramp-700&&x<g.end+500)).map(o=>[...o]);}
+ const title=['Alpine Run','Red Rock Rally','Sunset Coast','Copper Gorge','Midnight Pines','Glacier Pass'][index],intro=[['PACK LIGHT.','DRIVE WILD.','Rolling hills, clear speed lanes and finish medals. No major gaps on this route.'],['RED ROCK.','FULL THROTTLE.','One canyon leap. Double jump or nitro to clear it. A miss costs a two-second recovery stop.'],['CHASE THE SUN.','RIDE THE COAST.','Two sea-cliff gaps. Double jump or nitro across each. Misses cost a two-second recovery stop.'],['GOLDEN HILLS.','ONE BIG LEAP.','Hold gas through the green speed lanes. Double jump or boost across the canyon. Miss the gap: a two-second recovery stop.'],['MOONLIT MILES.','KEEP IT ROLLING.','Three breaks in the forest road. Jump across each; misses cost a two-second recovery stop.'],['FROZEN PEAKS.','FULL MOMENTUM.','Two big leaps, two broken-road gaps and three small ramps. Jump the road gaps; double jump or nitro for the big leaps. Misses cost two seconds.']][index];
+ reset();$('overlay').hidden=false;$('overlay').querySelector('small').textContent=`LEVEL 0${index+1} / ${title.toUpperCase()}`;$('overlay').querySelector('h1').innerHTML=intro[0]+'<br><em>'+intro[1]+'</em>';$('overlay').querySelector('p').textContent=intro[2];$('start').innerHTML='HIT THE ROAD <span>➜</span>';$('routeTitle').textContent=title.toUpperCase()+' / 3.8 KM';$('edition').textContent='CANVAS 2D · '+['ALPINE','RED ROCK','SUNSET COAST','COPPER GORGE','MIDNIGHT PINES','GLACIER PASS'][index]+' EDITION';document.title='RV Road Trip Mayhem · '+title;$('msg').textContent='Build speed. Read the road. Keep your momentum.';}
+$('levelSelect').addEventListener('change',e=>selectLevel(Number(e.target.value)));
+function cactus(x,y,h){if(layout.some(([t,hx])=>Math.abs(hx-x-cam)<sizes[t][0]/2+100))return;const a=painted.cactus;if(a.complete&&a.naturalWidth){const w=h*a.naturalWidth/a.naturalHeight;ctx.drawImage(a,x-w/2,y-h,w,h);return;}ctx.save();ctx.translate(x,y);ctx.lineCap='round';const shade=ctx.createLinearGradient(-h*.15,0,h*.15,0);shade.addColorStop(0,'#9baf70');shade.addColorStop(.4,'#678550');shade.addColorStop(1,'#405c41');line(0,0,0,-h,shade,h*.14);for(const d of [-1,1]){const a=h*(d<0?.55:.7);ctx.beginPath();ctx.moveTo(0,-a);ctx.bezierCurveTo(d*h*.3,-a,d*h*.29,-a,d*h*.29,-a-h*.2);ctx.strokeStyle=shade;ctx.lineWidth=h*.10;ctx.stroke();}line(-h*.025,-8,-h*.025,-h+5,'#c0bd813b',1);ctx.restore();}
+function desertScenery(){ctx.fillStyle='#e4bd83';ctx.fillRect(0,0,W,H);if(vista.complete&&vista.naturalWidth){const dw=1660;const tile=Math.floor(cam*.045/dw);for(let i=-1;i<2;i++){const parity=((tile+i)%2+2)%2;ctx.save();ctx.translate(i*dw-(cam*.045%dw)+parity*dw,-28);if(parity)ctx.scale(-1,1);ctx.drawImage(vista,0,0,dw,554);ctx.restore();}}
+ // Independently moving sand bank, sagebrush, cacti and roadside buildings.
+ const points=[[0,H]];for(let x=-20;x<=W+20;x+=20)points.push([x,428+Math.sin((x+cam*.2)/250)*10]);points.push([W,H]);paintGround(points,'desert',cam*.2,'#b78d61',.65);
+ for(let i=Math.floor(cam*.48/210)-1;i<Math.floor(cam*.48/210)+7;i++){const wx=i*210,x=wx-cam*.48,y=hill(wx+cam*.52)+12;if(noise(i)>.35)cactus(x,y,45+noise(i+7)*60);else{for(let k=0;k<7;k++){const a=k*.5;line(x,y,x+Math.cos(a)*18,y-Math.sin(a)*12,'#8a9060',2);}}}
+ const z=Math.min(4,Math.floor(R.x/7600));if(z===1){const x=10400-cam;scenicSprite('diner',x,hill(10400)+3,270);}
+ for(let zt=0;zt<5;zt++){const wx=zt*7600+550,x=wx-cam;if(x>-200&&x<W+200)roadSign(x,hill(wx),ZONES[zt],zt===4?'RV PARK  ↗':'RED ROCK ROUTE  08');}}
+
+// Dusk ocean, surf, rooted vegetation and grounded buildings scroll independently.
+// Level five: painted far vista, independently scrolling trees, thin mist and warm camp lights.
+function glacierScenery(){ctx.fillStyle='#98c8e3';ctx.fillRect(0,0,W,H);if(vista.complete&&vista.naturalWidth)ctx.drawImage(vista,-Math.min(cam*.017,660),-28,1660,554);
+ const bankY=x=>420+Math.sin(x/280)*9,bank=[[0,H]];for(let x=-20;x<=W+20;x+=20)bank.push([x,bankY(x+cam*.2)]);bank.push([W,H]);
+ ctx.globalAlpha=.65;for(let i=Math.floor(cam*.2/180)-1;i<Math.floor(cam*.2/180)+8;i++){const wx=i*180+noise(i)*30;pine(wx-cam*.2,bankY(wx)+7,.3+noise(i)*.15,2);}ctx.globalAlpha=1;paintGround(bank,'alpine',cam*.2,'#c6dce5',.12);
+ for(let wx=Math.floor(cam/320)*320;wx<cam+W+320;wx+=320){if(gorgeSpeedLane(wx)||GAP_ROUTES[5].some(g=>wx>g.ramp-700&&wx<g.end+450))continue;const x=wx-cam,y=hill(wx)+6;pine(x,y,.5+noise(wx)*.2,2);}
+ for(const [wx,name,w]of [[1050,'lodge',190],[12300,'garage',190],[28400,'lodge',210],[34600,'camp',200],[37300,'lodge',220]])scenicSprite(name,wx-cam,0,w);
+ for(let z=0;z<5;z++){const wx=z*7600+550,x=wx-cam;if(x>-200&&x<W+200)roadSign(x,hill(wx),ZONES[z],z===4?'BASECAMP AHEAD':'MOUNTAIN ROUTE  12');}
+ // Sparse snow drifts in the sky; none falls over the driving line.
+ ctx.globalAlpha=.55;for(let i=0;i<18;i++){const x=(i*173-clock*17-cam*.12+20000)%1100-50,y=120+(i*37+clock*14)%160;ellipse(x,y,1.2,1.2,'#f6fcff');}ctx.globalAlpha=1;
+}
+function nightScenery(){ctx.fillStyle='#142b43';ctx.fillRect(0,0,W,H);if(vista.complete&&vista.naturalWidth)ctx.drawImage(vista,-Math.min(cam*.017,660),-28,1660,554);
+ const bankY=x=>422+Math.sin(x/260)*10,bank=[[0,H]];for(let x=-20;x<=W+20;x+=20)bank.push([x,bankY(x+cam*.22)]);bank.push([W,H]);
+ ctx.globalAlpha=.65;for(let i=Math.floor(cam*.22/150)-1;i<Math.floor(cam*.22/150)+9;i++){const wx=i*150+noise(i)*35;pine(wx-cam*.22,bankY(wx)+8,.28+noise(i)*.18,i%4);}ctx.globalAlpha=1;paintGround(bank,'alpine',cam*.22,'#344c52',.18);
+ for(let wx=Math.floor(cam/310)*310;wx<cam+W+310;wx+=310){if(gorgeSpeedLane(wx)||GAP_ROUTES[4].some(g=>wx>g.ramp-700&&wx<g.end+500))continue;const x=wx-cam;ctx.globalAlpha=.72;pine(x,hill(wx)+6,.46+noise(wx)*.18,2);ctx.globalAlpha=1;}
+ for(const [wx,name,w]of [[1100,'camp',190],[12300,'garage',190],[28000,'lodge',200],[34300,'camp',210],[37200,'camp',225]]){scenicSprite(name,wx-cam,0,w);if(Math.abs(wx-cam)<W+200){ctx.globalAlpha=.35;ellipse(wx-cam,hill(wx)-22,13,7,'#ffd37d');ctx.globalAlpha=1;}}
+ for(let i=0;i<3;i++){const y=292+i*45,g=ctx.createLinearGradient(0,y-15,0,y+25);g.addColorStop(0,'#9bc9d400');g.addColorStop(.5,'#9bc9d419');g.addColorStop(1,'#9bc9d400');ctx.fillStyle=g;ctx.fillRect(0,y-15,W,40);}
+ for(let z=0;z<5;z++){const wx=z*7600+550,x=wx-cam;if(x>-200&&x<W+200)roadSign(x,hill(wx),ZONES[z],z===4?'CAMP LIGHTS AHEAD':'FOREST ROUTE  11');}
+}
+function coastalScenery(){const z=Math.min(4,Math.floor(R.x/7600));const sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#7e8da0');sky.addColorStop(1,'#efb184');ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
+ // A single bounded pan avoids mirrored suns and duplicated coastal landmarks.
+ if(vista.complete&&vista.naturalWidth)ctx.drawImage(vista,-Math.min(cam*.017,660),-28,1660,554);
+ // Low contrast wavelets on the distant ocean, never across the driving line.
+ ctx.globalAlpha=.18;for(let i=0;i<14;i++){const x=(i*137-cam*.11+20000)%1200-100,y=318+(i%6)*12;line(x,y,x+35+noise(i)*45,y,'#e9d9c2',1);}ctx.globalAlpha=1;
+ const bankY=x=>423+Math.sin(x/235)*9+Math.sin(x/83)*4,bank=[[0,H]];for(let x=-20;x<=W+20;x+=20)bank.push([x,bankY(x+cam*.24)]);bank.push([W,H]);
+ // Mid-distance stands sit in the bank and have the identical parallax factor.
+ for(let i=Math.floor(cam*.24/190)-1;i<Math.floor(cam*.24/190)+7;i++){if(noise(i)<.5||z===3)continue;const wx=i*190+noise(i)*40;pine(wx-cam*.24,bankY(wx)+7,.2+noise(i)*.14,i%4);}
+ paintGround(bank,'alpine',cam*.24,'#536c68',.32);
+ // Landmark foundations use the same full-footprint lots as the repaired houses.
+ for(const [wx,name,width] of [[1050,'harbor',190],[2400,'lighthouse',235],[8600,'harbor',210],[10500,'harbor',230],[12600,'harbor',195],[17300,'lighthouse',245],[31300,'harbor',200],[35200,'camp',205],[37500,'lighthouse',270]])scenicSprite(name,wx-cam,0,width);
+ for(let wx=Math.floor(cam/270)*270;wx<cam+W+270;wx+=270){const x=wx-cam,y=hill(wx)+6;if(noise(wx)>.48&&z!==3){pine(x,y,.25+noise(wx+7)*.25,2);rootTufts(x,y,16);}else rootTufts(x,y,14);}
+ for(let zt=0;zt<5;zt++){const wx=zt*7600+550,x=wx-cam;if(x>-200&&x<W+200)roadSign(x,hill(wx),ZONES[zt],zt===4?'LIGHTHOUSE CAMP  ↗':'COAST HIGHWAY  09');}
+ // Occasional small gull silhouettes add motion without covering road hazards.
+ ctx.globalAlpha=.6;for(let i=0;i<3;i++){const x=(i*421-cam*.075+12000)%1200-100,y=175+i*32+Math.sin(clock*1.4+i)*5;line(x-6,y,x,y+Math.sin(clock*3+i)*3,'#3e555f',1.3);line(x,y+Math.sin(clock*3+i)*3,x+6,y,'#3e555f',1.3);}ctx.globalAlpha=1;
+}
+
+// A missed canyon stops the RV on the far bank; the two-second wait counts toward medal time.
+function advanceGap(){gapIndex++;if(hasGap()){GORGE=GAP_ROUTES[levelIndex][gapIndex];R.canyonDone=false;R.canyonBriefed=false;}}
+function drawGapWarnings(){for(const gap of GAP_ROUTES[levelIndex])for(const wx of [gap.ramp-710,gap.ramp-260]){const x=wx-cam;if(x>-200&&x<W+200)roadSign(x,hill(wx),gap.small?'BROKEN ROAD':'GAP AHEAD',gap.small?'JUMP THE GAP':'DOUBLE JUMP / NITRO');}}
+function recoverGorge(){R.lastGapSmall=!!GORGE.small;R.x=GORGE.end+160;R.y=hill(R.x)-23;R.vy=0;R.vx=0;R.boost=0;R.on=true;R.jumps=0;R.buffer=0;R.coyote=.12;R.air=0;R.angle=Math.atan(roadSlope(R.x));R.spring=0;R.springV=0;R.inv=0;R.canyonDone=true;R.gorgeRun.recovery=2;cam=Math.max(0,R.x-305);metrics.canyonRecoveries++;advanceGap();shake=0;particles.length=0;rings.length=0;callT=0;$('call').classList.remove('show');$('msg').textContent='Canyon missed. Two-second recovery penalty — no canyon-clear credit.';}
+
+function autumnTree(x,y,h){if(autumnArt.complete&&autumnArt.naturalWidth){const w=h*autumnArt.naturalWidth/autumnArt.naturalHeight;ctx.drawImage(autumnArt,x-w/2,y-h,w,h);}else pine(x,y,h/230);}
+function gorgeScenery(){ctx.fillStyle='#8ec0ca';ctx.fillRect(0,0,W,H);if(vista.complete&&vista.naturalWidth)ctx.drawImage(vista,-Math.min(cam*.017,660),-28,1660,554);
+ const bankY=x=>416+Math.sin(x/240)*12+Math.sin(x/81)*4,bank=[[0,H]];for(let x=-20;x<=W+20;x+=20)bank.push([x,bankY(x+cam*.22)]);bank.push([W,H]);
+ ctx.save();ctx.beginPath();ctx.rect(-10,-100,Math.max(0,GORGE.start-cam+10),H+200);ctx.rect(Math.max(-10,GORGE.end-cam),-100,W+20,H+200);ctx.clip();
+ for(let i=Math.floor(cam*.22/220)-1;i<Math.floor(cam*.22/220)+7;i++){const wx=i*220+noise(i)*40;autumnTree(wx-cam*.22,bankY(wx)+8,62+noise(i)*35);}
+ paintGround(bank,'alpine',cam*.22,'#86794f',.35);
+ for(let wx=Math.floor(cam/300)*300;wx<cam+W+300;wx+=300){if((wx>GORGE.ramp-260&&wx<GORGE.end+350)||gorgeSpeedLane(wx))continue;const x=wx-cam,y=hill(wx)+6;if(layout.some(([type,hx])=>Math.abs(hx-wx)<sizes[type][0]/2+100))continue;ctx.globalAlpha=.65;if(noise(wx)>.4)autumnTree(x,y,100+noise(wx+7)*55);else pine(x,y,.35);rootTufts(x,y,18);ctx.globalAlpha=1;}
+ for(const [wx,name,width]of [[900,'lodge',185],[9800,'lodge',205],[24800,'garage',215],[31400,'lodge',205],[35200,'camp',210]])scenicSprite(name,wx-cam,0,width);
+ gorgeRoadBackdrop();
+ for(let zt=0;zt<5;zt++){const wx=zt*7600+550,x=wx-cam;if(x>-200&&x<W+200)roadSign(x,hill(wx),ZONES[zt],zt===4?'RANGER CAMP  ↗':'COPPER ROUTE  10');}
+ ctx.restore();
+ for(const wx of [3750,4200]){const x=wx-cam;if(x>-200&&x<W+200)roadSign(x,hill(wx),'CANYON AHEAD','DOUBLE JUMP / NITRO');}
+ // Sparse windblown leaves stay above the road and out of the jump silhouette.
+ ctx.globalAlpha=.55;for(let i=0;i<7;i++){const x=(i*173-cam*.6+clock*12+20000)%1150-70,y=190+i*18+Math.sin(clock+i)*8;ellipse(x,y,2.5,1.2,i%2?'#e8b155':'#ad7040');}ctx.globalAlpha=1;
+}
+function drawGorge(){drawGap(GORGE);}
+function drawGap(gap){const left=gap.start-cam,right=gap.end-cam;if(right<-100||left>W+100)return;
+ if(levelIndex!==3){ctx.save();ctx.beginPath();ctx.rect(left,0,right-left,H);ctx.clip();ctx.fillStyle='#264c60';ctx.fillRect(left,0,right-left,H);if(vista.complete&&vista.naturalWidth){if(levelIndex===1){const dw=1660,tile=Math.floor(cam*.045/dw);for(let i=-1;i<2;i++){const parity=((tile+i)%2+2)%2;ctx.save();ctx.translate(i*dw-(cam*.045%dw)+parity*dw,-28);if(parity)ctx.scale(-1,1);ctx.drawImage(vista,0,0,dw,554);ctx.restore();}}else ctx.drawImage(vista,-Math.min(cam*.017,660),-28,1660,554);}ctx.restore();}const y=hill(gap.start),depth=ctx.createLinearGradient(0,y,0,H);depth.addColorStop(0,'#324f5a18');depth.addColorStop(.5,'#3b59632b');depth.addColorStop(1,'#193c5060');path([[left,y+15],[right,y+15],[right,H],[left,H]],depth);
+ // Jagged vertical rock faces frame an open chasm; road painting is clipped out.
+ paintGround([[left-38,y-3],[left+7,y+6],[left-7,y+51],[left+16,y+100],[left+4,H],[left-80,H]],'desert',cam,'#8c7963',.6);
+ paintGround([[right+38,y-3],[right-7,y+6],[right+8,y+55],[right-15,y+102],[right-4,H],[right+80,H]],'desert',cam,'#b09a74',.7);
+ for(let i=0;i<6;i++){const yy=y+32+i*24;line(left-25,yy,left+5,yy+5,'#334c5155',2);line(right-5,yy,right+30,yy+5,'#544e4255',2);}
+ ctx.save();ctx.beginPath();ctx.rect(left+16,H-29,Math.max(0,right-left-32),29);ctx.clip();ctx.fillStyle='#427e8d44';ctx.fillRect(left,H-26,right-left,26);for(let i=0;i<9;i++){const xx=left+i*166-(clock*36%166);line(xx,H-14,xx+65,H-14,'#a1c3bb66',2);}ctx.restore();
+ for(const edge of [left,right]){line(edge,y,edge,y-40,'#e3ba69',5);line(edge-6,y-34,edge+6,y-23,'#564b38',4);}
+}
+
+function updateGorgeRewards(dt){const lane=gorgeSpeedLane(R.x),run=R.gorgeRun;if(lane){if(!run.speedSeen.includes(lane.start)){run.speedSeen.push(lane.start);popup('OPEN ROAD · BUILD SPEED');$('msg').textContent='Green chevrons mark a clear speed lane. Hold gas to accelerate; brake still works.';}if(K.gas&&R.vx>760)run.speedSeconds+=dt;}
+
+}
+function gorgeMedal(time,condition,cleared){return time<=60&&condition>=60&&cleared?'GOLD':time<=75&&condition>=30?'SILVER':'BRONZE';}
+function finishGorgeRun(){const run=R.gorgeRun;run.medal=gorgeMedal(R.time,R.health,metrics.canyonClears===GAP_ROUTES[levelIndex].length);const target=run.medal==='GOLD'?'Gold run!':run.medal==='SILVER'?'Gold: finish within 60s, with 60% condition, and clear every major gap.':'Silver: finish within 75s with 30% condition.';showOverlay(run.medal+' MEDAL!',`${R.time.toFixed(1)}s · ${Math.round(R.health)}% condition · ${R.cleared} hazard${R.cleared===1?'':'s'} cleared. ${target}`,levelIndex<5?'NEXT LEVEL':'REPLAY GLACIER PASS');$('msg').textContent='Finish medal earned. Replay for a cleaner, faster run.';}
+function drawGorgeRewards(){
+ // Painted road chevrons and entry/exit signs make the speed sections readable.
+ for(const lane of speedLanes()){if(lane.end<cam||lane.start>cam+W)continue;for(let wx=Math.max(lane.start,Math.floor(cam/130)*130);wx<Math.min(lane.end,cam+W+130);wx+=130){const x=wx-cam,y=hill(wx)+12;line(x-7,y-4,x+1,y,'#8ad9ba',2);line(x+1,y,x-7,y+4,'#8ad9ba',2);}for(const [wx,title,sub]of [[lane.start+(lane.start===23400?450:levelIndex!==3&&lane.start===8000?550:0),'OPEN ROAD','HOLD GAS / SPEED LANE'],[lane.end-600,'HAZARDS AHEAD','READ THE ROAD']]){const x=wx-cam;if(x>-200&&x<W+200)roadSign(x,hill(wx),title,sub);}}
+ if(mode==='finished'&&R.gorgeRun.medal){const name=R.gorgeRun.medal,color={GOLD:'#eec46c',SILVER:'#c6d7db',BRONZE:'#bd855b'}[name],x=810,y=245;path([[x-48,y+25],[x-25,y+105],[x,y+75],[x+25,y+105],[x+48,y+25]],'#277e8a','#9bd2c3',2);ellipse(x+3,y+5,67,67,'#0b243b66');const metal=ctx.createLinearGradient(x-60,y-60,x+60,y+60);metal.addColorStop(0,'#fff3cd');metal.addColorStop(.4,color);metal.addColorStop(1,'#6c553e');ellipse(x,y,65,65,metal);ellipse(x,y,55,55,'#33474e');ellipse(x,y,51,51,color);const star=[];for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=i%2?16:35;star.push([x+Math.cos(a)*r,y+Math.sin(a)*r]);}path(star,'#fff4cc','#806e50',2);ctx.textAlign='center';ctx.font='900 15px system-ui';ctx.fillStyle='#ffedbc';ctx.fillText(name+' MEDAL',x,y+135);}
+}
+
+ // Read-only QA snapshot; no state injection or alternate physics path.
+ Object.defineProperty(window,'rvGameDebug',{get:()=>({mode,zone:ZONES[Math.min(4,Math.floor(R.x/7600))],x:Math.round(R.x),y:Math.round(R.y),speed:Math.round(R.vx),grounded:R.on,jumpsUsed:R.jumps,health:R.health,nitro:Math.round(R.nitro),cleared:R.cleared,time:+R.time.toFixed(2),particles:particles.length,assets:{rv:rv.complete&&!!rv.naturalWidth,vista:vista.complete&&!!vista.naturalWidth},metrics:{...metrics},gorgeRun:{...R.gorgeRun}})});
+ selectLevel(({alpine:0,'red-rock':1,coast:2,gorge:3,midnight:4,glacier:5})[new URLSearchParams(location.search).get('level')]??0);requestAnimationFrame(frame);
+})();
