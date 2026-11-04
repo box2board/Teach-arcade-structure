@@ -75,7 +75,7 @@ function jump(){if(!state.running||state.paused||state.jumpHeight>0||state.vy>0)
 function showDust(x,y){for(let i=0;i<5;i++)dust.push({x:x+(Math.random()-.5)*22,y:y-5,vx:(Math.random()-.5)*45,vy:-20-Math.random()*35,life:.45,size:3+Math.random()*4})}
 function collide(){
   const px=state.x+25;
-  for(const hazard of hazards){if(hazard.hit)continue;const d=hazard.def;if(px+47<hazard.x+18||px+8>hazard.x+d.w-14)continue;if(state.jumpHeight<Math.max(38,d.h*.42))continue;
+  for(const hazard of hazards){if(hazard.hit)continue;const d=hazard.def;if(px+47<hazard.x+18||px+8>hazard.x+d.w-14)continue;if(state.jumpHeight>=Math.max(38,d.h*.42))continue;
     hazard.hit=true;state.stamina=Math.max(0,state.stamina-d.damage);state.streak=0;state.hitUntil=performance.now()+280;showToast('Obstacle hit — stamina lost');showDust(state.x,GROUND);updateHud();
     if(state.stamina<=0){state.running=false;state.paused=true;showToast('Run ended')};break;
   }
