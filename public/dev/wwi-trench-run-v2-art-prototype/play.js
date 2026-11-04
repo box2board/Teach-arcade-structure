@@ -68,14 +68,14 @@ function movePlayer(dt){
   if((state.x<=50&&state.vx<0)||(state.x>=FINISH&&state.vx>0))state.vx=0;
   state.x=Math.max(50,Math.min(FINISH,state.x));
   state.visualX+=(state.x-state.visualX)*(1-Math.exp(-dt*15));
-  if(state.vy||state.jumpHeight>0){state.jumpHeight+=state.vy*dt;state.vy-=1500*dt;if(state.jumpHeight<=0){state.jumpHeight=0;state.vy=0;showDust(state.x,GROUND)}}
+  if(state.vy||state.jumpHeight>0){state.jumpHeight+=state.vy*dt;state.vy-=1250*dt;if(state.jumpHeight<=0){state.jumpHeight=0;state.vy=0;showDust(state.x,GROUND)}}
   const cameraTarget=Math.max(0,Math.min(FINISH-W+250,state.x-245));state.camera+=(cameraTarget-state.camera)*(1-Math.exp(-dt*7));state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);
 }
-function jump(){if(!state.running||state.paused||state.jumpHeight>0||state.vy>0)return;state.vy=710;showDust(state.x,GROUND)}
+function jump(){if(!state.running||state.paused||state.jumpHeight>0||state.vy>0)return;state.vy=680;showDust(state.x,GROUND)}
 function showDust(x,y){for(let i=0;i<5;i++)dust.push({x:x+(Math.random()-.5)*22,y:y-5,vx:(Math.random()-.5)*45,vy:-20-Math.random()*35,life:.45,size:3+Math.random()*4})}
 function collide(){
   const px=state.x+25;
-  for(const hazard of hazards){if(hazard.hit)continue;const d=hazard.def;if(px+47<hazard.x+18||px+8>hazard.x+d.w-14)continue;if(state.jumpHeight<Math.max(58,d.h*.72))continue;
+  for(const hazard of hazards){if(hazard.hit)continue;const d=hazard.def;if(px+47<hazard.x+18||px+8>hazard.x+d.w-14)continue;if(state.jumpHeight<Math.max(38,d.h*.42))continue;
     hazard.hit=true;state.stamina=Math.max(0,state.stamina-d.damage);state.streak=0;state.hitUntil=performance.now()+280;showToast('Obstacle hit — stamina lost');showDust(state.x,GROUND);updateHud();
     if(state.stamina<=0){state.running=false;state.paused=true;showToast('Run ended')};break;
   }
