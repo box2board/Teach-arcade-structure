@@ -1,0 +1,45 @@
+export const TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),angleDiff=(a,b)=>Math.atan2(Math.sin(a-b),Math.cos(a-b));
+export function createGame(id,random=Math.random){
+ let s;const rand=(a,b)=>a+random()*(b-a),fx=(x,y,text)=>s.effects.push({x,y,text,age:0});
+ function ticket(gold=false,x=null,y=null,value=gold?20:10){if(x===null){const a=rand(0,TAU),r=rand(108,212);x=300+Math.cos(a)*r;y=315+Math.sin(a)*r;}return {x,y,gold,value,lock:.3};}
+ function pad(n){const previous=s.pads.at(-1);const y=previous?previous.y-115:-20;const base=previous?clamp(previous.base+rand(-125,125),115,485):300;return {n,base,x:base,y,r:n%4===0?34:46,flower:n%4===0,phase:rand(0,TAU),amp:Math.min(36,8+n),used:false,sink:0};}
+ function target(){s.target=rand(0,TAU);s.targetV=rand(-1,1);s.change=.2;s.pinTime=Math.max(5,10-s.vault*.5);s.lastDir=0;s.valid=false;}
+ function start(){s={phase:'playing',time:0,duration:45,score:0,message:'',effects:[],inputX:0,inputY:0,held:false};
+ if(id==='bumper-boats'){s.boats=['YOU','SUSAN','ROBERT','WANDA'].map((name,i)=>({name,x:300+Math.cos(i*TAU/4)*155,y:315+Math.sin(i*TAU/4)*155,vx:0,vy:0,a:i*TAU/4+Math.PI,score:0,boost:0,cool:0,marked:0,hitCool:0}));s.tickets=Array.from({length:13},()=>ticket());s.goldAt=rand(10,30);s.goldSpawned=false;s.spawn=1;s.message='BLUE BOAT · CHASE TICKETS & BOOST INTO RIVALS';}
+ if(id==='safe-cracker'){Object.assign(s,{angle:0,velocity:0,target:0,targetV:0,change:0,pin:0,vault:0,alarm:0,lockdown:0,open:0,streak:0,lastDir:0});target();s.message='TURN RIGHT · FOLLOW THE MOVING ARC';}
+ if(id==='lily-pad-leap'){Object.assign(s,{x:300,y:520,camera:0,pads:[{n:0,base:300,x:300,y:520,r:54,flower:false,phase:0,amp:0,used:true,sink:0}],on:0,lastPad:0,aim:0,charge:0,jump:null,fall:0,landings:0,splashes:0,squash:0});for(let n=1;n<10;n++)s.pads.push(pad(n));s.message='AIM TOWARD A PAD · HOLD & RELEASE TO LEAP';}return s;}
+ function input(x,y=0){if(s?.phase==='playing'){s.inputX=clamp(x,-1,1);s.inputY=clamp(y,-1,1);}}
+ function hold(v){if(s?.phase!=='playing')return;if(id==='lily-pad-leap'&&s.held&&!v)jump();s.held=v;}
+ function jump(){if(s.jump||s.fall||s.on===null)return false;const distance=85+s.charge*115;const dx=Math.sin(s.aim)*distance,dy=-Math.cos(s.aim)*distance;s.jump={x:s.x,y:s.y,tx:s.x+dx,ty:s.y+dy,t:0,duration:.5+distance/500};s.on=null;s.charge=0;s.held=false;return true;}
+ function validHit(){return Math.abs(angleDiff(s.angle,s.target))<=Math.max(.15,.27-s.vault*.012)+.025;}
+ function mistake(text){s.alarm=Math.min(100,s.alarm+34);s.streak=0;fx(300,350,text);if(s.alarm>=100){s.lockdown=2;s.pin=0;s.score=Math.max(0,s.score-20);s.message='SECURITY LOCKDOWN · 2 SECONDS';}else{s.message=text; s.pinTime=Math.max(s.pinTime,4);}}
+ function action(){if(s?.phase!=='playing')return false;
+ if(id==='bumper-boats'){const b=s.boats[0];if(b.cool>0)return false;b.boost=.5;b.cool=2.5;b.vx+=Math.cos(b.a)*180;b.vy+=Math.sin(b.a)*180;return true;}
+ if(id==='safe-cracker'){if(s.lockdown||s.open)return false;if(!validHit()){mistake('MISSED THE ARC');return false;}const dir=s.pin%2===0?1:-1;if(s.lastDir!==dir){mistake('TURN '+(dir===1?'RIGHT':'LEFT')+' FIRST');return false;}s.pin++;s.streak++;s.score+=20+Math.min(3,s.streak)*5;s.alarm=Math.max(0,s.alarm-24);fx(300,350,'PIN '+s.pin+' SET');if(s.pin===3){s.score+=(s.vault%3===2?150:75);s.vault++;s.pin=0;s.open=.9;s.message='VAULT OPEN!';}else{s.message='NEXT PIN · TURN '+(s.pin%2===0?'RIGHT':'LEFT');target();}return true;}
+ if(id==='lily-pad-leap')return jump();}
+ function step(dt){s.time=Math.min(s.duration,s.time+dt);s.effects.forEach(e=>e.age+=dt);s.effects=s.effects.filter(e=>e.age<1.2);
+ if(id==='bumper-boats'){
+ s.spawn-=dt;if(s.spawn<=0){if(s.tickets.length<22)s.tickets.push(ticket());s.spawn=.75;}if(!s.goldSpawned&&s.time>=s.goldAt){s.tickets.push(ticket(true));s.goldSpawned=true;s.message='THE GOLDEN TICKET · DOUBLE VALUE!';}
+ for(let i=0;i<4;i++){const b=s.boats[i];b.cool=Math.max(0,b.cool-dt);b.hitCool=Math.max(0,b.hitCool-dt);b.marked=Math.max(0,b.marked-dt);b.boost=Math.max(0,b.boost-dt);let dx=s.inputX,dy=s.inputY;
+ if(i){const rival=s.boats[(i+3)%4],hunt=i===2&&rival.score>9&&Math.hypot(rival.x-b.x,rival.y-b.y)<200;const t=hunt?rival:s.tickets.reduce((a,t)=>!a||Math.hypot(t.x-b.x,t.y-b.y)<Math.hypot(a.x-b.x,a.y-b.y)?t:a,null);dx=t?t.x-b.x:Math.cos(s.time+i);dy=t?t.y-b.y:Math.sin(s.time+i);if(hunt&&!b.cool){b.boost=.45;b.cool=3.5;}}
+ const mag=Math.hypot(dx,dy);if(mag>.01){dx/=mag;dy/=mag;b.a+=angleDiff(Math.atan2(dy,dx),b.a)*(1-Math.exp(-dt*12));const speed=b.boost>0?370:i?135+Math.min(35,s.time):185;b.vx+=(dx*speed-b.vx)*(1-Math.exp(-dt*5));b.vy+=(dy*speed-b.vy)*(1-Math.exp(-dt*5));}else{b.vx*=Math.exp(-dt*3);b.vy*=Math.exp(-dt*3);}b.x+=b.vx*dt;b.y+=b.vy*dt;
+ let ax=b.x-300,ay=b.y-315,d=Math.hypot(ax,ay);if(d>230){ax/=d;ay/=d;b.x=300+ax*230;b.y=315+ay*230;const v=b.vx*ax+b.vy*ay;if(v>0){b.vx-=v*1.3*ax;b.vy-=v*1.3*ay;}b.boost=0;}
+ ax=b.x-300;ay=b.y-315;d=Math.hypot(ax,ay);if(d<76){if(d<.01){ax=1;ay=0;d=1;}ax/=d;ay/=d;b.x=300+ax*76;b.y=315+ay*76;const v=b.vx*ax+b.vy*ay;if(v<0){b.vx-=v*1.5*ax;b.vy-=v*1.5*ay;}if(b.marked>0){const loss=Math.min(10,b.score);b.score-=loss;for(let n=0;n<loss;n++){const a=n*TAU/Math.max(1,loss);s.tickets.push(ticket(false,300+Math.cos(a)*103,315+Math.sin(a)*103,1));}fx(b.x,b.y,loss?'TICKET SPILL −'+loss:'CENTER BUMP!');b.marked=0;}b.boost=0;}
+ }
+ for(let i=0;i<4;i++)for(let j=i+1;j<4;j++){const a=s.boats[i],b=s.boats[j],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);if(d<46&&d>.01){const nx=dx/d,ny=dy/d,over=(46-d)/2;a.x-=nx*over;a.y-=ny*over;b.x+=nx*over;b.y+=ny*over;const rel=(a.vx-b.vx)*nx+(a.vy-b.vy)*ny;if(rel>0){const force=Math.max(rel*.8,70);a.vx-=nx*force;a.vy-=ny*force;b.vx+=nx*force;b.vy+=ny*force;}if(a.boost>0&&!a.hitCool){b.vx+=nx*440;b.vy+=ny*440;b.marked=1.4;a.hitCool=.6;fx(b.x,b.y,'BOOST BUMP');}if(b.boost>0&&!b.hitCool){a.vx-=nx*440;a.vy-=ny*440;a.marked=1.4;b.hitCool=.6;fx(a.x,a.y,'BOOST BUMP');}}}
+ for(const t of s.tickets){t.lock=Math.max(0,t.lock-dt);if(t.lock)continue;const b=s.boats.find(b=>Math.hypot(b.x-t.x,b.y-t.y)<29);if(b){b.score+=t.value*(s.time>=35?2:1);t.gone=true;if(b===s.boats[0])fx(t.x,t.y,'+'+t.value*(s.time>=35?2:1));}}s.tickets=s.tickets.filter(t=>!t.gone);s.score=s.boats[0].score;
+ }else if(id==='safe-cracker'){
+ if(s.lockdown>0){s.lockdown=Math.max(0,s.lockdown-dt);if(!s.lockdown){s.alarm=30;target();s.message='RETRY · TURN RIGHT';}return;}if(s.open>0){s.open=Math.max(0,s.open-dt);if(!s.open)target();return;}
+ const desired=s.inputX*(2.2+Math.min(1,s.vault*.1));s.velocity+=(desired-s.velocity)*(1-Math.exp(-dt*(s.inputX?8:11)));s.angle+=s.velocity*dt;if(Math.abs(s.inputX)>.1)s.lastDir=Math.sign(s.inputX);
+ s.change-=dt;if(s.change<=0){s.change=rand(.22,.8);s.targetV=random()<.22?0:rand(.4,1.5)*(random()<.5?-1:1)*(1+s.vault*.08);}s.target+=s.targetV*dt;s.pinTime-=dt;s.valid=validHit()&&s.lastDir===(s.pin%2===0?1:-1);if(s.pinTime<=0){mistake('PIN TIMED OUT');if(!s.lockdown)target();}
+ }else{
+ s.squash=Math.max(0,s.squash-dt);s.aim=clamp(s.aim+s.inputX*1.8*dt,-1.05,1.05);for(const p of s.pads){p.x=p.base+Math.sin(s.time*(.6+Math.min(1,p.n*.025))+p.phase)*p.amp;if(p.used)p.sink+=dt;}
+ if(s.fall>0){s.fall-=dt;if(s.fall<=0){const p=s.pads.find(p=>p.n===s.on)||s.pads[0];p.sink=0;s.x=p.x;s.y=p.y;s.held=false;}return;}
+ if(s.jump){const j=s.jump;j.t=Math.min(j.duration,j.t+dt);const t=j.t/j.duration;s.x=j.x+(j.tx-j.x)*t;s.y=j.y+(j.ty-j.y)*t;if(t>=1){const p=s.pads.find(p=>p.sink<3&&Math.hypot(s.x-p.x,s.y-p.y)<p.r+5&&p.n>s.lastPad);if(p){s.on=p.n;s.lastPad=p.n;p.used=true;p.sink=0;s.x=p.x;s.y=p.y;s.landings++;const perfect=Math.hypot(j.tx-p.x,j.ty-p.y)<p.r*.4,points=(p.flower?30:10)+(perfect?10:0);s.score+=points;s.squash=.25;fx(s.x,s.y,(perfect?'PERFECT! ':'')+'+'+points);while(s.pads.at(-1).y>p.y-950)s.pads.push(pad(s.pads.at(-1).n+1));s.message='KEEP LEAPING · THIS PAD WILL SINK';}else{fall();}s.jump=null;}}
+ else{const p=s.pads.find(p=>p.n===s.on);if(p){s.x=p.x;s.y=p.y;if(p.sink>2.2)s.message='PAD SINKING · JUMP!';if(p.sink>=3)fall();}if(s.held)s.charge=Math.min(1,s.charge+dt*.9);}s.camera+=(s.y-520-s.camera)*(1-Math.exp(-dt*6));s.pads=s.pads.filter(p=>p.y<s.camera+800||p.n===s.on);}
+ }
+ function fall(){s.splashes++;s.score=Math.max(0,s.score-10);fx(s.x,s.y,'SPLASH −10');s.fall=.65;s.on=s.lastPad||0;const p=s.pads.find(p=>p.n===s.on);if(p)p.sink=0;s.message='BACK ON THE PAD · TRY AGAIN';}
+ function tick(dt){if(s?.phase!=='playing'||!Number.isFinite(dt)||dt<=0)return;let left=Math.min(dt,s.duration-s.time);while(left>1e-8){const d=Math.min(left,1/120);step(d);left-=d;}if(s.time>=s.duration-1e-6){if(id==='lily-pad-leap'&&s.jump){const j=s.jump;step(Math.max(0,j.duration-j.t));}s.time=s.duration;s.phase='finished';s.held=false;}}
+ function pause(){if(s?.phase==='playing'){s.phase='paused';s.inputX=s.inputY=0;s.held=false;s.charge=0;}}
+ return {id,get s(){return s;},start,input,hold,action,tick,validHit,pause,resume(){if(s?.phase==='paused')s.phase='playing';},aim(a){if(id==='lily-pad-leap'&&s?.phase==='playing')s.aim=clamp(a,-1.05,1.05);}};
+}
