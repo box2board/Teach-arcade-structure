@@ -55,7 +55,7 @@ async function loadArt(){
 function reset(){
   cancelAnimationFrame(raf);hazards=initialHazards.map(([x,id])=>({x,id,hit:false,def:obstacleDefs.find(d=>d.id===id)}));
   scenery=[{x:280,id:'crate'},{x:1040,id:'ladder'},{x:1740,id:'lantern'},{x:2380,id:'tree'},{x:3020,id:'crate'},{x:3440,id:'damage'}];dust=[];
-  Object.assign(state,{running:true,paused:false,x:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0});
+  Object.assign(state,{running:true,paused:false,x:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,jumpGraceUntil:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0});
   keys.left=keys.right=false;ui.questionModal.classList.add('hidden');ui.forkModal.classList.add('hidden');toast.classList.remove('show');updateHud();last=performance.now();raf=requestAnimationFrame(loop);
 }
 function movePlayer(dt){
