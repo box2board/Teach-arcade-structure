@@ -14,7 +14,7 @@ const W=960,H=420,GROUND=355,FINISH=3850;
 const keys={left:false,right:false};
 const questionFallback=[{question:'Which factor is part of M.A.I.N.?',choices:['Militarism','Mercantilism','Migration','Monarchy'],answerIndex:0,explanation:'Militarism is one of the four M.A.I.N. causes.'}];
 let questions=questionFallback,questionIndex=0,raf=0,last=0,toastTimer=0;
-let state={running:false,paused:false,x:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0};
+let state={running:false,paused:false,x:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,jumpGraceUntil:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0};
 let hazards=[],scenery=[],dust=[];
 const obstacleDefs=[
   {id:'low-barrier',w:126,h:80,kind:'barrier',damage:1},
@@ -71,11 +71,11 @@ function movePlayer(dt){
   if(state.vy||state.jumpHeight>0){state.jumpHeight+=state.vy*dt;state.vy-=800*dt;if(state.jumpHeight<=0){state.jumpHeight=0;state.vy=0;showDust(state.x,GROUND)}}
   const cameraTarget=Math.max(0,Math.min(FINISH-W+250,state.x-245));state.camera+=(cameraTarget-state.camera)*(1-Math.exp(-dt*7));state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);
 }
-function jump(){if(!state.running||state.paused||state.jumpHeight>0||state.vy>0)return;state.vy=520;showDust(state.x,GROUND)}
+function jump(){if(!state.running||state.paused||state.jumpHeight>0||state.vy>0)return;state.jumpGraceUntil=performance.now()+320;state.vy=520;showDust(state.x,GROUND)}
 function showDust(x,y){for(let i=0;i<5;i++)dust.push({x:x+(Math.random()-.5)*22,y:y-5,vx:(Math.random()-.5)*45,vy:-20-Math.random()*35,life:.45,size:3+Math.random()*4})}
 function collide(){
   const px=state.x+25;
-  for(const hazard of hazards){if(hazard.hit)continue;const d=hazard.def;if(px+47<hazard.x+18||px+8>hazard.x+d.w-14)continue;if(state.jumpHeight>=Math.max(38,d.h*.42))continue;
+  for(const hazard of hazards){if(hazard.hit)continue;const d=hazard.def;if(px+47<hazard.x+18||px+8>hazard.x+d.w-14)continue;if(performance.now()<state.jumpGraceUntil||state.jumpHeight>=Math.max(38,d.h*.42))continue;
     hazard.hit=true;state.stamina=Math.max(0,state.stamina-d.damage);state.streak=0;state.hitUntil=performance.now()+280;showToast('Obstacle hit — stamina lost');showDust(state.x,GROUND);updateHud();
     if(state.stamina<=0){state.running=false;state.paused=true;showToast('Run ended')};break;
   }
