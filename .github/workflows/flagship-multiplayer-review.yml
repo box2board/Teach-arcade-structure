@@ -9,7 +9,7 @@ permissions:
   contents: read
 concurrency:
   group: flagship-20-review
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   hosted-review:
     runs-on: ubuntu-latest
