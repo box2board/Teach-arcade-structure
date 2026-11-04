@@ -68,10 +68,10 @@ function movePlayer(dt){
   if((state.x<=50&&state.vx<0)||(state.x>=FINISH&&state.vx>0))state.vx=0;
   state.x=Math.max(50,Math.min(FINISH,state.x));
   state.visualX+=(state.x-state.visualX)*(1-Math.exp(-dt*15));
-  if(state.vy||state.jumpHeight>0){state.jumpHeight+=state.vy*dt;state.vy-=1250*dt;if(state.jumpHeight<=0){state.jumpHeight=0;state.vy=0;showDust(state.x,GROUND)}}
+  if(state.vy||state.jumpHeight>0){state.jumpHeight+=state.vy*dt;state.vy-=800*dt;if(state.jumpHeight<=0){state.jumpHeight=0;state.vy=0;showDust(state.x,GROUND)}}
   const cameraTarget=Math.max(0,Math.min(FINISH-W+250,state.x-245));state.camera+=(cameraTarget-state.camera)*(1-Math.exp(-dt*7));state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);
 }
-function jump(){if(!state.running||state.paused||state.jumpHeight>0||state.vy>0)return;state.vy=680;showDust(state.x,GROUND)}
+function jump(){if(!state.running||state.paused||state.jumpHeight>0||state.vy>0)return;state.vy=520;showDust(state.x,GROUND)}
 function showDust(x,y){for(let i=0;i<5;i++)dust.push({x:x+(Math.random()-.5)*22,y:y-5,vx:(Math.random()-.5)*45,vy:-20-Math.random()*35,life:.45,size:3+Math.random()*4})}
 function collide(){
   const px=state.x+25;
@@ -124,8 +124,8 @@ function loop(now){if(!state.running)return;const dt=Math.min(.04,(now-last)/100
   updateHud();}
   drawWorld();raf=requestAnimationFrame(loop)
 }
-function applyTapStep(key){if(!state.running)reset();if(state.paused)return;state.x=Math.max(50,Math.min(FINISH,state.x+(key==='right'?72:-72)));state.vx=0;state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);collide();updateHud();drawWorld()}
-function bindHold(id,key){const b=document.querySelector('#'+id);let lastTouchAt=0;const down=e=>{if(!state.running)reset();keys[key]=true;try{b.setPointerCapture(e.pointerId)}catch{}};const up=()=>{keys[key]=false};const touch=e=>{e.preventDefault();lastTouchAt=performance.now();if(!state.running)reset();applyTapStep(key);keys[key]=true};b.addEventListener('pointerdown',down);b.addEventListener('pointerup',up);b.addEventListener('pointercancel',up);window.addEventListener('pointerup',up);window.addEventListener('pointercancel',up);b.addEventListener('touchstart',touch,{passive:false});b.addEventListener('touchend',up);b.addEventListener('touchcancel',up);b.addEventListener('click',()=>{if(lastTouchAt&&performance.now()-lastTouchAt<500)return;if(!state.running)reset();applyTapStep(key)})}
+function applyTapStep(key){if(!state.running)reset();if(state.paused)return;state.x=Math.max(50,Math.min(FINISH,state.x+(key==='right'?100:-100)));state.vx=0;state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);collide();updateHud();drawWorld()}
+function bindHold(id,key){const b=document.querySelector('#'+id);let lastTouchAt=0;const down=e=>{if(!state.running)reset();keys[key]=true;try{b.setPointerCapture(e.pointerId)}catch{}};const up=()=>{keys[key]=false};const touch=e=>{e.preventDefault();lastTouchAt=performance.now();if(!state.running)reset();applyTapStep(key);keys[key]=true};b.addEventListener('pointerdown',down);b.addEventListener('pointerup',up);b.addEventListener('pointercancel',up);b.addEventListener('touchstart',touch,{passive:false});b.addEventListener('touchend',up);b.addEventListener('touchcancel',up);b.addEventListener('click',()=>{if(lastTouchAt&&performance.now()-lastTouchAt<500)return;if(!state.running)reset();applyTapStep(key)})}
 function bindJump(){const b=document.querySelector('#jumpBtn');const doJump=()=>{if(!state.running)reset();jump()};b.addEventListener('pointerdown',doJump);b.addEventListener('touchstart',e=>{e.preventDefault();doJump()},{passive:false});b.addEventListener('click',doJump)}
 bindHold('leftBtn','left');bindHold('rightBtn','right');bindJump();
 document.querySelector('#startBtn').addEventListener('click',reset);document.querySelector('#pauseBtn').addEventListener('click',()=>{if(!state.running)return;state.paused=!state.paused;showToast(state.paused?'Paused':'Resumed');last=performance.now()});
