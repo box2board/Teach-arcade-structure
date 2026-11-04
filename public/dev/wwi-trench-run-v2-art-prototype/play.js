@@ -15,7 +15,7 @@ const keys={left:false,right:false};
 const questionFallback=[{question:'Which factor is part of M.A.I.N.?',choices:['Militarism','Mercantilism','Migration','Monarchy'],answerIndex:0,explanation:'Militarism is one of the four M.A.I.N. causes.'}];
 let questions=questionFallback,questionIndex=0,raf=0,last=0,toastTimer=0;
 let state={running:false,paused:false,x:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0};
-let hazards=[],scenery=[],dust=[],tapDir=0,tapUntil=0;
+let hazards=[],scenery=[],dust=[];
 const obstacleDefs=[
   {id:'low-barrier',w:126,h:80,kind:'barrier',damage:1},
   {id:'barbed-wire',w:148,h:95,kind:'wire',damage:1},
@@ -55,13 +55,12 @@ async function loadArt(){
 function reset(){
   cancelAnimationFrame(raf);hazards=initialHazards.map(([x,id])=>({x,id,hit:false,def:obstacleDefs.find(d=>d.id===id)}));
   scenery=[{x:280,id:'crate'},{x:1040,id:'ladder'},{x:1740,id:'lantern'},{x:2380,id:'tree'},{x:3020,id:'crate'},{x:3440,id:'damage'}];dust=[];
-  Object.assign(state,{running:true,paused:false,x:110,vx:0,y:0,vy:0,jumpHeight:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0});
-  keys.left=keys.right=false;tapDir=0;tapUntil=0;ui.questionModal.classList.add('hidden');ui.forkModal.classList.add('hidden');toast.classList.remove('show');updateHud();last=performance.now();raf=requestAnimationFrame(loop);
+  Object.assign(state,{running:true,paused:false,x:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0});
+  keys.left=keys.right=false;ui.questionModal.classList.add('hidden');ui.forkModal.classList.add('hidden');toast.classList.remove('show');updateHud();last=performance.now();raf=requestAnimationFrame(loop);
 }
 function movePlayer(dt){
   if(performance.now()<state.hitUntil)return;
-  const now=performance.now(),tapActive=now<tapUntil;
-  const dir=((keys.right||tapActive&&tapDir===1)?1:0)-((keys.left||tapActive&&tapDir===-1)?1:0);
+  const dir=(keys.right?1:0)-(keys.left?1:0);
   const target=dir*430,rate=dir?1800:1850,delta=target-state.vx;
   state.vx+=Math.sign(delta)*Math.min(Math.abs(delta),rate*dt);
   state.x+=state.vx*dt;
