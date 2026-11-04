@@ -7,7 +7,9 @@ export const TOOLS=Object.freeze(validateCatalog([
     "url": "/tools/art-studio/",
     "description": "Create posters, worksheets, signs, and vocabulary cards. Edit layers, crop and mask photos, and export PNG, JPG, PDF, or editable project files.",
     "symbol": "✦",
-    "collection": "Teacher Tools"
+    "collection": "Teacher Tools",
+    "image": "/assets/images/tools/art-studio-banner-768.webp",
+    "imageAlt": "Art Studio Beta"
   },
   {
     "id": "tool:comic-studio",
