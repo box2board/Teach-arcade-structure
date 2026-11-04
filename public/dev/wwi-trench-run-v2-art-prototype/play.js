@@ -14,7 +14,7 @@ const W=960,H=420,GROUND=355,FINISH=3850;
 const keys={left:false,right:false};
 const questionFallback=[{question:'Which factor is part of M.A.I.N.?',choices:['Militarism','Mercantilism','Migration','Monarchy'],answerIndex:0,explanation:'Militarism is one of the four M.A.I.N. causes.'}];
 let questions=questionFallback,questionIndex=0,raf=0,last=0,toastTimer=0;
-let state={running:false,paused:false,x:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,jumpGraceUntil:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0};
+let state={running:false,paused:false,x:110,targetX:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,jumpGraceUntil:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0};
 let hazards=[],scenery=[],dust=[];
 const obstacleDefs=[
   {id:'low-barrier',w:126,h:80,kind:'barrier',damage:1},
@@ -55,23 +55,25 @@ async function loadArt(){
 function reset(){
   cancelAnimationFrame(raf);hazards=initialHazards.map(([x,id])=>({x,id,hit:false,def:obstacleDefs.find(d=>d.id===id)}));
   scenery=[{x:280,id:'crate'},{x:1040,id:'ladder'},{x:1740,id:'lantern'},{x:2380,id:'tree'},{x:3020,id:'crate'},{x:3440,id:'damage'}];dust=[];
-  Object.assign(state,{running:true,paused:false,x:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,jumpGraceUntil:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0});
+  Object.assign(state,{running:true,paused:false,x:110,targetX:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,jumpGraceUntil:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0});
   keys.left=keys.right=false;ui.questionModal.classList.add('hidden');ui.forkModal.classList.add('hidden');toast.classList.remove('show');updateHud();last=performance.now();raf=requestAnimationFrame(loop);
 }
 function movePlayer(dt){
   if(performance.now()<state.hitUntil)return;
-  const dir=(keys.right?1:0)-(keys.left?1:0);
-  const target=dir*430,rate=dir?1800:1850,delta=target-state.vx;
+  const held=(keys.right?1:0)-(keys.left?1:0);
+  if(held)state.targetX=Math.max(50,Math.min(FINISH,state.targetX+held*480*dt));
+  const remaining=state.targetX-state.x;
+  const targetSpeed=held?held*480:Math.sign(remaining)*Math.min(480,Math.abs(remaining)*11);
+  const rate=held?2100:2500,delta=targetSpeed-state.vx;
   state.vx+=Math.sign(delta)*Math.min(Math.abs(delta),rate*dt);
-  state.x+=state.vx*dt;
-  if(Math.abs(state.vx)>14){state.runTime+=dt*(5+Math.min(3,Math.abs(state.vx)/150));state.frame=Math.floor(state.runTime)%6+1}else state.frame=0;
-  if((state.x<=50&&state.vx<0)||(state.x>=FINISH&&state.vx>0))state.vx=0;
-  state.x=Math.max(50,Math.min(FINISH,state.x));
-  state.visualX+=(state.x-state.visualX)*(1-Math.exp(-dt*15));
+  if(!held&&Math.abs(remaining)<2&&Math.abs(state.vx)<34){state.x=state.targetX;state.vx=0}else state.x+=state.vx*dt;
+  if(Math.abs(state.vx)>18){state.runTime+=dt*(5+Math.min(4,Math.abs(state.vx)/125));state.frame=Math.floor(state.runTime)%6+1}else state.frame=0;
+  if((state.x<=50&&state.vx<0)||(state.x>=FINISH&&state.vx>0)){state.x=Math.max(50,Math.min(FINISH,state.x));state.targetX=state.x;state.vx=0}
+  state.visualX+=(state.x-state.visualX)*(1-Math.exp(-dt*18));
   if(state.vy||state.jumpHeight>0){state.jumpHeight+=state.vy*dt;state.vy-=800*dt;if(state.jumpHeight<=0){state.jumpHeight=0;state.vy=0;showDust(state.x,GROUND)}}
-  const cameraTarget=Math.max(0,Math.min(FINISH-W+250,state.x-245));state.camera+=(cameraTarget-state.camera)*(1-Math.exp(-dt*7));state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);
+  const cameraTarget=Math.max(0,Math.min(FINISH-W+250,state.x-245));state.camera+=(cameraTarget-state.camera)*(1-Math.exp(-dt*8));state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);
 }
-function jump(){if(!state.running||state.paused||state.jumpHeight>0||state.vy>0)return;state.jumpGraceUntil=performance.now()+320;state.vy=520;showDust(state.x,GROUND)}
+function jump(){if(!state.running||state.paused||state.jumpHeight>0||state.vy>0)return;state.jumpGraceUntil=performance.now()+620;state.vy=520;showDust(state.x,GROUND)}
 function showDust(x,y){for(let i=0;i<5;i++)dust.push({x:x+(Math.random()-.5)*22,y:y-5,vx:(Math.random()-.5)*45,vy:-20-Math.random()*35,life:.45,size:3+Math.random()*4})}
 function collide(){
   const px=state.x+25;
@@ -124,7 +126,7 @@ function loop(now){if(!state.running)return;const dt=Math.min(.04,(now-last)/100
   updateHud();}
   drawWorld();raf=requestAnimationFrame(loop)
 }
-function applyTapStep(key){if(!state.running)reset();if(state.paused)return;state.x=Math.max(50,Math.min(FINISH,state.x+(key==='right'?100:-100)));state.vx=0;state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);collide();updateHud();drawWorld()}
+function applyTapStep(key){if(!state.running)reset();if(state.paused)return;state.targetX=Math.max(50,Math.min(FINISH,state.targetX+(key==='right'?92:-92)))}
 function bindHold(id,key){const b=document.querySelector('#'+id);let lastTouchAt=0;const down=e=>{if(!state.running)reset();keys[key]=true;try{b.setPointerCapture(e.pointerId)}catch{}};const up=()=>{keys[key]=false};const touch=e=>{e.preventDefault();lastTouchAt=performance.now();if(!state.running)reset();applyTapStep(key);keys[key]=true};b.addEventListener('pointerdown',down);b.addEventListener('pointerup',up);b.addEventListener('pointercancel',up);b.addEventListener('touchstart',touch,{passive:false});b.addEventListener('touchend',up);b.addEventListener('touchcancel',up);b.addEventListener('click',()=>{if(lastTouchAt&&performance.now()-lastTouchAt<500)return;if(!state.running)reset();applyTapStep(key)})}
 function bindJump(){const b=document.querySelector('#jumpBtn');const doJump=()=>{if(!state.running)reset();jump()};b.addEventListener('pointerdown',doJump);b.addEventListener('touchstart',e=>{e.preventDefault();doJump()},{passive:false});b.addEventListener('click',doJump)}
 bindHold('leftBtn','left');bindHold('rightBtn','right');bindJump();
