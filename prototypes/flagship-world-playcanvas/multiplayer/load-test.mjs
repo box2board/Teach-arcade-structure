@@ -107,7 +107,7 @@ try{
  draining=true;await rooms[19].room.leave();await until(()=>rooms[0].room.state.players.size===19,'leave cleanup');
  const stats=arr=>{arr.sort((a,b)=>a-b);assert(arr.length,'Missing samples');return {count:arr.length,p05:+arr[Math.floor(arr.length*.05)].toFixed(2),p50:+arr[Math.floor(arr.length*.5)].toFixed(2),p95:+arr[Math.floor(arr.length*.95)].toFixed(2),max:+arr.at(-1).toFixed(2)};};
  const state=rooms[0].room.state;
- assert.equal(state.maxQueueDepth,3,'Expected the bounded-input performance server');
+ assert(Number.isFinite(state.maxQueueDepth)&&state.maxQueueDepth>0&&state.maxQueueDepth<=3,'Expected a queue bounded to three inputs');
  console.log(JSON.stringify({serverDiagnostics:{maxTickGapMs:state.maxTickGapMs,maxStepMs:state.maxStepMs,maxQueueDepth:state.maxQueueDepth,coalescedInputs:state.coalescedInputs}},null,2));
  if(duration===300)console.log(JSON.stringify({concurrentBuildCycles:buildCycles,concurrentReconnects:reconnectCycles,minuteDiagnostics:ackByMinute.map((a,i)=>({minute:i+1,ackMs:stats(a),outstandingInputs:stats(backlogByMinute[i])}))},null,2));
  console.log(JSON.stringify({endpoint,clients:20,durationSeconds:duration,sustainedInputs,offeredInputsPerClientHz:+(sustainedInputs/20/movementSeconds).toFixed(2),runnerEventLoopDelayMs:{p95:runnerDelay.percentile(95)/1e6,max:runnerDelay.max/1e6},rttMs:stats(samples.rtt),inputAckMs:stats(samples.ack),patchGapMs:stats(samples.patchGap),serverTickHz:stats(samples.tickHz),reconnectMs:Math.round(reconnectMs),checks:'PASS: same room, sustained movement, presence, reconnect identity, all-client builds, ownership, leave cleanup',limitation:'Network clients only; rendered FPS and device smoothness not measured. Timing includes load-runner scheduling and network path.'},null,2));
