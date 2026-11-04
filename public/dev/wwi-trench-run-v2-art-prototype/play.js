@@ -14,7 +14,7 @@ const W=960,H=420,GROUND=355,FINISH=3850;
 const keys={left:false,right:false};
 const questionFallback=[{question:'Which factor is part of M.A.I.N.?',choices:['Militarism','Mercantilism','Migration','Monarchy'],answerIndex:0,explanation:'Militarism is one of the four M.A.I.N. causes.'}];
 let questions=questionFallback,questionIndex=0,raf=0,last=0,toastTimer=0;
-let state={running:false,paused:false,x:110,vx:0,y:0,vy:0,jumpHeight:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0};
+let state={running:false,paused:false,x:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0};
 let hazards=[],scenery=[],dust=[],tapDir=0,tapUntil=0;
 const obstacleDefs=[
   {id:'low-barrier',w:126,h:80,kind:'barrier',damage:1},
@@ -68,6 +68,7 @@ function movePlayer(dt){
   if(Math.abs(state.vx)>14){state.runTime+=dt*(5+Math.min(3,Math.abs(state.vx)/150));state.frame=Math.floor(state.runTime)%6+1}else state.frame=0;
   if((state.x<=50&&state.vx<0)||(state.x>=FINISH&&state.vx>0))state.vx=0;
   state.x=Math.max(50,Math.min(FINISH,state.x));
+  state.visualX+=(state.x-state.visualX)*(1-Math.exp(-dt*15));
   if(state.vy||state.jumpHeight>0){state.jumpHeight+=state.vy*dt;state.vy-=1500*dt;if(state.jumpHeight<=0){state.jumpHeight=0;state.vy=0;showDust(state.x,GROUND)}}
   const cameraTarget=Math.max(0,Math.min(FINISH-W+250,state.x-245));state.camera+=(cameraTarget-state.camera)*(1-Math.exp(-dt*7));state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);
 }
@@ -109,8 +110,8 @@ function drawProps(){
 function drawHazards(){for(const h of hazards){const x=h.x-state.camera;if(x<-220||x>W+220||h.hit)continue;const img=art[h.def.kind],y=GROUND-h.def.h;ctx.fillStyle='rgba(12,10,8,.48)';ctx.beginPath();ctx.ellipse(x+h.def.w*.5,GROUND-2,h.def.w*.49,8,0,0,Math.PI*2);ctx.fill();ctx.save();ctx.filter='drop-shadow(0 0 1px rgba(255,239,205,.9)) drop-shadow(0 5px 5px rgba(0,0,0,.88)) contrast(1.16) saturate(1.22)';drawImage(img,x,y,h.def.w,h.def.h);ctx.restore();const cx=x+h.def.w*.5,cy=y-27;ctx.strokeStyle='rgba(24,21,17,.9)';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(cx,y-2);ctx.lineTo(cx,cy+14);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,cy-15);ctx.lineTo(cx+15,cy+11);ctx.lineTo(cx-15,cy+11);ctx.closePath();ctx.fillStyle='#e2a83e';ctx.fill();ctx.strokeStyle='#35281a';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#2a2117';ctx.font='bold 19px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('!',cx,cy+2)}}
 function drawPlayer(){
   let img=state.jumpHeight>18?(art.jump||playerFrames[state.frame]||playerFrames[0]):(playerFrames[state.frame]||playerFrames[0]);if(performance.now()<state.hitUntil)img=art.stumble||img;if(!state.running&&state.stamina<=0)img=art.fall||img;
-  const height=142,ratio=img?img.width/img.height:1.2,width=Math.min(178,height*ratio),x=state.x-state.camera-28,y=GROUND-height-state.jumpHeight;
-  ctx.fillStyle=`rgba(17,13,10,${Math.max(.16,.36-state.jumpHeight/900)})`;ctx.beginPath();ctx.ellipse(state.x-state.camera+31,GROUND-3,34*(1-Math.min(.4,state.jumpHeight/350)),8,0,0,Math.PI*2);ctx.fill();drawImage(img,x,y,width,height);
+  const height=142,ratio=img?img.width/img.height:1.2,width=Math.min(178,height*ratio),x=state.visualX-state.camera-28,y=GROUND-height-state.jumpHeight;
+  ctx.fillStyle=`rgba(17,13,10,${Math.max(.16,.36-state.jumpHeight/900)})`;ctx.beginPath();ctx.ellipse(state.visualX-state.camera+31,GROUND-3,34*(1-Math.min(.4,state.jumpHeight/350)),8,0,0,Math.PI*2);ctx.fill();drawImage(img,x,y,width,height);
 }
 function drawWorld(){drawBackground();drawProps();drawHazards();drawPlayer();
   if(state.x>=FINISH-20){ctx.fillStyle='rgba(20,18,15,.55)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fff3d4';ctx.font='bold 38px system-ui';ctx.textAlign='center';ctx.fillText('TRENCH RUN COMPLETE',W/2,H/2)}else if(!state.running&&state.stamina<=0){ctx.fillStyle='rgba(20,18,15,.54)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fff3d4';ctx.font='bold 34px system-ui';ctx.textAlign='center';ctx.fillText('RUN ENDED — START TO RETRY',W/2,H/2)}
@@ -124,7 +125,7 @@ function loop(now){if(!state.running)return;const dt=Math.min(.04,(now-last)/100
   updateHud();}
   drawWorld();raf=requestAnimationFrame(loop)
 }
-function applyTapStep(key){if(!state.running)reset();if(state.paused)return;tapDir=key==='right'?1:-1;tapUntil=performance.now()+220}
+function applyTapStep(key){if(!state.running)reset();if(state.paused)return;state.x=Math.max(50,Math.min(FINISH,state.x+(key==='right'?72:-72)));state.vx=0;state.distance=Math.floor(state.x-110);state.score=Math.max(state.score,state.distance*.08+state.correct*150);collide();updateHud();drawWorld()}
 function bindHold(id,key){const b=document.querySelector('#'+id);let lastTouchAt=0;const down=e=>{if(!state.running)reset();keys[key]=true;try{b.setPointerCapture(e.pointerId)}catch{}};const up=()=>{keys[key]=false};const touch=e=>{e.preventDefault();lastTouchAt=performance.now();if(!state.running)reset();applyTapStep(key);keys[key]=true};b.addEventListener('pointerdown',down);b.addEventListener('pointerup',up);b.addEventListener('pointercancel',up);window.addEventListener('pointerup',up);window.addEventListener('pointercancel',up);b.addEventListener('touchstart',touch,{passive:false});b.addEventListener('touchend',up);b.addEventListener('touchcancel',up);b.addEventListener('click',()=>{if(lastTouchAt&&performance.now()-lastTouchAt<500)return;if(!state.running)reset();applyTapStep(key)})}
 function bindJump(){const b=document.querySelector('#jumpBtn');const doJump=()=>{if(!state.running)reset();jump()};b.addEventListener('pointerdown',doJump);b.addEventListener('touchstart',e=>{e.preventDefault();doJump()},{passive:false});b.addEventListener('click',doJump)}
 bindHold('leftBtn','left');bindHold('rightBtn','right');bindJump();
