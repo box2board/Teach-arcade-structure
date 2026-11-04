@@ -10,6 +10,9 @@ assert(duration>=30&&duration<=300,'Duration must be 30–300 seconds');
 const local=process.env.WORLD_TEST_ENDPOINT?null:await start(2570);
 const worldId='load20-'+crypto.randomUUID(), rooms=[], samples={rtt:[],ack:[],patchGap:[],tickHz:[]};
 let timer, draining=false, totalInputs=0, movementSeconds=0;
+let buildCycles=0,reconnectCycles=0;
+const ackByMinute=[[],[],[],[],[]],backlogByMinute=[[],[],[],[],[]];
+let began;
 const runnerDelay=monitorEventLoopDelay({resolution:20});runnerDelay.enable();
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 const until=async(fn,label)=>{for(let i=0;i<300;i++){if(fn())return;await wait(50);}throw Error('Timeout: '+label);};
@@ -26,7 +29,7 @@ function observe(room){
   if(!item.lastTickTime){item.lastTickTime=now;item.lastTick=state.tick;}
   const p=state.players.get(room.sessionId);if(!p)return;
   item.seq=Math.max(item.seq,p.seq);
-  if(item.sent.has(p.seq))samples.ack.push(now-item.sent.get(p.seq));
+  if(item.sent.has(p.seq)){const delay=now-item.sent.get(p.seq);samples.ack.push(delay);if(began)ackByMinute[Math.min(4,Math.floor((now-began)/60000))].push(delay);}
   for(const n of item.sent.keys())if(n<=p.seq)item.sent.delete(n);
  });
  return item;
@@ -36,18 +39,46 @@ try{
  assert.equal(new Set(rooms.map(i=>i.room.roomId)).size,1);
  await until(()=>rooms.every(i=>i.room.state.players?.size===20),'20-client initial state');
  console.log('20 clients in one room; starting sustained movement');
- const began=performance.now();let lastPing=0;
+ began=performance.now();let lastPing=0;
  timer=setInterval(()=>{
   const now=performance.now(),t=(now-began)/1000;
   rooms.forEach((item,index)=>{
    if(item.paused)return;
    const phase=t*.8+index*.31;
-   const input={seq:++item.seq,x:Math.cos(phase),z:Math.sin(phase),sprint:index%3===0,jump:Math.floor(t*30)%90===index};
+   let x=Math.cos(phase),z=Math.sin(phase);
+   if(duration===300&&index===0){const p=item.room.state.players.get(item.room.sessionId),dx=20-p.x,dz=-22-p.z,d=Math.hypot(dx,dz);x=d>1?dx/d:0;z=d>1?dz/d:0;}
+   const input={seq:++item.seq,x,z,sprint:index%3===0,jump:index!==0&&Math.floor(t*30)%90===index};
+   if(duration===300)backlogByMinute[Math.min(4,Math.floor(t/60))].push(item.sent.size);
    item.sent.set(input.seq,now);item.sentCount++;totalInputs++;item.room.send('input',input);
   });
   if(now-lastPing>1000){for(const i of rooms)if(!i.paused)i.room.send('ping',now);lastPing=now;}
  },1000/30);
- await wait(duration*1000);movementSeconds=(performance.now()-began)/1000;
+ // Serialized build/reconnect cycles execute while all other clients keep moving.
+ const workload=duration===300?(async()=>{
+  await wait(15000);
+  for(let cycle=0;cycle<9;cycle++){
+   const a=rooms[0],b=rooms[1];
+   await until(()=>{const p=a.room.state.players.get(a.room.sessionId);return Math.hypot(p.x-20,p.z+22)<2;},'builder reaches pad');
+   a.room.send('place',{piece:'pillar',x:20,z:-18,level:0,rotation:0});
+   await until(()=>rooms.every(i=>i.room.state.builds.size===1),'live placement on all 20');
+   const build=[...b.room.state.builds.values()][0];assert.equal(build.ownerId,a.room.sessionId);
+   b.room.send('delete',build.id);await wait(350);assert.equal(a.room.state.builds.size,1,'unauthorized deletion');
+   a.room.send('delete',build.id);await until(()=>rooms.every(i=>i.room.state.builds.size===0),'live owner deletion');buildCycles++;
+   if(cycle%2===1){
+    const old=rooms[19],id=old.room.sessionId,token=old.room.reconnectionToken;
+    old.paused=true;old.expectedLeave=true;old.room.connection.close();
+    await until(()=>rooms[1].room.state.players.get(id)?.connected===false,'live disconnect');
+    const restored=await new Client(endpoint).reconnect(token);assert.equal(restored.sessionId,id);
+    rooms[19]=observe(restored);rooms[19].paused=true;
+    await until(()=>restored.state.players?.get(id),'live reconnect initial state');
+    await until(()=>rooms[1].room.state.players.get(id)?.connected,'live reconnect presence');rooms[19].paused=false;reconnectCycles++;
+   }
+   console.log('Concurrent cycle',cycle+1,'builds',buildCycles,'reconnects',reconnectCycles);
+   if(cycle<8)await wait(28000);
+  }
+ })():Promise.resolve();
+ // Attach immediately so a failed concurrent assertion is handled during the wait.
+ await Promise.all([wait(duration*1000),workload]);movementSeconds=(performance.now()-began)/1000;
  const sustainedInputs=totalInputs;
  // Keep 19 clients moving while one reconnects with its identity intact.
  const original=rooms[19],id=original.room.sessionId,token=original.room.reconnectionToken;
@@ -75,6 +106,7 @@ try{
  a.room.send('delete',build.id);await until(()=>rooms.every(i=>i.room.state.builds.size===0),'owner deletion on all 20');
  draining=true;await rooms[19].room.leave();await until(()=>rooms[0].room.state.players.size===19,'leave cleanup');
  const stats=arr=>{arr.sort((a,b)=>a-b);assert(arr.length,'Missing samples');return {count:arr.length,p05:+arr[Math.floor(arr.length*.05)].toFixed(2),p50:+arr[Math.floor(arr.length*.5)].toFixed(2),p95:+arr[Math.floor(arr.length*.95)].toFixed(2),max:+arr.at(-1).toFixed(2)};};
+ if(duration===300)console.log(JSON.stringify({concurrentBuildCycles:buildCycles,concurrentReconnects:reconnectCycles,minuteDiagnostics:ackByMinute.map((a,i)=>({minute:i+1,ackMs:stats(a),outstandingInputs:stats(backlogByMinute[i])}))},null,2));
  console.log(JSON.stringify({endpoint,clients:20,durationSeconds:duration,sustainedInputs,offeredInputsPerClientHz:+(sustainedInputs/20/movementSeconds).toFixed(2),runnerEventLoopDelayMs:{p95:runnerDelay.percentile(95)/1e6,max:runnerDelay.max/1e6},rttMs:stats(samples.rtt),inputAckMs:stats(samples.ack),patchGapMs:stats(samples.patchGap),serverTickHz:stats(samples.tickHz),reconnectMs:Math.round(reconnectMs),checks:'PASS: same room, sustained movement, presence, reconnect identity, all-client builds, ownership, leave cleanup',limitation:'Network clients only; rendered FPS and device smoothness not measured. Timing includes load-runner scheduling and network path.'},null,2));
 }catch(error){console.error(error);process.exitCode=1;}
 finally{clearInterval(timer);clearTimeout(deadline);draining=true;for(const i of rooms)i.room.connection.close();if(local)await local.game.gracefullyShutdown(false);process.exit(process.exitCode||0);}
