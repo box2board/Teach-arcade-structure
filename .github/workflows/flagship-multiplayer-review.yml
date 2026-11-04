@@ -13,7 +13,7 @@ concurrency:
 jobs:
   hosted-review:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     defaults:
       run:
         shell: bash
@@ -27,7 +27,12 @@ jobs:
           node-version: 22
       - run: npm ci --omit=dev
       - name: Wake isolated review server
-        run: curl --fail --retry 3 --max-time 45 https://flagship-world-review-review.up.railway.app/health
+        run: |
+          for attempt in {1..24}; do
+            if curl --fail --max-time 10 https://flagship-world-review-review.up.railway.app/health | grep -q queue3-v1; then exit 0; fi
+            sleep 5
+          done
+          exit 1
       - name: Hosted 20-client load and shared building
         env:
           WORLD_TEST_ENDPOINT: wss://flagship-world-review-review.up.railway.app

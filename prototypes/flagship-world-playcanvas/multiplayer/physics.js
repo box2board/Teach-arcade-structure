@@ -4,11 +4,14 @@ export function footprint(r) {const d=pieces[r.piece]; return r.rotation%180 ? [
 const boxes = [[10,10,8.48,8.48],[14,-3,6.36,6.36],[-10,-9,7.42,7.42],[-13,5,8.48,8.48],[0,28,8.5,8.5],[0,-31,1.7,1.7],[6,-31,1.7,1.7]];
 export function blocked(x,z,builds) {
  if(boxes.some(([a,b,w,d])=>Math.abs(x-a)<w/2+.72&&Math.abs(z-b)<d/2+.72))return true;
- return [...builds].some(r=>{if(r.level||r.piece==='floor'||r.piece==='beam')return false;const [w,d]=footprint(r);return Math.abs(x-r.x)<w/2+.52&&Math.abs(z-r.z)<d/2+.52;});
+ for(const r of builds){if(r.level||r.piece==='floor'||r.piece==='beam')continue;const [w,d]=footprint(r);if(Math.abs(x-r.x)<w/2+.52&&Math.abs(z-r.z)<d/2+.52)return true;}
+ return false;
 }
 export function initialPlayer(){return {x:0,y:1.05,z:-5,vx:0,vz:0,vy:0,rotation:0,grounded:true,movement:'idle',animation:'idle',seq:0};}
 const approach=(a,b,n)=>a<b?Math.min(a+n,b):Math.max(a-n,b);
 export function step(p,i,builds){
+ // Both axes need the same obstacles, including when callers pass a map iterator.
+ if(!Array.isArray(builds))builds=[...builds];
  let x=i.x,z=i.z;const len=Math.hypot(x,z);if(len>1){x/=len;z/=len;}
  const moving=len>.01,speed=i.sprint?10.2:6.2,acc=p.grounded?(moving?34:28):10;
  p.vx=approach(p.vx,x*speed,acc*STEP);p.vz=approach(p.vz,z*speed,acc*STEP);
