@@ -18,13 +18,17 @@ export function createInput({ dpadButtons, interactButton }) {
   let interactQueued = false;
 
   function onKeyDown(event) {
+    if (document.querySelector(".overlay.active, .results-screen.active") || document.getElementById("start-screen").style.display !== "none") return;
     const dir = KEY_MAP[event.key];
     if (dir) {
+      event.preventDefault();
       pressed.add(dir);
       return;
     }
-    if (event.key === "e" || event.key === "E" || event.key === "Enter") {
-      interactQueued = true;
+    if (event.key === "e" || event.key === "E" || event.key === "Enter" || event.code === "Space") {
+      if (event.target.closest("button, a")) return;
+      event.preventDefault();
+      if (!event.repeat) interactQueued = true;
     }
   }
 
@@ -45,12 +49,13 @@ export function createInput({ dpadButtons, interactButton }) {
       pressed.delete(dir);
     };
 
-    button.addEventListener("touchstart", start, { passive: false });
-    button.addEventListener("touchend", end, { passive: false });
-    button.addEventListener("touchcancel", end, { passive: false });
-    button.addEventListener("mousedown", start);
-    button.addEventListener("mouseup", end);
-    button.addEventListener("mouseleave", end);
+    button.addEventListener("pointerdown", (event) => {
+      button.setPointerCapture(event.pointerId);
+      start(event);
+    });
+    button.addEventListener("pointerup", end);
+    button.addEventListener("pointercancel", end);
+    button.addEventListener("lostpointercapture", end);
   }
 
   dpadButtons.forEach((button) => {
@@ -60,13 +65,10 @@ export function createInput({ dpadButtons, interactButton }) {
     }
   });
 
-  const handleInteractStart = (event) => {
-    event.preventDefault();
-    interactQueued = true;
-  };
-
-  interactButton.addEventListener("touchstart", handleInteractStart, { passive: false });
-  interactButton.addEventListener("mousedown", handleInteractStart);
+  interactButton.addEventListener("click", () => {
+    if (!interactButton.disabled) interactQueued = true;
+  });
+  window.addEventListener("blur", () => { pressed.clear(); interactQueued = false; });
 
   window.addEventListener("keydown", onKeyDown);
   window.addEventListener("keyup", onKeyUp);

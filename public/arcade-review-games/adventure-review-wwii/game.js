@@ -53,4 +53,10 @@ async function init() {
   game.resetState();
 }
 
-init();
+init().catch((error) => {
+  console.error(error);
+  document.querySelector(".subtitle").textContent = "The game could not load. Refresh the page to try again.";
+  const button = document.getElementById("start-button");
+  button.textContent = "Refresh game";
+  button.addEventListener("click", () => location.reload());
+});
