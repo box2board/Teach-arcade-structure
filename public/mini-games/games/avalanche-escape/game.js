@@ -24,7 +24,7 @@ canvas.addEventListener('pointerdown',e=>{if(game.s?.phase!=='playing')return;ca
 canvas.addEventListener('pointermove',e=>{if(drag?.id===e.pointerId)drag.x=dragX(e);});
 for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,e=>{if(drag?.id===e.pointerId)drag=null;});
 function puff(x,y,n=12){for(let i=0;i<n;i++)particles.push({x,y,vx:(Math.random()-.5)*110,vy:20+Math.random()*90,life:.4+Math.random()*.4});particles=particles.slice(-100);}
-function sprite(name,x,y,w,angle=0,alpha=1){const im=art[name];if(!im)return;const h=w*im.height/im.width;ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.globalAlpha=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
+function sprite(name,x,y,w,angle=0,alpha=1){const im=art[name];if(!im)return;const h=w*im.height/im.width;ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.globalAlpha*=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
 function shadow(x,y,r){ctx.fillStyle='#224c6d30';ctx.beginPath();ctx.ellipse(x+5,y+8,r,r*.38,0,0,Math.PI*2);ctx.fill();}
 function gold(x,y,r){shadow(x,y,r);ctx.save();ctx.translate(x,y);ctx.rotate(Math.sin(clock*2+y)*.12);ctx.fillStyle='#bd7517';ctx.strokeStyle='#70450e';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,-r);ctx.lineTo(r*.72,0);ctx.lineTo(0,r);ctx.lineTo(-r*.72,0);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#ffe29a';ctx.beginPath();ctx.moveTo(0,-r*.78);ctx.lineTo(r*.47,0);ctx.lineTo(0,r*.55);ctx.lineTo(-r*.47,0);ctx.closePath();ctx.fill();ctx.fillStyle='#fff9d9';ctx.fillRect(-2,-r*.45,4,r*.7);ctx.restore();}
 // Bring distant terrain objects forward along the snow plane. The final 310
