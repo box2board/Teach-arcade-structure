@@ -88,7 +88,16 @@
         <label
           >Track name<input id="name" maxlength="60" value="Garden Circuit"
         /></label>
+        <p class="fine">
+          Connectors: green = open · gray = occupied · red = invalid · gold =
+          snap target.
+        </p>
         <section id="object" hidden>
+          <label class="section-toggle"
+            ><input id="move-connected" type="checkbox" /> Move / rotate entire
+            connected section</label
+          >
+          <p class="fine" id="section-info">Single-piece transforms</p>
           <div class="pair">
             <label
               >Position X<input

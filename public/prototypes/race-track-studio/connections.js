@@ -28,6 +28,17 @@ export function connectionGraph(pieces) {
                 : "Slope mismatch",
         });
     }
+  for (const p of pieces) {
+    const outgoing = links.filter((l) => l.from === p.id),
+      incoming = links.filter((l) => l.to === p.id);
+    if (outgoing.length > 1 || incoming.length > 1)
+      invalid.push({
+        from: p.id,
+        to: p.id,
+        reason: "Occupied connection: multiple pieces share a socket",
+      });
+  }
+  for(let i=0;i<pieces.length;i++)for(let j=i+1;j<pieces.length;j++){if(distance(endpoint(pieces[i],0),endpoint(pieces[j],0))<.12)invalid.push({from:pieces[i].id,to:pieces[j].id,reason:'Entry occupied: two pieces share a socket'});}
   return { links, invalid };
 }
 export function validate(track) {
@@ -56,16 +67,69 @@ export function validate(track) {
 }
 export function snapCandidate(piece, pieces, threshold = 3) {
   let best = null;
+  const starts = pieces.map((p) => ({ id: p.id, point: endpoint(p, 0) }));
   for (const other of pieces) {
     if (other.id === piece.id) continue;
-    const end = endpoint(other),
+    const exitPoint = endpoint(other);
+    if (
+      starts.some(
+        (p) =>
+          p.id !== piece.id &&
+          p.id !== other.id &&
+          distance(exitPoint, p.point) < 0.12,
+      )
+    )
+      continue;
+    const end = exitPoint,
       d = distance(end, piece);
     if (d < threshold && (!best || d < best.d))
       best = {
         d,
         piece: { ...piece, x: end.x, y: end.y, z: end.z, yaw: end.heading },
         target: other.id,
+        valid: Math.abs(endpoint(piece, 0).pitch - end.pitch) < 0.08,
+        reason:
+          Math.abs(endpoint(piece, 0).pitch - end.pitch) < 0.08
+            ? ""
+            : "Slope mismatch: choose a transition piece",
       };
   }
   return best;
+}
+
+export function placementIssue(piece, pieces, ignoredIds = new Set()) {
+  const others = pieces.filter(
+      (p) => p.id !== piece.id && !ignoredIds.has(p.id),
+    ),
+    start = endpoint(piece, 0),
+    end = endpoint(piece);
+  for (const other of others) {
+    if (distance(start, endpoint(other, 0)) < 0.12)
+      return "Entry occupied: another piece starts here";
+    if (distance(end, endpoint(other)) < 0.12)
+      return "Exit occupied: another piece ends here";
+    const joint = endpoint(other);
+    if (
+      distance(start, joint) < 0.12 &&
+      (angle(start.heading, joint.heading) > 0.035 ||
+        Math.abs(start.pitch - joint.pitch) > 0.08)
+    )
+      return "Invalid connection: direction or slope mismatch";
+  }
+  return null;
+}
+export function connectedIds(pieces, id) {
+  const { links } = connectionGraph(pieces),
+    seen = new Set(),
+    queue = [id];
+  while (queue.length) {
+    const current = queue.pop();
+    if (seen.has(current)) continue;
+    seen.add(current);
+    for (const l of links) {
+      if (l.from === current) queue.push(l.to);
+      if (l.to === current) queue.push(l.from);
+    }
+  }
+  return seen;
 }

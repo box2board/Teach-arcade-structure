@@ -2,8 +2,13 @@ import * as T from "../../assets/vendor/three-0.162.0/three.module.js";
 import { CATALOG, asset, icon } from "./catalog.js";
 import { StudioScene } from "./renderer.js";
 import { makePiece, disposeGroup, endpoint } from "./geometry.js";
-import { validate, snapCandidate } from "./connections.js";
-import { Editor, starter, piece } from "./editor.js";
+import {
+  validate,
+  snapCandidate,
+  placementIssue,
+  connectedIds,
+} from "./connections.js";
+import { Editor, starter, piece, transformedSection } from "./editor.js";
 import { Vehicle } from "./vehicle.js";
 import {
   newTrack,
@@ -35,6 +40,9 @@ let selectedType = null,
   category = "Essentials",
   toastTimer,
   accumulator = 0;
+let candidateIssue = null;
+const connectors = new T.Group();
+scene.scene.add(connectors);
 function toast(msg) {
   $("toast").textContent = msg;
   $("toast").classList.add("show");
@@ -72,6 +80,38 @@ function renderTrack() {
   $("redo").disabled = !editor.redoStack.length;
   inspector();
   check();
+  refreshConnectors(null, true);
+}
+function refreshConnectors(target = null, rebuild = false) {
+  if (rebuild) {
+    while (connectors.children.length) {
+      const child = connectors.children[0];
+      connectors.remove(child);
+      disposeGroup(child);
+    }
+    const v = validate(editor.track);
+    for (const p of editor.track.pieces) {
+      const q = endpoint(p),
+        invalid = v.invalid.some((l) => l.from === p.id),
+        occupied = v.links.some((l) => l.from === p.id),
+        color = invalid ? "#ff3152" : occupied ? "#8493ad" : "#02e88a";
+      const ring = new T.Mesh(
+        new T.TorusGeometry(0.43, 0.1, 5, 16),
+        new T.MeshBasicMaterial({ color, depthTest: false }),
+      );
+      ring.userData = { pieceId: p.id, baseColor: color };
+      ring.rotation.x = Math.PI / 2;
+      ring.position.set(q.x, q.y + 0.8, q.z);
+      ring.renderOrder = 10;
+      connectors.add(ring);
+    }
+  }
+  for (const marker of connectors.children)
+    marker.material.color.set(
+      marker.userData.pieceId === target
+        ? "#ffcb00"
+        : marker.userData.baseColor,
+    );
 }
 function inspector() {
   const p = editor.selection;
@@ -84,6 +124,9 @@ function inspector() {
     $("height").value = p.y;
     $("height-value").value = p.y.toFixed(1);
     $("color").value = p.color;
+    $("section-info").textContent = $("move-connected").checked
+      ? `${connectedIds(editor.track.pieces, p.id).size} pieces move as one section`
+      : "Single-piece transforms";
   }
 }
 function check() {
@@ -135,6 +178,8 @@ function clearGhost() {
 function cancel() {
   selectedType = null;
   candidate = null;
+  candidateIssue = null;
+  refreshConnectors();
   clearGhost();
   renderAssets();
   $("hint").textContent =
@@ -158,12 +203,22 @@ function proposal(ev) {
   );
   let snap = snapping ? snapCandidate(p, editor.track.pieces, 5) : null;
   candidate = snap ? snap.piece : p;
+  candidateIssue =
+    (snap && !snap.valid ? snap.reason : null) ||
+    placementIssue(candidate, editor.track.pieces);
+  refreshConnectors(snap?.target);
   clearGhost();
   ghost = makePiece(candidate, false, true);
+  if (candidateIssue)
+    ghost.traverse((o) => {
+      if (o.material?.color) o.material.color.set("#ff3152");
+    });
   scene.scene.add(ghost);
-  $("hint").textContent = snap
-    ? "Magnetic connection ready • click / tap to place"
-    : "Free placement • click / tap to place · R rotate · Esc cancel";
+  $("hint").textContent = candidateIssue
+    ? candidateIssue
+    : snap
+      ? "Magnetic connection ready • click / tap to place"
+      : "Free placement • click / tap to place · R rotate · Esc cancel";
 }
 $("assets").onclick = (e) => {
   let b = e.target.closest("[data-asset]");
@@ -196,6 +251,10 @@ canvas.addEventListener("pointerup", (ev) => {
   if (selectedType) {
     proposal(ev);
     if (!candidate) return;
+    if (candidateIssue) {
+      toast(candidateIssue);
+      return;
+    }
     if (editor.track.pieces.length >= 250) {
       toast("Prototype limit: 250 pieces.");
       return;
@@ -253,19 +312,58 @@ for (const [id, key] of [
       inspector();
       return;
     }
-    mutation((p) => (p[key] = value));
+    transform({ [key]: value });
   };
-$("snap-selection").onclick = () =>
-  mutation((p) => {
-    const snap = snapCandidate(p, editor.track.pieces, 10);
-    if (snap) Object.assign(p, snap.piece);
-    else toast("Move closer to an open exit, then snap again.");
-  });
-$("rotate").onclick = () => mutation((p) => (p.yaw += Math.PI / 12));
+function transform(changes) {
+  if (vehicle || !editor.selection) return;
+  try {
+    const result = transformedSection(
+      editor.track,
+      editor.selected,
+      changes,
+      $("move-connected").checked,
+    );
+    editor.change((t) => (t.pieces = result.pieces));
+    if (result.count > 1) toast(`${result.count} connected pieces transformed`);
+  } catch (e) {
+    toast(e.message);
+    inspector();
+  }
+}
+$("move-connected").onchange = inspector;
+$("snap-selection").onclick = () => {
+  const p = editor.selection;
+  if (!p) return;
+  const ids = $("move-connected").checked
+    ? connectedIds(editor.track.pieces, p.id)
+    : new Set([p.id]);
+  const snap = snapCandidate(
+    p,
+    editor.track.pieces.filter((other) => !ids.has(other.id)),
+    10,
+  );
+  if (!snap) {
+    toast("No open exit nearby. Move closer to an open connector.");
+    return;
+  }
+  if (!snap.valid) {
+    toast(snap.reason);
+    return;
+  }
+  transform(snap.piece);
+};
+$("rotate").onclick = () => {
+  if (editor.selection) transform({ yaw: editor.selection.yaw + Math.PI / 12 });
+};
 $("duplicate").onclick = () =>
   mutation((p) => {
     if (editor.track.pieces.length >= 250) return;
     let copy = { ...p, id: crypto.randomUUID(), x: p.x + 4, z: p.z + 4 };
+    const issue = placementIssue(copy, editor.track.pieces);
+    if (issue) {
+      toast(issue);
+      return;
+    }
     editor.track.pieces.push(copy);
     editor.selected = copy.id;
   });
@@ -278,15 +376,8 @@ $("delete").onclick = () =>
   });
 $("length").onchange = (e) => mutation((p) => (p.length = +e.target.value));
 $("height").onchange = (e) => {
-  let value = +e.target.value;
-  placeHeight = value;
-  mutation((p) => {
-    if (value + Math.min(0, asset(p.type).rise || 0) < 0) {
-      toast("Base is too low for this decline.");
-      return;
-    }
-    p.y = value;
-  });
+  placeHeight = +e.target.value;
+  transform({ y: placeHeight });
 };
 $("color").onchange = (e) => mutation((p) => (p.color = e.target.value));
 $("name").onchange = (e) =>
@@ -344,6 +435,7 @@ function startTest() {
   cancel();
   vehicle = new Vehicle(structuredClone(editor.track), $("mode").value);
   scene.scene.add(vehicle.mesh);
+  connectors.visible = false;
   $("test").disabled = true;
   document
     .querySelectorAll(
@@ -373,6 +465,7 @@ function endTest() {
   scene.scene.remove(vehicle.mesh);
   disposeGroup(vehicle.mesh);
   vehicle = null;
+  connectors.visible = true;
   document
     .querySelectorAll(
       ".inspector input,.inspector button,.inspector select,.library button",
@@ -610,6 +703,11 @@ $("attach").onclick = () => {
   const p = piece(selectedType, end.x, end.y, end.z, end.heading);
   if (p.y + Math.min(0, asset(p.type).rise || 0) < 0) {
     toast("Raise the previous piece before attaching a decline.");
+    return;
+  }
+  const issue = placementIssue(p, editor.track.pieces);
+  if (issue) {
+    toast(issue);
     return;
   }
   editor.change((t) => {

@@ -218,3 +218,45 @@ test("vertical loop carries the vehicle upside down and reconnects to exit in bo
     assert.equal(v.loopRide, null);
   }
 });
+
+test("occupied exits cannot snap and overlapping entry placement is rejected", async () => {
+  const { placementIssue } = await import(
+    "../../public/prototypes/race-track-studio/connections.js"
+  );
+  const t = chain(["straight", "straight"]);
+  const p = piece("short", 8, 0, 0);
+  assert.ok(placementIssue(p, t.pieces)?.includes("occupied"));
+  assert.equal(snapCandidate(p, t.pieces, 2), null);
+  const end = endpoint(t.pieces[1]);
+  p.x = end.x;
+  p.z = end.z;
+  assert.ok(snapCandidate(p, t.pieces, 2)?.valid);
+});
+test("connected translate/rotate preserves joints, ignores islands and supports undo redo", async () => {
+  const { transformedSection } = await import(
+    "../../public/prototypes/race-track-studio/editor.js"
+  );
+  const t = chain(["straight", "right", "rise"]);
+  const island = piece("short", 90, 0, 90);
+  t.pieces.push(island);
+  const e = new Editor(structuredClone(t), () => {}),
+    id = t.pieces[0].id;
+  const moved = transformedSection(
+    t,
+    id,
+    { x: 10, y: 4, z: 12, yaw: Math.PI / 2 },
+    true,
+  );
+  assert.equal(moved.count, 3);
+  assert.deepEqual(moved.pieces[3], island);
+  assert.equal(validate({ ...t, pieces: moved.pieces }).links.length, 2);
+  e.change((t) => (t.pieces = moved.pieces));
+  e.undo();
+  assert.equal(e.track.pieces[0].x, 0);
+  e.redo();
+  assert.equal(e.track.pieces[0].x, 10);
+  assert.throws(() => transformedSection(t, id, { y: -4 }, true));
+  assert.equal(t.pieces[0].y, 0);
+  const single = transformedSection(t, id, { x: -10 }, false);
+  assert.deepEqual(single.pieces[1], t.pieces[1]);
+});

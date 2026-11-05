@@ -98,3 +98,11 @@ Ten tests pass, including finite geometry and snapped endpoints for all 60 asset
 The Stunts category now includes a vertical loop (61 components total), approximately 10m tall at default scale, with an offset exit to separate the crossing legs. Length scaling scales the full loop. Place a booster before its entry. Both automatic and manual tests use a guided loop traversal: momentum, throttle, braking, slope gravity and drag determine progress while steering is constrained through the inversion. This is an arcade loop guide, not a free tire-contact/centripetal-force solver. Too little speed can stall and release the car; Reset remains available.
 
 Eleven automated tests pass, including inversion, reaching the top, leaving the loop and reaching a downstream finish in both driving modes, plus reset. Existing WebGL visual/device verification limitations still apply.
+
+## Construction workflow revision
+
+Open exits are green rings, occupied exits gray, invalid joints red, and the current snap target gold. Invalid placement previews turn red and show an explanation; occupied sockets and mismatched endpoint directions/slopes cannot be placed through free placement, Attach Piece or snap-selection. Duplicate-entry sockets in imported tracks are reported. This remains socket validation, not full mesh-overlap detection.
+
+Select **Move / rotate entire connected section** in the inspector to apply X/Z translation, elevation, rotation and snap-to-exit to the whole connected graph component. Disconnected islands stay put. Bounds/floor and socket checks reject an invalid operation atomically. Each accepted operation is one undo/redo step. Geometry resizing and duplication still apply to the selected piece only. Connection markers are rebuilt after edits; pointer movement updates their colors without rebuilding their geometry.
+
+Thirteen automated tests cover the earlier systems plus occupied exits/entries, rigid connected-section translation/rotation, preserved joints, unrelated islands, rejected out-of-bounds moves and undo/redo. Visual/pointer/touch checks remain pending in a WebGL-capable browser.
