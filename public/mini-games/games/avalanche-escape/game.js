@@ -26,7 +26,7 @@ for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.add
 function puff(x,y,n=12){for(let i=0;i<n;i++)particles.push({x,y,vx:(Math.random()-.5)*110,vy:20+Math.random()*90,life:.4+Math.random()*.4});particles=particles.slice(-100);}
 function sprite(name,x,y,w,angle=0,alpha=1){const im=art[name];if(!im)return;const h=w*im.height/im.width;ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.globalAlpha*=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
 function shadow(x,y,r){ctx.fillStyle='#224c6d30';ctx.beginPath();ctx.ellipse(x+5,y+8,r,r*.38,0,0,Math.PI*2);ctx.fill();}
-function gold(x,y,r){shadow(x,y,r);ctx.save();ctx.translate(x,y);ctx.rotate(Math.sin(clock*2+y)*.12);ctx.fillStyle='#bd7517';ctx.strokeStyle='#70450e';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,-r);ctx.lineTo(r*.72,0);ctx.lineTo(0,r);ctx.lineTo(-r*.72,0);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#ffe29a';ctx.beginPath();ctx.moveTo(0,-r*.78);ctx.lineTo(r*.47,0);ctx.lineTo(0,r*.55);ctx.lineTo(-r*.47,0);ctx.closePath();ctx.fill();ctx.fillStyle='#fff9d9';ctx.fillRect(-2,-r*.45,4,r*.7);ctx.restore();}
+function gold(x,y,r){shadow(x,y,r);ctx.save();ctx.translate(x,y);ctx.rotate(Math.sin(clock*2+y)*.12);ctx.fillStyle='#bd7517';ctx.strokeStyle='#253462';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,-r);ctx.lineTo(r*.72,0);ctx.lineTo(0,r);ctx.lineTo(-r*.72,0);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#ffe29a';ctx.beginPath();ctx.moveTo(0,-r*.78);ctx.lineTo(r*.47,0);ctx.lineTo(0,r*.55);ctx.lineTo(-r*.47,0);ctx.closePath();ctx.fill();ctx.fillStyle='#fff9d9';ctx.fillRect(-2,-r*.45,4,r*.7);ctx.restore();}
 // Bring distant terrain objects forward along the snow plane. The final 310
 // world units use the engine's exact coordinates and radii for fair collisions.
 function projectSlope(x,y,r=1){
@@ -53,7 +53,7 @@ function render(dt){
  if(playing){tracks.push({x,y:508,dx:-lean*7});if(Math.random()<dt*(dash?90:28))puff(x+(Math.random()-.5)*25,526,1);}
  for(const o of [...(s?.objects||[])].sort((a,b)=>a.y-b.y))drawSlopeObject(o,t);
  const movement=(x-previousX)/Math.max(dt,.001);previousX=x;lean+=(clamp(movement/350,-1,1)-lean)*(1-Math.exp(-dt*12));
- shadow(x,510,20);sprite('skier',x,505,46,lean*.18,s?.inv>0?.55+Math.sin(clock*35)*.22:1);
+ shadow(x,510,20);sprite('skier',x,505,54,lean*.18,s?.inv>0?.55+Math.sin(clock*35)*.22:1);
  for(const p of particles){if(playing){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;}ctx.fillStyle=`rgba(255,255,255,${Math.max(0,p.life)})`;ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,Math.PI*2);ctx.fill();}particles=particles.filter(p=>p.life>0);
  // A distant powder front grows without obscuring collision space.
  const front=ctx.createLinearGradient(0,40,0,150);front.addColorStop(0,'rgba(237,247,255,'+(0.25+t/110)+')');front.addColorStop(1,'rgba(237,247,255,0)');ctx.fillStyle=front;ctx.fillRect(0,40,600,110);
