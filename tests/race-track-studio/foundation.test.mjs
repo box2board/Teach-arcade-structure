@@ -40,8 +40,8 @@ function simulate(t, seconds, mode = "auto") {
   for (let i = 0; i < seconds * 120; i++) v.step(1 / 120);
   return v;
 }
-test("all 17 assets produce finite smooth geometry and exact snap endpoints", () => {
-  assert.equal(CATALOG.length, 17);
+test("all 60 assets produce finite smooth geometry and exact snap endpoints", () => {
+  assert.equal(CATALOG.length, 60);
   for (let a of CATALOG) {
     let p = piece(a.id, 0, 5);
     const g = makePiece(p);
@@ -170,4 +170,30 @@ test("250-piece construction validation and simulation performance sample", () =
     }),
   );
   assert.ok(Number.isFinite(v.speed));
+});
+
+test("expanded profiles connect, serialize and simulate without invalid numbers", () => {
+  for (const a of CATALOG) {
+    const t = chain(["start", a.id, "finish"]);
+    if (a.rise < 0) {
+      for (const p of t.pieces) p.y += Math.abs(a.rise);
+    }
+    const restored = parseTrack(serialize(t));
+    assert.equal(restored.pieces[1].type, a.id);
+    const v = simulate(t, 4);
+    assert.ok(
+      [v.pos.x, v.pos.y, v.pos.z, v.speed].every(Number.isFinite),
+      a.id,
+    );
+  }
+});
+test("brake zone reduces speed without trapping the vehicle", () => {
+  let t = chain(["brake"]);
+  let v = new Vehicle(t, "manual");
+  v.velocity.x = 12;
+  for (let i = 0; i < 90; i++) v.step(1 / 120);
+  assert.ok(v.speed < 8);
+  v.keys.add("ArrowUp");
+  for(let i=0;i<120;i++)v.step(1/120);
+  assert.ok(v.pos.x>8);
 });

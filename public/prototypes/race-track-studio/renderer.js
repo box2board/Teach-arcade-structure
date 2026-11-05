@@ -4,8 +4,8 @@ export class StudioScene {
   constructor(container) {
     this.container = container;
     this.scene = new T.Scene();
-    this.scene.background = new T.Color("#d3e6e1");
-    this.scene.fog = new T.Fog("#d3e6e1", 110, 260);
+    this.scene.background = new T.Color("#7bd5ff");
+    this.scene.fog = new T.Fog("#7bd5ff", 110, 260);
     this.camera = new T.PerspectiveCamera(43, 1, 0.1, 500);
     this.camera.position.set(52, 58, 70);
     this.renderer = new T.WebGLRenderer({
@@ -17,7 +17,7 @@ export class StudioScene {
     this.renderer.shadowMap.type = T.PCFSoftShadowMap;
     this.renderer.outputColorSpace = T.SRGBColorSpace;
     this.renderer.toneMapping = T.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.15;
+    this.renderer.toneMappingExposure = 1.0;
     container.appendChild(this.renderer.domElement);
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.controls.enableDamping = true;
@@ -31,7 +31,7 @@ export class StudioScene {
     });
     this.controls.target.set(0, 0, -15);
     this.controls.update();
-    this.scene.add(new T.HemisphereLight("#e7fff7", "#6a8e88", 2.7));
+    this.scene.add(new T.HemisphereLight("#e7fff7", "#8bbae7", 2.7));
     let sun = new T.DirectionalLight("#fff2d8", 3);
     sun.position.set(-30, 60, 25);
     sun.castShadow = true;
@@ -48,7 +48,7 @@ export class StudioScene {
     this.sun = sun;
     const ground = new T.Mesh(
       new T.PlaneGeometry(800, 800),
-      new T.MeshStandardMaterial({ color: "#b7d3c0", roughness: 1 }),
+      new T.MeshStandardMaterial({ color: "#55cc4b", roughness: 1 }),
     );
     ground.rotation.x = -Math.PI / 2;
     ground.position.y = -0.1;
@@ -56,12 +56,12 @@ export class StudioScene {
     this.scene.add(ground);
     const stage = new T.Mesh(
       new T.BoxGeometry(150, 0.5, 150),
-      new T.MeshStandardMaterial({ color: "#d9e5d8", roughness: 0.94 }),
+      new T.MeshStandardMaterial({ color: "#c9ecff", roughness: 0.94 }),
     );
     stage.position.y = -0.35;
     stage.receiveShadow = true;
     this.scene.add(stage);
-    this.grid = new T.GridHelper(150, 75, "#91b3a5", "#b9cec1");
+    this.grid = new T.GridHelper(150, 75, "#60addb", "#a9d5f4");
     this.grid.position.y = -0.085;
     this.grid.material.transparent = true;
     this.grid.material.opacity = 0.4;
@@ -69,12 +69,12 @@ export class StudioScene {
     // Repeated low-poly foliage outside the build area; shared geometry and materials.
     const trunks = new T.InstancedMesh(
         new T.CylinderGeometry(0.2, 0.3, 2, 5),
-        new T.MeshStandardMaterial({ color: "#8e8d6d" }),
+        new T.MeshStandardMaterial({ color: "#ae652d" }),
         38,
       ),
       crowns = new T.InstancedMesh(
         new T.IcosahedronGeometry(2.1, 0),
-        new T.MeshStandardMaterial({ color: "#629e84", roughness: 1 }),
+        new T.MeshStandardMaterial({ color: "#12b955", roughness: 1 }),
         38,
       );
     let dummy = new T.Object3D();

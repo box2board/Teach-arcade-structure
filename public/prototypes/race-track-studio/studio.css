@@ -560,3 +560,102 @@ output {
     gap: 5px;
   }
 }
+
+/* Bright circuit workshop palette */
+:root {
+  color: #222563;
+  background: #e6f4ff;
+}
+header {
+  border-bottom: 3px solid #7848ff;
+  background: #fff;
+}
+.brand {
+  color: #5426d9;
+}
+.primary {
+  background: #6935ef;
+  border-color: #6935ef;
+}
+.primary:hover {
+  background: #824dff;
+}
+button {
+  color: #34336e;
+  border-color: #dcd5ff;
+}
+button:hover {
+  background: #f0eaff;
+}
+.active {
+  background: #e9dcff;
+  border-color: #9c64ff;
+}
+.library {
+  background: linear-gradient(180deg, #f4eaff, #fff 35%);
+}
+.inspector {
+  background: #f8fbff;
+}
+.asset {
+  background: #f4f8ff;
+  border-color: #c9deff;
+}
+.asset.chosen {
+  background: #fff1d9;
+  border: 2px solid #ff9128;
+}
+.eyebrow {
+  color: #8d44df;
+}
+h1 {
+  color: #4c24b5;
+}
+.scene-label {
+  background: #fff;
+  color: #6228d9;
+}
+.camera-bar button {
+  color: #562bad;
+}
+#welcome h2 {
+  color: #3f2393;
+}
+#welcome p {
+  color: #36548a;
+}
+.bottom-bar {
+  border-color: #d0baff;
+}
+.canvas-wrap {
+  background: #85d9ff;
+}
+footer {
+  background: #e7f2ff;
+  color: #414b83;
+}
+nav {
+  gap: 5px;
+  margin-top: 12px;
+}
+nav button {
+  font-size: 10px;
+}
+#asset-search {
+  font-size: 11px;
+  border-color: #cbb8f6;
+  background: white;
+}
+.library-foot {
+  color: #645b91;
+}
+.asset span {
+  line-height: 1.15;
+  font-size: 10px;
+}
+#assets {
+  gap: 8px;
+}
+.badge {
+  color: #7443bd;
+}

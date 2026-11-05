@@ -1,5 +1,5 @@
 export const WIDTH = 3.4;
-export const CATALOG = [
+const ORIGINAL = [
   {
     id: "start",
     name: "Launch deck",
@@ -133,11 +133,151 @@ export const CATALOG = [
     kind: "straight",
     interaction: "finish",
   },
-].map((a) => ({
+];
+const EXTRA = [];
+for (const [label, radius, degrees] of [
+  ["Compact 45°", 6, 45],
+  ["Sweeper 45°", 18, 45],
+  ["Compact 90°", 6, 90],
+  ["Sweeper 90°", 18, 90],
+  ["Broad 135°", 12, 135],
+  ["Wide hairpin", 12, 180],
+])
+  for (const [side, sign] of [
+    ["left", 1],
+    ["right", -1],
+  ])
+    EXTRA.push({
+      id: `curve-${radius}-${degrees}-${side}`,
+      name: `${label} ${side}`,
+      category: "Curves",
+      kind: "curve",
+      radius,
+      angle: (sign * degrees * Math.PI) / 180,
+    });
+for (const [radius, degrees, bank] of [
+  [8, 45, 0.3],
+  [12, 90, 0.4],
+  [16, 135, 0.3],
+])
+  for (const [side, sign] of [
+    ["left", 1],
+    ["right", -1],
+  ])
+    EXTRA.push({
+      id: `bank-${radius}-${side}`,
+      name: `Bank ${degrees}° ${side}`,
+      category: "Banked",
+      kind: "curve",
+      radius,
+      angle: (sign * degrees * Math.PI) / 180,
+      bank: sign * bank,
+    });
+for (const [length, rise] of [
+  [8, 1],
+  [16, 2],
+  [18, 5],
+  [24, 6],
+])
+  for (const sign of [1, -1])
+    EXTRA.push({
+      id: `slope-${length}-${sign}`,
+      name: `${sign > 0 ? "Climb" : "Descent"} ${rise}m / ${length}m`,
+      category: "Elevation",
+      kind: "slope",
+      length,
+      rise: rise * sign,
+    });
+for (const [label, length, rise] of [
+  ["Mini", 6, 1],
+  ["Distance", 14, 3],
+  ["Sky", 12, 4],
+])
+  for (const landing of [false, true])
+    EXTRA.push({
+      id: `jump-${label.toLowerCase()}-${landing ? "landing" : "launch"}`,
+      name: `${label} ${landing ? "landing" : "launch"}`,
+      category: "Jumps",
+      kind: landing ? "landing" : "ramp",
+      length,
+      rise: rise * (landing ? -1 : 1),
+    });
+for (const [label, kind, length, amplitude, waves] of [
+  ["Rolling hills", "wave", 24, 1.5, 2],
+  ["Camelback", "wave", 18, 3, 1],
+  ["Speed humps", "wave", 20, 0.6, 3],
+  ["S-bend left", "chicane", 22, 4, 1],
+  ["S-bend right", "chicane", 22, -4, 1],
+  ["Slalom", "chicane", 30, 2.5, 2],
+])
+  EXTRA.push({
+    id: label.toLowerCase().replaceAll(" ", "-"),
+    name: label,
+    category: "Stunts",
+    kind,
+    length,
+    amplitude,
+    waves,
+  });
+EXTRA.push(
+  {
+    id: "boost-long",
+    name: "Turbo runway",
+    category: "Specials",
+    kind: "straight",
+    length: 14,
+    interaction: "boost",
+  },
+  {
+    id: "boost-curve",
+    name: "Booster bend",
+    category: "Specials",
+    kind: "curve",
+    radius: 12,
+    angle: Math.PI / 2,
+    interaction: "boost",
+  },
+  {
+    id: "brake",
+    name: "Brake zone",
+    category: "Specials",
+    kind: "straight",
+    length: 10,
+    interaction: "brake",
+  },
+  {
+    id: "tunnel-short",
+    name: "Portal tunnel",
+    category: "Specials",
+    kind: "straight",
+    length: 8,
+    tunnel: true,
+  },
+  {
+    id: "tunnel-long",
+    name: "Long tunnel",
+    category: "Specials",
+    kind: "straight",
+    length: 16,
+    tunnel: true,
+  },
+);
+export const PALETTE = {
+  Essentials: "#ff7626",
+  Curves: "#008dff",
+  Elevation: "#853dff",
+  Banked: "#ef299d",
+  Jumps: "#ffbe00",
+  Stunts: "#00bfa0",
+  Specials: "#ff3f66",
+};
+export const CATALOG = [...ORIGINAL, ...EXTRA].map((a) => ({
+  color: PALETTE[a.category],
   ...a,
   dimensions: {
     width: WIDTH,
     length: a.length || a.radius * Math.abs(a.angle),
+    height: Math.abs(a.rise || a.amplitude || 0),
   },
   connections: ["entry", "exit"],
   orientations: "yaw; surface pitch from profile",
@@ -147,10 +287,14 @@ export const CATALOG = [
 export const asset = (id) => CATALOG.find((a) => a.id === id);
 export function icon(a) {
   let d =
-    a.kind === "curve"
-      ? "M14 45 Q14 14 66 14"
-      : a.rise
-        ? "M12 44 L68 16"
-        : "M12 42 L68 18";
-  return `<svg viewBox="0 0 80 56" aria-hidden="true"><path d="${d}" fill="none" stroke="#c4dcd7" stroke-width="20" transform="translate(0 4)"/><path d="${d}" fill="none" stroke="${a.interaction === "boost" ? "#efb449" : "#35b4a7"}" stroke-width="17"/><path d="${d}" fill="none" stroke="#e4fff5" stroke-dasharray="3 5" stroke-width="1.5"/></svg>`;
+    a.kind === "chicane"
+      ? "M8 36 C25 0 52 56 72 16"
+      : a.kind === "wave"
+        ? "M8 40 Q24 0 40 30 T72 25"
+        : a.kind === "curve"
+          ? "M14 45 Q14 14 66 14"
+          : a.rise
+            ? "M12 44 L68 16"
+            : "M12 42 L68 18";
+  return `<svg viewBox="0 0 80 56" aria-hidden="true"><path d="${d}" fill="none" stroke="#d9e9ff" stroke-width="20" transform="translate(0 4)"/><path d="${d}" fill="none" stroke="${a.color}" stroke-width="17"/><path d="${d}" fill="none" stroke="#e4fff5" stroke-dasharray="3 5" stroke-width="1.5"/></svg>`;
 }

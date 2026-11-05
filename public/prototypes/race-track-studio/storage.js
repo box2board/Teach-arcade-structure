@@ -49,7 +49,10 @@ export function parseTrack(raw) {
     ...newTrack(),
     ...raw,
     name: String(raw.name || "Imported track").slice(0, 60),
-    pieces: structuredClone(raw.pieces),
+    pieces: structuredClone(raw.pieces).map((p) => ({
+      ...p,
+      color: !p.color || p.color === "#23ada7" ? asset(p.type).color : p.color,
+    })),
     startId: ids.has(raw.startId) ? raw.startId : raw.pieces[0]?.id || null,
   };
 }

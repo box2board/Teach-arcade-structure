@@ -16,7 +16,7 @@ Reuse the local Three.js distribution to avoid another runtime dependency or CDN
 
 | Module | Responsibility |
 | --- | --- |
-| catalog.js | 17 asset definitions, categories, dimensions, connection metadata, interactions and relative cost |
+| catalog.js | 60 asset definitions, categories, dimensions, connection metadata, interactions and relative cost |
 | geometry.js | Parametric ribbon surfaces, smooth rails, engineered supports, gates, per-piece mesh batching and disposal |
 | connections.js | Endpoint alignment, slope checks, magnetic snapping, graph traversal and disconnected-piece reporting |
 | editor.js | Creation state, immutable history snapshots, starter construction |
@@ -30,7 +30,7 @@ App state and vehicle state are separate. Testing clones the construction; leavi
 
 ## Implemented scope
 
-- 17 functional pieces: start, short/normal/long straight, left/right/gentle curves, hairpin, banked bend, climb, descent, jump and landing ramps, bridge, booster and finish.
+- 60 functional pieces, including the original start, short/normal/long straight, left/right/gentle curves, hairpin, banked bend, climb, descent, jump and landing ramps, bridge, booster and finish.
 - Ground placement preview; near-exit magnetic alignment; click/tap placement; repeatable Attach Piece action; select, translate by inspector, rotate, duplicate, delete, undo and redo.
 - Length/radius scaling, base elevation and color editing. Edits intentionally do not move downstream pieces; validation reveals resulting gaps.
 - Automatically generated supports for elevated sampled surfaces. Decorative structures are independent from collision surfaces.
@@ -55,7 +55,7 @@ One finger or mouse drag orbits in select mode; two fingers pan/pinch. Right dra
 
 Run `node --test tests/race-track-studio/foundation.test.mjs`.
 
-Eight automated tests pass: every asset produces finite geometry and snap endpoints; disconnected/invalid connections; delete/undo/redo; storage/JSON property round trip and malformed imports; automatic straight/curve/climb/descent traversal; manual throttle/brake/steering/pause/reset/gravity; ramp flight; and 250-piece validation/simulation.
+Ten automated tests pass: every asset produces finite geometry and snap endpoints; disconnected/invalid connections; delete/undo/redo; storage/JSON property round trip and malformed imports; automatic straight/curve/climb/descent traversal; manual throttle/brake/steering/pause/reset/gravity; ramp flight; and 250-piece validation/simulation.
 
 The starter contains 14 components and produces 53 batched track meshes / 11,206 track triangles (excluding car/environment). A 250 short-piece CPU sample contains 4,000 collision segments. CPU timings vary with host load and are not Chromebook GPU/frame-rate evidence. Runtime FPS/draw counters and a low quality option are provided. The import/build cap is 250 components; begin device reviews around 25–80 pieces until hardware profiling supports a larger recommendation.
 
@@ -84,3 +84,11 @@ For development, serve `public` with a static HTTP server and visit `/prototypes
 - One environment and one vehicle only. Procedural authored art establishes a direction, not a verified final flagship art pass.
 
 Priority before Phase 2: verify the complete build → snap → drive → edit → save → reopen loop on a WebGL-capable laptop and iPad, correct observed input/physics issues, then profile 25/80/150-piece scenes on a Chromebook. Phase 2 should add downstream connected transforms, occupied socket prevention, clearer joint markers and error selection, transition smoothing, improved tire/slope/banking behavior, and further art polish. Expand assets only after those foundations are reliable.
+
+## Bright palette and expanded library revision
+
+The library now has 60 components in seven categories (43 additions). New catalog entries cover compact/broad 45°–180° turns, mirrored banked bends, additional climbs/descents, three launch/landing pairs, rolling hills, camelback, speed humps, mirrored S-bends, slalom, turbo straight/bend, a brake zone and two tunnel arch lengths. Search filters the active category. Tunnel arches are decorative frames; their roof is not a separate collision object. Loops and interactive scenery are still deferred.
+
+Category colors now use orange, blue, purple, pink, gold, turquoise and coral. Sky, grass, supports, car and editor colors are brighter. Legacy default teal pieces adopt their category color on load; custom colors are preserved. Existing asset IDs and schema version 1 remain valid. New saves containing expanded IDs require this revision. Offline export also fixes a malformed font-import removal that previously damaged the opening CSS rule.
+
+Ten tests pass, including finite geometry and snapped endpoints for all 60 assets, serialization and simulation smoke tests for every component, plus brake-zone slowdown without trapping the car. Smoke tests do not certify every stunt at every speed. Browser visual, pointer/touch and GPU verification remain blocked by the previously observed WebGL-disabled review environment. No production deployment.

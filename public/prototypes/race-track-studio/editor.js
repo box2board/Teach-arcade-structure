@@ -1,3 +1,4 @@
+import { asset } from "./catalog.js";
 import { newTrack } from "./storage.js";
 import { endpoint } from "./geometry.js";
 export function piece(type, x = 0, y = 0, z = 0, yaw = 0) {
@@ -9,7 +10,7 @@ export function piece(type, x = 0, y = 0, z = 0, yaw = 0) {
     z,
     yaw,
     length: 1,
-    color: "#23ada7",
+    color: asset(type).color,
   };
 }
 export function starter() {

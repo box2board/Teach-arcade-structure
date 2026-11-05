@@ -106,14 +106,19 @@ function check() {
   return v;
 }
 function renderAssets() {
-  const cats = ["Essentials", "Curves", "Elevation"];
+  const cats = [...new Set(CATALOG.map((a) => a.category))];
   $("categories").innerHTML = cats
     .map(
       (c) =>
         `<button class="${category === c ? "active" : ""}" data-cat="${c}">${c}</button>`,
     )
     .join("");
-  $("assets").innerHTML = CATALOG.filter((a) => a.category === category)
+  $("assets").innerHTML = CATALOG.filter(
+    (a) =>
+      a.category === category &&
+      (!$("asset-search")?.value ||
+        a.name.toLowerCase().includes($("asset-search").value.toLowerCase())),
+  )
     .map(
       (a) =>
         `<button class="asset ${a.id === selectedType ? "chosen" : ""}" data-asset="${a.id}" title="${a.name}: click workspace to place"><span>${a.name}</span>${icon(a)}</button>`,
@@ -615,3 +620,5 @@ $("attach").onclick = () => {
   clearGhost();
   toast("Piece attached at the selected exit.");
 };
+
+$("asset-search").oninput = () => renderAssets();

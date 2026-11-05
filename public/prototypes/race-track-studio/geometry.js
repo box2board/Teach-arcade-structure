@@ -19,6 +19,18 @@ export function localPoint(a, t, scale = 1) {
     if (a.kind === "ramp") y = a.rise * t * t;
     if (a.kind === "landing") y = a.rise * (2 * t - t * t);
   }
+  if (a.kind === "wave")
+    y = a.amplitude * Math.pow(Math.sin(Math.PI * (a.waves || 1) * t), 2);
+  if (a.kind === "chicane") {
+    z = (a.amplitude * (1 - Math.cos(2 * Math.PI * (a.waves || 1) * t))) / 2;
+    heading = Math.atan2(
+      a.amplitude *
+        Math.PI *
+        (a.waves || 1) *
+        Math.sin(2 * Math.PI * (a.waves || 1) * t),
+      a.length * scale,
+    );
+  }
   return { x, y, z, heading, bank: (a.bank || 0) * Math.sin(Math.PI * t) };
 }
 export function sample(piece, t) {
@@ -73,7 +85,7 @@ export function makePiece(piece, selected = false, ghost = false) {
   geo.setIndex(indices);
   geo.computeVertexNormals();
   const mat = new T.MeshStandardMaterial({
-    color: selected ? "#ffd173" : piece.color || "#23ada7",
+    color: selected ? "#ffd173" : piece.color || a.color,
     roughness: 0.48,
     metalness: 0.15,
     side: T.DoubleSide,
@@ -100,7 +112,7 @@ export function makePiece(piece, selected = false, ghost = false) {
     const rail = new T.Mesh(
       new T.TubeGeometry(curve, n, 0.085, 4, false),
       new T.MeshStandardMaterial({
-        color: ghost ? "#c3fff3" : "#e9fcf0",
+        color: ghost ? "#c3fff3" : "#ffffff",
         roughness: 0.6,
         transparent: ghost,
         opacity: ghost ? 0.6 : 1,
@@ -116,7 +128,7 @@ export function makePiece(piece, selected = false, ghost = false) {
         for (let side of [-1, 1]) {
           const leg = new T.Mesh(
             new T.CylinderGeometry(0.13, 0.24, height, 5),
-            new T.MeshStandardMaterial({ color: "#597a79", roughness: 0.9 }),
+            new T.MeshStandardMaterial({ color: "#365bff", roughness: 0.9 }),
           );
           leg.position.set(
             p.x - Math.sin(p.heading) * 1.25 * side,
@@ -126,7 +138,7 @@ export function makePiece(piece, selected = false, ghost = false) {
           g.add(leg);
           const foot = new T.Mesh(
             new T.CylinderGeometry(0.4, 0.44, 0.12, 6),
-            new T.MeshStandardMaterial({ color: "#3c6261" }),
+            new T.MeshStandardMaterial({ color: "#ffb515" }),
           );
           foot.position.set(leg.position.x, 0.06, leg.position.z);
           g.add(foot);
@@ -137,7 +149,7 @@ export function makePiece(piece, selected = false, ghost = false) {
       let p = sample(piece, t);
       const dash = new T.Mesh(
         new T.BoxGeometry(0.6, 0.025, 0.06),
-        new T.MeshStandardMaterial({ color: "#d9f6e6" }),
+        new T.MeshStandardMaterial({ color: "#ffffff" }),
       );
       dash.position.set(p.x, p.y + 0.345, p.z);
       dash.rotation.y = -p.heading;
@@ -159,11 +171,11 @@ export function makePiece(piece, selected = false, ghost = false) {
         strip.rotation.y = -p.heading;
         g.add(strip);
       }
-      if (a.interaction !== "boost") {
+      if (a.interaction === "start" || a.interaction === "finish") {
         let p = sample(piece, 0.5);
         const arch = new T.Group(),
           m = new T.MeshStandardMaterial({
-            color: a.interaction === "start" ? "#194c53" : "#edb953",
+            color: a.interaction === "start" ? "#562aff" : "#ffce00",
           });
         for (let z of [-2, 2]) {
           let post = new T.Mesh(new T.BoxGeometry(0.22, 3.2, 0.22), m);
@@ -177,6 +189,24 @@ export function makePiece(piece, selected = false, ghost = false) {
         arch.rotation.y = -p.heading;
         g.add(arch);
       }
+    }
+  }
+  if (a.tunnel) {
+    for (let t = 0.05; t < 1; t += 0.18) {
+      const p = sample(piece, t),
+        arch = new T.Group(),
+        mat = new T.MeshStandardMaterial({ color: "#ffcf00", roughness: 0.5 });
+      for (const side of [-1, 1]) {
+        const post = new T.Mesh(new T.BoxGeometry(0.2, 3.4, 0.25), mat);
+        post.position.set(0, 2, side * 1.95);
+        arch.add(post);
+      }
+      const roof = new T.Mesh(new T.BoxGeometry(0.3, 0.25, 4.15), mat);
+      roof.position.y = 3.7;
+      arch.add(roof);
+      arch.position.set(p.x, p.y, p.z);
+      arch.rotation.y = -p.heading;
+      g.add(arch);
     }
   }
   if (!ghost) batchPiece(g);

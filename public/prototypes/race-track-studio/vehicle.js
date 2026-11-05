@@ -46,7 +46,7 @@ export function buildCar() {
       [1.04, 0.35],
     ],
     1.05,
-    "#f67c50",
+    "#ff3b18",
   );
   sculpt(
     [
@@ -56,9 +56,9 @@ export function buildCar() {
       [0.52, 0.68],
     ],
     0.76,
-    "#244b5c",
+    "#152fff",
   );
-  box(0.1, 0.06, 1.2, "#244b5c", -0.9, 0.85, 0);
+  box(0.1, 0.06, 1.2, "#152fff", -0.9, 0.85, 0);
   for (let z of [-0.36, 0.36]) box(0.08, 0.12, 0.22, "#fff3b0", 1.04, 0.57, z);
   box(1.8, 0.06, 0.09, "#fff0d1", 0.1, 0.69, 0);
   for (let x of [-0.65, 0.65])
@@ -185,6 +185,8 @@ export class Vehicle {
       let accel = this.mode === "auto" ? 6 : up ? 10 : 0;
       if (down) accel = forward > 1 ? -18 : -5;
       if (asset(surf.piece.type).interaction === "boost") accel += 20;
+      if (asset(surf.piece.type).interaction === "brake" && forward > 6)
+        accel = Math.min(accel, -16);
       forward += (accel - 9.81 * surf.slope - 0.065 * forward) * dt;
       forward = Math.max(-7, Math.min(32, forward));
       if (this.mode === "auto") {

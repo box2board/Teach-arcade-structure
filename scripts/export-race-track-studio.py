@@ -19,7 +19,7 @@ for name, path in modules.items():
         source = source.replace(f'"./{local.name}"', f'"ta-{local.stem}"').replace(f"'./{local.name}'", f"'ta-{local.stem}'")
     imports[name] = 'data:text/javascript;base64,' + base64.b64encode(source.encode()).decode()
 html = (studio/'index.html').read_text()
-css = re.sub(r'@import[^;]+;', '', (studio/'studio.css').read_text())
+css = re.sub(r'@import\s+url\(.*?\);', '', (studio/'studio.css').read_text())
 html = re.sub(r'<link[^>]+href="studio.css"[^>]*>', lambda _: '<style>'+css+'</style>', html)
 html = re.sub(r'<script type="module" src="app.js"></script>', lambda _: '<script type="importmap">'+json.dumps({'imports': imports})+'</script><script type="module">import "ta-app";</script>', html)
 output = Path(sys.argv[1] if len(sys.argv)>1 else '/tmp/Race_Track_Studio_Playable.html')
