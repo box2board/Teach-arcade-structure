@@ -123,11 +123,14 @@ export class Vehicle {
     this.elapsed = 0;
     this.finished = false;
     this.airtime = 0;
+    this.loopRide = null;
+    this.loopCooldown = 0;
     this.applyMesh(0);
   }
   nearest() {
     let best = null;
     for (const s of this.surfaces) {
+      if (asset(s.piece.type).kind === "loop") continue;
       const dx = s.b.x - s.a.x,
         dz = s.b.z - s.a.z,
         len2 = dx * dx + dz * dz;
@@ -164,6 +167,30 @@ export class Vehicle {
   step(dt) {
     if (this.paused) return;
     this.elapsed += dt;
+    this.loopCooldown = Math.max(0, (this.loopCooldown || 0) - dt);
+    if (!this.loopRide && !this.loopCooldown) {
+      for (const piece of this.track.pieces) {
+        if (asset(piece.type).kind !== "loop") continue;
+        const entry = sample(piece, 0),
+          d = Math.hypot(
+            this.pos.x - entry.x,
+            this.pos.z - entry.z,
+            this.pos.y - entry.y - 0.32,
+          );
+        const forward =
+          this.velocity.x * Math.cos(entry.heading) +
+          this.velocity.z * Math.sin(entry.heading);
+        if (d < 0.75 && forward > 1) {
+          this.loopRide = { piece, t: 0, speed: this.speed || forward };
+          break;
+        }
+      }
+    }
+    if (this.loopRide) {
+      this.stepLoop(dt);
+      return;
+    }
+
     const surf = this.nearest(),
       up = this.keys.has("ArrowUp") || this.keys.has("w"),
       down = this.keys.has("ArrowDown") || this.keys.has("s");
@@ -245,6 +272,64 @@ export class Vehicle {
       }
     }
     this.speed = Math.hypot(this.velocity.x, this.velocity.z);
+    this.applyMesh(dt);
+  }
+  stepLoop(dt) {
+    const ride = this.loopRide,
+      piece = ride.piece,
+      a = asset(piece.type),
+      theta = ride.t * 2 * Math.PI;
+    const dx =
+        (a.radius * 2 * Math.PI * Math.cos(theta) + a.lead) * piece.length,
+      dy = a.radius * 2 * Math.PI * Math.sin(theta) * piece.length;
+    const derivative = Math.hypot(dx, dy),
+      tx = dx / derivative,
+      ty = dy / derivative;
+    const up = this.keys.has("ArrowUp") || this.keys.has("w"),
+      brake = this.keys.has("ArrowDown") || this.keys.has("s");
+    ride.speed = Math.max(
+      0,
+      ride.speed +
+        ((brake ? -18 : this.mode === "auto" ? 6 : up ? 10 : 0) -
+          9.81 * ty -
+          0.065 * ride.speed) *
+          dt,
+    );
+    if (ride.speed < 0.4) {
+      this.loopRide = null;
+      this.loopCooldown = 2;
+      this.grounded = false;
+      this.velocity.set(
+        Math.cos(piece.yaw) * tx * ride.speed,
+        ty * ride.speed,
+        Math.sin(piece.yaw) * tx * ride.speed,
+      );
+      this.applyMesh(dt);
+      return;
+    }
+    ride.t = Math.min(1, ride.t + (ride.speed * dt) / derivative);
+    const q = sample(piece, ride.t),
+      angle = ride.t * 2 * Math.PI;
+    const pitch = Math.atan2(
+      a.radius * 2 * Math.PI * Math.sin(angle),
+      a.radius * 2 * Math.PI * Math.cos(angle) + a.lead,
+    );
+    this.pos.set(q.x, q.y + 0.32, q.z);
+    this.yaw = piece.yaw;
+    this.pitch = pitch;
+    this.bank = 0;
+    this.grounded = true;
+    this.speed = ride.speed;
+    this.velocity.set(
+      Math.cos(piece.yaw) * Math.cos(pitch) * ride.speed,
+      Math.sin(pitch) * ride.speed,
+      Math.sin(piece.yaw) * Math.cos(pitch) * ride.speed,
+    );
+    if (ride.t === 1) {
+      this.loopRide = null;
+      this.loopCooldown = 1;
+      this.pitch = 0;
+    }
     this.applyMesh(dt);
   }
   applyMesh(dt) {

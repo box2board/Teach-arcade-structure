@@ -92,3 +92,9 @@ The library now has 60 components in seven categories (43 additions). New catalo
 Category colors now use orange, blue, purple, pink, gold, turquoise and coral. Sky, grass, supports, car and editor colors are brighter. Legacy default teal pieces adopt their category color on load; custom colors are preserved. Existing asset IDs and schema version 1 remain valid. New saves containing expanded IDs require this revision. Offline export also fixes a malformed font-import removal that previously damaged the opening CSS rule.
 
 Ten tests pass, including finite geometry and snapped endpoints for all 60 assets, serialization and simulation smoke tests for every component, plus brake-zone slowdown without trapping the car. Smoke tests do not certify every stunt at every speed. Browser visual, pointer/touch and GPU verification remain blocked by the previously observed WebGL-disabled review environment. No production deployment.
+
+## Vertical loop revision
+
+The Stunts category now includes a vertical loop (61 components total), approximately 10m tall at default scale, with an offset exit to separate the crossing legs. Length scaling scales the full loop. Place a booster before its entry. Both automatic and manual tests use a guided loop traversal: momentum, throttle, braking, slope gravity and drag determine progress while steering is constrained through the inversion. This is an arcade loop guide, not a free tire-contact/centripetal-force solver. Too little speed can stall and release the car; Reset remains available.
+
+Eleven automated tests pass, including inversion, reaching the top, leaving the loop and reaching a downstream finish in both driving modes, plus reset. Existing WebGL visual/device verification limitations still apply.

@@ -262,6 +262,15 @@ EXTRA.push(
     tunnel: true,
   },
 );
+EXTRA.push({
+  id: "vertical-loop",
+  name: "Vertical loop",
+  category: "Stunts",
+  kind: "loop",
+  length: 40,
+  radius: 5,
+  lead: 8,
+});
 export const PALETTE = {
   Essentials: "#ff7626",
   Curves: "#008dff",
@@ -287,14 +296,16 @@ export const CATALOG = [...ORIGINAL, ...EXTRA].map((a) => ({
 export const asset = (id) => CATALOG.find((a) => a.id === id);
 export function icon(a) {
   let d =
-    a.kind === "chicane"
-      ? "M8 36 C25 0 52 56 72 16"
-      : a.kind === "wave"
-        ? "M8 40 Q24 0 40 30 T72 25"
-        : a.kind === "curve"
-          ? "M14 45 Q14 14 66 14"
-          : a.rise
-            ? "M12 44 L68 16"
-            : "M12 42 L68 18";
+    a.kind === "loop"
+      ? "M6 43 L28 43 C78 43 73 3 42 8 C12 13 13 43 48 43 L74 43"
+      : a.kind === "chicane"
+        ? "M8 36 C25 0 52 56 72 16"
+        : a.kind === "wave"
+          ? "M8 40 Q24 0 40 30 T72 25"
+          : a.kind === "curve"
+            ? "M14 45 Q14 14 66 14"
+            : a.rise
+              ? "M12 44 L68 16"
+              : "M12 42 L68 18";
   return `<svg viewBox="0 0 80 56" aria-hidden="true"><path d="${d}" fill="none" stroke="#d9e9ff" stroke-width="20" transform="translate(0 4)"/><path d="${d}" fill="none" stroke="${a.color}" stroke-width="17"/><path d="${d}" fill="none" stroke="#e4fff5" stroke-dasharray="3 5" stroke-width="1.5"/></svg>`;
 }

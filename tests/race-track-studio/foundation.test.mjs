@@ -40,8 +40,8 @@ function simulate(t, seconds, mode = "auto") {
   for (let i = 0; i < seconds * 120; i++) v.step(1 / 120);
   return v;
 }
-test("all 60 assets produce finite smooth geometry and exact snap endpoints", () => {
-  assert.equal(CATALOG.length, 60);
+test("all 61 assets produce finite smooth geometry and exact snap endpoints", () => {
+  assert.equal(CATALOG.length, 61);
   for (let a of CATALOG) {
     let p = piece(a.id, 0, 5);
     const g = makePiece(p);
@@ -194,6 +194,27 @@ test("brake zone reduces speed without trapping the vehicle", () => {
   for (let i = 0; i < 90; i++) v.step(1 / 120);
   assert.ok(v.speed < 8);
   v.keys.add("ArrowUp");
-  for(let i=0;i<120;i++)v.step(1/120);
-  assert.ok(v.pos.x>8);
+  for (let i = 0; i < 120; i++) v.step(1 / 120);
+  assert.ok(v.pos.x > 8);
+});
+
+test("vertical loop carries the vehicle upside down and reconnects to exit in both modes", () => {
+  for (const mode of ["auto", "manual"]) {
+    const t = chain(["start", "boost", "vertical-loop", "long", "finish"]);
+    const v = new Vehicle(t, mode);
+    if (mode === "manual") v.keys.add("ArrowUp");
+    let inverted = false,
+      reachedHeight = false;
+    for (let i = 0; i < 2400; i++) {
+      v.step(1 / 120);
+      if (Math.abs(v.pitch) > 2.8) inverted = true;
+      if (v.pos.y > 9) reachedHeight = true;
+      if (v.finished) break;
+    }
+    assert.ok(inverted, mode + " did not invert");
+    assert.ok(reachedHeight);
+    assert.ok(v.finished, mode + " did not reach finish");
+    v.reset();
+    assert.equal(v.loopRide, null);
+  }
 });

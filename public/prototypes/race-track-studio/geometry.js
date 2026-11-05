@@ -19,6 +19,12 @@ export function localPoint(a, t, scale = 1) {
     if (a.kind === "ramp") y = a.rise * t * t;
     if (a.kind === "landing") y = a.rise * (2 * t - t * t);
   }
+  if (a.kind === "loop") {
+    const theta = 2 * Math.PI * t;
+    x = scale * (a.radius * Math.sin(theta) + a.lead * t);
+    y = a.radius * scale * (1 - Math.cos(theta));
+    z = 4 * scale * t * t * (3 - 2 * t);
+  }
   if (a.kind === "wave")
     y = a.amplitude * Math.pow(Math.sin(Math.PI * (a.waves || 1) * t), 2);
   if (a.kind === "chicane") {
@@ -131,9 +137,9 @@ export function makePiece(piece, selected = false, ghost = false) {
             new T.MeshStandardMaterial({ color: "#365bff", roughness: 0.9 }),
           );
           leg.position.set(
-            p.x - Math.sin(p.heading) * 1.25 * side,
+            p.x - Math.sin(p.heading) * (a.kind === "loop" ? 2.2 : 1.25) * side,
             height / 2,
-            p.z + Math.cos(p.heading) * 1.25 * side,
+            p.z + Math.cos(p.heading) * (a.kind === "loop" ? 2.2 : 1.25) * side,
           );
           g.add(leg);
           const foot = new T.Mesh(
