@@ -1,0 +1,4 @@
+import {BANK_SETS} from '/review-lab/bank-catalog.js';
+const filter=document.getElementById('topic-search'),select=document.getElementById('topic'),api=window.TA_LEVEL_EDITOR;
+function refresh(){const current=api.getQuestionSet()?.id||'',needle=filter.value.toLowerCase();select.replaceChildren();const base=document.createElement('option');base.value='';base.textContent='Sample Ancient Egypt questions';select.append(base);for(const set of BANK_SETS.filter(s=>s.id===current||[s.subject,s.category,s.title].join(' ').toLowerCase().includes(needle))){const opt=document.createElement('option');opt.value=set.id;opt.textContent=set.subject+' · '+set.title;select.append(opt);}select.value=current;}
+filter.addEventListener('input',refresh);select.addEventListener('change',()=>{const set=BANK_SETS.find(s=>s.id===select.value);api.setQuestionSet(set?{id:set.id,title:set.title,file:set.file}:null);});api.onTopicChange=refresh;refresh();
