@@ -1,0 +1,231 @@
+import * as T from "../../assets/vendor/three-0.162.0/three.module.js";
+import { asset, WIDTH } from "./catalog.js";
+export function localPoint(a, t, scale = 1) {
+  let x,
+    z,
+    y = 0,
+    heading = 0;
+  if (a.kind === "curve") {
+    let r = a.radius * scale,
+      ang = a.angle * t,
+      s = Math.sign(a.angle);
+    x = r * Math.sin(Math.abs(ang));
+    z = s * r * (1 - Math.cos(ang));
+    heading = ang;
+  } else {
+    x = a.length * scale * t;
+    z = 0;
+    if (a.kind === "slope") y = a.rise * (t * t * (3 - 2 * t));
+    if (a.kind === "ramp") y = a.rise * t * t;
+    if (a.kind === "landing") y = a.rise * (2 * t - t * t);
+  }
+  return { x, y, z, heading, bank: (a.bank || 0) * Math.sin(Math.PI * t) };
+}
+export function sample(piece, t) {
+  const a = asset(piece.type),
+    p = localPoint(a, t, piece.length || 1),
+    c = Math.cos(piece.yaw),
+    s = Math.sin(piece.yaw);
+  return {
+    x: piece.x + p.x * c - p.z * s,
+    y: piece.y + p.y,
+    z: piece.z + p.x * s + p.z * c,
+    heading: piece.yaw + p.heading,
+    bank: p.bank,
+  };
+}
+export function endpoint(piece, end = 1) {
+  const p = sample(piece, end),
+    a = sample(piece, end === 1 ? 0.999 : 0),
+    b = sample(piece, end === 1 ? 1 : 0.001);
+  return {
+    ...p,
+    pitch: Math.atan2(b.y - a.y, Math.hypot(b.x - a.x, b.z - a.z)),
+  };
+}
+export function makePiece(piece, selected = false, ghost = false) {
+  const a = asset(piece.type),
+    g = new T.Group();
+  g.userData.pieceId = piece.id;
+  const n = Math.max(
+      12,
+      Math.ceil(a.dimensions.length * (piece.length || 1) * 3),
+    ),
+    verts = [],
+    indices = [];
+  for (let i = 0; i <= n; i++) {
+    const p = sample(piece, i / n),
+      nx = -Math.sin(p.heading),
+      nz = Math.cos(p.heading);
+    for (let side of [-1, 1])
+      verts.push(
+        p.x + ((nx * WIDTH) / 2) * side,
+        p.y - ((Math.sin(p.bank) * WIDTH) / 2) * side + 0.32,
+        p.z + ((nz * WIDTH) / 2) * side,
+      );
+  }
+  for (let i = 0; i < n; i++) {
+    let j = i * 2;
+    indices.push(j, j + 1, j + 2, j + 1, j + 3, j + 2);
+  }
+  const geo = new T.BufferGeometry();
+  geo.setAttribute("position", new T.Float32BufferAttribute(verts, 3));
+  geo.setIndex(indices);
+  geo.computeVertexNormals();
+  const mat = new T.MeshStandardMaterial({
+    color: selected ? "#ffd173" : piece.color || "#23ada7",
+    roughness: 0.48,
+    metalness: 0.15,
+    side: T.DoubleSide,
+    transparent: ghost,
+    opacity: ghost ? 0.58 : 1,
+  });
+  const mesh = new T.Mesh(geo, mat);
+  mesh.receiveShadow = true;
+  g.add(mesh);
+  // Engineered raised edge rails, center markings and ribbed support legs.
+  for (let side of [-1, 1]) {
+    const pts = [];
+    for (let i = 0; i <= n; i++) {
+      let p = sample(piece, i / n);
+      pts.push(
+        new T.Vector3(
+          p.x - ((Math.sin(p.heading) * WIDTH) / 2) * side,
+          p.y + 0.43 - ((Math.sin(p.bank) * WIDTH) / 2) * side,
+          p.z + ((Math.cos(p.heading) * WIDTH) / 2) * side,
+        ),
+      );
+    }
+    const curve = new T.CatmullRomCurve3(pts);
+    const rail = new T.Mesh(
+      new T.TubeGeometry(curve, n, 0.085, 4, false),
+      new T.MeshStandardMaterial({
+        color: ghost ? "#c3fff3" : "#e9fcf0",
+        roughness: 0.6,
+        transparent: ghost,
+        opacity: ghost ? 0.6 : 1,
+      }),
+    );
+    g.add(rail);
+  }
+  if (!ghost) {
+    for (let i = 0; i <= n; i += Math.max(2, Math.round(n / 4))) {
+      let p = sample(piece, i / n),
+        height = p.y + 0.2;
+      if (height > 0.6) {
+        for (let side of [-1, 1]) {
+          const leg = new T.Mesh(
+            new T.CylinderGeometry(0.13, 0.24, height, 5),
+            new T.MeshStandardMaterial({ color: "#597a79", roughness: 0.9 }),
+          );
+          leg.position.set(
+            p.x - Math.sin(p.heading) * 1.25 * side,
+            height / 2,
+            p.z + Math.cos(p.heading) * 1.25 * side,
+          );
+          g.add(leg);
+          const foot = new T.Mesh(
+            new T.CylinderGeometry(0.4, 0.44, 0.12, 6),
+            new T.MeshStandardMaterial({ color: "#3c6261" }),
+          );
+          foot.position.set(leg.position.x, 0.06, leg.position.z);
+          g.add(foot);
+        }
+      }
+    }
+    for (let t = 0.12; t < 1; t += 0.16) {
+      let p = sample(piece, t);
+      const dash = new T.Mesh(
+        new T.BoxGeometry(0.6, 0.025, 0.06),
+        new T.MeshStandardMaterial({ color: "#d9f6e6" }),
+      );
+      dash.position.set(p.x, p.y + 0.345, p.z);
+      dash.rotation.y = -p.heading;
+      g.add(dash);
+    }
+    if (a.interaction) {
+      const color = a.interaction === "boost" ? "#ffd271" : "#f9f6df";
+      for (let t = 0.3; t <= 0.7; t += 0.2) {
+        let p = sample(piece, t);
+        const strip = new T.Mesh(
+          new T.BoxGeometry(0.22, 0.035, 3.1),
+          new T.MeshStandardMaterial({
+            color,
+            emissive: a.interaction === "boost" ? "#b46d0a" : "#000000",
+            emissiveIntensity: 0.3,
+          }),
+        );
+        strip.position.set(p.x, p.y + 0.35, p.z);
+        strip.rotation.y = -p.heading;
+        g.add(strip);
+      }
+      if (a.interaction !== "boost") {
+        let p = sample(piece, 0.5);
+        const arch = new T.Group(),
+          m = new T.MeshStandardMaterial({
+            color: a.interaction === "start" ? "#194c53" : "#edb953",
+          });
+        for (let z of [-2, 2]) {
+          let post = new T.Mesh(new T.BoxGeometry(0.22, 3.2, 0.22), m);
+          post.position.set(0, 1.9, z);
+          arch.add(post);
+        }
+        let cross = new T.Mesh(new T.BoxGeometry(0.28, 0.45, 4.3), m);
+        cross.position.y = 3.35;
+        arch.add(cross);
+        arch.position.set(p.x, p.y, p.z);
+        arch.rotation.y = -p.heading;
+        g.add(arch);
+      }
+    }
+  }
+  if (!ghost) batchPiece(g);
+  return g;
+}
+export function disposeGroup(g) {
+  g.traverse((o) => {
+    o.geometry?.dispose();
+    if (o.material) {
+      for (const m of Array.isArray(o.material) ? o.material : [o.material])
+        m.dispose();
+    }
+  });
+}
+
+function batchPiece(group) {
+  group.updateMatrixWorld(true);
+  const buckets = new Map();
+  group.traverse((o) => {
+    if (!o.isMesh) return;
+    const m = o.material,
+      key = [
+        m.color.getHex(),
+        m.roughness,
+        m.metalness,
+        m.emissive.getHex(),
+        m.emissiveIntensity,
+        m.side,
+      ].join(":");
+    if (!buckets.has(key))
+      buckets.set(key, { material: m.clone(), positions: [], normals: [] });
+    const b = buckets.get(key),
+      geometry = o.geometry.index
+        ? o.geometry.toNonIndexed()
+        : o.geometry.clone();
+    geometry.applyMatrix4(o.matrixWorld);
+    b.positions.push(...geometry.attributes.position.array);
+    b.normals.push(...geometry.attributes.normal.array);
+    geometry.dispose();
+  });
+  disposeGroup(group);
+  group.clear();
+  for (const b of buckets.values()) {
+    const g = new T.BufferGeometry();
+    g.setAttribute("position", new T.Float32BufferAttribute(b.positions, 3));
+    g.setAttribute("normal", new T.Float32BufferAttribute(b.normals, 3));
+    const m = new T.Mesh(g, b.material);
+    m.castShadow = true;
+    m.receiveShadow = true;
+    group.add(m);
+  }
+}
