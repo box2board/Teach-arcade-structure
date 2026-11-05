@@ -1,0 +1,22 @@
+window.RR_QUESTION_SET={title:'Engine Test',questions:[
+{q:'Which planet is known as the Red Planet?',choices:['Venus','Mars','Jupiter','Mercury'],answer:1},
+{q:'What is 8 × 7?',choices:['54','56','64','48'],answer:1},
+{q:'Which ocean is the largest?',choices:['Atlantic','Indian','Arctic','Pacific'],answer:3},
+{q:'Which word is a synonym for rapid?',choices:['Slow','Quick','Quiet','Heavy'],answer:1},
+{q:'Water freezes at what temperature on the Celsius scale?',choices:['0°','10°','32°','100°'],answer:0},
+{q:'How many sides does a hexagon have?',choices:['5','6','7','8'],answer:1},
+{q:'Which branch of government interprets laws in the United States?',choices:['Executive','Legislative','Judicial','Local'],answer:2},
+{q:'What gas do plants take in during photosynthesis?',choices:['Oxygen','Nitrogen','Carbon dioxide','Hydrogen'],answer:2},
+{q:'Which fraction is equal to one half?',choices:['2/3','3/6','4/5','1/3'],answer:1},
+{q:'Which continent contains Egypt?',choices:['Africa','Asia','Europe','South America'],answer:0},
+{q:'What is the past tense of run?',choices:['Runned','Ran','Running','Runs'],answer:1},
+{q:'Which is a renewable energy source?',choices:['Coal','Oil','Solar','Natural gas'],answer:2},
+{q:'What is 100 ÷ 4?',choices:['20','25','40','50'],answer:1},
+{q:'Which instrument measures temperature?',choices:['Barometer','Thermometer','Compass','Scale'],answer:1},
+{q:'Which number is prime?',choices:['9','15','17','21'],answer:2},
+{q:'What is the capital of France?',choices:['Rome','Madrid','Paris','Berlin'],answer:2},
+{q:'Which organ pumps blood through the body?',choices:['Lung','Heart','Kidney','Stomach'],answer:1},
+{q:'A comparison using “like” or “as” is called what?',choices:['Metaphor','Simile','Hyperbole','Alliteration'],answer:1},
+{q:'How many degrees are in a right angle?',choices:['45','90','180','360'],answer:1},
+{q:'Which state of matter has a definite volume but takes the shape of its container?',choices:['Solid','Liquid','Gas','Plasma'],answer:1}
+]};
