@@ -13,7 +13,7 @@ Checked November 6, 2026. This is a release checklist, not authorization to publ
 ## Setup blockers confirmed
 
 1. The only active Supabase service is `teach-arcade-development` (`wwpptcguilarkbouvdyj`). The older `TEACH-arcade` project (`ohrdaqnaoyiyaeebbpby`) is inactive; its contents and suitability as the production target have not been inspected. Do not point production at the development database or move QA data into production implicitly.
-2. Vercel access to the known Teach Arcade project (`prj_KO3pFwWNbdH8k8qANX6IhrJfmL2l`, team `team_NirDV3d21APaLS7d8ZtZNun9`) currently returns project-not-found for both project configuration and environment listing. GitHub-triggered preview deployments still succeed. Production environment values have not been verified; their absence is not established.
+2. Vercel's connector still returns project-not-found after team authorization, but the user authorized browser inspection. The signed-in dashboard confirms that the existing project's Production environment has no variables and its Shared tab has no linked variables. All five account variables exist only for Preview on `track-b/teacher-foundation`: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `TEACHER_APP_ORIGIN`, `TEACHER_AUTH_ENABLED`, and `TEACHER_CABINET_ENABLED`. No values were revealed or changed.
 3. Production authentication configuration and SMTP delivery have not been inspected. Real email-code tests in the development preview do not establish production delivery readiness.
 
 ## Configuration to review after access is restored
@@ -34,3 +34,9 @@ After production setup is verified, obtain explicit approval to merge and publis
 Keep a rollback target. Disabling the account feature flags can stop account operations while static games and tools stay available. A code rollback does not roll back schema or erase teacher-created data; do not drop tables as a rollback step.
 
 Not included in this beta: payments/subscriptions, student accounts, classes/assignments, tool-project persistence, custom level creation, or saved game configurations/progress.
+
+## Proposed production setup for approval
+
+Create a separate `teach-arcade-production` project in the existing organization (`yagaczlnhvvwpzmzcpdg`), region `us-east-2`, and retain development/QA data in the current development project. The Supabase cost tool quoted a recurring project cost of $0/month on November 6; the user has not yet approved project creation. Confirm that quote with the user before creating it.
+
+Then reconcile/apply the tested database migration sequence and verify ownership/privacy rules. Configure production email-code delivery and the five production-scoped Vercel variables. Do not merge the release PR, deploy to production, or enable public beta access under this setup approval alone; publication remains a separate decision.
