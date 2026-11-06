@@ -46,7 +46,9 @@ export function createGame(id='avalanche-escape',random=Math.random){
   for(const o of s.objects){if(o.hit||o.type==='flake'||o.type==='ramp'||s.height>38||Math.hypot(o.x-s.x,o.y-440)>=o.r+15)continue;o.hit=true;
    if(!s.inv){s.hits++;s.combo=0;s.multiplier=1;s.inv=1;s.score=Math.max(0,s.score-15);s.message='HIT −15 · STREAK RESET';const row=s.rows.find(r=>r.id===o.waveId);if(row)row.hit=true;}
   }
-  for(const o of s.objects){if(!o.hit&&o.type==='flake'&&Math.hypot(o.x-s.x,o.y-440,(o.z||0)-s.height)<o.r+15){o.hit=true;if(o.air)s.airBonuses++;reward(o.air?50:25,o.air?'AIR SNOWFLAKE':'SNOWFLAKE');}}
+  // Pickups allow the full skier silhouette plus a small grace margin.
+  // Height is checked separately so high air trails still require a jump.
+  for(const o of s.objects){if(!o.hit&&o.type==='flake'&&Math.hypot((o.x-s.x)/(o.r+30),(o.y-440)/(o.r+27))<=1&&Math.abs((o.z||0)-s.height)<=o.r+15){o.hit=true;if(o.air)s.airBonuses++;reward(o.air?50:25,o.air?'AIR SNOWFLAKE':'SNOWFLAKE');}}
   for(const row of s.rows){if(row.checked||row.y<485)continue;row.checked=true;if(row.hit)continue;s.gates++;
    const hazards=s.objects.filter(o=>o.waveId===row.id&&o.type!=='flake'&&o.type!=='ramp');
    const clearance=Math.min(...hazards.map(o=>Math.abs(o.x-s.x)-o.r-15));

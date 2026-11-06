@@ -38,3 +38,9 @@ function jumpTrial(boosting){const game=createGame();game.start();game.s.spawn=9
 const hop=jumpTrial(false),launch=jumpTrial(true);assert.equal(hop.game.s.airBonuses,1);assert.equal(launch.game.s.airBonuses,3);assert(launch.peak>hop.peak*2);assert.equal(launch.game.s.height,0);assert.equal(launch.game.s.jumps,1);
 const air=createGame();air.start();air.s.spawn=999;air.s.jump={progress:100,length:300,maxHeight:100,speed:0};air.s.objects=[{type:'rock',x:300,y:440,r:24,speed:0}];air.tick(.01);assert.equal(air.s.hits,0);const frozenHeight=air.s.height;air.pause();air.tick(1);assert.equal(air.s.height,frozenHeight);air.resume();air.s.jump.progress=300;air.tick(.01);assert.equal(air.s.hits,1);
 console.log('PASS: normal hop collects 1 air token, boosted launch collects all 3, height-aware hazards, airborne pause and safe landing.');
+
+// Glancing contact counts, distant passes do not, and height gates remain intact.
+for(const [dx,dy,z,expected] of [[43,0,0,true],[-43,0,0,true],[32,25,0,true],[0,40,0,true],[48,0,0,false],[0,46,0,false],[0,0,100,false]]){
+ const game=createGame();game.start();game.s.spawn=999;const token={type:'flake',x:300+dx,y:440+dy,z,r:15,speed:0};game.s.objects=[token];game.tick(.01);assert.equal(!!token.hit,expected,`Pickup at ${dx},${dy},${z}`);const combo=game.s.combo;game.tick(.01);assert.equal(game.s.combo,combo,'A collected token only counts once');
+}
+console.log('PASS: left/right clips and diagonal edge pickups count; distant misses and unreachable air tokens do not; no duplicate pickup rewards.');

@@ -21,3 +21,6 @@ Boost accelerates approaching obstacles, collectibles, row timing and scrolling 
 
 
 Optional blue ramps appear every fourth wave, beginning with the second wave. Riding over a ramp automatically hops; boosting on approach (with the speed factor above 1.35) doubles jump height and extends the airborne distance from 180 to 300 world units. The high gold-snowflake trail follows the long launch arc. Ground tokens award 25 base points and height-gated air tokens award 50. Jump height also clears low hazards, while the normal route remains playable without boost. No extra jump key is required on touch devices.
+
+
+Snowflake collection uses a forgiving horizontal/forward ellipse (45 × 42 world-unit radii for a standard token), so edge clips on the skier count. Air-height tolerance remains 30 units and obstacle collisions remain unchanged. Tests cover side clips, diagonal clips, distant misses, unreachable air tokens and single-award behavior.
