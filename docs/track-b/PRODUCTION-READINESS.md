@@ -10,22 +10,23 @@ Checked November 6, 2026. This is a release checklist, not authorization to publ
 - Signed-in browser verified independent official-set copying, editing to 10 questions, reopening, and Category Clash loading. New Mini Games/RV bookmarks persisted after reload.
 - Public/private ownership, independent copies, one-question publication, moderation, account deletion, and session renewal have development tests.
 
-## Setup blockers confirmed
+## Production infrastructure configured
 
-1. The only active Supabase service is `teach-arcade-development` (`wwpptcguilarkbouvdyj`). The older `TEACH-arcade` project (`ohrdaqnaoyiyaeebbpby`) is inactive; its contents and suitability as the production target have not been inspected. Do not point production at the development database or move QA data into production implicitly.
-2. Vercel's connector still returns project-not-found after team authorization, but the user authorized browser inspection. The signed-in dashboard confirms that the existing project's Production environment has no variables and its Shared tab has no linked variables. All five account variables exist only for Preview on `track-b/teacher-foundation`: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `TEACHER_APP_ORIGIN`, `TEACHER_AUTH_ENABLED`, and `TEACHER_CABINET_ENABLED`. No values were revealed or changed.
-3. Production authentication configuration and SMTP delivery have not been inspected. Real email-code tests in the development preview do not establish production delivery readiness.
+The user approved creating and configuring production infrastructure while keeping the beta unpublished.
 
-## Configuration to review after access is restored
+- Created separate Supabase project `teach-arcade-production` (`rtzsmtrfdmappcqkajnr`), organization `yagaczlnhvvwpzmzcpdg`, region `us-east-2`. Supabase quoted $0/month at creation. Development and the older inactive project remain untouched.
+- Confirmed the new application's public schema was empty before applying the ten tested migrations. Production migration history now matches development's canonical versions exactly.
+- Reconciled repository migration sources: added the two foundation migrations and missing read-policy tuning migration, and corrected the initial question-set migration timestamp/content to the recorded development migration. Historical `db/track-b` foundation sources remain available.
+- Read-only comparison matched 125 schema/security objects across development and production, including columns/defaults, RLS, policies, function definitions/ACLs, and table grants. Production security advisors returned zero findings. Production starts with zero teachers, question sets, and bookmarks.
+- Automatic approval review rejected production account/RLS and account-deletion mutation tests because they target production authentication/data with development-only or destructive test operations, despite transaction rollback. Those tests remain development-only; production verification used the read-only comparison above.
+- Saved five Vercel Production-only secret variables: `SUPABASE_URL`, `SUPABASE_ANON_KEY` (active publishable key), `TEACHER_APP_ORIGIN=https://www.teacharcade.com`, `TEACHER_AUTH_ENABLED=false`, and `TEACHER_CABINET_ENABLED=false`. Vercel confirmed success and that a new deployment is required. No production deployment was triggered. Preview configuration remains separate.
+- Supabase dashboard authentication is required before inspecting/configuring production email templates, SMTP, and Auth URL settings. Production email delivery is **not yet verified**.
 
-- Select a separate production Supabase target. Inspect the existing project before restoring/reusing it; if creating a new project, review the quoted cost first.
-- Capture a baseline/backups and inspect existing application tables before migration. Preserve unrelated data.
-- Assemble the complete tested migration sequence, including foundation/profile/bookmarks and the read-policy tuning migration. The foundation SQL currently also lives under `db/track-b`; the local question-set migration filename differs from development history. Reconcile that history before any blanket `supabase db push`.
-- Development migration history, in order: `20261018170547`, `20261018170550`, `20261022165630`, `20261022175317`, `20261023022631`, `20261029013227`, `20261029013328`, `20261029013356`, `20261029014208`, `20261106160222`.
-- Verify RLS/privileges, the profile trigger, multi-answer validation, one-question publication, moderation restrictions, and account deletion on the selected target. Keep temporary verification data separate and removable.
-- Inspect production Auth settings: email signup/sign-in behavior, six-digit OTP templates, expiry, resend/rate limits, signup policy, and authenticated SMTP. Verify the sender/domain and real delivery; do not assume the preview's email settings apply.
-- Review these Vercel Production-only settings: `SUPABASE_URL`, `SUPABASE_ANON_KEY` (publishable/anon, never service-role), `TEACHER_APP_ORIGIN` (the exact final HTTPS origin), `TEACHER_AUTH_ENABLED`, `TEACHER_CABINET_ENABLED`. Keep preview credentials isolated. Never log credential values or commit env files.
-- Preserve the current development accounts, test sets, and saved items when establishing production. Decide explicitly whether beta testers will create fresh production accounts.
+Canonical migration order: `20261018170547`, `20261018170550`, `20261022165630`, `20261022175317`, `20261023022631`, `20261029013227`, `20261029013328`, `20261029013356`, `20261029014208`, `20261106160222`.
+
+## Remaining setup
+
+Sign in to the Supabase dashboard, inspect/configure six-digit email OTP templates, expiry/resend limits, the exact production site URL, and authenticated SMTP sender/domain. Verify real delivery before enabling the beta. Development email tests do not establish production delivery readiness. Keep credentials out of logs and committed files.
 
 ## Separate release decision
 
@@ -34,9 +35,3 @@ After production setup is verified, obtain explicit approval to merge and publis
 Keep a rollback target. Disabling the account feature flags can stop account operations while static games and tools stay available. A code rollback does not roll back schema or erase teacher-created data; do not drop tables as a rollback step.
 
 Not included in this beta: payments/subscriptions, student accounts, classes/assignments, tool-project persistence, custom level creation, or saved game configurations/progress.
-
-## Proposed production setup for approval
-
-Create a separate `teach-arcade-production` project in the existing organization (`yagaczlnhvvwpzmzcpdg`), region `us-east-2`, and retain development/QA data in the current development project. The Supabase cost tool quoted a recurring project cost of $0/month on November 6; the user has not yet approved project creation. Confirm that quote with the user before creating it.
-
-Then reconcile/apply the tested database migration sequence and verify ownership/privacy rules. Configure production email-code delivery and the five production-scoped Vercel variables. Do not merge the release PR, deploy to production, or enable public beta access under this setup approval alone; publication remains a separate decision.

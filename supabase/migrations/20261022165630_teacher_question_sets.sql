@@ -47,8 +47,8 @@ revoke all on public.teacher_question_sets from anon,authenticated;
 grant select on public.teacher_question_sets to anon,authenticated;
 grant insert(title,description,subject,questions) on public.teacher_question_sets to authenticated;
 grant update(title,description,subject,questions,visibility) on public.teacher_question_sets to authenticated;
-create policy teacher_sets_public_read on public.teacher_question_sets for select to anon using(visibility='public');
-create policy teacher_sets_owner_read on public.teacher_question_sets for select to authenticated using(visibility='public' or (select auth.uid())=owner_id);
+create policy teacher_sets_public_read on public.teacher_question_sets for select to anon,authenticated using(visibility='public');
+create policy teacher_sets_owner_read on public.teacher_question_sets for select to authenticated using((select auth.uid())=owner_id);
 create policy teacher_sets_create on public.teacher_question_sets for insert to authenticated with check((select auth.uid())=owner_id and visibility='private');
 create policy teacher_sets_edit on public.teacher_question_sets for update to authenticated using((select auth.uid())=owner_id) with check((select auth.uid())=owner_id);
 create function private.teacher_set_revision() returns trigger language plpgsql security invoker set search_path='' as $$
@@ -71,3 +71,5 @@ create policy teacher_set_saves_read on public.teacher_set_saves for select to a
 create policy teacher_set_saves_remove on public.teacher_set_saves for delete to authenticated using((select auth.uid())=teacher_id);
 create policy teacher_set_saves_add on public.teacher_set_saves for insert to authenticated with check((select auth.uid())=teacher_id and exists(select 1 from public.teacher_question_sets s where s.id=set_id));
 commit;
+
+

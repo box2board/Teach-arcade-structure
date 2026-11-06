@@ -25,7 +25,7 @@ teacher set is loaded. Unavailable or incomplete sets keep an error entry instea
 of silently launching with another topic. Banks are loaded again at game setup
 to respect visibility changes. Text uses DOM textContent rather than user HTML.
 
-Development migration: `supabase/migrations/20261022141322_teacher_question_sets.sql`.
+Development migration: `supabase/migrations/20261022165630_teacher_question_sets.sql`.
 Applied through the Supabase connector to `teach-arcade-development` only. The local
 CLI generated the migration filename but was subsequently blocked by approval
 review for external telemetry; no further CLI operations were attempted. The
