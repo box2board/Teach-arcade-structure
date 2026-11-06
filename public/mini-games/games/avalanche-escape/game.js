@@ -1,14 +1,14 @@
-import {createGame,clamp} from '../arcade-five/engine.js';
+import {createGame,clamp} from './engine.js';
 const root=document.querySelector('#avalanche-escape'), $=id=>root.querySelector('#'+id), canvas=$('canvas'), ctx=canvas.getContext('2d');
 const game=createGame('avalanche-escape'), art={}, keys=new Set(), held=new Set();
 let ready=false, last=0, clock=0, lean=0, previousX=300, drag=null, tracks=[], particles=[], complete=false, best=0, messageTimer=0, lastMessage='';
-try{best=Number(localStorage.getItem('avalanche-escape-best'))||0;}catch{}
+try{best=Number(localStorage.getItem('avalanche-escape-challenge-best'))||0;}catch{}
 const start=$('start');start.disabled=true;start.textContent='PREPARING THE MOUNTAIN…';
 Promise.all(['alpine-run','skier','snowball','rock','spruce'].map(name=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{art[name]=im;resolve();};im.onerror=reject;im.src=`assets/${name}.webp`;}))).then(()=>{ready=true;start.disabled=false;start.textContent='DROP IN ↘';}).catch(()=>{start.textContent='RELOAD TO RETRY';$('description').textContent='The mountain artwork could not load. Reload this page to try again.';});
 function resize(){const r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);}
 new ResizeObserver(resize).observe(canvas);canvas.tabIndex=0;
 function clearInput(){keys.clear();held.clear();drag=null;game.setInput(0);game.hold(false);}
-function begin(){if(!ready)return;clearInput();game.start();tracks=[];particles=[];complete=false;previousX=300;lean=0;lastMessage='';messageTimer=0;$('overlay').hidden=true;$('pause').disabled=false;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
+function begin(){if(!ready)return;clearInput();game.start();tracks=[];particles=[];complete=false;previousX=300;lean=0;lastMessage='';messageTimer=0;$('stage').textContent='1 / WARM-UP';$('multiplier').textContent='×1';$('streak').textContent='0 / 3 to next';$('overlay').hidden=true;$('pause').disabled=false;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 start.addEventListener('click',()=>game.s?.phase==='paused'?resume():begin());
 function showOverlay(title,description,label){$('title').textContent=title;$('description').textContent=description;start.textContent=label;$('overlay').hidden=false;}
 function pause(){if(game.s?.phase!=='playing')return;game.pause();clearInput();showOverlay('TAKE A BREATHER.','Your run is paused. The mountain can wait.','BACK TO THE RUN ↘');$('pause').textContent='Resume';}
@@ -59,12 +59,12 @@ function render(dt){
  const front=ctx.createLinearGradient(0,40,0,150);front.addColorStop(0,'rgba(237,247,255,'+(0.25+t/110)+')');front.addColorStop(1,'rgba(237,247,255,0)');ctx.fillStyle=front;ctx.fillRect(0,40,600,110);
  for(let i=0;i<35;i++){const sx=(i*137+Math.sin(clock*.6+i)*14)%600,sy=(i*73+clock*(18+i%8*3))%650;ctx.fillStyle='#ffffffa0';ctx.beginPath();ctx.arc(sx,sy,i%3===0?1.8:.8,0,Math.PI*2);ctx.fill();}
 }
-function finish(){complete=true;clearInput();const s=game.s;best=Math.max(best,s.score);try{localStorage.setItem('avalanche-escape-best',String(best));}catch{}showOverlay('YOU MADE IT DOWN.',`${s.score} points · ${s.hits} hits · Personal best ${best}. Find a cleaner line on your next run.`,'RIDE AGAIN ↘');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:{gameId:'avalanche-escape',score:s.score,time:45}}));}
+function finish(){complete=true;clearInput();const s=game.s;best=Math.max(best,s.score);try{localStorage.setItem('avalanche-escape-challenge-best',String(best));}catch{}showOverlay('YOU MADE IT DOWN.',`${s.score} points · ${s.hits} hits · Best streak ${s.bestCombo} · Personal best ${best}. Ride again to beat it!`,'RIDE AGAIN ↘');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:{gameId:'avalanche-escape',score:s.score,time:45}}));}
 function frame(now){const dt=Math.min((now-last)/1000||0,1/20);last=now;clock+=dt;const s=game.s;
  if(s?.phase==='playing'){
   let direction=Number(keys.has('arrowright')||keys.has('d')||held.has('right'))-Number(keys.has('arrowleft')||keys.has('a')||held.has('left'));
   if(drag)direction=clamp((drag.x-s.x)/12,-1,1);game.setInput(direction);game.hold(keys.has(' ')||held.has('dash'));
-  const hits=s.hits;game.tick(dt);if(s.hits>hits)puff(s.x,500,28);
+  const hits=s.hits,stage=s.stage;game.tick(dt);if(stage!==s.stage){lastMessage='';messageTimer=2.5;s.message=s.stage===1?'STAGE 2 · TIGHTER SLALOM':'FINAL RUSH · KEEP YOUR LINE!';}$('stage').textContent=(s.stage+1)+' / '+['WARM-UP','SLALOM','FINAL RUSH'][s.stage];$('multiplier').textContent='×'+s.multiplier;$('streak').textContent=s.multiplier===4?'MAX · '+s.combo+' streak':(s.combo%3)+' / 3 to next';if(s.hits>hits)puff(s.x,500,28);
   if(s.message!==lastMessage){lastMessage=s.message;messageTimer=2;}$('time').textContent=(45-s.time).toFixed(1);$('score').textContent=Math.floor(s.score);$('hits').textContent=s.hits;$('energy').style.transform=`scaleX(${s.energy})`;$('energy-label').textContent=Math.round(s.energy*100)+'%';
   messageTimer-=dt;$('message').textContent=messageTimer>0&&s.message!=='READY'?s.message:'READ THE SLOPE. FIND YOUR LINE.';
   if(s.phase==='finished'&&!complete)finish();
