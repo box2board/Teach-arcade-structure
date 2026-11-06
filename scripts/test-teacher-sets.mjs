@@ -37,7 +37,7 @@ test('configuration, origin, methods, malformed bodies and missing auth prevent 
 test('public list does not download questions; title search is escaped and pagination bounded',async()=>{
  configure();const calls=[];global.fetch=async url=>{calls.push(url);return response([]);};
  assert.equal((await call('public',{query:{q:'x*,visibility.eq.private',offset:'25'}})).status,200);
- const url=new URL(calls[0]);assert.equal(url.searchParams.get('visibility'),'eq.public');assert.ok(!url.searchParams.get('select').includes('questions'));assert.equal(url.searchParams.get('offset'),'25');assert.equal(url.searchParams.get('title'),'ilike.*x  visibility eq private*');
+ const url=new URL(calls[0]);assert.equal(url.searchParams.get('visibility'),'eq.public');assert.ok(!url.searchParams.get('select').includes('questions'));assert.equal(url.searchParams.get('offset'),'25');assert.equal(url.searchParams.get('title'),'ilike.*x*visibility*eq*private*');
  assert.equal((await call('public',{query:{offset:'-1'}})).status,400);
 });
 test('new set ignores client ownership and starts private under verified JWT',async()=>{

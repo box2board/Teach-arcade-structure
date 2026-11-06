@@ -24,7 +24,7 @@ export default async function handler(req,res){
   if(['public','mine','saved'].includes(action)){
    const offset=Number(req.query?.offset||0);
    if(!Number.isSafeInteger(offset)||offset<0||offset>100000)return send(400,{error:'Invalid page.'});
-   const term=String(req.query?.q||'').slice(0,100).replace(/[^\p{L}\p{N}\s-]/gu,' ').trim();
+   const term=String(req.query?.q||'').slice(0,100).replace(/[^\p{L}\p{N}\s-]/gu,' ').trim().split(/\s+/).filter(Boolean).join('*');
    const search=term?`&title=ilike.${encodeURIComponent('*'+term+'*')}`:'';
    const query=`&select=${metadata}&order=updated_at.desc,id.asc&limit=25&offset=${offset}${search}`;
    if(action==='saved'){
