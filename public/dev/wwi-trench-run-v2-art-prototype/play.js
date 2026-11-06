@@ -22,9 +22,9 @@ const obstacleDefs=[
   {id:'crater-small',w:130,h:68,kind:'crater',damage:1},
   {id:'broken-timber',w:132,h:86,kind:'timber',damage:1}
 ];
+// Keep a generous reaction window between hazards before the fork.
 const initialHazards=[
-  [570,'low-barrier'],[890,'barbed-wire'],[1210,'crater-small'],[1540,'broken-timber'],
-  [1950,'low-barrier'],[2260,'barbed-wire'],[2570,'crater-small'],[2900,'broken-timber'],[3240,'low-barrier'],[3540,'barbed-wire']
+  [700,'low-barrier'],[1320,'barbed-wire'],[1860,'crater-small']
 ];
 function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),1250)}
 function updateHud(){ui.distance.textContent=Math.floor(state.distance);ui.score.textContent=Math.floor(state.score);ui.stamina.textContent=state.stamina;ui.accuracy.textContent=state.total?Math.round(state.correct/state.total*100)+'%':'100%';ui.streak.textContent=state.streak}
@@ -85,7 +85,18 @@ function collide(){
 function triggerCheckpoint(){state.paused=true;const q=questions[questionIndex++%questions.length];ui.questionText.textContent=q.question;ui.choices.replaceChildren();ui.explanation.textContent='';q.choices.forEach((text,index)=>{const btn=document.createElement('button');btn.type='button';btn.textContent=text;btn.addEventListener('click',()=>answer(q,index,btn),{once:true});ui.choices.append(btn)});ui.questionModal.classList.remove('hidden')}
 function answer(q,index,btn){[...ui.choices.children].forEach(x=>x.disabled=true);state.total++;const ok=index===q.answerIndex;if(ok){state.correct++;state.streak++;state.score+=150;btn.classList.add('correct');ui.explanation.textContent='Correct — '+q.explanation}else{state.streak=0;state.stamina=Math.max(0,state.stamina-1);btn.classList.add('wrong');ui.choices.children[q.answerIndex]?.classList.add('correct');ui.explanation.textContent='Incorrect — '+q.explanation}updateHud();setTimeout(()=>{ui.questionModal.classList.add('hidden');state.paused=false;if(state.stamina<=0){state.running=false;state.paused=true;showToast('Run ended')}drawWorld()},1000)}
 function triggerFork(){state.paused=true;ui.forkModal.classList.remove('hidden')}
-function chooseFork(risky){state.rate=risky?1.28:.82;state.score+=risky?200:50;if(risky){for(const [i,id] of ['barbed-wire','broken-timber','low-barrier'].entries()){const def=obstacleDefs.find(d=>d.id===id);hazards.push({x:2390+i*390,id,hit:false,def})}}ui.forkModal.classList.add('hidden');state.paused=false;showToast(risky?'Risk route: extra hazards and bonus score':'Safer route selected');}
+function chooseFork(risky){
+  state.rate=risky?1.28:.82;state.score+=risky?200:50;
+  // Replace future hazards with deliberate route layouts so the fork cannot stack
+  // new hazards on top of the standard sequence.
+  hazards=hazards.filter(h=>h.x<2100);
+  const route=risky
+    ? [[3060,'barbed-wire'],[3600,'broken-timber']]
+    : [[3300,'low-barrier']];
+  for(const [x,id] of route){const def=obstacleDefs.find(d=>d.id===id);hazards.push({x,id,hit:false,def})}
+  ui.forkModal.classList.add('hidden');state.paused=false;
+  showToast(risky?'Risk route: tighter hazards and bonus score':'Safer route selected');
+}
 function drawImage(img,x,y,w,h,flip=false){if(!img)return;ctx.save();if(flip){ctx.translate(x+w,y);ctx.scale(-1,1);ctx.drawImage(img,0,0,w,h)}else ctx.drawImage(img,x,y,w,h);ctx.restore()}
 const layerBuffers=new Map();
 function tileLayer(img,y,h,factor,cam,alpha=1,fadeTop=.2){
@@ -108,7 +119,12 @@ function drawProps(){
   for(const prop of scenery){const x=prop.x-state.camera;if(x<-180||x>W+180)continue;let img=art[prop.id],w=prop.id==='tree'?128:prop.id==='ladder'?74:prop.id==='lantern'?50:prop.id==='damage'?94:78,h=prop.id==='tree'?150:prop.id==='ladder'?128:prop.id==='lantern'?80:prop.id==='damage'?82:68;drawImage(img,x,GROUND-h,w,h)}
   for(const d of dust){const x=d.x-state.camera;ctx.globalAlpha=Math.max(0,d.life/.45)*.62;ctx.fillStyle='#b6a18a';ctx.beginPath();ctx.ellipse(x,d.y,d.size*1.3,d.size*.75,0,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;
 }
-function drawHazards(){for(const h of hazards){const x=h.x-state.camera;if(x<-220||x>W+220||h.hit)continue;const img=art[h.def.kind],y=GROUND-h.def.h;ctx.fillStyle='rgba(12,10,8,.48)';ctx.beginPath();ctx.ellipse(x+h.def.w*.5,GROUND-2,h.def.w*.49,8,0,0,Math.PI*2);ctx.fill();ctx.save();ctx.filter='drop-shadow(0 0 1px rgba(255,239,205,.9)) drop-shadow(0 5px 5px rgba(0,0,0,.88)) contrast(1.16) saturate(1.22)';drawImage(img,x,y,h.def.w,h.def.h);ctx.restore();const cx=x+h.def.w*.5,cy=y-27;ctx.strokeStyle='rgba(24,21,17,.9)';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(cx,y-2);ctx.lineTo(cx,cy+14);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,cy-15);ctx.lineTo(cx+15,cy+11);ctx.lineTo(cx-15,cy+11);ctx.closePath();ctx.fillStyle='#e2a83e';ctx.fill();ctx.strokeStyle='#35281a';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#2a2117';ctx.font='bold 19px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('!',cx,cy+2)}}
+function drawHazards(){for(const h of hazards){const x=h.x-state.camera;if(x<-220||x>W+220||h.hit)continue;const img=art[h.def.kind],y=GROUND-h.def.h,cx=x+h.def.w*.5;ctx.fillStyle='rgba(12,10,8,.48)';ctx.beginPath();ctx.ellipse(cx,GROUND-2,h.def.w*.49,8,0,0,Math.PI*2);ctx.fill();
+  // A restrained warm halo separates dangerous objects from the muddy trench.
+  const halo=ctx.createRadialGradient(cx,y+h.def.h*.62,8,cx,y+h.def.h*.62,Math.max(h.def.w,h.def.h)*.76);
+  halo.addColorStop(0,'rgba(255,198,104,.25)');halo.addColorStop(.48,'rgba(247,179,76,.16)');halo.addColorStop(1,'rgba(240,167,65,0)');
+  ctx.fillStyle=halo;ctx.beginPath();ctx.ellipse(cx,y+h.def.h*.62,h.def.w*.82,h.def.h*.78,0,0,Math.PI*2);ctx.fill();
+  ctx.save();ctx.filter='drop-shadow(0 0 3px rgba(255,231,180,.95)) drop-shadow(0 0 11px rgba(247,183,78,.82)) drop-shadow(0 0 22px rgba(235,159,58,.38)) drop-shadow(0 5px 5px rgba(0,0,0,.88)) contrast(1.16) saturate(1.22)';drawImage(img,x,y,h.def.w,h.def.h);ctx.restore();const cy=y-27;ctx.strokeStyle='rgba(24,21,17,.9)';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(cx,y-2);ctx.lineTo(cx,cy+14);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,cy-15);ctx.lineTo(cx+15,cy+11);ctx.lineTo(cx-15,cy+11);ctx.closePath();ctx.fillStyle='#e2a83e';ctx.fill();ctx.strokeStyle='#35281a';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='#2a2117';ctx.font='bold 19px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('!',cx,cy+2)}}
 function drawPlayer(){
   let img=state.jumpHeight>18?(art.jump||playerFrames[state.frame]||playerFrames[0]):(playerFrames[state.frame]||playerFrames[0]);if(performance.now()<state.hitUntil)img=art.stumble||img;if(!state.running&&state.stamina<=0)img=art.fall||img;
   const height=142,ratio=img?img.width/img.height:1.2,width=Math.min(178,height*ratio),x=state.visualX-state.camera-28,y=GROUND-height-state.jumpHeight;
