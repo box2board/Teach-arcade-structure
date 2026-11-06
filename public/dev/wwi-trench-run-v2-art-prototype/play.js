@@ -24,7 +24,7 @@ const obstacleDefs=[
 ];
 // Keep a generous reaction window between hazards before the fork.
 const initialHazards=[
-  [700,'low-barrier'],[1320,'barbed-wire'],[1860,'crater-small']
+  [700,'low-barrier'],[1710,'crater-small']
 ];
 function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),1250)}
 function updateHud(){ui.distance.textContent=Math.floor(state.distance);ui.score.textContent=Math.floor(state.score);ui.stamina.textContent=state.stamina;ui.accuracy.textContent=state.total?Math.round(state.correct/state.total*100)+'%':'100%';ui.streak.textContent=state.streak}
