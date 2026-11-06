@@ -174,3 +174,10 @@ test('pending account check shows loading rather than disconnected or empty coll
  assert.match(app.elements['game-availability'].textContent,/Sign in/);
  assert.doesNotMatch(app.elements['game-availability'].textContent,/not connected/);
 });
+
+
+test('sign-in returns to the selected Original and rejects arbitrary return links',()=>{
+ const app=setup();app.location.search='?return=teacher-sets&original='+encodeURIComponent(QUESTION_SETS[0].id);
+ app.run('returnToQuestionSets()');assert.equal(app.location.assigned,'/teacher/sets/?original='+encodeURIComponent(QUESTION_SETS[0].id));
+ app.location.search='?return=teacher-sets&original=https://example.invalid';app.run('returnToQuestionSets()');assert.equal(app.location.assigned,'/teacher/sets/');
+});

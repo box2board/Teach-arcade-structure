@@ -13,7 +13,7 @@ const id='00000000-0000-4000-8000-000000000001';
 test('every official bank copies independently with all questions, answers and explanations',async()=>{
  for(const meta of QUESTION_SETS){
   const bank=await loadQuestionSet(meta.id),before=JSON.stringify(bank),copy=originalCopy(bank);
-  assert.equal(copy.visibility,'private');assert.equal(copy.questions.length,bank.questions.length);
+  assert.equal(copy.visibility,'private');if(bank.subject==='English Language Arts')assert.equal(copy.subject,'ELA');assert.equal(copy.questions.length,bank.questions.length);
   bank.questions.forEach((q,i)=>{assert.deepEqual(copy.questions[i].answer,q.answer);assert.equal(copy.questions[i].explanation,q.explanation||'');});
   copy.questions[0].choices[0]='Edited by teacher';copy.questions.splice(1);
   assert.equal(JSON.stringify(bank),before);

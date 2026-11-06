@@ -36,7 +36,7 @@ async function list(reset=true){
 function originalCard(set){
  const box=el('article');box.className='set original-set';
  const badge=el('p','★ TEACH ARCADE ORIGINAL');badge.className='original-badge';
- box.append(badge,el('h2',set.title),el('p',`By Teach Arcade · ${set.subject} · ${set.questionCount} questions`));
+ box.append(badge,el('h2',set.title),el('p',`By Teach Arcade · ${set.subject}${set.category?' · '+set.category:''} · ${set.questionCount} questions`));
  const buttons=el('div');buttons.className='set-actions';buttons.append(action('Preview & play',()=>openOriginal(set.id)),action('Customize a private copy',()=>customizeOriginal(set.id)));box.append(buttons);return box;
 }
 function renderQuestionsPreview(questions){
@@ -52,9 +52,9 @@ async function openOriginal(id){
   if(id.startsWith('teacher:'))throw Error('Choose a Teach Arcade Original.');
   dirty=false;view='originals';show('set-detail');history.replaceState(null,'','?original='+encodeURIComponent(id));
   $('set-source-label').textContent='★ TEACH ARCADE ORIGINAL';$('teacher-set-title').textContent=bank.title;
-  $('teacher-set-meta').textContent=`By Teach Arcade · ${bank.subject} · ${bank.questions.length} questions`;
+  $('teacher-set-meta').textContent=`By Teach Arcade · ${bank.subject}${bank.category?' · '+bank.category:''} · ${bank.questions.length} questions`;
   $('teacher-set-description').textContent=bank.description||'Ready-made review questions from Teach Arcade.';
-  const play=el('a','Save this Original to My Cabinet →');play.href='/teacher/#games&set='+encodeURIComponent(id);
+  const play=el('a','Open in My Cabinet →');play.href='/teacher/#games&set='+encodeURIComponent(id);
   $('teacher-set-actions').replaceChildren(action('Customize a private copy',()=>customizeOriginal(id)),play);
   renderGameLinks(id);renderQuestionsPreview(bank.questions);status('Official Original · Make a private copy to remove, add, or edit questions.');$('teacher-set-title').tabIndex=-1;$('teacher-set-title').focus();
  }catch(error){if(request===version)status(error.message);}
