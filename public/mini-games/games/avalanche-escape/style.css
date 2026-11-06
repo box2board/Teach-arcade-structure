@@ -31,3 +31,4 @@ body{margin:0;background:#20264b}#avalanche-escape{--snow:#f3f1e7;--ice:#b9e4e6;
 #avalanche-escape .combo-hud{position:absolute;top:58px;right:16px;display:grid;grid-template-columns:auto auto;gap:1px 8px;align-items:center;background:#ffd84d;color:#253462;border:3px solid #253462;border-radius:12px;padding:8px 11px;pointer-events:none;box-shadow:0 3px 0 #253462}
 #avalanche-escape .combo-hud strong{font-size:29px;line-height:1;grid-row:span 2}#avalanche-escape .combo-hud span{font-size:9px;font-weight:900}#avalanche-escape .combo-hud small{font-size:9px}#avalanche-escape .intro-overlay{z-index:2}
 @media(max-width:380px){#avalanche-escape .legend span{font-size:7px;padding:4px}#avalanche-escape .combo-hud{top:48px;padding:6px 8px;right:10px}}
+#avalanche-escape .run-stage:has(#overlay:not([hidden])) > :is(.scene-top,.combo-hud,.run-message,.dash-hud){visibility:hidden}

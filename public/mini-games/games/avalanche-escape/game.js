@@ -1,18 +1,18 @@
 import {createGame,clamp} from './engine.js';
 const root=document.querySelector('#avalanche-escape'), $=id=>root.querySelector('#'+id), canvas=$('canvas'), ctx=canvas.getContext('2d');
 const game=createGame('avalanche-escape'), art={}, keys=new Set(), held=new Set();
-let ready=false, last=0, clock=0, lean=0, previousX=300, drag=null, tracks=[], particles=[], complete=false, best=0, messageTimer=0, lastMessage='';
+let ready=false, last=null, clock=0, lean=0, previousX=300, drag=null, tracks=[], rings=[], particles=[], complete=false, best=0, messageTimer=0, lastMessage='';
 try{best=Number(localStorage.getItem('avalanche-escape-challenge-best'))||0;}catch{}
 const start=$('start');start.disabled=true;start.textContent='PREPARING THE MOUNTAIN…';
 Promise.all(['alpine-run','skier','snowball','rock','spruce'].map(name=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{art[name]=im;resolve();};im.onerror=reject;im.src=`assets/${name}.webp`;}))).then(()=>{ready=true;start.disabled=false;start.textContent='DROP IN ↘';}).catch(()=>{start.textContent='RELOAD TO RETRY';$('description').textContent='The mountain artwork could not load. Reload this page to try again.';});
 function resize(){const r=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,1.5);canvas.width=Math.round(r.width*d);canvas.height=Math.round(r.height*d);}
 new ResizeObserver(resize).observe(canvas);canvas.tabIndex=0;
 function clearInput(){keys.clear();held.clear();drag=null;game.setInput(0);game.hold(false);}
-function begin(){if(!ready)return;clearInput();game.start();tracks=[];particles=[];complete=false;previousX=300;lean=0;lastMessage='';messageTimer=0;$('stage').textContent='1 / WARM-UP';$('multiplier').textContent='×1';$('streak').textContent='0 / 3 to next';$('overlay').hidden=true;$('pause').disabled=false;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
+function begin(){if(!ready)return;clearInput();game.start();tracks=[];rings=[];particles=[];last=null;complete=false;previousX=300;lean=0;lastMessage='';messageTimer=0;$('stage').textContent='1 / WARM-UP';$('multiplier').textContent='×1';$('streak').textContent='0 / 3 to next';$('overlay').hidden=true;$('pause').disabled=false;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 start.addEventListener('click',()=>game.s?.phase==='paused'?resume():begin());
 function showOverlay(title,description,label){$('title').textContent=title;$('description').textContent=description;start.textContent=label;$('overlay').hidden=false;}
 function pause(){if(game.s?.phase!=='playing')return;game.pause();clearInput();showOverlay('TAKE A BREATHER.','Your run is paused. The mountain can wait.','BACK TO THE RUN ↘');$('pause').textContent='Resume';}
-function resume(){clearInput();game.resume();$('overlay').hidden=true;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
+function resume(){clearInput();last=null;game.resume();$('overlay').hidden=true;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 $('pause').onclick=()=>game.s?.phase==='playing'?pause():resume();
 window.addEventListener('blur',pause);document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
 const controlKeys=['ArrowLeft','ArrowRight','a','d','A','D',' '];
@@ -23,7 +23,7 @@ function dragX(e){const r=canvas.getBoundingClientRect();return clamp((e.clientX
 canvas.addEventListener('pointerdown',e=>{if(game.s?.phase!=='playing')return;canvas.setPointerCapture(e.pointerId);drag={id:e.pointerId,x:dragX(e)};});
 canvas.addEventListener('pointermove',e=>{if(drag?.id===e.pointerId)drag.x=dragX(e);});
 for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,e=>{if(drag?.id===e.pointerId)drag=null;});
-function puff(x,y,n=12){for(let i=0;i<n;i++)particles.push({x,y,vx:(Math.random()-.5)*110,vy:20+Math.random()*90,life:.4+Math.random()*.4});particles=particles.slice(-100);}
+function puff(x,y,n=12,kind='snow'){for(let i=0;i<n;i++)particles.push({x,y,vx:(Math.random()-.5)*(kind==='gold'?150:110),vy:kind==='gold'?-35-Math.random()*80:20+Math.random()*90,life:.4+Math.random()*.4,kind});particles=particles.slice(-100);}
 function sprite(name,x,y,w,angle=0,alpha=1){const im=art[name];if(!im)return;const h=w*im.height/im.width;ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.globalAlpha*=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
 function shadow(x,y,r){ctx.fillStyle='#224c6d30';ctx.beginPath();ctx.ellipse(x+5,y+8,r,r*.38,0,0,Math.PI*2);ctx.fill();}
 function snowflake(x,y,r){
@@ -64,17 +64,18 @@ function render(dt){
  for(const o of [...(s?.objects||[])].sort((a,b)=>a.y-b.y))drawSlopeObject(o,t);
  const movement=(x-previousX)/Math.max(dt,.001);previousX=x;lean+=(clamp(movement/350,-1,1)-lean)*(1-Math.exp(-dt*12));
  shadow(x,510,20);sprite('skier',x,505-(s?.height||0),54+(s?.height||0)*.04,lean*.18,s?.inv>0?.55+Math.sin(clock*35)*.22:1);
- for(const p of particles){if(playing){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;}ctx.fillStyle=`rgba(255,255,255,${Math.max(0,p.life)})`;ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,Math.PI*2);ctx.fill();}particles=particles.filter(p=>p.life>0);
+ for(const p of particles){if(playing){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;}ctx.save();ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.kind==='gold'?'#ffd84d':'#ffffff';if(p.kind==='gold'){ctx.strokeStyle='#ffbf35';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(p.x-4,p.y);ctx.lineTo(p.x+4,p.y);ctx.moveTo(p.x,p.y-4);ctx.lineTo(p.x,p.y+4);ctx.stroke();}else{ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,Math.PI*2);ctx.fill();}ctx.restore();}particles=particles.filter(p=>p.life>0);
+ for(const ring of rings){if(playing)ring.life-=dt;ctx.save();ctx.globalAlpha=Math.max(0,ring.life*2);ctx.strokeStyle='#9bf4ff';ctx.lineWidth=4;ctx.beginPath();ctx.ellipse(ring.x,ring.y,20+(1-ring.life/.5)*40,8+(1-ring.life/.5)*14,0,0,Math.PI*2);ctx.stroke();ctx.restore();}rings=rings.filter(r=>r.life>0);
  // A distant powder front grows without obscuring collision space.
  const front=ctx.createLinearGradient(0,40,0,150);front.addColorStop(0,'rgba(237,247,255,'+(0.25+t/110)+')');front.addColorStop(1,'rgba(237,247,255,0)');ctx.fillStyle=front;ctx.fillRect(0,40,600,110);
  for(let i=0;i<35;i++){const sx=(i*137+Math.sin(clock*.6+i)*14)%600,sy=(i*73+clock*(18+i%8*3))%650;ctx.fillStyle='#ffffffa0';ctx.beginPath();ctx.arc(sx,sy,i%3===0?1.8:.8,0,Math.PI*2);ctx.fill();}
 }
 function finish(){complete=true;clearInput();const s=game.s;best=Math.max(best,s.score);try{localStorage.setItem('avalanche-escape-challenge-best',String(best));}catch{}showOverlay('YOU MADE IT DOWN.',`${s.score} points · ${s.hits} hits · Air tokens ${s.airBonuses} · Best streak ${s.bestCombo} · Personal best ${best}. Ride again to beat it!`,'RIDE AGAIN ↘');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:{gameId:'avalanche-escape',score:s.score,time:45}}));}
-function frame(now){const dt=Math.min((now-last)/1000||0,1/20);last=now;clock+=dt;const s=game.s;
+function frame(now){const dt=last!==null?Math.min(Math.max(0,(now-last)/1000),.25):0;last=now;clock+=dt;const s=game.s;
  if(s?.phase==='playing'){
   let direction=Number(keys.has('arrowright')||keys.has('d')||held.has('right'))-Number(keys.has('arrowleft')||keys.has('a')||held.has('left'));
   if(drag)direction=clamp((drag.x-s.x)/12,-1,1);game.setInput(direction);game.hold(keys.has(' ')||held.has('dash'));
-  const hits=s.hits,stage=s.stage;game.tick(dt);if(stage!==s.stage){lastMessage='';messageTimer=2.5;s.message=s.stage===1?'STAGE 2 · TIGHTER SLALOM':'FINAL RUSH · KEEP YOUR LINE!';}$('stage').textContent=(s.stage+1)+' / '+['WARM-UP','SLALOM','FINAL RUSH'][s.stage];$('multiplier').textContent='×'+s.multiplier;$('streak').textContent=s.multiplier===4?'MAX · '+s.combo+' streak':(s.combo%3)+' / 3 to next';if(s.hits>hits)puff(s.x,500,28);
+  const hits=s.hits,stage=s.stage,jumps=s.jumps,wasAir=!!s.jump,pickups=s.objects.filter(o=>o.type==='flake'&&!o.hit);game.tick(dt);for(const o of pickups){if(o.hit){const p=projectSlope(o.x,o.y,o.r);puff(p.x,p.y-(o.z||0)*p.scale,12,'gold');}}if(s.jumps>jumps){puff(s.x,520,20);rings.push({x:s.x,y:515,life:.5});rings=rings.slice(-4);}if(wasAir&&!s.jump)puff(s.x,520,28);if(stage!==s.stage){lastMessage='';messageTimer=2.5;s.message=s.stage===1?'STAGE 2 · TIGHTER SLALOM':'FINAL RUSH · KEEP YOUR LINE!';}$('stage').textContent=(s.stage+1)+' / '+['WARM-UP','SLALOM','FINAL RUSH'][s.stage];$('multiplier').textContent='×'+s.multiplier;$('streak').textContent=s.multiplier===4?'MAX · '+s.combo+' streak':(s.combo%3)+' / 3 to next';if(s.hits>hits)puff(s.x,500,28);
   if(s.message!==lastMessage){lastMessage=s.message;messageTimer=2;}$('time').textContent=(45-s.time).toFixed(1);$('score').textContent=Math.floor(s.score);$('hits').textContent=s.hits;$('energy').style.transform=`scaleX(${s.energy})`;$('energy-label').textContent=s.boosting?'BOOST!':Math.round(s.energy*100)+'%';
   messageTimer-=dt;$('message').textContent=messageTimer>0&&s.message!=='READY'?s.message:'READ THE SLOPE. FIND YOUR LINE.';
   if(s.phase==='finished'&&!complete)finish();

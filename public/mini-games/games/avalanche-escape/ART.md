@@ -24,3 +24,6 @@ Optional blue ramps appear every fourth wave, beginning with the second wave. Ri
 
 
 Snowflake collection uses a forgiving horizontal/forward ellipse (45 × 42 world-unit radii for a standard token), so edge clips on the skier count. Air-height tolerance remains 30 units and obstacle collisions remain unchanged. Tests cover side clips, diagonal clips, distant misses, unreachable air tokens and single-award behavior.
+
+
+Polish: gold sparkles mark successful pickups, a cyan ring and powder mark launches, and landing creates a powder puff. Effects are bounded to 100 particles and four rings. The intro uses three short actions and hides the inactive HUD. The renderer now preserves a 45-second run at 10 FPS rather than losing half of elapsed time; begin/resume reset the frame clock. Renderer regression checks live in scripts/test-avalanche-renderer.mjs.
