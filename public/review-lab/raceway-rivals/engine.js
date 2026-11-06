@@ -82,8 +82,10 @@ export function shuffleQuestions(items,random=Math.random){
 }
 export class ReviewSession {
  constructor(bank,{questionCount=8,laps=1}={},random=Math.random){
-  if(![8,12,16].includes(questionCount)||bank.questions.length<questionCount||!Number.isInteger(laps)||laps<1||laps>5)throw new Error('Not enough questions or invalid settings');
-  this.selected=shuffleQuestions(bank.questions,random).slice(0,questionCount);
+  if(![8,12,16].includes(questionCount)||bank.questions.length<1||!Number.isInteger(laps)||laps<1||laps>5)throw new Error('Not enough questions or invalid settings');
+  const pool=shuffleQuestions(bank.questions,random);
+  this.selected=Array.from({length:questionCount},(_,i)=>pool[i%pool.length]);
+  this.uniqueCount=Math.min(bank.questions.length,questionCount);
   this.questionCount=questionCount;this.laps=laps;this.deck=[];
   let previous=[];
   for(let lap=0;lap<laps;lap++){

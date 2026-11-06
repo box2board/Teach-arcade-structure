@@ -1,4 +1,5 @@
-import {GAMES} from '../../review-lab/catalog.js';
+import {GAMES,QUESTION_SETS,loadQuestionSet} from '../../review-lab/catalog.js';
+import {originalCopy} from '../originals.js';
 import {SET_SUBJECTS,completeQuestion,setInput,teacherBank,MAX_QUESTIONS,correctAnswers} from '../set-contract.js';
 const $=id=>document.getElementById(id),el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
 let user=null,view='mine',offset=0,version=0,editing=null,dirty=false,busy=false,search='',lastList=[];
@@ -18,6 +19,13 @@ async function list(reset=true){
  const request=++version;$('more-sets').hidden=true;status('Loading question sets…');
  document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));
  $('collection-help').textContent=view==='mine'?'Your sets start private. Only you can edit the originals.':view==='saved'?'Saved sets follow the creator’s updates. If a creator makes a set private, it will no longer appear here. Independent copies remain yours.':'Community sets are public. Save a shortcut to follow updates, or make a private copy you can edit.';
+ if(view==='originals'){
+  $('collection-help').textContent='Official sets by Teach Arcade. Play an Original or customize your own private copy. Your edits never change the official set.';
+  const matches=QUESTION_SETS.filter(s=>!s.id.startsWith('teacher:')&&`${s.title} ${s.subject} ${s.category||''}`.toLowerCase().includes(search.toLowerCase()));
+  const page=matches.slice(offset,offset+25);lastList.push(...page);$('teacher-sets').append(...page.map(originalCard));$('more-sets').hidden=offset+25>=matches.length;
+  if(!matches.length)$('teacher-sets').append(el('p','No Originals match your search. Try another topic or subject.'));
+  status(`${lastList.length} of ${matches.length} Teach Arcade Originals shown.`);return;
+ }
  if(!user&&view!=='public'){$('teacher-sets').append(el('p','Sign in to see your collection, or explore the Community library.'));status('Public sets are available without signing in.');return;}
  try{const data=await api(view,null,{q:search,offset:String(offset)});if(request!==version)return;
   lastList.push(...data.sets);$('teacher-sets').append(...data.sets.map(card));$('more-sets').hidden=data.sets.length<25;
@@ -25,11 +33,45 @@ async function list(reset=true){
   status(`${lastList.length} sets shown.`);
  }catch(error){if(request!==version)return;status(error.message);$('teacher-sets').append(action('Retry loading',()=>list(reset)));}
 }
+function originalCard(set){
+ const box=el('article');box.className='set original-set';
+ const badge=el('p','★ TEACH ARCADE ORIGINAL');badge.className='original-badge';
+ box.append(badge,el('h2',set.title),el('p',`By Teach Arcade · ${set.subject} · ${set.questionCount} questions`));
+ const buttons=el('div');buttons.className='set-actions';buttons.append(action('Preview & play',()=>openOriginal(set.id)),action('Customize a private copy',()=>customizeOriginal(set.id)));box.append(buttons);return box;
+}
+function renderQuestionsPreview(questions){
+ $('teacher-set-questions').replaceChildren(...questions.map((q,i)=>{const d=el('details');d.append(el('summary',`${i+1}. ${q.question||'Unfinished question'}`));const choices=el('ol');choices.type='A';for(const [n,text]of q.choices.entries())choices.append(el('li',(text||'Unfinished choice')+(correctAnswers(q).includes(n)?' ✓':'')));d.append(choices,el('p',q.explanation));return d;}));
+}
+function renderGameLinks(id){
+ $('teacher-set-games').replaceChildren(el('p','Play this set. Games with fixed rounds or timed play may repeat questions from shorter sets.'));
+ for(const game of GAMES.filter(g=>g.supportsQuestionBank)){const a=el('a',game.title+' ↗');a.href=game.url+'?set='+encodeURIComponent(id)+'&from=teacher-hq';a.target='_blank';a.rel='noopener';$('teacher-set-games').append(a);}
+}
+async function openOriginal(id){
+ if(!canLeave())return;const request=++version;status('Loading Teach Arcade Original…');
+ try{const bank=await loadQuestionSet(id);if(request!==version)return;
+  if(id.startsWith('teacher:'))throw Error('Choose a Teach Arcade Original.');
+  dirty=false;view='originals';show('set-detail');history.replaceState(null,'','?original='+encodeURIComponent(id));
+  $('set-source-label').textContent='★ TEACH ARCADE ORIGINAL';$('teacher-set-title').textContent=bank.title;
+  $('teacher-set-meta').textContent=`By Teach Arcade · ${bank.subject} · ${bank.questions.length} questions`;
+  $('teacher-set-description').textContent=bank.description||'Ready-made review questions from Teach Arcade.';
+  const play=el('a','Save this Original to My Cabinet →');play.href='/teacher/#games&set='+encodeURIComponent(id);
+  $('teacher-set-actions').replaceChildren(action('Customize a private copy',()=>customizeOriginal(id)),play);
+  renderGameLinks(id);renderQuestionsPreview(bank.questions);status('Official Original · Make a private copy to remove, add, or edit questions.');$('teacher-set-title').tabIndex=-1;$('teacher-set-title').focus();
+ }catch(error){if(request===version)status(error.message);}
+}
+async function customizeOriginal(id){
+ if(busy||!canLeave())return;
+ if(!user){status('Sign in to customize an Original. Then return to Teach Arcade Originals and choose your set.');location.assign('/teacher/?return=teacher-sets&original='+encodeURIComponent(id)+'#account');return;}
+ if(id.startsWith('teacher:')||!QUESTION_SETS.some(s=>s.id===id))throw Error('Choose a Teach Arcade Original.');
+ busy=true;status('Creating your private copy…');let copied;
+ try{copied=await api('create',originalCopy(await loadQuestionSet(id)));}finally{busy=false;}
+ dirty=false;await editSet(copied.set.id);status('Private copy saved. Remove or edit questions to fit your lesson. The Teach Arcade Original stays unchanged.');
+}
 function card(set){const box=el('article');box.className='set';box.append(el('p',`${set.subject} · ${set.visibility==='public'?'Public':'Private draft'}`),el('h2',set.title),el('p',set.description),el('p',`${set.question_count} questions`));const buttons=el('div');buttons.className='set-actions';buttons.append(action('Open set',()=>openSet(set.id)));if(set.owner_id===user?.id)buttons.append(action('Edit',()=>editSet(set.id)));box.append(buttons);return box;}
 async function openSet(id){
  if(!canLeave())return;const request=++version;status('Loading set…');
  try{const {set}=await api('detail',null,{id});if(request!==version)return;dirty=false;show('set-detail');history.replaceState(null,'','?id='+encodeURIComponent(id));
-  $('teacher-set-title').textContent=set.title;$('teacher-set-meta').textContent=`${set.subject} · ${set.visibility} · ${set.questions.length} questions`;$('teacher-set-description').textContent=set.description;
+  $('set-source-label').textContent='TEACHER-CREATED QUESTION SET';$('teacher-set-title').textContent=set.title;$('teacher-set-meta').textContent=`${set.subject} · ${set.visibility} · ${set.questions.length} questions`;$('teacher-set-description').textContent=set.description;
   const controls=$('teacher-set-actions');controls.replaceChildren();
   if(user?.id===set.owner_id)controls.append(action('Edit this set',()=>editSet(set.id)));
   else controls.append(action('Make a private copy',async()=>{if(!signedIn())return;const copied=await api('copy',{id:set.id});await editSet(copied.set.id);status('Private copy created. Your edits will not change the original.');}));
@@ -41,9 +83,9 @@ async function openSet(id){
    label.append(reasons);controls.append(label,action('Report this set',async()=>{if(!signedIn())return;if(!window.confirm('Send this set for review? Reporting does not automatically hide it.'))return;await api('report',{id:set.id,reason:reasons.value});status('Report received. Thank you. A moderator can review it; this does not automatically hide the set.');}));
   }
   $('teacher-set-games').replaceChildren();
-  try{teacherBank(set);$('teacher-set-games').append(el('p','Play this set:'));for(const game of GAMES.filter(g=>g.supportsQuestionBank)){const a=el('a',game.title+' ↗');a.href=game.url+'?set='+encodeURIComponent('teacher:'+set.id)+'&from=teacher-hq';a.target='_blank';a.rel='noopener';$('teacher-set-games').append(a);}}
+  try{teacherBank(set);renderGameLinks('teacher:'+set.id);}
   catch(error){$('teacher-set-games').append(el('p',error.message));}
-  $('teacher-set-questions').replaceChildren(...set.questions.map((q,i)=>{const d=el('details');d.append(el('summary',`${i+1}. ${q.question||'Unfinished question'}`));const choices=el('ol');choices.type='A';for(const [n,text]of q.choices.entries())choices.append(el('li',(text||'Unfinished choice')+(correctAnswers(q).includes(n)?' ✓':'')));d.append(choices,el('p',q.explanation));return d;}));
+  renderQuestionsPreview(set.questions);
   status(set.moderation_hidden?'Hidden from the community by a moderator. You can edit your original; publishing cannot remove this restriction.':set.visibility==='private'?'Private · Only you can access this set.':'Public · Anyone with access to this library can read, play, and copy this set.');$('teacher-set-title').tabIndex=-1;$('teacher-set-title').focus();
  }catch(error){if(request===version)status(error.message);}
 }
@@ -103,4 +145,5 @@ for(const subject of SET_SUBJECTS){const option=el('option',subject);option.valu
 try{const response=await fetch('/api/teacher?action=session',{credentials:'same-origin',cache:'no-store'});const data=await response.json();user=data.user||null;if(user)$('sign-in').textContent='My account';}catch{status('Account connection unavailable. You can still try the Community library.');}
 $('new-set').disabled=false;
 if(!user)view='public';
-const initial=new URLSearchParams(location.search).get('id');if(initial)await openSet(initial);else if(user&&new URLSearchParams(location.search).get('create')==='1')await editSet();else await list();
+const requestedOriginal=new URLSearchParams(location.search).get('original');
+const initial=new URLSearchParams(location.search).get('id');if(requestedOriginal)await openOriginal(requestedOriginal);else if(initial)await openSet(initial);else if(user&&new URLSearchParams(location.search).get('create')==='1')await editSet();else {if(new URLSearchParams(location.search).get('view')==='originals')view='originals';await list();}

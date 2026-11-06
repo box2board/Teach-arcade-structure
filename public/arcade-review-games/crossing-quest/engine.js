@@ -30,7 +30,8 @@ export class CrossingWorld {
   constructor(bank, difficulty='relaxed', random=Math.random) {
     validateBank(bank);
     this.difficulty = DIFFICULTIES[difficulty] || DIFFICULTIES.relaxed;
-    this.deck = shuffle(bank.questions, random).slice(0, ROUTES.length*4).map(q => {
+    const pool=shuffle(bank.questions,random);
+    this.deck = Array.from({length:ROUTES.length*4},(_,i)=>pool[i%pool.length]).map(q => {
       const answers = shuffle(q.choices.map((text,index)=>({text,index})),random);
       return {...q,choices:answers.map(a=>a.text),answer:remapAnswer(q,answers.map(a=>a.index))};
     });

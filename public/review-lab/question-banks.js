@@ -1,6 +1,6 @@
 import {validSelection} from './answers.js';
 // Shared multiple-choice contract for Review Lab games. No gameplay imports.
-export function validateQuestionBank(bank,minimum=12){
+export function validateQuestionBank(bank,minimum=1){
   if(!bank||!Array.isArray(bank.questions)||bank.questions.length<minimum)throw new Error(`Question packs need at least ${minimum} questions.`);
   const ids=new Set();
   for(const q of bank.questions){

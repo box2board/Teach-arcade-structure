@@ -1,6 +1,6 @@
 // Shared editor/API limits are technical payload bounds, not pricing tiers.
 export const SET_SUBJECTS=['Social Studies','Science','Math','ELA','Other'];
-export const MIN_PLAY_QUESTIONS=12;
+export const MIN_PLAY_QUESTIONS=1;
 export const MAX_QUESTIONS=100;
 export const teacherSetId=id=>typeof id==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 export const correctAnswers=q=>Array.isArray(q?.answer)?q.answer:Number.isInteger(q?.answer)&&q.answer>=0?[q.answer]:[];
@@ -23,10 +23,10 @@ export function setInput(input){
  });
  const visibility=input.visibility??'private';
  if(!['private','public'].includes(visibility))fail('Choose private or public visibility.');
- if(visibility==='public'&&(questions.length<MIN_PLAY_QUESTIONS||!questions.every(completeQuestion)))fail('To publish, add at least 12 complete questions, each with four different answers and at least one correct answer.');
+ if(visibility==='public'&&(questions.length<MIN_PLAY_QUESTIONS||!questions.every(completeQuestion)))fail('To publish, add at least one complete question, each with four different answers and at least one correct answer.');
  return {title,description,subject,questions,visibility};
 }
 export function teacherBank(set){
- if(set.questions.length<MIN_PLAY_QUESTIONS||!set.questions.every(completeQuestion))throw Error('This draft needs at least 12 complete questions before playing.');
+ if(set.questions.length<MIN_PLAY_QUESTIONS||!set.questions.every(completeQuestion))throw Error('This draft needs at least one complete question before playing.');
  return {id:`teacher:${set.id}`,title:set.title,subject:set.subject,category:'Teacher-created',questionCount:set.questions.length,questions:set.questions.map((q,i)=>({...q,answer:correctAnswers(q).length===1?correctAnswers(q)[0]:[...correctAnswers(q)],id:`${set.id}-${i+1}`}))};
 }

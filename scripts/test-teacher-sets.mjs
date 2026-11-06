@@ -19,7 +19,7 @@ test('drafts support incomplete questions; publishing and gameplay require compl
  assert.equal(setInput({...set(),questions:[{...question(1),question:'',answer:-1}]}).visibility,'private');
  for(const input of [{...set(),visibility:'public',questions:[]},{...set(),visibility:'public',questions:Array(12).fill({...question(1),choices:['A','a','C','D']})}])assert.throws(()=>setInput(input),/publish/);
  const bank=teacherBank({...setInput({...set(),visibility:'public'}),id});validateQuestionBank(bank);assert.equal(bank.id,'teacher:'+id);assert.equal(prepareQuestionDeck(bank).length,12);assert.equal(prepareSnowQuestions(bank).questions.length,12);assert.equal(categoryClashBoard(bank).categories.flatMap(c=>c.questions).length,12);
- assert.throws(()=>teacherBank({...set(),questions:[]}),/12 complete/);
+ assert.throws(()=>teacherBank({...set(),questions:[]}),/one complete/);
  assert.equal(completeQuestion({...question(1),choices:['Ａ','a','C','D']}),false);
 });
 test('oversized or malformed question structures and subject are rejected',()=>{

@@ -124,7 +124,7 @@ function render(){
  const matches=QUESTION_SETS.filter(s=>(!savedView||saved.has(s.id))&&(!$('subject').value||s.subject===$('subject').value)&&(!$('category').value||(s.category||'Foundations')===$('category').value)&&[s.title,s.subject,s.category||''].join(' ').toLowerCase().includes(q));
  $('count').textContent=`${matches.length} question sets${savedView?' saved':''} · Showing ${Math.min(limit,matches.length)}`;
  const cards=matches.slice(0,limit).map(s=>{
-  const card=node('article',undefined,'set');card.dataset.subject=s.subject;card.append(node('p',s.subject,'eyebrow'),node('h2',s.title),node('p',`${s.category||'Foundations'} · ${s.questionCount} questions · Grades ${s.gradeBand||'7–12'}`,'muted'));
+  const card=node('article',undefined,'set');card.dataset.subject=s.subject;card.append(node('p','★ TEACH ARCADE ORIGINAL · '+s.subject,'eyebrow'),node('h2',s.title),node('p',`${s.category||'Foundations'} · ${s.questionCount} questions · Grades ${s.gradeBand||'7–12'}`,'muted'));
   const actions=node('div',undefined,'set-actions'),play=node('button','Choose a game →','primary'),preview=node('button','Preview questions'),save=node('button',accountLoading?'Loading your Cabinet…':saved.has(s.id)?'In My Cabinet ✓':configured?'Add to My Cabinet':'Saving unavailable');
   play.onclick=()=>chooseGame(s);play.setAttribute('aria-label',`Choose a game for ${s.title}`);
   save.disabled=accountLoading||accountFailed||!configured;save.title=accountLoading?'Checking your account…':configured?'Save to your teacher account':'Saving becomes available when teacher accounts are connected.';
@@ -132,7 +132,7 @@ function render(){
    if(!configured)return;
    if(!user){pendingSave=s.id;returnRoute=savedView?'saved':'sets';location.hash='account';return;}
    save.disabled=true;try{const wasSaved=saved.has(s.id);await api(wasSaved?'unsave':'save',{setId:s.id});if(wasSaved)saved.delete(s.id);else saved.add(s.id);render();const next=document.querySelector(`[data-save-id="${s.id}"]`);(next||$('library-title')).focus({preventScroll:true});notice(wasSaved?'Question set removed from your saved library.':'Question set saved to your teacher account.');}catch(e){notice(e.message);save.disabled=false;}
-  };save.dataset.saveId=s.id;actions.append(play,preview,save);card.append(actions);return card;
+  };save.dataset.saveId=s.id;const customize=node('a','Customize a copy');customize.href='/teacher/sets/?original='+encodeURIComponent(s.id);actions.append(play,preview,save,customize);card.append(actions);return card;
  });
  if(!cards.length){const empty=node('div',undefined,'empty');empty.append(node('p',savedView&&accountLoading?'Loading your saved topics…':savedView&&accountFailed?'Your saved topics could not load. Retry in Account.':savedView&&!user?(configured?'Sign in to build your saved library.':'Saving is not available in this preview. You can still browse and play.'):savedView&&!saved.size?'No saved topics yet. Find a topic in the public library and select Save.':'No matching topics. Try a different search or subject.'));const back=node('button',savedView?'Browse public topics':'Clear filters');back.onclick=()=>{if(savedView)location.hash='sets';else{$('search').value='';$('subject').value='';$('category').value='';categories();render();}};empty.append(back);if(savedView&&!user&&configured){const sign=node('a','Sign in','text-link');sign.href='#account';empty.append(sign);}cards.push(empty);}
  $('catalog').replaceChildren(...cards);$('more').hidden=limit>=matches.length;
@@ -165,7 +165,9 @@ $('retry-account').onclick=async()=>{const button=$('retry-account');button.disa
 $('logout').onclick=async()=>{try{await api('logout',{});user=null;pendingSave=null;$('auth-status').textContent='';saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();}catch(error){notice(error.message);}};
 function returnToQuestionSets(){
  const params=new URLSearchParams(location.search);if(params.get('return')!=='teacher-sets')return false;
- location.assign('/teacher/sets/'+(params.get('intent')==='create'?'?create=1':''));return true;
+ const original=params.get('original');
+ const target=original&&QUESTION_SETS.some(s=>s.id===original&&!s.id.startsWith('teacher:'))?'?original='+encodeURIComponent(original):params.get('intent')==='create'?'?create=1':'';
+ location.assign('/teacher/sets/'+target);return true;
 }
 async function account(){
  accountLoading=true;accountFailed=false;render();$('retry-account').hidden=true;
