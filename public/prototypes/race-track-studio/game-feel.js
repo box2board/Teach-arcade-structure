@@ -13,7 +13,7 @@ export class GameFeel {
  <div id="game-hud" hidden><div class="hud-chip"><small>SPEED</small><b id="game-speed">0</b><span>km/h</span></div><div class="hud-chip"><small>TIME</small><b id="game-time">0.0</b><span>seconds</span></div></div>
  <div id="game-countdown" role="status" aria-live="polite"></div>
  <div id="game-finish" class="game-overlay" hidden><div class="game-card"><div class="finish-stars" aria-hidden="true">★ ★ ★</div><h2>WHAT A RIDE!</h2><p id="finish-summary"></p><button id="game-again" class="game-primary">↻ Race again</button><button id="game-back">🔧 Keep building</button></div></div>
- <div id="snap-burst" aria-hidden="true">✦</div>`;
+ `;
     document.body.append(layer);
     document.getElementById("game-build").onclick = () => {
       this.unlock();
@@ -120,9 +120,5 @@ export class GameFeel {
   snap() {
     this.unlock();
     this.tone(740, 0.055);
-    const b = document.getElementById("snap-burst");
-    b.classList.remove("burst");
-    void b.offsetWidth;
-    b.classList.add("burst");
   }
 }

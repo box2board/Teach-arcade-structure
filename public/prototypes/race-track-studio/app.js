@@ -322,7 +322,6 @@ canvas.addEventListener("pointerup", (ev) => {
     });
     clearGhost();
     game.snap();
-    toast("Nice! Pick another piece or hit Drive!");
   } else {
     let hit = scene.pick(ev)[0];
     let o = hit?.object;
@@ -775,7 +774,6 @@ $("attach").onclick = () => {
   });
   clearGhost();
   game.snap();
-  toast("Snap! Your track just got bigger.");
 };
 
 $("asset-search").oninput = () => renderAssets();
