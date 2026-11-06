@@ -114,3 +114,9 @@ A playful opening menu offers build/resume, a ready-made connected booster/loop/
 Driving expands the workspace and uses a 3–2–1–GO countdown before simulation advances, a speed/time HUD, pause, replay countdown, and a finish card with elapsed time/top speed. Placement gets a brief star pulse. Synthesized clicks/countdown/finish tones are opt-in and default off; no music or external audio assets. Reduced-motion preferences disable decorative CSS animation. The opening car is a CSS illustration, not a replacement for the in-game car.
 
 Fifteen automated tests cover the existing systems plus countdown/pause/finish/replay state and the connected loop demo. The run timer in the summary uses simulation finish time; the live HUD uses running frame time. Browser visuals/input/audio/device checks still require an available WebGL-capable browser. Environment props and challenge missions are not part of this pass.
+
+## Physical track art and library miniature revision
+
+The library now projects each catalog asset's actual shared geometry profile into an isometric miniature, including left/right curves, wave hills, ramps, loop, tunnels and functional strips. It no longer uses generic straight/curve icons. Miniatures have depth, inset lanes, bright shoulders, shape badges and distinct proportions. An actual rendered contact sheet was visually inspected for representative pieces.
+
+In-world geometry now includes thick sidewalls, a contrasting inset driving lane, molded exterior clips with pins, category-colored shoulders, ramp hazard markings and booster/brake chevrons. Collision geometry, track dimensions and saved data remain unchanged. Sixteen automated tests pass, including finite miniature generation for all 61 assets and distinct previews for key profiles. In-world WebGL appearance remains unverified in the available review browser; thumbnail inspection is not a claim of full 3D visual acceptance.

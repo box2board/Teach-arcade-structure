@@ -296,3 +296,10 @@ test("playground demo has connected loop and reaches the finish", async () => {
   const v = simulate(t, 16);
   assert.equal(v.finished, true);
 });
+
+test('library miniatures use distinct finite geometry for actual profiles',async()=>{
+ const {icon}=await import('../../public/prototypes/race-track-studio/piece-preview.js');
+ for(const a of CATALOG){const svg=icon(a);assert.ok(svg.includes('<svg'));assert.ok(!/NaN|Infinity|undefined/.test(svg),a.id);}
+ const preview=id=>icon(CATALOG.find(a=>a.id===id));
+ for(const [a,b] of [['short','long'],['left','right'],['rise','ramp'],['vertical-loop','rolling-hills'],['boost','brake']])assert.notEqual(preview(a),preview(b));
+});

@@ -1,6 +1,7 @@
+import {icon} from "./piece-preview.js";
 import { GameFeel } from "./game-feel.js";
 import * as T from "../../assets/vendor/three-0.162.0/three.module.js";
-import { CATALOG, asset, icon } from "./catalog.js";
+import { CATALOG, asset } from "./catalog.js";
 import { StudioScene } from "./renderer.js";
 import { makePiece, disposeGroup, endpoint } from "./geometry.js";
 import {

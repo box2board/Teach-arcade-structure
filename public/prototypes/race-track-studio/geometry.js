@@ -101,6 +101,19 @@ export function makePiece(piece, selected = false, ghost = false) {
   const mesh = new T.Mesh(geo, mat);
   mesh.receiveShadow = true;
   g.add(mesh);
+  // Thick toy-track shoulders and a contrasting inset driving surface.
+  const laneVertices=[],wallVertices=[],wallIndices=[];
+  for(let i=0;i<=n;i++){
+    const q=sample(piece,i/n),nx=-Math.sin(q.heading),nz=Math.cos(q.heading);
+    for(const side of [-1,1])laneVertices.push(q.x+nx*1.12*side,q.y+.342-Math.sin(q.bank)*1.12*side,q.z+nz*1.12*side);
+    for(const side of [-1,1])for(const drop of [0,.30])wallVertices.push(q.x+nx*WIDTH/2*side,q.y+.32-drop-Math.sin(q.bank)*WIDTH/2*side,q.z+nz*WIDTH/2*side);
+  }
+  for(let i=0;i<n;i++)for(let side=0;side<2;side++){const j=i*4+side*2;wallIndices.push(j,j+1,j+4,j+1,j+5,j+4);}
+  function detailMesh(vertices,index,color){const geom=new T.BufferGeometry();geom.setAttribute('position',new T.Float32BufferAttribute(vertices,3));geom.setIndex(index);geom.computeVertexNormals();const mesh=new T.Mesh(geom,new T.MeshStandardMaterial({color,roughness:.62,metalness:.06,side:T.DoubleSide,transparent:ghost,opacity:ghost?.58:1}));mesh.receiveShadow=true;g.add(mesh);}
+  detailMesh(laneVertices,indices,selected?'#6e4191':'#302254');
+  detailMesh(wallVertices,wallIndices,a.kind==='loop'?'#ffae13':'#5325a6');
+  // Molded connector clips outside the driving lane, with visible silver pins.
+  if(!ghost){for(const t of [.015,.985]){const q=sample(piece,t);for(const side of [-1,1]){const clip=new T.Mesh(new T.BoxGeometry(.5,.24,.38),new T.MeshStandardMaterial({color:'#ffce24',roughness:.5}));clip.position.set(q.x-Math.sin(q.heading)*1.58*side,q.y+.33-Math.sin(q.bank)*1.58*side,q.z+Math.cos(q.heading)*1.58*side);clip.rotation.y=-q.heading;g.add(clip);const pin=new T.Mesh(new T.SphereGeometry(.075,6,4),new T.MeshStandardMaterial({color:'#ffffff',metalness:.5,roughness:.3}));pin.position.copy(clip.position);pin.position.y+=.13;g.add(pin);}}}
   // Engineered raised edge rails, center markings and ribbed support legs.
   for (let side of [-1, 1]) {
     const pts = [];
@@ -157,7 +170,7 @@ export function makePiece(piece, selected = false, ghost = false) {
         new T.BoxGeometry(0.6, 0.025, 0.06),
         new T.MeshStandardMaterial({ color: "#ffffff" }),
       );
-      dash.position.set(p.x, p.y + 0.345, p.z);
+      dash.position.set(p.x, p.y + 0.36, p.z);
       dash.rotation.y = -p.heading;
       g.add(dash);
     }
@@ -215,6 +228,10 @@ export function makePiece(piece, selected = false, ghost = false) {
       g.add(arch);
     }
   }
+  if(!ghost&&(a.interaction==='boost'||a.interaction==='brake')){
+    for(const t of [.24,.4,.56,.72]){const q=sample(piece,t);for(const side of [-1,1]){const arrow=new T.Mesh(new T.BoxGeometry(.8,.035,.16),new T.MeshStandardMaterial({color:a.interaction==='boost'?'#19fff1':'#ffcc00',emissive:a.interaction==='boost'?'#04a7a7':'#a66c00',emissiveIntensity:.4}));arrow.position.set(q.x-Math.sin(q.heading)*side*.3,q.y+.39,q.z+Math.cos(q.heading)*side*.3);arrow.rotation.y=-q.heading+side*.6;g.add(arrow);}}
+  }
+  if(!ghost&&(a.kind==='ramp'||a.kind==='landing')){for(const t of [.78,.84,.9]){const q=sample(piece,t);for(const side of [-1,1]){const stripe=new T.Mesh(new T.BoxGeometry(.23,.03,.36),new T.MeshStandardMaterial({color:'#302254'}));stripe.position.set(q.x-Math.sin(q.heading)*1.4*side,q.y+.36,q.z+Math.cos(q.heading)*1.4*side);stripe.rotation.y=-q.heading-.5;g.add(stripe);}}}
   if (!ghost) batchPiece(g);
   return g;
 }
