@@ -1,32 +1,18 @@
-# WWI Trench Run v2 — Art Prototype
+# WWI Trench Run — Side-Scroller Visual Prototype
+This isolated prototype now runs on Teach Arcade's shared Side-Scroller Engine v1.1 and retains the live game’s platforming and educational flow. All changes stay inside this prototype directory on `prototype/wwi-trench-run-v2-art-assets`; the live Trench Run, main branch, and production deployment are untouched.
 
-This directory is an isolated visual-development prototype for Teach Arcade's WWI Trench Run.
+## Gameplay retained
+- Horizontal movement with the live engine’s acceleration, fixed-step physics, coyote time, jump buffering, and variable jump height.
+- Solid terrain, raised sandbag/duckboard/roof platforms, checkpoints and respawns.
+- Rat patrols, falling shells, wire hazards, collectible intelligence, question stations, answer rewards, gates, difficulty settings, and the command-post goal.
+- WWI question bank and the existing gameplay/visual validators.
 
-## Safety
+The prototype map adds two real terrain gaps (open collision gaps, not painted markings) with raised landing platforms on the far sides. It spaces the wire hazard more generously to keep a readable route through the course.
 
-- The live/current WWI Trench Run is not modified by this prototype.
-- All work remains under `public/dev/wwi-trench-run-v2-art-prototype/` on the isolated prototype branch.
-- Do not merge this prototype to production until it has been explicitly approved.
+## Visual implementation
+- The illustrated atlases in `assets/runtime/` are used by the game renderer.
+- Soldier run and jump frames, trench and battlefield parallax, duckboard floor, raised platforms, glowing readable wire, checkpoints, stations, falling shells, and the rat sprite sheet are rendered at engine world coordinates.
+- `rat-sprite-strip.png` contains two transparent side-view running poses and is cropped by the renderer at runtime.
+- The renderer replaces only the engine's draw function; physics, collisions, questions, checkpoints, difficulty, and controls continue to come from the shared engine modules.
 
-## Runtime artwork
-
-The prototype uses five optimized WebP runtime atlases extracted from the approved illustrated source sheets:
-
-- `assets/runtime/character-atlas.webp` — 12 consistent soldier poses
-- `assets/runtime/obstacle-atlas.webp` — barrier, barbed wire, crater, broken timber
-- `assets/runtime/terrain-atlas.webp` — trench wall, duckboards, checkpoint, sandbags
-- `assets/runtime/props-atlas.webp` — dead tree, ammo crate, ladder, lantern, signs, damaged sandbags
-- `assets/runtime/background-atlas.webp` — four battlefield and trench layers
-- `assets/runtime/side-floor.webp` — seamless side-view muddy duckboard ground strip
-
-The high-quality source WebP sheets and the reproducible conversion script live in `assets/source/`. The prototype is rendered as a horizontal side-scroller: the soldier runs across a shared ground plane while layered battlefield art moves at different parallax rates. Hazards sit on that same ground plane and are cleared by jumping. The current live game remains untouched. Legacy individual SVGs remain available for fallback use.
-
-To rebuild the compact WebP files after replacing a source sheet, run:
-
-```bash
-python3 assets/source/build_runtime_atlases.py
-```
-
-## Visual direction
-
-The art direction follows the supplied illustrated WWI assets: side-profile soldier sprites, a horizontal duckboard floor, layered battlefield scenery, and readable side-view obstacles. The prototype is a visual replacement study for the live side-scrolling Trench Run; its purpose is to make the existing game style feel like a cohesive illustrated game.
+Playable route: `/dev/wwi-trench-run-v2-art-prototype/play.html`.
