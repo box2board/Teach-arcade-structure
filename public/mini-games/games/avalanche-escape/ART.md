@@ -17,4 +17,7 @@ Validation: `node scripts/test-avalanche-escape.mjs` runs 60 deterministic full 
 Review in the game route before merging. This branch is a visual review preview, not a production release.
 
 
-Boost accelerates approaching obstacles, collectibles, row timing and scrolling scenery together, easing toward 1.65× speed. The round timer stays real-time. Exhausting the reserve requires releasing Dash after recharging to re-arm it, preventing repeated empty-reserve speed pulses. Collectibles are purple tokens with a cyan six-armed snowflake, drawn locally to stay crisp at small sizes.
+Boost accelerates approaching obstacles, collectibles, row timing and scrolling scenery together, easing toward 1.65× speed. The round timer stays real-time. Exhausting the reserve requires releasing Dash after recharging to re-arm it, preventing repeated empty-reserve speed pulses. Collectibles are gold tokens with a dark amber six-armed snowflake, drawn locally to stay crisp at small sizes.
+
+
+Optional blue ramps appear every fourth wave, beginning with the second wave. Riding over a ramp automatically hops; boosting on approach (with the speed factor above 1.35) doubles jump height and extends the airborne distance from 180 to 300 world units. The high gold-snowflake trail follows the long launch arc. Ground tokens award 25 base points and height-gated air tokens award 50. Jump height also clears low hazards, while the normal route remains playable without boost. No extra jump key is required on touch devices.

@@ -27,9 +27,9 @@ function puff(x,y,n=12){for(let i=0;i<n;i++)particles.push({x,y,vx:(Math.random(
 function sprite(name,x,y,w,angle=0,alpha=1){const im=art[name];if(!im)return;const h=w*im.height/im.width;ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.globalAlpha*=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
 function shadow(x,y,r){ctx.fillStyle='#224c6d30';ctx.beginPath();ctx.ellipse(x+5,y+8,r,r*.38,0,0,Math.PI*2);ctx.fill();}
 function snowflake(x,y,r){
- shadow(x,y,r);ctx.save();ctx.translate(x,y);ctx.rotate(Math.sin(clock*2+y)*.12);
- ctx.fillStyle='#6742c8';ctx.strokeStyle='#253462';ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fill();ctx.stroke();
- ctx.strokeStyle='#a8f6ff';ctx.lineWidth=Math.max(1.5,r*.14);ctx.lineCap='round';
+ ctx.save();ctx.translate(x,y);ctx.rotate(Math.sin(clock*2+y)*.12);
+ ctx.fillStyle='#ffcb3d';ctx.strokeStyle='#253462';ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fill();ctx.stroke();
+ ctx.strokeStyle='#8b480c';ctx.lineWidth=Math.max(1.5,r*.14);ctx.lineCap='round';
  for(let i=0;i<6;i++){ctx.save();ctx.rotate(i*Math.PI/3);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,-r*.72);ctx.moveTo(0,-r*.42);ctx.lineTo(-r*.21,-r*.59);ctx.moveTo(0,-r*.42);ctx.lineTo(r*.21,-r*.59);ctx.stroke();ctx.restore();}
  ctx.fillStyle='#ffffff';ctx.beginPath();ctx.arc(0,0,r*.13,0,Math.PI*2);ctx.fill();ctx.restore();
 }
@@ -39,11 +39,15 @@ function projectSlope(x,y,r=1){
  const depth=clamp((y+45)/385,0,1),scale=.2+.8*depth;
  return {x:300+(x-300)*scale,y:y>=340?y+60:200+200*Math.pow(depth,1.925),r:r*scale,scale};
 }
+function rampSprite(x,y,r){
+ shadow(x,y+r*.3,r);ctx.save();ctx.translate(x,y);ctx.fillStyle='#399cdb';ctx.strokeStyle='#253462';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-r,r*.65);ctx.lineTo(r,r*.65);ctx.lineTo(r*.8,-r*.6);ctx.lineTo(-r*.8,-r*.6);ctx.closePath();ctx.fill();ctx.stroke();ctx.strokeStyle='#fff6a3';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(-r*.4,r*.25);ctx.lineTo(0,-r*.18);ctx.lineTo(r*.4,r*.25);ctx.stroke();ctx.restore();
+}
 function drawSlopeObject(o,t){
  if(o.hit)return;
  const p=projectSlope(o.x,o.y,o.r);
  ctx.save();ctx.globalAlpha=clamp((o.y+45)/65,0,1);
- if(o.type==='flake')snowflake(p.x,p.y,p.r);
+ if(o.type==='ramp')rampSprite(p.x,p.y,p.r);
+ else if(o.type==='flake'){shadow(p.x,p.y,p.r*.7);snowflake(p.x,p.y-(o.z||0)*p.scale,p.r);}
  else{shadow(p.x,p.y+p.r*.55,p.r);sprite(o.type==='snow'?'snowball':'rock',p.x,p.y,p.r*2.1,o.type==='snow'?t*.35+o.x:0);}
  ctx.restore();
 }
@@ -56,16 +60,16 @@ function render(dt){
  for(let i=0;i<6;i++){const worldY=(i*140+scroll)%840-45,p=projectSlope(i%2?620:-20,worldY);sprite('spruce',p.x,p.y, (68+(i%3)*16)*p.scale,i%2?-.05:.05,.86);}
  for(const tr of tracks){if(playing)tr.y+=dt*([185,235,285][s.stage]*s.speedFactor*.56);ctx.strokeStyle=`rgba(74,120,145,${Math.max(0,.2*(1-(tr.y-500)/170))})`;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(tr.x-7,tr.y);ctx.lineTo(tr.x-7+tr.dx,tr.y+11);ctx.moveTo(tr.x+7,tr.y);ctx.lineTo(tr.x+7+tr.dx,tr.y+11);ctx.stroke();}
  tracks=tracks.filter(p=>p.y<680);
- if(playing){tracks.push({x,y:508,dx:-lean*7});if(Math.random()<dt*(dash?90:28))puff(x+(Math.random()-.5)*25,526,1);}
+ if(playing&&s.height<3){tracks.push({x,y:508,dx:-lean*7});if(Math.random()<dt*(dash?90:28))puff(x+(Math.random()-.5)*25,526,1);}
  for(const o of [...(s?.objects||[])].sort((a,b)=>a.y-b.y))drawSlopeObject(o,t);
  const movement=(x-previousX)/Math.max(dt,.001);previousX=x;lean+=(clamp(movement/350,-1,1)-lean)*(1-Math.exp(-dt*12));
- shadow(x,510,20);sprite('skier',x,505,54,lean*.18,s?.inv>0?.55+Math.sin(clock*35)*.22:1);
+ shadow(x,510,20);sprite('skier',x,505-(s?.height||0),54+(s?.height||0)*.04,lean*.18,s?.inv>0?.55+Math.sin(clock*35)*.22:1);
  for(const p of particles){if(playing){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;}ctx.fillStyle=`rgba(255,255,255,${Math.max(0,p.life)})`;ctx.beginPath();ctx.arc(p.x,p.y,2.2,0,Math.PI*2);ctx.fill();}particles=particles.filter(p=>p.life>0);
  // A distant powder front grows without obscuring collision space.
  const front=ctx.createLinearGradient(0,40,0,150);front.addColorStop(0,'rgba(237,247,255,'+(0.25+t/110)+')');front.addColorStop(1,'rgba(237,247,255,0)');ctx.fillStyle=front;ctx.fillRect(0,40,600,110);
  for(let i=0;i<35;i++){const sx=(i*137+Math.sin(clock*.6+i)*14)%600,sy=(i*73+clock*(18+i%8*3))%650;ctx.fillStyle='#ffffffa0';ctx.beginPath();ctx.arc(sx,sy,i%3===0?1.8:.8,0,Math.PI*2);ctx.fill();}
 }
-function finish(){complete=true;clearInput();const s=game.s;best=Math.max(best,s.score);try{localStorage.setItem('avalanche-escape-challenge-best',String(best));}catch{}showOverlay('YOU MADE IT DOWN.',`${s.score} points · ${s.hits} hits · Best streak ${s.bestCombo} · Personal best ${best}. Ride again to beat it!`,'RIDE AGAIN ↘');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:{gameId:'avalanche-escape',score:s.score,time:45}}));}
+function finish(){complete=true;clearInput();const s=game.s;best=Math.max(best,s.score);try{localStorage.setItem('avalanche-escape-challenge-best',String(best));}catch{}showOverlay('YOU MADE IT DOWN.',`${s.score} points · ${s.hits} hits · Air tokens ${s.airBonuses} · Best streak ${s.bestCombo} · Personal best ${best}. Ride again to beat it!`,'RIDE AGAIN ↘');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:{gameId:'avalanche-escape',score:s.score,time:45}}));}
 function frame(now){const dt=Math.min((now-last)/1000||0,1/20);last=now;clock+=dt;const s=game.s;
  if(s?.phase==='playing'){
   let direction=Number(keys.has('arrowright')||keys.has('d')||held.has('right'))-Number(keys.has('arrowleft')||keys.has('a')||held.has('left'));

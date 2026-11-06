@@ -12,7 +12,7 @@ for(let seed=1;seed<=60;seed++){
   maxObjects=Math.max(maxObjects,g.s.objects.length);
   assert(Number.isFinite(g.s.score));assert(g.s.energy>=0&&g.s.energy<=1);
   for(const r of g.s.rows){if(seen.has(r.id))continue;seen.add(r.id);counts[g.s.stage]++;patterns.add(r.pattern);
-   for(const o of g.s.objects.filter(o=>o.waveId===r.id&&o.type!=='flake'))assert(Math.abs(o.x-r.gapX)>o.r+15+20,'Safe corridor remains open');
+   for(const o of g.s.objects.filter(o=>o.waveId===r.id&&o.type!=='flake'&&o.type!=='ramp'))assert(Math.abs(o.x-r.gapX)>o.r+15+20,'Safe corridor remains open');
   }
  }
  assert.equal(g.s.time,45);assert.equal(g.s.phase,'finished');botHits+=g.s.hits;idleHits+=idle.s.hits;
@@ -33,3 +33,8 @@ boost.hold(true);normal.tick(.5);boost.tick(.5);assert(boost.s.objects[0].y>norm
 boost.hold(false);boost.tick(.75);assert(boost.s.speedFactor<1.01,'Speed eases back after release');
 boost.hold(true);boost.tick(3);assert.equal(boost.s.boostReady,false);assert.equal(boost.s.boosting,false);boost.hold(false);boost.tick(1);assert.equal(boost.s.boostReady,true);boost.hold(true);boost.tick(.1);assert.equal(boost.s.boosting,true);
 console.log('PASS: boost accelerates objects, rows and scenery, preserves round timing, eases out and avoids empty-reserve pulsing.');
+// The high trail is a real height-gated reward for boosting onto a ramp.
+function jumpTrial(boosting){const game=createGame();game.start();game.s.spawn=999;game.s.objects=[{type:'ramp',x:300,y:400,r:35,speed:185},...[60,150,240].map(d=>({type:'flake',x:300,y:400-d,z:100*Math.sin(Math.PI*d/300),air:true,r:15,speed:185}))];game.hold(boosting);let peak=0;for(let i=0;i<240;i++){game.tick(1/120);peak=Math.max(peak,game.s.height);}return {game,peak};}
+const hop=jumpTrial(false),launch=jumpTrial(true);assert.equal(hop.game.s.airBonuses,1);assert.equal(launch.game.s.airBonuses,3);assert(launch.peak>hop.peak*2);assert.equal(launch.game.s.height,0);assert.equal(launch.game.s.jumps,1);
+const air=createGame();air.start();air.s.spawn=999;air.s.jump={progress:100,length:300,maxHeight:100,speed:0};air.s.objects=[{type:'rock',x:300,y:440,r:24,speed:0}];air.tick(.01);assert.equal(air.s.hits,0);const frozenHeight=air.s.height;air.pause();air.tick(1);assert.equal(air.s.height,frozenHeight);air.resume();air.s.jump.progress=300;air.tick(.01);assert.equal(air.s.hits,1);
+console.log('PASS: normal hop collects 1 air token, boosted launch collects all 3, height-aware hazards, airborne pause and safe landing.');
