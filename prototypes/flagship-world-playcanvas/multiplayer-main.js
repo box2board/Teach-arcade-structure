@@ -1,5 +1,6 @@
 import * as pc from 'playcanvas';
 import { STEP, initialPlayer, step } from './multiplayer/physics.js';
+import { STALE_MS, canSendInput, receiveSnapshot, sampleRemote, recoveryBlend } from './multiplayer/recovery.js';
 
 const canvas = document.getElementById('application');
 const fpsEl = document.getElementById('fps');
@@ -573,11 +574,10 @@ function updateGhost() {
 
 function updateRemotes(dt) {
  for(const r of remotes.values()){
-  const t=performance.now()-100;
-  while(r.samples.length>2&&r.samples[1].time<=t)r.samples.shift();
-  const a=r.samples[0],b=r.samples[1]||a,alpha=b.time===a.time?1:pc.math.clamp((t-a.time)/(b.time-a.time),0,1);
-  r.root.setPosition(pc.math.lerp(a.x,b.x,alpha),pc.math.lerp(a.y,b.y,alpha),pc.math.lerp(a.z,b.z,alpha));
-  r.root.setEulerAngles(0,a.rotation+shortestAngleDelta(a.rotation,b.rotation)*alpha,0);
+  const now=performance.now(), target=sampleRemote(r,now);if(!target)continue;
+  const current=r.root.getPosition(), blend=now<(r.recoverUntil||0)?recoveryBlend(dt):1;
+  r.root.setPosition(pc.math.lerp(current.x,target.x,blend),pc.math.lerp(current.y,target.y,blend),pc.math.lerp(current.z,target.z,blend));
+  const yaw=r.root.getEulerAngles().y;r.root.setEulerAngles(0,yaw+shortestAngleDelta(yaw,target.rotation)*blend,0);
  }
 }
 
@@ -588,12 +588,15 @@ let fpsAccum = 0;
 let fpsFrames = 0;
 let fpsWindows = 0;
 let lowFpsWindows = 0;
+const frameTimes=[];
 function updatePerformance(dt) {
+  frameTimes.push(dt*1000);if(frameTimes.length>120)frameTimes.shift();
   fpsAccum += dt;
   fpsFrames += 1;
   if (fpsAccum < 0.6) return;
   const fps = fpsFrames / fpsAccum;
-  fpsEl.textContent = `FPS: ${Math.round(fps)}`;
+  const sorted=[...frameTimes].sort((a,b)=>a-b);
+  fpsEl.textContent = `FPS: ${Math.round(fps)} · frame p95: ${Math.round(sorted[Math.floor(sorted.length*.95)])} ms`;
   fpsAccum = 0;
   fpsFrames = 0;
   fpsWindows += 1;
@@ -626,6 +629,7 @@ updateCamera(1 / 60);
 // Connection starts after network declarations below.
 // Server-authoritative input simulation with local replay prediction.
 let room, connected=false, predicted=initialPlayer(), pending=[], seq=0, accumulator=0, ping=0;
+let lastStateAt=0,lastServerSample=0,maxDeliveryExcessMs=0,staleRecoveries=0;
 const worldURL=new URL(location.href);
 if(!worldURL.searchParams.has('world')){worldURL.searchParams.set('world',crypto.randomUUID());history.replaceState(null,'',worldURL);}
 const worldId=worldURL.searchParams.get('world').slice(0,80);
@@ -639,15 +643,19 @@ async function connect(){
   const token=sessionStorage.getItem(tokenKey);
   if(token){try{room=await client.reconnect(token);}catch{sessionStorage.removeItem(tokenKey);}}
   if(!room)room=await client.joinOrCreate('world',{worldId,displayName:'Explorer '+Math.floor(Math.random()*1000)});
-  connected=true;sessionStorage.setItem(tokenKey,room.reconnectionToken);pending=[];
+  connected=true;lastStateAt=0;lastServerSample=0;accumulator=0;sessionStorage.setItem(tokenKey,room.reconnectionToken);pending=[];
   room.onMessage('notice',text=>toast(text));room.onMessage('pong',n=>{ping=Math.round(performance.now()-n);});
   room.onStateChange(state=>{
+   const receivedAt=performance.now(),gap=lastStateAt?receivedAt-lastStateAt:0;
+   if(lastServerSample&&state.sampleTimeMs)maxDeliveryExcessMs=Math.max(maxDeliveryExcessMs,gap-(state.sampleTimeMs-lastServerSample));
+   if(gap>STALE_MS){pending=[];accumulator=0;staleRecoveries++;}
+   lastStateAt=receivedAt;lastServerSample=state.sampleTimeMs||0;
    const mine=state.players.get(room.sessionId);
    if(mine){seq=Math.max(seq,mine.seq);pending=pending.filter(i=>i.seq>mine.seq);predicted={...initialPlayer(),...mine.toJSON()};for(const i of pending)step(predicted,i,state.builds.values());}
    const ids=new Set();state.players.forEach((p,id)=>{
     if(id===room.sessionId||!p.connected)return;ids.add(id);
     if(!remotes.has(id)){const root=new pc.Entity('Network-'+id);app.root.addChild(root);primitive('Body','capsule',[0,0,0],[.9,1.45,.9],mats.remote,root);primitive('Head','sphere',[0,1.05,0],[.72,.72,.72],mats.remoteAccent,root);remotes.set(id,{root,samples:[]});}
-    const r=remotes.get(id);r.samples.push({x:p.x,y:p.y,z:p.z,rotation:p.rotation,time:performance.now()});if(r.samples.length>10)r.samples.shift();r.root.animationState=p.animation;
+    const r=remotes.get(id);receiveSnapshot(r,{x:p.x,y:p.y,z:p.z,rotation:p.rotation},receivedAt);r.root.animationState=p.animation;
    });
    for(const [id,r]of remotes)if(!ids.has(id)){r.root.destroy();remotes.delete(id);}
    const builds=new Set();state.builds.forEach(b=>{builds.add(b.id);if(!buildEntities.has(b.id)){const r=b.toJSON();buildRecords.push(r);createBuildEntity(r);}});
@@ -655,7 +663,7 @@ async function connect(){
    objectsEl.textContent='Shared builds: '+buildRecords.length;
    playersEl.textContent='Connected: '+[...state.players.values()].filter(p=>p.connected).length+' / '+(state.capacity||8);
    const now=performance.now();if(now-previousTickTime>1000){measuredHz=Math.round((state.tick-previousTick)*1000/(now-previousTickTime));previousTick=state.tick;previousTickTime=now;}
-   netEl.textContent='Ping: '+ping+' ms · server '+measuredHz+' Hz / sync target 20 Hz';
+   netEl.textContent='Ping: '+ping+' ms · server '+measuredHz+' Hz · recoveries '+staleRecoveries+' · max delivery excess '+Math.round(maxDeliveryExcessMs)+' ms';
   });
   room.onLeave(()=>{connected=false;room=undefined;toast('Connection lost · reconnecting…',20000);setTimeout(connect,700);});
   toast('Connected · share this full URL with another browser',5000);
@@ -663,13 +671,20 @@ async function connect(){
 }
 setInterval(()=>{if(connected)room.send('ping',performance.now());},1500);
 function updateNetworkPlayer(dt){
- if(!connected)return;accumulator=Math.min(accumulator+dt,STEP*4);
+ if(!connected)return;
+ if(!canSendInput(pending.length,lastStateAt,performance.now())){
+  accumulator=0;
+  if(lastStateAt&&performance.now()-lastStateAt>STALE_MS)netEl.textContent='Updates delayed · holding position until server catches up';
+  return;
+ }
+ accumulator=Math.min(accumulator+dt,STEP*4);
  while(accumulator>=STEP){accumulator-=STEP;
+ if(!canSendInput(pending.length,lastStateAt,performance.now())){accumulator=0;break;}
  const forward=(app.keyboard.isPressed(pc.KEY_W)||touchState.forward?1:0)-(app.keyboard.isPressed(pc.KEY_S)||touchState.back?1:0);
  const side=(app.keyboard.isPressed(pc.KEY_D)||touchState.right?1:0)-(app.keyboard.isPressed(pc.KEY_A)||touchState.left?1:0);
  const i={seq:++seq,x:-Math.sin(cameraYaw)*forward+Math.cos(cameraYaw)*side,z:-Math.cos(cameraYaw)*forward-Math.sin(cameraYaw)*side,sprint:app.keyboard.isPressed(pc.KEY_SHIFT)||touchState.sprint,jump:jumpBuffer>0};
  const length=Math.hypot(i.x,i.z);if(length>1){i.x/=length;i.z/=length;}jumpBuffer=0;
- if(pending.length>=12)break;pending.push(i);step(predicted,i,buildRecords);room.send('input',i);
+ pending.push(i);step(predicted,i,buildRecords);room.send('input',i);
  }
  const current=player.getPosition(),a=1-Math.exp(-dt*24),distance=Math.hypot(current.x-predicted.x,current.z-predicted.z);
  player.setPosition(distance>3?predicted.x:pc.math.lerp(current.x,predicted.x,a),pc.math.lerp(current.y,predicted.y,a),distance>3?predicted.z:pc.math.lerp(current.z,predicted.z,a));

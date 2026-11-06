@@ -14,8 +14,8 @@ class Player extends Schema { constructor(){super();Object.assign(this,initialPl
 defineTypes(Player,{sessionId:'string',displayName:'string',connected:'boolean',x:'number',y:'number',z:'number',vx:'number',vz:'number',vy:'number',rotation:'number',grounded:'boolean',movement:'string',animation:'string',seq:'number'});
 class Build extends Schema {}
 defineTypes(Build,{id:'string',ownerId:'string',classId:'string',worldId:'string',groupId:'string',missionId:'string',piece:'string',x:'number',y:'number',z:'number',rotation:'number',level:'number'});
-class World extends Schema {constructor(){super();this.players=new MapSchema();this.builds=new MapSchema();this.tick=0;this.capacity=capacity;this.maxTickGapMs=0;this.maxStepMs=0;this.maxQueueDepth=0;this.coalescedInputs=0;}}
-defineTypes(World,{players:{map:Player},builds:{map:Build},tick:'number',capacity:'number',maxTickGapMs:'number',maxStepMs:'number',maxQueueDepth:'number',coalescedInputs:'number'});
+class World extends Schema {constructor(){super();this.players=new MapSchema();this.builds=new MapSchema();this.tick=0;this.capacity=capacity;this.maxTickGapMs=0;this.maxStepMs=0;this.maxQueueDepth=0;this.coalescedInputs=0;this.sampleTimeMs=0;this.maxPatchGapMs=0;}}
+defineTypes(World,{players:{map:Player},builds:{map:Build},tick:'number',capacity:'number',maxTickGapMs:'number',maxStepMs:'number',maxQueueDepth:'number',coalescedInputs:'number',sampleTimeMs:'number',maxPatchGapMs:'number'});
 export class WorldRoom extends Room {
  onCreate(options){
   if(typeof options.worldId!=='string'||!/^[-a-zA-Z0-9_]{1,80}$/.test(options.worldId))throw new Error('Invalid world code');
@@ -46,14 +46,15 @@ export class WorldRoom extends Room {
    this.state.maxStepMs=Math.max(this.state.maxStepMs,performance.now()-began);
   },STEP*1000);
  }
+ onBeforePatch(){const now=performance.now();if(this.state.sampleTimeMs)this.state.maxPatchGapMs=Math.max(this.state.maxPatchGapMs,now-this.state.sampleTimeMs);this.state.sampleTimeMs=now;}
  limit(c,key,ms){const k=c.sessionId+key,now=Date.now();if(now-(this.rates.get(k)||0)<ms)return false;this.rates.set(k,now);return true;}
  onJoin(c,o){const p=new Player();p.sessionId=c.sessionId;p.displayName=String(o.displayName||'Explorer').replace(/[^a-zA-Z0-9 _-]/g,'').slice(0,20)||'Explorer';this.state.players.set(c.sessionId,p);this.queues.set(c.sessionId,[]);}
  async onLeave(c,consented){const p=this.state.players.get(c.sessionId);if(p)p.connected=false;this.queues.set(c.sessionId,[]);if(!consented){try{await this.allowReconnection(c,20);p.connected=true;return;}catch{}}this.state.players.delete(c.sessionId);this.queues.delete(c.sessionId);for(const k of this.rates.keys())if(k.startsWith(c.sessionId))this.rates.delete(k);}
 }
 export async function start(port=Number(process.env.PORT)||2567){
- const app=express(),http=createServer(app);app.get('/health',(_,res)=>res.json({ok:true,tickHz:30,patchHz:20,maxClients:capacity,performanceVersion:'queue3-v1'}));
+ const app=express(),http=createServer(app);app.get('/health',(_,res)=>res.json({ok:true,tickHz:30,patchHz:20,maxClients:capacity,performanceVersion:'recovery-v1'}));
  app.use('/sdk',express.static(fileURLToPath(new URL('./node_modules/colyseus.js/dist',import.meta.url))));
- for(const route of ['/','/multiplayer.html','/multiplayer-main.js','/multiplayer/physics.js'])app.get(route,(_,res)=>res.sendFile(fileURLToPath(new URL(route==='/'?'../multiplayer.html':'..'+route,import.meta.url))));
+ for(const route of ['/','/multiplayer.html','/multiplayer-main.js','/multiplayer/physics.js','/multiplayer/recovery.js'])app.get(route,(_,res)=>res.sendFile(fileURLToPath(new URL(route==='/'?'../multiplayer.html':'..'+route,import.meta.url))));
  const game=new Server({transport:new WebSocketTransport({server:http,maxPayload:4096})});game.define('world',WorldRoom).filterBy(['worldId']);await game.listen(port);return {game,http};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))start().then(()=>console.log('Multiplayer preview: http://localhost:'+(process.env.PORT||2567)));

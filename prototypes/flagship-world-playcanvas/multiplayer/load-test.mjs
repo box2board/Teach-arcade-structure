@@ -13,6 +13,7 @@ let timer, draining=false, totalInputs=0, movementSeconds=0;
 let buildCycles=0,reconnectCycles=0;
 const ackByMinute=[[],[],[],[],[]],backlogByMinute=[[],[],[],[],[]];
 let began;
+const deliveryOutliers=[];
 const runnerDelay=monitorEventLoopDelay({resolution:20});runnerDelay.enable();
 const wait=ms=>new Promise(r=>setTimeout(r,ms));
 const until=async(fn,label)=>{for(let i=0;i<300;i++){if(fn())return;await wait(50);}throw Error('Timeout: '+label);};
@@ -24,7 +25,15 @@ function observe(room){
  room.onLeave(()=>{if(!draining&&!item.expectedLeave)item.unexpectedLeave=true;});
  room.onStateChange(state=>{
   const now=performance.now();item.patches++;
-  if(item.lastPatch)samples.patchGap.push(now-item.lastPatch);item.lastPatch=now;
+  if(item.lastPatch){
+   const gap=now-item.lastPatch;samples.patchGap.push(gap);
+   if(gap>200&&item.serverSample&&state.sampleTimeMs){
+    const generationGap=state.sampleTimeMs-item.serverSample;
+    deliveryOutliers.push({arrivalGapMs:gap,generationGapMs:generationGap,excessMs:gap-generationGap,maxServerPatchGapMs:state.maxPatchGapMs});
+    deliveryOutliers.sort((a,b)=>b.arrivalGapMs-a.arrivalGapMs);deliveryOutliers.length=Math.min(10,deliveryOutliers.length);
+   }
+  }
+  item.lastPatch=now;item.serverSample=state.sampleTimeMs;
   if(item.lastTickTime&&now-item.lastTickTime>=1000){samples.tickHz.push((state.tick-item.lastTick)*1000/(now-item.lastTickTime));item.lastTickTime=now;item.lastTick=state.tick;}
   if(!item.lastTickTime){item.lastTickTime=now;item.lastTick=state.tick;}
   const p=state.players.get(room.sessionId);if(!p)return;
@@ -107,6 +116,8 @@ try{
  draining=true;await rooms[19].room.leave();await until(()=>rooms[0].room.state.players.size===19,'leave cleanup');
  const stats=arr=>{arr.sort((a,b)=>a-b);assert(arr.length,'Missing samples');return {count:arr.length,p05:+arr[Math.floor(arr.length*.05)].toFixed(2),p50:+arr[Math.floor(arr.length*.5)].toFixed(2),p95:+arr[Math.floor(arr.length*.95)].toFixed(2),max:+arr.at(-1).toFixed(2)};};
  const state=rooms[0].room.state;
+ assert(state.sampleTimeMs>0,'Expected patch-generation timing');
+ console.log(JSON.stringify({deliveryOutliers,maxServerPatchGapMs:state.maxPatchGapMs},null,2));
  assert(Number.isFinite(state.maxQueueDepth)&&state.maxQueueDepth>0&&state.maxQueueDepth<=3,'Expected a queue bounded to three inputs');
  console.log(JSON.stringify({serverDiagnostics:{maxTickGapMs:state.maxTickGapMs,maxStepMs:state.maxStepMs,maxQueueDepth:state.maxQueueDepth,coalescedInputs:state.coalescedInputs}},null,2));
  if(duration===300)console.log(JSON.stringify({concurrentBuildCycles:buildCycles,concurrentReconnects:reconnectCycles,minuteDiagnostics:ackByMinute.map((a,i)=>({minute:i+1,ackMs:stats(a),outstandingInputs:stats(backlogByMinute[i])}))},null,2));
