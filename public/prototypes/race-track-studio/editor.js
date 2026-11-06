@@ -120,3 +120,16 @@ export function transformedSection(track, id, changes, connected = false) {
   }
   return { pieces: result, count: ids.size };
 }
+
+export function loopPlayground() {
+  const t = newTrack();
+  t.name = "Loop Launch!";
+  let cursor = { x: -28, y: 0, z: -8, heading: 0 };
+  for (const type of ["start", "boost", "vertical-loop", "long", "finish"]) {
+    const p = piece(type, cursor.x, cursor.y, cursor.z, cursor.heading);
+    t.pieces.push(p);
+    cursor = endpoint(p);
+  }
+  t.startId = t.pieces[0].id;
+  return t;
+}

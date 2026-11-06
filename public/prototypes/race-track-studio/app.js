@@ -1,3 +1,4 @@
+import { GameFeel } from "./game-feel.js";
 import * as T from "../../assets/vendor/three-0.162.0/three.module.js";
 import { CATALOG, asset, icon } from "./catalog.js";
 import { StudioScene } from "./renderer.js";
@@ -8,7 +9,13 @@ import {
   placementIssue,
   connectedIds,
 } from "./connections.js";
-import { Editor, starter, piece, transformedSection } from "./editor.js";
+import {
+  Editor,
+  starter,
+  piece,
+  transformedSection,
+  loopPlayground,
+} from "./editor.js";
 import { Vehicle } from "./vehicle.js";
 import {
   newTrack,
@@ -66,6 +73,42 @@ const editor = new Editor(initial, () => {
     toast("Draft storage full. Export JSON to preserve your work.");
   }
 });
+const game = new GameFeel({
+  build: () => {},
+  demo: () => {
+    replace(loopPlayground());
+    startTest();
+  },
+  saves: () => {
+    document.querySelector(".shell").classList.add("inspect");
+    $("saves").focus();
+  },
+  again: () => restartRun(),
+  edit: () => endTest(),
+});
+$("game-home").onclick = () => game.menu();
+// Keep precision tools available, tucked behind one optional panel.
+const advanced = document.createElement("details");
+advanced.className = "advanced-builder";
+advanced.innerHTML = "<summary>⚙ Advanced builder</summary>";
+const object = $("object");
+for (const el of [
+  object.querySelector(".section-toggle"),
+  $("section-info"),
+  $("pos-x").closest(".pair"),
+  $("snap-selection"),
+  $("length").parentElement,
+  $("height").parentElement,
+])
+  if (el) advanced.append(el);
+object.append(advanced);
+const modeLabel = $("mode").parentElement;
+modeLabel.classList.add("mode-picker");
+document.querySelector(".top-actions").prepend(modeLabel);
+$("mode").options[0].text = "Watch it go";
+$("mode").options[1].text = "Drive it";
+$("library-toggle").onclick = () =>
+  document.querySelector(".shell").classList.toggle("inspect");
 function renderTrack() {
   while (scene.root.children.length) {
     const g = scene.root.children[0];
@@ -278,7 +321,8 @@ canvas.addEventListener("pointerup", (ev) => {
       editor.selected = c.id;
     });
     clearGhost();
-    toast("Piece placed. Continue building or press Esc to select.");
+    game.snap();
+    toast("Nice! Pick another piece or hit Drive!");
   } else {
     let hit = scene.pick(ev)[0];
     let o = hit?.object;
@@ -434,6 +478,8 @@ function startTest() {
   }
   cancel();
   vehicle = new Vehicle(structuredClone(editor.track), $("mode").value);
+  game.start();
+  $("mode").disabled = true;
   scene.scene.add(vehicle.mesh);
   connectors.visible = false;
   $("test").disabled = true;
@@ -465,6 +511,8 @@ function endTest() {
   scene.scene.remove(vehicle.mesh);
   disposeGroup(vehicle.mesh);
   vehicle = null;
+  game.stop();
+  $("mode").disabled = false;
   connectors.visible = true;
   document
     .querySelectorAll(
@@ -481,11 +529,16 @@ function endTest() {
 }
 $("test").onclick = startTest;
 $("edit").onclick = endTest;
-$("restart").onclick = () => {
-  vehicle?.reset();
+function restartRun() {
+  if (!vehicle) return;
+  vehicle.reset();
+  vehicle.paused = false;
+  accumulator = 0;
+  game.start();
   $("pause").textContent = "Ⅱ Pause";
-  if (vehicle) vehicle.paused = false;
-};
+  reportedFinish = false;
+}
+$("restart").onclick = restartRun;
 $("pause").onclick = () => {
   if (vehicle) {
     vehicle.paused = !vehicle.paused;
@@ -513,11 +566,15 @@ document.querySelectorAll("[data-key]").forEach((b) => {
 window.addEventListener("keydown", (e) => {
   if (["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) return;
   const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+  if (!$("game-menu").hidden) {
+    if (key === "Escape") game.menu(false);
+    return;
+  }
   if (vehicle) {
     if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "].includes(key))
       e.preventDefault();
     vehicle.keys.add(key);
-    if (key === "r") vehicle.reset();
+    if (key === "r") restartRun();
     if (key === "Escape") endTest();
     return;
   }
@@ -636,7 +693,8 @@ function animate(now) {
   const dt = Math.min((now - last) / 1000, 0.06);
   last = now;
   if (vehicle) {
-    accumulator += dt;
+    if (game.tick(dt, vehicle.speed, vehicle.paused)) accumulator += dt;
+    else accumulator = 0;
     let steps = 0;
     while (accumulator >= 1 / 120 && steps++ < 8) {
       vehicle.step(1 / 120);
@@ -658,7 +716,7 @@ function animate(now) {
     }
     $("speed").textContent = `${Math.round(vehicle.speed * 3.6)} km/h`;
     if (vehicle.finished && !reportedFinish) {
-      toast(`Finish gate reached in ${vehicle.finishTime.toFixed(2)} s`);
+      game.finish(vehicle.finishTime);
       reportedFinish = true;
     }
     if (!vehicle.finished) reportedFinish = false;
@@ -716,7 +774,8 @@ $("attach").onclick = () => {
     if (!t.startId) t.startId = p.id;
   });
   clearGhost();
-  toast("Piece attached at the selected exit.");
+  game.snap();
+  toast("Snap! Your track just got bigger.");
 };
 
 $("asset-search").oninput = () => renderAssets();

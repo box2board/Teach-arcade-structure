@@ -106,3 +106,11 @@ Open exits are green rings, occupied exits gray, invalid joints red, and the cur
 Select **Move / rotate entire connected section** in the inspector to apply X/Z translation, elevation, rotation and snap-to-exit to the whole connected graph component. Disconnected islands stay put. Bounds/floor and socket checks reject an invalid operation atomically. Each accepted operation is one undo/redo step. Geometry resizing and duplication still apply to the selected piece only. Connection markers are rebuilt after edits; pointer movement updates their colors without rebuilding their geometry.
 
 Thirteen automated tests cover the earlier systems plus occupied exits/entries, rigid connected-section translation/rotation, preserved joints, unrelated islands, rejected out-of-bounds moves and undo/redo. Visual/pointer/touch checks remain pending in a WebGL-capable browser.
+
+## Play-first presentation revision
+
+A playful opening menu offers build/resume, a ready-made connected booster/loop/finish demo, and local creations. Illustrated piece cards are larger, the everyday build view has no permanent inspector, and Tools opens the drawer. Precision position/elevation/connected-section controls live in an Advanced Builder disclosure. Existing construction, serialization and custom track data are unchanged.
+
+Driving expands the workspace and uses a 3–2–1–GO countdown before simulation advances, a speed/time HUD, pause, replay countdown, and a finish card with elapsed time/top speed. Placement gets a brief star pulse. Synthesized clicks/countdown/finish tones are opt-in and default off; no music or external audio assets. Reduced-motion preferences disable decorative CSS animation. The opening car is a CSS illustration, not a replacement for the in-game car.
+
+Fifteen automated tests cover the existing systems plus countdown/pause/finish/replay state and the connected loop demo. The run timer in the summary uses simulation finish time; the live HUD uses running frame time. Browser visuals/input/audio/device checks still require an available WebGL-capable browser. Environment props and challenge missions are not part of this pass.

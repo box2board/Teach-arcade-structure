@@ -260,3 +260,39 @@ test("connected translate/rotate preserves joints, ignores islands and supports 
   const single = transformedSection(t, id, { x: -10 }, false);
   assert.deepEqual(single.pieces[1], t.pieces[1]);
 });
+
+test("arcade countdown pauses, starts once, tracks peak speed and resets for replay", async () => {
+  const { PlayFlow } = await import(
+    "../../public/prototypes/race-track-studio/play-flow.js"
+  );
+  const f = new PlayFlow();
+  assert.equal(f.label, "3");
+  assert.equal(f.tick(1), false);
+  assert.equal(f.label, "2");
+  f.paused = true;
+  f.tick(2);
+  assert.equal(f.remaining, 2);
+  f.paused = false;
+  f.tick(2);
+  assert.equal(f.label, "GO!");
+  assert.equal(f.tick(0.2, 12), true);
+  f.tick(0.2, 8);
+  assert.equal(f.peak, 12);
+  assert.equal(f.finish(4.2), true);
+  assert.equal(f.finish(5), false);
+  assert.equal(f.tick(1, 30), false);
+  assert.equal(f.time, 4.2);
+  f.reset();
+  assert.equal(f.label, "3");
+  assert.equal(f.peak, 0);
+  assert.equal(f.finished, false);
+});
+test("playground demo has connected loop and reaches the finish", async () => {
+  const { loopPlayground } = await import(
+    "../../public/prototypes/race-track-studio/editor.js"
+  );
+  const t = loopPlayground();
+  assert.equal(validate(t).disconnected.length, 0);
+  const v = simulate(t, 16);
+  assert.equal(v.finished, true);
+});
