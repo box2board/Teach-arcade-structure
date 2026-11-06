@@ -54,7 +54,7 @@ async function loadArt(){
 }
 function reset(){
   cancelAnimationFrame(raf);hazards=initialHazards.map(([x,id])=>({x,id,hit:false,def:obstacleDefs.find(d=>d.id===id)}));
-  scenery=[{x:280,id:'crate'},{x:1040,id:'ladder'},{x:1740,id:'lantern'},{x:2380,id:'tree'},{x:3020,id:'crate'},{x:3440,id:'damage'}];dust=[];
+  scenery=[{x:1040,id:'ladder',wall:true},{x:1740,id:'lantern',wall:true}];dust=[];
   Object.assign(state,{running:true,paused:false,x:110,targetX:110,visualX:110,vx:0,y:0,vy:0,jumpHeight:0,jumpGraceUntil:0,stamina:3,score:0,distance:0,correct:0,total:0,streak:0,runTime:0,frame:0,camera:0,phase:1,forkShown:false,nextFork:2100,nextQuestion:1200,nextHazard:0,rate:1,hitUntil:0});
   keys.left=keys.right=false;ui.questionModal.classList.add('hidden');ui.forkModal.classList.add('hidden');toast.classList.remove('show');updateHud();last=performance.now();raf=requestAnimationFrame(loop);
 }
@@ -116,7 +116,9 @@ function drawBackground(){
   const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(28,36,42,.05)');g.addColorStop(1,'rgba(23,20,17,.26)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
 }
 function drawProps(){
-  for(const prop of scenery){const x=prop.x-state.camera;if(x<-180||x>W+180)continue;let img=art[prop.id],w=prop.id==='tree'?128:prop.id==='ladder'?74:prop.id==='lantern'?50:prop.id==='damage'?94:78,h=prop.id==='tree'?150:prop.id==='ladder'?128:prop.id==='lantern'?80:prop.id==='damage'?82:68;drawImage(img,x,GROUND-h,w,h)}
+  // Decorative props stay attached to the trench wall; the running surface is
+  // reserved for clearly marked hazards and remains visually unobstructed.
+  for(const prop of scenery){const x=prop.x-state.camera;if(x<-180||x>W+180)continue;let img=art[prop.id],w=prop.id==='ladder'?74:50,h=prop.id==='ladder'?128:80;const baseline=prop.wall?GROUND-52:GROUND;drawImage(img,x,baseline-h,w,h)}
   for(const d of dust){const x=d.x-state.camera;ctx.globalAlpha=Math.max(0,d.life/.45)*.62;ctx.fillStyle='#b6a18a';ctx.beginPath();ctx.ellipse(x,d.y,d.size*1.3,d.size*.75,0,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;
 }
 function drawHazards(){for(const h of hazards){const x=h.x-state.camera;if(x<-220||x>W+220||h.hit)continue;const img=art[h.def.kind],y=GROUND-h.def.h,cx=x+h.def.w*.5;ctx.fillStyle='rgba(12,10,8,.48)';ctx.beginPath();ctx.ellipse(cx,GROUND-2,h.def.w*.49,8,0,0,Math.PI*2);ctx.fill();
