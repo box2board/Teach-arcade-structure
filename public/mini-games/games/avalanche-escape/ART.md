@@ -10,8 +10,11 @@ The background was generated as a portrait scene with the mountains in the upper
 
 The dedicated renderer retains the approved cartoon art and ground-plane perspective. This game now uses its own challenge engine; arcade-five/engine.js remains unchanged for the other games. All rounds last 45 seconds: Warm-up (0–15s), Slalom (15–30s), Final Rush (30–45s). Patterns use wider opening gates, obstacle islands and paired pinch points, with faster approaches and shorter intervals by stage. Gap transitions are bounded and every row has a clear corridor.
 
-Gold (25 base points) and one close call per obstacle row (10 base) build a clean-run streak. Every three bonuses raises the multiplier, capped at ×4. Hits subtract 15 and reset the streak; one-second recovery protects against stacked impacts. Passive survival points are not multiplied. Challenge personal bests use a separate storage key so old visual-only scores are not compared against the new scoring rules.
+Snowflake tokens (25 base points) and one close call per obstacle row (10 base) build a clean-run streak. Every three bonuses raises the multiplier, capped at ×4. Hits subtract 15 and reset the streak; one-second recovery protects against stacked impacts. Passive survival points are not multiplied. Challenge personal bests use a separate storage key so old visual-only scores are not compared against the new scoring rules.
 
 Validation: `node scripts/test-avalanche-escape.mjs` runs 60 deterministic full rounds, verifies corridor clearance and increasing density, and compares guided steering with standing still. All sampled routes are clearable without dash; separate assertions verify multiplier growth/reset, pause and replay. The rendering/control smoke test also covers full-round completion and the event contract.
 
 Review in the game route before merging. This branch is a visual review preview, not a production release.
+
+
+Boost accelerates approaching obstacles, collectibles, row timing and scrolling scenery together, easing toward 1.65× speed. The round timer stays real-time. Exhausting the reserve requires releasing Dash after recharging to re-arm it, preventing repeated empty-reserve speed pulses. Collectibles are purple tokens with a cyan six-armed snowflake, drawn locally to stay crisp at small sizes.

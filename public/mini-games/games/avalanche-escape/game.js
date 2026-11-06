@@ -26,7 +26,13 @@ for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.add
 function puff(x,y,n=12){for(let i=0;i<n;i++)particles.push({x,y,vx:(Math.random()-.5)*110,vy:20+Math.random()*90,life:.4+Math.random()*.4});particles=particles.slice(-100);}
 function sprite(name,x,y,w,angle=0,alpha=1){const im=art[name];if(!im)return;const h=w*im.height/im.width;ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.globalAlpha*=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
 function shadow(x,y,r){ctx.fillStyle='#224c6d30';ctx.beginPath();ctx.ellipse(x+5,y+8,r,r*.38,0,0,Math.PI*2);ctx.fill();}
-function gold(x,y,r){shadow(x,y,r);ctx.save();ctx.translate(x,y);ctx.rotate(Math.sin(clock*2+y)*.12);ctx.fillStyle='#bd7517';ctx.strokeStyle='#253462';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,-r);ctx.lineTo(r*.72,0);ctx.lineTo(0,r);ctx.lineTo(-r*.72,0);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#ffe29a';ctx.beginPath();ctx.moveTo(0,-r*.78);ctx.lineTo(r*.47,0);ctx.lineTo(0,r*.55);ctx.lineTo(-r*.47,0);ctx.closePath();ctx.fill();ctx.fillStyle='#fff9d9';ctx.fillRect(-2,-r*.45,4,r*.7);ctx.restore();}
+function snowflake(x,y,r){
+ shadow(x,y,r);ctx.save();ctx.translate(x,y);ctx.rotate(Math.sin(clock*2+y)*.12);
+ ctx.fillStyle='#6742c8';ctx.strokeStyle='#253462';ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fill();ctx.stroke();
+ ctx.strokeStyle='#a8f6ff';ctx.lineWidth=Math.max(1.5,r*.14);ctx.lineCap='round';
+ for(let i=0;i<6;i++){ctx.save();ctx.rotate(i*Math.PI/3);ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,-r*.72);ctx.moveTo(0,-r*.42);ctx.lineTo(-r*.21,-r*.59);ctx.moveTo(0,-r*.42);ctx.lineTo(r*.21,-r*.59);ctx.stroke();ctx.restore();}
+ ctx.fillStyle='#ffffff';ctx.beginPath();ctx.arc(0,0,r*.13,0,Math.PI*2);ctx.fill();ctx.restore();
+}
 // Bring distant terrain objects forward along the snow plane. The final 310
 // world units use the engine's exact coordinates and radii for fair collisions.
 function projectSlope(x,y,r=1){
@@ -37,18 +43,18 @@ function drawSlopeObject(o,t){
  if(o.hit)return;
  const p=projectSlope(o.x,o.y,o.r);
  ctx.save();ctx.globalAlpha=clamp((o.y+45)/65,0,1);
- if(o.type==='star')gold(p.x,p.y,p.r);
+ if(o.type==='flake')snowflake(p.x,p.y,p.r);
  else{shadow(p.x,p.y+p.r*.55,p.r);sprite(o.type==='snow'?'snowball':'rock',p.x,p.y,p.r*2.1,o.type==='snow'?t*.35+o.x:0);}
  ctx.restore();
 }
 function render(dt){
- const s=game.s, playing=s?.phase==='playing', t=s?.time||0, x=s?.x||300, dash=playing&&s.hold&&s.energy>.02;
+ const s=game.s, playing=s?.phase==='playing', t=s?.time||0, x=s?.x||300, dash=playing&&s.boosting;
  ctx.setTransform(canvas.width/600,0,0,canvas.height/650,0,0);ctx.clearRect(0,0,600,650);
  if(art['alpine-run']){const im=art['alpine-run'];ctx.drawImage(im,0,0,im.width,im.height,0,0,600,650);}else{ctx.fillStyle='#bedce5';ctx.fillRect(0,0,600,650);}
  // The detailed mountain is fixed; bounded trails, edge scenery and powder convey motion.
- const scroll=playing?t*105:0;
+ const scroll=(s?.distance||0)*.56;
  for(let i=0;i<6;i++){const worldY=(i*140+scroll)%840-45,p=projectSlope(i%2?620:-20,worldY);sprite('spruce',p.x,p.y, (68+(i%3)*16)*p.scale,i%2?-.05:.05,.86);}
- for(const tr of tracks){if(playing)tr.y+=dt*(dash?190:105);ctx.strokeStyle=`rgba(74,120,145,${Math.max(0,.2*(1-(tr.y-500)/170))})`;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(tr.x-7,tr.y);ctx.lineTo(tr.x-7+tr.dx,tr.y+11);ctx.moveTo(tr.x+7,tr.y);ctx.lineTo(tr.x+7+tr.dx,tr.y+11);ctx.stroke();}
+ for(const tr of tracks){if(playing)tr.y+=dt*([185,235,285][s.stage]*s.speedFactor*.56);ctx.strokeStyle=`rgba(74,120,145,${Math.max(0,.2*(1-(tr.y-500)/170))})`;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(tr.x-7,tr.y);ctx.lineTo(tr.x-7+tr.dx,tr.y+11);ctx.moveTo(tr.x+7,tr.y);ctx.lineTo(tr.x+7+tr.dx,tr.y+11);ctx.stroke();}
  tracks=tracks.filter(p=>p.y<680);
  if(playing){tracks.push({x,y:508,dx:-lean*7});if(Math.random()<dt*(dash?90:28))puff(x+(Math.random()-.5)*25,526,1);}
  for(const o of [...(s?.objects||[])].sort((a,b)=>a.y-b.y))drawSlopeObject(o,t);
@@ -65,7 +71,7 @@ function frame(now){const dt=Math.min((now-last)/1000||0,1/20);last=now;clock+=d
   let direction=Number(keys.has('arrowright')||keys.has('d')||held.has('right'))-Number(keys.has('arrowleft')||keys.has('a')||held.has('left'));
   if(drag)direction=clamp((drag.x-s.x)/12,-1,1);game.setInput(direction);game.hold(keys.has(' ')||held.has('dash'));
   const hits=s.hits,stage=s.stage;game.tick(dt);if(stage!==s.stage){lastMessage='';messageTimer=2.5;s.message=s.stage===1?'STAGE 2 · TIGHTER SLALOM':'FINAL RUSH · KEEP YOUR LINE!';}$('stage').textContent=(s.stage+1)+' / '+['WARM-UP','SLALOM','FINAL RUSH'][s.stage];$('multiplier').textContent='×'+s.multiplier;$('streak').textContent=s.multiplier===4?'MAX · '+s.combo+' streak':(s.combo%3)+' / 3 to next';if(s.hits>hits)puff(s.x,500,28);
-  if(s.message!==lastMessage){lastMessage=s.message;messageTimer=2;}$('time').textContent=(45-s.time).toFixed(1);$('score').textContent=Math.floor(s.score);$('hits').textContent=s.hits;$('energy').style.transform=`scaleX(${s.energy})`;$('energy-label').textContent=Math.round(s.energy*100)+'%';
+  if(s.message!==lastMessage){lastMessage=s.message;messageTimer=2;}$('time').textContent=(45-s.time).toFixed(1);$('score').textContent=Math.floor(s.score);$('hits').textContent=s.hits;$('energy').style.transform=`scaleX(${s.energy})`;$('energy-label').textContent=s.boosting?'BOOST!':Math.round(s.energy*100)+'%';
   messageTimer-=dt;$('message').textContent=messageTimer>0&&s.message!=='READY'?s.message:'READ THE SLOPE. FIND YOUR LINE.';
   if(s.phase==='finished'&&!complete)finish();
  }
