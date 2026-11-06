@@ -30,6 +30,12 @@ export function brainEntries(html){
   href:attribute(tag,'href'),desc:decode(card.match(/<p\b[^>]*>([\s\S]*?)<\/p>/)?.[1]||''),
   icon:decode(card.match(/<div class="icon"[^>]*>([\s\S]*?)<\/div>/)?.[1]||'▶'),...artwork(card)}));
 }
+export function miniEntries(html){
+ return [...html.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)]
+ .filter(([,tag])=>attribute(tag,'class').split(/\s+/).includes('mini-card'))
+ .map(([,tag,card])=>{const href=attribute(tag,'href');return {id:attribute(tag,'data-resource-id'),title:decode(card.match(/<h2\b[^>]*>([\s\S]*?)<\/h2>/)?.[1]||''),
+  href:href.startsWith('games/')?'/mini-games/'+href:href,desc:decode(card.match(/<p\b[^>]*>([\s\S]*?)<\/p>/)?.[1]||''),icon:'✦',...artwork(card)};});
+}
 export function toolEntries(html){
  return [...html.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)]
  .filter(([,tag])=>attribute(tag,'class').split(/\s+/).includes('card-link'))
@@ -59,14 +65,16 @@ async function resources(entries,collection){
 export const cabinetGames=entries=>resources(entries,'Arcade Review Games');
 export const cabinetTools=entries=>resources(entries,'Teacher Tools');
 export const cabinetBrainGames=entries=>resources(entries,'Brain Arcade');
+export const cabinetMiniGames=entries=>resources(entries,'Mini Games');
 const moduleText=(name,items,source)=>`// Generated from ${source}. Run node scripts/build-cabinet-catalog.mjs.\nimport {validateCatalog} from './catalog-contract.js';\nexport const ${name}=Object.freeze(validateCatalog(${JSON.stringify(items,null,2)},'${name}').map(Object.freeze));\n`;
 export async function buildCabinetCatalog(){
- const [arcadeHtml,toolsHtml,brainHtml]=await Promise.all([readFile(new URL('arcade-review-games/index.html',root),'utf8'),readFile(new URL('tools/index.html',root),'utf8'),readFile(new URL('brain-arcade/index.html',root),'utf8')]);
- const games=await cabinetGames(arcadeEntries(arcadeHtml)),tools=await cabinetTools(toolEntries(toolsHtml)),brain=await cabinetBrainGames(brainEntries(brainHtml));
- validateCatalog([...games,...brain,...GAMES],'all games');await checkAssets(GAMES);
+ const [arcadeHtml,toolsHtml,brainHtml,miniHtml]=await Promise.all([readFile(new URL('arcade-review-games/index.html',root),'utf8'),readFile(new URL('tools/index.html',root),'utf8'),readFile(new URL('brain-arcade/index.html',root),'utf8'),readFile(new URL('mini-games/index.html',root),'utf8')]);
+ const games=await cabinetGames(arcadeEntries(arcadeHtml)),tools=await cabinetTools(toolEntries(toolsHtml)),brain=await cabinetBrainGames(brainEntries(brainHtml)),mini=await cabinetMiniGames(miniEntries(miniHtml));
+ validateCatalog([...games,...brain,...mini,...GAMES],'all games');await checkAssets(GAMES);
  await writeFile(new URL('teacher/arcade-catalog.js',root),moduleText('ARCADE_GAMES',games,'the public Arcade Review Games library'));
  await writeFile(new URL('teacher/brain-catalog.js',root),moduleText('BRAIN_GAMES',brain,'the public Brain Arcade library'));
+ await writeFile(new URL('teacher/mini-catalog.js',root),moduleText('MINI_GAMES',mini,'the public Mini Games library'));
  await writeFile(new URL('teacher/tool-catalog.js',root),moduleText('TOOLS',tools,'the public Teacher Tools library'));
- console.log(`Cabinet catalog: ${games.length} Arcade Review Games, ${GAMES.length} Review Lab games, ${brain.length} Brain Arcade games, ${tools.length} tools`);
+ console.log(`Cabinet catalog: ${games.length} Arcade Review Games, ${GAMES.length} Review Lab games, ${brain.length} Brain Arcade games, ${mini.length} Mini Games, ${tools.length} tools`);
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))await buildCabinetCatalog();

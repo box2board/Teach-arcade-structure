@@ -1,7 +1,7 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {arcadeEntries,cabinetGames,toolEntries,cabinetTools,brainEntries,cabinetBrainGames} from './build-cabinet-catalog.mjs';
+import {arcadeEntries,cabinetGames,toolEntries,cabinetTools,brainEntries,cabinetBrainGames,miniEntries,cabinetMiniGames} from './build-cabinet-catalog.mjs';
 import {validateCatalog} from '../public/teacher/catalog-contract.js';
 import {TOOLS,CABINET_GAMES} from '../public/teacher/cabinet-catalog.js';
 const url='/arcade-review-games/social-studies/wwi-trench-run.html';
@@ -57,4 +57,21 @@ test('every public Brain Arcade game is available in Cabinet Explore without cha
  const entries=brainEntries(await readFile(new URL('../public/brain-arcade/index.html',import.meta.url),'utf8'));
  const games=await cabinetBrainGames(entries);assert.ok(games.length>=21);
  for(const game of games){const actual=CABINET_GAMES.find(g=>g.id===game.id);assert.deepEqual(actual,game);assert.equal(actual.chooseTopic,undefined);}
+});
+
+
+test('new Mini Games and RV releases feed the Cabinet from their public cards',async()=>{
+ const entries=miniEntries(await readFile(new URL('../public/mini-games/index.html',import.meta.url),'utf8'));
+ const games=await cabinetMiniGames(entries);assert.equal(games.length,20);
+ for(const game of games){assert.deepEqual(CABINET_GAMES.find(g=>g.id===game.id),game);assert.equal(game.collection,'Mini Games');assert.equal(game.chooseTopic,undefined);}
+ assert.ok(CABINET_GAMES.some(g=>g.id==='brain:rv-road-trip-mayhem'));
+ for(const id of ['mini:magnet-mayhem','mini:avalanche-escape','mini:ultimate-skeeball'])assert.ok(CABINET_GAMES.some(g=>g.id===id),id);
+});
+test('Mini Games retain fixed bookmark IDs when titles or launch links change',async()=>{
+ const card=(title,url,id='mini:stable')=>`<a class="mini-card" data-resource-id="${id}" href="${url}"><h2>${title}</h2><p>Quick play.</p></a>`;
+ const old=(await cabinetMiniGames(miniEntries(card('Old title','games/memory-match/'))))[0];
+ const next=(await cabinetMiniGames(miniEntries(card('New title','games/magnet-mayhem/'))))[0];
+ assert.equal(old.id,next.id);assert.notEqual(old.url,next.url);
+ await assert.rejects(cabinetMiniGames(miniEntries(card('Missing ID','games/memory-match/',''))),/permanent ID/);
+ await assert.rejects(cabinetMiniGames(miniEntries(card('Bad link','../private'))),/local launch URL/);
 });

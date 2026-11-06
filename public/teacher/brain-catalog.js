@@ -2,6 +2,16 @@
 import {validateCatalog} from './catalog-contract.js';
 export const BRAIN_GAMES=Object.freeze(validateCatalog([
   {
+    "id": "brain:rv-road-trip-mayhem",
+    "title": "RV Road Trip Mayhem",
+    "url": "/brain-arcade/rv-road-trip-mayhem/",
+    "description": "Hit the road across six scenic routes. Jump junk, boost over canyons, and chase a clean finish.",
+    "symbol": "▶",
+    "collection": "Brain Arcade",
+    "image": "/assets/images/brain-arcade/rv-road-trip-mayhem-768.webp",
+    "imageAlt": "RV Road Trip Mayhem"
+  },
+  {
     "id": "brain:moviemind",
     "title": "MovieMind",
     "url": "/brain-arcade/moviemind/",
