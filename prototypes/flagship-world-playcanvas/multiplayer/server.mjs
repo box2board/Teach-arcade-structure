@@ -1,4 +1,4 @@
-import { Server, Room } from '@colyseus/core';
+import { Server, Room, ServerError, matchMaker } from '@colyseus/core';
 import { WebSocketTransport } from '@colyseus/ws-transport';
 import { Schema, MapSchema, defineTypes } from '@colyseus/schema';
 import express from 'express';
@@ -8,18 +8,29 @@ import { randomUUID } from 'node:crypto';
 import { STEP, initialPlayer, step, validBuild } from './physics.js';
 import { enqueueInput } from './input-queue.js';
 import { performance } from 'node:perf_hooks';
+import { runDeviceBots } from './device-bots.mjs';
 // Explicit review opt-in; capacity above 20 remains gated.
 const capacity = process.env.WORLD_MAX_CLIENTS === '20' ? 20 : 8;
 class Player extends Schema { constructor(){super();Object.assign(this,initialPlayer(),{sessionId:'',displayName:'',connected:true});} }
 defineTypes(Player,{sessionId:'string',displayName:'string',connected:'boolean',x:'number',y:'number',z:'number',vx:'number',vz:'number',vy:'number',rotation:'number',grounded:'boolean',movement:'string',animation:'string',seq:'number'});
 class Build extends Schema {}
 defineTypes(Build,{id:'string',ownerId:'string',classId:'string',worldId:'string',groupId:'string',missionId:'string',piece:'string',x:'number',y:'number',z:'number',rotation:'number',level:'number'});
-class World extends Schema {constructor(){super();this.players=new MapSchema();this.builds=new MapSchema();this.tick=0;this.capacity=capacity;this.maxTickGapMs=0;this.maxStepMs=0;this.maxQueueDepth=0;this.coalescedInputs=0;this.sampleTimeMs=0;this.maxPatchGapMs=0;}}
-defineTypes(World,{players:{map:Player},builds:{map:Build},tick:'number',capacity:'number',maxTickGapMs:'number',maxStepMs:'number',maxQueueDepth:'number',coalescedInputs:'number',sampleTimeMs:'number',maxPatchGapMs:'number'});
+class World extends Schema {constructor(){super();this.players=new MapSchema();this.builds=new MapSchema();this.tick=0;this.capacity=capacity;this.maxTickGapMs=0;this.maxStepMs=0;this.maxQueueDepth=0;this.coalescedInputs=0;this.sampleTimeMs=0;this.maxPatchGapMs=0;this.deviceStatus='';}}
+defineTypes(World,{players:{map:Player},builds:{map:Build},tick:'number',capacity:'number',maxTickGapMs:'number',maxStepMs:'number',maxQueueDepth:'number',coalescedInputs:'number',sampleTimeMs:'number',maxPatchGapMs:'number',deviceStatus:'string'});
 export class WorldRoom extends Room {
  onCreate(options){
-  if(typeof options.worldId!=='string'||!/^[-a-zA-Z0-9_]{1,80}$/.test(options.worldId))throw new Error('Invalid world code');
+  const refuse=(code,message)=>{this.setPatchRate(null);this.autoDispose=false;throw new ServerError(code,message);};
+  if(typeof options.worldId!=='string'||!/^[-a-zA-Z0-9_]{1,80}$/.test(options.worldId))refuse(4216,'Invalid world code');
+  this.deviceMode=options.worldId.startsWith('device-');
+  if(this.deviceMode){
+   const config=this.deviceReview;
+   if(capacity!==20||options.worldId!==config?.worldId)refuse(4216,'Device check unavailable');
+   if(config.activeRoom)refuse(4216,'Device check already in use');
+   config.activeRoom=this;this.deviceBotKey=randomUUID();this.deviceBotIds=new Set();
+   this.setPrivate(true);
+  }
   this.maxClients=capacity;this.setState(new World());this.setPatchRate(50);this.queues=new Map();this.rates=new Map();this.worldId=options.worldId;
+  if(this.deviceMode)this.state.deviceStatus='waiting';
   this.onMessage('input',(c,i)=>{
    const q=this.queues.get(c.sessionId),p=this.state.players.get(c.sessionId);
    if(!q||!p||!i||!Number.isSafeInteger(i.seq)||i.seq<=p.seq||i.seq>(q.at(-1)?.seq??p.seq)+120||![i.x,i.z].every(Number.isFinite)||Math.abs(i.x)>1||Math.abs(i.z)>1||q.length>=12||i.seq<=(q.at(-1)?.seq??p.seq))return;
@@ -46,15 +57,41 @@ export class WorldRoom extends Room {
    this.state.maxStepMs=Math.max(this.state.maxStepMs,performance.now()-began);
   },STEP*1000);
  }
- onBeforePatch(){const now=performance.now();if(this.state.sampleTimeMs)this.state.maxPatchGapMs=Math.max(this.state.maxPatchGapMs,now-this.state.sampleTimeMs);this.state.sampleTimeMs=now;}
+ onBeforePatch(){if(!this.state)return;const now=performance.now();if(this.state.sampleTimeMs)this.state.maxPatchGapMs=Math.max(this.state.maxPatchGapMs,now-this.state.sampleTimeMs);this.state.sampleTimeMs=now;}
  limit(c,key,ms){const k=c.sessionId+key,now=Date.now();if(now-(this.rates.get(k)||0)<ms)return false;this.rates.set(k,now);return true;}
- onJoin(c,o){const p=new Player();p.sessionId=c.sessionId;p.displayName=String(o.displayName||'Explorer').replace(/[^a-zA-Z0-9 _-]/g,'').slice(0,20)||'Explorer';this.state.players.set(c.sessionId,p);this.queues.set(c.sessionId,[]);}
- async onLeave(c,consented){const p=this.state.players.get(c.sessionId);if(p)p.connected=false;this.queues.set(c.sessionId,[]);if(!consented){try{await this.allowReconnection(c,20);p.connected=true;return;}catch{}}this.state.players.delete(c.sessionId);this.queues.delete(c.sessionId);for(const k of this.rates.keys())if(k.startsWith(c.sessionId))this.rates.delete(k);}
+ onJoin(c,o){
+  if(this.deviceMode){
+   if(o.deviceBotKey===this.deviceBotKey)this.deviceBotIds.add(c.sessionId);
+   else{
+    if(o.worldId!==this.worldId||this.deviceClientId)throw new ServerError(4216,'Device check needs its invite link and one tester');
+    this.deviceClientId=c.sessionId;
+    this.state.deviceStatus='warming';
+    this.stopDeviceBots=runDeviceBots({
+     endpoint:this.deviceReview.endpoint,durationMs:this.deviceReview.durationMs,
+     reserveSeat:i=>matchMaker.reserveSeatFor(this.listing,{deviceBotKey:this.deviceBotKey,displayName:`Simulated ${i+1}`}),
+     onStatus:status=>{this.state.deviceStatus=status;}
+    });
+   }
+  }
+  const p=new Player();p.sessionId=c.sessionId;p.displayName=String(o.displayName||'Explorer').replace(/[^a-zA-Z0-9 _-]/g,'').slice(0,20)||'Explorer';this.state.players.set(c.sessionId,p);this.queues.set(c.sessionId,[]);
+ }
+ async onLeave(c,consented){
+  const p=this.state.players.get(c.sessionId);if(!p)return;
+  p.connected=false;this.queues.set(c.sessionId,[]);
+  const bot=this.deviceBotIds?.delete(c.sessionId);
+  if(!bot&&!consented){try{await this.allowReconnection(c,20);p.connected=true;return;}catch{}}
+  if(c.sessionId===this.deviceClientId)this.stopDeviceBots?.();
+  this.state.players.delete(c.sessionId);this.queues.delete(c.sessionId);for(const k of this.rates.keys())if(k.startsWith(c.sessionId))this.rates.delete(k);
+ }
+ onDispose(){if(this.deviceMode){this.stopDeviceBots?.();if(this.deviceReview.activeRoom===this)this.deviceReview.activeRoom=null;}}
 }
-export async function start(port=Number(process.env.PORT)||2567){
- const app=express(),http=createServer(app);app.get('/health',(_,res)=>res.json({ok:true,tickHz:30,patchHz:20,maxClients:capacity,performanceVersion:'recovery-v1'}));
+export async function start(port=Number(process.env.PORT)||2567,{deviceWorldId=process.env.WORLD_DEVICE_REVIEW_CODE,deviceDurationMs=300000}={}){
+ const deviceReview={worldId:deviceWorldId,endpoint:null,durationMs:deviceDurationMs,activeRoom:null};
+ const app=express(),http=createServer(app);app.get('/health',(_,res)=>res.json({ok:true,tickHz:30,patchHz:20,maxClients:capacity,performanceVersion:'recovery-v1',deviceCheckEnabled:capacity===20&&/^device-[a-zA-Z0-9_-]{20,73}$/.test(deviceWorldId||'')}));
  app.use('/sdk',express.static(fileURLToPath(new URL('./node_modules/colyseus.js/dist',import.meta.url))));
  for(const route of ['/','/multiplayer.html','/multiplayer-main.js','/multiplayer/physics.js','/multiplayer/recovery.js'])app.get(route,(_,res)=>res.sendFile(fileURLToPath(new URL(route==='/'?'../multiplayer.html':'..'+route,import.meta.url))));
- const game=new Server({transport:new WebSocketTransport({server:http,maxPayload:4096})});game.define('world',WorldRoom).filterBy(['worldId']);await game.listen(port);return {game,http};
+ const game=new Server({transport:new WebSocketTransport({server:http,maxPayload:4096})});
+ game.define('world',class extends WorldRoom { get deviceReview(){return deviceReview;} }).filterBy(['worldId']);
+ await game.listen(port);deviceReview.endpoint='ws://127.0.0.1:'+http.address().port;return {game,http};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url))start().then(()=>console.log('Multiplayer preview: http://localhost:'+(process.env.PORT||2567)));

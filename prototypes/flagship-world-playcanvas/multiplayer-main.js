@@ -623,6 +623,7 @@ app.on('update', (dt) => {
   updateRemotes(safeDt);
   // Count real elapsed frame time: clamping here hides stalls and inflates FPS.
   updatePerformance(dt);
+  recordDeviceFrame(performance.now());
 });
 
 updateCamera(1 / 60);
@@ -633,6 +634,36 @@ let lastStateAt=0,lastServerSample=0,maxDeliveryExcessMs=0,staleRecoveries=0;
 const worldURL=new URL(location.href);
 if(!worldURL.searchParams.has('world')){worldURL.searchParams.set('world',crypto.randomUUID());history.replaceState(null,'',worldURL);}
 const worldId=worldURL.searchParams.get('world').slice(0,80);
+const isDeviceCheck=worldId.startsWith('device-');
+let devicePhase='',deviceCount=0,deviceLastFrame=0,devicePauseUntil=0,simulatedPauses=0;
+const deviceStats={frames:0,elapsedMs:0,maxFrameMs:0,maxArrivalGapMs:0,staleRecoveries:0,histogram:new Uint32Array(1001)};
+let deviceLine,deviceCopy,devicePause;
+if(isDeviceCheck){
+ document.querySelector('.brand span').textContent='Chromebook device check · one tester and 19 simulated players.';
+ document.getElementById('share').hidden=true;
+ deviceLine=document.createElement('div');deviceLine.textContent='Device check: joining…';playersEl.after(deviceLine);
+ deviceCopy=document.createElement('button');deviceCopy.textContent='Copy test results';deviceCopy.style.pointerEvents='auto';deviceCopy.disabled=true;deviceLine.after(deviceCopy);
+ devicePause=document.createElement('button');devicePause.textContent='Simulate short pause';devicePause.style.pointerEvents='auto';devicePause.disabled=true;deviceCopy.after(devicePause);
+ devicePause.onclick=()=>{if(devicePhase==='running'&&deviceCount===20&&!devicePauseUntil){devicePauseUntil=performance.now()+750;devicePause.disabled=true;simulatedPauses++;}};
+ deviceCopy.onclick=async()=>{
+  let n=0,p95=0;
+  for(;p95<1000;p95++){n+=deviceStats.histogram[p95];if(n>=Math.ceil(deviceStats.frames*.95))break;}
+  const result={test:'Flagship Chromebook check · 20 players',status:devicePhase,sampledSeconds:Math.round(deviceStats.elapsedMs/1000),averageFps:+(deviceStats.frames*1000/deviceStats.elapsedMs).toFixed(1),frameP95Ms:p95,peakFrameMs:Math.round(deviceStats.maxFrameMs),peakUpdateGapMs:Math.round(deviceStats.maxArrivalGapMs),recoveries:deviceStats.staleRecoveries,simulatedPauses,pingMs:ping,quality:qualityEl.textContent};
+  try{await navigator.clipboard.writeText(JSON.stringify(result,null,2));deviceCopy.textContent='Results copied';}
+  catch{deviceCopy.textContent='Copy unavailable';}
+ };
+ document.addEventListener('visibilitychange',()=>{deviceLastFrame=0;});
+}
+function recordDeviceFrame(now){
+ if(!isDeviceCheck||!connected||devicePhase!=='running'||deviceCount!==20||document.hidden){deviceLastFrame=0;return;}
+ if(deviceLastFrame){
+  const elapsed=now-deviceLastFrame;
+  deviceStats.frames++;deviceStats.elapsedMs+=elapsed;deviceStats.maxFrameMs=Math.max(deviceStats.maxFrameMs,elapsed);
+  deviceStats.histogram[Math.min(1000,Math.ceil(elapsed))]++;
+  if(deviceCopy.disabled)deviceCopy.disabled=false;
+ }
+ deviceLastFrame=now;
+}
 let previousTick=0, previousTickTime=performance.now(), measuredHz=0;
 const tokenKey='flagship-reconnect:'+location.origin+':'+worldId;
 const netEl=document.createElement('div');qualityEl.after(netEl);
@@ -647,6 +678,9 @@ async function connect(){
   room.onMessage('notice',text=>toast(text));room.onMessage('pong',n=>{ping=Math.round(performance.now()-n);});
   room.onStateChange(state=>{
    const receivedAt=performance.now(),gap=lastStateAt?receivedAt-lastStateAt:0;
+   if(receivedAt<devicePauseUntil)return;
+   if(isDeviceCheck&&devicePhase==='running'&&deviceCount===20&&!devicePauseUntil){deviceStats.maxArrivalGapMs=Math.max(deviceStats.maxArrivalGapMs,gap);if(gap>STALE_MS)deviceStats.staleRecoveries++;}
+   devicePauseUntil=0;
    if(lastServerSample&&state.sampleTimeMs)maxDeliveryExcessMs=Math.max(maxDeliveryExcessMs,gap-(state.sampleTimeMs-lastServerSample));
    if(gap>STALE_MS){pending=[];accumulator=0;staleRecoveries++;}
    lastStateAt=receivedAt;lastServerSample=state.sampleTimeMs||0;
@@ -661,13 +695,24 @@ async function connect(){
    const builds=new Set();state.builds.forEach(b=>{builds.add(b.id);if(!buildEntities.has(b.id)){const r=b.toJSON();buildRecords.push(r);createBuildEntity(r);}});
    for(const [id,e]of buildEntities)if(!builds.has(id)){e.destroy();buildEntities.delete(id);const i=buildRecords.findIndex(b=>b.id===id);if(i>=0)buildRecords.splice(i,1);}
    objectsEl.textContent='Shared builds: '+buildRecords.length;
-   playersEl.textContent='Connected: '+[...state.players.values()].filter(p=>p.connected).length+' / '+(state.capacity||8);
+   const count=ids.size+(mine?.connected?1:0);
+   playersEl.textContent='Connected: '+count+' / '+(state.capacity||8);
+   if(isDeviceCheck){
+    devicePhase=state.deviceStatus;deviceCount=count;
+    const label=devicePhase==='running'&&count===20?'20/20 ready · five-minute test running':devicePhase==='complete'?'Test complete · copy your results':devicePhase==='failed'?'Test stopped · close this tab to reset':'Starting simulated players…';
+    if(deviceLine.textContent!==label)deviceLine.textContent=label;
+    devicePause.disabled=devicePhase!=='running'||count!==20;
+   }
    const now=performance.now();if(now-previousTickTime>1000){measuredHz=Math.round((state.tick-previousTick)*1000/(now-previousTickTime));previousTick=state.tick;previousTickTime=now;}
    netEl.textContent='Ping: '+ping+' ms · server '+measuredHz+' Hz · recoveries '+staleRecoveries+' · max delivery excess '+Math.round(maxDeliveryExcessMs)+' ms';
   });
   room.onLeave(()=>{connected=false;room=undefined;toast('Connection lost · reconnecting…',20000);setTimeout(connect,700);});
-  toast('Connected · share this full URL with another browser',5000);
- }catch(e){connected=false;room=undefined;toast('Server unavailable · retrying',4000);setTimeout(connect,3000);}
+  toast(isDeviceCheck?'Connected · wait for 20/20':'Connected · share this full URL with another browser',5000);
+ }catch(e){
+  connected=false;room=undefined;
+  if(isDeviceCheck&&Number(e?.code)===4216){deviceLine.textContent='Device check unavailable or already in use';toast('Close any other device-check tab, then reload',5000);return;}
+  toast('Server unavailable · retrying',4000);setTimeout(connect,3000);
+ }
 }
 setInterval(()=>{if(connected)room.send('ping',performance.now());},1500);
 function updateNetworkPlayer(dt){
