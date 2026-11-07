@@ -1,6 +1,11 @@
+import { asset } from "./catalog.js";
 import { endpoint } from "./geometry.js";
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
 const angle = (a, b) => Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
+function pitchMatches(from, to, end, start) {
+  // Launch lips and landing faces deliberately change pitch at their sockets.
+  return asset(from.type).kind === "ramp" || asset(to.type).kind === "landing" || Math.abs(end.pitch - start.pitch) < 0.08;
+}
 export function connectionGraph(pieces) {
   const links = [],
     invalid = [];
@@ -13,7 +18,7 @@ export function connectionGraph(pieces) {
       if (
         d < 0.12 &&
         angle(end.heading, start.heading) < 0.035 &&
-        Math.abs(end.pitch - start.pitch) < 0.08
+        pitchMatches(a, b, end, start)
       )
         links.push({ from: a.id, to: b.id });
       else if (d < 1.25)
@@ -65,9 +70,10 @@ export function validate(track) {
     missingFinish: !track.pieces.some((p) => p.type === "finish"),
   };
 }
-export function snapCandidate(piece, pieces, threshold = 3) {
+export function snapCandidate(piece, pieces, threshold = 3, measure = (exit) => distance(exit, piece)) {
   let best = null;
   const starts = pieces.map((p) => ({ id: p.id, point: endpoint(p, 0) }));
+  const entry = endpoint(piece, 0);
   for (const other of pieces) {
     if (other.id === piece.id) continue;
     const exitPoint = endpoint(other);
@@ -81,15 +87,15 @@ export function snapCandidate(piece, pieces, threshold = 3) {
     )
       continue;
     const end = exitPoint,
-      d = distance(end, piece);
+      d = measure(end, other);
     if (d < threshold && (!best || d < best.d))
       best = {
         d,
         piece: { ...piece, x: end.x, y: end.y, z: end.z, yaw: end.heading },
         target: other.id,
-        valid: Math.abs(endpoint(piece, 0).pitch - end.pitch) < 0.08,
+        valid: pitchMatches(other, piece, end, entry),
         reason:
-          Math.abs(endpoint(piece, 0).pitch - end.pitch) < 0.08
+          pitchMatches(other, piece, end, entry)
             ? ""
             : "Slope mismatch: choose a transition piece",
       };
@@ -112,7 +118,7 @@ export function placementIssue(piece, pieces, ignoredIds = new Set()) {
     if (
       distance(start, joint) < 0.12 &&
       (angle(start.heading, joint.heading) > 0.035 ||
-        Math.abs(start.pitch - joint.pitch) > 0.08)
+        !pitchMatches(other, piece, joint, start))
     )
       return "Invalid connection: direction or slope mismatch";
   }

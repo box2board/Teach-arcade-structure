@@ -1272,3 +1272,16 @@ footer {
 
 /* Each library card now shows its actual 3D profile, not a shared generic icon. */
 .asset{height:132px;background:linear-gradient(155deg,#fff9e7,#ece0ff);border-color:#fff;box-shadow:0 5px 0 #bea2ef}.asset svg{height:83px;width:100%;max-width:145px}.asset span{font-size:12px;min-height:26px}.asset:hover{background:linear-gradient(155deg,#fff1a9,#dec5ff)}@media(max-width:600px){.asset{height:112px}.asset svg{height:65px}.asset span{font-size:10px}}
+
+.toolbox-heading {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 3px 0 9px;
+  background: #f8fbff;
+}
+#close-tools { min-height: 40px; flex-shrink: 0; }

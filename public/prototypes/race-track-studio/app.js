@@ -49,6 +49,7 @@ let selectedType = null,
   toastTimer,
   accumulator = 0;
 let candidateIssue = null;
+let candidateTarget = null;
 const connectors = new T.Group();
 scene.scene.add(connectors);
 function toast(msg) {
@@ -81,7 +82,7 @@ const game = new GameFeel({
     startTest();
   },
   saves: () => {
-    document.querySelector(".shell").classList.add("inspect");
+    setInspector(true);
     $("saves").focus();
   },
   again: () => restartRun(),
@@ -108,8 +109,7 @@ modeLabel.classList.add("mode-picker");
 document.querySelector(".top-actions").prepend(modeLabel);
 $("mode").options[0].text = "Watch it go";
 $("mode").options[1].text = "Drive it";
-$("library-toggle").onclick = () =>
-  document.querySelector(".shell").classList.toggle("inspect");
+
 function renderTrack() {
   while (scene.root.children.length) {
     const g = scene.root.children[0];
@@ -223,6 +223,7 @@ function cancel() {
   selectedType = null;
   candidate = null;
   candidateIssue = null;
+  candidateTarget = null;
   refreshConnectors();
   clearGhost();
   renderAssets();
@@ -235,42 +236,94 @@ $("categories").onclick = (e) => {
     renderAssets();
   }
 };
+function placementError(p) {
+  if (Math.abs(p.x) > 500 || Math.abs(p.z) > 500 || p.y > 40)
+    return "Placement is outside the build area.";
+  if (p.y + Math.min(0, asset(p.type).rise || 0) < 0)
+    return "This descent needs a higher starting point.";
+  return placementIssue(p, editor.track.pieces);
+}
+function showPlacement(p, snap) {
+  const issue = (snap && !snap.valid ? snap.reason : null) || placementError(p);
+  const samePreview = candidate && ghost && candidate.type === p.type &&
+    candidate.x === p.x && candidate.y === p.y && candidate.z === p.z &&
+    candidate.yaw === p.yaw && candidateIssue === issue;
+  candidate = p;
+  candidateIssue = issue;
+  candidateTarget = snap?.target ?? null;
+  refreshConnectors(candidateTarget);
+  if (!samePreview) {
+    clearGhost();
+    ghost = makePiece(p, false, true);
+    if (issue) ghost.traverse((o) => o.material?.color?.set("#ff3152"));
+    scene.scene.add(ghost);
+  }
+  $("hint").textContent = issue || (snap
+    ? "Snapped to exit · click or tap to place"
+    : "Click or tap to place · R rotate · Esc cancel");
+}
 function proposal(ev) {
-  let hit = scene.groundPoint(ev, placeHeight);
-  if (!hit) return;
-  const p = piece(
-    selectedType,
-    Math.round(hit.x),
-    placeHeight,
-    Math.round(hit.z),
-    placeYaw,
-  );
-  let snap = snapping ? snapCandidate(p, editor.track.pieces, 5) : null;
-  candidate = snap ? snap.piece : p;
-  candidateIssue =
-    (snap && !snap.valid ? snap.reason : null) ||
-    placementIssue(candidate, editor.track.pieces);
-  refreshConnectors(snap?.target);
+  const p = piece(selectedType, 0, placeHeight, 0, placeYaw);
+  const rect = scene.renderer.domElement.getBoundingClientRect();
+  const snap = snapping ? snapCandidate(p, editor.track.pieces, 42, (exit) => {
+    const point = new T.Vector3(exit.x, exit.y + 0.8, exit.z).project(scene.camera);
+    if (point.z < -1 || point.z > 1) return Infinity;
+    return Math.hypot(ev.clientX - rect.left - (point.x + 1) * rect.width / 2,
+      ev.clientY - rect.top - (1 - point.y) * rect.height / 2);
+  }) : null;
+  if (snap) {
+    showPlacement(snap.piece, snap);
+    return;
+  }
+  const hit = scene.groundPoint(ev, placeHeight);
+  if (!hit) {
+    candidate = null;
+    candidateTarget = null;
+    clearGhost();
+    refreshConnectors();
+    return;
+  }
+  showPlacement({ ...p, x: Math.round(hit.x), z: Math.round(hit.z) });
+}
+function nextAttachment() {
+  const p = piece(selectedType, 0, placeHeight, 0, placeYaw);
+  const pieces = editor.track.pieces;
+  if (!pieces.length) return { piece: p, valid: true };
+  const highlighted = pieces.find((other) => other.id === candidateTarget);
+  const priority = [highlighted, editor.selection, ...pieces.slice().reverse()].filter(Boolean);
+  const ranks = new Map();
+  priority.forEach((other, index) => {
+    if (!ranks.has(other.id)) ranks.set(other.id, index);
+  });
+  return snapCandidate(p, pieces, Infinity, (exit, other) => {
+    const placed = { ...p, x: exit.x, y: exit.y, z: exit.z, yaw: exit.heading };
+    return placementError(placed) ? Infinity : ranks.get(other.id);
+  });
+}
+function placeCandidate(p) {
+  const issue = placementError(p);
+  if (issue) return toast(issue);
+  if (editor.track.pieces.length >= 250) return toast("Prototype limit: 250 pieces.");
+  editor.change((track) => {
+    track.pieces.push(p);
+    editor.selected = p.id;
+    if (!track.startId) track.startId = p.id;
+  });
+  candidate = null;
+  candidateTarget = null;
   clearGhost();
-  ghost = makePiece(candidate, false, true);
-  if (candidateIssue)
-    ghost.traverse((o) => {
-      if (o.material?.color) o.material.color.set("#ff3152");
-    });
-  scene.scene.add(ghost);
-  $("hint").textContent = candidateIssue
-    ? candidateIssue
-    : snap
-      ? "Magnetic connection ready • click / tap to place"
-      : "Free placement • click / tap to place · R rotate · Esc cancel";
+  game.snap();
 }
 $("assets").onclick = (e) => {
   let b = e.target.closest("[data-asset]");
   if (!b || vehicle) return;
   selectedType = b.dataset.asset;
+  candidateTarget = null;
   renderAssets();
   $("welcome").hidden = true;
-  toast("Click the workspace near an open exit to snap. Press R to rotate.");
+  const snap = snapping ? nextAttachment() : null;
+  if (snap) showPlacement(snap.piece, snap.target ? snap : null);
+  else $("hint").textContent = "Tap an open exit or place a new section.";
 };
 const canvas = scene.renderer.domElement;
 let pointerDown;
@@ -299,38 +352,14 @@ canvas.addEventListener("pointerup", (ev) => {
       toast(candidateIssue);
       return;
     }
-    if (editor.track.pieces.length >= 250) {
-      toast("Prototype limit: 250 pieces.");
-      return;
-    }
-    if (
-      Math.abs(candidate.x) > 500 ||
-      Math.abs(candidate.z) > 500 ||
-      candidate.y > 40
-    ) {
-      toast("Placement exceeds supported build bounds.");
-      return;
-    }
-    if (candidate.y + Math.min(0, asset(candidate.type).rise || 0) < 0) {
-      toast("This decline would go below the floor. Raise its base first.");
-      return;
-    }
-    const c = { ...candidate };
-    editor.change((t) => {
-      t.pieces.push(c);
-      if (!t.startId) t.startId = c.id;
-      editor.selected = c.id;
-    });
-    clearGhost();
-    game.snap();
+    placeCandidate(candidate);
   } else {
     let hit = scene.pick(ev)[0];
     let o = hit?.object;
     while (o && !o.userData.pieceId) o = o.parent;
     editor.selected = o?.userData.pieceId || null;
     renderTrack();
-    if (editor.selected && innerWidth <= 850)
-      document.querySelector(".shell").classList.add("inspect");
+
   }
 });
 canvas.addEventListener("pointercancel", () => {
@@ -464,8 +493,13 @@ $("focus").onclick = () => {
     scene.view("perspective", editor.selection);
   } else toast("Select a piece to focus on it.");
 };
-$("library-toggle").onclick = () =>
-  document.querySelector(".shell").classList.toggle("inspect");
+function setInspector(open, restoreFocus = false) {
+  document.querySelector(".shell").classList.toggle("inspect", open);
+  $("library-toggle").setAttribute("aria-expanded", String(open));
+  if (restoreFocus) $("library-toggle").focus();
+}
+$("library-toggle").onclick = () => setInspector($("library-toggle").getAttribute("aria-expanded") !== "true");
+$("close-tools").onclick = () => setInspector(false, true);
 $("validate").onclick = () => {
   check();
   toast("Connection report updated.");
@@ -495,7 +529,7 @@ function startTest() {
   $("welcome").hidden = true;
   follow = true;
   scene.controls.enabled = true;
-  document.querySelector(".shell").classList.remove("inspect");
+  setInspector(false);
   $("hint").textContent =
     $("mode").value === "manual"
       ? "Arrows / WASD: drive · R: reset · Esc: edit"
@@ -564,6 +598,10 @@ document.querySelectorAll("[data-key]").forEach((b) => {
   b.onpointerup = b.onpointercancel = () => vehicle?.keys.delete(b.dataset.key);
 });
 window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && $("library-toggle").getAttribute("aria-expanded") === "true") {
+    setInspector(false, true);
+    return;
+  }
   if (["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) return;
   const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
   if (!$("game-menu").hidden) {
@@ -750,31 +788,12 @@ $("attach").onclick = () => {
     toast("Choose an asset in the library first.");
     return;
   }
-  if (editor.track.pieces.length >= 250) {
-    toast("Prototype limit: 250 pieces.");
+  const snap = nextAttachment();
+  if (!snap || !snap.valid) {
+    toast(snap?.reason || "Choose an open exit with enough height for this piece.");
     return;
   }
-  const base = editor.selection || editor.track.pieces.at(-1);
-  const end = base
-    ? endpoint(base)
-    : { x: 0, y: placeHeight, z: 0, heading: placeYaw };
-  const p = piece(selectedType, end.x, end.y, end.z, end.heading);
-  if (p.y + Math.min(0, asset(p.type).rise || 0) < 0) {
-    toast("Raise the previous piece before attaching a decline.");
-    return;
-  }
-  const issue = placementIssue(p, editor.track.pieces);
-  if (issue) {
-    toast(issue);
-    return;
-  }
-  editor.change((t) => {
-    t.pieces.push(p);
-    editor.selected = p.id;
-    if (!t.startId) t.startId = p.id;
-  });
-  clearGhost();
-  game.snap();
+  placeCandidate(snap.piece);
 };
 
 $("asset-search").oninput = () => renderAssets();

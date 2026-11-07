@@ -15,6 +15,7 @@ import {
 import {
   validate,
   snapCandidate,
+  placementIssue,
 } from "../../public/prototypes/race-track-studio/connections.js";
 import {
   serialize,
@@ -302,4 +303,20 @@ test('library miniatures use distinct finite geometry for actual profiles',async
  for(const a of CATALOG){const svg=icon(a);assert.ok(svg.includes('<svg'));assert.ok(!/NaN|Infinity|undefined/.test(svg),a.id);}
  const preview=id=>icon(CATALOG.find(a=>a.id===id));
  for(const [a,b] of [['short','long'],['left','right'],['rise','ramp'],['vertical-loop','rolling-hills'],['boost','brake']])assert.notEqual(preview(a),preview(b));
+});
+
+
+test("elevated connector targeting aligns curves and accepts ramp lips", () => {
+  const ramp = piece("ramp", 10, 12, 15, Math.PI / 3);
+  const far = piece("straight", 60, 0, 60);
+  const curve = piece("right");
+  const snap = snapCandidate(curve, [far, ramp], 42, (_point, other) =>
+    other.id === ramp.id ? 10 : 55,
+  );
+  assert.equal(snap.target, ramp.id);
+  assert.equal(snap.valid, true);
+  assert.equal(snap.piece.y, endpoint(ramp).y);
+  assert.equal(snap.piece.yaw, endpoint(ramp).heading);
+  assert.equal(placementIssue(snap.piece, [ramp]), null);
+  assert.equal(validate({ pieces: [ramp, snap.piece] }).links.length, 1);
 });
