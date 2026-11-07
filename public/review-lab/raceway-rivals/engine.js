@@ -1,3 +1,4 @@
+import {isCorrectAnswer,validSelection} from '../answers.js';
 export const SEGMENT_LENGTH=18000;
 export const JUICE_DRAIN=2.5;
 export const roadCurve=s=>Math.sin(s/850)*.7+Math.sin(s/1700)*.4;
@@ -81,8 +82,10 @@ export function shuffleQuestions(items,random=Math.random){
 }
 export class ReviewSession {
  constructor(bank,{questionCount=8,laps=1}={},random=Math.random){
-  if(![8,12,16].includes(questionCount)||bank.questions.length<questionCount||!Number.isInteger(laps)||laps<1||laps>5)throw new Error('Not enough questions or invalid settings');
-  this.selected=shuffleQuestions(bank.questions,random).slice(0,questionCount);
+  if(![8,12,16].includes(questionCount)||bank.questions.length<1||!Number.isInteger(laps)||laps<1||laps>5)throw new Error('Not enough questions or invalid settings');
+  const pool=shuffleQuestions(bank.questions,random);
+  this.selected=Array.from({length:questionCount},(_,i)=>pool[i%pool.length]);
+  this.uniqueCount=Math.min(bank.questions.length,questionCount);
   this.questionCount=questionCount;this.laps=laps;this.deck=[];
   let previous=[];
   for(let lap=0;lap<laps;lap++){
@@ -94,7 +97,7 @@ export class ReviewSession {
  }
  get question(){return this.deck[this.index]}
  get lap(){return Math.min(this.laps,Math.floor(this.index/this.questionCount)+1)}
- answer(selected){const q=this.question;if(!q)return false;const correct=selected===q.answer;this.records.push({...q,lap:this.lap,selected,correct});this.index++;return correct}
+ answer(selected){const q=this.question;if(!q||!validSelection(selected))return false;const correct=isCorrectAnswer(q,selected);this.records.push({...q,lap:this.lap,selected:Array.isArray(selected)?[...selected]:selected,correct});this.index++;return correct}
  get correct(){return this.records.filter(r=>r.correct).length}
  get firstCorrect(){return this.records.filter(r=>r.lap===1&&r.correct).length}
  get missed(){return [...new Map(this.records.filter(r=>!r.correct).map(r=>[r.id,r])).values()]}

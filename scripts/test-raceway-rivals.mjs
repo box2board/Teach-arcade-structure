@@ -37,7 +37,8 @@ const sprint=new Race();sprint.rivals=[];sprint.juice=100;for(let i=0;i<16;i++)s
 const fuel=sprint.juice;for(let i=0;i<10;i++)sprint.update(.05,{gas:true,brake:true});assert.equal(sprint.speed,0);assert.equal(sprint.juice,fuel);
 sprint.boost=3;for(let i=0;i<22;i++)sprint.update(.05,{gas:true});assert.equal(sprint.speed,620);
 assert.equal(JUICE_DRAIN,2.5);
-assert.throws(()=>new ReviewSession({...bank,questions:bank.questions.slice(0,10)},{questionCount:16}));
+assert.equal(new ReviewSession({...bank,questions:bank.questions.slice(0,10)},{questionCount:16}).uniqueCount,10);
+assert.throws(()=>new ReviewSession({...bank,questions:[]},{questionCount:16}));
 const allCorrect=new ReviewSession(bank,{questionCount:8,laps:3});while(!allCorrect.complete)allCorrect.answer(allCorrect.question.answer);assert.equal(allCorrect.firstCorrect,8);assert.equal(allCorrect.correct,24);
 console.log('PASS: 8/12/16 questions × 1/2/3/5 laps, same unique questions shuffled each lap, four-question batches, fixed gates, all-wrong completion, countdown freezes grid, perfect-charge checkpoint timing, empty-fuel driving, brake priority and repetition scores.');
 
