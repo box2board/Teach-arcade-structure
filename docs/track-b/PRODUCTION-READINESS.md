@@ -26,9 +26,14 @@ The user approved creating and configuring production infrastructure while keepi
 
 Canonical migration order: `20261018170547`, `20261018170550`, `20261022165630`, `20261022175317`, `20261023022631`, `20261029013227`, `20261029013328`, `20261029013356`, `20261029014208`, `20261106160222`.
 
-## Remaining verification
+## Production-connected verification preview
 
-Production email configuration is complete. Before public beta access, verify a real production email-code delivery and sign-in, including a returning-user resend. This requires an intended test recipient and a production-connected review flow; existing development tests do not establish production inbox delivery. Do not enable account flags, merge, or deploy production merely to complete configuration. Keep credentials out of logs and committed files.
+- Created branch `verify/teacher-production-signin` from reviewed release commit `00742a69d8bc8309c310adf931c7e877e83d1eac`; no source behavior changes.
+- Vercel Preview deployment `dpl_8VeBWZoveHj4Zj38fKGFURmzaY4Y` is Ready. Stable URL: https://teach-arcade-structure-git-verify-50cd4e-ash-christies-projects.vercel.app/teacher/#account
+- Five branch-specific Preview variables connect only this branch to production Supabase, use its publishable key, restrict mutations to the stable preview origin, and enable teacher auth/Cabinet for verification. Vercel UI confirms every new variable is scoped to `verify/teacher-production-signin`; the existing development-preview and Production variables remain separate. Production feature flags remain false.
+- The preview loads the teacher workspace and email-code form. First real production email delivery/sign-in is pending user completion; do not report inbox delivery or an authenticated session as passed yet.
+- After user sign-in, verify the profile/session, reload persistence, a Cabinet bookmark, private set/copy, and a compatible game launch. Avoid development-only synthetic account/deletion tests on production. Retain genuine teacher data.
+- Once verification is complete, disable/remove this branch’s production connection or retire its preview. Do not merge the verification branch into main. This preview is not publication approval.
 
 ## Separate release decision
 
@@ -37,4 +42,3 @@ After production setup is verified, obtain explicit approval to merge and publis
 Keep a rollback target. Disabling the account feature flags can stop account operations while static games and tools stay available. A code rollback does not roll back schema or erase teacher-created data; do not drop tables as a rollback step.
 
 Not included in this beta: payments/subscriptions, student accounts, classes/assignments, tool-project persistence, custom level creation, or saved game configurations/progress.
-
