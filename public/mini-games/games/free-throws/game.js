@@ -1,13 +1,13 @@
-import {createHoops,DURATION,TARGET,shotPower,hoopAt,clamp} from './engine.js';
+import {createHoops,DURATION,SWISH_WINDOW,shotPower,hoopAt,clamp} from './engine.js';
 const root=document.querySelector('#free-throw-fever'),$=id=>root.querySelector('#'+id),canvas=$('canvas'),ctx=canvas.getContext('2d');
 let last=null,clock=0,owner=null,ready=false,arena=new Image(),particles=[],messageAge=0,best=0;
-try{best=Number(localStorage.getItem('free-throws-arcade-v3-best'))||0;}catch{}
+try{best=Number(localStorage.getItem('free-throws-arcade-v4-best'))||0;}catch{}
 const game=createHoops(event=>{if(event.type==='basket'){const sh=event.shot;messageAge=1.2;$('verdict').textContent=sh.label;$('detail').textContent=sh.make?'+'+sh.points+' POINTS'+(sh.multiplier>1?' · GOLD BALL!':''):(sh.error<0?'Hold a little longer.':'Release a little sooner.');$('live').textContent=sh.label+(sh.make?' '+sh.points+' points.':'');if(sh.make)for(let i=0;i<22;i++)particles.push({x:300+sh.hoop.x*240,y:246,vx:(Math.random()-.5)*160,vy:-40-Math.random()*90,life:.5+Math.random()*.35});particles=particles.slice(-80);}if(event.type==='finish')finish(event.result);});
 $('start').disabled=true;$('start').textContent='LOADING THE COURT…';arena.onload=()=>{ready=true;$('start').disabled=false;$('start').textContent='LET’S HOOP ↗';};arena.onerror=()=>{$('description').textContent='The court artwork could not load. Reload to try again.';$('start').textContent='RELOAD TO RETRY';};arena.src='assets/arcade-arena.webp';
 function clear(){owner=null;game.cancel();}
 function start(){if(!ready)return;clear();game.start();last=null;particles=[];messageAge=0;$('overlay').hidden=true;$('results').hidden=true;$('intro').hidden=false;$('pause').disabled=false;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 function show(title,description,label){$('title').textContent=title;$('description').textContent=description;$('start').textContent=label;$('overlay').hidden=false;}
-function finish(result){clear();best=Math.max(best,result.score);try{localStorage.setItem('free-throws-arcade-v3-best',String(best));}catch{}$('eyebrow').textContent='FINAL BUZZER';$('intro').hidden=true;$('results').hidden=false;$('results').innerHTML=[['BUCKETS',result.makes+' / '+result.attempts],['SWISHES',result.swishes],['BEST',best]].map(([label,value])=>'<div>'+label+'<strong>'+value+'</strong></div>').join('');show(result.score+' POINTS!',result.accuracy+'% accuracy · Best streak '+result.bestStreak,'RUN IT BACK ↗');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:result}));}
+function finish(result){clear();best=Math.max(best,result.score);try{localStorage.setItem('free-throws-arcade-v4-best',String(best));}catch{}$('eyebrow').textContent='FINAL BUZZER';$('intro').hidden=true;$('results').hidden=false;$('results').innerHTML=[['BUCKETS',result.makes+' / '+result.attempts],['SWISHES',result.swishes],['BEST',best]].map(([label,value])=>'<div>'+label+'<strong>'+value+'</strong></div>').join('');show(result.score+' POINTS!',result.accuracy+'% accuracy · Best streak '+result.bestStreak,'RUN IT BACK ↗');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:result}));}
 function pause(){if(!['playing','countdown','buzzer'].includes(game.state.phase))return;game.pause();clear();$('intro').hidden=true;$('results').hidden=true;show('TIME OUT.','Your round is paused.','BACK TO THE COURT ↗');$('pause').textContent='Resume';}
 function resume(){game.resume();last=null;$('overlay').hidden=true;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 $('start').onclick=()=>game.state.phase==='paused'?resume():start();$('pause').onclick=()=>game.state.phase==='paused'?resume():pause();
@@ -40,8 +40,30 @@ function draw(dt){const s=game.state,sh=s.shot,cfg=sh||game.config(),hoop=cfg.ho
  if(sh&&sh.age>=sh.rim*.95&&sh.age<sh.rim+.14&&sh.make){ctx.beginPath();ctx.ellipse(hx,hy-2,rim,15,0,0,Math.PI);ctx.strokeStyle='#ffb04a';ctx.lineWidth=7;ctx.stroke();}
  for(const p of particles){if(['playing','buzzer'].includes(s.phase)){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=220*dt;p.life-=dt;}ctx.save();ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle='#ffe364';ctx.fillRect(p.x,p.y,4,7);ctx.restore();}particles=particles.filter(p=>p.life>0);
 }
-function render(dt){const s=game.state,cfg=s.shot||game.config(),power=s.holding?shotPower(s.hold):0;$('time').textContent=(DURATION-s.time).toFixed(1);$('score').textContent=s.score;$('made').textContent=s.makes+' / '+s.attempts;$('streak').textContent=s.streak;$('pause').disabled=['intro','finished'].includes(s.phase);$('shoot').disabled=s.phase!=='playing'||!!s.shot;$('ball-type').textContent=cfg.multiplier>1?'GOLD BALL · 2× POINTS':'CLASSIC BALL';$('make-zone').style.left=(TARGET-cfg.window)*100+'%';$('make-zone').style.width=cfg.window*200+'%';$('swish-zone').style.left=(TARGET-.055)*100+'%';$('swish-zone').style.width='11%';$('needle').style.left=power*100+'%';$('power-label').textContent=s.shot?'SHOT ON ITS WAY…':s.holding?(Math.abs(power-TARGET)<=cfg.window?'RELEASE NOW!':'KEEP YOUR RHYTHM'):'HOLD TO CHARGE';$('countdown').hidden=s.phase!=='countdown';$('count-number').textContent=Math.max(1,Math.ceil(s.countdown));
- if(['playing','buzzer'].includes(s.phase)){messageAge-=dt;if(messageAge<=0){$('verdict').textContent=s.phase==='buzzer'?'BUZZER BEATER?':s.streak>=3?'YOU’RE HEATING UP!':'HOLD. GREEN. RELEASE.';$('detail').textContent=s.phase==='buzzer'?'Your last shot still counts.':cfg.multiplier>1?'Gold ball · Double points · Same release timing.':'Aim for the bright center for a swish.';}}
+function render(dt) {
+ const s = game.state;
+ const cfg = s.shot || game.config();
+ const power = s.holding ? shotPower(s.hold) : 0;
+ $('time').textContent = (DURATION - s.time).toFixed(1);
+ $('score').textContent = s.score;
+ $('made').textContent = s.makes + ' / ' + s.attempts;
+ $('streak').textContent = s.streak;
+ $('pause').disabled = ['intro', 'finished'].includes(s.phase);
+ $('shoot').disabled = s.phase !== 'playing' || !!s.shot;
+ $('ball-type').textContent = cfg.multiplier > 1 ? 'GOLD BALL · 2× POINTS' : 'CLASSIC BALL';
+ $('stage').textContent = cfg.stage;
+ $('make-zone').style.left = (cfg.target - cfg.window) * 100 + '%';
+ $('make-zone').style.width = cfg.window * 200 + '%';
+ $('swish-zone').style.left = (cfg.target - SWISH_WINDOW) * 100 + '%';
+ $('swish-zone').style.width = SWISH_WINDOW * 200 + '%';
+ $('needle').style.left = power * 100 + '%';
+ let prompt = 'HOLD TO CHARGE';
+ if (s.shot) prompt = 'SHOT ON ITS WAY…';
+ else if (s.holding) prompt = Math.abs(power - cfg.target) <= cfg.window + 1e-9 ? 'RELEASE NOW!' : 'WATCH THE METER';
+ $('power-label').textContent = prompt;
+ $('countdown').hidden = s.phase !== 'countdown';
+ $('count-number').textContent = Math.max(1, Math.ceil(s.countdown));
+ if(['playing','buzzer'].includes(s.phase)){messageAge-=dt;if(messageAge<=0){$('verdict').textContent=s.phase==='buzzer'?'BUZZER BEATER?':s.streak>=3?'YOU’RE HEATING UP!':'HOLD. GREEN. RELEASE.';$('detail').textContent=s.phase==='buzzer'?'Your last shot still counts.':cfg.multiplier>1?'Gold ball · Double points. Watch the green zone.':'Aim for the bright center for a swish.';}}
  draw(dt);
 }
 function frame(now){const dt=sync(now);clock+=dt;render(dt);requestAnimationFrame(frame);}requestAnimationFrame(frame);
