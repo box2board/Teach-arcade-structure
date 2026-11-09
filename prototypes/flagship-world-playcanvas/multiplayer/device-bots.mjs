@@ -3,7 +3,7 @@ import { STEP } from './physics.js';
 
 // Real SDK clients on loopback: they exercise the room and its WebSocket
 // serialization without relying on the tester to open extra tabs.
-export function runDeviceBots({endpoint, reserveSeat, durationMs, onStatus}) {
+export function runDeviceBots({endpoint, reserveSeat, durationMs, onStatus, count=19}) {
  const client=new Client(endpoint), bots=[];
  let closed=false, movementTimer, expiryTimer;
  function stop(status) {
@@ -15,7 +15,7 @@ export function runDeviceBots({endpoint, reserveSeat, durationMs, onStatus}) {
  expiryTimer=setTimeout(()=>stop('failed'),15000);
  (async()=>{
   try{
-   for(let i=0;i<19&&!closed;i++){
+   for(let i=0;i<count&&!closed;i++){
     const seat=await reserveSeat(i);
     if(closed)return;
     const room=await client.consumeSeatReservation(seat);
@@ -32,8 +32,8 @@ export function runDeviceBots({endpoint, reserveSeat, durationMs, onStatus}) {
     const t=(performance.now()-began)/1000;
     for(const [i,bot] of bots.entries()){
      const p=bot.room.state?.players?.get(bot.room.sessionId);if(!p)continue;
-     const phase=t*.7+i*Math.PI*2/19;
-     const x=6*Math.cos(phase)-p.x,z=-5+6*Math.sin(phase)-p.z;
+     const phase=t*.7+i*Math.PI*2/count;
+     const x=(count>19?12:0)+6*Math.cos(phase)-p.x,z=(count>19?-16:-5)+6*Math.sin(phase)-p.z;
      const scale=Math.max(.2,Math.hypot(x,z));
      const seq=++bot.seq;
      bot.room.send('input',{seq,x:x/scale,z:z/scale,jump:seq%120===i});

@@ -29,13 +29,22 @@ if (process.argv[2] === '--server') {
 async function run() {
   const duration = Number(process.env.WORLD_TEST_SECONDS ?? 300);
   assert(Number.isInteger(duration) && duration >= 30 && duration <= 300, 'Use 30–300 seconds');
-  const child = spawn(process.execPath, [fileURLToPath(import.meta.url),'--server'], { env: { NODE_ENV: 'test' }, stdio:['ignore','pipe','inherit'] });
-  const stdout=createInterface({input:child.stdout});
+  const remote = process.env.WORLD_SCALE_TEST_ENDPOINT;
+  if(remote){
+    const target=new URL(remote);
+    assert(target.protocol==='wss:','Hosted review uses WSS');
+    const health=await fetch('https://'+target.host+'/health',{signal:AbortSignal.timeout(15000)});
+    assert(health.ok);const config=await health.json();
+    assert(config.scaleReview&&config.networkReview&&config.maxClients===COUNT,'Target must be an armed, isolated 40-seat review server');
+  }
+  const child = remote ? null : spawn(process.execPath, [fileURLToPath(import.meta.url),'--server'], { env: { NODE_ENV: 'test' }, stdio:['ignore','pipe','inherit'] });
+  const stdout=child?createInterface({input:child.stdout}):null;
   const items = [], open = new Set(), acks = [], gaps = [], ping = [];
   const runnerDelay = monitorEventLoopDelay({ resolution: 20 }); runnerDelay.enable();
   let movement, began, inputs = 0, builds = 0, reconnects = 0;
   const reconnectMs = [];
-  const deadline = setTimeout(() => { console.error('40-client test timed out'); child.kill(); process.exit(1); }, (duration + 90) * 1000);
+  const deadline = setTimeout(() => { console.error('40-client test timed out'); child?.kill(); process.exit(1); }, (duration + 120) * 1000);
+  const outliers=[];
   const until = async (condition, label) => {
     const end = performance.now() + 15000;
     while (!condition()) { if (performance.now() >= end) throw Error('Timed out: ' + label); await wait(25); }
@@ -48,8 +57,15 @@ async function run() {
     room.onMessage('pong', value => { if (began) ping.push(performance.now() - value); });
     room.onStateChange(state => {
       const now = performance.now();
-      if (began && i.last) gaps.push(now - i.last);
-      i.last = now;
+      if (began && i.last) {
+        const gap=now-i.last;gaps.push(gap);
+        if(gap>200&&i.sample&&state.sampleTimeMs){
+          const sourceGap=state.sampleTimeMs-i.sample;
+          outliers.push({arrivalGapMs:gap,generationGapMs:sourceGap,excessMs:gap-sourceGap});
+          outliers.sort((a,b)=>b.arrivalGapMs-a.arrivalGapMs);outliers.length=Math.min(outliers.length,5);
+        }
+      }
+      i.last = now;i.sample=state.sampleTimeMs;
       const p = state.players.get(room.sessionId); if (!p) return;
       i.seq = Math.max(i.seq, p.seq);
       if (i.sent.has(p.seq)) acks.push(now - i.sent.get(p.seq));
@@ -59,20 +75,22 @@ async function run() {
   };
   const allSee = predicate => items.every(({room}) => predicate(room.state));
   try {
-    const { port } = await new Promise((resolve, reject) => {
+    const port = child ? await new Promise((resolve, reject) => {
       const timeout = setTimeout(() => reject(Error('Test server did not start')), 12000);
-      stdout.on('line', line => { const match=/^scale-ready (\d+)$/.exec(line); if(match){clearTimeout(timeout);resolve({port:Number(match[1])});} });
+      stdout.on('line', line => { const match=/^scale-ready (\d+)$/.exec(line); if(match){clearTimeout(timeout);resolve(Number(match[1]));} });
       child.once('error', error => { clearTimeout(timeout); reject(error); });
       child.once('exit', code => { clearTimeout(timeout); reject(Error('Test server exited: ' + code)); });
-    });
-    const endpoint = 'ws://127.0.0.1:' + port, worldId = 'scale40-' + crypto.randomUUID();
+    }) : null;
+    const endpoint = remote || 'ws://127.0.0.1:' + port, worldId = remote?'scale40-network':'scale40-' + crypto.randomUUID();
     const client = () => new Client(endpoint);
     for (let n=0; n<COUNT; n++) items.push(observe(await client().joinOrCreate('world',{worldId,displayName:`Load ${n+1}`})));
     const roomId = items[0].room.roomId;
     assert(items.every(i => i.room.roomId === roomId), 'Clients must all share a room');
     await until(() => allSee(s => s.players?.size === COUNT && s.capacity === COUNT), '40 clients receive the initial state');
     await assert.rejects(() => client().joinById(roomId,{worldId}), /locked|full/);
-    console.log(`40 clients in one isolated room; 41st seat rejected. Running ${duration}s.`);
+    const seededBuilds=remote?48:0;
+    await until(()=>allSee(s=>s.builds?.size===seededBuilds),'all clients receive the seeded layout');
+    console.log(`40 clients in one isolated ${remote?'hosted':'loopback'} room; ${seededBuilds} seeded structures; 41st seat rejected. Running ${duration}s.`);
     const firstTick = items[0].room.state.tick;
     began = performance.now(); let lastPing = 0;
     movement = setInterval(() => {
@@ -100,15 +118,15 @@ async function run() {
       await wait(Math.max(0,began+(n+1)*duration*1000/(cycles+1)-performance.now()));
       await until(() => near(owner)&&near(intruder),'both players within building reach');
       owner.room.send('place',piece);
-      await until(() => allSee(s => s.builds.size===1),'all 40 see shared placement');
-      const b = [...owner.room.state.builds.values()][0];
+      await until(() => allSee(s => s.builds.size===seededBuilds+1),'all 40 see shared placement');
+      const b = [...owner.room.state.builds.values()].find(b=>b.ownerId===owner.room.sessionId);
       assert(allSee(s => s.builds.get(b.id)?.ownerId===owner.room.sessionId),'all clients agree on owner');
       intruder.notice = undefined; intruder.room.send('delete',b.id);
       await until(() => /Only the owner/.test(intruder.notice),'nearby non-owner deletion rejected');
       assert(allSee(s=>s.builds.has(b.id)));
       await wait(225);
       owner.room.send('delete',b.id);
-      await until(() => allSee(s => s.builds.size===0),'all 40 see owner deletion'); builds++;
+      await until(() => allSee(s => s.builds.size===seededBuilds),'all 40 see owner deletion'); builds++;
       if (n%2===1) {
         const old=items[COUNT-1], id=old.room.sessionId, token=old.room.reconnectionToken;
         assert(!old.disconnected,'No unexpected disconnect before the deliberate drop');
@@ -136,12 +154,13 @@ async function run() {
       assert(values.length); values.sort((a,b)=>a-b);
       return { median:+values[Math.floor(values.length*.5)].toFixed(2), p95:+values[Math.floor(values.length*.95)].toFixed(2), max:+values.at(-1).toFixed(2) };
     };
-    console.log(JSON.stringify({result:'PASS',clients:COUNT,durationSeconds:+elapsed.toFixed(2),inputs,inputHzPerClient:+(inputs/COUNT/elapsed).toFixed(2),tickHz:+tickHz.toFixed(2),buildCycles:builds,reconnects,reconnectMs:stats(reconnectMs),ackMs:stats(acks),patchGapMs:stats(gaps),pingMs:stats(ping),serverMaxTickGapMs:state.maxTickGapMs,serverMaxStepMs:state.maxStepMs,serverMaxPatchGapMs:state.maxPatchGapMs,serverMaxQueueDepth:state.maxQueueDepth,coalescedInputs:state.coalescedInputs,runnerMaxLoopDelayMs:runnerDelay.max/1e6},null,2));
+    console.log(JSON.stringify({result:'PASS',mode:remote?'hosted-wss':'loopback',clients:COUNT,seededBuilds,durationSeconds:+elapsed.toFixed(2),inputs,inputHzPerClient:+(inputs/COUNT/elapsed).toFixed(2),tickHz:+tickHz.toFixed(2),buildCycles:builds,reconnects,reconnectMs:stats(reconnectMs),ackMs:stats(acks),patchGapMs:stats(gaps),pingMs:stats(ping),serverMaxTickGapMs:state.maxTickGapMs,serverMaxStepMs:state.maxStepMs,serverMaxPatchGapMs:state.maxPatchGapMs,serverMaxQueueDepth:state.maxQueueDepth,coalescedInputs:state.coalescedInputs,runnerMaxLoopDelayMs:runnerDelay.max/1e6,deliveryOutliers:outliers},null,2));
   } finally {
     clearInterval(movement); runnerDelay.disable();
+    await Promise.race([Promise.allSettled([...open].map(room=>room.leave())),wait(2500)]);
     for (const room of open) room.connection.close();
-    stdout.close();
-    if (child.exitCode===null && child.signalCode===null) {
+    stdout?.close();
+    if (child&&child.exitCode===null && child.signalCode===null) {
       child.kill();
       await Promise.race([once(child,'exit'),wait(3000).then(()=>{if(child.exitCode===null&&child.signalCode===null)child.kill('SIGKILL');})]);
     }

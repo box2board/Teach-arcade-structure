@@ -22,15 +22,25 @@ export class WorldRoom extends Room {
   const refuse=(code,message)=>{this.setPatchRate(null);this.autoDispose=false;throw new ServerError(code,message);};
   if(typeof options.worldId!=='string'||!/^[-a-zA-Z0-9_]{1,80}$/.test(options.worldId))refuse(4216,'Invalid world code');
   this.deviceMode=options.worldId.startsWith('device-');
+  const config=this.deviceReview, roomCapacity=config?.capacity??capacity;
+  if(config?.scaleReview&&!(options.worldId===config.worldId||
+    (options.worldId==='scale40-network'&&Date.now()<config.networkUntil)))refuse(4216,'Scale review room unavailable');
   if(this.deviceMode){
-   const config=this.deviceReview;
-   if(capacity!==20||options.worldId!==config?.worldId)refuse(4216,'Device check unavailable');
-   if(config.activeRoom)refuse(4216,'Device check already in use');
-   config.activeRoom=this;this.deviceBotKey=randomUUID();this.deviceBotIds=new Set();
-   this.setPrivate(true);
+   if(roomCapacity<20||options.worldId!==config?.worldId)refuse(4216,'Device check unavailable');
+   this.deviceBotKey=randomUUID();this.deviceBotIds=new Set();this.setPrivate(true);
   }
-  this.maxClients=capacity;this.setState(new World());this.setPatchRate(50);this.queues=new Map();this.rates=new Map();this.worldId=options.worldId;
+  if(this.deviceMode||config?.scaleReview){
+   if(config.activeRoom)refuse(4216,'Device check already in use');
+   config.activeRoom=this;
+  }
+  this.maxClients=roomCapacity;this.setState(new World());this.state.capacity=roomCapacity;this.setPatchRate(50);this.queues=new Map();this.rates=new Map();this.worldId=options.worldId;
   if(this.deviceMode)this.state.deviceStatus='waiting';
+  if(config?.scaleReview){
+   for(const x of [12,16,24,28])for(const z of [-28,-26,-24,-22])for(const level of [0,1,2]){
+    const b=new Build();Object.assign(b,{id:`review-${x}-${z}-${level}`,ownerId:'review-layout',classId:'prototype-class',worldId:this.worldId,groupId:'',missionId:'',piece:'pillar',x,y:1.25+level*2.5,z,rotation:0,level});this.state.builds.set(b.id,b);
+   }
+   if(!this.deviceMode)this.clock.setTimeout(()=>this.disconnect(),480000);
+  }
   this.onMessage('input',(c,i)=>{
    const q=this.queues.get(c.sessionId),p=this.state.players.get(c.sessionId);
    if(!q||!p||!i||!Number.isSafeInteger(i.seq)||i.seq<=p.seq||i.seq>(q.at(-1)?.seq??p.seq)+120||![i.x,i.z].every(Number.isFinite)||Math.abs(i.x)>1||Math.abs(i.z)>1||q.length>=12||i.seq<=(q.at(-1)?.seq??p.seq))return;
@@ -67,7 +77,7 @@ export class WorldRoom extends Room {
     this.deviceClientId=c.sessionId;
     this.state.deviceStatus='warming';
     this.stopDeviceBots=runDeviceBots({
-     endpoint:this.deviceReview.endpoint,durationMs:this.deviceReview.durationMs,
+     endpoint:this.deviceReview.endpoint,durationMs:this.deviceReview.durationMs,count:this.maxClients-1,
      reserveSeat:i=>matchMaker.reserveSeatFor(this.listing,{deviceBotKey:this.deviceBotKey,displayName:`Simulated ${i+1}`}),
      onStatus:status=>{this.state.deviceStatus=status;}
     });
@@ -83,15 +93,18 @@ export class WorldRoom extends Room {
   if(c.sessionId===this.deviceClientId)this.stopDeviceBots?.();
   this.state.players.delete(c.sessionId);this.queues.delete(c.sessionId);for(const k of this.rates.keys())if(k.startsWith(c.sessionId))this.rates.delete(k);
  }
- onDispose(){if(this.deviceMode){this.stopDeviceBots?.();if(this.deviceReview.activeRoom===this)this.deviceReview.activeRoom=null;}}
+ onDispose(){this.stopDeviceBots?.();if(this.deviceReview?.activeRoom===this)this.deviceReview.activeRoom=null;}
 }
-export async function start(port=Number(process.env.PORT)||2567,{deviceWorldId=process.env.WORLD_DEVICE_REVIEW_CODE,deviceDurationMs=300000}={}){
- const deviceReview={worldId:deviceWorldId,endpoint:null,durationMs:deviceDurationMs,activeRoom:null};
- const app=express(),http=createServer(app);app.get('/health',(_,res)=>res.json({ok:true,tickHz:30,patchHz:20,maxClients:capacity,performanceVersion:'recovery-v1',deviceCheckEnabled:capacity===20&&/^device-[a-zA-Z0-9_-]{20,73}$/.test(deviceWorldId||'')}));
+export async function start(port=Number(process.env.PORT)||2567,{deviceWorldId=process.env.WORLD_DEVICE_REVIEW_CODE,deviceDurationMs=300000,scaleReview=false,networkUntil=0}={}){
+ const inviteValid=/^device-[a-zA-Z0-9_-]{20,73}$/.test(deviceWorldId||'');
+ if(scaleReview&&!inviteValid)throw Error('Scale review requires a private device invite');
+ const roomCapacity=scaleReview?40:capacity;
+ const deviceReview={worldId:deviceWorldId,endpoint:null,durationMs:deviceDurationMs,activeRoom:null,capacity:roomCapacity,scaleReview,networkUntil};
+ const app=express(),http=createServer(app);app.get('/health',(_,res)=>res.json({ok:true,tickHz:30,patchHz:20,maxClients:roomCapacity,performanceVersion:'recovery-v1',deviceCheckEnabled:roomCapacity>=20&&inviteValid,scaleReview,networkReview:scaleReview&&Date.now()<networkUntil}));
  app.use('/sdk',express.static(fileURLToPath(new URL('./node_modules/colyseus.js/dist',import.meta.url))));
  for(const route of ['/','/multiplayer.html','/multiplayer-main.js','/multiplayer/physics.js','/multiplayer/recovery.js'])app.get(route,(_,res)=>res.sendFile(fileURLToPath(new URL(route==='/'?'../multiplayer.html':'..'+route,import.meta.url))));
  const game=new Server({transport:new WebSocketTransport({server:http,maxPayload:4096})});
  game.define('world',class extends WorldRoom { get deviceReview(){return deviceReview;} }).filterBy(['worldId']);
  await game.listen(port);deviceReview.endpoint='ws://127.0.0.1:'+http.address().port;return {game,http};
 }
-if(process.argv[1]===fileURLToPath(import.meta.url))start().then(()=>console.log('Multiplayer preview: http://localhost:'+(process.env.PORT||2567)));
+if(process.argv[1]===fileURLToPath(import.meta.url))start(undefined,{scaleReview:process.env.WORLD_SCALE_REVIEW==='1',networkUntil:Number(process.env.WORLD_SCALE_NETWORK_UNTIL)||0}).then(()=>console.log('Multiplayer preview: http://localhost:'+(process.env.PORT||2567)));
