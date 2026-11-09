@@ -36,6 +36,8 @@ jobs:
           path: prototypes/flagship-world-playcanvas/multiplayer/scale40-output.txt
           retention-days: 7
   hosted-network:
+    # The dedicated service accepts load-test joins only during an armed window.
+    if: ${{ contains(github.event.head_commit.message, '[hosted-scale-40]') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     defaults:
