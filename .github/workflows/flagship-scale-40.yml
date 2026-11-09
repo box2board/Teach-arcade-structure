@@ -1,0 +1,37 @@
+name: Flagship isolated 40-client test
+on:
+  push:
+    branches: [prototype/flagship-3d-world-foundation]
+    paths:
+      - .github/workflows/flagship-scale-40.yml
+      - prototypes/flagship-world-playcanvas/multiplayer/scale-40-test.mjs
+permissions:
+  contents: read
+concurrency:
+  group: flagship-scale-40
+  cancel-in-progress: true
+jobs:
+  isolated-scale:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    defaults:
+      run:
+        shell: bash
+        working-directory: prototypes/flagship-world-playcanvas/multiplayer
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --omit=dev
+      - name: Run five minutes with 40 loopback WebSocket clients
+        run: node scale-40-test.mjs 2>&1 | tee scale40-output.txt
+      - name: Preserve test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flagship-isolated-40-client-results
+          path: prototypes/flagship-world-playcanvas/multiplayer/scale40-output.txt
+          retention-days: 7
