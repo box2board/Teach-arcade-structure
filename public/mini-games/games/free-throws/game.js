@@ -2,7 +2,32 @@ import {createHoops,DURATION,SWISH_WINDOW,shotPower,hoopAt,clamp} from './engine
 const root=document.querySelector('#free-throw-fever'),$=id=>root.querySelector('#'+id),canvas=$('canvas'),ctx=canvas.getContext('2d');
 let last=null,clock=0,owner=null,ready=false,arena=new Image(),particles=[],messageAge=0,best=0;
 try{best=Number(localStorage.getItem('free-throws-arcade-v4-best'))||0;}catch{}
-const game=createHoops(event=>{if(event.type==='basket'){const sh=event.shot;messageAge=1.2;$('verdict').textContent=sh.label;$('detail').textContent=sh.make?'+'+sh.points+' POINTS'+(sh.multiplier>1?' · GOLD BALL!':''):(sh.error<0?'Hold a little longer.':'Release a little sooner.');$('live').textContent=sh.label+(sh.make?' '+sh.points+' points.':'');if(sh.make)for(let i=0;i<22;i++)particles.push({x:300+sh.hoop.x*240,y:246,vx:(Math.random()-.5)*160,vy:-40-Math.random()*90,life:.5+Math.random()*.35});particles=particles.slice(-80);}if(event.type==='finish')finish(event.result);});
+const game = createHoops(event => {
+ if (event.type === 'finish') {
+  finish(event.result);
+  return;
+ }
+ if (event.type !== 'basket') return;
+ const shot = event.shot;
+ const gold = shot.multiplier > 1;
+ messageAge = 1.2;
+ $('feedback').className = shot.make ? (gold ? 'feedback gold' : 'feedback made') : 'feedback';
+ $('verdict').textContent = shot.label;
+ $('detail').textContent = shot.make
+  ? '+' + shot.points + ' POINTS' + (gold ? ' · GOLD BALL!' : '')
+  : (shot.error < 0 ? 'Hold a little longer.' : 'Release a little sooner.');
+ $('live').textContent = shot.label + (shot.make ? ' ' + shot.points + ' points.' : '');
+ if (!shot.make) return;
+ const color = gold ? '#ffcd65' : shot.swish ? '#9dffe2' : '#fff2d5';
+ for (let i = 0; i < 18; i++) {
+  particles.push({
+   x: 300 + shot.hoop.x * 240, y: 246,
+   vx: (Math.random() - .5) * 220, vy: -45 - Math.random() * 100,
+   life: .5 + Math.random() * .35, color,
+  });
+ }
+ particles = particles.slice(-80);
+});
 $('start').disabled=true;$('start').textContent='LOADING THE COURT…';arena.onload=()=>{ready=true;$('start').disabled=false;$('start').textContent='LET’S HOOP ↗';};arena.onerror=()=>{$('description').textContent='The court artwork could not load. Reload to try again.';$('start').textContent='RELOAD TO RETRY';};arena.src='assets/arcade-arena.webp';
 function clear(){owner=null;game.cancel();}
 function start(){if(!ready)return;clear();game.start();last=null;particles=[];messageAge=0;$('overlay').hidden=true;$('results').hidden=true;$('intro').hidden=false;$('pause').disabled=false;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
@@ -21,29 +46,70 @@ function resize(){const width=canvas.getBoundingClientRect().width,d=Math.min(de
 function ellipse(x,y,rx,ry,fill,stroke,width=2){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke();}}
 function line(points,color,width=2){ctx.beginPath();ctx.moveTo(...points[0]);for(const p of points.slice(1))ctx.lineTo(...p);ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();}
 function drawBall(x,y,r,spin,gold=false){ctx.save();ctx.translate(x,y);ctx.rotate(spin);const g=ctx.createRadialGradient(-r*.35,-r*.4,r*.03,0,0,r);g.addColorStop(0,gold?'#fff5aa':'#ffd18b');g.addColorStop(.5,gold?'#ffd34d':'#ff8b36');g.addColorStop(1,gold?'#cd8b19':'#c64c19');ellipse(0,0,r,r,g,'#512d28',2.5);ctx.beginPath();ctx.arc(0,0,r-1,0,Math.PI*2);ctx.clip();line([[-r,0],[r,0]],'#663726',2.5);line([[0,-r],[0,r]],'#663726',2.5);for(const sign of [-1,1]){ctx.beginPath();ctx.ellipse(sign*r,0,r*.72,r*1.1,0,0,Math.PI*2);ctx.strokeStyle='#663726';ctx.lineWidth=2.5;ctx.stroke();}ctx.restore();}
-function draw(dt){const s=game.state,sh=s.shot,cfg=sh||game.config(),hoop=cfg.hoop||hoopAt(s.motionTime,s.time),hx=300+hoop.x*240,hy=246,rim=62;
+function draw(dt, releaseNow){const s=game.state,sh=s.shot,cfg=sh||game.config(),hoop=cfg.hoop||hoopAt(s.motionTime,s.time),hx=300+hoop.x*240,hy=246,rim=62;
  ctx.setTransform(canvas.width/600,0,0,canvas.height/660,0,0);ctx.clearRect(0,0,600,660);if(ready)ctx.drawImage(arena,0,0,600,660);else{ctx.fillStyle='#164b70';ctx.fillRect(0,0,600,660);}
- // Dim the far seating for a readable glass backboard; the hoop is actual game geometry.
- ctx.save();ctx.shadowColor='#65edff';ctx.shadowBlur=12;ctx.fillStyle='#10334a';ctx.fillRect(hx-12,70,24,100);ctx.fillStyle='#102641';ctx.fillRect(hx-117,118,234,140);ctx.fillStyle='#c5f2ffeb';ctx.fillRect(hx-109,126,218,124);ctx.strokeStyle='#fff';ctx.lineWidth=5;ctx.strokeRect(hx-109,126,218,124);ctx.restore();
- ctx.fillStyle='#ffffff50';ctx.beginPath();ctx.moveTo(hx-99,135);ctx.lineTo(hx-15,135);ctx.lineTo(hx-70,235);ctx.lineTo(hx-99,235);ctx.closePath();ctx.fill();ctx.strokeStyle='#ff8240';ctx.lineWidth=5;ctx.strokeRect(hx-42,188,84,54);
+ // Give the hoop a bright outline against the darker crowd.
+ const scored = sh?.make && sh.resolved;
+ const rimLight = scored ? (sh.multiplier > 1 ? '#ffdc78' : '#9dffe2') : '#ffbc80';
+ ctx.save();
+ ctx.fillStyle = '#141c35';
+ ctx.fillRect(hx - 15, 62, 30, 112);
+ ctx.fillStyle = '#536889';
+ ctx.fillRect(hx - 15, 62, 5, 112);
+ ctx.shadowColor = scored ? rimLight : '#6bcbfd';
+ ctx.shadowBlur = scored ? 22 : 12;
+ ctx.fillStyle = '#121c38';
+ ctx.fillRect(hx - 119, 116, 238, 144);
+ ctx.strokeStyle = '#c8f7ff';
+ ctx.lineWidth = 3;
+ ctx.strokeRect(hx - 116, 119, 232, 138);
+ ctx.restore();
+ ctx.fillStyle = '#b4d8ee';
+ ctx.fillRect(hx - 110, 125, 220, 124);
+ ctx.fillStyle = '#daeefd';
+ ctx.fillRect(hx - 110, 125, 220, 9);
+ ctx.fillStyle = '#ffffff70';
+ ctx.beginPath();
+ ctx.moveTo(hx - 94, 134);
+ ctx.lineTo(hx - 25, 134);
+ ctx.lineTo(hx - 72, 246);
+ ctx.lineTo(hx - 108, 246);
+ ctx.closePath();
+ ctx.fill();
+ ctx.strokeStyle = '#304461';
+ ctx.lineWidth = 5;
+ ctx.strokeRect(hx - 43, 183, 86, 57);
  const netAge=sh?.make&&sh.resolved?sh.age-sh.rim:9,sway=netAge<.33?Math.sin(netAge*32)*8*(1-netAge/.33):0;
  for(let i=0;i<=8;i++){const a=(i/8-.5)*2;line([[hx+a*rim,hy],[hx+a*40+sway,hy+70]],'#f8fcff',2);if(i<8)line([[hx+a*rim,hy],[hx+(a+.25)*40+sway,hy+70]],'#d8ebff',1.3);}
  for(let i=1;i<=3;i++)ellipse(hx+sway*i/3,hy+70*i/3,rim-(rim-40)*i/3,8,null,'#e7f6ff',1.5);
- ellipse(hx,hy,rim,15,null,'#683023',10);ellipse(hx,hy-2,rim,15,null,'#ff7b28',6);
+ ellipse(hx, hy + 2, rim, 15, null, '#422333', 12);
+ ellipse(hx, hy - 2, rim, 15, null, '#ff7b40', 8);
+ ellipse(hx, hy - 4, rim, 14, null, rimLight, 3);
  let bx=300,by=570,br=43,spin=clock*.25;
  if(sh){const u=clamp(sh.age/sh.rim,0,1),miss=sh.make?0:(sh.error<0?72:-85),endY=hy+miss;bx=300+(hx-300)*u;by=570+(endY-570)*u-Math.sin(Math.PI*u)*205;br=43+(15-43)*u;spin=sh.age*6;
   if(sh.age>sh.rim){const v=clamp((sh.age-sh.rim)/(sh.flight-sh.rim),0,1);bx=hx+(sh.make?0:55)*v;by=endY+160*v-(sh.make?0:Math.sin(Math.PI*v)*35);br=15+v*4;}
   if(sh.make&&sh.age<sh.rim){ctx.save();ctx.globalAlpha=.17;for(let i=1;i<=3;i++)ellipse(bx-(hx-300)*.02*i,by+14*i,br-i*2,br-i*2,'#fff3b3');ctx.restore();}
  }
- ellipse(bx,610,br*.9,br*.18,'#2a1c2140');drawBall(bx,by,br,spin,cfg.multiplier>1);
+ ellipse(bx, 610, br * .9, br * .18, '#25152866');
+ if (!sh && s.holding) {
+  ellipse(bx, 606, 53, 15, releaseNow ? '#81ffd76b' : '#ffc87b3c', releaseNow ? '#a0ffe0' : '#ffd294', 3);
+ }
+ drawBall(bx,by,br,spin,cfg.multiplier>1);
  // Front lip occludes a descending made shot, but never hides the ball's ascent.
- if(sh&&sh.age>=sh.rim*.95&&sh.age<sh.rim+.14&&sh.make){ctx.beginPath();ctx.ellipse(hx,hy-2,rim,15,0,0,Math.PI);ctx.strokeStyle='#ffb04a';ctx.lineWidth=7;ctx.stroke();}
- for(const p of particles){if(['playing','buzzer'].includes(s.phase)){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=220*dt;p.life-=dt;}ctx.save();ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle='#ffe364';ctx.fillRect(p.x,p.y,4,7);ctx.restore();}particles=particles.filter(p=>p.life>0);
+ if(sh&&sh.age>=sh.rim*.95&&sh.age<sh.rim+.14&&sh.make){ctx.beginPath();ctx.ellipse(hx,hy-2,rim,15,0,0,Math.PI);ctx.strokeStyle=rimLight;ctx.lineWidth=7;ctx.stroke();}
+ for(const p of particles){if(['playing','buzzer'].includes(s.phase)){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=220*dt;p.life-=dt;}ctx.save();ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,4,7);ctx.restore();}particles=particles.filter(p=>p.life>0);
 }
 function render(dt) {
  const s = game.state;
  const cfg = s.shot || game.config();
  const power = s.holding ? shotPower(s.hold) : 0;
+ const releaseNow = s.holding && Math.abs(power - cfg.target) <= cfg.window + 1e-9;
+ const clutch = cfg.stage === 'CLUTCH TIME';
+ $('clock-fill').style.transform = 'scaleX(' + (1 - s.time / DURATION) + ')';
+ $('clock-fill').className = clutch ? 'clutch' : '';
+ $('time').className = clutch ? 'clutch' : '';
+ $('stage').className = clutch ? 'stage clutch' : 'stage';
+ $('ball-type').className = cfg.multiplier > 1 ? 'ball-type gold' : 'ball-type';
  $('time').textContent = (DURATION - s.time).toFixed(1);
  $('score').textContent = s.score;
  $('made').textContent = s.makes + ' / ' + s.attempts;
@@ -59,12 +125,17 @@ function render(dt) {
  $('needle').style.left = power * 100 + '%';
  let prompt = 'HOLD TO CHARGE';
  if (s.shot) prompt = 'SHOT ON ITS WAY…';
- else if (s.holding) prompt = Math.abs(power - cfg.target) <= cfg.window + 1e-9 ? 'RELEASE NOW!' : 'WATCH THE METER';
+ else if (s.holding) prompt = releaseNow ? 'RELEASE NOW!' : 'WATCH THE METER';
  $('power-label').textContent = prompt;
  $('countdown').hidden = s.phase !== 'countdown';
  $('count-number').textContent = Math.max(1, Math.ceil(s.countdown));
- if(['playing','buzzer'].includes(s.phase)){messageAge-=dt;if(messageAge<=0){$('verdict').textContent=s.phase==='buzzer'?'BUZZER BEATER?':s.streak>=3?'YOU’RE HEATING UP!':'HOLD. GREEN. RELEASE.';$('detail').textContent=s.phase==='buzzer'?'Your last shot still counts.':cfg.multiplier>1?'Gold ball · Double points. Watch the green zone.':'Aim for the bright center for a swish.';}}
- draw(dt);
+ $('power-label').className = releaseNow ? 'in-zone' : '';
+ $('meter').className = releaseNow ? 'meter in-zone' : 'meter';
+ $('shoot').className = releaseNow ? 'shoot in-zone' : 'shoot';
+ $('shoot').textContent = releaseNow ? 'RELEASE NOW' : 'HOLD TO SHOOT';
+ if (['playing', 'buzzer'].includes(s.phase)) messageAge -= dt;
+ $('feedback').hidden = messageAge <= 0 || s.holding || (s.shot && !s.shot.resolved);
+ draw(dt, releaseNow);
 }
 function frame(now){const dt=sync(now);clock+=dt;render(dt);requestAnimationFrame(frame);}requestAnimationFrame(frame);
 window.SparksMinigames??={};window.SparksMinigames.freeThrows={start,pause,resume,getState:()=>({phase:game.state.phase,secondsLeft:DURATION-game.state.time,score:game.state.score,result:game.state.result})};

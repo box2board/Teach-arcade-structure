@@ -1,5 +1,247 @@
-body{margin:0;background:#101c36}#free-throw-fever{--ink:#172c53;--cyan:#66efff;--gold:#ffd64c;max-width:min(560px,calc((100dvh - 390px)*.909 + 32px));min-width:300px;margin:auto;padding:16px;color:#fff;font:15px ui-rounded,"Trebuchet MS",system-ui,sans-serif}#free-throw-fever *{box-sizing:border-box}#free-throw-fever [hidden]{display:none!important}#free-throw-fever header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}#free-throw-fever a{color:#b3d9f5;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:1.5px}#free-throw-fever h1{font:950 italic clamp(23px,5vw,35px)/1 system-ui;letter-spacing:-1px;margin:9px 0 0;text-shadow:0 4px 0 #07112b}#free-throw-fever h1 span{color:#ffd64c}#free-throw-fever button{border:3px solid #172c53;border-radius:12px;padding:11px 16px;background:#3d77dc;color:white;font:850 13px system-ui;min-height:46px;box-shadow:0 4px 0 #06132b;touch-action:none;user-select:none}#free-throw-fever button:active:enabled{transform:translateY(3px);box-shadow:0 1px 0 #06132b}#free-throw-fever button:disabled{opacity:.55}#free-throw-fever button:focus-visible,#free-throw-fever a:focus-visible,#free-throw-fever canvas:focus-visible{outline:3px solid #66efff;outline-offset:4px}#free-throw-fever .scoreboard{display:grid;grid-template-columns:repeat(4,1fr);border:3px solid #172c53;border-bottom:0;background:#eaf7ff;color:#172c53;border-radius:18px 18px 0 0;overflow:hidden}#free-throw-fever .scoreboard div{padding:10px 5px;text-align:center}#free-throw-fever .scoreboard div+div{border-left:1px solid #172c5330}#free-throw-fever .scoreboard small{display:block;font-size:9px;letter-spacing:1.5px;font-weight:900;margin-bottom:3px}#free-throw-fever .scoreboard strong{font:900 27px/1 system-ui;font-variant-numeric:tabular-nums}#free-throw-fever #made{font-size:23px}#free-throw-fever .court{position:relative;isolation:isolate;border:3px solid #172c53;border-radius:0 0 18px 18px;overflow:hidden;background:#164b70}#free-throw-fever canvas{display:block;width:100%;aspect-ratio:600/660;touch-action:none;user-select:none}#free-throw-fever .court-top{position:absolute;left:13px;right:13px;top:12px;display:flex;justify-content:space-between;gap:8px;pointer-events:none}#free-throw-fever .court-top span{background:#132e59e8;padding:7px 9px;border:2px solid #62cfe4;border-radius:7px;font-size:9px;letter-spacing:.8px;font-weight:900}#free-throw-fever .feedback{position:absolute;top:57%;left:8%;right:8%;text-align:center;pointer-events:none}#free-throw-fever .feedback strong{font:950 italic 30px/1.1 system-ui;letter-spacing:-1px;color:#fff3a9;text-shadow:0 3px 0 #172c53,2px 0 0 #172c53,-2px 0 0 #172c53}#free-throw-fever .feedback small{display:block;margin-top:6px;font-size:12px;font-weight:850;color:#fff;text-shadow:0 2px 3px #172c53;background:#172c53b0;border-radius:7px;padding:6px}#free-throw-fever .shot-controls{margin-top:13px;background:#1c345d;padding:14px;border:2px solid #375e88;border-radius:16px}#free-throw-fever .meter-head{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:11px;margin-bottom:10px}#free-throw-fever .meter-head span{color:#b1d3ee;font-size:10px}#free-throw-fever .meter{position:relative;height:38px;background:#07172f;border-radius:9px;overflow:hidden}#free-throw-fever .green-zone{position:absolute;inset-block:0;background:#2fc486;display:flex;align-items:center;justify-content:center;color:#062d29;font-size:10px;letter-spacing:1px}#free-throw-fever .perfect-zone{position:absolute;inset-block:0;background:#bbf6b9;opacity:.8}#free-throw-fever #needle{position:absolute;top:0;bottom:0;width:5px;background:#fff;box-shadow:0 0 0 2px #132e59;transform:translateX(-50%)}#free-throw-fever .meter-foot{display:flex;justify-content:space-between;font-size:8px;font-weight:850;letter-spacing:1px;color:#b3d6e7;margin-top:7px}#free-throw-fever .shoot{display:block;width:100%;background:#ffd64c;color:#172c53;font-size:19px;margin-top:13px;padding:12px;min-height:62px}#free-throw-fever .shoot small{display:block;font-size:9px;letter-spacing:1.5px;margin-top:3px}#free-throw-fever .bottom-hint{text-align:center;font-size:11px;color:#aecde4;line-height:1.5}#free-throw-fever .overlay{position:absolute;inset:0;display:flex;align-items:center;padding:30px;background:linear-gradient(90deg,#101f45ed,#101f45c9 65%,#101f4550);z-index:3}#free-throw-fever .overlay>section{width:100%;max-width:460px}#free-throw-fever .overlay small{color:#ffd64c;font-size:10px;font-weight:900;letter-spacing:1.3px}#free-throw-fever h2{font:950 italic clamp(34px,7vw,49px)/1.03 system-ui;letter-spacing:-1.5px;margin:16px 0;text-shadow:0 4px 0 #07112b}#free-throw-fever h2 em{font-style:normal;color:#ffd64c}#free-throw-fever .overlay p{font-size:19px;line-height:1.45;font-weight:750;margin:15px 0}#free-throw-fever #intro{font-size:13px;color:#bad9ef;font-weight:500}#free-throw-fever .primary{background:#ffcf44;color:#172c53;font-size:18px;padding:13px 23px;margin-top:4px}#free-throw-fever .overlay .instructions{font-size:11px;font-weight:500;line-height:1.7;color:#bad9ef}#free-throw-fever .court:has(#overlay:not([hidden])) :is(.court-top,.feedback){visibility:hidden}#free-throw-fever .countdown{position:absolute;inset:0;background:#10254866;display:grid;place-content:center;text-align:center;pointer-events:none}#free-throw-fever .countdown strong{font:950 80px/1 system-ui;color:#ffd64c;text-shadow:0 5px 0 #132e59}#free-throw-fever .countdown span{font-size:12px;font-weight:900;letter-spacing:3px}#free-throw-fever .results{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:15px 0}#free-throw-fever .results div{background:#213d68;padding:9px;border-radius:8px;font-size:10px;color:#b7d6ee}#free-throw-fever .results strong{display:block;color:#ffd64c;font-size:24px}#free-throw-fever .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}@media(max-width:550px){#free-throw-fever{padding:10px}#free-throw-fever header{gap:6px}#free-throw-fever .scoreboard strong{font-size:23px}#free-throw-fever #made{font-size:19px}#free-throw-fever .scoreboard small{font-size:8px;letter-spacing:1px}#free-throw-fever .court-top span{font-size:8px;padding:5px}#free-throw-fever .overlay{padding:21px}#free-throw-fever h2{font-size:36px}#free-throw-fever .overlay p{font-size:17px;margin:11px 0}#free-throw-fever #intro{font-size:12px}#free-throw-fever .meter-head{flex-wrap:wrap}#free-throw-fever .meter-head span{font-size:10px}#free-throw-fever .feedback strong{font-size:24px}#free-throw-fever .feedback small{font-size:10px}#free-throw-fever .overlay .instructions{font-size:10px;margin:10px 0}}@media(max-width:380px){#free-throw-fever .overlay{padding:15px}#free-throw-fever h2{font-size:31px;margin:11px 0}#free-throw-fever #intro{display:none}#free-throw-fever .overlay small{font-size:8px}#free-throw-fever .results strong{font-size:20px}#free-throw-fever .results div{padding:6px}#free-throw-fever .overlay p{font-size:16px}}
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 50% 0, #262b49 0, #111526 42%, #0b0d18 85%);
+}
 
-@media(max-width:550px){#free-throw-fever{max-width:460px;min-width:0}}
+#free-throw-fever {
+  box-sizing: border-box;
+  width: min(100%, 560px, max(340px, calc((100dvh - 280px) * .909 + 36px)));
+  margin: auto;
+  padding: 16px;
+  color: #f8f6ef;
+  font: 15px system-ui, sans-serif;
+}
+#free-throw-fever * { box-sizing: border-box; }
+#free-throw-fever [hidden] { display: none !important; }
+#free-throw-fever header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+#free-throw-fever header a {
+  color: #c2c8df;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 750;
+}
+#free-throw-fever h1, #free-throw-fever h2, #free-throw-fever .feedback strong {
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 950;
+  letter-spacing: -.055em;
+}
+#free-throw-fever h1 { margin: 4px 0 0; font-size: clamp(22px, 5vw, 35px); line-height: 1; }
+#free-throw-fever h1 span { color: #ffad5a; }
+#free-throw-fever button {
+  border: 1px solid #69718e;
+  border-radius: 7px;
+  padding: 10px 14px;
+  background: #20253b;
+  color: #fff;
+  font: 800 13px system-ui, sans-serif;
+  min-height: 44px;
+  touch-action: none;
+  user-select: none;
+}
+#free-throw-fever button:disabled { opacity: .55; }
+#free-throw-fever button:active:enabled { transform: translateY(2px); }
+#free-throw-fever :is(button, a, canvas):focus-visible {
+  outline: 3px solid #92ffe2;
+  outline-offset: 3px;
+}
 
-#free-throw-fever .green-zone b{position:relative;z-index:1}
+#free-throw-fever .cabinet {
+  border: 1px solid #535b79;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #181c30;
+  box-shadow: 0 16px 38px #05060f88;
+}
+#free-throw-fever .scoreboard {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: radial-gradient(circle, #51597844 1px, transparent 1px) 0 0 / 5px 5px, #181b2d;
+}
+#free-throw-fever .scoreboard div { padding: 8px 4px 9px; text-align: center; }
+#free-throw-fever .scoreboard div + div { border-left: 1px solid #51597877; }
+#free-throw-fever .scoreboard small {
+  display: block;
+  margin-bottom: 3px;
+  color: #bec5dc;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+#free-throw-fever .scoreboard strong {
+  display: block;
+  font: 900 clamp(19px, 4vw, 28px)/1 ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+#free-throw-fever #time { color: #a0ffe0; }
+#free-throw-fever #time.clutch { color: #ffad5a; }
+#free-throw-fever #score { color: #ffd37e; }
+#free-throw-fever #made { font-size: clamp(17px, 3.6vw, 23px); }
+#free-throw-fever .clock-track { height: 4px; background: #373d58; }
+#free-throw-fever #clock-fill { height: 100%; background: #82ffd7; transform-origin: left; }
+#free-throw-fever #clock-fill.clutch { background: #ffad5a; }
+
+#free-throw-fever .court { position: relative; isolation: isolate; background: #18243e; overflow: hidden; }
+#free-throw-fever .court::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 45px #0a0d2988;
+}
+#free-throw-fever canvas { display: block; width: 100%; aspect-ratio: 600/660; touch-action: none; }
+#free-throw-fever .court-top {
+  position: absolute;
+  inset: 12px 12px auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  pointer-events: none;
+}
+#free-throw-fever .court-top span {
+  border-radius: 4px;
+  padding: 6px 8px;
+  background: #11182cf2;
+  border: 1px solid #8899bd;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .05em;
+}
+#free-throw-fever .court-top .stage { border-color: #82ffd7; color: #a0ffe0; }
+#free-throw-fever .court-top .clutch, #free-throw-fever .court-top .gold { border-color: #ffbc65; color: #ffdc93; }
+#free-throw-fever .feedback {
+  position: absolute;
+  inset: 53% 5% auto;
+  text-align: center;
+  pointer-events: none;
+  color: #fff5e3;
+}
+#free-throw-fever .feedback strong {
+  display: block;
+  font-size: clamp(24px, 6vw, 42px);
+  line-height: 1.05;
+  text-shadow: 0 3px #16182f, 2px 0 #16182f, -2px 0 #16182f, 0 -1px #16182f;
+}
+#free-throw-fever .feedback.made strong { color: #9dffe2; }
+#free-throw-fever .feedback.gold strong { color: #ffdc78; }
+#free-throw-fever .feedback small {
+  display: inline-block;
+  margin-top: 6px;
+  border-radius: 5px;
+  padding: 5px 9px;
+  background: #13172cf5;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 750;
+}
+#free-throw-fever .countdown {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  background: #10132985;
+  pointer-events: none;
+}
+#free-throw-fever .countdown span { font-weight: 900; text-transform: uppercase; letter-spacing: .17em; }
+#free-throw-fever .countdown strong { color: #ffd37e; font: italic 950 92px/1 system-ui; text-shadow: 0 5px #141629; }
+
+#free-throw-fever .overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: end;
+  padding: clamp(16px, 4vw, 28px);
+  background: linear-gradient(0deg, #101426 6%, #101426ef 32%, #10142639 73%, #10142608 100%);
+}
+#free-throw-fever .overlay > section { width: 100%; }
+#free-throw-fever .overlay section > small {
+  color: #a0ffe0;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+#free-throw-fever h2 {
+  margin: 7px 0 9px;
+  font-size: clamp(36px, 8vw, 59px);
+  line-height: .94;
+  text-shadow: 0 4px #0d0f1d;
+}
+#free-throw-fever h2 em { color: #ffad5a; }
+#free-throw-fever .overlay p { margin: 7px 0; font-weight: 750; }
+#free-throw-fever #intro, #free-throw-fever .instructions { color: #ced4e6; font-size: 12px; font-weight: 500; }
+#free-throw-fever .instructions { margin-bottom: 0; }
+#free-throw-fever .overlay kbd { padding: 1px 4px; border: 1px solid #7b849c; border-radius: 3px; }
+#free-throw-fever .primary, #free-throw-fever .shoot {
+  background: linear-gradient(#ffd38b, #ffa658);
+  color: #271626;
+  border-color: #ffc480;
+  box-shadow: 0 3px #a14c2a;
+  font-weight: 950;
+  letter-spacing: .035em;
+}
+#free-throw-fever .primary { padding-inline: 18px; margin: 6px 0; }
+#free-throw-fever .court:has(#overlay:not([hidden])) :is(.court-top, .feedback) { visibility: hidden; }
+#free-throw-fever .results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 8px 0; }
+#free-throw-fever .results div { background: #222941; padding: 6px 8px; border-radius: 5px; font-size: 10px; font-weight: 750; }
+#free-throw-fever .results strong { display: block; color: #ffd37e; font: 900 20px ui-monospace, monospace; }
+
+#free-throw-fever .shot-controls { padding: 10px 12px 13px; border-top: 1px solid #535b79; }
+#free-throw-fever .meter-head, #free-throw-fever .meter-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  color: #cbd3e8;
+  font-size: 10px;
+}
+#free-throw-fever .meter-head { flex-wrap: wrap; margin-bottom: 7px; }
+#free-throw-fever .meter-head strong { color: #fff; font-size: 12px; letter-spacing: .05em; }
+#free-throw-fever .meter-head .in-zone { color: #a0ffe0; }
+#free-throw-fever .meter {
+  position: relative;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: repeating-linear-gradient(90deg, #46506d 0 1px, transparent 1px 10%), #292e46;
+}
+#free-throw-fever .green-zone, #free-throw-fever .perfect-zone { position: absolute; inset-block: 0; }
+#free-throw-fever .green-zone {
+  background: repeating-linear-gradient(135deg, #ffffff1f 0 4px, transparent 4px 9px), #27ad7b;
+}
+#free-throw-fever .perfect-zone { background: #adffd3; }
+#free-throw-fever #needle {
+  position: absolute;
+  inset-block: 0;
+  width: 6px;
+  background: #fff;
+  border: 1px solid #13172c;
+  border-radius: 3px;
+  transform: translateX(-50%);
+}
+#free-throw-fever .meter.in-zone #needle { box-shadow: 0 0 8px 3px #fff9; }
+#free-throw-fever .meter-foot { margin-top: 5px; font-weight: 650; }
+#free-throw-fever .shoot { width: 100%; min-height: 48px; margin-top: 8px; font-size: 15px; }
+#free-throw-fever .shoot.in-zone { background: #a0ffe0; border-color: #a0ffe0; box-shadow: 0 3px #287a65; }
+#free-throw-fever .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+
+@media (max-width: 550px) {
+  #free-throw-fever { width: min(100%, 460px); padding: 10px; }
+  #free-throw-fever .scoreboard strong { font-size: 21px; }
+  #free-throw-fever #made { font-size: 18px; }
+}
+@media (max-width: 380px) {
+  #free-throw-fever .overlay { padding: 14px; }
+  #free-throw-fever h2 { font-size: 35px; }
+  #free-throw-fever .court-top { inset: 8px 8px auto; }
+  #free-throw-fever .meter-foot { font-size: 9px; }
+}
