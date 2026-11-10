@@ -1,22 +1,20 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 const src = path => readFileSync(new URL(path, import.meta.url), 'utf8');
-const auth = src('../lib/neon.js');
-const actions = src('../app/actions.js');
-const home = src('../app/page.jsx');
-const sql = src('../../schema.sql');
-const settings = src('../.env.example');
+const auth = src('../lib/neon.js'), actions = src('../app/actions.js');
+const home = src('../app/page.jsx'), settings = src('../.env.example');
 const pkg = JSON.parse(src('../package.json'));
 const tests = [
- ['Neon Auth and server-only database',()=>{assert.match(auth,/createNeonAuth/);assert.match(auth,/server-only/);assert.match(auth,/auth\.getSession\(\)/);}],
- ['admin identifier checked on server',()=>assert.match(auth,/user\.id !== id/)],
- ['privileged actions require admin session',()=>{assert.ok((actions.match(/await requireAdmin\(\)/g)||[]).length>=3)}],
- ['SQL is bound, not interpolated into query text',()=>{assert.match(actions,/sql`INSERT INTO/);assert.match(actions,/\$\{user\.id\}/);}],
- ['mode 2 remains disabled',()=>{assert.match(settings,/DEVHQ_API_MODE_ENABLED=false/);assert.match(home,/Mode 2 API billing is OFF/)}],
- ['no Supabase dependencies',()=>assert.ok(!Object.keys(pkg.dependencies).some(x=>x.includes('supabase')))],
- ['schema targets dedicated table',()=>assert.match(sql,/CREATE TABLE IF NOT EXISTS public\.devhq_tasks/)],
+ ['official Neon Auth SDK', () => { assert.equal(pkg.dependencies['@neon/auth'],'latest'); assert.match(auth,/from '@neon\/auth\/next\/server'/); }],
+ ['Neon Postgres server-only', () => { assert.match(auth,/server-only/); assert.match(auth,/neon\(process\.env\.DATABASE_URL\)/); }],
+ ['administrator ID checked', () => assert.match(auth,/user\.id !== id/)],
+ ['privileged actions require admin', () => assert.ok((actions.match(/await requireAdmin\(\)/g)||[]).length>=3)],
+ ['parameterized SQL', () => { assert.match(actions,/sql`INSERT INTO/); assert.match(actions,/\$\{user\.id\}/); }],
+ ['disabled paid API', () => { assert.match(settings,/DEVHQ_API_MODE_ENABLED=false/); assert.match(home,/Mode 2 API billing is OFF/); }],
+ ['no Supabase dependencies', () => assert.ok(!Object.keys(pkg.dependencies).some(x=>x.includes('supabase')))],
+ ['Neon configuration documented', () => assert.match(src('../neon.ts'),/from '@neon\/config\/v1'/)],
+ ['private sign-in', () => assert.match(src('../app/auth/sign-in/page.jsx'),/Administrator sign-in only/)]
 ];
-let failures=0;
-for(const [label,run] of tests){try{run();console.log('PASS',label)}catch(e){failures++;console.error('FAIL',label,e.message)}}
-console.log(`${tests.length-failures}/${tests.length} source checks passed`);
-if(failures)process.exitCode=1;
+let failed=0;for(const [name,fn] of tests){try{fn();console.log('PASS',name)}catch(e){failed++;console.error('FAIL',name,e.message)}}
+console.log(`${tests.length-failed}/${tests.length} static checks passed`);
+if(failed)process.exitCode=1;
