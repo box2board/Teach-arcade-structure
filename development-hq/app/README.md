@@ -1,34 +1,37 @@
-# Teach Arcade Development HQ — authenticated app foundation
+# Teach Arcade Development HQ — Neon foundation
 
-**NOT deployed, NOT tested against a running database, and NOT ready for production.**
-All work remains on `prototype/development-hq-two-mode-foundation`. No paid AI execution or deployment controls have been added.
+**Status: code committed but NOT deployed, NOT built, and NOT connected to an authenticated Neon project.**
 
-## Technical foundation
+## Architecture
+- Independent Next.js application in `development-hq/app`; proposed future private Vercel project `dev.teacharcade.com`.
+- Neon database and Neon Auth apply **only** to Development HQ. The live Teach Arcade website and its production/development Supabase projects are untouched.
+- Database uses server-side parameterized queries via `@neondatabase/serverless`.
+- One administrator is enforced by `DEVHQ_ADMIN_USER_ID` on every privileged server page/action.
+- Mode 1 prepares manual ChatGPT/Codex task handoff pending official hosted-subscription integration eligibility.
+- Mode 2 OpenAI API remains disabled and has no code path that can incur AI API charges.
 
-- Separate Next.js 16 app in `development-hq/app` (future Vercel Root Directory).
-- Supabase cookie-backed SSR with verified `getUser()`, a hard admin UUID allowlist on server, and authenticated session-refresh proxy.
-- Email-link sign-in; server-side task create/archive actions; persisted tasks after DB configuration.
-- Dedicated SQL schema in `../schema.sql` with row-level owner/admin authorization.
-- Mode 1: manual ChatGPT/Codex task handoff pending supported Plus integration.
-- Mode 2: DISABLED and unimplemented. No API key or billable AI endpoint.
-- No GitHub writes, automatic merges, production deployment actions, or live project inventory.
+## Provisioning (requires working Neon CLI or connected Neon plugin)
+From `development-hq/app` (not from the public website root):
 
-## Environment & setup (NOT YET PERFORMED)
+```sh
+npm i -g neon@latest
+neon init -y --org-id org-broad-sun-58837901 --project-id muddy-wildflower-58522232 --branch production --services postgres
+neon deploy
+```
 
-1. Create a **separate Supabase project**. Do not execute the schema against the live teacher-account database.
-2. Review and apply `../schema.sql` to that project.
-3. Create or invite an administrator in Supabase Auth; enable email OTP links and whitelist the exact `/auth/callback` redirect URL. Mark admin through trusted **app_metadata** with `devhq_admin=true` (never user_metadata).
-4. Copy `.env.example` to `.env.local`, set credentials, exact `DEVHQ_SITE_ORIGIN` (e.g. `http://localhost:3000`), and set `DEVHQ_ADMIN_USER_ID` to that administrator's Auth UUID.
-5. `npm install`, review and commit `package-lock.json`, and `npm run dev`. Test legitimate login, unauthorized account denial, RLS, create/archive, expiry, and CSRF/origin behavior.
-6. `npm run build` plus security tests before deploying.
-7. Only then create a separate private Vercel project, restrict it using deployment protection and app authorization, and configure the custom subdomain.
-8. Do not merge this branch to `main` as a substitute for independent dashboard deployment.
+These commands are **not verified as executed**. Neon CLI installs could not complete due to lack of npm registry access in this environment. The owner can connect the Neon plugin in ChatGPT to enable direct project operations. Do NOT commit generated `.env.local`.
 
-## Security and billing safeguards
+## Login and database
+1. Confirm Neon Auth is available for the project/branch and provision it using `neon.ts` (`auth:true`), with secure authentication settings.
+2. Configure Neon Auth so only invited/approved administrators can sign in; **disable public registration**. An allowlisted user ID is an additional mandatory gate.
+3. Add `DEVHQ_ADMIN_USER_ID` and valid Neon Auth/DB environment variables in private hosting environment.
+4. Only once project identity is verified, apply `../schema.sql` to the intended Neon project. Use a least-privilege DB account with access only to Development HQ data and no production credentials.
+5. Install exact dependency versions, generate and commit a lockfile, run `npm run check:safety` and `npm run build`.
+6. Test both authorized and unauthorized login, task create/archive, expiry, DB permissions, and behavior when connection is unavailable.
+7. Create a distinct Vercel project with protection on all deploy URLs and the custom domain, and verify unauthenticated access is refused before inviting the administrator.
 
-- Supabase service_role keys, GitHub write tokens, and OpenAI API secrets must never be browser-exposed.
-- A future coding agent must be sandboxed, branch-only, and subject to human review.
-- Codex Plus usage for remotely hosted private applications has **not** been validated.
-- Mode 2 is disabled unless admin separately approves it with actual budget controls and no hidden fallback.
-- No lockfile/build verification was possible in this session due to npm registry connectivity. **Do not deploy until dependency versions and lockfile are resolved and tests pass.**
-- Public documentation for Supabase 2026 SSR emphasizes `@supabase/ssr`, server-verified auth, and refresh proxy: https://supabase.com/docs/guides/auth/server-side/creating-a-client
+## Notes
+- Current `@neondatabase/auth-ui@0.4.0-beta` declares an exact peer on `@neondatabase/auth@0.6.0-beta`, so these versions are aligned to avoid a published dependency conflict.
+- Code uses documented `@neondatabase/auth/next/server` integration. These SDKs are beta and must be checked with a real build.
+- Neon App/database schema is separate from the site's existing Supabase data. No migrations between those providers are being attempted.
+- Do not merge the draft PR into the public site's main branch as a deployment shortcut.
