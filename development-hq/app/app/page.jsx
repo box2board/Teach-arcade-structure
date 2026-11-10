@@ -1,3 +1,4 @@
+import CopyTask from './CopyTask';
 import { requireAdmin } from '../lib/supabase';
 import { createTask, archiveTask, signOut } from './actions';
 
@@ -36,7 +37,7 @@ export default async function Home({searchParams}) {
     <section className="card"><h2>Saved development tasks</h2>
       {error && <p role="alert" className="error">Task database is not configured or is unavailable. No production database changes were made.</p>}
       {!error && !tasks?.length && <p>No tasks yet. Use the form above to create your first development task.</p>}
-      {tasks?.map(t=><div className="task" key={t.id}><div><div className="eyebrow">{t.project} · {t.category}</div><p>{t.description}</p><small>{t.status.toUpperCase()} · {new Date(t.created_at).toLocaleDateString('en-US',{timeZone:'UTC'})}</small></div><form action={archiveTask}><input type="hidden" name="id" value={t.id}/><button className="subtle">Archive</button></form></div>)}
+      {tasks?.map(t=><div className="task" key={t.id}><div><div className="eyebrow">{t.project} · {t.category}</div><p>{t.description}</p><small>{t.status.toUpperCase()} · {new Date(t.created_at).toLocaleDateString('en-US',{timeZone:'UTC'})}</small></div><div className="task-actions"><CopyTask task={{project:t.project,category:t.category,description:t.description}}/><form action={archiveTask}><input type="hidden" name="id" value={t.id}/><button className="subtle">Archive</button></form></div></div>)}
     </section>
     <footer>Development HQ alpha · separate from public Teach Arcade · manual review required for all releases</footer>
   </div>;
