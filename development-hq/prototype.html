@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teach Arcade Development HQ — Prototype</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#17243a;background:#f3f6fb}*{box-sizing:border-box}body{margin:0}
+header{background:#132a4a;color:#fff;padding:20px max(20px,calc((100vw - 1100px)/2));display:flex;gap:18px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+header strong{font-size:21px}header small{display:block;color:#adc8e8;margin-top:4px}
+main{max-width:1100px;margin:26px auto;padding:0 18px 40px}
+.notice{background:#fff4d8;border:1px solid #f0d48e;padding:13px 16px;border-radius:12px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:#fff;border:1px solid #dfe5ef;border-radius:16px;padding:20px;box-shadow:0 2px 14px #152c4609}
+h1{font-size:27px;margin:0 0 6px}h2{font-size:18px;margin:0 0 12px}p{color:#4b5c73;line-height:1.5}small,.muted{color:#6c7b90}
+.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.11em;color:#64748b;font-weight:700}
+.status{display:inline-block;background:#ebeff5;border-radius:20px;padding:4px 10px;font-size:12px;font-weight:700}
+.mode{border-left:5px solid #2b77d1}.disabled{border-left-color:#b4bac5}.section{margin-top:20px}
+label{display:block;font-size:13px;font-weight:700;margin:12px 0 6px}input,select,textarea{font:inherit;width:100%;border:1px solid #c8d2df;border-radius:9px;padding:11px;background:white;color:#17243a}textarea{min-height:115px;resize:vertical}
+button{border:0;border-radius:10px;padding:12px 16px;background:#165aa8;color:#fff;font:inherit;font-weight:700;cursor:pointer}button:hover{background:#0f4788}.secondary{background:#edf3fb;color:#165aa8}.secondary:hover{background:#d7e8fb}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.project{padding:12px 0;border-bottom:1px solid #e6ecf4}.project:last-child{border-bottom:0}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:15px;background:#0c1e34;color:#e9f4ff;border-radius:12px;font-size:13px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}header{padding:18px}}
+</style>
+</head>
+<body>
+<header><div><strong>🕹️ Teach Arcade / Development HQ</strong><small>Two-mode foundation · Local prototype</small></div><span class="status">NOT CONNECTED · NOT DEPLOYED</span></header>
+<main>
+<div class="notice"><strong>Prototype only.</strong> This page is not an authenticated admin dashboard. It makes no network requests, runs no AI agents, and saves no tasks. Never host it publicly as an admin tool.</div>
+<h1>Development overview</h1><p>Plan and organize work before connecting GitHub, Vercel, or AI execution.</p>
+<div class="grid">
+<div class="card"><span class="kicker">GitHub</span><h2>Not connected</h2><p>Branch, PR, and repository inventory will use a least-privilege integration.</p></div>
+<div class="card"><span class="kicker">Vercel</span><h2>Not connected</h2><p>Deployment status and actual playable previews will appear here.</p></div>
+<div class="card"><span class="kicker">Tasks</span><h2>Draft only</h2><p>No tasks have been submitted to a coding agent.</p></div>
+</div>
+<section class="section"><h2>AI execution modes</h2>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+<div class="card mode"><span class="kicker">Mode 1 · Preferred</span><h2>ChatGPT Plus / Codex</h2><span class="status">Eligibility not verified</span><p>Use a supported subscription-backed Codex connection if available to this private dashboard. Until verified, use a manual task handoff.</p></div>
+<div class="card mode disabled"><span class="kicker">Mode 2 · Optional</span><h2>OpenAI API</h2><span class="status">DISABLED · $0 spent</span><p>Separately billed AI automation. Activation, budget controls, and administrator approval will be required.</p></div>
+</div></section>
+<section class="section card"><h2>Prepare a development task</h2><p>This draft generator works locally. It produces instructions you can copy into ChatGPT or Codex; it does not launch an AI job.</p>
+<div class="row"><div><label for="project">Project</label><select id="project"><option>Multiplayer Arcade</option><option>Midway Mashup</option><option>Trench Run V2</option><option>Factory Flow</option><option>Teacher HQ</option><option>New Game</option></select></div><div><label for="kind">Task type</label><select id="kind"><option>Gameplay feature</option><option>Bug fix</option><option>Visual quality pass</option><option>New game prototype</option><option>Testing and QA</option></select></div></div>
+<label for="request">What should AI develop?</label><textarea id="request" placeholder="Describe the task, desired gameplay, and existing features that must be preserved."></textarea>
+<div class="row"><button type="button" id="draft">Create task instructions</button><button type="button" class="secondary" id="copy" disabled>Copy instructions</button></div>
+<div id="result" hidden><label>Prepared task (no code changes have been made)</label><pre id="output"></pre></div>
+</section>
+<section class="section card"><h2>Example project registry</h2><p>These are illustrative entries, not live repository statuses.</p>
+<div class="project"><strong>Multiplayer Arcade</strong><br><small>Character walking animations and environment polish</small></div>
+<div class="project"><strong>Trench Run V2</strong><br><small>Preserve existing gameplay while refining obstacles and movement</small></div>
+<div class="project"><strong>Factory Flow</strong><br><small>Isolated visual-quality improvements</small></div>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id); let generated='';
+$('draft').addEventListener('click',()=>{const request=$('request').value.trim();if(!request){$('request').focus();return}
+generated=['TEACH ARCADE DEVELOPMENT TASK','Project: '+$('project').value,'Type: '+$('kind').value,'Request: '+request,'','Requirements:','- Inspect current repository and relevant project documentation first.','- Work only in an isolated development branch; do not merge or deploy.','- Preserve existing working gameplay, assets, accounts, and integrations.','- Keep Chromebook performance and responsive layouts in mind.','- Provide acceptance criteria, tests, and a playable preview when available.','- Never access production secrets or activate paid API usage.','- Report actual changed files, test results, and any blockers.'].join('\n');
+$('output').textContent=generated;$('result').hidden=false;$('copy').disabled=false;});
+$('copy').addEventListener('click',async()=>{if(!generated)return;try{await navigator.clipboard.writeText(generated);$('copy').textContent='Copied';}catch(e){$('copy').textContent='Select text to copy';}});
+</script>
+</body></html>
