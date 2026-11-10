@@ -1,6 +1,6 @@
 # Teach Arcade Development HQ — Neon application
 
-**Status 2026-11-10:** The separate Neon project `muddy-wildflower-58522232` in organization `org-broad-sun-58837901` is connected via the Neon plugin. Branch `production` (`br-raspy-leaf-belktrx2`) has Managed Better Auth provisioned and public email sign-up **disabled**. The `devhq_tasks` schema passed checks on a disposable **temporary branch**, but has **NOT** been promoted to `production` yet.
+**Status 2026-11-10:** The separate Neon project `muddy-wildflower-58522232` in organization `org-broad-sun-58837901` is connected via the Neon plugin. Branch `production` (`br-raspy-leaf-belktrx2`) has Managed Better Auth provisioned and public email sign-up **disabled**. The `devhq_tasks` schema was tested on a temporary branch and **successfully promoted to production** on November 10, 2026. The temporary branch was deleted; a read-only production query verified the table is empty.
 
 The Next.js application has **NOT** passed an npm installation, build, browser test, or deployment. npm registry lookups failed with `EAI_AGAIN` in this execution environment.
 
@@ -33,8 +33,8 @@ Auth has already been enabled through the Neon connector. The `neon.ts` file dec
 Do not paste credentials into chat or commit `.env.local`. Keep secrets in an environment manager. A database role limited to the Dev HQ task table should be created before hosting.
 
 ## Outstanding gates
-1. Receive explicit approval before promoting the tested task schema from temporary Neon branch to its production branch.
-2. Create one Neon Auth administrator and set their exact immutable auth ID in hosting secrets; verify no other account can reach Dev HQ.
+1. **Completed:** explicit approval received; task schema promoted to Neon production and verified.
+2. **Account created:** configure the existing Neon Auth administrator ID in protected hosting secrets, finish email verification/password setup, and verify no other account can reach Dev HQ.
 3. Configure and verify allowed authentication origins and deployment protection.
 4. Resolve npm registry access. Pin the installed `@neon/auth` version after resolving `latest`, commit package-lock.json and run `npm run build`.
 5. Run live sign-in, session, task create/archive, unauthorized-access and permission tests.
