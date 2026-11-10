@@ -7,12 +7,12 @@ export const auth = createNeonAuth({
   baseUrl: process.env.NEON_AUTH_BASE_URL,
   cookies: {
     secret: process.env.NEON_AUTH_COOKIE_SECRET,
-    sessionDataTtl: 0, // Do not cache session information for privileged admin actions.
+    sessionDataTtl: 0,
   },
 });
 
 export function db() {
-  if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL missing');
+  if (!process.env.DATABASE_URL) throw new Error('Development HQ database not configured');
   return neon(process.env.DATABASE_URL);
 }
 
