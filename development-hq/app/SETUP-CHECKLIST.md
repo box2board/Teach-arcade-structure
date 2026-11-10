@@ -1,33 +1,28 @@
-# Deployment readiness checklist — not yet complete
+# Development HQ — Neon checklist
 
-- [ ] Confirm the owner's chosen Supabase organization and any $0/nonzero creation quote
-- [ ] Create an isolated development-hq Supabase project (never reuse teacher/student production)
-- [ ] Review schema.sql, run against isolated DB, and inspect security advisors
-- [ ] Invite the single admin user and add trusted app_metadata.devhq_admin=true
-- [ ] Configure Auth email template using `{{ .TokenHash }}` (not only default magic link) pointing to `<DEVHQ_SITE_ORIGIN>/auth/confirm?token_hash={{ .TokenHash }}&type=email`
-- [ ] Configure Auth Site URL and exact allowed redirect(s)
-- [ ] Configure server env secrets and publishable key safely; admin UUID not inferred from email
-- [ ] Generate and commit npm lockfile, run real build and test suite
-- [ ] Test successful and rejected login, task save, archive, logout, expired sessions, RLS, and cookie handling
-- [ ] Confirm correct Vercel project access / exact account, then create separate project with deployment protection
-- [ ] Configure production branch for the new project to avoid deploying the live game's main branch
-- [ ] Deploy the isolated app only after security checks; verify protection via unauthenticated requests
-- [ ] Connect GitHub read-only project inventory next
-- [ ] Test Mode 1 Codex supported login path; never assume Plus covers arbitrary API calls
-- [ ] Only when explicitly approved, consider Mode 2 billing integration with server-side spend limits
+This is a **separate application**, not a migration of Teach Arcade's existing Supabase production or development projects.
 
-## Login template for a Supabase project
+## Neon
+- [x] Neon organization/project/branch identified from owner's setup prompt
+- [ ] Neon plugin connected to ChatGPT or Neon CLI authenticated
+- [ ] Verify project `muddy-wildflower-58522232` belongs to organization `org-broad-sun-58837901`
+- [ ] Run `neon init -y --org-id org-broad-sun-58837901 --project-id muddy-wildflower-58522232 --branch production --services postgres` from `development-hq/app`
+- [ ] Run `neon deploy`, verify actual Neon Auth/Postgres state, and securely populate local/hosting environment
+- [ ] Provision secure Neon Auth, prevent open signup, create one administrator and securely configure `DEVHQ_ADMIN_USER_ID`
+- [ ] Review `../schema.sql`, apply only to verified Neon project, test permissions with a least-privilege DB role
 
-A safe initial Magic Link email template is:
+## Build, security and hosting
+- [ ] Install dependencies and commit generated package-lock.json
+- [ ] Run `npm run check:safety` and `npm run build`, fix every failure
+- [ ] Exercise real administrator sign-in, unauthorized denial, sign-out and expiry
+- [ ] Exercise task creation and archive against isolated Neon DB
+- [ ] Verify no browser-accessible API enables editing without admin authorization
+- [ ] Create separate private Vercel project only after identifying correct workspace, and configure root `development-hq/app`
+- [ ] Require deployment protection at all URLs before sharing
+- [ ] Configure `dev.teacharcade.com` only after protected preview works
+- [ ] Connect read-only GitHub information
+- [ ] Validate Mode 1 Plus/Codex integration eligibility; never assume API calls are covered by Plus
+- [ ] Keep Mode 2 disabled until explicit spending approval and server-enforced controls
 
-```html
-<a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email">Sign in to Development HQ</a>
-```
-
-The application requires a configured `DEVHQ_SITE_ORIGIN` matching Supabase Site URL. The callback enforces the exact host. The dashboard makes no paid AI calls.
-
-## Run minimum static checks
-
-`node scripts/check-safety.mjs`
-
-These inspect source invariants only. They do **not** replace running the app, database authorization tests, or an actual build.
+## Current blocker
+Neon CLI and npm dependency installation are unavailable in the present execution environment. A Neon connector is available to connect through ChatGPT. Until connected, database commands cannot be validated and no successful end-to-end test or deployed preview can be claimed.
