@@ -1,35 +1,34 @@
 # Teach Arcade Development HQ — authenticated app foundation
 
-**NOT deployed.** The current changes live only on `prototype/development-hq-two-mode-foundation`. No paid AI execution, GitHub writes, deployment controls or live data connections are implemented.
+**NOT deployed, NOT tested against a running database, and NOT ready for production.**
+All work remains on `prototype/development-hq-two-mode-foundation`. No paid AI execution or deployment controls have been added.
 
 ## Technical foundation
 
-- Next.js 16 app isolated in `development-hq/app`, suitable for a separate Vercel project with Root Directory `development-hq/app`.
-- Supabase cookie-backed SSR with server-side verified `getUser()` and a single admin UUID allowlist.
-- Email link authentication and session refresh proxy.
-- Server Actions for creating and archiving persistent task drafts.
-- Isolated SQL schema in `../schema.sql` with per-user RLS and no cross-user access.
-- Mode 1 is a *manual/subscription handoff placeholder* pending official hosted-app eligibility; no claim of active Plus connection.
-- Mode 2 is *off and unimplemented*: no API key, billing fallback, or AI execution endpoint.
-- Project entries in the UI are choices, NOT synchronized project statuses.
+- Separate Next.js 16 app in `development-hq/app` (future Vercel Root Directory).
+- Supabase cookie-backed SSR with verified `getUser()`, a hard admin UUID allowlist on server, and authenticated session-refresh proxy.
+- Email-link sign-in; server-side task create/archive actions; persisted tasks after DB configuration.
+- Dedicated SQL schema in `../schema.sql` with row-level owner/admin authorization.
+- Mode 1: manual ChatGPT/Codex task handoff pending supported Plus integration.
+- Mode 2: DISABLED and unimplemented. No API key or billable AI endpoint.
+- No GitHub writes, automatic merges, production deployment actions, or live project inventory.
 
-## Before running
+## Environment & setup (NOT YET PERFORMED)
 
-1. Create a **separate Supabase project** for Development HQ. Do not apply the SQL to the existing teacher accounts database.
-2. Review and apply `../schema.sql` in that isolated project's SQL editor. Ensure auth user is precreated and email OTP/PKCE redirect is configured.
-3. In an isolated local environment, copy `.env.example` into `.env.local`. Fill Supabase URL, publishable key, your actual Auth user UUID as `DEVHQ_ADMIN_USER_ID`, and `DEVHQ_SITE_ORIGIN` (exact origin, no trailing slash; e.g. `http://localhost:3000`).
-4. Configure the exact `/auth/callback` redirect URL in Supabase Auth redirect allowlist.
-5. Run `npm install`, then `npm run dev`; verify signing in as the allowlisted account, rejecting non-admin accounts, drafting/archiving tasks and session expiry.
-6. Run `npm run build` and security/authorization testing BEFORE any deployment.
-7. For Vercel, create a **separate** private project; implement deployment protection and per-request authorization, and confirm no unauthenticated pages expose task details. Choose an appropriate plan for commercial use.
-8. Do not connect `dev.teacharcade.com` until actual administrator protection and deployment testing are complete.
+1. Create a **separate Supabase project**. Do not execute the schema against the live teacher-account database.
+2. Review and apply `../schema.sql` to that project.
+3. Create or invite an administrator in Supabase Auth; enable email OTP links and whitelist the exact `/auth/callback` redirect URL. Mark admin through trusted **app_metadata** with `devhq_admin=true` (never user_metadata).
+4. Copy `.env.example` to `.env.local`, set credentials, exact `DEVHQ_SITE_ORIGIN` (e.g. `http://localhost:3000`), and set `DEVHQ_ADMIN_USER_ID` to that administrator's Auth UUID.
+5. `npm install`, review and commit `package-lock.json`, and `npm run dev`. Test legitimate login, unauthorized account denial, RLS, create/archive, expiry, and CSRF/origin behavior.
+6. `npm run build` plus security tests before deploying.
+7. Only then create a separate private Vercel project, restrict it using deployment protection and app authorization, and configure the custom subdomain.
+8. Do not merge this branch to `main` as a substitute for independent dashboard deployment.
 
-## Security caveats
+## Security and billing safeguards
 
-- Supabase Auth magic links require proper PKCE redirect and Auth provider configuration.
-- Admin allowlist uses an immutable Auth user ID, not user-editable metadata.
-- Never put API secret keys or GitHub tokens in `NEXT_PUBLIC_` environment variables.
-- Vercel deployment protection should be enabled in addition to application authorization.
-- The SQL grants per-owner RLS to authenticated users; the application's server layer restricts the dashboard to one admin. For stronger database-level restriction, harden RLS for the admin UUID before production deployment.
-- Subscription-backed Codex compatibility for remotely hosted private apps remains unverified.
-- Dependencies are pinned in package.json; lockfile should be generated with a verified npm registry and committed before CI/deployment (registry not available in this execution environment).
+- Supabase service_role keys, GitHub write tokens, and OpenAI API secrets must never be browser-exposed.
+- A future coding agent must be sandboxed, branch-only, and subject to human review.
+- Codex Plus usage for remotely hosted private applications has **not** been validated.
+- Mode 2 is disabled unless admin separately approves it with actual budget controls and no hidden fallback.
+- No lockfile/build verification was possible in this session due to npm registry connectivity. **Do not deploy until dependency versions and lockfile are resolved and tests pass.**
+- Public documentation for Supabase 2026 SSR emphasizes `@supabase/ssr`, server-verified auth, and refresh proxy: https://supabase.com/docs/guides/auth/server-side/creating-a-client
