@@ -1,2 +1,2 @@
 import { auth } from '../../../../lib/neon';
-export const { GET, POST } = auth.handler();
+export const { GET, POST, PUT, PATCH, DELETE } = auth.handler();
