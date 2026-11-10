@@ -1,5 +1,6 @@
 -- Apply only to an isolated Supabase project AFTER review; DO NOT apply to Teach Arcade production.
--- Supabase Auth accounts must be pre-created/invited; OTP sign-in uses shouldCreateUser=false.
+-- Only an administrator marked via trusted auth.app_metadata.devhq_admin=true can access task rows.
+-- Admin flag must be set securely by the Supabase Auth administrator, NOT from user_metadata.
 create extension if not exists pgcrypto;
 create table if not exists public.devhq_tasks (
   id uuid primary key default gen_random_uuid(),
@@ -16,7 +17,11 @@ create index if not exists devhq_tasks_owner_created_idx on public.devhq_tasks(o
 alter table public.devhq_tasks enable row level security;
 revoke all on public.devhq_tasks from anon;
 grant select,insert,update on public.devhq_tasks to authenticated;
-create policy "Owner reads development tasks" on public.devhq_tasks for select to authenticated using ((select auth.uid()) = owner_id);
-create policy "Owner creates development tasks" on public.devhq_tasks for insert to authenticated with check ((select auth.uid()) = owner_id);
-create policy "Owner archives development tasks" on public.devhq_tasks for update to authenticated using ((select auth.uid()) = owner_id) with check ((select auth.uid()) = owner_id);
--- Server also enforces DEVHQ_ADMIN_USER_ID on every read/write; no service-role credentials used.
+create policy "Admin reads own development tasks" on public.devhq_tasks for select to authenticated
+using ((select auth.uid()) = owner_id and (select auth.jwt()->'app_metadata'->>'devhq_admin') = 'true');
+create policy "Admin creates own development tasks" on public.devhq_tasks for insert to authenticated
+with check ((select auth.uid()) = owner_id and (select auth.jwt()->'app_metadata'->>'devhq_admin') = 'true');
+create policy "Admin archives own development tasks" on public.devhq_tasks for update to authenticated
+using ((select auth.uid()) = owner_id and (select auth.jwt()->'app_metadata'->>'devhq_admin') = 'true')
+with check ((select auth.uid()) = owner_id and (select auth.jwt()->'app_metadata'->>'devhq_admin') = 'true');
+-- Server additionally enforces DEVHQ_ADMIN_USER_ID. Set app_metadata via trusted admin API or console only.
