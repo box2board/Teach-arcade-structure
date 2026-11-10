@@ -1,27 +1,19 @@
--- Apply only to an isolated Supabase project AFTER review; DO NOT apply to Teach Arcade production.
--- Only an administrator marked via trusted auth.app_metadata.devhq_admin=true can access task rows.
--- Admin flag must be set securely by the Supabase Auth administrator, NOT from user_metadata.
-create extension if not exists pgcrypto;
-create table if not exists public.devhq_tasks (
-  id uuid primary key default gen_random_uuid(),
-  owner_id uuid not null references auth.users(id) on delete cascade,
-  project text not null check (project in ('Multiplayer Arcade','Midway Mashup','Trench Run V2','Factory Flow','Teacher HQ','New Game')),
-  category text not null check (category in ('Gameplay feature','Bug fix','Visual quality','New game prototype','Testing and QA')),
-  description text not null check (char_length(description) between 12 and 5000),
-  status text not null default 'draft' check (status in ('draft','archived')),
-  mode text not null default 'plus' check (mode = 'plus'),
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+-- This schema is only for the separate Neon Development HQ project.
+-- Run ONLY after confirming the Neon project/branch IDs. Never run on Teach Arcade Supabase.
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+CREATE TABLE IF NOT EXISTS public.devhq_tasks (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  owner_id text NOT NULL CHECK (char_length(owner_id) BETWEEN 8 AND 255),
+  project text NOT NULL CHECK (project IN ('Multiplayer Arcade','Midway Mashup','Trench Run V2','Factory Flow','Teacher HQ','New Game')),
+  category text NOT NULL CHECK (category IN ('Gameplay feature','Bug fix','Visual quality','New game prototype','Testing and QA')),
+  description text NOT NULL CHECK (char_length(description) BETWEEN 12 AND 5000),
+  status text NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','archived')),
+  mode text NOT NULL DEFAULT 'plus' CHECK (mode = 'plus'),
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
 );
-create index if not exists devhq_tasks_owner_created_idx on public.devhq_tasks(owner_id, created_at desc);
-alter table public.devhq_tasks enable row level security;
-revoke all on public.devhq_tasks from anon;
-grant select,insert,update on public.devhq_tasks to authenticated;
-create policy "Admin reads own development tasks" on public.devhq_tasks for select to authenticated
-using ((select auth.uid()) = owner_id and (select auth.jwt()->'app_metadata'->>'devhq_admin') = 'true');
-create policy "Admin creates own development tasks" on public.devhq_tasks for insert to authenticated
-with check ((select auth.uid()) = owner_id and (select auth.jwt()->'app_metadata'->>'devhq_admin') = 'true');
-create policy "Admin archives own development tasks" on public.devhq_tasks for update to authenticated
-using ((select auth.uid()) = owner_id and (select auth.jwt()->'app_metadata'->>'devhq_admin') = 'true')
-with check ((select auth.uid()) = owner_id and (select auth.jwt()->'app_metadata'->>'devhq_admin') = 'true');
--- Server additionally enforces DEVHQ_ADMIN_USER_ID. Set app_metadata via trusted admin API or console only.
+CREATE INDEX IF NOT EXISTS devhq_tasks_owner_created_idx ON public.devhq_tasks(owner_id, created_at DESC);
+-- The dashboard exclusively uses server-side parametrized SQL after Neon Auth + strict admin ID checks.
+-- Do not expose this table through a public Data API, and do not use superuser credentials in the app.
+-- Before deploying production, create a least-privileged database role for the dashboard with
+-- only SELECT, INSERT, UPDATE on devhq_tasks; revoke schema-create/DDL privileges.
