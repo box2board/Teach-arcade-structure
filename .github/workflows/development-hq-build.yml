@@ -1,0 +1,51 @@
+name: Development HQ · Isolated Build Check
+
+on:
+  push:
+    branches:
+      - prototype/development-hq-two-mode-foundation
+    paths:
+      - 'development-hq/**'
+      - '.github/workflows/development-hq-build.yml'
+  pull_request:
+    paths:
+      - 'development-hq/**'
+      - '.github/workflows/development-hq-build.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  development-hq-build:
+    name: Check Development HQ without deployment
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: development-hq/app
+    env:
+      # This job must not access any real Neon, Vercel, Supabase, or OpenAI credentials.
+      DEVHQ_API_MODE_ENABLED: 'false'
+      NEON_AUTH_BASE_URL: 'https://invalid.example.test/neondb/auth'
+      NEON_AUTH_COOKIE_SECRET: 'build-only-not-a-real-secret-12345678901234567890'
+      DEVHQ_ADMIN_USER_ID: '00000000-0000-4000-8000-000000000000'
+      DATABASE_URL: 'postgresql://unused:unused@localhost:5432/unused'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout isolated development branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies without running lifecycle scripts
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Check local safety invariants
+        run: npm run check:safety
+      - name: Build Development HQ
+        run: npm run build
+      - name: Report build-only scope
+        if: always()
+        run: echo "No deployment or production database modifications are part of this workflow."
