@@ -7,7 +7,7 @@ export const auth = createNeonAuth({
   baseUrl: process.env.NEON_AUTH_BASE_URL,
   cookies: {
     secret: process.env.NEON_AUTH_COOKIE_SECRET,
-    sessionDataTtl: 0,
+    sessionDataTtl: 30, // SDK requires a positive value; short cache for admin-only UI.
   },
 });
 
