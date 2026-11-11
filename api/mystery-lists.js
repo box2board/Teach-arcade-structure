@@ -15,7 +15,7 @@ export default async function handler(req,res){
    return send(200,{lists:rows});
   }
   const body=typeof req.body==='string'?JSON.parse(req.body):req.body||{};
-  if(JSON.stringify(body).length>24000)return send(413,{error:'List too large'});
+  if(JSON.stringify(body).length>100000)return send(413,{error:'List too large'});
   if(req.method==='POST'){
    const title=String(body.title||'').trim(),entries=body.entries;
    if(title.length<1||title.length>100||!Array.isArray(entries)||entries.length<1||entries.length>200||entries.some(e=>typeof e!=='string'||!e.trim()||e.length>400))
