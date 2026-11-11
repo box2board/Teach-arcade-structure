@@ -72,6 +72,14 @@ export const TOOLS=Object.freeze(validateCatalog([
     "imageAlt": "Classroom Group Maker"
   },
   {
+    "id": "mystery-pick",
+    "title": "Mystery Pick Board",
+    "url": "/tools/mystery-pick/",
+    "description": "Create a numbered mystery board, reveal random assigned topics or names, and eliminate picks without repeats.",
+    "symbol": "✦",
+    "collection": "Teacher Tools"
+  },
+  {
     "id": "name-picker",
     "title": "Random Name Picker",
     "url": "/tools/name-picker.html",
