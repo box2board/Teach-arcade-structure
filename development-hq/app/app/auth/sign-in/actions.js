@@ -1,18 +1,30 @@
 'use server';
 import { auth } from '../../../lib/neon';
-import { redirect } from 'next/navigation';
 
-export async function signInWithEmail(_state, formData) {
-  const email = String(formData.get('email') || '').trim();
-  const password = String(formData.get('password') || '');
-  if (!email || email.length > 254 || password.length < 1) {
-    return { error: 'Enter your email and password.' };
-  }
+// This is the only account that may request a Development HQ sign-in link.
+// The final authorization gate independently checks DEVHQ_ADMIN_USER_ID on the server.
+const ADMIN_EMAIL = 'ashdchristie@gmail.com';
+const NEUTRAL_MESSAGE = 'If this address is authorized, a sign-in link will arrive shortly. The link expires after five minutes.';
+
+export async function sendAdminMagicLink(_state, formData) {
+  const email = String(formData.get('email') ?? '').trim().toLowerCase();
+  if (!email || email.length > 254) return { error: 'Enter a valid email address.' };
+
+  // Never disclose whether an account exists or whether an email is authorized.
+  if (email !== ADMIN_EMAIL) return { message: NEUTRAL_MESSAGE };
+
   try {
-    const { data, error } = await auth.signIn.email({email, password});
-    if (error || !data) return { error: 'Invalid credentials or sign-in unavailable.' };
+    const { error } = await auth.signIn.magicLink({
+      email,
+      callbackURL: '/',
+    });
+    if (error) {
+      console.error('Development HQ magic-link request failed:', error.code ?? 'auth_error');
+      return { error: 'Unable to send the sign-in link. Try again shortly.' };
+    }
   } catch {
-    return { error: 'Unable to sign in. Please try again.' };
+    console.error('Development HQ magic-link request failed.');
+    return { error: 'Unable to send the sign-in link. Try again shortly.' };
   }
-  redirect('/');
+  return { message: NEUTRAL_MESSAGE };
 }
