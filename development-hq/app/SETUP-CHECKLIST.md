@@ -13,8 +13,9 @@
 - [x] 7/7 source-level integration checks passed (NOT a build or browser test)
 
 ## Needed before first private preview
-- [ ] Install npm packages from a network-enabled runner and commit package-lock.json
-- [ ] Run `npm run check:safety` and `npm run build`; fix any actual compilation failures
+- [x] Install npm packages on an isolated GitHub Actions runner; installation succeeded (lockfile not yet committed)
+- [x] GitHub Actions run 42955999137: all 10 safety checks and `npm run build` succeeded after fixing positive session TTL
+- [ ] Commit generated package-lock.json for reproducible installs
 - [ ] Configure restricted Neon database user for production application
 - [ ] Use independent Vercel project with Root Directory `development-hq/app`
 - [ ] Set `DATABASE_URL` (pooled), `NEON_AUTH_BASE_URL`, `NEON_AUTH_COOKIE_SECRET` (secure random 32+ chars), `DEVHQ_ADMIN_USER_ID` (verified UUID), `DEVHQ_API_MODE_ENABLED=false`
