@@ -50,16 +50,13 @@
 
   function setTarget(text) {
     currentTarget = text || '';
+    els.input.value = '';
     els.target.replaceChildren();
-    [...currentTarget].forEach((char, index) => {
+    [...currentTarget].forEach((char) => {
       const span = document.createElement('span');
       span.textContent = char === ' ' ? '\u00a0' : char;
-      if (index < els.input.value.length) {
-        span.className = els.input.value[index] === char ? 'typed' : 'typed-wrong';
-      }
       els.target.appendChild(span);
     });
-    els.input.value = '';
     els.input.maxLength = currentTarget.length;
     inputErrorCount = 0;
     updateRoundLabel();
