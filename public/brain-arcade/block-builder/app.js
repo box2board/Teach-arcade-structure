@@ -9,6 +9,7 @@ const KEY='teacharcade_blockbuilder_v2', OLD='teacharcade_blockbuilder_v1', LIMI
 const colors=[['Ocean blue','#2878d4'],['Brick red','#e84c3d'],['Sunshine','#f4c542'],['Leaf green','#37a56b'],['Orange','#f58a32'],['Purple','#8b5cc7'],['Pink','#ef86b6'],['Aqua','#37c4c5'],['White','#f5f5ef'],['Slate','#60748a'],['Charcoal','#293342'],['Sand','#cfaf7c']];
 let blocks=[],past=[],future=[],type=pieces[5],color=colors[0][1],category='Bricks',rotation=0,tool='build',candidate=null,selectedMoveId=null,down=null,multi=false;
 const meshes=new Map(),geometry=new Map(),materials=new Map();
+let boardSize=32,selectedBoardSize=32,setupRequired=true;
 const scene=new THREE.Scene();scene.background=new THREE.Color('#e8eff7');
 const mount=$('canvasMount');
 const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;mount.append(renderer.domElement);
@@ -16,7 +17,7 @@ const camera=new THREE.PerspectiveCamera(42,1,.1,300);camera.position.set(29,30,
 const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.12;controls.minDistance=4;controls.maxDistance=85;controls.maxPolarAngle=Math.PI*.49;controls.target.set(0,1,0);
 scene.add(new THREE.HemisphereLight(0xffffff,0x8b9caf,2.4));const sun=new THREE.DirectionalLight(0xffffff,3);sun.position.set(15,30,12);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-24,right:24,top:24,bottom:-24});sun.shadow.bias=-.0004;scene.add(sun);
 const ground=new THREE.Mesh(new THREE.BoxGeometry(32,.28,32),new THREE.MeshStandardMaterial({color:'#90aaad',roughness:.8}));ground.position.y=-.15;ground.receiveShadow=true;scene.add(ground);
-const grid=new THREE.GridHelper(32,32,0x627e83,0x79979b);grid.position.y=.002;scene.add(grid);
+let grid=new THREE.GridHelper(32,32,0x627e83,0x79979b);grid.position.y=.002;scene.add(grid);
 // Flat drafting board: the grid indicates snap positions without raised studs.
 const ray=new THREE.Raycaster(),pointer=new THREE.Vector2();const ghostMaterial=new THREE.MeshStandardMaterial({color:'#2a9d69',transparent:true,opacity:.48,depthWrite:false});let ghost=new THREE.Group(),ghostType=null;ghost.visible=false;scene.add(ghost);
 const highlight=new THREE.BoxHelper(new THREE.Mesh(),0xf97316);highlight.visible=false;scene.add(highlight);
@@ -24,7 +25,7 @@ function def(b){return pieces.find(p=>p.type===b.type)||legacyTypes.find(p=>p.ty
 function dimensions(b){const s=def(b).size;return Math.round(b.rotationY/(Math.PI/2))%2?[s[2],s[1],s[0]]:s;}
 function bounds(b){const s=dimensions(b);return s.map((v,i)=>[b.position[i]-v/2,b.position[i]+v/2]);}
 function overlap(a,b,axis){return a[axis][0]<b[axis][1]-.01&&a[axis][1]>b[axis][0]+.01;}
-function valid(b,ignoreId=null){const a=bounds(b);if(a[0][0]<-16||a[0][1]>16||a[2][0]<-16||a[2][1]>16||a[1][0]<-.01||a[1][1]>48)return false;const parts=occupiedBounds(b,def(b));let supported=parts.some(p=>p[1][0]<.01);for(const other of blocks){if(other.id===ignoreId)continue;const c=bounds(other);if(!overlap(a,c,0)||!overlap(a,c,2))continue;for(const p of parts)for(const q of occupiedBounds(other,def(other))){if(overlap(p,q,0)&&overlap(p,q,2)){if(overlap(p,q,1))return false;if(Math.abs(p[1][0]-q[1][1])<.02)supported=true;}}}return supported;}
+function valid(b,ignoreId=null){const a=bounds(b);const half=boardSize/2;if(a[0][0]<-half||a[0][1]>half||a[2][0]<-half||a[2][1]>half||a[1][0]<-.01||a[1][1]>48)return false;const parts=occupiedBounds(b,def(b));let supported=parts.some(p=>p[1][0]<.01);for(const other of blocks){if(other.id===ignoreId)continue;const c=bounds(other);if(!overlap(a,c,0)||!overlap(a,c,2))continue;for(const p of parts)for(const q of occupiedBounds(other,def(other))){if(overlap(p,q,0)&&overlap(p,q,2)){if(overlap(p,q,1))return false;if(Math.abs(p[1][0]-q[1][1])<.02)supported=true;}}}return supported;}
 function mat(c){if(!materials.has(c))materials.set(c,new THREE.MeshStandardMaterial({color:c,roughness:.42,metalness:0}));return materials.get(c);}
 function bodyGeometry(d){if(!geometry.has(d.type))geometry.set(d.type,d.parts?d.parts.map(partGeometry):[legacyGeometry(d)]);return geometry.get(d.type);}
 const padGeometry=connectorGeometry(),matrix=new THREE.Matrix4();
@@ -44,6 +45,48 @@ function sync(){for(const [id,m] of meshes)if(!blocks.some(b=>b.id===id)){scene.
 function remember(){past.push(JSON.stringify(blocks));if(past.length>60)past.shift();future=[];}
 function changed(message){sync();$('saveStatus').textContent='Unsaved changes';say(message);}
 function say(s){$('status').textContent=s;}
+
+const setupDialog=$('boardSetup');
+function showBoardSetup(){
+ selectedBoardSize=boardSize;
+ document.querySelectorAll('[data-board-size]').forEach(b=>b.setAttribute('aria-pressed',Number(b.dataset.boardSize)===selectedBoardSize));
+ $('applyBoardSize').textContent=setupRequired?'Start building':'Apply board size';
+ if(!setupDialog.open)setupDialog.showModal();
+}
+setupDialog.addEventListener('keydown',e=>e.stopPropagation());
+setupDialog.addEventListener('cancel',e=>{if(setupRequired)e.preventDefault();});
+document.querySelectorAll('[data-board-size]').forEach(b=>b.onclick=()=>{
+ selectedBoardSize=Number(b.dataset.boardSize);
+ document.querySelectorAll('[data-board-size]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+});
+function changeBoardSize(size){
+ const half=size/2;
+ if(blocks.some(b=>{const a=bounds(b);return a[0][0]<-half||a[0][1]>half||a[2][0]<-half||a[2][1]>half;})){
+  say('This build is wider than that play area. Move or remove the outside bricks first.');
+  return false;
+ }
+ boardSize=size;
+ ground.geometry.dispose();
+ ground.geometry=new THREE.BoxGeometry(size,.28,size);
+ scene.remove(grid);
+ grid.geometry.dispose();
+ if(Array.isArray(grid.material))grid.material.forEach(m=>m.dispose());else grid.material.dispose();
+ grid=new THREE.GridHelper(size,size,0x627e83,0x79979b);
+ grid.position.y=.002;
+ scene.add(grid);
+ const edge=size*.75;
+ Object.assign(sun.shadow.camera,{left:-edge,right:edge,top:edge,bottom:-edge});
+ sun.shadow.camera.updateProjectionMatrix();
+ $('boardSizeLabel').textContent=size+' × '+size+' baseplate';
+ home();
+ say('Play area set to '+size+' × '+size+'. Choose a brick and start building.');
+ return true;
+}
+$('boardSizeAction').onclick=showBoardSetup;
+$('applyBoardSize').onclick=()=>{
+ if(changeBoardSize(selectedBoardSize)){setupRequired=false;setupDialog.close();}
+};
+
 function undo(redo=false){const from=redo?future:past,to=redo?past:future;if(!from.length)return;to.push(JSON.stringify(blocks));blocks=JSON.parse(from.pop());changed(redo?'Change restored.':'Change undone.');}
 function setTool(t){if(selectedMoveId&&t!=='select'){const old=meshes.get(selectedMoveId);if(old)old.visible=true;selectedMoveId=null;candidate=null;}tool=t;ghost.visible=false;highlight.visible=false;document.querySelectorAll('[data-tool]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tool===t));say({build:'Tap to place. Drag to look around. Aim at a brick to stack.',select:'Tap a brick to select it, then tap a clear location to move it.',paint:'Tap a brick to apply your chosen color.',erase:'Tap a brick to remove it. Undo brings it back.',camera:'Drag to orbit. Right-drag or two fingers to pan. Scroll or pinch to zoom.'}[t]);}
 function palette(){ $('categoryTabs').replaceChildren();for(const c of categories){const b=document.createElement('button');b.textContent=c;b.setAttribute('aria-pressed',c===category);b.onclick=()=>{category=c;palette();};$('categoryTabs').append(b);}$('blockList').replaceChildren();for(const p of pieces.filter(p=>p.category===category)){const b=document.createElement('button');const img=document.createElement('img');img.src=thumbnail(p);img.alt='';b.append(img,document.createTextNode(p.label));b.setAttribute('aria-pressed',type===p);b.onclick=()=>{type=p;setTool('build');palette();};$('blockList').append(b);}updatePreview(); }
@@ -60,7 +103,7 @@ canvas.addEventListener('pointermove',e=>{if(!down)aim(e);else ghost.visible=fal
 canvas.addEventListener('pointerup',e=>{const click=down&&!multi&&down.id===e.pointerId&&down.button===0&&Math.hypot(e.clientX-down.x,e.clientY-down.y)<7;touches.delete(e.pointerId);if(!touches.size)down=null;if(!click||tool==='camera')return;const id=aim(e);if(tool==='select'&&!selectedMoveId&&id){selectedMoveId=id;const movingMesh=meshes.get(id);if(movingMesh)movingMesh.visible=false;say('Brick selected. Tap an open spot to move it.');aim(e);}else if(tool==='select'&&selectedMoveId&&id===selectedMoveId){selectedMoveId=null;const movingMesh=meshes.get(id);if(movingMesh)movingMesh.visible=true;ghost.visible=false;candidate=null;say('Move canceled.');}else if(tool==='select'&&selectedMoveId&&candidate){if(!valid(candidate,selectedMoveId))return say('That spot is blocked or unsupported. Try a clear spot or the top of another brick.');remember();const moving=blocks.find(b=>b.id===selectedMoveId);moving.position=candidate.position.slice();selectedMoveId=null;changed('Brick moved.');}else if(tool==='build'&&candidate){if(blocks.length>=LIMIT)return say('This build has reached 1,500 bricks. Save a copy before starting a new build.');if(!valid(candidate))return say('That brick will not fit. Try a clear space or the top of another brick.');remember();blocks.push({...candidate,id:crypto.randomUUID()});changed('Brick placed. Keep building!');}else if(id&&tool==='erase'){remember();blocks=blocks.filter(b=>b.id!==id);changed('Brick removed.');}else if(id&&tool==='paint'){const b=blocks.find(b=>b.id===id);if(b.color!==color){remember();b.color=color;changed('Brick repainted.');}}if(e.pointerType==='mouse')aim(e);});
 canvas.addEventListener('pointercancel',e=>{touches.delete(e.pointerId);down=null;multi=true;ghost.visible=false;});canvas.addEventListener('pointerleave',()=>{ghost.visible=false;highlight.visible=false;});canvas.addEventListener('contextmenu',e=>e.preventDefault());
 function rotate(){rotation=(rotation+90)%360;palette();ghost.visible=false;say(`Piece rotated to ${rotation}°. Point at the board to place it.`);}
-function home(top=false){controls.target.set(0,1,0);camera.position.set(...(top?[0,44,.01]:[29,30,34]));controls.update();}
+function home(top=false){controls.target.set(0,1,0);const scale=boardSize/32;camera.position.set(...(top?[0,44*scale,.01]:[29*scale,30*scale,34*scale]));controls.update();}
 function download(data,name,mime){const url=URL.createObjectURL(new Blob([data],{type:mime}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function validate(raw){if(raw.length>2000000)throw Error('That file is too large.');const data=JSON.parse(raw),arr=Array.isArray(data)?data:data.blocks;if(!Array.isArray(arr)||arr.length>LIMIT)throw Error('Choose a build file with no more than 1,500 bricks.');return arr.map(b=>{if(!b||!def(b)||!Array.isArray(b.position)||b.position.length!==3||!b.position.every(v=>typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<=150)||!Number.isFinite(b.rotationY??0)||(b.color&&!/^#[\da-f]{6}$/i.test(b.color)))throw Error('This file contains an invalid brick.');return {id:crypto.randomUUID(),type:b.type,position:b.position.slice(),rotationY:b.rotationY||0,color:b.color||'#38bdf8'};});}
 function replace(next){remember();blocks=next;changed('Build opened.');home();}
