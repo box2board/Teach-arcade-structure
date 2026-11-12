@@ -1,3 +1,4 @@
+import { makeScenery } from "./scenery.js";
 import * as T from "../../assets/vendor/three-0.162.0/three.module.js";
 import { asset, WIDTH } from "./catalog.js";
 export function localPoint(a, t, scale = 1) {
@@ -62,6 +63,8 @@ export function endpoint(piece, end = 1) {
   };
 }
 export function makePiece(piece, selected = false, ghost = false) {
+  const definition = asset(piece.type);
+  if (definition.kind === "scenery") return makeScenery(piece, definition, selected, ghost);
   const a = asset(piece.type),
     g = new T.Group();
   g.userData.pieceId = piece.id;

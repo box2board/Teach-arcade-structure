@@ -1,4 +1,4 @@
-import { asset } from "./catalog.js";
+import { asset, isScenery } from "./catalog.js";
 import { endpoint } from "./geometry.js";
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y, a.z - b.z);
 const angle = (a, b) => Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b)));
@@ -7,6 +7,7 @@ function pitchMatches(from, to, end, start) {
   return asset(from.type).kind === "ramp" || asset(to.type).kind === "landing" || Math.abs(end.pitch - start.pitch) < 0.08;
 }
 export function connectionGraph(pieces) {
+  pieces = pieces.filter((piece) => !isScenery(piece));
   const links = [],
     invalid = [];
   for (const a of pieces)
@@ -47,10 +48,11 @@ export function connectionGraph(pieces) {
   return { links, invalid };
 }
 export function validate(track) {
-  const { links, invalid } = connectionGraph(track.pieces),
+  const pieces = track.pieces.filter((piece) => !isScenery(piece));
+  const { links, invalid } = connectionGraph(pieces),
     seen = new Set();
-  if (track.pieces.length) {
-    const visit = [track.startId || track.pieces[0].id];
+  if (pieces.length) {
+    const visit = [track.startId || pieces[0].id];
     while (visit.length) {
       let id = visit.pop();
       if (seen.has(id)) continue;
@@ -64,13 +66,15 @@ export function validate(track) {
   return {
     links,
     invalid,
-    disconnected: track.pieces.filter((p) => !seen.has(p.id)),
-    openEnds: track.pieces.filter((p) => !links.some((l) => l.from === p.id)),
-    missingStart: !track.pieces.some((p) => p.id === track.startId),
-    missingFinish: !track.pieces.some((p) => p.type === "finish"),
+    disconnected: pieces.filter((p) => !seen.has(p.id)),
+    openEnds: pieces.filter((p) => !links.some((l) => l.from === p.id)),
+    missingStart: !pieces.some((p) => p.id === track.startId),
+    missingFinish: !pieces.some((p) => p.type === "finish"),
   };
 }
 export function snapCandidate(piece, pieces, threshold = 3, measure = (exit) => distance(exit, piece)) {
+  if (isScenery(piece)) return null;
+  pieces = pieces.filter((other) => !isScenery(other));
   let best = null;
   const starts = pieces.map((p) => ({ id: p.id, point: endpoint(p, 0) }));
   const entry = endpoint(piece, 0);
@@ -104,8 +108,9 @@ export function snapCandidate(piece, pieces, threshold = 3, measure = (exit) => 
 }
 
 export function placementIssue(piece, pieces, ignoredIds = new Set()) {
+  if (isScenery(piece)) return null;
   const others = pieces.filter(
-      (p) => p.id !== piece.id && !ignoredIds.has(p.id),
+      (p) => !isScenery(p) && p.id !== piece.id && !ignoredIds.has(p.id),
     ),
     start = endpoint(piece, 0),
     end = endpoint(piece);

@@ -1,6 +1,6 @@
 import * as T from "../../assets/vendor/three-0.162.0/three.module.js";
 import { sample } from "./geometry.js";
-import { asset, WIDTH } from "./catalog.js";
+import { asset, WIDTH, isScenery } from "./catalog.js";
 export function buildCar() {
   const g = new T.Group(),
     wheels = [];
@@ -88,7 +88,7 @@ export function buildCar() {
 }
 export class Vehicle {
   constructor(track, mode = "auto") {
-    this.track = track;
+    this.track = { ...track, pieces: track.pieces.filter((piece) => !isScenery(piece)) };
     this.mode = mode;
     this.mesh = buildCar();
     this.keys = new Set();

@@ -1,6 +1,7 @@
 // Library miniatures are projected from the same profiles used by the 3D track.
 import {localPoint} from './geometry.js';
 export function icon(a){
+ if (a.kind === "scenery") return `<i class="scenery-icon" aria-hidden="true">${a.emoji}</i>`;
  const count=64,project=(t,side=0)=>{const p=localPoint(a,t,1),x=p.x-Math.sin(p.heading)*side,z=p.z+Math.cos(p.heading)*side,y=p.y-Math.sin(p.bank)*side;return [x*.84-z*.66,x*.22+z*.39-y*.88];};
  const outer=[...Array(count+1)].map((_,i)=>project(i/count,-1.7)).concat([...Array(count+1)].map((_,i)=>project(1-i/count,1.7)));
  const xs=outer.map(p=>p[0]),ys=outer.map(p=>p[1]),minX=Math.min(...xs),minY=Math.min(...ys),w=Math.max(...xs)-minX,h=Math.max(...ys)-minY,scale=Math.min(100/(w||1),52/(h||1));

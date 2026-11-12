@@ -1,4 +1,4 @@
-import { asset } from "./catalog.js";
+import { asset, isScenery } from "./catalog.js";
 import { connectionGraph } from "./connections.js";
 export const SCHEMA = 1;
 const KEY = "teacharcade.racestudio.v1";
@@ -53,7 +53,7 @@ export function parseTrack(raw) {
       ...p,
       color: !p.color || p.color === "#23ada7" ? asset(p.type).color : p.color,
     })),
-    startId: ids.has(raw.startId) ? raw.startId : raw.pieces[0]?.id || null,
+    startId: (raw.pieces.find((p) => p.id === raw.startId && !isScenery(p)) || raw.pieces.find((p) => !isScenery(p)))?.id || null,
   };
 }
 export function listSaves() {
@@ -76,8 +76,9 @@ export function deleteSave(id) {
 
 const BEST_TIMES = "teacharcade.racestudio.best-times.v1";
 export function raceRecordKey(track, mode) {
-  const start = Math.max(0, track.pieces.findIndex((piece) => piece.id === track.startId));
-  return JSON.stringify([mode, start, track.pieces.map(({ type, x, y, z, yaw, length }) =>
+  const pieces = track.pieces.filter((piece) => !isScenery(piece));
+  const start = Math.max(0, pieces.findIndex((piece) => piece.id === track.startId));
+  return JSON.stringify([mode, start, pieces.map(({ type, x, y, z, yaw, length }) =>
     [type, x, y, z, yaw, length])]);
 }
 function raceRecords() {

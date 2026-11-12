@@ -1,7 +1,7 @@
 import {icon} from "./piece-preview.js";
 import { GameFeel } from "./game-feel.js";
 import * as T from "../../assets/vendor/three-0.162.0/three.module.js";
-import { CATALOG, asset } from "./catalog.js";
+import { CATALOG, asset, isScenery } from "./catalog.js";
 import { StudioScene } from "./renderer.js";
 import { makePiece, disposeGroup, endpoint } from "./geometry.js";
 import {
@@ -135,6 +135,7 @@ function refreshConnectors(target = null, rebuild = false) {
     }
     const v = validate(editor.track);
     for (const p of editor.track.pieces) {
+      if (isScenery(p)) continue;
       const q = endpoint(p),
         invalid = v.invalid.some((l) => l.from === p.id),
         occupied = v.links.some((l) => l.from === p.id),
@@ -192,6 +193,7 @@ function check() {
   return v;
 }
 function renderAssets() {
+  $("attach").textContent = isScenery({ type: selectedType }) ? "＋ Place decoration" : "＋ Attach piece";
   const cats = [...new Set(CATALOG.map((a) => a.category))];
   $("categories").innerHTML = cats
     .map(
@@ -263,7 +265,8 @@ function showPlacement(p, snap) {
     : "Click to place · drag to orbit · right-drag or two fingers to pan");
 }
 function proposal(ev) {
-  const p = piece(selectedType, 0, placeHeight, 0, placeYaw);
+  const height = isScenery({ type: selectedType }) ? 0 : placeHeight;
+  const p = piece(selectedType, 0, height, 0, placeYaw);
   const rect = scene.renderer.domElement.getBoundingClientRect();
   const snap = snapping ? snapCandidate(p, editor.track.pieces, 42, (exit) => {
     const point = new T.Vector3(exit.x, exit.y + 0.8, exit.z).project(scene.camera);
@@ -275,7 +278,7 @@ function proposal(ev) {
     showPlacement(snap.piece, snap);
     return;
   }
-  const hit = scene.groundPoint(ev, placeHeight);
+  const hit = scene.groundPoint(ev, height);
   if (!hit) {
     candidate = null;
     candidateTarget = null;
@@ -286,6 +289,7 @@ function proposal(ev) {
   showPlacement({ ...p, x: Math.round(hit.x), z: Math.round(hit.z) });
 }
 function nextAttachment() {
+  if (isScenery({ type: selectedType })) return null;
   const p = piece(selectedType, 0, placeHeight, 0, placeYaw);
   const pieces = editor.track.pieces;
   if (!pieces.length) return { piece: p, valid: true };
@@ -307,7 +311,7 @@ function placeCandidate(p) {
   editor.change((track) => {
     track.pieces.push(p);
     editor.selected = p.id;
-    if (!track.startId) track.startId = p.id;
+    if (!track.startId && !isScenery(p)) track.startId = p.id;
   });
   candidate = null;
   candidateTarget = null;
@@ -319,11 +323,15 @@ $("assets").onclick = (e) => {
   if (!b || vehicle) return;
   selectedType = b.dataset.asset;
   candidateTarget = null;
+  candidate = null;
+  clearGhost();
   renderAssets();
   $("welcome").hidden = true;
   const snap = snapping ? nextAttachment() : null;
   if (snap) showPlacement(snap.piece, snap.target ? snap : null);
-  else $("hint").textContent = "Tap an open exit or place a new section.";
+  else $("hint").textContent = isScenery({ type: selectedType })
+    ? "Pick a spot for your decoration · R to rotate"
+    : "Tap an open exit or place a new section.";
 };
 const canvas = scene.renderer.domElement;
 let pointerDown;
@@ -469,7 +477,7 @@ $("delete").onclick = () =>
   mutation((p) => {
     editor.track.pieces = editor.track.pieces.filter((x) => x.id !== p.id);
     if (editor.track.startId === p.id)
-      editor.track.startId = editor.track.pieces[0]?.id || null;
+      editor.track.startId = editor.track.pieces.find((other) => !isScenery(other))?.id || null;
     editor.selected = null;
   });
 $("length").onchange = (e) => mutation((p) => (p.length = +e.target.value));
@@ -482,6 +490,7 @@ $("name").onchange = (e) =>
   editor.change((t) => (t.name = e.target.value.trim() || "Untitled Track"));
 $("start-here").onclick = () =>
   mutation((p) => {
+    if (isScenery(p)) return toast("Choose a track piece as the starting point.");
     editor.track.startId = p.id;
     toast("Vehicle starts on this piece.");
   });
@@ -538,7 +547,7 @@ $("validate").onclick = () => {
 };
 function startTest() {
   if (vehicle) return;
-  if (!editor.track.pieces.length) {
+  if (!editor.track.pieces.some((p) => !isScenery(p))) {
     toast("Build a track first.");
     return;
   }
@@ -816,6 +825,11 @@ $("attach").onclick = () => {
   if (vehicle) return;
   if (!selectedType) {
     toast("Choose an asset in the library first.");
+    return;
+  }
+  if (isScenery({ type: selectedType })) {
+    if (candidate && candidate.type === selectedType) placeCandidate(candidate);
+    else toast("Choose a spot on the build area for this decoration.");
     return;
   }
   const snap = nextAttachment();

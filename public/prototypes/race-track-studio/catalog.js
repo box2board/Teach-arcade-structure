@@ -271,6 +271,21 @@ EXTRA.push({
   radius: 5,
   lead: 8,
 });
+const SCENERY = [
+  ["pine", "Pine Tree", "🌲", "#138b68"],
+  ["oak", "Round Tree", "🌳", "#59bc43"],
+  ["palm", "Palm Tree", "🌴", "#1ba775"],
+  ["boulder", "Boulder Cluster", "🪨", "#777b9e"],
+  ["flowers", "Flower Bed", "🌷", "#ff65a5"],
+  ["pond", "Pond", "💧", "#29bdff"],
+  ["banner", "Race Banner", "🏁", "#ffb900"],
+  ["stands", "Grandstand", "🏟️", "#575ce5"],
+  ["tent", "Pit Tent", "⛺", "#ff685d"],
+  ["fence", "Trackside Fence", "🟨", "#ffbb26"],
+].map(([id, name, emoji, color]) => ({
+  id: `scenery-${id}`, name, emoji, color, kind: "scenery", category: "Scenery", length: 4,
+}));
+export const isScenery = (piece) => asset(piece.type)?.kind === "scenery";
 export const PALETTE = {
   Essentials: "#ff7626",
   Curves: "#008dff",
@@ -280,7 +295,7 @@ export const PALETTE = {
   Stunts: "#00bfa0",
   Specials: "#ff3f66",
 };
-export const CATALOG = [...ORIGINAL, ...EXTRA].map((a) => ({
+export const CATALOG = [...ORIGINAL, ...EXTRA, ...SCENERY].map((a) => ({
   color: PALETTE[a.category],
   ...a,
   dimensions: {
@@ -288,7 +303,7 @@ export const CATALOG = [...ORIGINAL, ...EXTRA].map((a) => ({
     length: a.length || a.radius * Math.abs(a.angle),
     height: Math.abs(a.rise || a.amplitude || 0),
   },
-  connections: ["entry", "exit"],
+  connections: a.kind === "scenery" ? [] : ["entry", "exit"],
   orientations: "yaw; surface pitch from profile",
   performanceCost: Math.ceil((a.length || a.radius * Math.abs(a.angle)) * 5),
   interactions: a.interaction ? [a.interaction] : [],

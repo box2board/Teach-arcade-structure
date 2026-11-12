@@ -41,8 +41,8 @@ function simulate(t, seconds, mode = "auto") {
   for (let i = 0; i < seconds * 120; i++) v.step(1 / 120);
   return v;
 }
-test("all 61 assets produce finite smooth geometry and exact snap endpoints", () => {
-  assert.equal(CATALOG.length, 61);
+test("all 71 assets produce finite smooth geometry and exact snap endpoints", () => {
+  assert.equal(CATALOG.length, 71);
   for (let a of CATALOG) {
     let p = piece(a.id, 0, 5);
     const g = makePiece(p);
@@ -52,6 +52,7 @@ test("all 61 assets produce finite smooth geometry and exact snap endpoints", ()
           assert.ok(Number.isFinite(n));
     });
     disposeGroup(g);
+    if (a.kind === "scenery") continue;
     let end = endpoint(p),
       q = piece("straight", end.x + 0.3, end.y, end.z);
     const snapped = snapCandidate(q, [p]);
@@ -300,7 +301,7 @@ test("playground demo has connected loop and reaches the finish", async () => {
 
 test('library miniatures use distinct finite geometry for actual profiles',async()=>{
  const {icon}=await import('../../public/prototypes/race-track-studio/piece-preview.js');
- for(const a of CATALOG){const svg=icon(a);assert.ok(svg.includes('<svg'));assert.ok(!/NaN|Infinity|undefined/.test(svg),a.id);}
+ for(const a of CATALOG){const svg=icon(a);assert.ok(svg.includes(a.kind === 'scenery' ? 'scenery-icon' : '<svg'));assert.ok(!/NaN|Infinity|undefined/.test(svg),a.id);}
  const preview=id=>icon(CATALOG.find(a=>a.id===id));
  for(const [a,b] of [['short','long'],['left','right'],['rise','ramp'],['vertical-loop','rolling-hills'],['boost','brake']])assert.notEqual(preview(a),preview(b));
 });
@@ -361,4 +362,19 @@ test("snap aligns a misrotated preview without placing or mutating a piece", () 
   assert.equal(snap.piece.yaw, end.heading);
   assert.equal(preview.yaw, end.heading + Math.PI);
   assert.equal(track.pieces.length, 2);
+});
+
+test("scenery saves with the build without changing routing or the time trial", async () => {
+  const { raceRecordKey } = await import("../../public/prototypes/race-track-studio/storage.js");
+  const track = chain(["start", "straight", "finish"]);
+  const key = raceRecordKey(track, "auto");
+  const tree = piece("scenery-pine", 1, 0, 0);
+  track.pieces.unshift(tree);
+  const restored = parseTrack(serialize(track));
+  assert.equal(restored.pieces[0].type, tree.type);
+  assert.equal(validate(restored).links.length, 2);
+  assert.deepEqual(validate(restored).disconnected, []);
+  assert.equal(snapCandidate(tree, restored.pieces), null);
+  assert.equal(raceRecordKey(restored, "auto"), key);
+  assert.ok(simulate(restored, 10).finished);
 });
