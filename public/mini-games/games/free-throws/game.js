@@ -1,7 +1,7 @@
 import {createHoops,DURATION,shotPower,hoopAt,clamp} from './engine.js';
 const root=document.querySelector('#free-throw-fever'),$=id=>root.querySelector('#'+id),canvas=$('canvas'),ctx=canvas.getContext('2d');
 let last=null,clock=0,owner=null,ready=false,arena=new Image(),particles=[],messageAge=0,best=0;
-try{best=Number(localStorage.getItem('free-throws-arcade-v5-best'))||0;}catch{}
+try{best=Number(localStorage.getItem('free-throws-arcade-v6-best'))||0;}catch{}
 const game = createHoops(event => {
  if (event.type === 'finish') {
   finish(event.result);
@@ -11,14 +11,14 @@ const game = createHoops(event => {
  const shot = event.shot;
  const gold = shot.multiplier > 1;
  messageAge = 1.2;
- $('feedback').className = shot.make ? (gold ? 'feedback gold' : 'feedback made') : 'feedback';
+ $('feedback').className = shot.lucky ? 'feedback rim-roller' : shot.make ? (gold ? 'feedback gold' : 'feedback made') : 'feedback';
  $('verdict').textContent = shot.label;
  $('detail').textContent = shot.make
   ? '+' + shot.points + ' POINTS' + (gold ? ' · GOLD BALL!' : '')
-  : (shot.error < 0 ? 'Hold a little longer.' : 'Release a little sooner.');
+  : shot.lucky ? 'A wild bounce finds the net!' : (shot.error < 0 ? 'Hold a little longer.' : 'Release a little sooner.');
  $('live').textContent = shot.label + (shot.make ? ' ' + shot.points + ' points.' : '');
  if (!shot.make) return;
- const color = gold ? '#ffcd65' : shot.swish ? '#9dffe2' : '#fff2d5';
+ const color = shot.lucky ? '#ffad5a' : gold ? '#ffcd65' : shot.swish ? '#9dffe2' : '#fff2d5';
  for (let i = 0; i < 18; i++) {
   particles.push({
    x: 300 + shot.hoop.x * 240, y: 246,
@@ -32,7 +32,7 @@ $('start').disabled=true;$('start').textContent='LOADING THE COURT…';arena.onl
 function clear(){owner=null;game.cancel();}
 function start(){if(!ready)return;clear();game.start();last=null;particles=[];messageAge=0;$('overlay').hidden=true;$('results').hidden=true;$('intro').hidden=false;$('pause').disabled=false;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 function show(title,description,label){$('title').textContent=title;$('description').textContent=description;$('start').textContent=label;$('overlay').hidden=false;}
-function finish(result){clear();best=Math.max(best,result.score);try{localStorage.setItem('free-throws-arcade-v5-best',String(best));}catch{}$('eyebrow').textContent='FINAL BUZZER';$('intro').hidden=true;$('results').hidden=false;$('results').innerHTML=[['BUCKETS',result.makes+' / '+result.attempts],['SWISHES',result.swishes],['BEST',best]].map(([label,value])=>'<div>'+label+'<strong>'+value+'</strong></div>').join('');show(result.score+' POINTS!',result.accuracy+'% accuracy · Best streak '+result.bestStreak,'RUN IT BACK ↗');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:result}));}
+function finish(result){clear();best=Math.max(best,result.score);try{localStorage.setItem('free-throws-arcade-v6-best',String(best));}catch{}$('eyebrow').textContent='FINAL BUZZER';$('intro').hidden=true;$('results').hidden=false;$('results').innerHTML=[['BUCKETS',result.makes+' / '+result.attempts],['SWISHES',result.swishes],['BEST',best]].map(([label,value])=>'<div>'+label+'<strong>'+value+'</strong></div>').join('');show(result.score+' POINTS!',result.accuracy+'% accuracy · Best streak '+result.bestStreak,'RUN IT BACK ↗');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:result}));}
 function pause(){if(!['playing','countdown','buzzer'].includes(game.state.phase))return;game.pause();clear();$('intro').hidden=true;$('results').hidden=true;show('TIME OUT.','Your round is paused.','BACK TO THE COURT ↗');$('pause').textContent='Resume';}
 function resume(){game.resume();last=null;$('overlay').hidden=true;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 $('start').onclick=()=>game.state.phase==='paused'?resume():start();$('pause').onclick=()=>game.state.phase==='paused'?resume():pause();
@@ -86,9 +86,44 @@ function draw(dt, releaseNow){const s=game.state,sh=s.shot,cfg=sh||game.config()
  ellipse(hx, hy - 2, rim, 15, null, '#ff7b40', 8);
  ellipse(hx, hy - 4, rim, 14, null, rimLight, 3);
  let bx=300,by=570,br=43,spin=clock*.25;
- if(sh){const u=clamp(sh.age/sh.rim,0,1),miss=sh.make?0:(sh.error<0?72:-85),endY=hy+miss;bx=300+(hx-300)*u;by=570+(endY-570)*u-Math.sin(Math.PI*u)*205;br=43+(15-43)*u;spin=sh.age*6;
-  if(sh.age>sh.rim){const v=clamp((sh.age-sh.rim)/(sh.flight-sh.rim),0,1);bx=hx+(sh.make?0:55)*v;by=endY+160*v-(sh.make?0:Math.sin(Math.PI*v)*35);br=15+v*4;}
-  if(sh.make&&sh.age<sh.rim){ctx.save();ctx.globalAlpha=.17;for(let i=1;i<=3;i++)ellipse(bx-(hx-300)*.02*i,by+14*i,br-i*2,br-i*2,'#fff3b3');ctx.restore();}
+ if (sh) {
+  spin = sh.age * 6;
+  if (sh.lucky && sh.age < .68) {
+   const approach = clamp(sh.age / .68, 0, 1);
+   bx = 300 + (hx - 300) * approach;
+   by = 570 + (hy - 8 - 570) * approach - Math.sin(Math.PI * approach) * 145;
+   br = 43 - 28 * approach;
+  } else if (sh.lucky && sh.age < sh.rim) {
+   const bounce = sh.age - .68;
+   const decay = 1 - bounce / (sh.rim - .68);
+   bx = hx + Math.sin(bounce * 24) * 35 * decay;
+   by = hy - 8 - Math.abs(Math.sin(bounce * 27)) * 31 * decay;
+   br = 15;
+  } else if (sh.lucky && sh.age >= sh.rim) {
+   const fall = clamp((sh.age - sh.rim) / (sh.flight - sh.rim), 0, 1);
+   bx = hx;
+   by = hy + 155 * fall;
+   br = 15 + fall * 4;
+  } else {
+   const u = clamp(sh.age / sh.rim, 0, 1);
+   const miss = sh.make ? 0 : sh.error < 0 ? 72 : -85;
+   const endY = hy + miss;
+   bx = 300 + (hx - 300) * u;
+   by = 570 + (endY - 570) * u - Math.sin(Math.PI * u) * 205;
+   br = 43 + (15 - 43) * u;
+   if (sh.age > sh.rim) {
+    const fall = clamp((sh.age - sh.rim) / (sh.flight - sh.rim), 0, 1);
+    bx = hx + (sh.make ? 0 : 55) * fall;
+    by = endY + 160 * fall - (sh.make ? 0 : Math.sin(Math.PI * fall) * 35);
+    br = 15 + fall * 4;
+   }
+  }
+  if (sh.make && sh.age < sh.rim) {
+   ctx.save();
+   ctx.globalAlpha = sh.lucky ? .36 : .17;
+   for (let i = 1; i <= 3; i++) ellipse(bx - (hx - 300) * .02 * i, by + 14 * i, br - i * 2, br - i * 2, sh.lucky ? '#ffd2a0' : '#fff3b3');
+   ctx.restore();
+  }
  }
  ellipse(bx, 610, br * .9, br * .18, '#25152866');
  if (!sh && s.holding) {
@@ -96,7 +131,7 @@ function draw(dt, releaseNow){const s=game.state,sh=s.shot,cfg=sh||game.config()
  }
  drawBall(bx,by,br,spin,cfg.multiplier>1);
  // Front lip occludes a descending made shot, but never hides the ball's ascent.
- if(sh&&sh.age>=sh.rim*.95&&sh.age<sh.rim+.14&&sh.make){ctx.beginPath();ctx.ellipse(hx,hy-2,rim,15,0,0,Math.PI);ctx.strokeStyle=rimLight;ctx.lineWidth=7;ctx.stroke();}
+ if(sh&&sh.age>=sh.rim*.95&&sh.age<sh.rim+.14&&sh.make&&!sh.lucky){ctx.beginPath();ctx.ellipse(hx,hy-2,rim,15,0,0,Math.PI);ctx.strokeStyle=rimLight;ctx.lineWidth=7;ctx.stroke();}
  for(const p of particles){if(['playing','buzzer'].includes(s.phase)){p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=220*dt;p.life-=dt;}ctx.save();ctx.globalAlpha=Math.max(0,p.life);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,4,7);ctx.restore();}particles=particles.filter(p=>p.life>0);
 }
 function render(dt) {
