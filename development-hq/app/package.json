@@ -1,0 +1,20 @@
+{
+  "name": "teach-arcade-development-hq",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "check:safety": "node scripts/check-safety.mjs"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "@neondatabase/serverless": "1.2.0",
+    "@neon/auth": "latest",
+    "@neon/config": "1.14.0"
+  }
+}
