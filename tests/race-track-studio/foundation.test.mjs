@@ -320,3 +320,34 @@ test("elevated connector targeting aligns curves and accepts ramp lips", () => {
   assert.equal(placementIssue(snap.piece, [ramp]), null);
   assert.equal(validate({ pieces: [ramp, snap.piece] }).links.length, 1);
 });
+
+test("finish time is recorded at the gate, after entering the finish piece", () => {
+  const track = chain(["start", "short", "finish"]);
+  const vehicle = new Vehicle(track, "auto");
+  const finish = track.pieces.at(-1);
+  let entered = false;
+  for (let i = 0; i < 1200 && !vehicle.finished; i++) {
+    vehicle.step(1 / 120);
+    if (vehicle.pos.x > finish.x + 0.1 && !vehicle.finished) entered = true;
+  }
+  assert.ok(entered);
+  assert.ok(vehicle.finished);
+  assert.ok(vehicle.pos.x >= (finish.x + endpoint(finish).x) / 2);
+  assert.ok(vehicle.elapsed - vehicle.finishTime <= 1 / 120);
+});
+
+test("race records keep faster runs and separate modes and layouts", async () => {
+  const { raceRecordKey, bestRaceTime, saveBestRaceTime } = await import(
+    "../../public/prototypes/race-track-studio/storage.js"
+  );
+  const track = chain(["start", "short", "finish"]);
+  const key = raceRecordKey(track, "auto");
+  assert.equal(bestRaceTime(key), null);
+  assert.deepEqual(saveBestRaceTime(key, 5), { best: 5, improved: true });
+  assert.deepEqual(saveBestRaceTime(key, 6), { best: 5, improved: false });
+  assert.deepEqual(saveBestRaceTime(key, 4), { best: 4, improved: true });
+  assert.equal(bestRaceTime(key), 4);
+  assert.equal(bestRaceTime(raceRecordKey(track, "manual")), null);
+  track.pieces[1].x += 1;
+  assert.equal(bestRaceTime(raceRecordKey(track, "auto")), null);
+});

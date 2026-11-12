@@ -176,7 +176,7 @@ export function makePiece(piece, selected = false, ghost = false) {
     }
     if (a.interaction) {
       const color = a.interaction === "boost" ? "#ffd271" : "#f9f6df";
-      for (let t = 0.3; t <= 0.7; t += 0.2) {
+      for (let t = 0.3; a.interaction !== "finish" && t <= 0.7; t += 0.2) {
         let p = sample(piece, t);
         const strip = new T.Mesh(
           new T.BoxGeometry(0.22, 0.035, 3.1),
@@ -204,6 +204,28 @@ export function makePiece(piece, selected = false, ghost = false) {
         let cross = new T.Mesh(new T.BoxGeometry(0.28, 0.45, 4.3), m);
         cross.position.y = 3.35;
         arch.add(cross);
+        if (a.interaction === "finish") {
+          const light = new T.MeshStandardMaterial({ color: "#fff9e7" });
+          const dark = new T.MeshStandardMaterial({ color: "#292044" });
+          for (let row = 0; row < 2; row++) {
+            for (let col = 0; col < 8; col++) {
+              const material = (row + col) % 2 ? light : dark;
+              const tile = new T.Mesh(new T.BoxGeometry(0.29, 0.026, 0.4), material);
+              tile.position.set((row - 0.5) * 0.29, 0.365, (col - 3.5) * 0.4);
+              arch.add(tile);
+              const bannerTile = new T.Mesh(new T.BoxGeometry(0.035, 0.19, 0.5), material);
+              bannerTile.position.set(-0.145, 3.35 + (row - 0.5) * 0.19, (col - 3.5) * 0.5);
+              arch.add(bannerTile);
+            }
+          }
+        } else {
+          for (const [index, color] of ["#ff453a", "#ffce00", "#30e190"].entries()) {
+            const lamp = new T.Mesh(new T.SphereGeometry(0.16, 8, 6),
+              new T.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.45 }));
+            lamp.position.set(-0.19, 3.35, (index - 1) * 0.52);
+            arch.add(lamp);
+          }
+        }
         arch.position.set(p.x, p.y, p.z);
         arch.rotation.y = -p.heading;
         g.add(arch);

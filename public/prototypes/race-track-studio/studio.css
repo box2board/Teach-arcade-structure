@@ -1285,3 +1285,33 @@ footer {
   background: #f8fbff;
 }
 #close-tools { min-height: 40px; flex-shrink: 0; }
+
+.speed-meter {
+  height: 5px;
+  margin-top: 6px;
+  border-radius: 8px;
+  background: #e6d6f9;
+  overflow: hidden;
+}
+.speed-meter i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #8948f5, #f85a8d, #ffae15);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.best-time { font-size: 11px; font-weight: 800; }
+.drive-effect {
+  align-self: center;
+  border: 2px solid #fff6d4;
+  border-radius: 10px;
+  padding: 6px 10px;
+  background: #5b28bc;
+  color: white;
+  font-size: 11px;
+  font-weight: 900;
+}
+.finish-record { color: #542095; font-weight: 900; }
+@media (max-width: 440px) {
+  .drive-effect { position: absolute; top: 100%; left: 0; margin-top: 7px; }
+}

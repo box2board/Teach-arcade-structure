@@ -95,6 +95,7 @@ export class Vehicle {
     this.paused = false;
     this.elapsed = 0;
     this.finished = false;
+    this.surfaceEffect = null;
     this.buildSurfaces();
     this.reset();
   }
@@ -187,6 +188,7 @@ export class Vehicle {
       }
     }
     if (this.loopRide) {
+      this.surfaceEffect = "loop";
       this.stepLoop(dt);
       return;
     }
@@ -202,6 +204,7 @@ export class Vehicle {
       this.velocity.y <= 3 &&
       this.pos.y >= surf.y - 0.9 &&
       this.pos.y <= surf.y + 0.6;
+    this.surfaceEffect = attached ? asset(surf.piece.type).interaction : null;
     if (attached) {
       this.grounded = true;
       this.airtime = 0;
@@ -211,8 +214,8 @@ export class Vehicle {
         this.velocity.z * Math.sin(this.yaw);
       let accel = this.mode === "auto" ? 6 : up ? 10 : 0;
       if (down) accel = forward > 1 ? -18 : -5;
-      if (asset(surf.piece.type).interaction === "boost") accel += 20;
-      if (asset(surf.piece.type).interaction === "brake" && forward > 6)
+      if (this.surfaceEffect === "boost") accel += 20;
+      if (this.surfaceEffect === "brake" && forward > 6)
         accel = Math.min(accel, -16);
       forward += (accel - 9.81 * surf.slope - 0.065 * forward) * dt;
       forward = Math.max(-7, Math.min(32, forward));
@@ -248,8 +251,15 @@ export class Vehicle {
       this.pitch = Math.atan(surf.slope);
       this.bank = surf.bank;
       if (surf.piece.type === "finish" && !this.finished) {
-        this.finished = true;
-        this.finishTime = this.elapsed;
+        const gate = sample(surf.piece, 0.5);
+        const forwardX = Math.cos(gate.heading);
+        const forwardZ = Math.sin(gate.heading);
+        const remaining = (gate.x - this.pos.x) * forwardX + (gate.z - this.pos.z) * forwardZ;
+        const advance = dt * (this.velocity.x * forwardX + this.velocity.z * forwardZ);
+        if (advance > 0 && remaining >= 0 && remaining <= advance) {
+          this.finished = true;
+          this.finishTime = this.elapsed - dt + dt * remaining / advance;
+        }
       }
     } else {
       this.grounded = false;

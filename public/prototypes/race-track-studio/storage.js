@@ -73,3 +73,36 @@ export function deleteSave(id) {
   delete all[id];
   localStorage.setItem(KEY, JSON.stringify(all));
 }
+
+const BEST_TIMES = "teacharcade.racestudio.best-times.v1";
+export function raceRecordKey(track, mode) {
+  const start = Math.max(0, track.pieces.findIndex((piece) => piece.id === track.startId));
+  return JSON.stringify([mode, start, track.pieces.map(({ type, x, y, z, yaw, length }) =>
+    [type, x, y, z, yaw, length])]);
+}
+function raceRecords() {
+  try {
+    const records = JSON.parse(localStorage.getItem(BEST_TIMES) || "[]");
+    return Array.isArray(records) ? records.filter((record) =>
+      Array.isArray(record) && typeof record[0] === "string" &&
+      Number.isFinite(record[1]) && record[1] > 0) : [];
+  } catch {
+    return [];
+  }
+}
+export function bestRaceTime(key) {
+  return raceRecords().find(([storedKey]) => storedKey === key)?.[1] ?? null;
+}
+export function saveBestRaceTime(key, time) {
+  const records = raceRecords();
+  const previous = records.find(([storedKey]) => storedKey === key)?.[1] ?? null;
+  if (!Number.isFinite(time) || time <= 0 || (previous !== null && time >= previous))
+    return { best: previous, improved: false };
+  try {
+    const updated = [[key, time], ...records.filter(([storedKey]) => storedKey !== key)].slice(0, 40);
+    localStorage.setItem(BEST_TIMES, JSON.stringify(updated));
+  } catch {
+    return { best: previous, improved: false };
+  }
+  return { best: time, improved: true };
+}

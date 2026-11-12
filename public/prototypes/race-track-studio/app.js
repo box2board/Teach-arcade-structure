@@ -150,12 +150,11 @@ function refreshConnectors(target = null, rebuild = false) {
       connectors.add(ring);
     }
   }
-  for (const marker of connectors.children)
-    marker.material.color.set(
-      marker.userData.pieceId === target
-        ? "#ffcb00"
-        : marker.userData.baseColor,
-    );
+  for (const marker of connectors.children) {
+    const highlighted = marker.userData.pieceId === target;
+    marker.material.color.set(highlighted ? "#ffcb00" : marker.userData.baseColor);
+    marker.scale.setScalar(highlighted ? 1.55 : 1);
+  }
 }
 function inspector() {
   const p = editor.selection;
@@ -258,8 +257,9 @@ function showPlacement(p, snap) {
     if (issue) ghost.traverse((o) => o.material?.color?.set("#ff3152"));
     scene.scene.add(ghost);
   }
-  $("hint").textContent = issue || (snap
-    ? "Snapped to exit · click or tap to place"
+  const target = editor.track.pieces.find((other) => other.id === snap?.target);
+  $("hint").textContent = issue || (target
+    ? `Attach to ${asset(target.type).name} · click or tap to place`
     : "Click or tap to place · R rotate · Esc cancel");
 }
 function proposal(ev) {
@@ -512,7 +512,7 @@ function startTest() {
   }
   cancel();
   vehicle = new Vehicle(structuredClone(editor.track), $("mode").value);
-  game.start();
+  game.start(vehicle.track, vehicle.mode);
   $("mode").disabled = true;
   scene.scene.add(vehicle.mesh);
   connectors.visible = false;
@@ -568,7 +568,7 @@ function restartRun() {
   vehicle.reset();
   vehicle.paused = false;
   accumulator = 0;
-  game.start();
+  game.start(vehicle.track, vehicle.mode);
   $("pause").textContent = "Ⅱ Pause";
   reportedFinish = false;
 }
@@ -731,10 +731,10 @@ function animate(now) {
   const dt = Math.min((now - last) / 1000, 0.06);
   last = now;
   if (vehicle) {
-    if (game.tick(dt, vehicle.speed, vehicle.paused)) accumulator += dt;
+    if (game.tick(dt, vehicle)) accumulator += dt;
     else accumulator = 0;
     let steps = 0;
-    while (accumulator >= 1 / 120 && steps++ < 8) {
+    while (accumulator >= 1 / 120 && steps++ < 8 && !vehicle.finished) {
       vehicle.step(1 / 120);
       accumulator -= 1 / 120;
     }

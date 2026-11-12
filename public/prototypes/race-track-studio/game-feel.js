@@ -1,3 +1,4 @@
+import { bestRaceTime, raceRecordKey, saveBestRaceTime } from "./storage.js";
 import { PlayFlow } from "./play-flow.js";
 export class GameFeel {
   constructor(actions) {
@@ -10,9 +11,13 @@ export class GameFeel {
     layer.id = "game-layer";
     layer.innerHTML = `
  <div id="game-menu" class="game-overlay"><div class="game-card start-card"><span class="game-kicker">TEACH ARCADE • CREATIVE PLAYGROUND</span><div class="toy-car" aria-hidden="true"><i></i></div><h1>BIG TRACKS.<br><em>WILD RIDES.</em></h1><p>Snap it. Build it. Send it!</p><button id="game-build" class="game-primary">✦ Let's build!</button><button id="game-demo">🏁 Try the loop track</button><button id="game-saves">★ My tracks</button><small>Your current creation stays safe.</small></div></div>
- <div id="game-hud" hidden><div class="hud-chip"><small>SPEED</small><b id="game-speed">0</b><span>km/h</span></div><div class="hud-chip"><small>TIME</small><b id="game-time">0.0</b><span>seconds</span></div></div>
+ <div id="game-hud" hidden>
+   <div class="hud-chip"><small>SPEED</small><b id="game-speed">0</b><span>km/h</span><div class="speed-meter" aria-hidden="true"><i id="speed-fill"></i></div></div>
+   <div class="hud-chip"><small>TIME</small><b id="game-time">0.0</b><span>s</span><div id="game-best" class="best-time"></div></div>
+   <div id="drive-effect" class="drive-effect" hidden></div>
+ </div>
  <div id="game-countdown" role="status" aria-live="polite"></div>
- <div id="game-finish" class="game-overlay" hidden><div class="game-card"><div class="finish-stars" aria-hidden="true">★ ★ ★</div><h2>WHAT A RIDE!</h2><p id="finish-summary"></p><button id="game-again" class="game-primary">↻ Race again</button><button id="game-back">🔧 Keep building</button></div></div>
+ <div id="game-finish" class="game-overlay" hidden><div class="game-card"><div class="finish-stars" aria-hidden="true">★ ★ ★</div><h2>WHAT A RIDE!</h2><p id="finish-summary"></p><p id="finish-record" class="finish-record" hidden></p><button id="game-again" class="game-primary">↻ Race again</button><button id="game-back">🔧 Keep building</button></div></div>
  `;
     document.body.append(layer);
     document.getElementById("game-build").onclick = () => {
@@ -74,7 +79,12 @@ export class GameFeel {
       osc.stop(now + duration);
     } catch {}
   }
-  start() {
+  start(track, mode) {
+    this.recordKey = raceRecordKey(track, mode);
+    const best = bestRaceTime(this.recordKey);
+    document.getElementById("game-best").textContent = best === null ? "" : `Best ${best.toFixed(2)} s`;
+    document.getElementById("speed-fill").style.transform = "scaleX(0)";
+    document.getElementById("drive-effect").hidden = true;
     this.unlock();
     this.flow.reset();
     this.driving = true;
@@ -94,18 +104,25 @@ export class GameFeel {
     document.getElementById("game-hud").hidden = true;
     document.getElementById("game-countdown").textContent = "";
   }
-  tick(dt, speed, paused) {
+  tick(dt, vehicle) {
+    const { speed, paused, elapsed, surfaceEffect, grounded, airtime } = vehicle;
     this.flow.paused = paused;
     const simulate = this.flow.tick(dt, speed);
     const label = this.flow.label;
-    document.getElementById("game-countdown").textContent = label;
+    const countdown = document.getElementById("game-countdown");
+    if (countdown.textContent !== label) countdown.textContent = label;
     if (label && label !== this.lastCue && !paused) {
       this.tone(label === "GO!" ? 880 : 440, 0.1);
       this.lastCue = label;
     }
     document.getElementById("game-speed").textContent = Math.round(speed * 3.6);
-    document.getElementById("game-time").textContent =
-      this.flow.time.toFixed(1);
+    document.getElementById("game-time").textContent = elapsed.toFixed(1);
+    document.getElementById("speed-fill").style.transform = `scaleX(${Math.min(1, speed / 32)})`;
+    const effect = document.getElementById("drive-effect");
+    const cue = surfaceEffect === "boost" ? "BOOST" : surfaceEffect === "brake" ? "BRAKE ZONE" :
+      !grounded && airtime > 0.1 && vehicle.pos.y > 0.4 ? "AIRBORNE" : "";
+    if (effect.textContent !== cue) effect.textContent = cue;
+    effect.hidden = !cue || this.flow.finished;
     return simulate;
   }
   finish(time) {
@@ -113,6 +130,11 @@ export class GameFeel {
     document.getElementById("game-countdown").textContent = "";
     document.getElementById("finish-summary").textContent =
       `${time.toFixed(2)} seconds • Top speed ${Math.round(this.flow.peak * 3.6)} km/h`;
+    const record = saveBestRaceTime(this.recordKey, time);
+    const recordLabel = document.getElementById("finish-record");
+    recordLabel.hidden = record.best === null;
+    recordLabel.textContent = record.best === null ? "" :
+      `${record.improved ? "Personal best" : "Best time"} · ${record.best.toFixed(2)} s`;
     document.getElementById("game-finish").hidden = false;
     document.getElementById("game-again").focus();
     this.tone(1046, 0.3);
