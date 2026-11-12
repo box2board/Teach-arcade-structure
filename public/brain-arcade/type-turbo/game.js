@@ -92,8 +92,8 @@
       els.pause.disabled = false;
       els.pause.textContent = 'Pause';
       els.trackWrap.classList.add('is-racing');
-      els.trackStatus.textContent = 'RACE IN PROGRESS';
-      setFeedback('Find your rhythm. Clean words build your combo.', 'ok');
+      els.trackStatus.textContent = 'LAUNCH IN PROGRESS';
+      setFeedback('Find your rhythm. Clean words charge your thrusters.', 'ok');
       scroll = 0;
       celebration = 0;
       inputErrorCount = 0;
@@ -107,7 +107,7 @@
     if (name === 'onResume') {
       active = true;
       els.pause.textContent = 'Pause';
-      setFeedback('Back on track.', 'ok');
+      setFeedback('Back in orbit.', 'ok');
       els.input.focus();
     }
     if (name === 'onTargetNew') {
@@ -130,7 +130,7 @@
     }
     if (name === 'onTimeout') {
       errorPulse = 1;
-      setFeedback('Time ran out. Reset, then chase the next word.', 'warn');
+      setFeedback('Word timer expired. Power up for the next word.', 'warn');
     }
     if (name === 'onStatsUpdate') {
       latestStats = payload;
@@ -144,7 +144,7 @@
       els.pause.disabled = true;
       els.pause.textContent = 'Pause';
       els.trackWrap.classList.remove('is-racing');
-      els.trackStatus.textContent = 'FINISH LINE';
+      els.trackStatus.textContent = 'MISSION COMPLETE';
       setFeedback(payload.reason || 'Run complete', 'ok');
       showResults(payload.stats || latestStats || {});
     }
@@ -226,7 +226,7 @@
     setTarget('Press start to race');
     els.input.value = '';
     els.input.disabled = true;
-    setFeedback('Type each word to launch forward. Fix typos with backspace.');
+    setFeedback('Type each word to send your rocket higher. Fix typos with backspace.');
     updateHud(latestStats);
     scroll = 0;
     targetWindowMs = null;
@@ -254,112 +254,164 @@
     const width = els.track.clientWidth;
     const height = els.track.clientHeight;
     if (!width || !height) return;
-    scroll += delta * (active ? 0.15 + Math.min((latestStats?.wpm || 0) / 320, 0.2) : 0.025);
-    const gradient = ctx.createLinearGradient(0, 0, 0, height);
-    gradient.addColorStop(0, '#07142d');
-    gradient.addColorStop(.58, '#132a4e');
-    gradient.addColorStop(1, '#07101f');
-    ctx.fillStyle = gradient;
+    scroll += delta * (active ? 0.12 + Math.min((latestStats?.wpm || 0) / 300, 0.22) : 0.018);
+
+    const sky = ctx.createLinearGradient(0, 0, 0, height);
+    sky.addColorStop(0, '#080b28');
+    sky.addColorStop(.48, '#141745');
+    sky.addColorStop(1, '#080d24');
+    ctx.fillStyle = sky;
     ctx.fillRect(0, 0, width, height);
 
-    for (let i = 0; i < 32; i += 1) {
-      const x = (i * 89 + 21) % width;
-      const y = (i * 53 + (scroll * (0.35 + (i % 4) * 0.12)) % (height + 20)) % height;
-      ctx.fillStyle = i % 5 === 0 ? 'rgba(52,211,255,.75)' : 'rgba(216,234,255,.45)';
-      ctx.fillRect(x, y, i % 5 === 0 ? 3 : 1.5, i % 5 === 0 ? 3 : 1.5);
-    }
+    const nebula = ctx.createRadialGradient(width * .76, height * .28, 4, width * .76, height * .28, width * .62);
+    nebula.addColorStop(0, 'rgba(105,72,210,.25)');
+    nebula.addColorStop(.48, 'rgba(44,105,196,.12)');
+    nebula.addColorStop(1, 'rgba(8,13,36,0)');
+    ctx.fillStyle = nebula;
+    ctx.fillRect(0, 0, width, height);
 
-    const trackWidth = Math.min(width * .72, 480);
-    const left = (width - trackWidth) / 2;
-    ctx.fillStyle = '#131c30';
-    ctx.beginPath();
-    ctx.moveTo(left + 22, 0);
-    ctx.lineTo(left + trackWidth - 22, 0);
-    ctx.lineTo(left + trackWidth, height);
-    ctx.lineTo(left, height);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.strokeStyle = 'rgba(54,222,255,.35)';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(left + 24, 0); ctx.lineTo(left + 2, height);
-    ctx.moveTo(left + trackWidth - 24, 0); ctx.lineTo(left + trackWidth - 2, height);
-    ctx.stroke();
-
-    ctx.strokeStyle = 'rgba(232,247,255,.55)';
-    ctx.lineWidth = 3;
-    ctx.setLineDash([24, 22]);
-    ctx.lineDashOffset = -(scroll % 46);
-    ctx.beginPath();
-    ctx.moveTo(width / 2, 0);
-    ctx.lineTo(width / 2, height);
-    ctx.stroke();
-    ctx.setLineDash([]);
-
-    // Horizon glow and side scenery keep the course lively on small screens.
-    ctx.fillStyle = 'rgba(35,213,255,.07)';
-    ctx.fillRect(left, height * .18, trackWidth, 2);
-    for (let side = 0; side < 2; side += 1) {
-      const sx = side ? left + trackWidth + 18 : left - 42;
-      for (let j = 0; j < 4; j += 1) {
-        const y = ((j * 86 + scroll * .55) % (height + 70)) - 35;
-        ctx.fillStyle = j % 2 ? 'rgba(45,120,190,.13)' : 'rgba(79,229,255,.12)';
-        ctx.fillRect(sx, y, 22, 26);
-      }
-    }
-
-    const carX = width / 2 + Math.sin(now / 650) * (active ? 3 : 0);
-    const carY = height * .68;
-    const boost = active && (latestStats?.combo || 0) >= 3;
-    ctx.save();
-    if (active && latestStats?.wpm > 20) {
-      ctx.strokeStyle = boost ? 'rgba(255,191,71,.7)' : 'rgba(69,220,255,.48)';
-      ctx.lineWidth = 2;
-      for (let n = 0; n < (boost ? 7 : 4); n += 1) {
-        const trailY = carY + 27 + ((n * 13 + scroll * 1.7) % 42);
+    // Star layers drift at different speeds to make the rocket feel like it is climbing.
+    for (let i = 0; i < 78; i += 1) {
+      const x = (i * 97 + 17) % width;
+      const speed = .22 + (i % 5) * .16;
+      const y = (i * 59 + (scroll * speed) % (height + 12)) % height;
+      const size = i % 11 === 0 ? 2.4 : i % 3 === 0 ? 1.5 : 1;
+      ctx.fillStyle = i % 8 === 0 ? 'rgba(180,231,255,.9)' : 'rgba(240,243,255,.72)';
+      ctx.beginPath();
+      ctx.arc(x, y, size, 0, Math.PI * 2);
+      ctx.fill();
+      if (active && i % 13 === 0) {
+        ctx.strokeStyle = 'rgba(120,218,255,.4)';
+        ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(carX - 11 + n * 3.6, trailY);
-        ctx.lineTo(carX - 11 + n * 3.6, trailY + 8 + n * 1.5);
+        ctx.moveTo(x, y + 4);
+        ctx.lineTo(x, y + 11 + (latestStats?.wpm || 0) * .08);
         ctx.stroke();
       }
     }
-    ctx.shadowColor = boost ? '#ffc857' : '#30d7ff';
-    ctx.shadowBlur = active ? (boost ? 28 : 18) : 10;
-    ctx.fillStyle = boost ? '#ffc857' : '#35d8ff';
+
+    // Distant planet with a luminous rim.
+    const planetX = width * .79, planetY = height * .27, planetR = Math.min(width, height) * .13;
+    const planet = ctx.createRadialGradient(planetX - planetR * .35, planetY - planetR * .42, 2, planetX, planetY, planetR);
+    planet.addColorStop(0, '#d4c8ff');
+    planet.addColorStop(.42, '#7669d7');
+    planet.addColorStop(1, '#302c78');
+    ctx.save();
+    ctx.shadowColor = 'rgba(144,130,255,.55)';
+    ctx.shadowBlur = 22;
+    ctx.fillStyle = planet;
     ctx.beginPath();
-    ctx.moveTo(carX, carY - 27);
-    ctx.lineTo(carX + 22, carY + 15);
-    ctx.lineTo(carX + 14, carY + 25);
-    ctx.lineTo(carX - 14, carY + 25);
-    ctx.lineTo(carX - 22, carY + 15);
+    ctx.arc(planetX, planetY, planetR, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+    ctx.strokeStyle = 'rgba(186,194,255,.22)';
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.ellipse(planetX, planetY + 2, planetR * 1.65, planetR * .36, -.18, Math.PI * 1.05, Math.PI * 1.95);
+    ctx.stroke();
+
+    // A few distant orbiting rocks give the starfield depth without distracting from typing.
+    for (let i = 0; i < 4; i += 1) {
+      const x = width * (i % 2 ? .13 : .88) + Math.sin(scroll * .001 + i) * 9;
+      const y = (height * (.22 + i * .17) + (scroll * .28) % (height + 40)) % height;
+      const radius = 3 + (i % 3) * 1.5;
+      ctx.fillStyle = 'rgba(122,151,194,.68)';
+      ctx.beginPath();
+      ctx.moveTo(x - radius, y - radius * .4);
+      ctx.lineTo(x + radius * .7, y - radius);
+      ctx.lineTo(x + radius, y + radius * .3);
+      ctx.lineTo(x - radius * .5, y + radius);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    const rocketX = width / 2 + Math.sin(now / 700) * (active ? 3 : 0);
+    const rocketY = height * .67;
+    const boost = active && (latestStats?.combo || 0) >= 3;
+    const flameLength = active ? 22 + Math.sin(now / 48) * 7 + Math.min((latestStats?.wpm || 0) * .14, 18) : 12;
+    ctx.save();
+    if (active && (latestStats?.wpm || 0) > 8) {
+      ctx.strokeStyle = boost ? 'rgba(255,197,92,.72)' : 'rgba(87,221,255,.48)';
+      ctx.lineWidth = 2;
+      for (let n = 0; n < 5; n += 1) {
+        const trailX = rocketX - 10 + n * 5;
+        const trailY = rocketY + 30 + ((n * 13 + scroll * 1.4) % 30);
+        ctx.beginPath();
+        ctx.moveTo(trailX, trailY);
+        ctx.lineTo(trailX, trailY + 8 + n);
+        ctx.stroke();
+      }
+    }
+
+    // Rocket exhaust.
+    ctx.shadowColor = boost ? '#ffd166' : '#ff8c5a';
+    ctx.shadowBlur = active ? 24 : 10;
+    ctx.fillStyle = boost ? '#ffd166' : '#ff9b66';
+    ctx.beginPath();
+    ctx.moveTo(rocketX - 8, rocketY + 17);
+    ctx.lineTo(rocketX, rocketY + 17 + flameLength);
+    ctx.lineTo(rocketX + 8, rocketY + 17);
     ctx.closePath();
     ctx.fill();
-    ctx.shadowBlur = 0;
-    ctx.fillStyle = '#e9fbff';
+    ctx.fillStyle = '#fff2a6';
     ctx.beginPath();
-    ctx.moveTo(carX, carY - 18);
-    ctx.lineTo(carX + 8, carY + 4);
-    ctx.lineTo(carX - 8, carY + 4);
+    ctx.moveTo(rocketX - 3, rocketY + 18);
+    ctx.lineTo(rocketX, rocketY + 18 + flameLength * .62);
+    ctx.lineTo(rocketX + 3, rocketY + 18);
     ctx.closePath();
     ctx.fill();
-    ctx.fillStyle = '#10233e';
-    ctx.fillRect(carX - 19, carY + 10, 6, 13);
-    ctx.fillRect(carX + 13, carY + 10, 6, 13);
+
+    // Rocket body, nose cone, fins, and cockpit.
+    ctx.shadowColor = boost ? '#ffd166' : '#49dcff';
+    ctx.shadowBlur = active ? (boost ? 28 : 18) : 12;
+    ctx.fillStyle = '#eaf5ff';
+    ctx.beginPath();
+    ctx.moveTo(rocketX, rocketY - 29);
+    ctx.quadraticCurveTo(rocketX + 16, rocketY - 8, rocketX + 13, rocketY + 14);
+    ctx.lineTo(rocketX - 13, rocketY + 14);
+    ctx.quadraticCurveTo(rocketX - 16, rocketY - 8, rocketX, rocketY - 29);
+    ctx.fill();
+    ctx.fillStyle = '#ff6f91';
+    ctx.beginPath();
+    ctx.moveTo(rocketX, rocketY - 29);
+    ctx.lineTo(rocketX + 8, rocketY - 12);
+    ctx.lineTo(rocketX - 8, rocketY - 12);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = '#3b8cff';
+    ctx.beginPath();
+    ctx.arc(rocketX, rocketY - 3, 6, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.86)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.fillStyle = boost ? '#ffc857' : '#45ddff';
+    ctx.beginPath();
+    ctx.moveTo(rocketX - 12, rocketY + 5);
+    ctx.lineTo(rocketX - 22, rocketY + 19);
+    ctx.lineTo(rocketX - 11, rocketY + 15);
+    ctx.closePath();
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(rocketX + 12, rocketY + 5);
+    ctx.lineTo(rocketX + 22, rocketY + 19);
+    ctx.lineTo(rocketX + 11, rocketY + 15);
+    ctx.closePath();
+    ctx.fill();
     ctx.restore();
 
     if (celebration > 0.01) {
       ctx.globalAlpha = celebration;
       ctx.strokeStyle = boost ? '#ffd166' : '#48e7ff';
-      ctx.lineWidth = 4;
+      ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.arc(carX, carY, 34 + (1 - celebration) * 38, 0, Math.PI * 2);
+      ctx.arc(rocketX, rocketY, 32 + (1 - celebration) * 42, 0, Math.PI * 2);
       ctx.stroke();
       ctx.globalAlpha = 1;
       celebration *= .89;
     }
     if (errorPulse > 0.01) {
-      ctx.globalAlpha = errorPulse * .55;
+      ctx.globalAlpha = errorPulse * .4;
       ctx.fillStyle = '#fb7185';
       ctx.fillRect(0, 0, width, height);
       ctx.globalAlpha = 1;

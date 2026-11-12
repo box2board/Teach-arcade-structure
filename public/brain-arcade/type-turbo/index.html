@@ -4,20 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f172a" />
-  <title>Type Turbo: Neon Circuit | Brain Arcade | Teach Arcade</title>
+  <title>Type Turbo: Cosmic Launch | Brain Arcade | Teach Arcade</title>
   <meta name="description" content="Type Turbo is a multi-mode typing challenge with difficulty levels, WPM tracking, accuracy scoring, and personal bests in Brain Arcade." />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/type-turbo/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
   <meta property="og:title" content="Type Turbo | Brain Arcade | Teach Arcade" />
-  <meta property="og:description" content="Race a neon circuit. Type clean, build a combo, and hit turbo." />
+  <meta property="og:description" content="Type clean to power your rocket through the stars." />
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/type-turbo/" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Type Turbo | Brain Arcade | Teach Arcade" />
-  <meta name="twitter:description" content="A neon arcade typing race with four modes, WPM tracking, and accuracy scoring." />
+  <meta name="twitter:description" content="A space-themed arcade typing game with four modes, WPM tracking, and accuracy scoring." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
@@ -43,7 +43,7 @@
     "name": "Type Turbo",
     "genre": "Typing game",
     "url": "https://teacharcade.com/brain-arcade/type-turbo/",
-    "description": "A neon arcade typing game with Sprint, Survival, Accuracy, and Zen modes.",
+    "description": "A space-themed arcade typing game with Sprint, Survival, Accuracy, and Zen modes.",
     "publisher": {
       "@type": "Organization",
       "name": "Teach Arcade"
@@ -59,14 +59,14 @@
       <div class="breadcrumbs"><a href="/brain-arcade/">← Brain Arcade</a></div>
       <header class="hero">
         <h1>Type Turbo</h1>
-        <p>Race a neon circuit. Type clean, build a combo, and hit turbo.</p>
+        <p>Type clean to power your rocket through the stars.</p>
       </header>
 
       <section class="game-shell" aria-label="Type Turbo racing game">
         <div class="game-topline">
           <div class="game-brand">
             <div class="game-mark" aria-hidden="true">T</div>
-            <div><strong>TYPE TURBO</strong><span>Neon Circuit · typing arcade</span></div>
+            <div><strong>TYPE TURBO</strong><span>Cosmic Launch · typing arcade</span></div>
           </div>
           <div class="control-grid">
             <div>
@@ -79,7 +79,7 @@
               </select>
             </div>
             <div>
-              <label for="modeSelect">Race mode</label>
+              <label for="modeSelect">Launch mode</label>
               <select id="modeSelect">
                 <option value="sprint">Sprint · 60 seconds</option>
                 <option value="survival">Survival · 5 lives</option>
@@ -88,7 +88,7 @@
               </select>
             </div>
             <div class="button-row">
-              <button id="startBtn" type="button">Start race</button>
+              <button id="startBtn" type="button">Start launch</button>
               <button id="pauseBtn" class="secondary" type="button" disabled>Pause</button>
               <button id="restartBtn" class="ghost" type="button">Restart</button>
             </div>
@@ -107,25 +107,25 @@
         <div class="game-layout">
           <section class="typing-panel" aria-label="Typing controls">
             <div class="target-label">
-              <span>Target word</span>
-              <span class="target-hint">Clean words charge your boost</span>
+              <span>Launch word</span>
+              <span class="target-hint">Clean words charge your thrusters</span>
             </div>
             <div class="target" id="targetWrap">
               <p id="targetText">Press start to race</p>
             </div>
-            <label class="sr-only" for="typingInput">Type the target word</label>
-            <input id="typingInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Type the target word" placeholder="Your typing goes here…" />
-            <p class="feedback" id="feedbackLine" aria-live="polite">Type each word to launch forward. Fix typos with backspace.</p>
+            <label class="sr-only" for="typingInput">Type the launch word</label>
+            <input id="typingInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Type the launch word" placeholder="Your typing goes here…" />
+            <p class="feedback" id="feedbackLine" aria-live="polite">Type each word to send your rocket higher. Fix typos with backspace.</p>
             <p class="typing-help">No Enter key needed. The next target appears when the word is complete.</p>
           </section>
 
-          <section class="visual-panel" aria-label="Neon Circuit race">
+          <section class="visual-panel" aria-label="Cosmic Launch mission">
             <div class="track-wrap" id="trackWrap">
-              <canvas id="raceCanvas" role="img" aria-label="Neon race track. Your typing powers the racer forward."></canvas>
-              <div class="track-topline"><span id="trackStatus" class="track-status">READY TO RACE</span><span class="track-badge">NEON CIRCUIT</span></div>
+              <canvas id="raceCanvas" role="img" aria-label="Space launch. Your typing powers a rocket through the stars."></canvas>
+              <div class="track-topline"><span id="trackStatus" class="track-status">READY FOR LIFTOFF</span><span class="track-badge">COSMIC LAUNCH</span></div>
               <div class="track-pressure" aria-hidden="true"></div>
             </div>
-            <div class="track-legend"><span>TYPE TO ACCELERATE</span><strong>3 clean words = TURBO</strong></div>
+            <div class="track-legend"><span>TYPE TO THRUST</span><strong>3 clean words = BOOST</strong></div>
           </section>
         </div>
 
