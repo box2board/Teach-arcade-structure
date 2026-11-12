@@ -220,7 +220,7 @@
     els.pause.disabled = true;
     els.pause.textContent = 'Pause';
     els.trackWrap.classList.remove('is-racing', 'has-error');
-    els.trackStatus.textContent = 'READY TO RACE';
+    els.trackStatus.textContent = 'READY FOR LIFTOFF';
     els.trackWrap.style.setProperty('--pressure', '1');
     els.results.hidden = true;
     setTarget('Press start to race');

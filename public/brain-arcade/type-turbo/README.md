@@ -1,6 +1,6 @@
-# Type Turbo: Neon Circuit
+# Type Turbo: Cosmic Launch
 
-Type Turbo is a keyboard-first racing game in the Teach Arcade Brain Arcade. Complete each target word to push your neon racer forward. Clean words build a combo and earn a score bonus. Typos remain editable: backspace to correct them and keep the run moving.
+Type Turbo is a keyboard-first space launch game in the Teach Arcade Brain Arcade. Complete each target word to send your rocket higher. Clean words charge the thrusters, build a combo, and earn a score bonus. Typos remain editable: backspace to correct them and keep the launch moving.
 
 ## Modes
 - **Sprint (60 seconds):** score as many words and points as possible.
@@ -18,7 +18,7 @@ Easy, Normal, Hard, and Pro change the target word pool. Survival also adjusts t
 - Personal best scores are saved in localStorage by mode and difficulty. The game remains playable if local storage is unavailable.
 
 ## Controls
-- **Start race:** starts the selected mode.
-- **Pause / Resume:** freezes timers and the run.
+- **Start launch:** starts the selected mode.
+- **Pause / Resume:** freezes timers and the launch.
 - **Restart:** resets the current setup.
 - **Typing:** type the shown word; no Enter key is required. Use Backspace to fix mistakes.
