@@ -40,6 +40,7 @@
   let celebration = 0;
   let errorPulse = 0;
   let inputErrorCount = 0;
+  let targetWindowMs = null;
   let active = false;
 
   function setFeedback(message, kind = '') {
@@ -112,7 +113,10 @@
       setFeedback('Back on track.', 'ok');
       els.input.focus();
     }
-    if (name === 'onTargetNew') setTarget(payload.targetText);
+    if (name === 'onTargetNew') {
+      targetWindowMs = payload.timeLimitMs;
+      setTarget(payload.targetText);
+    }
     if (name === 'onInputChange') paintTyped(payload.value || '');
     if (name === 'onInputError') {
       inputErrorCount += 1;
@@ -165,7 +169,7 @@
     els.score.textContent = (stats.score || 0).toLocaleString();
     updateRoundLabel();
     if (mode === 'survival' && Number.isFinite(stats.targetDeadline) && active) {
-      const ratio = Math.max(0, Math.min(1, (stats.targetDeadline - performance.now()) / 12000));
+      const ratio = Math.max(0, Math.min(1, (stats.targetDeadline - performance.now()) / (targetWindowMs || 12000)));
       els.trackWrap.style.setProperty('--pressure', String(ratio));
     } else {
       els.trackWrap.style.setProperty('--pressure', '1');
@@ -228,6 +232,7 @@
     setFeedback('Type each word to launch forward. Fix typos with backspace.');
     updateHud(latestStats);
     scroll = 0;
+    targetWindowMs = null;
     drawTrack(0, 0);
   }
 
