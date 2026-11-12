@@ -6,7 +6,7 @@ export class StudioScene {
     this.scene = new T.Scene();
     this.scene.background = new T.Color("#7bd5ff");
     this.scene.fog = new T.Fog("#7bd5ff", 110, 260);
-    this.camera = new T.PerspectiveCamera(43, 1, 0.1, 500);
+    this.camera = new T.PerspectiveCamera(43, 1, 0.5, 500);
     this.camera.position.set(52, 58, 70);
     this.renderer = new T.WebGLRenderer({
       antialias: true,
@@ -46,23 +46,26 @@ export class StudioScene {
     sun.shadow.bias = -0.001;
     this.scene.add(sun);
     this.sun = sun;
+    const buildSurfaceY = -0.1;
+    const platformThickness = 0.5;
     const ground = new T.Mesh(
       new T.PlaneGeometry(800, 800),
       new T.MeshStandardMaterial({ color: "#55cc4b", roughness: 1 }),
     );
     ground.rotation.x = -Math.PI / 2;
-    ground.position.y = -0.1;
+    // Separate the terrain from the platform to prevent depth flicker.
+    ground.position.y = buildSurfaceY - 0.25;
     ground.receiveShadow = true;
     this.scene.add(ground);
     const stage = new T.Mesh(
-      new T.BoxGeometry(150, 0.5, 150),
+      new T.BoxGeometry(150, platformThickness, 150),
       new T.MeshStandardMaterial({ color: "#c9ecff", roughness: 0.94 }),
     );
-    stage.position.y = -0.35;
+    stage.position.y = buildSurfaceY - platformThickness / 2;
     stage.receiveShadow = true;
     this.scene.add(stage);
     this.grid = new T.GridHelper(150, 75, "#60addb", "#a9d5f4");
-    this.grid.position.y = -0.085;
+    this.grid.position.y = buildSurfaceY + 0.025;
     this.grid.material.transparent = true;
     this.grid.material.opacity = 0.4;
     this.scene.add(this.grid);
