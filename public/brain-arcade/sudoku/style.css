@@ -615,8 +615,6 @@
   background: #1a1b35;
 }
 .more-from a { color: var(--arcade-cyan); }
-.sudoku-page + footer { color: #aaabc6; }
-.sudoku-page + footer a { color: var(--arcade-cyan); }
 
 @media (min-width: 900px) {
   .sudoku-layout { grid-template-columns: minmax(0, 1.22fr) minmax(275px, .78fr); }
