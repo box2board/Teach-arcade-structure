@@ -4,20 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0f172a" />
-  <title>Type Turbo | Brain Arcade | Teach Arcade</title>
+  <title>Type Turbo: Cosmic Launch | Brain Arcade | Teach Arcade</title>
   <meta name="description" content="Type Turbo is a multi-mode typing challenge with difficulty levels, WPM tracking, accuracy scoring, and personal bests in Brain Arcade." />
   <link rel="canonical" href="https://teacharcade.com/brain-arcade/type-turbo/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Teach Arcade" />
   <meta property="og:title" content="Type Turbo | Brain Arcade | Teach Arcade" />
-  <meta property="og:description" content="Race your fingers. Build speed. Stay accurate." />
+  <meta property="og:description" content="Type clean to power your rocket through the stars." />
   <meta property="og:url" content="https://teacharcade.com/brain-arcade/type-turbo/" />
   <meta property="og:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Type Turbo | Brain Arcade | Teach Arcade" />
-  <meta name="twitter:description" content="Typing race modes with difficulty levels—track WPM and accuracy." />
+  <meta name="twitter:description" content="A space-themed arcade typing game with four modes, WPM tracking, and accuracy scoring." />
   <meta name="twitter:image" content="https://teacharcade.com/assets/images/social/ta-social-card.png" />
 
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
@@ -43,7 +43,7 @@
     "name": "Type Turbo",
     "genre": "Typing game",
     "url": "https://teacharcade.com/brain-arcade/type-turbo/",
-    "description": "A multi-difficulty typing game with Sprint, Endless, Accuracy, and Zen modes.",
+    "description": "A space-themed arcade typing game with Sprint, Survival, Accuracy, and Zen modes.",
     "publisher": {
       "@type": "Organization",
       "name": "Teach Arcade"
@@ -59,79 +59,91 @@
       <div class="breadcrumbs"><a href="/brain-arcade/">← Brain Arcade</a></div>
       <header class="hero">
         <h1>Type Turbo</h1>
-        <p>Race your fingers. Build speed. Stay accurate.</p>
+        <p>Type clean to power your rocket through the stars.</p>
       </header>
 
-      <section class="game-shell" aria-label="Type Turbo game panel">
-        <div class="control-grid">
-          <div>
-            <label for="difficultySelect">Difficulty</label>
-            <select id="difficultySelect">
-              <option value="easy">Easy</option>
-              <option value="normal">Normal</option>
-              <option value="hard">Hard</option>
-              <option value="pro">Pro</option>
-            </select>
+      <section class="game-shell" aria-label="Type Turbo space launch game">
+        <div class="game-topline">
+          <div class="game-brand">
+            <div class="game-mark" aria-hidden="true">T</div>
+            <div><strong>TYPE TURBO</strong><span>Cosmic Launch · typing arcade</span></div>
           </div>
-          <div>
-            <label for="modeSelect">Mode</label>
-            <select id="modeSelect">
-              <option value="sprint">Sprint (60s)</option>
-              <option value="endless">Endless (5 lives)</option>
-              <option value="accuracy">Accuracy (50 items)</option>
-              <option value="zen">Zen</option>
-            </select>
-          </div>
-          <div>
-            <label for="visualModeSelect">Visual Mode</label>
-            <select id="visualModeSelect">
-              <option value="rocket">Rocket Launch</option>
-              <option value="city">City Builder</option>
-            </select>
+          <div class="control-grid">
+            <div>
+              <label for="difficultySelect">Difficulty</label>
+              <select id="difficultySelect">
+                <option value="easy">Easy</option>
+                <option value="normal">Normal</option>
+                <option value="hard">Hard</option>
+                <option value="pro">Pro</option>
+              </select>
+            </div>
+            <div>
+              <label for="modeSelect">Launch mode</label>
+              <select id="modeSelect">
+                <option value="sprint">Sprint · 60 seconds</option>
+                <option value="survival">Survival · 5 lives</option>
+                <option value="accuracy">Accuracy · 50 words</option>
+                <option value="zen">Zen · no pressure</option>
+              </select>
+            </div>
+            <div class="button-row">
+              <button id="startBtn" type="button">Start launch</button>
+              <button id="pauseBtn" class="secondary" type="button" disabled>Pause</button>
+              <button id="restartBtn" class="ghost" type="button">Restart</button>
+            </div>
           </div>
         </div>
 
-        <div class="row">
-          <button id="startBtn" type="button">Start</button>
-          <button id="pauseBtn" class="secondary" type="button">Pause</button>
-          <button id="restartBtn" class="ghost" type="button">Restart</button>
-        </div>
-
-        <div class="hud-grid" role="status" aria-live="polite">
-          <div class="hud-item"><span class="k">Timer</span><span class="v" id="timerDisplay">60.0s</span></div>
-          <div class="hud-item"><span class="k">Lives</span><span class="v" id="livesDisplay">5</span></div>
+        <div class="race-hud" role="status" aria-live="polite">
+          <div class="hud-item"><span class="k">Time / Mode</span><span class="v" id="timerDisplay">60s</span></div>
+          <div class="hud-item"><span class="k">Lives</span><span class="v" id="livesDisplay">—</span></div>
+          <div class="hud-item"><span class="k">Score</span><span class="v" id="scoreDisplay">0</span></div>
           <div class="hud-item"><span class="k">WPM</span><span class="v" id="wpmDisplay">0</span></div>
           <div class="hud-item"><span class="k">Accuracy</span><span class="v" id="accuracyDisplay">100%</span></div>
-          <div class="hud-item"><span class="k">Combo</span><span class="v" id="comboDisplay">0</span></div>
-          <div class="hud-item"><span class="k">Streak</span><span class="v" id="streakDisplay">0</span></div>
+          <div class="hud-item"><span class="k">Combo / Word</span><span class="v"><span id="comboDisplay">0×</span> · <span id="roundDisplay">1</span></span></div>
         </div>
 
         <div class="game-layout">
-          <section class="typing-panel">
-            <div class="target" id="targetWrap">
-              <p id="targetText">Press Start to begin.</p>
+          <section class="typing-panel" aria-label="Typing controls">
+            <div class="target-label">
+              <span>Launch word</span>
+              <span class="target-hint">Clean words charge your thrusters</span>
             </div>
-            <input id="typingInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Type the target text" placeholder="Type here..." />
-            <p class="feedback" id="feedbackLine" aria-live="polite">Ready.</p>
+            <div class="target" id="targetWrap">
+              <p id="targetText">Ready for liftoff</p>
+            </div>
+            <label class="sr-only" for="typingInput">Type the launch word</label>
+            <input id="typingInput" type="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" aria-label="Type the launch word" placeholder="Your typing goes here…" />
+            <p class="feedback" id="feedbackLine" aria-live="polite">Type each word to send your rocket higher. Fix typos with backspace.</p>
+            <p class="typing-help">No Enter key needed. The next target appears when the word is complete.</p>
           </section>
 
-          <section class="visual-panel" aria-label="Visual mode preview">
-            <div id="visualModePanel" class="visual-mode-host"></div>
+          <section class="visual-panel" aria-label="Cosmic Launch mission">
+            <div class="track-wrap" id="trackWrap">
+              <canvas id="raceCanvas" role="img" aria-label="Space launch. Your typing powers a rocket through the stars."></canvas>
+              <div class="track-topline"><span id="trackStatus" class="track-status">READY FOR LIFTOFF</span><span class="track-badge">COSMIC LAUNCH</span></div>
+              <div class="track-pressure" aria-hidden="true"></div>
+            </div>
+            <div class="track-legend"><span>TYPE TO THRUST</span><strong>3 clean words = BOOST</strong></div>
           </section>
         </div>
 
         <section class="results" id="resultsPanel" hidden>
-          <h2>Results</h2>
-          <div class="result-grid">
-            <div class="result-card">Final WPM: <strong id="finalWpm">0</strong></div>
-            <div class="result-card">Accuracy: <strong id="finalAccuracy">0%</strong></div>
-            <div class="result-card">Correct: <strong id="finalCorrect">0</strong></div>
-            <div class="result-card">Best streak: <strong id="finalStreak">0</strong></div>
-            <div class="result-card">PB: <strong id="pbStats">—</strong></div>
+          <div class="result-grade">
+            <div><h2>Mission results</h2><p class="typing-help" id="pbSummary">Personal best is saved on this device.</p></div>
+            <strong id="finalGrade">A</strong>
           </div>
-          <div class="row">
-            <button id="copyResultBtn" type="button">Copy result</button>
-            <button id="playAgainBtn" class="secondary" type="button">Play again</button>
+          <div class="result-grid">
+            <div class="result-card">Score<strong id="finalScore">0</strong></div>
+            <div class="result-card">Words cleared<strong id="finalWords">0</strong></div>
+            <div class="result-card">WPM<strong id="finalWpm">0</strong></div>
+            <div class="result-card">Accuracy<strong id="finalAccuracy">0%</strong></div>
+            <div class="result-card">Best combo<strong id="finalStreak">0</strong></div>
+          </div>
+          <div class="button-row">
+            <button id="playAgainBtn" type="button">Launch again</button>
+            <button id="copyResultBtn" class="secondary" type="button">Copy result</button>
             <a class="btn ghost" href="/brain-arcade/">Back to Brain Arcade</a>
           </div>
         </section>
@@ -160,8 +172,6 @@
   <script src="/assets/scripts/nav.js?v=5" defer></script>
   <script src="./content/wordlists.js" defer></script>
   <script src="./engine.js" defer></script>
-  <script src="./modes/rocket.js" defer></script>
-  <script src="./modes/city.js" defer></script>
-  <script src="./game.js" defer></script>
+    <script src="./game.js" defer></script>
 </body>
 </html>

@@ -1,32 +1,24 @@
-# Type Turbo
+# Type Turbo: Cosmic Launch
 
-Type Turbo is a Brain Arcade typing game with multiple difficulties and play modes.
-
-## Controls
-- **Start**: begin a run with the selected mode + difficulty.
-- **Pause / Resume**: freeze and continue the current run.
-- **Restart**: reset to idle.
-- **Input box**: type the target exactly (including punctuation and spaces).
+Type Turbo is a keyboard-first space launch game in the Teach Arcade Brain Arcade. Complete each target word to send your rocket higher. Clean words charge the thrusters, build a combo, and earn a score bonus. Typos remain editable: backspace to correct them and keep the launch moving.
 
 ## Modes
-- **Sprint (60s)**: score as many correct entries as possible before the timer ends.
-- **Endless (5 lives)**: no global timer; lose a life on mistakes/timeouts.
-- **Accuracy (50 items)**: complete a fixed set to prioritize consistency.
-- **Zen**: endless free typing with live stats.
+- **Sprint (60 seconds):** score as many words and points as possible.
+- **Survival (5 lives):** complete words before the adaptive target timer expires. Difficulty changes the time window.
+- **Accuracy (50 words):** complete a fixed run without a round timer. Accuracy and the final grade reward careful typing.
+- **Zen:** type at your own pace with no timer or lives.
 
-## Scoring
-- **WPM** uses the standard formula: `(correctChars / 5) / minutes`.
-- **Accuracy** uses `correctChars / totalChars`.
-- **Combo** grows with consecutive correct entries.
-- **Best streak** records your longest run of consecutive correct entries.
+## Difficulty
+Easy, Normal, Hard, and Pro change the target word pool. Survival also adjusts the target timer by difficulty.
 
-## Persistence
-Personal best stats are saved in localStorage by key:
-`typeTurboPB:{mode}:{difficulty}`
+## Scoring and stats
+- Score grows with target length and clean-word combo. Corrected words still earn points.
+- WPM uses standard five-character words: `(correct characters / 5) / elapsed minutes`.
+- Accuracy tracks correct keystrokes against typed keystrokes, including typos that were later corrected.
+- Personal best scores are saved in localStorage by mode and difficulty. The game remains playable if local storage is unavailable.
 
-Stored fields:
-- `wpm`
-- `accuracy`
-- `streak`
-
-If localStorage is blocked/unavailable, the game still plays and skips PB persistence.
+## Controls
+- **Start launch:** starts the selected mode.
+- **Pause / Resume:** freezes timers and the launch.
+- **Restart:** resets the current setup.
+- **Typing:** type the shown word; no Enter key is required. Use Backspace to fix mistakes.
