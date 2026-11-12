@@ -11,7 +11,7 @@
   <meta name="robots" content="noindex,follow" />
 
   <link rel="stylesheet" href="/assets/styles.css?v=1" />
-  <link rel="stylesheet" href="/brain-arcade/block-builder/styles.css?v=2" />
+  <link rel="stylesheet" href="/brain-arcade/block-builder/styles.css?v=3" />
   <link rel="stylesheet" href="/brain-arcade/block-builder/pieces.css?v=4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,7 +61,10 @@
 <div class="bb-size-options" role="group" aria-label="Play area size">
 <button type="button" class="bb-size-card" data-board-size="16" aria-pressed="false"><span class="bb-size-icon bb-size-small" aria-hidden="true"></span><strong>Small</strong><span>16 × 16</span><small>Quick builds and simple models</small></button>
 <button type="button" class="bb-size-card" data-board-size="32" aria-pressed="true"><span class="bb-size-icon bb-size-medium" aria-hidden="true"></span><strong>Medium</strong><span>32 × 32 · Recommended</span><small>Room for most creations</small></button>
-<button type="button" class="bb-size-card" data-board-size="48" aria-pressed="false"><span class="bb-size-icon bb-size-large" aria-hidden="true"></span><strong>Large</strong><span>48 × 48</span><small>Big builds with room to grow</small></button>
+<button type="button" class="bb-size-card" data-board-size="48" aria-pressed="false"><span class="bb-size-icon bb-size-large" aria-hidden="true"></span><strong>Large</strong><span>48 × 48</span><small>Room for growing projects</small></button>
+<button type="button" class="bb-size-card" data-board-size="64" aria-pressed="false"><span class="bb-size-icon bb-size-larger" aria-hidden="true"></span><strong>Extra large</strong><span>64 × 64</span><small>More space for detailed builds</small></button>
+<button type="button" class="bb-size-card" data-board-size="96" aria-pressed="false"><span class="bb-size-icon bb-size-huge" aria-hidden="true"></span><strong>Huge</strong><span>96 × 96</span><small>Room for sprawling creations</small></button>
+<button type="button" class="bb-size-card" data-board-size="128" aria-pressed="false"><span class="bb-size-icon bb-size-maximum" aria-hidden="true"></span><strong>Maximum</strong><span>128 × 128</span><small>The largest available play area</small></button>
 </div>
 <div class="bb-setup-footer"><span>Choose a size to begin building.</span><button id="applyBoardSize" type="button">Start building</button></div>
 </dialog>
@@ -75,5 +78,5 @@
 </section>
 <details class="bb-help"><summary>How to build & keyboard controls</summary><p>Click or tap to place a brick. Aim at the top of a brick to stack. A red preview means the piece overlaps another brick or is outside the board. Bricks need at least one point of support.</p><p>Use Select to tap a placed brick, then tap a clear location or another brick to move it. Drag to turn the view; dragging never places a brick. Scroll to zoom. In Camera mode, use two fingers to pan and pinch to zoom. Right-drag pans on a computer. Paint changes a brick’s color; Erase removes it. Unsupported bricks stay in place so you can freely edit your creation.</p><p>B: Build · S: Select and move · P: Paint · E: Erase · C: Camera · R: Rotate · Ctrl/Cmd+Z: Undo · Ctrl/Cmd+Shift+Z: Redo. Save on this device or download a build file to keep your work.</p></details>
 </main><input id="importFile" type="file" accept=".json,application/json" hidden>
-<script type="module">import('./app.js?v=5').catch(() => { document.getElementById('canvasFallback').textContent='The 3D workspace could not start. Please reload or try a browser with WebGL enabled.'; });</script>
+<script type="module">import('./app.js?v=6').catch(() => { document.getElementById('canvasFallback').textContent='The 3D workspace could not start. Please reload or try a browser with WebGL enabled.'; });</script>
 </body></html>

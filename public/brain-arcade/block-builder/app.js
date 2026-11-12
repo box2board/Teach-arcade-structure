@@ -13,7 +13,7 @@ let boardSize=32,selectedBoardSize=32,setupRequired=true;
 const scene=new THREE.Scene();scene.background=new THREE.Color('#e8eff7');
 const mount=$('canvasMount');
 const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;mount.append(renderer.domElement);
-const camera=new THREE.PerspectiveCamera(42,1,.1,300);camera.position.set(29,30,34);
+const camera=new THREE.PerspectiveCamera(42,1,.1,1000);camera.position.set(29,30,34);
 const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.12;controls.minDistance=4;controls.maxDistance=85;controls.maxPolarAngle=Math.PI*.49;controls.target.set(0,1,0);
 scene.add(new THREE.HemisphereLight(0xffffff,0x8b9caf,2.4));const sun=new THREE.DirectionalLight(0xffffff,3);sun.position.set(15,30,12);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-24,right:24,top:24,bottom:-24});sun.shadow.bias=-.0004;scene.add(sun);
 const ground=new THREE.Mesh(new THREE.BoxGeometry(32,.28,32),new THREE.MeshStandardMaterial({color:'#90aaad',roughness:.8}));ground.position.y=-.15;ground.receiveShadow=true;scene.add(ground);
@@ -74,6 +74,7 @@ function changeBoardSize(size){
  grid=new THREE.GridHelper(size,size,0x627e83,0x79979b);
  grid.position.y=.002;
  scene.add(grid);
+ controls.maxDistance=Math.max(85,size*1.9);
  const edge=size*.75;
  Object.assign(sun.shadow.camera,{left:-edge,right:edge,top:edge,bottom:-edge});
  sun.shadow.camera.updateProjectionMatrix();
@@ -113,7 +114,7 @@ $('exportJson').onclick=()=>download(JSON.stringify({version:2,blocks},null,2),'
 $('downloadImage').onclick=()=>{const gv=ghost.visible,hv=highlight.visible;ghost.visible=highlight.visible=false;renderer.render(scene,camera);const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download='my-brick-build.png';a.click();ghost.visible=gv;highlight.visible=hv;};
 $('resetBuild').onclick=()=>{if(blocks.length&&confirm('Clear the board? You can undo this.')){remember();blocks=[];changed('A fresh board. What will you build?');}};
 $('undoAction').onclick=()=>undo();$('redoAction').onclick=()=>undo(true);$('rotatePiece').onclick=rotate;$('homeView').onclick=()=>home();$('topView').onclick=()=>home(true);
-function zoom(f){const v=camera.position.clone().sub(controls.target);v.setLength(THREE.MathUtils.clamp(v.length()*f,4,85));camera.position.copy(controls.target).add(v);controls.update();}
+function zoom(f){const v=camera.position.clone().sub(controls.target);v.setLength(THREE.MathUtils.clamp(v.length()*f,4,Math.max(85,boardSize*1.9)));camera.position.copy(controls.target).add(v);controls.update();}
 $('zoomIn').onclick=()=>zoom(.8);$('zoomOut').onclick=()=>zoom(1.25);
 $('fullscreen').onclick=async()=>{const w=$('workspace');if(document.fullscreenElement){await document.exitFullscreen();return;}if(w.classList.contains('bb-expanded')){w.classList.remove('bb-expanded');$('fullscreen').textContent='Full screen';return;}try{if(!w.requestFullscreen)throw Error();await w.requestFullscreen();}catch{w.classList.add('bb-expanded');}$('fullscreen').textContent='Exit full screen';};document.addEventListener('fullscreenchange',()=>{$('fullscreen').textContent=document.fullscreenElement?'Exit full screen':'Full screen';});
 for(const b of document.querySelectorAll('[data-tool]'))b.onclick=()=>setTool(b.dataset.tool);
