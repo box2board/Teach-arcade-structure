@@ -1,23 +1,25 @@
-// Consistent one-input arcade shooting. Difficulty changes between shots only.
+// One rising charge per shot. The current stage is locked at the start of each charge.
 export const DURATION=40,CHARGE_TIME=1.15,TARGET=.65,SWISH_WINDOW=.055;
-const warmup = { name: 'WARM-UP', window: .22, targets: [TARGET] };
-const gameTime = { name: 'GAME TIME', window: .14, targets: [.72, .56, .65] };
-const clutchTime = { name: 'CLUTCH TIME', window: .095, targets: [.77, .50, .64] };
+const warmup = { name: 'WARM-UP', chargeTime: CHARGE_TIME, window: .17, swishWindow: SWISH_WINDOW, targets: [TARGET] };
+const gameTime = { name: 'GAME TIME', chargeTime: 1.02, window: .10, swishWindow: .04, targets: [.73, .53, .63] };
+const clutchTime = { name: 'CLUTCH TIME', chargeTime: .92, window: .065, swishWindow: .025, targets: [.80, .46, .64] };
 
 function difficultyAt(time) {
-  if (time < 12) return warmup;
-  if (time < 27) return gameTime;
+  if (time < 9) return warmup;
+  if (time < 25) return gameTime;
   return clutchTime;
 }
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-export function shotPower(hold){const p=Math.max(0,hold)/CHARGE_TIME%2;return p<=1?p:2-p;}
-export function hoopAt(motionTime,time=0){return {x:time<12?0:Math.sin(motionTime*.8)*.34,y:0};}
+export function shotPower(hold, chargeTime = CHARGE_TIME) {
+  return clamp(hold / chargeTime, 0, 1);
+}
+export function hoopAt(motionTime,time=0){return {x:time<9?0:Math.sin(motionTime*.8)*.34,y:0};}
 export function makeWindow(time) { return difficultyAt(time).window; }
 
-export function judgeShot(power, window = warmup.window, target = TARGET) {
+export function judgeShot(power, window = warmup.window, target = TARGET, swishWindow = SWISH_WINDOW) {
   const error = power - target;
   const make = Math.abs(error) <= window + 1e-9;
-  const swish = make && Math.abs(error) <= SWISH_WINDOW;
+  const swish = make && Math.abs(error) <= swishWindow;
   return { error, make, swish, label: swish ? 'SWISH!' : make ? 'BUCKET!' : error < 0 ? 'A LITTLE SHORT' : 'TOO MUCH POWER' };
 }
 export function createHoops(onEvent=()=>{}){
@@ -32,7 +34,9 @@ export function createHoops(onEvent=()=>{}){
      color: gold ? '#ffdb51' : '#ff883c',
      multiplier: gold ? 2 : 1,
      stage: difficulty.name,
+     chargeTime: difficulty.chargeTime,
      window: difficulty.window,
+     swishWindow: difficulty.swishWindow,
      target: difficulty.targets[s.attempts % difficulty.targets.length],
      hoop: hoopAt(s.motionTime, s.time),
      rim: .72,
@@ -42,9 +46,9 @@ export function createHoops(onEvent=()=>{}){
  function cancel(){s.holding=false;s.hold=0;s.chargeConfig=null;}
  function start(){reset();s.phase='countdown';}
  function begin(){if(s.phase!=='playing'||s.shot||s.holding)return false;s.chargeConfig={...config()};s.holding=true;s.hold=0;return true;}
- function release(){if(!s.holding||s.phase!=='playing')return false;const cfg=config(),power=shotPower(s.hold);cancel();s.attempts++;s.shot={...cfg,power,...judgeShot(power,cfg.window,cfg.target),age:0,resolved:false,points:0};onEvent({type:'release',shot:s.shot});return true;}
+ function release(){if(!s.holding||s.phase!=='playing')return false;const cfg=config(),power=shotPower(s.hold,cfg.chargeTime);cancel();s.attempts++;s.shot={...cfg,power,...judgeShot(power,cfg.window,cfg.target,cfg.swishWindow),age:0,resolved:false,points:0};onEvent({type:'release',shot:s.shot});return true;}
  function resolve(){const shot=s.shot;if(!shot||shot.resolved)return;shot.resolved=true;if(shot.make){s.makes++;s.streak++;s.bestStreak=Math.max(s.bestStreak,s.streak);if(shot.swish)s.swishes++;if(shot.multiplier>1)s.specialMakes++;shot.points=((shot.swish?3:2)+Math.min(3,Math.floor(s.streak/3)))*shot.multiplier;s.score+=shot.points;}else s.streak=0;s.last={...shot};onEvent({type:'basket',shot:s.last});}
- function finish(){if(s.phase==='finished')return;cancel();s.phase='finished';s.result={gameId:'free-throws',rulesVersion:4,score:s.score,attempts:s.attempts,makes:s.makes,accuracy:s.attempts?Math.round(s.makes/s.attempts*100):0,swishes:s.swishes,specialMakes:s.specialMakes,bestStreak:s.bestStreak,time:DURATION};onEvent({type:'finish',result:s.result});}
+ function finish(){if(s.phase==='finished')return;cancel();s.phase='finished';s.result={gameId:'free-throws',rulesVersion:5,score:s.score,attempts:s.attempts,makes:s.makes,accuracy:s.attempts?Math.round(s.makes/s.attempts*100):0,swishes:s.swishes,specialMakes:s.specialMakes,bestStreak:s.bestStreak,time:DURATION};onEvent({type:'finish',result:s.result});}
  function advance(dt){if(!s.shot)return;s.shot.age+=dt;if(s.shot.age>=s.shot.rim)resolve();if(s.shot.age>=s.shot.flight)s.shot=null;}
  function tick(dt){if(!Number.isFinite(dt)||dt<=0||['intro','paused','finished'].includes(s.phase))return;
   if(s.phase==='countdown'){const used=Math.min(dt,s.countdown);s.countdown-=used;dt-=used;if(s.countdown>1e-8)return;s.phase='playing';onEvent({type:'go'});}

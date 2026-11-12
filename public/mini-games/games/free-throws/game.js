@@ -1,7 +1,7 @@
-import {createHoops,DURATION,SWISH_WINDOW,shotPower,hoopAt,clamp} from './engine.js';
+import {createHoops,DURATION,shotPower,hoopAt,clamp} from './engine.js';
 const root=document.querySelector('#free-throw-fever'),$=id=>root.querySelector('#'+id),canvas=$('canvas'),ctx=canvas.getContext('2d');
 let last=null,clock=0,owner=null,ready=false,arena=new Image(),particles=[],messageAge=0,best=0;
-try{best=Number(localStorage.getItem('free-throws-arcade-v4-best'))||0;}catch{}
+try{best=Number(localStorage.getItem('free-throws-arcade-v5-best'))||0;}catch{}
 const game = createHoops(event => {
  if (event.type === 'finish') {
   finish(event.result);
@@ -32,7 +32,7 @@ $('start').disabled=true;$('start').textContent='LOADING THE COURT…';arena.onl
 function clear(){owner=null;game.cancel();}
 function start(){if(!ready)return;clear();game.start();last=null;particles=[];messageAge=0;$('overlay').hidden=true;$('results').hidden=true;$('intro').hidden=false;$('pause').disabled=false;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 function show(title,description,label){$('title').textContent=title;$('description').textContent=description;$('start').textContent=label;$('overlay').hidden=false;}
-function finish(result){clear();best=Math.max(best,result.score);try{localStorage.setItem('free-throws-arcade-v4-best',String(best));}catch{}$('eyebrow').textContent='FINAL BUZZER';$('intro').hidden=true;$('results').hidden=false;$('results').innerHTML=[['BUCKETS',result.makes+' / '+result.attempts],['SWISHES',result.swishes],['BEST',best]].map(([label,value])=>'<div>'+label+'<strong>'+value+'</strong></div>').join('');show(result.score+' POINTS!',result.accuracy+'% accuracy · Best streak '+result.bestStreak,'RUN IT BACK ↗');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:result}));}
+function finish(result){clear();best=Math.max(best,result.score);try{localStorage.setItem('free-throws-arcade-v5-best',String(best));}catch{}$('eyebrow').textContent='FINAL BUZZER';$('intro').hidden=true;$('results').hidden=false;$('results').innerHTML=[['BUCKETS',result.makes+' / '+result.attempts],['SWISHES',result.swishes],['BEST',best]].map(([label,value])=>'<div>'+label+'<strong>'+value+'</strong></div>').join('');show(result.score+' POINTS!',result.accuracy+'% accuracy · Best streak '+result.bestStreak,'RUN IT BACK ↗');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:result}));}
 function pause(){if(!['playing','countdown','buzzer'].includes(game.state.phase))return;game.pause();clear();$('intro').hidden=true;$('results').hidden=true;show('TIME OUT.','Your round is paused.','BACK TO THE COURT ↗');$('pause').textContent='Resume';}
 function resume(){game.resume();last=null;$('overlay').hidden=true;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 $('start').onclick=()=>game.state.phase==='paused'?resume():start();$('pause').onclick=()=>game.state.phase==='paused'?resume():pause();
@@ -102,7 +102,7 @@ function draw(dt, releaseNow){const s=game.state,sh=s.shot,cfg=sh||game.config()
 function render(dt) {
  const s = game.state;
  const cfg = s.shot || game.config();
- const power = s.holding ? shotPower(s.hold) : 0;
+ const power = s.holding ? shotPower(s.hold, cfg.chargeTime) : 0;
  const releaseNow = s.holding && Math.abs(power - cfg.target) <= cfg.window + 1e-9;
  const clutch = cfg.stage === 'CLUTCH TIME';
  $('clock-fill').style.transform = 'scaleX(' + (1 - s.time / DURATION) + ')';
@@ -120,12 +120,13 @@ function render(dt) {
  $('stage').textContent = cfg.stage;
  $('make-zone').style.left = (cfg.target - cfg.window) * 100 + '%';
  $('make-zone').style.width = cfg.window * 200 + '%';
- $('swish-zone').style.left = (cfg.target - SWISH_WINDOW) * 100 + '%';
- $('swish-zone').style.width = SWISH_WINDOW * 200 + '%';
+ $('swish-zone').style.left = (cfg.target - cfg.swishWindow) * 100 + '%';
+ $('swish-zone').style.width = cfg.swishWindow * 200 + '%';
  $('needle').style.left = power * 100 + '%';
  let prompt = 'HOLD TO CHARGE';
  if (s.shot) prompt = 'SHOT ON ITS WAY…';
- else if (s.holding) prompt = releaseNow ? 'RELEASE NOW!' : 'WATCH THE METER';
+ else if (releaseNow) prompt = 'RELEASE NOW!';
+ else if (s.holding) prompt = power > cfg.target + cfg.window ? 'PAST GREEN' : 'WATCH THE METER';
  $('power-label').textContent = prompt;
  $('countdown').hidden = s.phase !== 'countdown';
  $('count-number').textContent = Math.max(1, Math.ceil(s.countdown));
