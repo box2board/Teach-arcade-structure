@@ -351,3 +351,14 @@ test("race records keep faster runs and separate modes and layouts", async () =>
   track.pieces[1].x += 1;
   assert.equal(bestRaceTime(raceRecordKey(track, "auto")), null);
 });
+
+test("snap aligns a misrotated preview without placing or mutating a piece", () => {
+  const track = chain(["start", "right"]);
+  const end = endpoint(track.pieces.at(-1));
+  const preview = piece("straight", end.x, end.y, end.z, end.heading + Math.PI);
+  const snap = snapCandidate(preview, track.pieces);
+  assert.ok(snap?.valid);
+  assert.equal(snap.piece.yaw, end.heading);
+  assert.equal(preview.yaw, end.heading + Math.PI);
+  assert.equal(track.pieces.length, 2);
+});

@@ -260,7 +260,7 @@ function showPlacement(p, snap) {
   const target = editor.track.pieces.find((other) => other.id === snap?.target);
   $("hint").textContent = issue || (target
     ? `Attach to ${asset(target.type).name} · click or tap to place`
-    : "Click or tap to place · R rotate · Esc cancel");
+    : "Click or tap to place · R / Shift+R rotate · Esc cancel");
 }
 function proposal(ev) {
   const p = piece(selectedType, 0, placeHeight, 0, placeYaw);
@@ -328,7 +328,8 @@ $("assets").onclick = (e) => {
 const canvas = scene.renderer.domElement;
 let pointerDown;
 canvas.addEventListener("pointerdown", (ev) => {
-  pointerDown = { x: ev.clientX, y: ev.clientY };
+  if (!ev.isPrimary || ev.button !== 0) return;
+  pointerDown = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, preview: candidate };
   if (selectedType && !vehicle) {
     scene.controls.enabled = false;
     proposal(ev);
@@ -339,17 +340,21 @@ canvas.addEventListener("pointermove", (ev) => {
 });
 canvas.addEventListener("pointerup", (ev) => {
   scene.controls.enabled = true;
-  if (
-    !pointerDown ||
-    Math.hypot(ev.clientX - pointerDown.x, ev.clientY - pointerDown.y) > 7
-  )
-    return;
+  if (!pointerDown || pointerDown.id !== ev.pointerId) return;
+  const down = pointerDown;
+  pointerDown = null;
+  if (Math.hypot(ev.clientX - down.x, ev.clientY - down.y) > 7) return;
   if (vehicle) return;
   if (selectedType) {
     proposal(ev);
     if (!candidate) return;
     if (candidateIssue) {
       toast(candidateIssue);
+      return;
+    }
+    if (ev.pointerType === "touch" && (!down.preview ||
+        ["type", "x", "y", "z", "yaw"].some((key) => down.preview[key] !== candidate[key]))) {
+      $("hint").textContent = "Preview ready · tap again to place";
       return;
     }
     placeCandidate(candidate);
@@ -363,6 +368,7 @@ canvas.addEventListener("pointerup", (ev) => {
   }
 });
 canvas.addEventListener("pointercancel", () => {
+  pointerDown = null;
   scene.controls.enabled = true;
 });
 function mutation(fn) {
@@ -425,9 +431,23 @@ $("snap-selection").onclick = () => {
   }
   transform(snap.piece);
 };
-$("rotate").onclick = () => {
-  if (editor.selection) transform({ yaw: editor.selection.yaw + Math.PI / 12 });
-};
+function rotatePiece(direction) {
+  if (vehicle) return;
+  const turn = direction * Math.PI / 12;
+  if (selectedType) {
+    placeYaw = (placeYaw + turn + 2 * Math.PI) % (2 * Math.PI);
+    if (candidate && !candidateTarget) showPlacement({ ...candidate, yaw: placeYaw });
+    if (candidateTarget) {
+      $("hint").textContent = "Snap aligns this preview. Turn Snap off to rotate freely here.";
+    }
+    return;
+  }
+  if (editor.selection) transform({ yaw: editor.selection.yaw + turn });
+  else toast("Pick or select a piece to rotate.");
+}
+$("turn-left").onclick = () => rotatePiece(-1);
+$("turn-right").onclick = () => rotatePiece(1);
+$("rotate").onclick = () => rotatePiece(1);
 $("duplicate").onclick = () =>
   mutation((p) => {
     if (editor.track.pieces.length >= 250) return;
@@ -471,6 +491,13 @@ $("snap").onclick = () => {
   snapping = !snapping;
   $("snap").classList.toggle("active", snapping);
   $("snap").textContent = snapping ? "● Snap on" : "○ Snap off";
+  if (!selectedType) return;
+  if (!snapping && candidate) {
+    showPlacement({ ...candidate, yaw: placeYaw });
+  } else if (snapping) {
+    const snap = nextAttachment();
+    if (snap) showPlacement(snap.piece, snap.target ? snap : null);
+  }
 };
 $("grid").onclick = () => (scene.grid.visible = !scene.grid.visible);
 let low = false;
@@ -617,11 +644,9 @@ window.addEventListener("keydown", (e) => {
     return;
   }
   if (key === "Escape") cancel();
-  if (key === "r") {
-    if (selectedType) {
-      placeYaw += Math.PI / 12;
-      toast("Placement rotated 15°.");
-    } else $("rotate").click();
+  if (key === "r" && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    e.preventDefault();
+    rotatePiece(e.shiftKey ? -1 : 1);
   }
   if (key === "Delete" || key === "Backspace") {
     e.preventDefault();

@@ -1315,3 +1315,14 @@ footer {
 @media (max-width: 440px) {
   .drive-effect { position: absolute; top: 100%; left: 0; margin-top: 7px; }
 }
+
+#editbar {
+  width: max-content;
+  max-width: calc(100% - 16px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.piece-rotation {
+  display: inline-flex;
+  gap: 4px;
+}
