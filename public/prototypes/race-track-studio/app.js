@@ -260,7 +260,7 @@ function showPlacement(p, snap) {
   const target = editor.track.pieces.find((other) => other.id === snap?.target);
   $("hint").textContent = issue || (target
     ? `Attach to ${asset(target.type).name} · click or tap to place`
-    : "Click or tap to place · R / Shift+R rotate · Esc cancel");
+    : "Click to place · drag to orbit · right-drag or two fingers to pan");
 }
 function proposal(ev) {
   const p = piece(selectedType, 0, placeHeight, 0, placeYaw);
@@ -328,18 +328,24 @@ $("assets").onclick = (e) => {
 const canvas = scene.renderer.domElement;
 let pointerDown;
 canvas.addEventListener("pointerdown", (ev) => {
-  if (!ev.isPrimary || ev.button !== 0) return;
-  pointerDown = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, preview: candidate };
-  if (selectedType && !vehicle) {
-    scene.controls.enabled = false;
-    proposal(ev);
+  // OrbitControls owns drag gestures. A second finger or a modified click
+  // cancels placement so a camera gesture can never drop a piece.
+  if (!ev.isPrimary || ev.button !== 0 || ev.ctrlKey || ev.metaKey || ev.shiftKey) {
+    pointerDown = null;
+    return;
   }
-});
-canvas.addEventListener("pointermove", (ev) => {
+  pointerDown = { id: ev.pointerId, x: ev.clientX, y: ev.clientY, preview: candidate };
   if (selectedType && !vehicle) proposal(ev);
 });
+canvas.addEventListener("pointermove", (ev) => {
+  if (pointerDown?.id === ev.pointerId &&
+      Math.hypot(ev.clientX - pointerDown.x, ev.clientY - pointerDown.y) > 7) {
+    pointerDown = null;
+  }
+  if (selectedType && !vehicle && ev.buttons === 0 && ev.pointerType !== "touch") proposal(ev);
+});
+canvas.addEventListener("wheel", () => { pointerDown = null; }, { passive: true });
 canvas.addEventListener("pointerup", (ev) => {
-  scene.controls.enabled = true;
   if (!pointerDown || pointerDown.id !== ev.pointerId) return;
   const down = pointerDown;
   pointerDown = null;
@@ -369,7 +375,6 @@ canvas.addEventListener("pointerup", (ev) => {
 });
 canvas.addEventListener("pointercancel", () => {
   pointerDown = null;
-  scene.controls.enabled = true;
 });
 function mutation(fn) {
   if (vehicle) return;
@@ -511,7 +516,7 @@ document.querySelectorAll("[data-view]").forEach(
   (b) =>
     (b.onclick = () => {
       follow = false;
-      scene.view(b.dataset.view, editor.selection);
+      scene.view(b.dataset.view, scene.controls.target);
     }),
 );
 $("focus").onclick = () => {
