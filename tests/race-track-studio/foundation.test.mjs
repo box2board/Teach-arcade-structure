@@ -41,8 +41,8 @@ function simulate(t, seconds, mode = "auto") {
   for (let i = 0; i < seconds * 120; i++) v.step(1 / 120);
   return v;
 }
-test("all 71 assets produce finite smooth geometry and exact snap endpoints", () => {
-  assert.equal(CATALOG.length, 71);
+test("all 100 assets produce finite smooth geometry and exact snap endpoints", () => {
+  assert.equal(CATALOG.length, 100);
   for (let a of CATALOG) {
     let p = piece(a.id, 0, 5);
     const g = makePiece(p);
