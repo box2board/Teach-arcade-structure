@@ -223,7 +223,7 @@
     els.trackStatus.textContent = 'READY FOR LIFTOFF';
     els.trackWrap.style.setProperty('--pressure', '1');
     els.results.hidden = true;
-    setTarget('Press start to race');
+    setTarget('Ready for liftoff');
     els.input.value = '';
     els.input.disabled = true;
     setFeedback('Type each word to send your rocket higher. Fix typos with backspace.');
