@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content" />
+    <title>Race Track Studio • Teach Arcade Prototype</title>
+    <link rel="stylesheet" href="studio.css" />
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="#"
+        >TA<span>RACE TRACK <b>STUDIO</b></span></a
+      ><span class="badge">BUILD • RACE • REPEAT</span>
+      <div class="top-actions">
+        <button id="game-home">⌂ Play</button><button id="save">★ Save</button
+        ><button id="library-toggle" aria-controls="details-panel" aria-expanded="false">🔧 Tools</button
+        ><button id="test" class="primary">▶ Drive!</button>
+      </div>
+    </header>
+    <div class="shell">
+      <aside class="library">
+        <div class="eyebrow">YOUR TRACK BOX</div>
+        <h1>Pick. Snap. Zoom!</h1>
+        <p>Grab a piece and make something awesome.</p>
+        <input
+          id="asset-search"
+          type="search"
+          placeholder="Find pieces in this category…"
+          aria-label="Search pieces"
+        />
+        <nav id="categories"></nav>
+        <div id="assets"></div>
+        <div class="library-foot">
+          Original modular tracks • 3D creative sandbox
+        </div>
+      </aside>
+      <main>
+        <div class="canvas-wrap" id="workspace">
+          <div id="canvas"></div>
+          <div class="viewport-head">
+            <span class="scene-label">● &nbsp; CIRCUIT GARDEN</span
+            ><span id="count"></span>
+          </div>
+          <div class="camera-bar">
+            <button data-view="perspective" title="Reset view">↗ View</button
+            ><button data-view="top">▦ Top</button
+            ><button data-view="ground">◉ Ground</button
+            ><button id="focus">◎ Focus</button><button id="grid">Grid</button
+            ><button id="quality">Quality: balanced</button>
+          </div>
+          <div id="welcome">
+            <span class="eyebrow">LET’S MAKE SOMETHING WILD</span>
+            <h2>What will you build?</h2>
+            <p>Pick a piece. Snap it on. Hit Drive!</p>
+          </div>
+          <div id="toast" role="status" aria-live="polite"></div>
+          <div class="bottom-bar" id="editbar">
+            <button id="undo" title="Undo Ctrl+Z">↶ Undo</button
+            ><button id="redo">↷ Redo</button><span></span
+            ><button id="snap" class="active">● Snap on</button
+            ><button id="attach">＋ Attach piece</button>
+            <div class="piece-rotation" role="group" aria-label="Rotate piece">
+              <button id="turn-left" type="button" aria-label="Rotate piece left 15 degrees" title="Rotate left (Shift+R)">↶ 15°</button>
+              <button id="turn-right" type="button" aria-label="Rotate piece right 15 degrees" title="Rotate right (R)">15° ↷</button>
+            </div>
+            <button id="cancel">Select / Esc</button>
+          </div>
+          <div id="drivebar" hidden>
+            <button id="pause">Ⅱ Pause</button
+            ><button id="restart">↺ Try again</button
+            ><button id="follow">Camera: follow</button
+            ><button id="edit" class="primary">Keep building</button
+            ><strong id="speed">0 km/h</strong>
+          </div>
+          <div id="touch" hidden>
+            <button data-key="ArrowLeft">◀</button
+            ><button data-key="ArrowRight">▶</button
+            ><button data-key="ArrowDown">Brake</button
+            ><button data-key="ArrowUp">Go ▲</button>
+          </div>
+        </div>
+        <footer>
+          <span id="hint"
+            >Orbit: drag empty space · Pan: right drag / two fingers · Zoom:
+            scroll / pinch</span
+          ><span id="stats">Preparing studio…</span>
+        </footer>
+      </main>
+      <aside class="inspector" id="details-panel">
+        <div class="toolbox-heading">
+          <div class="eyebrow">BUILD TOOLBOX</div>
+          <button id="close-tools" type="button" aria-label="Close build toolbox">× Close</button>
+        </div>
+        <h2 id="selection-title">Your creation</h2>
+        <label
+          >Track name<input id="name" maxlength="60" value="Garden Circuit"
+        /></label>
+        <p class="fine">
+          Connectors: green = open · gray = occupied · red = invalid · gold =
+          snap target.
+        </p>
+        <section id="object" hidden>
+          <label class="section-toggle"
+            ><input id="move-connected" type="checkbox" /> Move / rotate entire
+            connected section</label
+          >
+          <p class="fine" id="section-info">Single-piece transforms</p>
+          <div class="pair">
+            <label
+              >Position X<input
+                id="pos-x"
+                type="number"
+                min="-500"
+                max="500"
+                step="0.5" /></label
+            ><label
+              >Position Z<input
+                id="pos-z"
+                type="number"
+                min="-500"
+                max="500"
+                step="0.5"
+            /></label>
+          </div>
+          <button id="snap-selection">Snap selection to nearby exit</button
+          ><label
+            >Length / radius multiplier<input
+              id="length"
+              type="range"
+              min="0.5"
+              max="2"
+              step="0.1"
+              value="1" /></label
+          ><label
+            >Base elevation <output id="height-value">0</output> m<input
+              id="height"
+              type="range"
+              min="0"
+              max="16"
+              step="0.5"
+              value="0" /></label
+          ><label
+            >Track color<input id="color" type="color" value="#20b9b4"
+          /></label>
+          <div class="pair">
+            <button id="rotate">Rotate 15°</button
+            ><button id="duplicate">Duplicate</button>
+          </div>
+          <button id="delete" class="danger">Delete piece</button>
+          <p class="fine">
+            Editing geometry can open joints. Check connections before testing.
+          </p>
+        </section>
+        <section>
+          <div class="section-heading">
+            CONNECTION CHECK <button id="validate">↻</button>
+          </div>
+          <div id="validation"></div>
+        </section>
+        <section>
+          <div class="section-heading">CHOOSE YOUR RIDE</div>
+          <label
+            >Driving mode<select id="mode">
+              <option value="auto">Automatic • release & observe</option>
+              <option value="manual">Manual • arrows / WASD</option>
+            </select></label
+          >
+          <p class="fine">
+            Auto follows the track and uses motor power, gravity and friction.
+            Manual gives you throttle, braking and steering. R resets the car.
+          </p>
+          <button id="start-here">Set selected as start</button>
+        </section>
+        <section>
+          <div class="section-heading">CREATIONS</div>
+          <select id="saves" aria-label="Saved creations"></select>
+          <div class="pair">
+            <button id="load">Open</button
+            ><button id="copy-track">Save copy</button>
+          </div>
+          <div class="pair">
+            <button id="new">New track</button
+            ><button id="starter">Starter track</button><button id="canyon">Canyon Jump Park</button>
+          </div>
+          <div class="pair">
+            <button id="export">Export JSON</button
+            ><button id="import">Import JSON</button>
+          </div>
+          <button id="delete-save" class="danger">Delete saved creation</button
+          ><input
+            type="file"
+            id="file"
+            accept="application/json,.json"
+            hidden
+          />
+        </section>
+        <p class="fine">
+          Local saves stay in this browser. Export a copy to keep your tracks
+          elsewhere.
+        </p>
+      </aside>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
