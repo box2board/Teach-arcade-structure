@@ -1334,3 +1334,84 @@ footer {
   font-size: 42px;
   font-style: normal;
 }
+
+/* Compact iPhone editor layout. Keep every panel inside the visual viewport. */
+@media (max-width: 600px) {
+  html, body { width: 100%; height: 100%; overflow: hidden; overscroll-behavior: none; }
+  body {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    background: #85d9ff;
+  }
+  header {
+    width: 100%; height: 94px; min-width: 0; padding: 6px 8px;
+    display: grid; grid-template-columns: 1fr; grid-template-rows: 30px 48px;
+    gap: 4px; overflow: hidden;
+  }
+  .brand { min-width: 0; justify-self: center; white-space: nowrap; }
+  .badge, #game-sound, .mode-picker { display: none !important; }
+  .top-actions {
+    width: 100%; min-width: 0; margin: 0; display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px;
+  }
+  .top-actions button {
+    min-width: 0; width: 100%; padding: 7px 3px; overflow: hidden;
+    white-space: nowrap; text-overflow: ellipsis; font-size: 10px;
+  }
+  .shell, .playing .shell {
+    width: 100%; height: calc(100dvh - 94px - env(safe-area-inset-top, 0px));
+    min-width: 0; grid-template-columns: 102px minmax(0, 1fr); overflow: hidden;
+  }
+  .playing .shell { grid-template-columns: minmax(0, 1fr); }
+  .library {
+    min-width: 0; padding: 9px 5px 80px; overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .library h1, .library > p, .library > .eyebrow, .library-foot { display: none; }
+  #asset-search { width: 100%; padding: 7px 5px; font-size: 9px; }
+  nav {
+    flex-wrap: nowrap; overflow-x: auto; margin: 8px 0; padding-bottom: 3px;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav button { flex: 0 0 auto; }
+  #assets { grid-template-columns: 1fr; }
+  .asset { width: 100%; height: 92px; }
+  .asset svg { height: 52px; }
+  main, .canvas-wrap, #canvas { min-width: 0; width: 100%; }
+  .viewport-head { top: 8px; left: 8px; right: 8px; }
+  .scene-label {
+    max-width: calc(100% - 45px); padding: 6px 8px; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+  }
+  .camera-bar {
+    top: 46px; left: 7px; right: 7px; display: flex; flex-direction: row;
+    gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .camera-bar::-webkit-scrollbar { display: none; }
+  .camera-bar button {
+    flex: 0 0 auto; width: auto; padding: 6px 8px; font-size: 9px;
+    white-space: nowrap;
+  }
+  #editbar, #drivebar {
+    left: 6px; right: 6px; bottom: max(8px, env(safe-area-inset-bottom, 0px));
+    width: auto; max-width: none; transform: none; flex-wrap: nowrap;
+    justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #editbar::-webkit-scrollbar, #drivebar::-webkit-scrollbar { display: none; }
+  #editbar button, #drivebar button, .piece-rotation { flex: 0 0 auto; }
+  footer { display: none; }
+  .inspector {
+    position: fixed; inset: calc(94px + env(safe-area-inset-top, 0px)) 0 0 auto;
+    width: min(88vw, 330px); max-width: 100%; border-radius: 18px 0 0 0;
+    padding-bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  }
+  #game-layer { top: calc(94px + env(safe-area-inset-top, 0px)); }
+  .playing #touch {
+    left: 6px; right: 6px; bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+    width: auto;
+  }
+}
