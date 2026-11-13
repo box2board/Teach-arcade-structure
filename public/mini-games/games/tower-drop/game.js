@@ -1,12 +1,13 @@
 import {createTower,MILESTONES} from './engine.js';
-const $=id=>document.getElementById(id),c=$('canvas'),ctx=c.getContext('2d'),g=createTower(),s=g.s;let last=performance.now(),camera=0,finished=false;
+import {connectTower,embedded,recordTower} from './cabinet-adapter.js';
+const $=id=>document.getElementById(id),c=$('canvas'),ctx=c.getContext('2d'),g=recordTower(createTower()),s=g.s;let last=performance.now(),camera=0,finished=false;
 function start(){g.start();camera=0;finished=false;last=performance.now();$('overlay').hidden=true;$('pause').disabled=false;$('pause').textContent='Pause';c.focus({preventScroll:true});}
 function drop(e){if(e?.type==='pointerdown'&&e.button!==0)return;e?.preventDefault();g.drop();$('live').textContent=s.last;}
 $('start').onclick=start;$('drop').addEventListener('pointerdown',drop);c.addEventListener('pointerdown',drop);
 c.tabIndex=0;$('drop').addEventListener('click',e=>{if(e.detail===0)drop(e);});
 function pause(){g.pause();$('pause').textContent='Resume';}function resume(){g.resume();last=performance.now();$('pause').textContent='Pause';}
-$('pause').onclick=()=>s.phase==='paused'?resume():pause();window.addEventListener('blur',pause);document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});
-window.addEventListener('keydown',e=>{if(e.code==='Escape'){s.phase==='paused'?resume():pause();return;}if(['Space','Enter'].includes(e.code)&&!e.target.closest('a,button')){e.preventDefault();if(!e.repeat)drop();}});
+$('pause').onclick=()=>s.phase==='paused'?resume():pause();if(!embedded){window.addEventListener('blur',pause);document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});}
+window.addEventListener('keydown',e=>{if(e.code==='Escape'&&!embedded){s.phase==='paused'?resume():pause();return;}if(['Space','Enter'].includes(e.code)&&!e.target.closest('a,button')){e.preventDefault();if(!e.repeat)drop();}});
 function box(x,y,w,color){ctx.fillStyle='#100b253d';ctx.fillRect(x+8,y+9,w,25);ctx.fillStyle=color;ctx.fillRect(x,y,w,25);ctx.fillStyle='#ffffff44';ctx.fillRect(x,y,w,5);ctx.fillStyle='#100b2533';ctx.fillRect(x+w-7,y+5,7,20);}
 const typeColors={wide:'#68e8db',gold:'#ffda75',precision:'#ffac65',final:'#fff0a0'};
 const colors=['#68e8db','#a995ff','#ffda75','#77bfff','#95ef9c'];
@@ -27,4 +28,5 @@ function draw(dt){const rect=c.getBoundingClientRect(),d=Math.min(devicePixelRat
 }
 function render(){ $('time').textContent=Math.max(0,45-s.time).toFixed(1);$('score').textContent=s.score;$('floors').textContent=Math.max(0,s.layers.length-1);$('chances').textContent=3-s.misses;$('message').textContent=s.phase==='paused'?'PAUSED':s.last;$('drop').disabled=!['playing','final'].includes(s.phase);$('drop').textContent=s.phase==='final'?'FINAL DROP · '+Math.max(0,s.finalDuration-s.finalTime).toFixed(1)+'s LEFT':'DROP BLOCK · '+s.type.toUpperCase();$('milestone').textContent=MILESTONES[s.milestone]+(s.banner>0?' · MILESTONE!':'')+(s.slow>0?' · SLOW MOTION':'');
  if(s.phase==='finished'&&!finished){finished=true;let best=s.score;try{best=Math.max(best,Number(localStorage.getItem('tower-drop-v2-best'))||0);localStorage.setItem('tower-drop-v2-best',best);}catch{}$('title').textContent='Your tower: '+(s.layers.length-1)+' floors';$('description').textContent=s.score+' points · '+s.perfects+' perfect landings · Best score '+best;$('extra').textContent=s.last+'. Try to keep your tower wide with perfect drops.';$('start').textContent='Build again →';$('overlay').hidden=false;$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:{gameId:'tower-drop',score:s.score,floors:s.layers.length-1,perfects:s.perfects,rulesVersion:2,time:s.time}}));}}
-function frame(now){const dt=Math.max(0,(now-last)/1000);last=now;g.tick(dt);draw(Math.min(.1,dt));render();requestAnimationFrame(frame);}requestAnimationFrame(frame);
+function frame(now){const dt=Math.max(0,(now-last)/1000);last=now;if(!embedded||s.phase!=='intro'){g.tick(dt);draw(Math.min(.1,dt));render();}requestAnimationFrame(frame);}requestAnimationFrame(frame);
+connectTower(start);
