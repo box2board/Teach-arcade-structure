@@ -33,8 +33,7 @@ try {
   scene = new StudioScene($("canvas"));
 } catch (e) {
   $("stats").textContent = "WebGL unavailable";
-  $("canvas").innerHTML =
-    '<p style="padding:30px">This 3D studio needs WebGL. Try a browser with hardware acceleration enabled.</p>';
+  $("studio-startup").textContent = "This 3D studio needs WebGL. Try opening the preview in Safari.";
   throw e;
 }
 let selectedType = null,
@@ -818,6 +817,7 @@ function animate(now) {
     fpsTime = now;
   }
 }
+$("studio-startup")?.remove();
 requestAnimationFrame(animate);
 // Read-only QA hooks make browser verification deterministic without changing player controls.
 window.raceStudio = {

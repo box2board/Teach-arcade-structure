@@ -44,11 +44,15 @@ ios_loader = r'''<script>
     urls[name] = URL.createObjectURL(new Blob([source], { type: 'text/javascript' }));
     return urls[name];
   }
-  import(moduleUrl('ta-app')).then(function () {
+  Promise.resolve().then(function () {
+    return import(moduleUrl('ta-app'));
+  }).then(function () {
     requestAnimationFrame(function () { window.dispatchEvent(new Event('resize')); });
   }).catch(function (error) {
-    var canvas = document.getElementById('canvas');
-    if (canvas) canvas.innerHTML = '<div style="margin:90px 14px;padding:18px;border-radius:16px;background:#fff;color:#43228f;font-weight:800;line-height:1.45">The 3D studio could not start in this in-app viewer. Tap ••• above and choose Open in Safari.</div>';
+    var status = document.getElementById('studio-startup');
+    if (status && status.textContent.startsWith('Loading')) {
+      status.textContent = 'The 3D studio could not start here. Try opening the preview in Safari.';
+    }
     console.error(error);
   });
 })();
