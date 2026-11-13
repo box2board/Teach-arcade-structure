@@ -51,12 +51,19 @@ export function validate(track) {
   const pieces = track.pieces.filter((piece) => !isScenery(piece));
   const { links, invalid } = connectionGraph(pieces),
     seen = new Set();
+  const jump = track.jumpChallenge;
+  const launch = pieces.find((p) => p.id === jump?.launchId);
+  const landing = pieces.find((p) => p.id === jump?.landingId);
+  const markedJump = asset(launch?.type)?.kind === "ramp" &&
+    asset(landing?.type)?.kind === "landing" &&
+    distance(endpoint(launch), endpoint(landing, 0)) > 1.25;
   if (pieces.length) {
     const visit = [track.startId || pieces[0].id];
     while (visit.length) {
       let id = visit.pop();
       if (seen.has(id)) continue;
       seen.add(id);
+      if (markedJump && id === launch.id) visit.push(landing.id);
       for (const l of links) {
         if (l.from === id) visit.push(l.to);
         if (l.to === id) visit.push(l.from);
@@ -65,6 +72,7 @@ export function validate(track) {
   }
   return {
     links,
+    markedJump,
     invalid,
     disconnected: pieces.filter((p) => !seen.has(p.id)),
     openEnds: pieces.filter((p) => !links.some((l) => l.from === p.id)),

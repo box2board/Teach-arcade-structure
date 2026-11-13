@@ -378,3 +378,22 @@ test("scenery saves with the build without changing routing or the time trial", 
   assert.equal(raceRecordKey(restored, "auto"), key);
   assert.ok(simulate(restored, 10).finished);
 });
+
+test("Canyon Jump Park survives export and clears its marked landing in both test modes", async () => {
+  const { canyonJumpPark } = await import("../../public/prototypes/race-track-studio/canyon.js");
+  const track = parseTrack(JSON.parse(JSON.stringify(serialize(canyonJumpPark()))));
+  const validation = validate(track);
+  assert.equal(validation.markedJump, true);
+  assert.deepEqual(validation.disconnected, []);
+  assert.deepEqual(validation.invalid, []);
+
+  for (const mode of ["auto", "manual"]) {
+    const vehicle = new Vehicle(track, mode);
+    if (mode === "manual") vehicle.keys.add("w");
+    for (let i = 0; i < 1200 && !vehicle.finished; i++) vehicle.step(1 / 120);
+    assert.equal(vehicle.jumpCleared, true, mode);
+    assert.equal(vehicle.finished, true, mode);
+    vehicle.reset();
+    assert.equal(vehicle.jumpCleared, false, mode);
+  }
+});

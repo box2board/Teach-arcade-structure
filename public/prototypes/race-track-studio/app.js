@@ -17,6 +17,7 @@ import {
   transformedSection,
   loopPlayground,
 } from "./editor.js";
+import { canyonJumpPark } from "./canyon.js";
 import { Vehicle } from "./vehicle.js";
 import {
   newTrack,
@@ -81,6 +82,7 @@ const game = new GameFeel({
     replace(loopPlayground());
     startTest();
   },
+  canyon: () => openCanyon(),
   saves: () => {
     setInspector(true);
     $("saves").focus();
@@ -178,6 +180,7 @@ function check() {
   $("validation").replaceChildren();
   for (const text of [
     `${v.links.length} aligned connections`,
+    ...(v.markedJump ? ["Marked jump gap · verify in Test"] : []),
     `${v.disconnected.length} disconnected pieces`,
     `${v.invalid.length} nearby invalid joints`,
     `${v.openEnds.length} open exits${v.openEnds.length ? " (may be intentional)" : ""}`,
@@ -576,7 +579,9 @@ function startTest() {
       ? "Arrows / WASD: drive · R: reset · Esc: edit"
       : "Automatic test · gravity, motor, friction & boosters · R: reset";
   toast(
-    check().disconnected.length
+    check().markedJump
+      ? "Optional challenge: clear the gap and land on the green ramp."
+      : check().disconnected.length
       ? "Test started. Disconnected pieces are reported in the inspector."
       : "Test started.",
   );
@@ -727,6 +732,12 @@ $("new").onclick = () => {
   replace(newTrack());
   toast("New track. Undo restores the previous creation.");
 };
+function openCanyon() {
+  replace(canyonJumpPark());
+  scene.view("perspective", { x: 2, y: 2, z: 0 });
+  toast("Press Test to run the course, or edit the jump first. Undo restores your previous track.");
+}
+$("canyon").onclick = openCanyon;
 $("starter").onclick = () => replace(starter());
 $("delete-save").onclick = () => {
   deleteSave($("saves").value);
@@ -793,7 +804,7 @@ function animate(now) {
     }
     $("speed").textContent = `${Math.round(vehicle.speed * 3.6)} km/h`;
     if (vehicle.finished && !reportedFinish) {
-      game.finish(vehicle.finishTime);
+      game.finish(vehicle.finishTime, vehicle.jumpCleared);
       reportedFinish = true;
     }
     if (!vehicle.finished) reportedFinish = false;

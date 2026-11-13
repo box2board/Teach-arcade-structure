@@ -10,7 +10,7 @@ export class GameFeel {
     const layer = document.createElement("div");
     layer.id = "game-layer";
     layer.innerHTML = `
- <div id="game-menu" class="game-overlay"><div class="game-card start-card"><span class="game-kicker">TEACH ARCADE • CREATIVE PLAYGROUND</span><div class="toy-car" aria-hidden="true"><i></i></div><h1>BIG TRACKS.<br><em>WILD RIDES.</em></h1><p>Snap it. Build it. Send it!</p><button id="game-build" class="game-primary">✦ Let's build!</button><button id="game-demo">🏁 Try the loop track</button><button id="game-saves">★ My tracks</button><small>Your current creation stays safe.</small></div></div>
+ <div id="game-menu" class="game-overlay"><div class="game-card start-card"><span class="game-kicker">TEACH ARCADE • CREATIVE PLAYGROUND</span><div class="toy-car" aria-hidden="true"><i></i></div><h1>BIG TRACKS.<br><em>WILD RIDES.</em></h1><p>Snap it. Build it. Send it!</p><button id="game-build" class="game-primary">✦ Let's build!</button><button id="game-demo">🏁 Try the loop track</button><button id="game-canyon">Canyon Jump Park</button><button id="game-saves">★ My tracks</button><small>Your current creation stays safe.</small></div></div>
  <div id="game-hud" hidden>
    <div class="hud-chip"><small>SPEED</small><b id="game-speed">0</b><span>km/h</span><div class="speed-meter" aria-hidden="true"><i id="speed-fill"></i></div></div>
    <div class="hud-chip"><small>TIME</small><b id="game-time">0.0</b><span>s</span><div id="game-best" class="best-time"></div></div>
@@ -29,6 +29,10 @@ export class GameFeel {
       this.unlock();
       this.menu(false);
       actions.demo();
+    };
+    document.getElementById("game-canyon").onclick = () => {
+      this.menu(false);
+      actions.canyon();
     };
     document.getElementById("game-saves").onclick = () => {
       this.menu(false);
@@ -120,16 +124,17 @@ export class GameFeel {
     document.getElementById("speed-fill").style.transform = `scaleX(${Math.min(1, speed / 32)})`;
     const effect = document.getElementById("drive-effect");
     const cue = surfaceEffect === "boost" ? "BOOST" : surfaceEffect === "brake" ? "BRAKE ZONE" :
-      !grounded && airtime > 0.1 && vehicle.pos.y > 0.4 ? "AIRBORNE" : "";
+      !grounded && airtime > 0.1 && vehicle.pos.y > 0.4 ? "AIRBORNE" :
+      vehicle.jumpCleared ? "CANYON CLEARED" : "";
     if (effect.textContent !== cue) effect.textContent = cue;
     effect.hidden = !cue || this.flow.finished;
     return simulate;
   }
-  finish(time) {
+  finish(time, jumpCleared) {
     if (!this.flow.finish(time)) return;
     document.getElementById("game-countdown").textContent = "";
     document.getElementById("finish-summary").textContent =
-      `${time.toFixed(2)} seconds • Top speed ${Math.round(this.flow.peak * 3.6)} km/h`;
+      `${time.toFixed(2)} seconds • Top speed ${Math.round(this.flow.peak * 3.6)} km/h${jumpCleared ? " • Canyon cleared" : ""}`;
     const record = saveBestRaceTime(this.recordKey, time);
     const recordLabel = document.getElementById("finish-record");
     recordLabel.hidden = record.best === null;

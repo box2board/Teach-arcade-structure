@@ -124,6 +124,8 @@ export class Vehicle {
     this.elapsed = 0;
     this.finished = false;
     this.airtime = 0;
+    this.lastSurfaceId = null;
+    this.jumpCleared = false;
     this.loopRide = null;
     this.loopCooldown = 0;
     this.applyMesh(0);
@@ -201,11 +203,16 @@ export class Vehicle {
       (this.keys.has("ArrowLeft") || this.keys.has("a") ? 1 : 0);
     let attached =
       surf &&
-      this.velocity.y <= 3 &&
+      (this.grounded || this.velocity.y <= 3) &&
       this.pos.y >= surf.y - 0.9 &&
       this.pos.y <= surf.y + 0.6;
     this.surfaceEffect = attached ? asset(surf.piece.type).interaction : null;
     if (attached) {
+      const jump = this.track.jumpChallenge;
+      if (jump && this.airtime >= 0.25 && this.velocity.y < 0 &&
+          this.lastSurfaceId === jump.launchId && surf.piece.id === jump.landingId)
+        this.jumpCleared = true;
+      this.lastSurfaceId = surf.piece.id;
       this.grounded = true;
       this.airtime = 0;
       this.pos.y = surf.y;
@@ -270,6 +277,7 @@ export class Vehicle {
     }
     this.pos.addScaledVector(this.velocity, dt);
     if (this.pos.y < 0.03) {
+      this.lastSurfaceId = null;
       this.pos.y = 0.03;
       this.velocity.y = 0;
       this.velocity.x *= Math.max(0, 1 - dt * 1.5);
