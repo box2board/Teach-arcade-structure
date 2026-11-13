@@ -1,8 +1,9 @@
+import {connect,embedded,random,record} from './cabinet-adapter.js';
 import {createHoops,DURATION,shotPower,hoopAt,clamp} from './engine.js';
 const root=document.querySelector('#free-throw-fever'),$=id=>root.querySelector('#'+id),canvas=$('canvas'),ctx=canvas.getContext('2d');
 let last=null,clock=0,owner=null,ready=false,arena=new Image(),particles=[],messageAge=0,best=0;
 try{best=Number(localStorage.getItem('free-throws-arcade-v6-best'))||0;}catch{}
-const game = createHoops(event => {
+const game = record(createHoops(event => {
  if (event.type === 'finish') {
   finish(event.result);
   return;
@@ -27,13 +28,13 @@ const game = createHoops(event => {
   });
  }
  particles = particles.slice(-80);
-});
-$('start').disabled=true;$('start').textContent='LOADING THE COURT…';arena.onload=()=>{ready=true;$('start').disabled=false;$('start').textContent='LET’S HOOP ↗';};arena.onerror=()=>{$('description').textContent='The court artwork could not load. Reload to try again.';$('start').textContent='RELOAD TO RETRY';};arena.src='assets/arcade-arena.webp';
+}, random));
+$('start').disabled=true;$('start').textContent='LOADING THE COURT…';arena.onload=()=>{ready=true;$('start').disabled=false;$('start').textContent='LET’S HOOP ↗';connect(start);};arena.onerror=()=>{$('description').textContent='The court artwork could not load. Reload to try again.';$('start').textContent='RELOAD TO RETRY';};arena.src='assets/arcade-arena.webp';
 function clear(){owner=null;game.cancel();}
 function start(){if(!ready)return;clear();game.start();last=null;particles=[];messageAge=0;$('overlay').hidden=true;$('results').hidden=true;$('intro').hidden=false;$('pause').disabled=false;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 function show(title,description,label){$('title').textContent=title;$('description').textContent=description;$('start').textContent=label;$('overlay').hidden=false;}
 function finish(result){clear();best=Math.max(best,result.score);try{localStorage.setItem('free-throws-arcade-v6-best',String(best));}catch{}$('eyebrow').textContent='FINAL BUZZER';$('intro').hidden=true;$('results').hidden=false;$('results').innerHTML=[['BUCKETS',result.makes+' / '+result.attempts],['SWISHES',result.swishes],['BEST',best]].map(([label,value])=>'<div>'+label+'<strong>'+value+'</strong></div>').join('');show(result.score+' POINTS!',result.accuracy+'% accuracy · Best streak '+result.bestStreak,'RUN IT BACK ↗');$('pause').disabled=true;window.dispatchEvent(new CustomEvent('sparks:minigame-complete',{detail:result}));}
-function pause(){if(!['playing','countdown','buzzer'].includes(game.state.phase))return;game.pause();clear();$('intro').hidden=true;$('results').hidden=true;show('TIME OUT.','Your round is paused.','BACK TO THE COURT ↗');$('pause').textContent='Resume';}
+function pause(){if(embedded)return;if(!['playing','countdown','buzzer'].includes(game.state.phase))return;game.pause();clear();$('intro').hidden=true;$('results').hidden=true;show('TIME OUT.','Your round is paused.','BACK TO THE COURT ↗');$('pause').textContent='Resume';}
 function resume(){game.resume();last=null;$('overlay').hidden=true;$('pause').textContent='Pause';canvas.focus({preventScroll:true});}
 $('start').onclick=()=>game.state.phase==='paused'?resume():start();$('pause').onclick=()=>game.state.phase==='paused'?resume():pause();
 function sync(now=performance.now()){const dt=last===null?0:clamp((now-last)/1000,0,.25);last=now;game.tick(dt);return dt;}
