@@ -1,3 +1,4 @@
+import './game.js?v=multi-answer-1';
 import {setsForGame,loadQuestionSet} from '../catalog.js';
 import {enhanceTopicPicker} from '../topic-picker.js';
 import {categoryClashBoard} from '../question-decks.js';
