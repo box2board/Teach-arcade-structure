@@ -60,6 +60,10 @@ export function recordMemory(createMemory, onEvent) {
     },
     select(card) {
       const at = Math.min(63001, Math.max(simulated, Math.floor(performance.now() - base)));
+      const state = game.state;
+      const pending = (at - simulated) / 1000;
+      if (state.phase !== 'playing' || state.lock > pending
+        || state.matched.includes(card) || state.lock === 0 && state.open.includes(card)) return false;
       advance(at);
       if (!game.select(card)) return false;
       actions.push(['select', at, card]);
@@ -72,10 +76,8 @@ export function recordMemory(createMemory, onEvent) {
       const at = Math.min(63001, Math.max(simulated, Math.floor(performance.now() - base)));
       const remaining = (at - simulated) / 1000;
       const state = game.state;
-      if (state.phase === 'preview' || state.lock > 0 || remaining >= state.left) {
-        if (at === 63001 || state.phase === 'preview' && remaining >= state.preview
-          || state.lock > 0 && remaining >= state.lock || remaining >= state.left) advance(at);
-      }
+      if (at === 63001 || state.phase === 'preview' && remaining >= state.preview
+        || state.lock > 0 && remaining >= state.lock || remaining >= state.left) advance(at);
     },
     pause() {},
     resume() {}
