@@ -74,7 +74,7 @@
       });
     });
     const pages = doc.getNumberOfPages();
-    for (let page = 1; page <= pages; page++) { doc.setPage(page); doc.setFontSize(8); doc.text(`Teach Arcade | ${page} / ${pages}`, 46, 770); }
+    for (let page = 1; page <= pages; page++) { doc.setPage(page); doc.setFontSize(8); doc.text(`© 2026 Teach Arcade | ${page} / ${pages}`, 46, 770); }
     const name = form.elements.student_name.value.trim().replace(/[^a-zA-Z0-9_-]+/g,'-') || 'student';
     doc.save(`the-great-escape-${name}-responses.pdf`);
     exportStatus.textContent = 'PDF downloaded. Attach it to the assignment your teacher provided. It has not been sent automatically.';

@@ -53,7 +53,7 @@ function build(project,blank,fontData){
  else if(spec.layout==='grid'){for(let i=0;i<cards.length;i+=2)row(cards.slice(i,i+2),blank?200:140);}
  else if(spec.layout==='branch'){row([cards[0]],100);for(let i=1;i<cards.length;i+=2)row(cards.slice(i,i+2),120);}
  else for(const card of cards)row([card],spec.layout==='plot'?85:blank?110:100);
- const count=doc.getNumberOfPages();for(let i=1;i<=count;i++){doc.setPage(i);text('Teach Arcade · teacharcade.com',40,773,8,[90,100,115]);text(i+' / '+count,538,773,8,[90,100,115]);}
+ const count=doc.getNumberOfPages();for(let i=1;i<=count;i++){doc.setPage(i);text('© 2026 Teach Arcade · teacharcade.com',40,773,8,[90,100,115]);text(i+' / '+count,538,773,8,[90,100,115]);}
  doc.setProperties({title:project.title||spec.name,subject:blank?'Blank classroom worksheet':'Completed graphic organizer',creator:'Teach Arcade'});
  return doc;
 }
