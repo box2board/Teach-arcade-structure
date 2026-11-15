@@ -1,0 +1,9 @@
+.cabinet-save-dialog{box-sizing:border-box;width:min(30rem,calc(100% - 2rem));padding:1.4rem;border:1px solid #9bacbc;border-radius:14px;background:#fff;color:#172b3b;font:1rem/1.5 system-ui}
+.cabinet-save-dialog::backdrop{background:#091b3e90}
+.cabinet-save-dialog h2{margin:0 0 1rem;font-size:1.25rem}
+.cabinet-save-dialog label{display:grid;gap:.3rem}
+.cabinet-save-dialog input{box-sizing:border-box;width:100%;padding:.55rem;border:1px solid #75889a;border-radius:6px;font:inherit;color:inherit;background:#fff}
+.cabinet-save-dialog button{font:inherit;padding:.45rem .65rem;border:1px solid #17354f;border-radius:6px;background:#fff;color:#17354f}
+.cabinet-save-dialog button[type=submit]{background:#17354f;color:#fff}
+.cabinet-save-dialog a{color:#125c90}
+.cabinet-save-dialog [hidden]{display:none!important}

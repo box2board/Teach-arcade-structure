@@ -1,6 +1,11 @@
+import {mountProjects} from './projects-view.js';
+import {request} from './project-client.js';
 import {QUESTION_SETS,GAMES,loadQuestionSet,gamesForSet,gameUrl} from '../review-lab/catalog.js';
 import {TOOLS,CABINET_GAMES} from './cabinet-catalog.js';
 const $=id=>document.getElementById(id);
+const renderProjects=mountProjects($('projects'));
+let projectsEnabled=false;
+request('availability').then(({enabled})=>{projectsEnabled=enabled;document.querySelector('[data-project-nav]').hidden=!enabled;renderProjects(user,enabled);}).catch(()=>{});
 let accountLoading=true,accountFailed=false;
 let user=null,configured=false,saved=new Set(),savedView=false,limit=24,previewRequest=0;
 let selectedSet=null,preferredGame=null,pendingSave=null,returnRoute='sets';
@@ -30,17 +35,18 @@ async function api(action,body){
 function notice(text){$('notice').textContent=text;}
 function route(){
  const params=new URLSearchParams(location.hash.slice(1)),name=location.hash.slice(1).split('&')[0]||'home';
- const valid=['home','sets','saved','games','my-games','tools','create','assignments','classes','reports','account'].includes(name)?name:'home';
- for(const id of ['home','sets','games','my-games','tools','create','future','account'])$(id).hidden=true;
+ const valid=['home','sets','saved','games','my-games','tools','projects','create','assignments','classes','reports','account'].includes(name)?name:'home';
+ for(const id of ['home','sets','games','my-games','tools','projects','create','future','account'])$(id).hidden=true;
  if(['sets','saved'].includes(valid)){savedView=valid==='saved';$('sets').hidden=false;render();}
  else if(valid==='games'){
   selectedSet=QUESTION_SETS.find(s=>s.id===params.get('set'));
   if(selectedSet){$('games').hidden=false;renderGames();}else{savedView=false;$('sets').hidden=false;render();notice('Choose a topic first, then pick your game.');}
  }else if(['assignments','classes','reports'].includes(valid))$('future').hidden=false;
  else $(valid).hidden=false;
+ renderProjects(user,projectsEnabled);
  renderCollections();
  document.querySelectorAll('nav a').forEach(a=>{if(a.hash===`#${valid}`)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
- $('breadcrumb').textContent={home:'My Cabinet',sets:'Question Library',saved:'Saved Teach Arcade Topics',games:'Choose a Game','my-games':'My Games',tools:'My Tools',create:'Create a Game · Planned',account:'Account',assignments:'Coming later',classes:'Coming later',reports:'Coming later'}[valid];
+ $('breadcrumb').textContent={home:'My Cabinet',sets:'Question Library',saved:'Saved Teach Arcade Topics',games:'Choose a Game','my-games':'My Games',tools:'My Tools',projects:'My Projects',create:'Create a Game · Planned',account:'Account',assignments:'Coming later',classes:'Coming later',reports:'Coming later'}[valid];
  if($('detail').open)$('detail').close();
  $('main').focus({preventScroll:true});
  window.scrollTo(0,0);
@@ -113,6 +119,7 @@ function renderGames(){
 }
 function categories(){const previous=$('category').value;const categories=[...new Set(QUESTION_SETS.filter(s=>!$('subject').value||s.subject===$('subject').value).map(s=>s.category||'Foundations'))].sort();$('category').replaceChildren(new Option('All categories',''),...categories.map(c=>new Option(c,c)));if(categories.includes(previous))$('category').value=previous;}
 function render(){
+ renderProjects(user,projectsEnabled);
  renderCollections();
  $('library-title').textContent=savedView?'Saved Teach Arcade Topics':'Teach Arcade Topics';
  $('saved-help').hidden=!savedView||(!accountLoading&&!!user);

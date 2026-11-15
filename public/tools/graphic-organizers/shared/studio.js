@@ -3,6 +3,7 @@
 const root=document.querySelector('[data-organizer-studio]');if(!root)return;
 const M=window.GOModel, slug=root.dataset.organizerStudio;
 let project=M.fresh(slug), undo=[],redo=[], timer, pendingSnapshot=null, focusMode=false;
+const cabinetOpen=new URL(location.href).searchParams.has('cabinetProject');let detach=()=>{};
 const storageKey=id=>'teacharcade_organizer_studio_v1_'+id;
 let initialMessage='Ready. Changes save in this browser.';
 try {const saved=localStorage.getItem(storageKey(slug));const old=localStorage.getItem(M.templates[slug].legacyKey);if(saved)project=M.validate(JSON.parse(saved));else if(old){project=M.migrate(slug,JSON.parse(old));initialMessage='Recovered your earlier saved organizer.';}}
@@ -15,7 +16,7 @@ const paper=el('section','go-paper');paper.setAttribute('aria-label','Editable o
 const note=el('p','go-help','Saved drafts stay on this device and browser. Download a project to reopen it elsewhere. Download PDF saves a ready-to-use worksheet directly.');
 root.append(toolbar,note,status,paper);toolbar.append(actions,options);
 const announce=message=>status.textContent=message;
-function save(){try{localStorage.setItem(storageKey(project.template),JSON.stringify(project));announce('Saved in this browser.');}catch{announce('Could not save in this browser. Download a project to keep your work.');}}
+function save(){if(cabinetOpen)return;try{localStorage.setItem(storageKey(project.template),JSON.stringify(project));announce('Saved in this browser.');}catch{announce('Could not save in this browser. Download a project to keep your work.');}}
 function flush(){clearTimeout(timer);if(pendingSnapshot){undo.push(pendingSnapshot);if(undo.length>50)undo.shift();pendingSnapshot=null;redo=[];}updateHistory();}
 function schedule(){clearTimeout(timer);timer=setTimeout(()=>{flush();save();},500);}
 function remember(){flush();undo.push(M.copy(project));if(undo.length>50)undo.shift();redo=[];}
@@ -30,8 +31,8 @@ const redoBtn=button('Redo',()=>{flush();if(!redo.length)return;undo.push(M.copy
 function updateHistory(){undoBtn.disabled=undo.length===0&&!pendingSnapshot;redoBtn.disabled=redo.length===0;}
 function download(){flush();save();const blob=new Blob([JSON.stringify(project,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download=(project.title||M.templates[project.template].name).replace(/[^a-z0-9_-]/gi,'-').slice(0,70)+'.teacharcade.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);announce('Project downloaded. Use Open project to continue on another device.');}
 const file=el('input');file.type='file';file.accept='.json,application/json';file.hidden=true;root.append(file);
-file.addEventListener('change',async()=>{const selected=file.files[0];if(!selected)return;try{if(selected.size>3*1024*1024)throw new Error('Choose a project smaller than 3 MB.');const next=M.validate(JSON.parse(await selected.text()));if(!confirm('Replace this editor with the selected project? Download your current work first if you need a separate copy.'))return;remember();save();project=next;render();save();announce('Project opened. '+M.templates[project.template].name);}catch(error){announce(error instanceof SyntaxError?'This file is not valid JSON. Your work has not changed.':error.message);}finally{file.value='';}});
-actions.append(button('Download project',download,'go-primary'),button('Open project',()=>file.click()),button('Download PDF',()=>downloadPdf(false)),undoBtn,redoBtn,button('New blank',()=>{if(confirm('Start a new blank organizer? Download the current project first to keep a copy.'))mutate(()=>project=M.fresh(project.template));}));
+file.addEventListener('change',async()=>{const selected=file.files[0];if(!selected)return;try{if(selected.size>3*1024*1024)throw new Error('Choose a project smaller than 3 MB.');const next=M.validate(JSON.parse(await selected.text()));if(!confirm('Replace this editor with the selected project? Download your current work first if you need a separate copy.'))return;remember();save();detach();project=next;render();save();announce('Project opened. '+M.templates[project.template].name);}catch(error){announce(error instanceof SyntaxError?'This file is not valid JSON. Your work has not changed.':error.message);}finally{file.value='';}});
+actions.append(button('Download project',download,'go-primary'),button('Open project',()=>file.click()),button('Download PDF',()=>downloadPdf(false)),undoBtn,redoBtn,button('New blank',()=>{if(confirm('Start a new blank organizer? Download the current project first to keep a copy.'))mutate(()=>{detach();project=M.fresh(project.template);});}));
 function setFocus(value){focusMode=value;document.body.classList.toggle('go-focus-mode',value);focusBtn.textContent=value?'Exit focus':'Focus mode';focusBtn.setAttribute('aria-pressed',String(value));}
 const focusBtn=button('Focus mode',()=>setFocus(!focusMode));focusBtn.setAttribute('aria-pressed','false');actions.append(focusBtn);
 async function downloadPdf(blank=false){
@@ -99,4 +100,9 @@ function render(){
 window.addEventListener('resize',()=>paper.querySelectorAll('textarea').forEach(grow));
 window.addEventListener('pagehide',()=>{flush();save();});
 render();
+
+import('/teacher/project-client.js').then(({bindProject})=>{
+ detach=bindProject(actions.firstElementChild,{tool:'graphic-organizer',snapshot:()=>{flush();return M.copy(project);},
+ restore:value=>{project=M.validate(value);undo=[];redo=[];render();},title:()=>project.title});
+}).catch(()=>{});
 })();

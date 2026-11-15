@@ -17,6 +17,7 @@
   const btnFlip       = document.getElementById('btn-flip');
   const btnMarkKnown  = document.getElementById('btn-mark-known');
   const btnResetProg  = document.getElementById('btn-reset-progress');
+  let detach=()=>{};
   const btnProjector  = document.getElementById('btn-projector');
 
   if (!rawTextarea || !flashcardEl) return; // safety
@@ -113,6 +114,7 @@
       if (!rawTextarea.value.trim()) return;
       if (!confirm('Clear all cards from the editor? This will not affect anything you copied elsewhere.')) return;
       rawTextarea.value = '';
+      detach();
     });
   }
 
@@ -204,4 +206,9 @@
 
   // Initial render
   renderCard();
+
+import('/teacher/project-client.js').then(({bindProject})=>{
+ detach=bindProject(btnUseCards,{tool:'flashcards',snapshot:()=>{if(!parseDeck(rawTextarea.value).length)throw Error('Add at least one flashcard.');return {text:rawTextarea.value};},
+ restore:value=>{if(typeof value.text!=='string'||!parseDeck(value.text).length)throw Error('Invalid flashcard deck.');rawTextarea.value=value.text;btnUseCards.click();}});
+}).catch(()=>{});
 })();

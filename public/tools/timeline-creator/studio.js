@@ -2,6 +2,7 @@
 'use strict';
 const M=window.TimelineModel,$=id=>document.getElementById(id),KEY='teacharcade_timeline_v1';
 let project=M.fresh(),selected=null,selectedEra=null,editingEvent=null,zoom=1,undo=[],redo=[],editingImage='',slideIndex=0,storageOK=true,exporting=false,invalidDraft=false,memeImage='',mediaTarget=null;
+const cabinetOpen=new URL(location.href).searchParams.has('cabinetProject');let detach=()=>{};
 const clone=p=>JSON.parse(JSON.stringify(p));
 try{const raw=localStorage.getItem(KEY);if(raw)project=M.validate(JSON.parse(raw));}catch(e){storageOK=false;}
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
@@ -47,7 +48,7 @@ out+=texts(['TEACH ARCADE  /  '+(vertical?'STORY VIEW · CHRONOLOGICAL ORDER':p.
 
 let toastTimer,inlineSession='';
 function toast(message){$('toast').textContent=message;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,4500);}
-function persist(){try{localStorage.setItem(KEY,JSON.stringify(project));storageOK=true;$('save-state').textContent='Saved on this device';}catch(e){storageOK=false;$('save-state').textContent='Save a project to keep your work';}}
+function persist(){if(cabinetOpen)return;try{localStorage.setItem(KEY,JSON.stringify(project));storageOK=true;$('save-state').textContent='Saved on this device';}catch(e){storageOK=false;$('save-state').textContent='Save a project to keep your work';}}
 function history(){undo.push(clone(project));if(undo.length>20)undo.shift();redo=[];}
 function commit(next,refresh=true){const clean=M.validate(next);history();project=clean;inlineSession='';invalidDraft=false;persist();if(refresh)render();}
 function patchEvent(id,patch){const p=clone(project),e=p.events.find(e=>e.id===id);if(!e)return;e&&Object.assign(e,patch);commit(p);}
@@ -91,7 +92,7 @@ $('undo').onclick=()=>travel(undo,redo);$('redo').onclick=()=>travel(redo,undo);
 function inlineProject(key,value){const p=clone(project);p[key]=value;const clean=M.validate(p);if(inlineSession!==key){history();inlineSession=key;}project=clean;persist();$('undo').disabled=false;}
 $('spacing').onchange=()=>setting('spacing',$('spacing').value);$('theme').onchange=()=>setting('theme',$('theme').value);$('horizontal').onclick=()=>setting('layout','horizontal');$('vertical').onclick=()=>setting('layout','vertical');$('zoom-in').onclick=()=>{zoom=Math.min(1.4,Math.round((zoom+.1)*10)/10);render();};$('zoom-out').onclick=()=>{zoom=Math.max(.6,Math.round((zoom-.1)*10)/10);render();};
 $('focus').onclick=()=>{const on=document.body.classList.toggle('focus-mode');$('focus').textContent=on?'⛶ Exit focus':'⛶ Focus';};$('design').onclick=()=>$('design-dialog').showModal();$('templates').onclick=()=>$('templates-dialog').showModal();
-function chooseTemplate(kind){if(project.events.length&&!confirm('Replace the timeline with this starter? Undo can restore your current work.'))return;selected=null;closeEditor();commit(kind==='blank'?M.fresh():M.template(kind));$('templates-dialog').close();if(project.events.length)setTarget(project.events[0].id);}
+function chooseTemplate(kind){if(project.events.length&&!confirm('Replace the timeline with this starter? Undo can restore your current work.'))return;selected=null;closeEditor();detach();commit(kind==='blank'?M.fresh():M.template(kind));$('templates-dialog').close();if(project.events.length)setTarget(project.events[0].id);}
 $('templates-dialog').onclick=ev=>{const kind=ev.target.closest('[data-template]')?.dataset.template;if(kind)chooseTemplate(kind);};$('new').onclick=()=>chooseTemplate('blank');$('example').onclick=()=>{if(project.events.length&&!confirm('Load the example? Undo can restore your timeline.'))return;closeEditor();selected=null;commit(M.example());};
 document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>$(b.dataset.close).close());
 $('instructions-button').onclick=()=>{$('instructions').value=project.instructions;$('instructions-dialog').showModal();};$('instructions-form').onsubmit=ev=>{ev.preventDefault();setting('instructions',$('instructions').value);$('instructions-dialog').close();};
@@ -114,7 +115,7 @@ function filename(suffix){return (project.title||'timeline').replace(/[^a-z0-9_-
 function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function save(){if(invalidDraft){toast('Fix the invalid date fields before saving your project.');return;}download(new Blob([JSON.stringify(project,null,2)],{type:'application/json'}),filename('.teacharcade-timeline.json'));toast('Editable project downloaded.');}
 $('save').onclick=save;$('export-project').onclick=save;$('open').onclick=()=>$('project-file').click();
-$('project-file').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;try{if(f.size>20000000)throw Error('Project files must be smaller than 20 MB.');const p=M.validate(JSON.parse(await f.text()));if(!confirm('Open this project and replace the current timeline? Undo can restore it.'))return;closeEditor();commit(p);toast('Project opened.');}catch(e){toast(e instanceof SyntaxError?'That file is not valid JSON.':e.message);}};
+$('project-file').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f)return;try{if(f.size>20000000)throw Error('Project files must be smaller than 20 MB.');const p=M.validate(JSON.parse(await f.text()));if(!confirm('Open this project and replace the current timeline? Undo can restore it.'))return;closeEditor();commit(p);detach();toast('Project opened.');}catch(e){toast(e instanceof SyntaxError?'That file is not valid JSON.':e.message);}};
 $('export').onclick=()=>{$('export-status').textContent='';$('export-dialog').showModal();};
 async function raster(p){const art=svg(p,false),url=URL.createObjectURL(new Blob([art.markup],{type:'image/svg+xml;charset=utf-8'}));try{const img=await new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('The timeline image could not be generated.'));im.src=url;});const c=document.createElement('canvas'),ratio=Math.min(2,8192/art.width,8192/art.height,Math.sqrt(16000000/(art.width*art.height)));c.width=Math.round(art.width*ratio);c.height=Math.round(art.height*ratio);const ctx=c.getContext('2d');ctx.fillStyle=palettes[p.theme].bg;ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0,c.width,c.height);return {canvas:c,art};}finally{URL.revokeObjectURL(url);}}
 async function exportingTask(fn){if(exporting)return;if(invalidDraft){$('export-status').textContent='Fix the invalid date fields before downloading.';return;}exporting=true;$('export-status').textContent='Preparing your download…';for(const id of ['png','pdf','blank-pdf'])$(id).disabled=true;try{await fn();$('export-status').textContent='Downloaded. Your timeline is ready.';}catch(e){$('export-status').textContent=e.message||'Download failed. Please try again.';}finally{exporting=false;for(const id of ['png','pdf','blank-pdf'])$(id).disabled=false;}}
@@ -133,4 +134,9 @@ window.addEventListener('beforeunload',ev=>{const e=project.events.find(e=>e.id=
 window.TimelineStudio={svg,project:()=>clone(project),pdfNotes,readImage};
 render();if(!storageOK){$('save-state').textContent='Save a project to keep your work';toast('Browser saving is unavailable. Download a project file to keep your work.');}
 
+
+import('/teacher/project-client.js').then(({bindProject})=>{
+ detach=bindProject($('save'),{tool:'timeline',snapshot:()=>{if(invalidDraft)throw Error('Fix invalid dates before saving.');return clone(project);},
+ restore:value=>{closeEditor();commit(value);},title:()=>project.title});
+}).catch(()=>{});
 })();
