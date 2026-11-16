@@ -46,6 +46,7 @@ function remember(){past.push(JSON.stringify(blocks));if(past.length>60)past.shi
 function changed(message){sync();$('saveStatus').textContent='Unsaved changes';say(message);}
 function say(s){$('status').textContent=s;}
 
+const cabinetOpen=new URL(location.href).searchParams.has('cabinetProject');let detach=()=>{};
 const setupDialog=$('boardSetup');
 function showBoardSetup(){
  selectedBoardSize=boardSize;
@@ -107,10 +108,22 @@ function rotate(){rotation=(rotation+90)%360;palette();ghost.visible=false;say(`
 function home(top=false){controls.target.set(0,1,0);const scale=boardSize/32;camera.position.set(...(top?[0,44*scale,.01]:[29*scale,30*scale,34*scale]));controls.update();}
 function download(data,name,mime){const url=URL.createObjectURL(new Blob([data],{type:mime}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function validate(raw){if(raw.length>2000000)throw Error('That file is too large.');const data=JSON.parse(raw),arr=Array.isArray(data)?data:data.blocks;if(!Array.isArray(arr)||arr.length>LIMIT)throw Error('Choose a build file with no more than 1,500 bricks.');return arr.map(b=>{if(!b||!def(b)||!Array.isArray(b.position)||b.position.length!==3||!b.position.every(v=>typeof v==='number'&&Number.isFinite(v)&&Math.abs(v)<=150)||!Number.isFinite(b.rotationY??0)||(b.color&&!/^#[\da-f]{6}$/i.test(b.color)))throw Error('This file contains an invalid brick.');return {id:crypto.randomUUID(),type:b.type,position:b.position.slice(),rotationY:b.rotationY||0,color:b.color||'#38bdf8'};});}
+const buildSnapshot=()=>({version:3,boardSize,blocks});
+function openBuild(raw){
+ const next=validate(raw), stored=JSON.parse(raw);
+ const fits=size=>next.every(b=>{const [x,,z]=bounds(b);return Math.max(-x[0],x[1],-z[0],z[1])<=size/2;});
+ const sizes=[...document.querySelectorAll('[data-board-size]')].map(b=>Number(b.dataset.boardSize));
+ const size=stored.boardSize??(fits(32)?32:sizes.find(fits));
+ if(!sizes.includes(size)||!fits(size))throw Error('The build does not fit a supported board.');
+ past=[];future=[];
+ blocks=next;changeBoardSize(size);setupRequired=false;
+ if(setupDialog.open)setupDialog.close();
+ changed('Build opened.');
+}
 function replace(next){remember();blocks=next;changed('Build opened.');home();}
-$('saveBuild').onclick=()=>{try{localStorage.setItem(KEY,JSON.stringify({version:2,blocks}));$('saveStatus').textContent='Saved on this device';say('Your build is saved in this browser.');}catch{say('Device saving is unavailable. Use Download build to keep your work.');}};
-$('loadBuild').onclick=()=>{try{const raw=localStorage.getItem(KEY)||localStorage.getItem(OLD);if(!raw)return say('No saved build on this device yet.');replace(validate(raw));}catch(e){say('Could not load build: '+e.message);}};
-$('exportJson').onclick=()=>download(JSON.stringify({version:2,blocks},null,2),'my-brick-build.json','application/json');$('importJson').onclick=()=>{$('importFile').value='';$('importFile').click();};$('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>2000000)throw Error('That file is too large.');replace(validate(await f.text()));}catch(err){say('Could not open build: '+err.message);}};
+$('saveBuild').onclick=()=>{try{localStorage.setItem(KEY,JSON.stringify(buildSnapshot()));$('saveStatus').textContent='Saved on this device';say('Your build is saved in this browser.');}catch{say('Device saving is unavailable. Use Download build to keep your work.');}};
+$('loadBuild').onclick=()=>{try{const raw=localStorage.getItem(KEY)||localStorage.getItem(OLD);if(!raw)return say('No saved build on this device yet.');openBuild(raw);detach();}catch(e){say('Could not load build: '+e.message);}};
+$('exportJson').onclick=()=>download(JSON.stringify(buildSnapshot(),null,2),'my-brick-build.json','application/json');$('importJson').onclick=()=>{$('importFile').value='';$('importFile').click();};$('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{if(f.size>2000000)throw Error('That file is too large.');openBuild(await f.text());detach();}catch(err){say('Could not open build: '+err.message);}};
 $('downloadImage').onclick=()=>{const gv=ghost.visible,hv=highlight.visible;ghost.visible=highlight.visible=false;renderer.render(scene,camera);const a=document.createElement('a');a.href=canvas.toDataURL('image/png');a.download='my-brick-build.png';a.click();ghost.visible=gv;highlight.visible=hv;};
 $('resetBuild').onclick=()=>{if(blocks.length&&confirm('Clear the board? You can undo this.')){remember();blocks=[];changed('A fresh board. What will you build?');}};
 $('undoAction').onclick=()=>undo();$('redoAction').onclick=()=>undo(true);$('rotatePiece').onclick=rotate;$('homeView').onclick=()=>home();$('topView').onclick=()=>home(true);
@@ -120,5 +133,9 @@ $('fullscreen').onclick=async()=>{const w=$('workspace');if(document.fullscreenE
 for(const b of document.querySelectorAll('[data-tool]'))b.onclick=()=>setTool(b.dataset.tool);
 window.addEventListener('keydown',e=>{if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.isContentEditable)return;const k=e.key.toLowerCase(),cmd=e.ctrlKey||e.metaKey;if(cmd&&['z','y'].includes(k)){e.preventDefault();undo(k==='y'||e.shiftKey);}else if(!cmd&&!e.altKey){if(k==='r'){e.preventDefault();rotate();}if({b:1,s:1,p:1,e:1,c:1}[k])setTool({b:'build',s:'select',p:'paint',e:'erase',c:'camera'}[k]);if(k==='escape'){if(selectedMoveId){const moving=meshes.get(selectedMoveId);if(moving)moving.visible=true;selectedMoveId=null;candidate=null;ghost.visible=false;say('Move canceled.');}else{$('workspace').classList.remove('bb-expanded');$('fullscreen').textContent='Full screen';}}}});
 new ResizeObserver(()=>{const w=mount.clientWidth,h=mount.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}).observe(mount);
-function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera);}palette();colorPalette();sync();$('canvasFallback').style.display='none';animate();showBoardSetup();
+function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera);}palette();colorPalette();sync();$('canvasFallback').style.display='none';animate();if(!cabinetOpen)showBoardSetup();
 setupActivities({count:()=>blocks.length,replace:next=>replace(validate(JSON.stringify(next))),download:()=>$('exportJson').click(),picture:()=>$('downloadImage').click(),say,preview:build=>{if(previewObject){previewScene.remove(previewObject);releaseInstances(previewObject);}previewObject=new THREE.Group();build.forEach(b=>previewObject.add(makeMesh(b)));previewScene.add(previewObject);const box=new THREE.Box3().setFromObject(previewObject),center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3()),radius=size.length()/2+.5;previewCamera.left=-radius*1.5;previewCamera.right=radius*1.5;previewCamera.top=radius;previewCamera.bottom=-radius;previewCamera.position.copy(center).add(new THREE.Vector3(10,9,12));previewCamera.lookAt(center);previewCamera.updateProjectionMatrix();previewRenderer.render(previewScene,previewCamera);return previewRenderer.domElement.toDataURL();}});
+
+import('/teacher/project-client.js').then(({bindProject})=>{
+ detach=bindProject($('saveBuild'),{tool:'block-builder',snapshot:buildSnapshot,restore:value=>openBuild(JSON.stringify(value)),onOpenError:showBoardSetup});
+}).catch(()=>{});

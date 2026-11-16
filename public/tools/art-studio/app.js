@@ -1,3 +1,4 @@
+import {validateProject} from './storage.js';
 import {CropEditor} from './crop-editor.js';
 import {ImageEditor} from './image-editor.js';
 import {ResourceBuilders} from './resource-builders.js';
@@ -22,3 +23,8 @@ canvas.objectMenu=new CanvasObjectMenu(root,state,canvas,a=>ui.action(a));
 requestAnimationFrame(()=>canvas.fit());
 // Exposed only for local diagnostics; no authentication or server writes.
 root.studio={state,canvas,ui};
+
+import('/teacher/project-client.js').then(({bindProject})=>{
+ ui.detachCabinet=bindProject(root.querySelector('header [data-action="save"]'),{tool:'art',snapshot:()=>state.project,title:()=>state.project.name,
+ restore:value=>{state.load(validateProject(value));canvas.fit();}});
+}).catch(()=>{});

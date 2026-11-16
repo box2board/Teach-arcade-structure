@@ -1,5 +1,6 @@
 (()=>{
 'use strict';const M=window.ComicModel,A=window.ComicArt,$=id=>document.getElementById(id),key='teacharcade_comic_studio_v1';let p=M.freshBook(),pageIndex=0,index=0,selected='',undo=[],redo=[],pending=null,timer,drag=null;
+const cabinetOpen=new URL(location.href).searchParams.has('cabinetProject');let detach=()=>{};
 const pageArtCache=new Map();let pageArtAssets=null;
 const say=s=>$('status').textContent=s;
 const isText=o=>o&&['speech','thought','caption','text'].includes(o.type);
@@ -11,7 +12,7 @@ function restore(s){p=s.book;pageIndex=s.pageIndex;index=s.index;}
 function history(){if(pending){undo.push(pending);pending=null;redo=[];if(undo.length>40)undo.shift();}clearTimeout(timer);updateHistory();}
 function remember(){history();undo.push(snap());redo=[];if(undo.length>40)undo.shift();}
 let dirty=false,saveSequence=0;
-function save(){dirty=true;p.updatedAt=new Date().toISOString();const sequence=++saveSequence,statusBefore=$('status').textContent;let fallback=false;
+function save(){dirty=true;if(cabinetOpen)return;p.updatedAt=new Date().toISOString();const sequence=++saveSequence,statusBefore=$('status').textContent;let fallback=false;
  try{const data=JSON.stringify(p);if(data.length<2*1024*1024){localStorage.setItem(key,data);fallback=true;}else localStorage.removeItem(key);}catch{}
  window.ComicProjectStore.saveDraft(M.snapshot(p)).then(()=>{if(sequence===saveSequence&&$('status').textContent===statusBefore)say('Draft saved in this browser · '+p.pages.length+' pages. Save a project file for a portable copy.');}).catch(()=>{if(sequence===saveSequence)say(fallback?'Draft saved in this browser. Save a project file for a portable copy.':'Browser saving is unavailable. Download a project file to keep your comic.');});
 }
@@ -86,13 +87,13 @@ $('copy-panel').addEventListener('click',()=>{if(index>=M.layouts[current().layo
 $('undo').addEventListener('click',()=>{history();if(!undo.length)return;redo.push(snap());restore(undo.pop());render();save();});$('redo').addEventListener('click',()=>{history();if(!redo.length)return;undo.push(snap());restore(redo.pop());render();save();});
 $('example-project').addEventListener('click',async()=>{
  if(p.pages.some(page=>page.panels.some(panel=>panel.objects.length))&&!confirm('Replace your comic with an example? Save a project file first to keep a copy.'))return;
- try{const response=await fetch('example.json');if(!response.ok)throw new Error('Example could not load.');const example=M.validateBook(await response.json());change(()=>{p=example;pageIndex=0;index=0;selected='';});say('Example loaded. Select a character or bubble and make it your own.');}catch(e){say(e.message);}
+ try{const response=await fetch('example.json');if(!response.ok)throw new Error('Example could not load.');const example=M.validateBook(await response.json());change(()=>{detach();p=example;pageIndex=0;index=0;selected='';});say('Example loaded. Select a character or bubble and make it your own.');}catch(e){say(e.message);}
 });
-$('new-project').addEventListener('click',()=>{if(confirm('Start a new comic? Save a project file first to keep a separate copy.'))change(()=>{p=M.freshBook();pageIndex=0;index=0;selected='';});});
+$('new-project').addEventListener('click',()=>{if(confirm('Start a new comic? Save a project file first to keep a separate copy.'))change(()=>{detach();p=M.freshBook();pageIndex=0;index=0;selected='';});});
 function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 const filename=()=> (p.title||'Comic').replace(/[^a-z0-9_-]/gi,'-').slice(0,70);
 $('save-project').addEventListener('click',()=>{history();save();download(new Blob([JSON.stringify(p,null,2)],{type:'application/json'}),filename()+'.teacharcade-comic.json');say('Project file downloaded. Use Open project to resume editing.');});$('open-project').addEventListener('click',()=>$('project-file').click());
-$('project-file').addEventListener('change',async()=>{const file=$('project-file').files[0];if(!file)return;try{if(file.size>25*1024*1024)throw new Error('Choose a project smaller than 25 MB.');const next=M.validateBook(JSON.parse(await file.text()));if(!confirm('Open this comic in place of the current project? Save your current project file first to keep a copy.'))return;change(()=>{p=next;pageIndex=0;index=0;selected='';});say('Comic project opened.');}catch(e){say('Could not open project: '+e.message);}finally{$('project-file').value='';}});
+$('project-file').addEventListener('change',async()=>{const file=$('project-file').files[0];if(!file)return;try{if(file.size>25*1024*1024)throw new Error('Choose a project smaller than 25 MB.');const next=M.validateBook(JSON.parse(await file.text()));if(!confirm('Open this comic in place of the current project? Save your current project file first to keep a copy.'))return;change(()=>{detach();p=next;pageIndex=0;index=0;selected='';});say('Comic project opened.');}catch(e){say('Could not open project: '+e.message);}finally{$('project-file').value='';}});
 async function canvas(blank=false,page=pageIndex,book=M.snapshot(p)){
  const draft=M.pageView(book,page);if(blank)draft.panels=draft.panels.map(()=>M.blankPanel());const rendered=A.page(draft),svg=await window.ComicAssets.inline(rendered.svg),image=new Image(),url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));
  try{await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=()=>reject(new Error('Comic image could not render.'));image.src=url;});const result=document.createElement('canvas');result.width=rendered.width;result.height=rendered.height;const ctx=result.getContext('2d');if(!ctx)throw new Error('Image export is unavailable.');ctx.drawImage(image,0,0);return result;}finally{URL.revokeObjectURL(url);}
@@ -232,4 +233,9 @@ document.addEventListener('pointerdown',event=>{if(guideHighlight&&!event.target
 
 window.addEventListener('pagehide',()=>{history();save();});document.querySelector('.page-preview').addEventListener('toggle',()=>draw());render();
 {const main=document.querySelector('.comic-main');main.inert=true;say('Opening browser draft…');window.ComicProjectStore.loadDraft().then(book=>{if(book&&!dirty&&(!restoredLocal||book.updatedAt>=p.updatedAt)){p=M.validateBook(book);pageIndex=0;index=0;render();say('Browser draft restored.');}else if(!dirty)say(restoredLocal?'Browser draft restored.':'Ready to create. Drafts save in this browser.');}).catch(()=>say('Could not open the browser draft. Open a project file to continue.')).finally(()=>main.inert=false);}
+
+import('/teacher/project-client.js').then(({bindProject})=>{
+ detach=bindProject($('save-project'),{tool:'comic',snapshot:()=>M.snapshot(p),title:()=>p.title,
+ restore:value=>{const next=M.validateBook(value);change(()=>{p=next;pageIndex=0;index=0;selected='';});}});
+}).catch(()=>{});
 })();

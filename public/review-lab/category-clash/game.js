@@ -30,7 +30,8 @@ import {bindAnswerChoices,clearAnswerChoices} from '../answer-picker.js';
   }
   function ensureTeams(){ while(data.teams.length<2)data.teams.push({name:`Team ${data.teams.length+1}`,color:palette[data.teams.length]}); }
   function loadLocal(){ try{return normalize(JSON.parse(localStorage.getItem(STORAGE_KEY)));}catch{return clone(sample);} }
-  function persist(){ localStorage.setItem(STORAGE_KEY,JSON.stringify(data)); }
+const cabinetOpen=new URL(location.href).searchParams.has('cabinetProject');let detach=()=>{};
+  function persist(){if(cabinetOpen)return; localStorage.setItem(STORAGE_KEY,JSON.stringify(data)); }
   function announce(message){ $('notice').textContent=message; clearTimeout(announce.timeout); announce.timeout=setTimeout(()=>$('notice').textContent='',2800); }
   function sound(kind='tap'){
     if(state && !state.soundOn)return;
@@ -374,14 +375,14 @@ import {bindAnswerChoices,clearAnswerChoices} from '../answer-picker.js';
   }
 
   function download(){ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${data.title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'category-clash'}.json`;a.click();URL.revokeObjectURL(a.href);announce('Game set downloaded.'); }
-  function loadFile(file){const reader=new FileReader();reader.onload=()=>{try{data=normalize(JSON.parse(reader.result));ensureTeams();persist();renderSetup();announce('Game set loaded.');}catch{announce('That file is not valid Category Clash JSON.');}};reader.readAsText(file);}
+  function loadFile(file){const reader=new FileReader();reader.onload=()=>{try{data=normalize(JSON.parse(reader.result));detach();ensureTeams();persist();renderSetup();announce('Game set loaded.');}catch{announce('That file is not valid Category Clash JSON.');}};reader.readAsText(file);}
   async function toggleFullscreen(){try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen();}catch{announce('Full-screen mode is unavailable in this browser.');}}
   function wire(){
     bindSetupChanges();
     document.querySelectorAll('input[name="playMode"]').forEach(el=>el.addEventListener('change',syncSetupMode));
     $('teamCount').addEventListener('change',e=>changeTeamCount(+e.target.value));
     $('addCategoryBtn').onclick=()=>{if(data.categories.length<6){data.categories.push({name:`Category ${data.categories.length+1}`,questions:[{question:'',answer:'',points:100,power:false}]});renderSetup();persist();}};
-    $('sampleBtn').onclick=()=>{if(confirm('Replace the current editor with the built-in sample?')){data=clone(sample);persist();renderSetup();announce('Sample game loaded.');}};
+    $('sampleBtn').onclick=()=>{if(confirm('Replace the current editor with the built-in sample?')){detach();data=clone(sample);persist();renderSetup();announce('Sample game loaded.');}};
     $('saveBtn').onclick=download;
     $('loadBtn').onclick=()=>$('fileInput').click();
     $('fileInput').onchange=e=>e.target.files[0]&&loadFile(e.target.files[0]);
@@ -461,6 +462,11 @@ import {bindAnswerChoices,clearAnswerChoices} from '../answer-picker.js';
     });
   }
   const originalPackId=PACK_ID,originalStorageKey=STORAGE_KEY;
-  window.CategoryClash={loadQuestionSet(pack){PACK_ID=pack.id;STORAGE_KEY=`teachArcade.categoryClash.bank.${PACK_ID}`;data=normalize(pack);ensureTeams();renderSetup();syncSetupMode();$('multipleChoiceEnabled').checked=true;announce('Review topic loaded.');},useCustomDraft(){PACK_ID=originalPackId;STORAGE_KEY=originalStorageKey;data=loadLocal();ensureTeams();renderSetup();syncSetupMode();}};
+  window.CategoryClash={loadQuestionSet(pack){detach();PACK_ID=pack.id;STORAGE_KEY=`teachArcade.categoryClash.bank.${PACK_ID}`;data=normalize(pack);ensureTeams();renderSetup();syncSetupMode();$('multipleChoiceEnabled').checked=true;announce('Review topic loaded.');},useCustomDraft(){detach();PACK_ID=originalPackId;STORAGE_KEY=originalStorageKey;data=loadLocal();ensureTeams();renderSetup();syncSetupMode();}};
   data=loadLocal();state={soundOn:true};renderSetup();wire();syncSetupMode();
+
+import('/teacher/project-client.js').then(({bindProject})=>{
+ detach=bindProject(location.pathname==='/review-lab/category-clash/'?$('classroomSetupActions'):null,{tool:'clash',title:()=>data.title,snapshot:()=>({...data,playMode:selectedMode(),multipleChoice:$('multipleChoiceEnabled').checked}),
+ restore:value=>{data=normalize(value);ensureTeams();renderSetup();const mode=value.playMode==='individual'?'individual':'classroom';document.querySelector('input[name="playMode"][value="'+mode+'"]').checked=true;$('multipleChoiceEnabled').checked=!!value.multipleChoice;syncSetupMode();}});
+}).catch(()=>{});
 })();
