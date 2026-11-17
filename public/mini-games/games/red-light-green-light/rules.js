@@ -118,12 +118,17 @@ export class Race {
     const length = Math.hypot(packet.x, packet.z);
     const moving = length > DEADZONE;
     if (moving && this.phase === 'red' && (
+      now >= Math.min(this.phaseEndsAt, this.deadline) ||
       !Number.isFinite(packet.sample) || packet.sample < this.redGraceEnd ||
       packet.sample > now || now - packet.sample > MAX_RED_SAMPLE_AGE
     )) return false;
     const previous = player.input;
     const continuous = now - previous.at <= FRESH && Number.isFinite(previous.first);
     player.seq = packet.seq;
+    if (this.phase === 'red' && moving && packet.press === true) {
+      this.mark(player, 'out', now);
+      return true;
+    }
     player.input = moving
       ? { x: packet.x / Math.max(length, 1), z: packet.z / Math.max(length, 1),
           at: now, first: continuous ? previous.first : now }

@@ -78,6 +78,27 @@ test('red rejects a movement burst and leaves a timely neutral release eligible'
   assert.equal(race.players.get('0').status, 'racing');
 });
 
+test('a fresh tap after red grace eliminates the runner without advancing them', () => {
+  const { race, start, red, signal, to } = fixture(2);
+  start();
+  red();
+  const base = race.redGraceEnd;
+  const runner = race.players.get('0');
+  const position = runner.z;
+  to(base - 50);
+  assert.equal(signal('0', 1, { press: true }), false);
+  assert.equal(runner.status, 'racing');
+  to(base + 50);
+  assert.equal(signal('0', 1, { press: true, sample: base - 10 }), false);
+  assert(signal('0', 1, { press: true }));
+  assert.equal(runner.z, position);
+  assert.equal(runner.status, 'out');
+  assert.equal(race.phase, 'red');
+  assert(signal('1', 1, { press: true }));
+  to(base + 100);
+  assert.equal(race.reason, 'no-winner');
+});
+
 test('one red phase batches eliminations and can end with zero winners', () => {
   const { race, start, red, hold, to } = fixture(2);
   start();

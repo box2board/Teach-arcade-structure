@@ -53,11 +53,12 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
     oscillator.start(time);
     oscillator.stop(time + .3);
   }
-  function sendInput() {
+  function sendInput(press = false) {
     if (!room || !active || !state || !live.has(state.phase)) return;
     const held = new Set([...keys.values(), ...touches.values()]);
     room.send('input', {
       phaseId: state.phaseId, roundId: state.roundId, seq: ++inputSeq, sample: state.now,
+      press: press === true,
       x: +held.has('right') - +held.has('left'), z: +held.has('up') - +held.has('down')
     });
   }
@@ -107,7 +108,7 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
         renderList(el('placements'), rows.map(player => {
           const label = {
             finished: 'Finished', survivor: 'Last runner standing', time: 'Time expired · ' +
-              Math.max(0, Math.round(player.z / FIELD.finish * 100)) + '%', out: 'Eliminated', left: 'Disconnected'
+              Math.max(0, Math.round(player.z / FIELD.finish * 100)) + '%', out: 'Eliminated · Moved on red', left: 'Disconnected'
           }[player.status];
           return (player.place ? '#' + player.place + ' ' : '') + player.name + ' · ' + label;
         }));
@@ -285,7 +286,7 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
     event.preventDefault();
     if (!event.repeat) {
       keys.set(event.code, moves[event.code]);
-      sendInput();
+      sendInput(true);
     }
   });
   on(view, 'keyup', event => { if (keys.delete(event.code)) sendInput(); });
@@ -296,7 +297,7 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
       event.preventDefault();
       button.setPointerCapture(event.pointerId);
       touches.set(event.pointerId, button.dataset.direction);
-      sendInput();
+      sendInput(true);
     });
     for (const event of ['pointerup', 'pointercancel', 'lostpointercapture']) {
       on(button, event, pointer => { if (touches.delete(pointer.pointerId)) sendInput(); });

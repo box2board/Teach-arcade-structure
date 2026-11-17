@@ -45,7 +45,8 @@ class RedLightRoom extends Room {
     this.publish(performance.now());
     this.onMessage('input', (client, input) => {
       const now = performance.now();
-      if (now - (this.lastInput.get(client.sessionId) ?? -Infinity) < 16) return;
+      const redPress = this.race.phase === 'red' && input?.press === true;
+      if (!redPress && now - (this.lastInput.get(client.sessionId) ?? -Infinity) < 16) return;
       this.lastInput.set(client.sessionId, now);
       this.race.command(client.sessionId, input, now);
     });
