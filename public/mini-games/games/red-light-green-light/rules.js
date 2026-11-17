@@ -1,3 +1,6 @@
+import { characters as midwayCharacters } from '../../shared/midway-characters/characters.js';
+
+const MIDWAY_IDS = midwayCharacters.map(character => character.id);
 export const FIELD = Object.freeze({ width: 66, finish: 89, speed: 11 });
 export const STEP_MS = 1000 / 30;
 const GRACE = 400;
@@ -26,7 +29,7 @@ export function settings(options = {}) {
 }
 
 export class Race {
-  constructor({ random = Math.random, characters = ['sun', 'reef', 'plum', 'mint'] } = {}) {
+  constructor({ random = Math.random, characters = MIDWAY_IDS } = {}) {
     if (!characters.length) throw new Error('At least one character is required.');
     this.characters = characters.slice();
     this.random = random;
@@ -193,7 +196,8 @@ export class Race {
       if (this.phase === 'red') {
         // Movement must arrive in a current-phase stream and persist after the grace.
         // A queued old packet or a delayed burst cannot supply elapsed server time.
-        if (now >= this.redGraceEnd && input.at - Math.max(input.first, this.redGraceEnd) >= HELD_RED) {
+        if (Number.isFinite(input.first) && now >= this.redGraceEnd &&
+          input.at - Math.max(input.first, this.redGraceEnd) >= HELD_RED) {
           this.mark(player, 'out', now);
         }
         continue;

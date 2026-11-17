@@ -16,6 +16,8 @@ export async function start(port = Number(process.env.PORT) || 2567, gameConfig)
   app.get('/health', (_, response) => response.json({ ok: true }));
   app.use(root, express.static(fromHere(MINI_GAMES + '/games/red-light-green-light/')));
   app.use('/mini-games/vendor', express.static(fromHere(MINI_GAMES + '/vendor/')));
+  app.use('/mini-games/shared/midway-characters',
+    express.static(fromHere(MINI_GAMES + '/shared/midway-characters/')));
   app.get(root + 'sdk.js', (_, response) =>
     response.sendFile(fromHere('./node_modules/colyseus.js/dist/colyseus.js')));
   const server = new Server({ transport: new WebSocketTransport({ server: http, maxPayload: 4096 }) });

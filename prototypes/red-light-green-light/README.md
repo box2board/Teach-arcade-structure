@@ -15,7 +15,7 @@ npm start
 
 1. Open http://localhost:2567/ and choose **Host a round**. Add a nickname if desired.
 2. Open another browser profile or a private window. Open the host's invite link, or enter its case-sensitive room code on the same start page. Enter a different nickname and choose **Join room**.
-3. Choose the same character on both devices to check the player-specific scarf and nameplate colors. Select **Start round** in the host window.
+3. Choose the same Midway character on both devices to check the player-specific badge and nameplate colors. Select **Start round** in the host window.
 4. Run using W/Up or touch ↑. A/S/D or the other arrows move across or back. Release all movement when the indicator says **RED · FREEZE**. Try holding W across a full red phase. Check that the other player can see the elimination and that the eliminated player can follow the race.
 5. The host can start again from Results. Since switching tabs clears held movement, use two devices or have the second browser stationary when testing a held key. Other devices on a local network connect to the preview server's LAN address and port instead of localhost. For an internet-hosted test use a WebSocket-capable HTTPS review service.
 
@@ -33,9 +33,11 @@ A single host can start a solo practice race using the same server path. If usin
 ## Reuse points
 
 - `public/mini-games/games/red-light-green-light/` contains the player view, arena renderer and dependency-free `rules.js`. The preview shares the mini-game library's vendored Three.js.
-- `Race` supports initialization with a character allowlist, `join`, `assign`, `connect`, `leave`, `start`, `command`, `step`, `snapshot` and terminal results. The transport can dispose the round by discarding its instance. This preview runs continuously from countdown to results and does not expose pause.
+- `Race` supports initialization with a character allowlist, `join`, `assign`, `connect`, `leave`, `start`, `command`, `step`, `snapshot` and `end`. The transport can dispose the round by discarding its instance. This preview runs continuously from countdown to results and does not expose pause.
 - `registerRedLight(server, { capacity, characters })` registers a game-specific room on an existing Colyseus server. The preview reuses the Flagship branch's Colyseus/Schema/WebSocket stack, package versions, reconnect pattern and server/patch rates. The isolated launcher starts the room on its own process for local testing.
-- The browser adapter `mountGame(root, { client, makeAvatar, avatars })` uses the preview page markup with an injected Colyseus client. It exposes current state and `dispose()` for embed cleanup. Arena renderer adapters return `{ root, update(player, time, statusAge, reducedMotion), dispose? }`. Each player has an approved `characterId` and a session tint. A future host can pass in the Midway avatar adapter once the source package is available. The four current choices are temporary, with duplicate selection enabled. Universal lobby admission, actual Midway assets, and integration into the larger games remain pending.
+- The browser adapter `mountGame(root, { client, makeAvatar, avatars })` uses the preview page markup with an injected Colyseus client. It exposes current state and `dispose()` for embed cleanup. Arena renderer adapters return `{ root, labelHeight?, update(player, time, statusAge, reducedMotion), dispose? }`.
+- `public/mini-games/shared/midway-characters/` contains the 20-entry Midway Mayhem catalog and original model and pose modules from the Desktop prototype's `dist/lib`. Their Three.js imports point at the existing identical vendor file. The race uses the original walking and celebration poses, combines each model's meshes into one skinned mesh, shares baked geometry for identical avatars, and adds an elimination tilt and player-specific badge and nameplate.
+- Midway's Desktop room polls an HTTP/SQLite or D1 snapshot for turn-based board play. The Flagship WebSocket transport fits the race's frequent directional inputs and position updates. Universal lobby admission and launch wiring in the larger games are follow-on work.
 - This branch does not add a production route, teacher-dashboard launch or persistent reporting. Room codes use the preview transport's room IDs. Use nicknames during isolated playtests.
 
 ## Test commands
@@ -47,4 +49,4 @@ RLGL_TEST_CLIENTS=8 npm run test:network
 RLGL_TEST_CLIENTS=40 npm run test:network
 ```
 
-The rules suite covers solo play, stale and malformed movement, freeze timing, all-out and last-runner outcomes, finish ordering, time limits, duplicate colors, disconnection and late join. The WebSocket harness checks real SDK connections, host authority, replication, duplicate roster entries, reconnection, simultaneous red elimination and rematch. It does not measure rendered FPS, real devices or classroom Wi-Fi. Open the preview in two browsers and test keyboard and touch separately before evaluating classroom capacity.
+The rules suite covers solo play, stale and malformed movement, freeze timing, a full 40-racer simulation, all-out and last-runner outcomes, finish ordering, time limits, duplicate colors, disconnection and late join. A separate test covers all 20 animated Midway models, duplicate geometry, and cleanup. The WebSocket harness checks real SDK connections, host authority, replication, duplicate roster entries, reconnection, simultaneous red elimination and rematch. It does not measure rendered FPS, real devices or classroom Wi-Fi.

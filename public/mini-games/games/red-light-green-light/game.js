@@ -1,4 +1,5 @@
-import { createArena, PREVIEW_AVATARS } from './arena.js';
+import { createArena } from './arena.js';
+import { characters } from '../../shared/midway-characters/characters.js';
 import { FIELD, standings } from './rules.js';
 
 const ROOM_TYPE = 'red-light-green-light';
@@ -8,7 +9,7 @@ const moves = {
 };
 const live = new Set(['green', 'red']);
 
-export function mountGame(root, { client, makeAvatar, avatars = PREVIEW_AVATARS } = {}) {
+export function mountGame(root, { client, makeAvatar, avatars = characters } = {}) {
   const el = id => root.querySelector('#' + id);
   const view = root.ownerDocument.defaultView;
   const doc = root.ownerDocument;
@@ -238,7 +239,7 @@ export function mountGame(root, { client, makeAvatar, avatars = PREVIEW_AVATARS 
     }
   }
 
-  updateOptions(el('character'), avatars.map(avatar => [avatar.id, avatar.name]));
+  updateOptions(el('character'), avatars.map(avatar => [avatar.id, avatar.name + (avatar.species ? ' · ' + avatar.species : '')]));
   try {
     arena = createArena(el('field'), { makeAvatar });
   } catch {

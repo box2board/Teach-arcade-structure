@@ -5,7 +5,7 @@ import { FIELD, Race, settings, standings } from '../../public/mini-games/games/
 function fixture(count) {
   let now = 0;
   const race = new Race({ random: () => 0 });
-  for (let i = 0; i < count; i++) race.join(String(i), { name: 'Runner ' + i, characterId: 'reef', host: i === 0 });
+  for (let i = 0; i < count; i++) race.join(String(i), { name: 'Runner ' + i, characterId: 'frog', host: i === 0 });
   const seq = new Map();
   const signal = (id, z, overrides = {}) => {
     const number = (seq.get(id) ?? 0) + 1;
@@ -95,6 +95,20 @@ test('one red phase batches eliminations and can end with zero winners', () => {
   assert.equal(race.finishers, 0);
 });
 
+test('forty runners can release on every red light and finish one full race', () => {
+  const { race, signal, to, now } = fixture(40);
+  assert(race.start(now()));
+  while (race.phase !== 'results' && now() < 68000) {
+    for (const id of race.players.keys()) signal(id, race.phase === 'green' ? 1 : 0);
+    to(now() + 55);
+  }
+  const players = race.snapshot(now()).players;
+  assert.equal(race.phase, 'results');
+  assert.equal(race.finishers, 40);
+  assert.equal(new Set(players.map(player => player.color)).size, 40);
+  assert(players.every(player => player.status === 'finished' || player.status === 'survivor'));
+});
+
 test('awards the sole remaining runner when the red phase settles', () => {
   const { race, start, red, hold, to } = fixture(3);
   start();
@@ -127,7 +141,7 @@ test('multiple crossings in one tick preserve finish order and award the final r
 test('disconnect reserves the seat, expiration forfeits, and late joins race in the rematch', () => {
   const { race, start, signal, to, now } = fixture(2);
   start();
-  race.join('late', { name: 'Late', characterId: 'reef' });
+  race.join('late', { name: 'Late', characterId: 'frog' });
   assert.equal(race.players.get('late').status, 'waiting');
   assert.equal(signal('late', 1), false);
   race.connect('1', false);

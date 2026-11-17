@@ -22,28 +22,28 @@ const watchdog = setTimeout(() => { console.error('Network test exceeded its tim
 const seqs = new Map();
 let inputs;
 
-function send(room, z) {
+function send(room, z, timing = {}) {
   const seq = (seqs.get(room.sessionId) ?? 0) + 1;
   seqs.set(room.sessionId, seq);
   room.send('input', { x: 0, z, phaseId: room.state.phaseId, roundId: room.state.roundId,
-    sample: room.state.now, seq });
+    sample: room.state.now, ...timing, seq });
 }
 const position = (room, id) => room.state?.players?.get(id);
 
 try {
   const a = await new Client(endpoint).create(ROOM_TYPE, {
-    name: 'Host', hostKey: randomBytes(16).toString('hex'), characterId: 'reef'
+    name: 'Host', hostKey: randomBytes(16).toString('hex'), characterId: 'frog'
   });
   clients.push(a);
   const joins = await Promise.allSettled(Array.from({ length: count - 1 }, (_, index) =>
-    new Client(endpoint).joinById(a.roomId, { name: 'Runner ' + (index + 2), characterId: 'reef' })));
+    new Client(endpoint).joinById(a.roomId, { name: 'Runner ' + (index + 2), characterId: 'frog' })));
   for (const result of joins) if (result.status === 'fulfilled') clients.push(result.value);
   assert.equal(clients.length, count, joins.find(result => result.status === 'rejected')?.reason?.message);
   const b = clients[1];
   await until(() => clients.every(room => room.state?.players?.size === count), 'joint roster');
   assert.equal(a.state.hostId, a.sessionId);
   assert(clients.every(room => room.roomId === a.roomId));
-  for (const player of a.state.players.values()) assert.equal(player.characterId, 'reef');
+  for (const player of a.state.players.values()) assert.equal(player.characterId, 'frog');
   assert.equal(new Set(Array.from(a.state.players.values(), p => p.color)).size, count);
   b.send('start', {});
   await wait(250);
@@ -57,11 +57,18 @@ try {
     await until(() => position(a, late.sessionId)?.status === 'waiting', 'late entry spectates');
   }
   const racers = () => clients.slice(0, count);
-  let holdRed = false;
+  const greenSamples = new Map();
   inputs = setInterval(() => {
     for (const room of racers()) {
-      if (room.state.phase === 'green') send(room, 1);
-      if (room.state.phase === 'red') send(room, holdRed ? 1 : 0);
+      if (room.state.phase === 'green') {
+        greenSamples.set(room.sessionId, { phaseId: room.state.phaseId, sample: room.state.now });
+        send(room, 1);
+      }
+      if (room.state.phase === 'red') {
+        const delayed = greenSamples.get(room.sessionId);
+        if (room === a && delayed && room.state.now - delayed.sample < 700) send(room, 1, delayed);
+        else send(room, 0);
+      }
     }
   }, 55);
   await until(() => racers().every(room => room.state.phase === 'green'), 'shared green light');
@@ -79,7 +86,6 @@ try {
   assert.equal(returned.sessionId, id);
   await until(() => position(a, id)?.connected === true, 'same seat reconnects');
   await until(() => racers().every(room => room.state.phase === 'green'), 'shared second green');
-  holdRed = true;
   inputs = setInterval(() => {
     for (const room of racers()) if (room.state.phase === 'red') send(room, 1);
   }, 55);

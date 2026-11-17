@@ -1,14 +1,9 @@
 import * as THREE from '../../vendor/three.module.js';
 import { FIELD } from './rules.js';
 
-export const PREVIEW_AVATARS = [
-  { id: 'sun', name: 'Sun', color: 0xfba92d },
-  { id: 'reef', name: 'Reef', color: 0x29b7ee },
-  { id: 'plum', name: 'Plum', color: 0xb087f8 },
-  { id: 'mint', name: 'Mint', color: 0x41d2a6 }
-];
+import { makeMidwayAvatar } from './midway-avatar.js';
 
-export function createArena(canvas, { makeAvatar = previewAvatar } = {}) {
+export function createArena(canvas, { makeAvatar = makeMidwayAvatar } = {}) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'low-power' });
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.35));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -72,14 +67,31 @@ export function createArena(canvas, { makeAvatar = previewAvatar } = {}) {
       box(0x437d9b, side * (half + 7 + i * 1.2), .5 + i * .48, 47, 1.28, .55 + i * .96, 22);
       box(0xfea755, side * (half + 7 + i * 1.2), .82 + i * .94, 47, 1.28, .15, 22);
     }
+    for (const [index, z] of [11, 69, 102].entries()) {
+      const x = side * (half + 5.5);
+      const canopy = [0xff8472, 0x7775e8, 0x268ab9][index];
+      box(0xf6dfae, x, 1.05, z, 4, 2.1, 4);
+      shape(scene, 3, canopy, x, 3.4, z, 6.7, 3, 6.7);
+      box(canopy, x, 2.4, z, 4.8, .6, 4.8);
+      box(0x6b4a56, x - side * 2.02, 1.08, z, .15, 1.56, 1.8);
+    }
   }
   for (let i = 0; i < 9; i++) {
     const x = (i - 4) * 22;
     shape(scene, 1, 0x60bc8a, x, -.1, 137 + (i % 2) * 8, 49, 14 + (i % 3) * 4, 35);
-    shape(scene, 1, 0xf1fbff, x, 20 + (i % 3) * 4, 114 + (i % 2) * 15, 15, 3.6, 4);
+    if (i % 2 === 0) {
+      const y = 21 + (i % 3) * 6, z = 113 + (i % 3) * 8;
+      shape(scene, 1, 0xf1fbff, x, y, z, 21, 3.5, 6);
+      shape(scene, 1, 0xf1fbff, x - 3.5, y + 1.3, z, 10, 5.4, 5.8);
+      shape(scene, 1, 0xf1fbff, x + 2.2, y + 2.1, z, 11, 5.8, 6.3);
+    }
   }
 
-  for (const x of [-half - 1, half + 1]) box(0x2d4d74, x, 4.5, finish, 1.3, 9, 1.15);
+  for (const x of [-half - 1, half + 1]) {
+    box(0x2d4d74, x, 4.5, finish, 1.3, 9, 1.15);
+    box(0xf6bc55, x, .68, finish, 2.1, 1.36, 2.1);
+    for (const y of [2.1, 4.1, 6.1]) box(0x7acdb2, x, y, finish, 1.36, .32, 1.22);
+  }
   box(0x2d4d74, 0, 8.8, finish, FIELD.width + 3, 1.18, 1.15);
   box(0xffca65, 0, 9.3, finish, FIELD.width + 3, .16, 1.26);
   const sign = label('FINISH', '#243d60', '#fff1c4', 9.5, 1.6);
@@ -91,6 +103,16 @@ export function createArena(canvas, { makeAvatar = previewAvatar } = {}) {
   signal.position.set(0, 12.6, finish + .88);
   signal.scale.set(3.4, 3.4, .7);
   scene.add(signal);
+  const runway = new THREE.InstancedMesh(geometry[0], signal.material, 36);
+  const marker = new THREE.Object3D();
+  for (let i = 0; i < runway.count; i++) {
+    const side = i % 2 === 0 ? -1 : 1;
+    marker.position.set(side * (half - .3), .095, Math.floor(i / 2) * 5 + 1.5);
+    marker.scale.set(.25, .08, .92);
+    marker.updateMatrix();
+    runway.setMatrixAt(i, marker.matrix);
+  }
+  scene.add(runway);
   const dot = new THREE.Mesh(geometry[1], new THREE.MeshBasicMaterial({ color: 0x18394b, transparent: true, opacity: .22 }));
   dot.scale.set(1.8, .03, 1.3);
   const targetCamera = new THREE.Vector3(), gaze = new THREE.Vector3(), aim = new THREE.Vector3();
@@ -121,7 +143,7 @@ export function createArena(canvas, { makeAvatar = previewAvatar } = {}) {
         const track = dot.clone(), shell = new THREE.Group(), actor = makeAvatar(player, shape, tint);
         const name = label(player.name, '#ffffff', '#' + tint.getHexString(), 2.8, .57);
         shell.add(actor.root, name, track);
-        name.position.y = 3.28;
+        name.position.y = actor.labelHeight ?? 3.5;
         scene.add(shell);
         view = { shell, actor, name, characterId: player.characterId, status: '', changed: now };
         views.set(key, view);
@@ -197,35 +219,6 @@ function batchScenery(scene) {
     });
     scene.add(batch);
   }
-}
-
-function previewAvatar(player, shape, tint) {
-  const root = new THREE.Group();
-  const base = PREVIEW_AVATARS.find(entry => entry.id === player.characterId)?.color ?? 0xfba92d;
-  const body = shape(root, 1, base, 0, 1.42, 0, 1.38, 1.62, .95);
-  shape(root, 1, base, 0, 2.42, .04, 1.3, 1.13, 1.12);
-  shape(root, 0, tint.getHex(), 0, 1.86, .1, 1.22, .21, .93);
-  shape(root, 1, 0xffefca, 0, 2.38, .48, .84, .64, .32);
-  for (const side of [-1, 1]) {
-    shape(root, 1, base, side * .46, 2.87, .01, .36, .57, .37);
-    shape(root, 1, 0x273650, side * .2, 2.45, .62, .12, .17, .08);
-  }
-  const legs = [-1, 1].map(side => shape(root, 0, 0x30446b, side * .31, .43, 0, .43, .73, .55));
-  const arms = [-1, 1].map(side => shape(root, 1, base, side * .71, 1.34, 0, .38, 1.01, .4));
-  return { root, update(info, time, age, reduced) {
-    const run = info.motion === 'run' && !reduced;
-    const won = ['finished', 'survivor'].includes(info.status);
-    const out = info.status === 'out' || info.status === 'left';
-    const stride = run ? Math.sin(time * 15 + player.color) * .86 : 0;
-    root.rotation.z = out ? Math.min(1.16, age * 5) : 0;
-    root.position.y = won && !reduced ? Math.max(0, Math.sin(time * 10)) * .3 : 0;
-    body.rotation.x = run ? .14 : 0;
-    legs.forEach((leg, i) => { leg.rotation.x = stride * (i ? -1 : 1); });
-    arms.forEach((arm, i) => {
-      arm.rotation.x = stride * (i ? 1 : -1);
-      arm.rotation.z = (won ? 2.4 : .14) * (i ? 1 : -1);
-    });
-  } };
 }
 
 function label(value, fg, bg, width, height) {
