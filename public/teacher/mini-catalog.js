@@ -2,6 +2,14 @@
 import {validateCatalog} from './catalog-contract.js';
 export const MINI_GAMES=Object.freeze(validateCatalog([
   {
+    "id": "mini:red-light-green-light",
+    "title": "Red Light, Green Light",
+    "url": "/mini-games/games/red-light-green-light/",
+    "description": "Sprint for the finish on green, stop before the red light catches you, and race friends in real time.",
+    "symbol": "✦",
+    "collection": "Mini Games"
+  },
+  {
     "id": "mini:ultimate-skeeball",
     "title": "Ultimate Neon Roll",
     "url": "/mini-games/games/ultimate-skeeball/",

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Red Light, Green Light Multiplayer Game | Teach Arcade</title>
+  <meta name="description" content="Race friends in Teach Arcade’s multiplayer Red Light, Green Light. Run on green, release your controls during the red-light grace period, and reach the finish.">
+  <link rel="canonical" href="https://www.teacharcade.com/mini-games/games/red-light-green-light/">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./preview.js"></script>
+</head>
+<body>
+<main id="game" data-multiplayer-server="https://red-light-green-light-preview-review.up.railway.app">
+  <header class="header">
+    <div class="title"><span>TEACH ARCADE</span><h1>Red Light, Green Light</h1></div>
+    <button id="sound" type="button" aria-pressed="false">Sound off</button>
+  </header>
+  <div class="stage">
+    <canvas id="field" tabindex="0" aria-label="Third-person race field"></canvas>
+    <div class="race-hud" id="hud" hidden>
+      <p class="signal" id="signal" role="status"></p>
+      <div class="race-stats"><p class="time" id="clock"></p>
+        <p class="points" id="points">0 pts</p><small id="latency" aria-label="Network round-trip latency"></small></div>
+      <div class="progress">
+        <label for="progress">Finish line <span id="percent"></span></label>
+        <progress id="progress" max="100" value="0"></progress>
+      </div>
+    </div>
+    <div class="overlay" id="entry">
+      <form id="join" class="panel">
+        <h2>Ready to race?</h2>
+        <p>Run on green. Freeze on red.</p>
+        <p class="score-rule">Earn up to 1,000 distance points. Finish for 500 more, plus up to 500 for speed.</p>
+        <label for="name">Player name</label>
+        <input id="name" maxlength="20" autocomplete="off" placeholder="Runner">
+        <label for="code">Room code</label>
+        <input id="code" maxlength="16" autocomplete="off" spellcheck="false" placeholder="Enter the host’s code">
+        <div class="actions">
+          <button type="submit" class="primary">Join room</button>
+          <button type="button" id="host">Host a round</button>
+        </div>
+        <p id="entry-status" class="notice" role="status"></p>
+      </form>
+    </div>
+    <div class="overlay" id="room" hidden>
+      <section class="panel">
+        <div id="lobby-details">
+          <h2>Race lobby</h2>
+          <p>Room code <strong id="room-code" class="room-code"></strong></p>
+          <button id="invite" type="button">Copy invite link</button>
+          <label for="character">Character</label>
+          <select id="character"></select>
+          <p id="roster-count"></p>
+          <ul id="roster" class="roster"></ul>
+        </div>
+        <div id="results" hidden>
+          <h2 id="result-title" tabindex="-1"></h2>
+          <p class="score-rule">Points = distance + finish and speed bonuses. Last runner standing earns 250 survival points.</p>
+          <ol id="placements" class="placements"></ol>
+        </div>
+        <div class="actions">
+          <div id="host-actions" hidden>
+            <label for="duration">Round limit</label>
+            <div class="actions">
+              <select id="duration">
+                <option value="45000">45 seconds</option>
+                <option value="65000" selected>65 seconds</option>
+                <option value="90000">90 seconds</option>
+              </select>
+              <button id="start" type="button" class="primary">Start round</button>
+            </div>
+          </div>
+          <button id="leave" type="button">Leave room</button>
+        </div>
+        <p id="room-notice" class="notice" role="status"></p>
+      </section>
+    </div>
+    <aside id="spectator" class="spectator" hidden>
+      <p id="spectator-message" role="status"></p>
+      <label for="watch">Watch</label><select id="watch"></select>
+    </aside>
+    <div class="pad" id="pad" aria-label="Touch movement" hidden>
+      <button data-direction="up" aria-label="Run forward">↑</button>
+      <button data-direction="left" aria-label="Move left">←</button>
+      <button data-direction="down" aria-label="Move backward">↓</button>
+      <button data-direction="right" aria-label="Move right">→</button>
+    </div>
+  </div>
+  <footer id="instructions">Move with WASD, arrow keys, or touch controls.</footer>
+  <p id="connection" class="connection" role="status" hidden></p>
+</main>
+</body>
+</html>
