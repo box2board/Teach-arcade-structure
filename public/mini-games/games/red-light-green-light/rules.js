@@ -3,7 +3,7 @@ import { characters as midwayCharacters } from '../../shared/midway-characters/c
 const MIDWAY_IDS = midwayCharacters.map(character => character.id);
 export const FIELD = Object.freeze({ width: 66, finish: 89, speed: 11 });
 export const STEP_MS = 1000 / 30;
-const GRACE = 500;
+const GRACE = 300;
 const FRESH = 180;
 const MAX_RED_SAMPLE_AGE = 800;
 const HELD_RED = 145;
