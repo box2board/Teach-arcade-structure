@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--4--earths-processes",
+  "title": "Grade 4 Science — Weathering, Erosion, and Deposition",
+  "subject": "Science",
+  "category": "Earth’s Processes",
+  "topic": "Earth’s Processes",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on water, wind, ice, sediment.",
+  "keywords": [
+    "water",
+    "wind",
+    "ice",
+    "sediment"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "4.ESS.1",
+    "4.ESS.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Rock cracks after water in a crack freezes. Which process broke the rock?",
+      "choices": [
+        "evaporation",
+        "erosion",
+        "weathering",
+        "deposition"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A river carries loose sand downstream. What process is this?",
+      "choices": [
+        "weathering",
+        "condensation",
+        "deposition",
+        "erosion"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "When a river slows and drops sediment, what happens?",
+      "choices": [
+        "deposition",
+        "erosion",
+        "evaporation",
+        "freezing"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Tree roots grow in cracks and split a rock. Which process is shown?",
+      "choices": [
+        "weathering",
+        "condensation",
+        "boiling",
+        "deposition"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What can wind do to a pile of dry sand?",
+      "choices": [
+        "make all grains the same size",
+        "carry grains to another place",
+        "turn each grain to iron",
+        "prevent any motion"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What can form where a river drops sediment near its mouth?",
+      "choices": [
+        "a volcanic vent",
+        "a glacier",
+        "a mountain peak",
+        "a delta"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why can thick grass reduce soil erosion?",
+      "choices": [
+        "Roots help hold soil in place.",
+        "Grass turns soil into glass.",
+        "Leaves stop gravity.",
+        "Roots stop all rain."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which is evidence that a stream carries sediment?",
+      "choices": [
+        "A cloud casts a shadow nearby.",
+        "The water looks muddy after a storm.",
+        "Clear water freezes in a cup.",
+        "A compass points north."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Why do rounded river pebbles often become smoother?",
+      "choices": [
+        "They melt in the stream.",
+        "They gain new layers of leaves.",
+        "They never touch moving water.",
+        "They rub against other rocks as they move."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What usually moves loose particles before they settle as a dune?",
+      "choices": [
+        "heat alone",
+        "sound alone",
+        "light",
+        "wind"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What can glacial ice do as it moves?",
+      "choices": [
+        "stop gravity",
+        "remove all ocean water",
+        "scrape rock and carry debris",
+        "make rain turn into lava"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "How could a class compare erosion on bare and planted soil?",
+      "choices": [
+        "Tilt the trays by different amounts.",
+        "Measure only how long the plants are.",
+        "Use different amounts of water and soil.",
+        "Pour equal water on equally tilted trays and compare runoff."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which action most directly slows runoff on a hillside?",
+      "choices": [
+        "build a smooth chute downhill",
+        "pave it with smooth concrete",
+        "add plants and ground cover",
+        "remove roots and leaves"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Sediment dropped by a stream forms a sandbar. When might that happen?",
+      "choices": [
+        "when the water slows",
+        "when the Sun rises",
+        "only when the stream boils",
+        "whenever the water speeds up"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which process is happening when acid in rain slowly dissolves limestone?",
+      "choices": [
+        "ice deposition",
+        "chemical weathering",
+        "magnetic attraction",
+        "air condensation"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Both moving ice and moving water can cause what change?",
+      "choices": [
+        "make rocks invisible",
+        "carry rock pieces to new places",
+        "turn all rocks into metal",
+        "stop weather entirely"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which step must happen before a stream can carry sediment from a solid rock face?",
+      "choices": [
+        "The Sun must go down.",
+        "The whole rock face must turn to steam.",
+        "Pieces must loosen or break off.",
+        "The stream must freeze solid."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How can repeated freeze and thaw widen a crack?",
+      "choices": [
+        "Liquid water expands only when heated.",
+        "Water expands when it freezes.",
+        "Ice always dissolves rock instantly.",
+        "Air makes the crack disappear."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which is an example of deposition by the wind?",
+      "choices": [
+        "A pile of sand grows behind a fence.",
+        "Wind lifts sand off a beach.",
+        "Air blows dust out of a room.",
+        "Strong wind strips soil from a bare field."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "After heavy rain, a rill appears on a bare slope. What made it?",
+      "choices": [
+        "Roots added soil to the groove.",
+        "Sunlight painted a line.",
+        "Runoff carried away soil.",
+        "Clouds pressed the soil down."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

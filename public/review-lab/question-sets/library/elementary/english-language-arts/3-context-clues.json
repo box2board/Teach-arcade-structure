@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--3--context-clues",
+  "title": "Grade 3 ELA — Working Out Word Meanings from Context",
+  "subject": "English Language Arts",
+  "category": "Context Clues",
+  "topic": "Context Clues",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on definitions, examples, contrasts, vocabulary.",
+  "keywords": [
+    "definitions",
+    "examples",
+    "contrasts",
+    "vocabulary"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.3.4"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "The creek was shallow. I could see stones just under the water. What does “shallow” mean?",
+      "choices": [
+        "very cold",
+        "full of salt",
+        "moving fast",
+        "not deep"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Mara was reluctant to step on the bridge. She held back until her brother crossed. What does “reluctant” mean?",
+      "choices": [
+        "certain about the time",
+        "not eager",
+        "already across",
+        "very loud"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "The puppy was drowsy, so it yawned and closed its eyes. What does “drowsy” mean?",
+      "choices": [
+        "hungry",
+        "sleepy",
+        "afraid",
+        "muddy"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "The path was slick after rain, and my shoes slipped. What does “slick” mean here?",
+      "choices": [
+        "short",
+        "dry",
+        "steep",
+        "slippery"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A sturdy shelf can hold heavy books without bending. What does “sturdy” mean?",
+      "choices": [
+        "strong",
+        "new",
+        "thin",
+        "empty"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Ava made a shelter, a safe spot out of the rain. What does “shelter” mean?",
+      "choices": [
+        "a loud crash",
+        "a kind of rain",
+        "a short walk",
+        "a place that offers cover"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "We had scarce paper, only two sheets for the whole group. What does “scarce” mean?",
+      "choices": [
+        "easy to tear",
+        "hard to get or in short supply",
+        "freshly painted",
+        "large in size"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "The hill was steep, unlike the flat path below. What does “steep” mean?",
+      "choices": [
+        "entirely level",
+        "rising sharply",
+        "very sunny",
+        "covered with grass"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "The class examined the leaf carefully, checking each edge. What does “examined” mean?",
+      "choices": [
+        "looked at closely",
+        "wrote on",
+        "painted green",
+        "threw away"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "The fog began to disperse, and soon we could see the whole yard. What does “disperse” mean?",
+      "choices": [
+        "spread out and clear away",
+        "come down as heavy rain",
+        "freeze in place",
+        "get darker"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "The hill was barren; no plants grew there. What does “barren” mean here?",
+      "choices": [
+        "crowded with trees",
+        "without plants",
+        "under water",
+        "full of birds"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Leaves drifted, floating slowly down the stream. What does “drifted” mean?",
+      "choices": [
+        "grew on branches",
+        "sank like rocks",
+        "moved slowly with the water",
+        "flew uphill against the wind"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "The two signs were identical. Even the tiny letters matched. What does “identical” mean?",
+      "choices": [
+        "hard to read",
+        "very old",
+        "exactly alike",
+        "quite different"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "The soup was bland until Dad added herbs. What does “bland” mean?",
+      "choices": [
+        "dark red",
+        "full of salt",
+        "without much flavor",
+        "too hot to touch"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A brief shower ended in two minutes. What does “brief” mean?",
+      "choices": [
+        "short in time",
+        "loud",
+        "very cold",
+        "long and steady"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "We collected debris such as wrappers and broken sticks. What does “debris” mean?",
+      "choices": [
+        "scattered waste or pieces",
+        "clean rainwater",
+        "an amount of time",
+        "new work tools"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Nia conserved water by turning off the tap while brushing. What does “conserved” mean?",
+      "choices": [
+        "colored",
+        "carried outdoors",
+        "heated quickly",
+        "used less so it would not be wasted"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A visible crack caught our eye from across the room. What does “visible” mean?",
+      "choices": [
+        "very old",
+        "hard to touch",
+        "able to be seen",
+        "fully covered"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Rugs muffled our steps. The room became much quieter. What does “muffled” mean?",
+      "choices": [
+        "made the floor higher",
+        "turned steps into music",
+        "made the room colder",
+        "made the sound quieter"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A catalog lists all the items the shop sells. What does “catalog” mean here?",
+      "choices": [
+        "a cash register",
+        "a receipt for one item",
+        "a list of items",
+        "a shelf"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

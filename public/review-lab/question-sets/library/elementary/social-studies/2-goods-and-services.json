@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--2--goods-and-services",
+  "title": "Grade 2 Social Studies — Buying Goods and Using Services",
+  "subject": "Social Studies",
+  "category": "Goods and Services",
+  "topic": "Goods and Services",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on products, producers, consumers, jobs.",
+  "keywords": [
+    "products",
+    "producers",
+    "consumers",
+    "jobs"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 2 #12",
+    "Ohio SS 2026 Grade 2 #13"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which is a good you can carry home from a store?",
+      "choices": [
+        "a loaf of bread",
+        "a piano lesson",
+        "a haircut",
+        "a bus ride"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which is a service?",
+      "choices": [
+        "fixing a bike for a customer",
+        "a new helmet",
+        "a bag of rice",
+        "a box of crayons"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Who is a consumer in a bakery?",
+      "choices": [
+        "the oven",
+        "a person buying a loaf",
+        "the door",
+        "a bag of flour"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Who produces carrots for sale?",
+      "choices": [
+        "a farmer who grows them",
+        "a shopper who buys them",
+        "the cashier who scans them",
+        "the driver who eats them"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which pair has a good first and a service second?",
+      "choices": [
+        "a haircut, a trim",
+        "a bus ride, a bus ticket machine",
+        "a lesson, a notebook",
+        "a coat, a coat repair"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does a barber sell when cutting someone's hair?",
+      "choices": [
+        "a farm crop",
+        "a service",
+        "money",
+        "a new building"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which service helps people travel?",
+      "choices": [
+        "a backpack",
+        "a notebook",
+        "a bus ride",
+        "a ruler"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What service does a mechanic provide?",
+      "choices": [
+        "school maps",
+        "repairs to vehicles",
+        "boxes of cereal",
+        "movie tickets"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which person buys a good?",
+      "choices": [
+        "Fay pays to ride a bus.",
+        "Jen pays for a shoe repair.",
+        "Ike pays for a music lesson.",
+        "Luz buys a new shovel."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A shop sells paint and sends workers to paint a wall. Which is the service?",
+      "choices": [
+        "the can of paint",
+        "the unopened can",
+        "the paint color",
+        "workers painting the wall"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A person provides a service to a pet owner. Which action is it?",
+      "choices": [
+        "sells dog food",
+        "sells a leash",
+        "sells a collar",
+        "walks the owner's dog"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which is a good that helps someone write?",
+      "choices": [
+        "a spelling contest",
+        "a library visit",
+        "a pencil",
+        "a reading lesson"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A baker makes rolls, and a café buys them. Who produces the rolls?",
+      "choices": [
+        "the café customer",
+        "the baker",
+        "the delivery driver",
+        "the café owner who buys them"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What does someone offer by giving swim lessons?",
+      "choices": [
+        "a natural resource",
+        "a store that sells food",
+        "a service that teaches a skill",
+        "a good that can be put on a shelf"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which person pays someone for a service?",
+      "choices": [
+        "Nina pays to have her piano tuned.",
+        "Jin buys an apple.",
+        "Kai buys a card.",
+        "Bo buys a jacket."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which comes before apples can be sold as a good?",
+      "choices": [
+        "a bus drives to a new route",
+        "a student borrows a game",
+        "someone pays for a haircut",
+        "someone grows or gathers the apples"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A shopper trades money for a notebook. What does the shopper get?",
+      "choices": [
+        "a good",
+        "a service",
+        "a vacation",
+        "a new job"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which team supplies a public service?",
+      "choices": [
+        "a farmer selling potatoes",
+        "a potter making mugs to sell",
+        "workers collecting neighborhood trash",
+        "a factory making shoes"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How can the same business sell both goods and services?",
+      "choices": [
+        "It can count the bikes in its window.",
+        "It can sell two identical bicycles.",
+        "It can sell a bicycle and also repair one.",
+        "It can paint a paper price sign."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Why might you pay for a service?",
+      "choices": [
+        "the money never leaves your pocket",
+        "someone does work you need",
+        "you become the seller",
+        "you always take a new object home"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

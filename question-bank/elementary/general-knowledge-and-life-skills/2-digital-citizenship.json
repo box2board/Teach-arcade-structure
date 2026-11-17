@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--general-knowledge-and-life-skills--2--digital-citizenship",
+  "title": "Grade 2 Life Skills — Making Safe and Kind Choices Online",
+  "subject": "General Knowledge and Life Skills",
+  "category": "Digital Citizenship",
+  "topic": "Digital Citizenship",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on privacy, permission, passwords, trustworthy adults.",
+  "keywords": [
+    "privacy",
+    "permission",
+    "passwords",
+    "trustworthy adults"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "A game chat asks for your home address. What should you do?",
+      "choices": [
+        "Post it in the chat.",
+        "Use it as your game name.",
+        "Keep it private and tell a trusted adult.",
+        "Ask strangers to send theirs first."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A link says you won a prize you never entered. What is a safe first step?",
+      "choices": [
+        "Open it right away.",
+        "Ask a trusted adult before opening it.",
+        "Send it to the whole class.",
+        "Enter your password."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What makes a strong, memorable password choice with adult guidance?",
+      "choices": [
+        "your first name",
+        "your favorite team alone",
+        "the word password",
+        "a long password that is hard to guess"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What should you do before sharing a friend's photo online?",
+      "choices": [
+        "ask permission and follow your adult's or school's rules",
+        "send it to people you do not know",
+        "post it before the friend sees it",
+        "add their address to the post"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Someone sends a mean message. What is a helpful response?",
+      "choices": [
+        "share it to embarrass them",
+        "stop replying and tell a trusted adult",
+        "give them your account details",
+        "send a meaner message"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What should you do when done with a signed-in account on a shared device?",
+      "choices": [
+        "sign out",
+        "post your login on the screen",
+        "leave it open for the next person",
+        "change someone else's password"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What information should stay private in a public chat?",
+      "choices": [
+        "your phone number",
+        "a color you like",
+        "the weather where no location is given",
+        "the name of your favorite fruit"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which comment is respectful?",
+      "choices": [
+        "“Only someone silly would say that.”",
+        "“Go away and never try again.”",
+        "“I will make everyone laugh at you.”",
+        "“I think the answer is different because of this clue.”"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What can you do if a website asks to use your camera unexpectedly?",
+      "choices": [
+        "keep clicking until the warning is gone",
+        "invite it to use your microphone too",
+        "allow it every time",
+        "decline and check with a trusted adult"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "An unverified post says the library is closed. What source should you check?",
+      "choices": [
+        "the library's own website or phone line",
+        "the username with the most emojis",
+        "an unrelated game page",
+        "the oldest forwarded message"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What does a digital footprint include?",
+      "choices": [
+        "your device's weight",
+        "traces left by things people do online",
+        "only words written on paper",
+        "only shoeprints near a computer"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why think before posting?",
+      "choices": [
+        "Posts never affect anyone else.",
+        "Other people may copy or share what you post.",
+        "Deleting a post always removes every copy.",
+        "Posts are always visible only to you."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What should you do if a username includes your full name and birth date?",
+      "choices": [
+        "post the birth date in more chats",
+        "include your home address too",
+        "make the name your password",
+        "ask a trusted adult about using a safer name"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which is a good first step if a pop-up asks you to download something unexpected?",
+      "choices": [
+        "press every button",
+        "announce your password",
+        "download the file on a friend's device",
+        "stop and ask a trusted adult"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "You use a drawing someone else made in a class project. What is responsible?",
+      "choices": [
+        "claim you drew it",
+        "sell it as your own work",
+        "follow permission rules and credit the creator",
+        "erase the artist's name and repost it"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Someone you met only in a game asks to meet in person. What should you do?",
+      "choices": [
+        "go alone",
+        "send them your school schedule",
+        "tell a trusted adult and do not arrange a meeting yourself",
+        "agree to keep it secret"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What helps when an online message is hard to understand?",
+      "choices": [
+        "respond with an insult",
+        "immediately share it with everyone",
+        "ask what the person meant in a polite way",
+        "assume it can only mean one thing"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which choice helps you balance device time with rest?",
+      "choices": [
+        "keep using it while crossing a street",
+        "take a break when the agreed time is up",
+        "ignore all break reminders",
+        "use the device through bedtime secretly"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What should you do if a chat message says it came from your teacher and requests your password?",
+      "choices": [
+        "check with the teacher another way and keep your password private",
+        "put the password in a public channel",
+        "send the password because the name looks right",
+        "ask a classmate to send theirs too"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What helps you secure your own account if you think someone else used it?",
+      "choices": [
+        "reuse the same password everywhere",
+        "remove all protection",
+        "tell a trusted adult and ask for help updating the password",
+        "hide the problem and share the account again"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

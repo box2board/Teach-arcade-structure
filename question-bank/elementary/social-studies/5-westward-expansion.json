@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--5--westward-expansion",
+  "title": "Grade 5 Social Studies — Westward Expansion and Its Consequences",
+  "subject": "Social Studies",
+  "category": "Westward Expansion",
+  "topic": "Westward Expansion",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on migration, sovereignty, land, removal, perspectives.",
+  "keywords": [
+    "migration",
+    "sovereignty",
+    "land",
+    "removal",
+    "perspectives"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What did the Louisiana Purchase do in 1803?",
+      "choices": [
+        "ended the American Revolution",
+        "added a large territory to the United States through an agreement with France",
+        "created the first English colony",
+        "gave Ohio to France"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What did Lewis and Clark do after the Louisiana Purchase?",
+      "choices": [
+        "lead the Constitutional Convention",
+        "travel and record information on a western expedition",
+        "build the first U.S. railroad across the country",
+        "write the Declaration of Independence"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How did Sacagawea help the expedition?",
+      "choices": [
+        "She built a railroad ahead of them.",
+        "She wrote the purchase agreement with France.",
+        "She interpreted and helped the group communicate and travel.",
+        "She was president during the journey."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Why is “empty land” inaccurate for much of the area settlers traveled into?",
+      "choices": [
+        "No maps described any western places.",
+        "All the land was under ocean water.",
+        "People could not live anywhere west of the Mississippi.",
+        "Native nations already lived there and governed their communities."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What was one reason families used the Oregon Trail?",
+      "choices": [
+        "to return from Europe by ship",
+        "to build the first cities near the Atlantic coast",
+        "to reach Boston Harbor",
+        "to reach new homes and farmland in the West"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is one hardship travelers could face on overland trails?",
+      "choices": [
+        "illness and difficult river crossings",
+        "a train station in every valley",
+        "ocean tides at every campsite",
+        "hotel rooms already booked each night"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What did the Indian Removal Act of 1830 help the federal government do?",
+      "choices": [
+        "make western settlements independent countries",
+        "force many Native people from their homelands",
+        "create voting rights for all Native people",
+        "return every taken acre to Native nations"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What was the Trail of Tears?",
+      "choices": [
+        "a celebration welcoming people home",
+        "a voluntary vacation route",
+        "forced removal in which many Cherokee and other Native people suffered and died",
+        "the route of the first coast-to-coast railroad"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which legal document transferred large areas from Mexico to the United States after the Mexican-American War?",
+      "choices": [
+        "Mayflower Compact",
+        "U.S. Bill of Rights",
+        "Treaty of Guadalupe Hidalgo",
+        "Treaty of Paris of 1783"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What drew many newcomers to California in 1849?",
+      "choices": [
+        "the opening of the Erie Canal in California",
+        "the discovery of gold",
+        "the first flight across the Pacific",
+        "the founding of Jamestown"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What changed when the first transcontinental railroad was completed in 1869?",
+      "choices": [
+        "The United States stopped trading by rail.",
+        "Native communities gained back all taken land.",
+        "All journeys still took exactly as long as wagon trips.",
+        "People and goods could travel across much of the country faster."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which groups labored on the first transcontinental railroad?",
+      "choices": [
+        "only people who had served in the Continental Congress",
+        "workers who included many Chinese and Irish immigrants",
+        "only state governors",
+        "only British veterans of the Revolution"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What idea was called Manifest Destiny?",
+      "choices": [
+        "a Native nation's general agreement to give up its lands",
+        "a treaty requiring the U.S. to stop all expansion",
+        "a belief used to justify U.S. expansion across the continent",
+        "a plan to move all western towns east"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which source best shows the experience of a person on an overland trail?",
+      "choices": [
+        "a diary by a traveler during the journey",
+        "a map of today's airports alone",
+        "a new calendar with no notes",
+        "a modern poster for a train ride in another country"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Why should a historian compare a settler's letter with a Native nation's account?",
+      "choices": [
+        "Only sources written by settlers can describe the event.",
+        "Both sources must give the same reason for moving.",
+        "Expansion meant different things to people it affected.",
+        "Comparing them makes dates unimportant."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What did the Homestead Act offer to eligible applicants who met its conditions?",
+      "choices": [
+        "a way to claim some federal land",
+        "the right to remove any border they wanted",
+        "a free ship to Europe",
+        "a job building any railroad"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "How did expansion change many Native communities' access to land?",
+      "choices": [
+        "Every treaty preserved the same territories.",
+        "All Native nations gained the same amount of land.",
+        "All communities voluntarily chose identical new homes.",
+        "Many were displaced or had access restricted."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which sequence is chronological?",
+      "choices": [
+        "Louisiana Purchase → California Gold Rush → first transcontinental railroad",
+        "Louisiana Purchase → first transcontinental railroad → Gold Rush",
+        "first transcontinental railroad → Louisiana Purchase → Gold Rush",
+        "California Gold Rush → Louisiana Purchase → first transcontinental railroad"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which factor most affected where wagon travelers crossed a mountain range?",
+      "choices": [
+        "finding a route through a pass with manageable slopes",
+        "avoiding maps of elevation",
+        "taking the route with the tallest cliffs",
+        "choosing an area with the brightest trail signs"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which question best invites study of more than one perspective on expansion?",
+      "choices": [
+        "Why should all maps leave out Native homelands?",
+        "Which single letter explains every event?",
+        "What one reason did every group share?",
+        "How did a new railroad affect settlers, workers, and Native communities differently?"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

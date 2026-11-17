@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--3--grammar",
+  "title": "Grade 3 ELA — Grammar in Action",
+  "subject": "English Language Arts",
+  "category": "Grammar",
+  "topic": "Grammar",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on verbs, pronouns, agreement, conjunctions.",
+  "keywords": [
+    "verbs",
+    "pronouns",
+    "agreement",
+    "conjunctions"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.3.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which is the past tense of “go”?",
+      "choices": [
+        "going",
+        "goes",
+        "goed",
+        "went"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which is the past tense of “bring”?",
+      "choices": [
+        "brings",
+        "bringing",
+        "bringed",
+        "brought"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Pick the pronoun for “Ana and I” in “Ana and I ran.”",
+      "choices": [
+        "Us",
+        "They",
+        "Her",
+        "We"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "In “Leo dropped his glove,” whose glove is it?",
+      "choices": [
+        "the reader's",
+        "Leo's",
+        "no one's",
+        "mine"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Pick the verb that agrees: These birds __ early.",
+      "choices": [
+        "is wake",
+        "waking",
+        "wake",
+        "wakes"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which sentence uses the same past tense throughout?",
+      "choices": [
+        "We walked home and cook dinner.",
+        "We walked home and cooked dinner.",
+        "We will walk home and cooked dinner.",
+        "We walk home and cooked dinner."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Choose the word that shows a reason: I wore boots __ the path was wet.",
+      "choices": [
+        "because",
+        "until",
+        "or",
+        "but"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Join the ideas to show a contrast: The hill was steep, __ we kept climbing.",
+      "choices": [
+        "or",
+        "but",
+        "because",
+        "so"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which word joins two choices: Would you like peas __ corn?",
+      "choices": [
+        "so",
+        "before",
+        "or",
+        "because"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which sentence has a plural noun?",
+      "choices": [
+        "A wolf howled.",
+        "The wolf ran.",
+        "One wolf slept.",
+        "The wolves howled."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which is the plural of “child”?",
+      "choices": [
+        "childes",
+        "children",
+        "childs",
+        "childrens"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which sentence uses “their” correctly?",
+      "choices": [
+        "They put on their coats.",
+        "They went over their.",
+        "Their are three coats.",
+        "Their coming with us."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Choose the helping verb: I __ reading when you called.",
+      "choices": [
+        "are",
+        "will",
+        "was",
+        "were"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which changes “I sing” to show the future?",
+      "choices": [
+        "I will sing.",
+        "I sang.",
+        "I was singing.",
+        "I had sung."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Choose the subject: “Under the bridge, a duck swam.”",
+      "choices": [
+        "a duck",
+        "under the bridge",
+        "bridge",
+        "swam"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which word tells how they walked in “They walked quietly”?",
+      "choices": [
+        "the",
+        "quietly",
+        "walked",
+        "they"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which sentence has correct subject and verb agreement?",
+      "choices": [
+        "My aunts makes soup.",
+        "My aunt make soup.",
+        "My aunt makes soup.",
+        "My aunt making soup."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which is the object pronoun in “Ben handed her the cup”?",
+      "choices": [
+        "Ben",
+        "handed",
+        "her",
+        "cup"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Pick the comparative: The second route is __ than the first.",
+      "choices": [
+        "shorter",
+        "short",
+        "shortest",
+        "more shorter"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Pick the conjunction in “We stayed because the show was fun.”",
+      "choices": [
+        "show",
+        "stayed",
+        "fun",
+        "because"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

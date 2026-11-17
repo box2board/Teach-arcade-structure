@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--3--fractions",
+  "title": "Grade 3 Math — Fractions on Number Lines and in Groups",
+  "subject": "Math",
+  "category": "Fractions",
+  "topic": "Fractions",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on unit fractions, equal parts, numerators, denominators.",
+  "keywords": [
+    "unit fractions",
+    "equal parts",
+    "numerators",
+    "denominators"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "3.NF.1",
+    "3.NF.2",
+    "3.NF.3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "One whole is cut into 4 equal parts. What fraction is one part?",
+      "choices": [
+        "3/4",
+        "1",
+        "1/4",
+        "1/2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A walk is split into 6 equal sections. Two sections are finished. What fraction is finished?",
+      "choices": [
+        "2/6",
+        "4/6",
+        "6/2",
+        "2/4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "The distance from 0 to 1 is split into 8 equal steps. What fraction is the first step from zero?",
+      "choices": [
+        "3/8",
+        "1/8",
+        "1/2",
+        "1/4"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How many thirds make one whole?",
+      "choices": [
+        "4",
+        "3",
+        "2",
+        "5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is the denominator in 3/8?",
+      "choices": [
+        "7",
+        "10",
+        "9",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which fraction equals 1/2: 1/4, 2/4, 3/4, or 4/4?",
+      "choices": [
+        "4/4",
+        "3/4",
+        "1/4",
+        "2/4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is the numerator in 5/6?",
+      "choices": [
+        "6",
+        "7",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Three of 4 equal pieces of a bar are gone. What fraction remains?",
+      "choices": [
+        "1/2",
+        "1/4",
+        "1",
+        "3/4"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which is greatest: 1/6, 3/6, 4/6, or 5/6?",
+      "choices": [
+        "4/6",
+        "1/6",
+        "5/6",
+        "3/6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which is least: 1/2, 1/3, 1/4, or 1/8?",
+      "choices": [
+        "1/3",
+        "1/8",
+        "1/4",
+        "1/2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Use fourths. What value is at the tick just before 1 on a number line?",
+      "choices": [
+        "1",
+        "5/4",
+        "1/2",
+        "3/4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A patch is divided into 6 equal plots. 4 grow beans. Which fraction describes the other plots?",
+      "choices": [
+        "2/6",
+        "4/6",
+        "5/6",
+        "3/6"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What whole number is 8/8 equal to?",
+      "choices": [
+        "3",
+        "0",
+        "1",
+        "2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which fraction is between 1/4 and 3/4: 1/8, 2/4, 4/4, or 5/4?",
+      "choices": [
+        "4/4",
+        "1/8",
+        "5/4",
+        "2/4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A student says 1/3 is larger than 1/2. Which denominator belongs to the larger piece when the wholes are equal?",
+      "choices": [
+        "2",
+        "3",
+        "1",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "How many eighths have the same length as 1/2 on a number line?",
+      "choices": [
+        "6",
+        "3",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A garden has two equal halves. One half has flowers. What fraction has flowers?",
+      "choices": [
+        "1/2",
+        "1",
+        "2",
+        "3/2"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Four friends divide a flatbread into equal shares. Two friends put their shares together. How many fourths are together?",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "1"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "On a number line, 0 to 1 is split into thirds. What fraction labels the second tick after 0?",
+      "choices": [
+        "2/3",
+        "1",
+        "1/3",
+        "4/3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A shade covers 6 of 8 equal panes. How many eighths are uncovered?",
+      "choices": [
+        "4",
+        "1",
+        "2",
+        "3"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

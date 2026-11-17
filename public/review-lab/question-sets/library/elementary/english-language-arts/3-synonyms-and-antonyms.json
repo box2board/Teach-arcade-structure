@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--3--synonyms-and-antonyms",
+  "title": "Grade 3 ELA — Words with Similar and Opposite Meanings",
+  "subject": "English Language Arts",
+  "category": "Synonyms and Antonyms",
+  "topic": "Synonyms and Antonyms",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on word choice, shades of meaning, synonyms.",
+  "keywords": [
+    "word choice",
+    "shades of meaning",
+    "synonyms"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.3.5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which word means nearly the same as “rapid”?",
+      "choices": [
+        "fast",
+        "late",
+        "slow",
+        "weak"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which word means nearly the same as “silent”?",
+      "choices": [
+        "rough",
+        "empty",
+        "noisy",
+        "quiet"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which word means nearly the same as “tiny”?",
+      "choices": [
+        "small",
+        "huge",
+        "wide",
+        "tall"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which word means nearly the same as “damp”?",
+      "choices": [
+        "moist",
+        "dry",
+        "bright",
+        "hard"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which word means nearly the same as “select”?",
+      "choices": [
+        "ignore",
+        "scatter",
+        "hide",
+        "choose"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which word means nearly the same as “repair”?",
+      "choices": [
+        "move",
+        "fix",
+        "break",
+        "find"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which word means nearly the same as “finish”?",
+      "choices": [
+        "begin",
+        "complete",
+        "copy",
+        "pause"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which word means nearly the same as “assist”?",
+      "choices": [
+        "borrow",
+        "lift",
+        "stop",
+        "help"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which word means nearly the same as “eager”?",
+      "choices": [
+        "sleepy",
+        "keen",
+        "unwilling",
+        "calm"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which word means nearly the same as “observe”?",
+      "choices": [
+        "miss",
+        "notice",
+        "build",
+        "travel"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which word means the opposite of “wide”?",
+      "choices": [
+        "long",
+        "huge",
+        "open",
+        "narrow"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which word means the opposite of “rough”?",
+      "choices": [
+        "sharp",
+        "bumpy",
+        "rocky",
+        "smooth"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which word means the opposite of “early”?",
+      "choices": [
+        "soon",
+        "quick",
+        "late",
+        "first"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which word means the opposite of “generous”?",
+      "choices": [
+        "fair",
+        "giving",
+        "stingy",
+        "kind"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which word means the opposite of “include”?",
+      "choices": [
+        "enter",
+        "add",
+        "exclude",
+        "join"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which word means the opposite of “gather”?",
+      "choices": [
+        "scatter",
+        "group",
+        "collect",
+        "bring"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which word means the opposite of “visible”?",
+      "choices": [
+        "clear",
+        "bright",
+        "hidden",
+        "seen"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which word means the opposite of “ancient”?",
+      "choices": [
+        "modern",
+        "worn",
+        "historic",
+        "old"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which word suggests a stronger feeling than “pleased”?",
+      "choices": [
+        "sleepy",
+        "calm",
+        "thrilled",
+        "tired"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which change keeps nearly the same meaning as “The rabbit darted away”?",
+      "choices": [
+        "The rabbit stayed there.",
+        "The rabbit rushed away.",
+        "The rabbit crawled away.",
+        "The rabbit rested nearby."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

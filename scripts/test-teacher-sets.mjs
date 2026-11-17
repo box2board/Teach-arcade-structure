@@ -1,3 +1,5 @@
+import {originalCopy} from '../public/teacher/originals.js';
+import {loadQuestionSet} from '../public/review-lab/catalog.js';
 import {test,afterEach} from 'node:test';
 import assert from 'node:assert/strict';
 import handler from '../api/teacher-sets.js';
@@ -110,4 +112,26 @@ test('reports require sign-in and another visible public set; identity is server
  for(const patch of [{visibility:'private'},{moderation_hidden:true},{owner_id:'teacher-a'}]){current={...set(),visibility:'public',owner_id:'teacher-b',...patch};assert.equal((await call('report',{method:'POST',authenticated:true,body:{id,reason:'other'}})).status,400);}
  current={...set(),visibility:'public',owner_id:'teacher-b'};assert.equal((await call('report',{method:'POST',authenticated:true,body:{id,reason:'invalid'}})).status,400);
  assert.equal(writes.length,2);
+});
+
+test('an elementary Original uses the authenticated private-draft create route',async()=>{
+ const bank=await loadQuestionSet('elementary--english-language-arts--2--reading-comprehension');
+ const body=originalCopy(bank);
+ configure();
+ let inserted;
+ global.fetch=async(url,options)=>{
+  if(url.endsWith('/user'))return response({id:'teacher-a'});
+  assert.equal(options.method,'POST');
+  assert.equal(options.headers.Authorization,'Bearer teacher-jwt');
+  inserted=JSON.parse(options.body);
+  return response([{...inserted,id,owner_id:'teacher-a',visibility:'private'}]);
+ };
+ const result=await call('create',{method:'POST',authenticated:true,body});
+ assert.equal(result.status,201);
+ assert.equal(result.data.set.visibility,'private');
+ assert.equal(inserted.subject,'ELA');
+ assert.equal(inserted.questions.length,20);
+ assert.equal(inserted.owner_id,undefined);
+ assert.equal(inserted.visibility,undefined);
+ assert.deepEqual(inserted.questions.map(q=>q.choices[q.answer]),bank.questions.map(q=>q.choices[q.answer]));
 });

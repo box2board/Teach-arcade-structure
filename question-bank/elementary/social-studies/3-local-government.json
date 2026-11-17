@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--3--local-government",
+  "title": "Grade 3 Social Studies — How Local Government Serves a Community",
+  "subject": "Social Studies",
+  "category": "Local Government",
+  "topic": "Local Government",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on council, mayor, public services, voting.",
+  "keywords": [
+    "council",
+    "mayor",
+    "public services",
+    "voting"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 3 #12",
+    "Ohio SS 2026 Grade 3 #13"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which group often votes on city ordinances, or local laws?",
+      "choices": [
+        "United States Senate",
+        "city council",
+        "state supreme court",
+        "school basketball team"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who often leads a city government?",
+      "choices": [
+        "president of the United States",
+        "county librarian",
+        "governor",
+        "mayor"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which service is commonly planned by local government?",
+      "choices": [
+        "running the U.S. military",
+        "printing United States money",
+        "repairing local streets",
+        "making treaties with other countries"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which may be a local public safety service?",
+      "choices": [
+        "diplomatic office overseas",
+        "fire department",
+        "national space program",
+        "tax office of another country"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Who chooses many local elected officials?",
+      "choices": [
+        "anyone who visits once",
+        "only the officials' families",
+        "eligible local voters",
+        "the United States president for every town"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What can a town meeting give residents a chance to do?",
+      "choices": [
+        "take supplies from private stores",
+        "elect other countries' leaders",
+        "change the seasons",
+        "ask questions and share views"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which is most useful when asking a council for a crosswalk?",
+      "choices": [
+        "describe where people cross and what makes it hard",
+        "show a drawing of a toy car only",
+        "write about a park in another state",
+        "ask the council to close every street"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can local government pay for some public services?",
+      "choices": [
+        "ask only schoolchildren for money",
+        "use library cards as money",
+        "collect local taxes allowed by law",
+        "print its own national currency"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which project might a city parks department manage?",
+      "choices": [
+        "naming new countries",
+        "running overseas elections",
+        "printing national stamps",
+        "fixing playground equipment on city land"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What does a local ordinance do?",
+      "choices": [
+        "chooses the next federal judge",
+        "sets a rule for a community",
+        "sets a school lunch price in every state",
+        "changes the U.S. Constitution"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Why might a town test water from its public system?",
+      "choices": [
+        "to set the time of a movie",
+        "to find which books should be sold",
+        "to check that drinking water is safe",
+        "to measure how loud the mayor speaks"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A streetlight is broken. Which is a sensible first step?",
+      "choices": [
+        "pull wires out yourself",
+        "write to another country's government",
+        "ignore the exact location",
+        "report its location to the local public works office"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is one reason local leaders ask residents for input?",
+      "choices": [
+        "Input can replace all planning.",
+        "Residents may understand neighborhood needs.",
+        "Residents can change federal laws on the spot.",
+        "Every resident will have the same idea."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which is a choice about a local budget?",
+      "choices": [
+        "how much to spend on a city park repair",
+        "who serves on the U.S. Supreme Court",
+        "which country mints U.S. coins",
+        "what planet to visit next"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What does it mean for a service to be public?",
+      "choices": [
+        "A government makes it available for a community.",
+        "Only the mayor's family may use it.",
+        "It can only be used in a different town.",
+        "It must belong to one shop."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which source would confirm when a council meets?",
+      "choices": [
+        "a farm supply catalog",
+        "the city's published meeting calendar",
+        "an old map with no dates",
+        "a bus timetable for another state"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Why might a city add curb ramps near crosswalks?",
+      "choices": [
+        "to improve access for people using wheelchairs and others",
+        "to stop people from crossing",
+        "to discourage walking",
+        "to make every street one-way"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which action is an example of civic participation by children?",
+      "choices": [
+        "sharing an idea for a safer route to school",
+        "printing city checks",
+        "naming themselves mayor",
+        "rewriting a law alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Who might a community invite to explain how to stay safe during a fire?",
+      "choices": [
+        "a builder of toy rockets",
+        "a coach from a different country",
+        "the owner of a bookstore",
+        "a member of the local fire department"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Two neighborhoods ask for a repaired sidewalk, but funds cover one this year. What information would help prioritize?",
+      "choices": [
+        "who has the tallest tree nearby",
+        "which street name comes first in the alphabet",
+        "where the damage is worst and how many people rely on each route",
+        "the color of each sidewalk"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

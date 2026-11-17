@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--4--state-and-local-government",
+  "title": "Grade 4 Social Studies — How State and Local Government Work",
+  "subject": "Social Studies",
+  "category": "State and Local Government",
+  "topic": "State and Local Government",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on Ohio, General Assembly, governor, services.",
+  "keywords": [
+    "Ohio",
+    "General Assembly",
+    "governor",
+    "services"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 4 #15"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the capital of Ohio?",
+      "choices": [
+        "Columbus",
+        "Toledo",
+        "Cleveland",
+        "Dayton"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who leads Ohio's executive branch?",
+      "choices": [
+        "the chief of a local fire department",
+        "the mayor of every town",
+        "the governor",
+        "the speaker of the U.S. House"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which group passes state laws in Ohio?",
+      "choices": [
+        "United States Senate alone",
+        "Ohio General Assembly",
+        "United States Supreme Court",
+        "Columbus City Council"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What are the two chambers of Ohio's General Assembly?",
+      "choices": [
+        "U.S. House and U.S. Senate",
+        "Ohio courts and county boards",
+        "Ohio Governor and Ohio Auditor",
+        "Ohio House and Ohio Senate"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which branch decides cases under state law?",
+      "choices": [
+        "executive only",
+        "judicial",
+        "local public works",
+        "legislative"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which concern is usually handled closest to a small town?",
+      "choices": [
+        "how to represent the United States abroad",
+        "whether to print a dollar bill",
+        "where to put signs on a town street",
+        "which countries to recognize"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which example belongs to Ohio state government?",
+      "choices": [
+        "maintaining state highways through the state transportation department",
+        "appointing each local town's mayor",
+        "passing a United States treaty",
+        "setting the currency of Canada"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which group could pass a city rule about parking on a city-owned street?",
+      "choices": [
+        "the U.S. Supreme Court",
+        "the U.S. Treasury",
+        "the Ohio Supreme Court",
+        "a city council"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is a reason a state has counties?",
+      "choices": [
+        "to set a different national currency in each area",
+        "to make each part a separate country",
+        "to remove all local governments",
+        "to organize some services and government closer to residents"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What document sets up Ohio's state government?",
+      "choices": [
+        "the Ohio Constitution",
+        "the United States Declaration of Independence",
+        "a town's telephone book",
+        "a state road atlas"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What is one job of a state court?",
+      "choices": [
+        "plan each neighborhood parade",
+        "choose every school mascot",
+        "hear cases about state laws",
+        "print state park maps"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which question should you take first to a city or township office?",
+      "choices": [
+        "Who runs the federal space program?",
+        "Who handles a damaged sign on this local street?",
+        "Who negotiated a treaty with France?",
+        "Who prints U.S. money?"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which is one purpose of a public budget?",
+      "choices": [
+        "record how long a street is",
+        "name a new state bird each year",
+        "plan how tax money and other funds will be used",
+        "keep residents from asking questions"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which level usually has authority over rules for Ohio driver's licenses?",
+      "choices": [
+        "school classroom",
+        "neighborhood club",
+        "federal government only",
+        "state"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Who elects Ohio's governor?",
+      "choices": [
+        "eligible Ohio voters",
+        "only city mayors",
+        "all visitors to Ohio",
+        "the U.S. president"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "How can Ohio residents learn what their state legislators are considering?",
+      "choices": [
+        "look only at a street map",
+        "read an unrelated sports calendar",
+        "ask an out-of-state travel agent",
+        "read bills and schedules from the General Assembly"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which is most likely a responsibility of local government in a city?",
+      "choices": [
+        "ratifying treaties with other countries",
+        "operating a municipal water system",
+        "declaring war",
+        "designing national paper money"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why are different branches given different jobs?",
+      "choices": [
+        "to give every office the same tasks",
+        "to end the need for any laws",
+        "to divide government power",
+        "to ensure only one person decides everything"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which correctly compares a state governor and a city mayor?",
+      "choices": [
+        "Both officials work only for the federal courts.",
+        "A governor leads the state executive branch; a mayor often leads a city government.",
+        "A mayor leads all states; a governor leads one school.",
+        "A city's mayor serves as the governor of Ohio."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A resident wants the state to change a state law. Who is an appropriate person to contact?",
+      "choices": [
+        "their Ohio state representative",
+        "an ambassador from another country",
+        "a school crossing guard",
+        "the owner of the nearest store"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--2--money-and-time",
+  "title": "Grade 2 Math — Counting Coins and Telling Time",
+  "subject": "Math",
+  "category": "Money and Time",
+  "topic": "Money and Time",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on cents, nickels, dimes, quarters, five minutes.",
+  "keywords": [
+    "cents",
+    "nickels",
+    "dimes",
+    "quarters",
+    "five minutes"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "2.MD.7",
+    "2.MD.8"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the value in cents of 2 quarters and a dime?",
+      "choices": [
+        "60",
+        "61",
+        "62",
+        "59"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A toy costs 45¢. You have 50¢. How many cents are left after paying?",
+      "choices": [
+        "7",
+        "5",
+        "4",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "You have 3 dimes and 2 nickels. How many cents is that?",
+      "choices": [
+        "40",
+        "41",
+        "42",
+        "39"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How many nickels have the same value as 40¢?",
+      "choices": [
+        "9",
+        "7",
+        "8",
+        "10"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "How many cents is 1 quarter plus 4 pennies?",
+      "choices": [
+        "30",
+        "31",
+        "29",
+        "28"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A clock shows 7:15. How many minutes ago was 7:00?",
+      "choices": [
+        "16",
+        "15",
+        "14",
+        "17"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "The minute hand points to 8. How many minutes past the hour is it?",
+      "choices": [
+        "40",
+        "39",
+        "41",
+        "42"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Music starts at 2:20 and ends at 2:40. How many minutes does it last?",
+      "choices": [
+        "22",
+        "19",
+        "21",
+        "20"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Lunch is at 12:05. You arrive 5 minutes early. What is the minutes part of your arrival time?",
+      "choices": [
+        "5",
+        "2",
+        "0",
+        "1"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Your clock shows 4:55. In 5 minutes the hour changes. Which hour will it show?",
+      "choices": [
+        "7",
+        "4",
+        "6",
+        "5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A coach says quarter past 6. How many minutes past 6 is it?",
+      "choices": [
+        "14",
+        "15",
+        "17",
+        "16"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "At 10:30, how many minutes until 11:00?",
+      "choices": [
+        "32",
+        "30",
+        "29",
+        "31"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is the value in cents of the coins left after spending one dime from four dimes and a nickel?",
+      "choices": [
+        "37",
+        "35",
+        "34",
+        "36"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A marker costs 75¢. How many quarters pay for it exactly?",
+      "choices": [
+        "4",
+        "2",
+        "5",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "You trade 2 dimes for 4 nickels. How many cents did the value change?",
+      "choices": [
+        "1",
+        "2",
+        "5",
+        "0"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "The minute hand moves from 2 to 5. How many minutes pass?",
+      "choices": [
+        "15",
+        "17",
+        "14",
+        "16"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A show starts at 8:10. It runs 35 minutes. What is the minutes part of its ending time?",
+      "choices": [
+        "47",
+        "46",
+        "44",
+        "45"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A jar has 5 nickels and 7 pennies. How many cents are in it?",
+      "choices": [
+        "34",
+        "31",
+        "32",
+        "33"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How many cents short of a dollar are you if you have 85¢?",
+      "choices": [
+        "15",
+        "17",
+        "14",
+        "16"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "On an analog clock at 3:50, which number does the minute hand point to?",
+      "choices": [
+        "9",
+        "11",
+        "10",
+        "12"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

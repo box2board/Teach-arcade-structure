@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--5--solar-system",
+  "title": "Grade 5 Science — Earth and Its Solar System Neighbors",
+  "subject": "Science",
+  "category": "Solar System",
+  "topic": "Solar System",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on planets, gravity, orbits, rotation.",
+  "keywords": [
+    "planets",
+    "gravity",
+    "orbits",
+    "rotation"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "5.ESS.1",
+    "5.ESS.2",
+    "5.ESS.3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which object is the star at the center of our solar system?",
+      "choices": [
+        "Jupiter",
+        "the Sun",
+        "the Moon",
+        "Earth"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What causes most places on Earth to have day and night?",
+      "choices": [
+        "The Sun orbits Earth each day.",
+        "The Moon turns off the Sun.",
+        "Earth orbits the Sun each day.",
+        "Earth rotates."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "About how long does Earth take to complete one orbit around the Sun?",
+      "choices": [
+        "one hour",
+        "one year",
+        "one day",
+        "one week"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What is the Moon's source of visible light when it shines at night?",
+      "choices": [
+        "reflected sunlight",
+        "distant streetlights",
+        "its burning surface",
+        "light from Earth's cities"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which force keeps planets in orbit around the Sun?",
+      "choices": [
+        "gravity",
+        "friction",
+        "magnetism alone",
+        "static electricity"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which planet is nearest the Sun?",
+      "choices": [
+        "Saturn",
+        "Mercury",
+        "Earth",
+        "Mars"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What object does Earth's Moon orbit?",
+      "choices": [
+        "Venus",
+        "Jupiter",
+        "Earth",
+        "Mars"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which planet has the greatest diameter?",
+      "choices": [
+        "Jupiter",
+        "Mars",
+        "Earth",
+        "Mercury"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is a year on a planet based on?",
+      "choices": [
+        "how long the planet takes to orbit the Sun",
+        "how long its daylight lasts",
+        "how many moons it has",
+        "how long it takes to spin once"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which is one reason seasons differ across Earth's hemispheres at the same time?",
+      "choices": [
+        "Changes in the Sun's size",
+        "A new season starting every day",
+        "Earth's tilted axis",
+        "An orbit around the Moon"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What is a rocky object that orbits the Sun and is smaller than a planet commonly called?",
+      "choices": [
+        "a galaxy",
+        "an asteroid",
+        "a constellation",
+        "a sunspot"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Where are many of the solar system's asteroids found?",
+      "choices": [
+        "between Earth and its Moon only",
+        "inside Earth's oceans",
+        "inside the Sun",
+        "between Mars and Jupiter"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "If daylight is ending near you, what is your part of Earth doing?",
+      "choices": [
+        "getting closer to the Sun each minute",
+        "stopping in its orbit",
+        "turning the Sun off",
+        "rotating away from the direction of the Sun"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Why does the Sun look much larger than other stars in our sky?",
+      "choices": [
+        "It is the largest star anywhere.",
+        "Other stars have no light.",
+        "Other stars are inside the Moon.",
+        "It is much closer to Earth."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which planet is famous for its large, easily visible ring system?",
+      "choices": [
+        "Mars",
+        "Mercury",
+        "Saturn",
+        "Venus"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Why do we see different portions of the Moon lit during its monthly cycle?",
+      "choices": [
+        "The Moon changes physical shape.",
+        "Its own light turns on one section at a time.",
+        "Its position changes as it orbits Earth.",
+        "Earth's shadow covers part of it every night."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What does a model with widely spaced planets try to show?",
+      "choices": [
+        "what all planet surfaces feel like",
+        "the true sizes of galaxies",
+        "the large distances in the solar system",
+        "how loudly planets move"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which pair includes two rocky planets?",
+      "choices": [
+        "Earth and Mars",
+        "Jupiter and Saturn",
+        "Neptune and Uranus",
+        "Saturn and Uranus"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What device helps scientists see distant planets in detail?",
+      "choices": [
+        "thermometer",
+        "balance scale",
+        "microscope",
+        "telescope"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which happens once per complete spin of Earth?",
+      "choices": [
+        "Mars completes a year.",
+        "Most places pass through a daily light-and-dark cycle.",
+        "Earth's Moon always returns to the same phase.",
+        "Earth completes a year."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

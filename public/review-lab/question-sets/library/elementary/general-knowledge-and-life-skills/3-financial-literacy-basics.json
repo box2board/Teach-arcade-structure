@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--general-knowledge-and-life-skills--3--financial-literacy-basics",
+  "title": "Grade 3 Life Skills — Spending, Saving, and Planning",
+  "subject": "General Knowledge and Life Skills",
+  "category": "Financial Literacy Basics",
+  "topic": "Financial Literacy Basics",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on budget, goals, needs, wants, price.",
+  "keywords": [
+    "budget",
+    "goals",
+    "needs",
+    "wants",
+    "price"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is saving money?",
+      "choices": [
+        "paying the same bill twice",
+        "spending it right away",
+        "setting money aside to use later",
+        "making a price tag"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What is a spending plan often called?",
+      "choices": [
+        "a budget",
+        "a map key",
+        "a receipt",
+        "an address"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which is usually a basic need?",
+      "choices": [
+        "a third toy train",
+        "enough food to eat",
+        "an extra game controller",
+        "a glitter pencil"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "You have $8 and spend $3. How much remains?",
+      "choices": [
+        "$8",
+        "$5",
+        "$11",
+        "$3"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "You save $2 each week for four weeks. How much did you save?",
+      "choices": [
+        "$4",
+        "$2",
+        "$6",
+        "$8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which receipt detail helps check what you paid?",
+      "choices": [
+        "the store's logo height",
+        "the page color",
+        "the print font",
+        "the total price"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which is a short-term saving goal?",
+      "choices": [
+        "naming a future neighborhood",
+        "learning today's weather",
+        "buying a $6 book in three weeks",
+        "retiring many decades from now"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "You have $10. A toy costs $7 and a book costs $5. What choice fits your budget?",
+      "choices": [
+        "buy the toy and keep $5",
+        "buy both today",
+        "pay $12 from your $10",
+        "buy the book and keep $5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is an example of income?",
+      "choices": [
+        "money spent on a jacket",
+        "a jar that holds no money",
+        "a toy price on a shelf",
+        "money earned for doing an agreed job"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What is an expense?",
+      "choices": [
+        "money paid for something",
+        "a gift placed in your savings jar",
+        "money you just earned",
+        "the number of items on a shelf"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Why compare prices for the same item?",
+      "choices": [
+        "to find an option that costs less",
+        "to make identical items different sizes",
+        "to make all stores use one logo",
+        "to avoid reading the cost"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A poster costs $9 and you have $6 saved. How much more do you need?",
+      "choices": [
+        "$3",
+        "$15",
+        "$6",
+        "$2"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "You choose to pay for a ball with your spare money instead of stickers. What did you give up?",
+      "choices": [
+        "the store's money",
+        "the stickers you could have bought",
+        "all future savings",
+        "the ball you bought"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which choice keeps a useful record of spending?",
+      "choices": [
+        "throw out all receipts immediately",
+        "write down the amount each time you buy something",
+        "forget small purchases on purpose",
+        "record only the store's wall color"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "You plan to spend $10. Item A costs $4 and item B costs $3. How much of the plan is left after both?",
+      "choices": [
+        "$6",
+        "$7",
+        "$4",
+        "$3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What is a reason to set aside money you do not need to spend now?",
+      "choices": [
+        "it makes prices the same everywhere",
+        "it guarantees every purchase is free",
+        "it can help pay for a future need or goal",
+        "it changes a store's price immediately"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which choice can help you buy only what you planned?",
+      "choices": [
+        "shop without checking your total",
+        "choose the most expensive item first",
+        "make a list and check prices before paying",
+        "add every colorful item to the cart"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Two pens of the same type are $1 each at one shop and $3 for two at another. Which costs less for two?",
+      "choices": [
+        "two $1 pens",
+        "both cost $3",
+        "both cost $1",
+        "the $3 pair"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Your change is $2 less than expected. What is a good first step?",
+      "choices": [
+        "leave without looking",
+        "guess a new price",
+        "check the receipt and count the change calmly",
+        "pay for your items again"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which shows a plan that covers a future goal first?",
+      "choices": [
+        "leave the savings amount blank",
+        "set aside the planned savings before spending what is left",
+        "spend all the money and then write a savings goal",
+        "buy a second item before checking the price"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

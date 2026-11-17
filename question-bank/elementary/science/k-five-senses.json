@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--k--five-senses",
+  "title": "Kindergarten Science — Using Our Senses to Notice the World",
+  "subject": "Science",
+  "category": "Five Senses",
+  "topic": "Five Senses",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on sight, hearing, touch, smell, taste.",
+  "keywords": [
+    "sight",
+    "hearing",
+    "touch",
+    "smell",
+    "taste"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "K.PS.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What sense helps you notice a bell ringing?",
+      "choices": [
+        "touch",
+        "taste",
+        "smell",
+        "hearing"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What sense helps you spot a red light?",
+      "choices": [
+        "sight",
+        "touch",
+        "smell",
+        "taste"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What sense helps you tell a blanket is soft?",
+      "choices": [
+        "hearing",
+        "sight",
+        "touch",
+        "smell"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What sense helps you notice the scent of a flower?",
+      "choices": [
+        "touch",
+        "smell",
+        "sight",
+        "taste"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What sense helps you know a lemon is sour?",
+      "choices": [
+        "taste",
+        "hearing",
+        "sight",
+        "touch"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which body part helps you see a kite?",
+      "choices": [
+        "eyes",
+        "nose",
+        "tongue",
+        "ears"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which body part helps you hear rain?",
+      "choices": [
+        "tongue",
+        "skin",
+        "ears",
+        "eyes"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which body part helps you smell soup?",
+      "choices": [
+        "tongue",
+        "ears",
+        "eyes",
+        "nose"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which body part can feel a rough rock?",
+      "choices": [
+        "nose",
+        "skin",
+        "ears",
+        "tongue"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which body part helps you taste jam?",
+      "choices": [
+        "eyes",
+        "tongue",
+        "nose",
+        "skin"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What can you tell about a drum just by listening?",
+      "choices": [
+        "whether it is blue",
+        "whether it is round",
+        "whether it is sticky",
+        "whether it sounds loud"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What can you tell about a scarf by looking at it?",
+      "choices": [
+        "its smell",
+        "its taste",
+        "its color",
+        "how it sounds"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Touch helps you compare a warm cup and a cool cup. What are you comparing?",
+      "choices": [
+        "size",
+        "temperature",
+        "shape",
+        "color"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What could you learn by smelling a rose?",
+      "choices": [
+        "whether it has a scent",
+        "how many petals it has",
+        "whether it is heavy",
+        "how tall it is"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which is a taste?",
+      "choices": [
+        "salty",
+        "square",
+        "smooth",
+        "loud"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "The lights go out. What sense could tell you someone rang a bell?",
+      "choices": [
+        "smell",
+        "taste",
+        "sight",
+        "hearing"
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    },
+    {
+      "id": 17,
+      "question": "Which word tells how sandpaper feels?",
+      "choices": [
+        "sweet",
+        "rough",
+        "bright",
+        "noisy"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which sense could you use to tell if a light is on across the room?",
+      "choices": [
+        "smell",
+        "taste",
+        "touch",
+        "sight"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "You hear a bike bell but cannot see the bike. What sense did you use?",
+      "choices": [
+        "taste",
+        "touch",
+        "hearing",
+        "smell"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What sense helps tell ice from room-temperature water by feeling it?",
+      "choices": [
+        "taste",
+        "smell",
+        "touch",
+        "hearing"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

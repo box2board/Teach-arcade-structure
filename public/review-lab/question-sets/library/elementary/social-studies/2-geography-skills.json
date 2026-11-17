@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--2--geography-skills",
+  "title": "Grade 2 Social Studies — Map Keys, Directions, and Landmarks",
+  "subject": "Social Studies",
+  "category": "Geography Skills",
+  "topic": "Geography Skills",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on compass rose, symbols, rivers, distance.",
+  "keywords": [
+    "compass rose",
+    "symbols",
+    "rivers",
+    "distance"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 2 #3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a compass rose show on a map?",
+      "choices": [
+        "population totals",
+        "weather tomorrow",
+        "names of people",
+        "directions"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which direction is opposite east?",
+      "choices": [
+        "east",
+        "north",
+        "south",
+        "west"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which direction is opposite north?",
+      "choices": [
+        "west",
+        "east",
+        "south",
+        "northeast"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Where do you look to see what a dashed line stands for?",
+      "choices": [
+        "the page count",
+        "the mapmaker's signature",
+        "the map legend",
+        "the border of the book"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What kind of map shows state borders and capitals?",
+      "choices": [
+        "weather map",
+        "menu",
+        "calendar",
+        "political map"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A scale shows 1 cm = 1 km. How far apart are places 3 cm apart on the map?",
+      "choices": [
+        "1 km",
+        "2 km",
+        "3 km",
+        "4 km"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "You walk from the library two blocks north to the school. Which way returns you directly?",
+      "choices": [
+        "east",
+        "south",
+        "north",
+        "west"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which clue names a landmark?",
+      "choices": [
+        "a whistle sound",
+        "a tall clock tower",
+        "a minute at noon",
+        "a cold afternoon"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "If the creek is west of the school, where is the school from the creek?",
+      "choices": [
+        "south",
+        "west",
+        "east",
+        "north"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which line could show a stream on a map?",
+      "choices": [
+        "a row of printed dates",
+        "a drawing of clouds with no key",
+        "straight marks around the title",
+        "a winding line marked as water in the key"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What does a map title tell?",
+      "choices": [
+        "what area or topic the map shows",
+        "the current weather everywhere",
+        "the weight of the map",
+        "its exact age"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which route reaches the park with the fewest blocks: A has 5, B has 3, C has 6, D has 4?",
+      "choices": [
+        "A",
+        "D",
+        "C",
+        "B"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Why can the same place look different on two maps?",
+      "choices": [
+        "Places have no shapes.",
+        "Maps can show different features.",
+        "Maps cannot use symbols.",
+        "One map must always be wrong."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which feature might be clear on a physical map?",
+      "choices": [
+        "a school's lunch menu",
+        "mountain ranges",
+        "bus departure times",
+        "the name of every mayor"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "An arrow on a map points up and says N. Which way on that map is north?",
+      "choices": [
+        "toward the top",
+        "toward the bottom",
+        "toward the right",
+        "toward the left"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A bridge crosses a river. Which map detail would help you locate it?",
+      "choices": [
+        "the place where the labeled bridge meets the river line",
+        "the picture of a cloud in the border",
+        "the number of letters in the title",
+        "the map's publication month only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which might a map scale help you estimate?",
+      "choices": [
+        "how warm the playground feels",
+        "distance between two schools",
+        "the age of each building",
+        "what time the library opens"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "The park is one block south of the library. The school is one block south of the park. Which is farther south?",
+      "choices": [
+        "school",
+        "all the same",
+        "park",
+        "library"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which sequence follows a route as written: turn east, cross a bridge, then stop at a store?",
+      "choices": [
+        "east, store, bridge",
+        "bridge, east, store",
+        "east, bridge, store",
+        "store, bridge, east"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What is a reason to use simple symbols on a road map?",
+      "choices": [
+        "They can show features clearly in a small space.",
+        "They prevent readers from finding roads.",
+        "They make actual roads shorter.",
+        "They erase all information about places."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

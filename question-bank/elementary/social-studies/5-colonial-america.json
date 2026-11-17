@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--5--colonial-america",
+  "title": "Grade 5 Social Studies — Daily Life and Choices in Colonial America",
+  "subject": "Social Studies",
+  "category": "Colonial America",
+  "topic": "Colonial America",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on trade, labor, geography, sources, regional differences.",
+  "keywords": [
+    "trade",
+    "labor",
+    "geography",
+    "sources",
+    "regional differences"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What made some North American colonies useful to European trading nations?",
+      "choices": [
+        "They produced nothing to sell.",
+        "They were all already independent countries.",
+        "They never used ocean trade.",
+        "They supplied goods and bought imported products."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which crop became important to the economy of colonial Virginia?",
+      "choices": [
+        "tea leaves",
+        "coffee",
+        "tobacco",
+        "bananas"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What made many colonial port towns good places for trade?",
+      "choices": [
+        "The towns were far from every river and ocean.",
+        "Ships could load and unload goods there.",
+        "Trade goods could only move on mountain paths.",
+        "Roads kept all goods away from the harbor."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which job makes a person an apprentice?",
+      "choices": [
+        "sailing past the town",
+        "learning printing while working with a skilled printer",
+        "reading a sign in a market",
+        "buying a newspaper at a shop"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which group often did forced labor on colonial plantations?",
+      "choices": [
+        "enslaved Africans and their descendants",
+        "all hired apprentices",
+        "elected assembly members as a group",
+        "all visiting traders"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Why did families who moved to the English colonies have different experiences?",
+      "choices": [
+        "They all chose to move freely.",
+        "Their reasons, resources, and legal freedom differed.",
+        "They all settled in the same port at once.",
+        "They all received the same jobs and land."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What was a reason some English settlers chose parts of New England?",
+      "choices": [
+        "They were seeking the Pacific Ocean.",
+        "They planned to become independent in 1607.",
+        "They wanted to form communities around their religious beliefs.",
+        "They expected a tropical climate."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How could location affect what a colony traded?",
+      "choices": [
+        "Rivers made it impossible to travel.",
+        "Every colony sold the same crops.",
+        "Location changed the language of all people there immediately.",
+        "A harbor helped a colony send goods overseas."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which record best helps compare prices in two port towns?",
+      "choices": [
+        "dated shop account books from both towns",
+        "an undated map showing coastlines only",
+        "one town seal",
+        "a single recipe for stew"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What can a colony's tax record help a researcher learn?",
+      "choices": [
+        "what settlers dreamed about",
+        "which listed items or people were taxed",
+        "how each person felt about the tax",
+        "the exact words people spoke at dinner"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which is an example of self-government under British rule?",
+      "choices": [
+        "some eligible colonists electing members of an assembly",
+        "the colonies forming the modern U.S. Supreme Court",
+        "every colonist voting in British Parliament",
+        "every royal decision being made by children"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why do historians distinguish indentured labor from slavery?",
+      "choices": [
+        "Both guaranteed equal pay and rights.",
+        "Neither was used in English colonies.",
+        "Both always allowed workers to leave freely.",
+        "Indentured service was for a term; slavery treated people as property."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What links ships, merchants, and farms in colonial trade?",
+      "choices": [
+        "Merchants made all products aboard ships.",
+        "Farmers grew only enough to throw away.",
+        "Farm goods could be sold by merchants and carried by ship.",
+        "Ships never moved goods between places."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Why might the same colony include more than one spoken language?",
+      "choices": [
+        "Ships could carry only English speakers.",
+        "Its laws required every person to speak only one language.",
+        "There were no Indigenous languages.",
+        "Residents came from different communities and places."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which comparison shows different colonial economies?",
+      "choices": [
+        "Every coastal and inland community had the same jobs.",
+        "Ships could reach every inland farm directly.",
+        "Port towns relied on trade; some inland communities relied more on farming.",
+        "Only inland communities used crops."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What is a way to learn about a typical day for enslaved people?",
+      "choices": [
+        "compare accounts of formerly enslaved people and records about their lives",
+        "assume every family worked under the same conditions",
+        "read only a plantation owner's price list",
+        "use only a map of modern sports stadiums"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which would be a secondary source on a colonial settlement?",
+      "choices": [
+        "a land deed from that time",
+        "a letter mailed from the settlement",
+        "a diary kept by a settler",
+        "a modern historian's explanation based on old records"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why could relations between Native nations and colonists change over time?",
+      "choices": [
+        "No one moved or traded after first contact.",
+        "Trading, land pressure, and alliances could change their choices.",
+        "Everyone spoke the same language from the start.",
+        "All communities always agreed on who owned the land."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which type of location often encouraged shipbuilding in New England?",
+      "choices": [
+        "an inland valley cut off from waterways",
+        "a treeless desert with no trade",
+        "a coast with harbors and access to timber",
+        "a mountaintop far from any rivers"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What is one question a colonial map by itself usually cannot answer?",
+      "choices": [
+        "How did different people feel about a new law?",
+        "Which feature is represented by the river symbol?",
+        "What direction was the harbor from town?",
+        "Where is the marked road?"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

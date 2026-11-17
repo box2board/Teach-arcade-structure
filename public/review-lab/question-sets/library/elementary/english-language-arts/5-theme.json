@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--5--theme",
+  "title": "Grade 5 ELA — Finding Theme in Short Stories",
+  "subject": "English Language Arts",
+  "category": "Theme",
+  "topic": "Theme",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on central message, lesson, evidence.",
+  "keywords": [
+    "central message",
+    "lesson",
+    "evidence"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RL.5.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Meera tried to finish a kite alone. The frame bent twice. She asked Jo to hold the sticks while she tied them, and together they flew it. What theme fits?",
+      "choices": [
+        "Friends should choose identical hobbies.",
+        "Kites always fly well.",
+        "Asking for help can make a hard job possible.",
+        "Being first matters most."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Meera tried to finish a kite alone. The frame bent twice. She asked Jo to hold the sticks while she tied them, and together they flew it. Which action develops this theme?",
+      "choices": [
+        "Meera asks Jo to hold the sticks.",
+        "Jo watches a kite.",
+        "The frame bends once.",
+        "Meera picks the color."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Teo set aside every crooked bowl. At the art show, a visitor chose the bowl Teo had nearly thrown out because it looked like a wave. What lesson fits?",
+      "choices": [
+        "Things can only be useful if they look the same.",
+        "Something you see as a flaw may have value.",
+        "Visitors always know the artist's intention.",
+        "Artists should never show their work."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Teo set aside every crooked bowl. At the art show, a visitor chose the bowl Teo had nearly thrown out because it looked like a wave. Which detail gives the strongest evidence for the lesson?",
+      "choices": [
+        "Teo makes several bowls.",
+        "There is an art show.",
+        "A visitor likes the bowl Teo almost discards.",
+        "A bowl sits on a table."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Lena ran too fast at the start of every race and tired early. At practice she learned to keep a steady pace. In the next race she had energy at the end. What message fits?",
+      "choices": [
+        "Races should be shorter.",
+        "Practice makes every task easy.",
+        "Winning requires starting fastest.",
+        "Pacing yourself can help you reach a goal."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Lena ran too fast at the start of every race and tired early. At practice she learned to keep a steady pace. In the next race she had energy at the end. Which event shows Lena putting the lesson into practice?",
+      "choices": [
+        "She saves energy for the finish.",
+        "She chooses a different sport.",
+        "She runs fastest at the start again.",
+        "She leaves before the race."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Max found an extra ticket beside his seat. He wanted to keep it for a friend, but returned it. A younger child nearby stopped crying when it was found. What theme fits?",
+      "choices": [
+        "Friends should always sit together.",
+        "Doing the honest thing can help someone else.",
+        "A noisy room is hard to search.",
+        "Tickets make people impatient."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Max found an extra ticket beside his seat. He wanted to keep it for a friend, but returned it. A younger child nearby stopped crying when it was found. Which moment shows the effect of Max's choice?",
+      "choices": [
+        "A seat is empty.",
+        "The younger child stops crying.",
+        "Max thinks about a friend.",
+        "Max notices the ticket."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Ina tried three ways to make a paper bridge. After each test she changed one part. The last bridge held all the toy cars. What theme fits?",
+      "choices": [
+        "Mistakes can show what to try next.",
+        "You can always solve a problem on the first try.",
+        "More toys make a bridge stronger.",
+        "Planning matters only for bridges."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Ina tried three ways to make a paper bridge. After each test she changed one part. The last bridge held all the toy cars. Which detail best supports the theme?",
+      "choices": [
+        "Ina changes one part after each test.",
+        "Paper comes in many colors.",
+        "The toy cars are small.",
+        "The last test happens at a table."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Ren's team picked quiet Bea to share their design. She listened to each idea and explained how the parts worked together. The audience finally understood their plan. What message fits?",
+      "choices": [
+        "Listening carefully can help you explain a group's ideas.",
+        "Teams must agree before hearing ideas.",
+        "Only the loudest people can lead.",
+        "A design needs a long speech."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Ren's team picked quiet Bea to share their design. She listened to each idea and explained how the parts worked together. The audience finally understood their plan. Which action supports the message?",
+      "choices": [
+        "Ren joins the team.",
+        "The audience enters the room.",
+        "The design has several parts.",
+        "Bea listens to each teammate before speaking."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Aki heard a friend say the pond club was boring. She attended once and liked studying the insects. She invited the friend to visit with her. Which theme fits best?",
+      "choices": [
+        "It is best to avoid new places.",
+        "Friends must like the same things.",
+        "All clubs study insects.",
+        "Trying something yourself can change what you think."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Aki heard a friend say the pond club was boring. She attended once and liked studying the insects. She invited the friend to visit with her. What event helps Aki discover the lesson?",
+      "choices": [
+        "The insects leave the pond.",
+        "She visits the club and enjoys studying insects.",
+        "Her friend refuses a visit.",
+        "She hears someone call it boring."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "When a storm broke the garden fence, Lee wanted to blame someone. Then neighbors brought tools and repaired it together. Lee helped carry boards. What idea grows through the story?",
+      "choices": [
+        "Neighbors should bring identical tools.",
+        "A fence can stop all storms.",
+        "Working together helps more than looking for someone to blame.",
+        "Boards are more useful before rain than after it."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "When a storm broke the garden fence, Lee wanted to blame someone. Then neighbors brought tools and repaired it together. Lee helped carry boards. Which detail shows Lee acting on this idea?",
+      "choices": [
+        "Lee wants to blame someone.",
+        "The neighbors see the storm.",
+        "Lee helps carry boards.",
+        "A storm breaks the fence."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Zara was afraid to read her poem aloud. She read just the first two lines to a friend. After several short tries, she read the whole poem at the assembly. What message fits?",
+      "choices": [
+        "Friends should write your work for you.",
+        "Small steps can help you face a fear.",
+        "Poems must rhyme to be read aloud.",
+        "An assembly should always be quiet."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Zara was afraid to read her poem aloud. She read just the first two lines to a friend. After several short tries, she read the whole poem at the assembly. Which choice best describes Zara's progress?",
+      "choices": [
+        "She waits for someone to read for her.",
+        "She avoids reading the poem at all.",
+        "She starts with two lines and builds confidence.",
+        "She memorizes a different poem."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Two children wanted the sunny garden bed. They learned that only one of their plants needed full sun. They shared the beds in a way that helped both plants. What theme fits?",
+      "choices": [
+        "Neighbors should all grow the same plant.",
+        "Every plant grows best in shade.",
+        "Only one person can gain from a decision.",
+        "Learning what others need can help solve a disagreement."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Two children wanted the sunny garden bed. They learned that only one of their plants needed full sun. They shared the beds in a way that helped both plants. Which event is most important to this message?",
+      "choices": [
+        "They carry seeds to the garden.",
+        "They look at the fence.",
+        "They both point at the sunny bed.",
+        "They find out they need different amounts of sunlight."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    }
+  ]
+}

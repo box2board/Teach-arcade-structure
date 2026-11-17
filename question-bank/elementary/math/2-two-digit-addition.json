@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--2--two-digit-addition",
+  "title": "Grade 2 Math — Adding Two-Digit Numbers",
+  "subject": "Math",
+  "category": "Two-Digit Addition",
+  "topic": "Two-Digit Addition",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on sum, regroup, tens, ones.",
+  "keywords": [
+    "sum",
+    "regroup",
+    "tens",
+    "ones"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "2.NBT.5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 36 + 27?",
+      "choices": [
+        "65",
+        "64",
+        "63",
+        "62"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Add 14 and 65.",
+      "choices": [
+        "79",
+        "80",
+        "78",
+        "81"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A class collected 28 cans on Monday and 46 on Tuesday. How many in all?",
+      "choices": [
+        "74",
+        "75",
+        "76",
+        "73"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Find the missing addend: 35 + __ = 81.",
+      "choices": [
+        "47",
+        "46",
+        "45",
+        "48"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Split 54 into tens and ones. How many tens will you add to 23 first?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "In 47 + 22, what is the sum of the ones digits?",
+      "choices": [
+        "10",
+        "11",
+        "9",
+        "8"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Combine 19 ones with 3 tens. What number do you make?",
+      "choices": [
+        "50",
+        "51",
+        "48",
+        "49"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is 63 + 16? Start at 63 and jump 10 first.",
+      "choices": [
+        "80",
+        "81",
+        "79",
+        "78"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A shelf has 33 red books and 49 blue books. How many books?",
+      "choices": [
+        "84",
+        "81",
+        "83",
+        "82"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "If 20 + 28 is 48, what is 21 + 28?",
+      "choices": [
+        "49",
+        "51",
+        "48",
+        "50"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What number is 37 more than 56?",
+      "choices": [
+        "92",
+        "94",
+        "93",
+        "95"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A runner adds 18 laps to a record of 75 laps. What is the new total?",
+      "choices": [
+        "94",
+        "93",
+        "92",
+        "95"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Add 32 and 59. What digit will be in the ones place?",
+      "choices": [
+        "2",
+        "0",
+        "3",
+        "1"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What is 40 + 38?",
+      "choices": [
+        "79",
+        "78",
+        "77",
+        "80"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A two-digit sum has 7 tens and 14 ones before regrouping. What is the sum?",
+      "choices": [
+        "83",
+        "86",
+        "84",
+        "85"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What is 25 + 25?",
+      "choices": [
+        "52",
+        "49",
+        "51",
+        "50"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which listed total is closest to 58 + 34: 60, 70, 80, or 90?",
+      "choices": [
+        "90",
+        "70",
+        "60",
+        "80"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What is 16 + 72?",
+      "choices": [
+        "88",
+        "87",
+        "90",
+        "89"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Add 8 left-facing arrows, 21 right-facing arrows, and 22 down-facing arrows.",
+      "choices": [
+        "52",
+        "51",
+        "53",
+        "50"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "After adding 47 and 17, how many full tens are in the sum?",
+      "choices": [
+        "8",
+        "7",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

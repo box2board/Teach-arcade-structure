@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--5--decimal-operations",
+  "title": "Grade 5 Math — Operating with Decimals to Hundredths",
+  "subject": "Math",
+  "category": "Decimal Operations",
+  "topic": "Decimal Operations",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on adding, subtracting, multiplying, dividing, money.",
+  "keywords": [
+    "adding",
+    "subtracting",
+    "multiplying",
+    "dividing",
+    "money"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "5.NBT.7"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Add 3.48 and 2.57.",
+      "choices": [
+        "6.04",
+        "6.05",
+        "6.15",
+        "6.06"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Subtract 4.86 from 10.",
+      "choices": [
+        "5.24",
+        "5.13",
+        "5.14",
+        "5.15"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Find 2.4 × 0.5.",
+      "choices": [
+        "1.20",
+        "1.19",
+        "1.30",
+        "1.21"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Divide 3.6 by 0.4.",
+      "choices": [
+        "11",
+        "10",
+        "8",
+        "9"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Six notebooks cost $1.25 each. What is the total in dollars?",
+      "choices": [
+        "7.60",
+        "7.49",
+        "7.51",
+        "7.50"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A rope is 7.82 m long. A piece of 2.95 m is removed. How many meters remain?",
+      "choices": [
+        "4.88",
+        "4.97",
+        "4.87",
+        "4.86"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Four identical bottles hold a total of 5.2 liters. How many liters per bottle?",
+      "choices": [
+        "1.40",
+        "1.31",
+        "1.29",
+        "1.30"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Find 0.08 × 0.7.",
+      "choices": [
+        "0.055",
+        "0.056",
+        "0.066",
+        "0.057"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is 0.99 + 0.07?",
+      "choices": [
+        "1.05",
+        "1.07",
+        "1.16",
+        "1.06"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What is 0.50 − 0.15?",
+      "choices": [
+        "0.34",
+        "0.36",
+        "0.35",
+        "0.45"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A runner runs 2.65 km on one day and 3.8 km the next. How far in all, in km?",
+      "choices": [
+        "6.44",
+        "6.45",
+        "6.55",
+        "6.46"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which number completes the equation 4.09 + __ = 6?",
+      "choices": [
+        "1.91",
+        "1.90",
+        "1.92",
+        "2.01"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is 4.5 ÷ 1.5?",
+      "choices": [
+        "3",
+        "2",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A jug holds 1.4 L. How many liters are in 2.5 jugfuls?",
+      "choices": [
+        "3.49",
+        "3.50",
+        "3.51",
+        "3.60"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Find 18.2 − 9.97.",
+      "choices": [
+        "8.22",
+        "8.33",
+        "8.23",
+        "8.24"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Divide 0.63 by 7.",
+      "choices": [
+        "0.08",
+        "0.10",
+        "0.19",
+        "0.09"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Find the distance in km between 7.35 km and 9.1 km along a trail.",
+      "choices": [
+        "1.75",
+        "1.74",
+        "1.85",
+        "1.76"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What is 6.4 × 1.2?",
+      "choices": [
+        "7.69",
+        "7.78",
+        "7.68",
+        "7.67"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "You have $12.00 and spend $3.85 and $4.55. How many dollars are left?",
+      "choices": [
+        "3.60",
+        "3.70",
+        "3.61",
+        "3.59"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "How many 0.75-meter pieces can be cut from 6 meters of ribbon with none left?",
+      "choices": [
+        "10",
+        "8",
+        "7",
+        "9"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--k--rules-and-responsibilities",
+  "title": "Kindergarten Social Studies — Rules That Help Us Learn Together",
+  "subject": "Social Studies",
+  "category": "Rules and Responsibilities",
+  "topic": "Rules and Responsibilities",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on fairness, taking turns, safety, classroom.",
+  "keywords": [
+    "fairness",
+    "taking turns",
+    "safety",
+    "classroom"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade K #9"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Why do we walk inside a crowded hall?",
+      "choices": [
+        "to make everyone late",
+        "to avoid running into people",
+        "to make the hall louder",
+        "to finish lunch early"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Your class shares one ball. What is fair?",
+      "choices": [
+        "grab it from another child",
+        "take turns",
+        "hide it",
+        "keep it all day"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What should you do with borrowed classroom scissors when finished?",
+      "choices": [
+        "leave them on the floor",
+        "return them to their spot",
+        "put them in a friend's bag",
+        "throw them away"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Another child is speaking to the class. What helps everyone hear?",
+      "choices": [
+        "call out across the room",
+        "tap a pencil loudly",
+        "talk over them",
+        "listen quietly"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "You spill water on the floor. What can you do?",
+      "choices": [
+        "cover it with a book",
+        "splash it farther",
+        "tell an adult and help clean it up",
+        "leave without telling anyone"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which rule helps all children have a turn on the slide?",
+      "choices": [
+        "wait in line",
+        "push to the front",
+        "climb up the slide",
+        "save the slide for one person"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What should you do with a trash wrapper?",
+      "choices": [
+        "give it to a bird",
+        "put it in a bin",
+        "leave it on a step",
+        "slide it under a chair"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why have a rule about keeping hands to yourself in line?",
+      "choices": [
+        "to help people feel safe",
+        "to keep the line from moving",
+        "to make the line noisy",
+        "to give people less space"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A jar breaks at school. What should a child do first?",
+      "choices": [
+        "pick up sharp pieces with bare hands",
+        "run over the pieces",
+        "hide the pieces",
+        "tell an adult"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Why raise your hand when your class uses that rule?",
+      "choices": [
+        "so other people cannot join",
+        "so nobody listens",
+        "so class ends early",
+        "so people can speak one at a time"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Your job is to pass out four books. What is doing your job?",
+      "choices": [
+        "give books to the group",
+        "use them to block a doorway",
+        "hide all four books",
+        "take the books home"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What helps keep a shared table ready for the next class?",
+      "choices": [
+        "pour glue on it",
+        "put supplies away",
+        "knock the chairs over",
+        "leave scraps under it"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Two children want one red marker. What can they agree to do?",
+      "choices": [
+        "break it in half",
+        "use it only when the other leaves school",
+        "take turns using it",
+        "keep it lost"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What should you do if you forget a rule?",
+      "choices": [
+        "copy a much younger child",
+        "make up a rule for everyone",
+        "ask a trusted adult to explain it",
+        "tell others rules do not matter"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What should children do when the teacher asks the class to line up for a drill?",
+      "choices": [
+        "leave by themselves",
+        "finish a game first",
+        "follow the practiced steps",
+        "hide in a corner"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Why does the class put bags out of the main path?",
+      "choices": [
+        "so people do not trip",
+        "so nobody can find anything",
+        "so bags get wet",
+        "so the path is smaller"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which action keeps a borrowed book ready for others?",
+      "choices": [
+        "turn pages gently",
+        "fold each page into a triangle",
+        "pull off the cover",
+        "draw on every page"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why do classroom rules apply to everyone?",
+      "choices": [
+        "so no one can help",
+        "so only new students know the rules",
+        "so everyone knows what to expect",
+        "so older people never listen"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "An outdoor game has a boundary. What should you do when play goes past it?",
+      "choices": [
+        "pretend the line has moved",
+        "run farther from the group",
+        "push people out of bounds",
+        "follow the rule for bringing play back in bounds"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What can you say when you bump someone by mistake?",
+      "choices": [
+        "“I can bump you again.”",
+        "“Move faster!”",
+        "“You are not allowed to stand here.”",
+        "“Are you okay?”"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

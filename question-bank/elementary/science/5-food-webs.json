@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--5--food-webs",
+  "title": "Grade 5 Science — Tracing Energy Through Food Webs",
+  "subject": "Science",
+  "category": "Food Webs",
+  "topic": "Food Webs",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on producers, consumers, decomposers, interdependence.",
+  "keywords": [
+    "producers",
+    "consumers",
+    "decomposers",
+    "interdependence"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "5.LS.1",
+    "5.LS.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "In a grass → rabbit → fox chain, which organism is the producer?",
+      "choices": [
+        "fox",
+        "grass",
+        "rabbit",
+        "both rabbit and fox"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In a pond, algae make their own food with light. What role do they play?",
+      "choices": [
+        "secondary consumer",
+        "predator",
+        "primary consumer",
+        "producer"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What organisms help recycle nutrients by breaking down dead matter?",
+      "choices": [
+        "all herbivores",
+        "predators only",
+        "decomposers",
+        "producers only"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What do arrows usually show in a food web?",
+      "choices": [
+        "the path water takes downhill",
+        "the direction energy moves",
+        "the way animals face",
+        "which organism is biggest"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A hawk eats a snake that eats a mouse. Which is prey of the hawk?",
+      "choices": [
+        "snake",
+        "hawk",
+        "grass",
+        "seeds"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is the original energy source for most land food webs?",
+      "choices": [
+        "rocks",
+        "soil minerals",
+        "sunlight",
+        "wind alone"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In a grassland web, mice and rabbits eat grasses. What role do mice and rabbits have there?",
+      "choices": [
+        "primary consumers",
+        "top predators",
+        "producers",
+        "decomposers"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "If leaf-eating caterpillars decline, what may happen to birds that mostly eat those caterpillars?",
+      "choices": [
+        "They get more sunlight.",
+        "They have less food available.",
+        "They need no other resources.",
+        "They all become producers."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which organism could be both a consumer of seeds and prey for an owl?",
+      "choices": [
+        "grass",
+        "mouse",
+        "fungus feeding on dead wood",
+        "oak tree"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "In algae → snail → fish, what direction does energy move first?",
+      "choices": [
+        "from fish to algae",
+        "from fish to snail",
+        "from algae to snail",
+        "from snail to algae"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "How is a food web different from a single food chain?",
+      "choices": [
+        "It always contains only one animal.",
+        "It leaves out what eats what.",
+        "It represents multiple connected feeding paths.",
+        "It shows how streams flood."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which organism is an omnivore?",
+      "choices": [
+        "a raccoon that eats berries and insects",
+        "an owl that eats only other animals",
+        "a plant that makes sugars",
+        "a rabbit that eats only grasses"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Why are decomposers important for plants?",
+      "choices": [
+        "They supply all the world's sunlight.",
+        "They remove every organism that eats plants.",
+        "They absorb all usable soil nutrients forever.",
+        "They return some nutrients to the environment."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A fox eats rabbits and mice. Why can having two prey species help the fox?",
+      "choices": [
+        "It no longer needs the web.",
+        "It may switch foods if one prey species declines.",
+        "It can make its own food from sunlight.",
+        "It stops both prey populations from changing."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What is one likely effect if many plants die in a meadow?",
+      "choices": [
+        "Decomposers disappear instantly.",
+        "The meadow gains more sunlight everywhere.",
+        "Meat-eating animals no longer depend on other organisms.",
+        "Plant-eating animals may have less food."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which order shows energy from food passing through three organisms?",
+      "choices": [
+        "clover → rabbit → fox",
+        "rabbit → clover → fox",
+        "fox → rabbit → clover",
+        "fox → clover → rabbit"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "In an ocean web tiny animals eat plantlike plankton. Which organisms directly use sunlight to make food?",
+      "choices": [
+        "sharks",
+        "tiny animals",
+        "fish that eat the tiny animals",
+        "plantlike plankton"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which example shows competition in a food web?",
+      "choices": [
+        "A seed sprouts in a cup.",
+        "A bird builds its nest from sticks.",
+        "A cloud covers the Sun.",
+        "Two bird species seek the same limited seeds."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "If a fish eats insects and a heron eats fish, which change might affect both fish and herons?",
+      "choices": [
+        "the name of the pond",
+        "the color of a measuring tape",
+        "the insect supply dropping",
+        "the pattern on a field notebook"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What would happen to energy input into this land food web if its plants got much less light?",
+      "choices": [
+        "Plants would have less light energy to make food.",
+        "Plants would get more energy from darkness.",
+        "The amount of light would have no possible effect.",
+        "Predators would directly use all the missing light."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

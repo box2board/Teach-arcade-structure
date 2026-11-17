@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--3--forces-and-motion",
+  "title": "Grade 3 Science — Pushes, Pulls, and Changes in Motion",
+  "subject": "Science",
+  "category": "Forces and Motion",
+  "topic": "Forces and Motion",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on gravity, friction, direction, speed.",
+  "keywords": [
+    "gravity",
+    "friction",
+    "direction",
+    "speed"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "NGSS 3-PS2-1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What force pulls a dropped ball toward Earth?",
+      "choices": [
+        "air resistance",
+        "gravity",
+        "friction",
+        "buoyancy"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What force slows a book sliding across a table?",
+      "choices": [
+        "gravity",
+        "magnetic attraction",
+        "buoyancy",
+        "friction"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What holds an iron clip against a fridge magnet?",
+      "choices": [
+        "buoyancy",
+        "magnetic attraction",
+        "friction",
+        "gravity"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What upward force helps keep a beach ball from sinking?",
+      "choices": [
+        "gravity",
+        "magnetic attraction",
+        "buoyancy",
+        "friction"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What force from the air slows an open parachute?",
+      "choices": [
+        "gravity",
+        "buoyancy",
+        "air resistance",
+        "friction"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What happens to a cart when a push makes it move faster?",
+      "choices": [
+        "Its mass doubles.",
+        "It gets heavier.",
+        "It loses its wheels.",
+        "It speeds up."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which action is a pull?",
+      "choices": [
+        "Move a chair away from you.",
+        "Press a button in.",
+        "Move a drawer toward you.",
+        "Wind blows a leaf away."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which action is a push?",
+      "choices": [
+        "Pull on a zipper to open a coat.",
+        "Press a swing away from you.",
+        "Lift a bucket up by its rope.",
+        "Lead a wagon by its handle."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A rolling ball hits a soft pillow. What happens to the ball?",
+      "choices": [
+        "It slows or stops.",
+        "It gains mass.",
+        "It rolls through the pillow.",
+        "It must speed up."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "On which surface would a toy car usually roll farthest after the same push?",
+      "choices": [
+        "shaggy carpet",
+        "deep sand",
+        "smooth tile",
+        "loose gravel"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A ball rolling east is tapped toward the north. What changes?",
+      "choices": [
+        "its direction",
+        "its material",
+        "its mass",
+        "its color"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Two equal-size balls travel the same distance. One takes less time. Which one is faster?",
+      "choices": [
+        "the one that took less time",
+        "both are at rest",
+        "the one that took more time",
+        "neither speed can be compared"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 13,
+      "question": "A ramp is raised higher at one end. What can you measure to see its effect on a toy car?",
+      "choices": [
+        "the time the car takes to reach the bottom",
+        "the width of the room",
+        "the color of the car",
+        "the sound of your shoes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How can you make a stationary wagon start moving?",
+      "choices": [
+        "Stand still near it.",
+        "Make its paint darker.",
+        "Turn off a light.",
+        "Apply a pull to its handle."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Two friends pull equally on a rope in opposite directions. The rope stays still. What are the pulls?",
+      "choices": [
+        "getting stronger on one side",
+        "caused by magnets",
+        "balanced",
+        "from the same direction"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Why do bike brakes press against a moving part of the wheel?",
+      "choices": [
+        "to add air pressure",
+        "to increase friction",
+        "to decrease wheel size",
+        "to increase gravity"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "To test ramp height fairly, what should stay the same?",
+      "choices": [
+        "the finish time",
+        "the ramp height",
+        "the trial result",
+        "the toy car"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "You toss a ball up. What pulls it down again?",
+      "choices": [
+        "heat",
+        "light",
+        "magnetism",
+        "gravity"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which car changed speed?",
+      "choices": [
+        "one that stayed parked",
+        "one that went from rolling to stopped",
+        "one that moved steadily the whole trip",
+        "one that never left the starting line"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which change would most directly reduce friction for a sled on a slope?",
+      "choices": [
+        "Use a smoother slope surface.",
+        "Make the sled heavier.",
+        "Put a rug under it.",
+        "Make the grass rougher."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--general-knowledge-and-life-skills--k--safety-and-healthy-habits",
+  "title": "Kindergarten Life Skills — Safe and Healthy Everyday Choices",
+  "subject": "General Knowledge and Life Skills",
+  "category": "Safety and Healthy Habits",
+  "topic": "Safety and Healthy Habits",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on handwashing, trusted adults, helmets, hygiene.",
+  "keywords": [
+    "handwashing",
+    "trusted adults",
+    "helmets",
+    "hygiene"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What should you wear when riding a bike?",
+      "choices": [
+        "a scarf over your eyes",
+        "a paper crown",
+        "a loose blanket",
+        "a bike helmet"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What should you use to wash your hands?",
+      "choices": [
+        "a dry pencil",
+        "sand and ink",
+        "soap and clean water",
+        "paint and glue"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Where should you cough if you have no tissue?",
+      "choices": [
+        "into your elbow",
+        "toward a friend",
+        "onto a table",
+        "into your open hands"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What can you do if you see broken glass?",
+      "choices": [
+        "ride over it",
+        "hide it in a shoe",
+        "stay back and tell an adult",
+        "pick it up in bare hands"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What should you do before crossing a street?",
+      "choices": [
+        "follow a bouncing ball",
+        "run without looking",
+        "read a book while walking",
+        "stop and check for traffic with your adult"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What helps protect teeth every day?",
+      "choices": [
+        "use glue on them",
+        "cover them with paper",
+        "brush them with toothpaste",
+        "eat candy before bed and skip brushing"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which drink helps replace water after running?",
+      "choices": [
+        "glue",
+        "soap",
+        "paint",
+        "water"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can you keep the sun off your face on a bright day?",
+      "choices": [
+        "wear a hat with a brim",
+        "wear only gloves",
+        "look right at the Sun",
+        "wear wet socks"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "You spill water on a floor. What should you do?",
+      "choices": [
+        "cover it with an open book",
+        "tell an adult so it can be dried",
+        "run through it",
+        "spread it with your shoes"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "If you find a bottle of medicine, what should you do?",
+      "choices": [
+        "share it with a friend",
+        "leave it alone and tell a trusted adult",
+        "taste it",
+        "put it in your lunch"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "When you sit in a car, what helps keep you safe?",
+      "choices": [
+        "holding a book over your face",
+        "opening the door while moving",
+        "using the right seat and buckling up",
+        "standing on the seat"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What should you do if you get lost in a store?",
+      "choices": [
+        "hide in a closet",
+        "ask a store worker to help you find your grown-up",
+        "follow a shopper to their car",
+        "go outside alone"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "After playing with a pet, what should you do before eating?",
+      "choices": [
+        "wash your hands",
+        "paint your hands",
+        "touch your food first",
+        "wipe your hands on someone else"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which helps your body rest each night?",
+      "choices": [
+        "keeping the lights on and playing all night",
+        "skipping sleep every other day",
+        "staying up all night",
+        "a regular bedtime"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "If a friend asks you to touch a hot oven, what should you do?",
+      "choices": [
+        "say no and tell an adult",
+        "put a paper towel on it",
+        "ask another child to touch it first",
+        "touch it fast"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What should you use if your nose needs wiping?",
+      "choices": [
+        "a tissue",
+        "a book page",
+        "a sleeve you lend to a friend",
+        "a shared napkin someone is using"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Why should you walk near the edge of a pool?",
+      "choices": [
+        "Walking makes the water deeper.",
+        "Running makes water warmer.",
+        "Wet ground can be slippery.",
+        "Pool rules change the weather."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "You see a swing moving with someone on it. Where should you wait?",
+      "choices": [
+        "on the swing pole",
+        "under the swing",
+        "right in front of the swing",
+        "off to the side, away from the swing's path"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which helps people hear important directions during a school drill?",
+      "choices": [
+        "hide your shoes",
+        "stay with your class and listen",
+        "leave without an adult",
+        "sing loudly"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Someone asks you to keep a secret that makes you feel unsafe. What should you do?",
+      "choices": [
+        "keep it forever",
+        "tell a trusted adult",
+        "try it alone first",
+        "tell only a pet"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

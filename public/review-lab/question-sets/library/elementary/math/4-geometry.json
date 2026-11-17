@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--4--geometry",
+  "title": "Grade 4 Math — Lines, Angles, and Shape Attributes",
+  "subject": "Math",
+  "category": "Geometry",
+  "topic": "Geometry",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on parallel, perpendicular, acute, obtuse, lines of symmetry.",
+  "keywords": [
+    "parallel",
+    "perpendicular",
+    "acute",
+    "obtuse",
+    "lines of symmetry"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "4.G.1",
+    "4.G.2",
+    "4.G.3",
+    "4.MD.5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "A turn all the way around is 360°. How many degrees are in a quarter turn?",
+      "choices": [
+        "92",
+        "89",
+        "91",
+        "90"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Two perpendicular lines make an angle of how many degrees?",
+      "choices": [
+        "89",
+        "91",
+        "90",
+        "92"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which measure could an acute angle have?",
+      "choices": [
+        "110",
+        "180",
+        "90",
+        "42"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which measure could an obtuse angle have?",
+      "choices": [
+        "125",
+        "90",
+        "45",
+        "180"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A square can be folded in half exactly along each diagonal and each middle line. How many such fold lines are there?",
+      "choices": [
+        "3",
+        "6",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How many right angles does a rectangle have?",
+      "choices": [
+        "6",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How many pairs of opposite sides are parallel in a rectangle?",
+      "choices": [
+        "2",
+        "3",
+        "1",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How many pairs of parallel sides can a triangle have?",
+      "choices": [
+        "1",
+        "0",
+        "5",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A triangle has a right angle. What is the greatest angle measure in degrees?",
+      "choices": [
+        "90",
+        "92",
+        "89",
+        "91"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "An angle opens from 35° to 50°. How many degrees did it increase?",
+      "choices": [
+        "17",
+        "14",
+        "15",
+        "16"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "How many lines of symmetry does a rectangle that is longer than it is wide have?",
+      "choices": [
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which angle is straight?",
+      "choices": [
+        "90",
+        "180",
+        "45",
+        "0"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "How many endpoints does a line segment have?",
+      "choices": [
+        "2",
+        "3",
+        "1",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How many endpoints does a ray have?",
+      "choices": [
+        "2",
+        "3",
+        "0",
+        "1"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What is the measure in degrees of two adjacent right angles combined?",
+      "choices": [
+        "170",
+        "180",
+        "190",
+        "200"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A regular hexagon has how many sides?",
+      "choices": [
+        "5",
+        "6",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What is the smallest possible number of sides in a polygon?",
+      "choices": [
+        "2",
+        "4",
+        "1",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How many sides of a rhombus have the same length?",
+      "choices": [
+        "5",
+        "4",
+        "3",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What is the number of lines of symmetry of an equilateral triangle?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "How many corners does a pentagon have?",
+      "choices": [
+        "4",
+        "7",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

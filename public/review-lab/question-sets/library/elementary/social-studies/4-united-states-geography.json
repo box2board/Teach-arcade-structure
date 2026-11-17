@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--4--united-states-geography",
+  "title": "Grade 4 Social Studies — Reading the Geography of the United States",
+  "subject": "Social Studies",
+  "category": "United States Geography",
+  "topic": "United States Geography",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on states, boundaries, regions, rivers, Great Lakes.",
+  "keywords": [
+    "states",
+    "boundaries",
+    "regions",
+    "rivers",
+    "Great Lakes"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 4 #3",
+    "Ohio SS 2026 Grade 4 #12"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which Great Lake borders Ohio?",
+      "choices": [
+        "Lake Erie",
+        "Lake Superior",
+        "Lake Michigan",
+        "Lake Ontario"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which river forms much of Ohio's southern boundary?",
+      "choices": [
+        "Rio Grande",
+        "Ohio River",
+        "Colorado River",
+        "Hudson River"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which ocean lies along the East Coast of the contiguous United States?",
+      "choices": [
+        "Atlantic Ocean",
+        "Southern Ocean",
+        "Indian Ocean",
+        "Pacific Ocean"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which ocean lies along the West Coast of the contiguous United States?",
+      "choices": [
+        "Atlantic Ocean",
+        "Pacific Ocean",
+        "Southern Ocean",
+        "Indian Ocean"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which country lies directly north of the contiguous U.S. along much of its border?",
+      "choices": [
+        "Cuba",
+        "Brazil",
+        "Canada",
+        "Mexico"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which country lies directly south of California and Arizona?",
+      "choices": [
+        "Mexico",
+        "Brazil",
+        "Jamaica",
+        "Canada"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which mountain range includes many high peaks in Colorado?",
+      "choices": [
+        "Ozark Mountains",
+        "Adirondack Mountains",
+        "Appalachian Mountains",
+        "Rocky Mountains"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which mountain system runs through much of the eastern U.S.?",
+      "choices": [
+        "Rocky Mountains",
+        "Cascade Range",
+        "Appalachian Mountains",
+        "Sierra Nevada"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which river reaches the Gulf of Mexico south of New Orleans?",
+      "choices": [
+        "Ohio River",
+        "Hudson River",
+        "Columbia River",
+        "Mississippi River"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which is a chain of islands in the central Pacific and a U.S. state?",
+      "choices": [
+        "Hawaii",
+        "Maine",
+        "Ohio",
+        "Kentucky"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which U.S. state is separated from the contiguous U.S. by Canada?",
+      "choices": [
+        "Nebraska",
+        "Michigan",
+        "New Mexico",
+        "Alaska"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which region includes Ohio under the U.S. Census regional grouping?",
+      "choices": [
+        "Northeast",
+        "Midwest",
+        "West",
+        "South"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which region lies largely east of the Rocky Mountains and includes broad grasslands?",
+      "choices": [
+        "Pacific Northwest coast",
+        "Great Plains",
+        "Atlantic Coastal Plain",
+        "New England"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What can the Great Lakes help nearby cities do?",
+      "choices": [
+        "avoid all winter cold",
+        "stop rivers from flowing",
+        "ship goods by water",
+        "move into the Atlantic without connecting waterways"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which map feature would help compare the elevation of Ohio and Colorado?",
+      "choices": [
+        "a chart of delegates",
+        "a list of sports teams",
+        "state nicknames",
+        "a color key showing heights above sea level"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A ship travels down the Ohio River and reaches the Mississippi. In what general direction does it go downstream from the Ohio's junction?",
+      "choices": [
+        "north toward Lake Erie",
+        "east toward Maine",
+        "generally south toward the Gulf",
+        "west toward California"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Why do maps often put Alaska and Hawaii in separate boxes?",
+      "choices": [
+        "They are far from the contiguous states.",
+        "They became countries of their own.",
+        "They have exactly the same size.",
+        "Their names cannot fit on a map."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which is an example of a physical border feature?",
+      "choices": [
+        "a state slogan",
+        "a county court order",
+        "a river that follows part of a state boundary",
+        "a list of city leaders"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which group consists only of Great Lakes?",
+      "choices": [
+        "Champlain, Superior, and Ontario",
+        "Erie, Ontario, and Superior",
+        "Michigan, Tahoe, and Erie",
+        "Superior, Great Salt, and Huron"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Why is it useful to compare two maps of the same U.S. region, one physical and one political?",
+      "choices": [
+        "It tells what each resident thinks.",
+        "It shows what the weather will be next month.",
+        "Both maps must show exactly the same details.",
+        "You can see natural features and how governments divide the land."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

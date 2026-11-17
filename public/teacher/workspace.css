@@ -167,3 +167,5 @@ dialog::backdrop{background:#07081bd9}
 @media(prefers-reduced-motion:no-preference){button,a{transition:background-color .15s,border-color .15s,box-shadow .15s}.cabinet-shelf:hover{border-color:var(--shelf);box-shadow:0 9px 0 #080b19,0 0 24px #b77eff22}.subject-row:hover{background:#252846;border-color:var(--cyan)}.hero-game:hover{border-color:var(--gold);box-shadow:8px 12px 0 #090d22,0 0 25px #ffe17833}}
 .arcade-game-art{display:grid;place-items:center;min-height:180px;font:700 64px/1 system-ui;color:var(--gold);background:radial-gradient(ellipse at 50% 120%,#6a367c,transparent 65%),repeating-linear-gradient(0deg,#ffffff05 0 1px,transparent 1px 5px),linear-gradient(135deg,#173f61,#211738);border-bottom:1px solid var(--line);text-shadow:0 0 28px #ffe17866}
 @media(prefers-contrast:more){:root{--muted:#e0e6ff;--line:#8995bc}.muted,.lead{color:#e0e6ff}}
+
+#cabinet-topic-filters{grid-template-columns:repeat(auto-fit,minmax(min(145px,100%),1fr))}

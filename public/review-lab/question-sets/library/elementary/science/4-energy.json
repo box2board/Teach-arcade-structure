@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--4--energy",
+  "title": "Grade 4 Science — Ways Energy Moves and Changes",
+  "subject": "Science",
+  "category": "Energy",
+  "topic": "Energy",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on light, heat, sound, motion, transfer.",
+  "keywords": [
+    "light",
+    "heat",
+    "sound",
+    "motion",
+    "transfer"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "4.PS.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What form of energy from a lamp makes a page visible?",
+      "choices": [
+        "sound",
+        "motion",
+        "electrical energy in the cord",
+        "light"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What form of energy reaches your ear from a vibrating drum?",
+      "choices": [
+        "light",
+        "electrical energy",
+        "sound",
+        "stored chemical energy"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "In a toaster, electrical energy is used mainly to produce what effect on bread?",
+      "choices": [
+        "cooling",
+        "making the bread vibrate",
+        "heating",
+        "freezing"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Where does thermal energy move when ice is placed in warmer water?",
+      "choices": [
+        "from the ice to nothing",
+        "only between ice crystals",
+        "from the ice to the warmer water",
+        "from the warmer water to the ice"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which shows light energy being absorbed and warming something?",
+      "choices": [
+        "A magnet attracts a paper clip.",
+        "A black shirt warms in sunlight.",
+        "A bell rings in a dark room.",
+        "A ball rolls down a hill in the dark."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What produces the sound of a plucked rubber band?",
+      "choices": [
+        "The band vibrates.",
+        "Air stops moving.",
+        "The band grows heavier.",
+        "Light becomes brighter."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Where does a running person's body get energy used by muscles?",
+      "choices": [
+        "their shoe color",
+        "their shadow",
+        "sound",
+        "food"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A ramp is used to roll a ball down. When does the ball have the most motion energy?",
+      "choices": [
+        "when it is still in a storage bin",
+        "when it is painted",
+        "when it is held still",
+        "when it is moving fastest"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which appliance uses electrical energy to create moving air?",
+      "choices": [
+        "lamp",
+        "toaster",
+        "fan",
+        "water heater"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which part of a solar-powered calculator receives light?",
+      "choices": [
+        "solar cell",
+        "screen frame",
+        "protective case",
+        "number key"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Touching a warm mug makes your fingers warmer. What moved into your fingers?",
+      "choices": [
+        "air from the handle",
+        "thermal energy",
+        "water from the mug",
+        "light from the room"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which lets you compare how sunlight warms two surfaces?",
+      "choices": [
+        "Put one in sunlight and one in a freezer.",
+        "Change both light and time together.",
+        "Measure temperatures before and after equal time in the same sunlight.",
+        "Measure only how wide each surface is."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which step reduces thermal energy leaving a warm drink most directly?",
+      "choices": [
+        "Stir the drink with a cold metal spoon.",
+        "Put an ice cube in the drink.",
+        "Cover the mug with an insulating sleeve.",
+        "Pour it into a wider open bowl."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which movement mostly powers a wind turbine?",
+      "choices": [
+        "sunlight falling on blades",
+        "moving air",
+        "moving ocean tides",
+        "flowing lava"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which may show energy transferred by a collision?",
+      "choices": [
+        "Two bricks sit apart.",
+        "A book rests on a desk.",
+        "A pencil stays in an unopened box.",
+        "A rolling ball hits a still ball and the still ball moves."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What enters a battery-powered speaker and is changed into sound?",
+      "choices": [
+        "heat from the floor",
+        "electrical energy",
+        "light from the screen",
+        "sunlight from a window"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "When two hands rub together, which change can be measured?",
+      "choices": [
+        "an increase in temperature",
+        "an increase in mass",
+        "a decrease in age",
+        "a change in the time of day"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What happens to light hitting a clean mirror?",
+      "choices": [
+        "Much of it reflects.",
+        "It becomes air.",
+        "It pulls the mirror down.",
+        "All of it becomes sound."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A transmission of energy can occur without materials touching. Which example shows this?",
+      "choices": [
+        "Sunlight warms pavement.",
+        "Two stones rub together.",
+        "A moving puck hits another puck.",
+        "A warm spoon touches a hand."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Why does the pitch rise if you tighten a guitar string and pluck it the same way?",
+      "choices": [
+        "Its light gets brighter.",
+        "The string vibrates faster.",
+        "Its mass doubles.",
+        "Air stops carrying sound."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

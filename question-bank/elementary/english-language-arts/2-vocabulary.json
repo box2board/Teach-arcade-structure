@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--2--vocabulary",
+  "title": "Grade 2 ELA — Word Meanings and Word Parts",
+  "subject": "English Language Arts",
+  "category": "Vocabulary",
+  "topic": "Vocabulary",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on prefixes, suffixes, multiple meanings.",
+  "keywords": [
+    "prefixes",
+    "suffixes",
+    "multiple meanings"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.2.4"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does “reread” mean?",
+      "choices": [
+        "read again",
+        "stop reading",
+        "read aloud",
+        "read quickly"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does “unfair” mean?",
+      "choices": [
+        "very fair",
+        "fair again",
+        "fair every time",
+        "not fair"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does “preview” mean?",
+      "choices": [
+        "look from below",
+        "look at after",
+        "look at before",
+        "look away from"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does “careless” mean?",
+      "choices": [
+        "always kind",
+        "not taking enough care",
+        "careful again",
+        "full of care"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does “hopeful” mean?",
+      "choices": [
+        "full of hope",
+        "without hope",
+        "sharing only a little hope",
+        "to hope again"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "In “a light backpack,” what does “light” mean?",
+      "choices": [
+        "bright",
+        "turned on",
+        "not heavy",
+        "pale in color"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In “the bark of a tree,” what is “bark”?",
+      "choices": [
+        "dog sound",
+        "outer covering",
+        "flower",
+        "branch tip"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "In “the bat flew out of the cave,” what is the bat?",
+      "choices": [
+        "a boat",
+        "a stone",
+        "a baseball tool",
+        "an animal"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "In “sign your name,” what does “sign” mean?",
+      "choices": [
+        "read aloud",
+        "write",
+        "erase",
+        "fold"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "In “a fair turn,” what does “fair” mean?",
+      "choices": [
+        "light in color",
+        "sunny",
+        "following a just rule",
+        "at a carnival"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which word means without a home?",
+      "choices": [
+        "homeless",
+        "homes",
+        "homeward",
+        "homeful"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which two words make “sunflower”?",
+      "choices": [
+        "sun and flier",
+        "snow and flower",
+        "sung and lower",
+        "sun and flower"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which word names someone who farms?",
+      "choices": [
+        "farmhouse",
+        "farmed",
+        "farming",
+        "farmer"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A patch is muddy after rain. What is “muddy”?",
+      "choices": [
+        "very cold",
+        "covered in wet dirt",
+        "made of dry sand",
+        "tall and narrow"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What is a “pair” of socks?",
+      "choices": [
+        "none",
+        "two socks",
+        "a stack of ten socks",
+        "one sock"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which word means almost the same as “quick”?",
+      "choices": [
+        "warm",
+        "slow",
+        "fast",
+        "soft"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "In “The path is narrow,” what does “narrow” mean?",
+      "choices": [
+        "not wide",
+        "brightly lit",
+        "not straight",
+        "very short"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A frog leaped across a log. What did it do?",
+      "choices": [
+        "jumped",
+        "slept",
+        "sang",
+        "turned"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which word describes something you can wash?",
+      "choices": [
+        "washed",
+        "washer",
+        "washing",
+        "washable"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which word means the opposite of “arrive”?",
+      "choices": [
+        "enter",
+        "reach",
+        "leave",
+        "come"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

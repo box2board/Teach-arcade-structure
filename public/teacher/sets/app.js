@@ -1,8 +1,13 @@
+import {matchesSetSearch,matchesSetFields,mountSetFilters,originalSetLine} from '../../review-lab/set-filters.js';
 import {GAMES,QUESTION_SETS,loadQuestionSet} from '../../review-lab/catalog.js';
 import {originalCopy} from '../originals.js';
 import {SET_SUBJECTS,completeQuestion,setInput,teacherBank,MAX_QUESTIONS,correctAnswers} from '../set-contract.js';
 const $=id=>document.getElementById(id),el=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
 let user=null,view='mine',offset=0,version=0,editing=null,dirty=false,busy=false,search='',lastList=[];
+const originals=QUESTION_SETS.filter(s=>!s.id.startsWith('teacher:'));
+const query=new URLSearchParams(location.search);
+const filters=mountSetFilters($('original-filters'),originals,['primaryGrade','gradeBand','subject','category','difficulty'],
+ ()=>list(),{gradeBand:query.get('band')});
 const blank=()=>({question:'',choices:['','','',''],answer:[],explanation:''});
 async function api(action,body,params={}){
  const query=new URLSearchParams({action,...params});const response=await fetch('/api/teacher-sets?'+query,{method:body?'POST':'GET',credentials:'same-origin',cache:'no-store',headers:body?{'Content-Type':'application/json'}:{},...(body?{body:JSON.stringify(body)}:{})});
@@ -18,10 +23,14 @@ async function list(reset=true){
  if(reset){offset=0;lastList=[];$('teacher-sets').replaceChildren();}
  const request=++version;$('more-sets').hidden=true;status('Loading question sets…');
  document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));
+ $('original-filters').hidden=view!=='originals';
+ $('set-search').placeholder=view==='originals'?'Title, grade, topic, or keyword':'Search by title';
  $('collection-help').textContent=view==='mine'?'Your sets start private. Only you can edit the originals.':view==='saved'?'Saved sets follow the creator’s updates. If a creator makes a set private, it will no longer appear here. Independent copies remain yours.':'Community sets are public. Save a shortcut to follow updates, or make a private copy you can edit.';
  if(view==='originals'){
   $('collection-help').textContent='Official sets by Teach Arcade. Play an Original or customize your own private copy. Your edits never change the official set.';
-  const matches=QUESTION_SETS.filter(s=>!s.id.startsWith('teacher:')&&`${s.title} ${s.subject} ${s.category||''}`.toLowerCase().includes(search.toLowerCase()));
+  const selected=filters.values();
+  const matches=originals.filter(s=>matchesSetFields(s,selected)&&matchesSetSearch(s,search));
+  if(selected.gradeBand==='elementary')matches.sort((a,b)=>Number(a.primaryGrade.replace('K','0'))-Number(b.primaryGrade.replace('K','0')));
   const page=matches.slice(offset,offset+25);lastList.push(...page);$('teacher-sets').append(...page.map(originalCard));$('more-sets').hidden=offset+25>=matches.length;
   if(!matches.length)$('teacher-sets').append(el('p','No Originals match your search. Try another topic or subject.'));
   status(`${lastList.length} of ${matches.length} Teach Arcade Originals shown.`);return;
@@ -36,11 +45,12 @@ async function list(reset=true){
 function originalCard(set){
  const box=el('article');box.className='set original-set';
  const badge=el('p','★ TEACH ARCADE ORIGINAL');badge.className='original-badge';
- box.append(badge,el('h2',set.title),el('p',`By Teach Arcade · ${set.subject}${set.category?' · '+set.category:''} · ${set.questionCount} questions`));
+ box.append(badge,el('h2',set.title),el('p',originalSetLine(set)));
+ if(set.primaryGrade)box.append(el('p',set.description));
  const buttons=el('div');buttons.className='set-actions';buttons.append(action('Preview & play',()=>openOriginal(set.id)),action('Customize a private copy',()=>customizeOriginal(set.id)));box.append(buttons);return box;
 }
 function renderQuestionsPreview(questions){
- $('teacher-set-questions').replaceChildren(...questions.map((q,i)=>{const d=el('details');d.append(el('summary',`${i+1}. ${q.question||'Unfinished question'}`));const choices=el('ol');choices.type='A';for(const [n,text]of q.choices.entries())choices.append(el('li',(text||'Unfinished choice')+(correctAnswers(q).includes(n)?' ✓':'')));d.append(choices,el('p',q.explanation));return d;}));
+ $('teacher-set-questions').replaceChildren(...questions.map((q,i)=>{const d=el('details');d.append(el('summary',`${i+1}. ${q.question||'Unfinished question'}`));const choices=el('ol');choices.type='A';for(const [n,text]of q.choices.entries())choices.append(el('li',(text||'Unfinished choice')+(correctAnswers(q).includes(n)?' ✓':'')));d.append(choices);if(q.explanation)d.append(el('p',q.explanation));return d;}));
 }
 function renderGameLinks(id){
  $('teacher-set-games').replaceChildren(el('p','Play this set. Games with fixed rounds or timed play may repeat questions from shorter sets.'));
@@ -52,8 +62,14 @@ async function openOriginal(id){
   if(id.startsWith('teacher:'))throw Error('Choose a Teach Arcade Original.');
   dirty=false;view='originals';show('set-detail');history.replaceState(null,'','?original='+encodeURIComponent(id));
   $('set-source-label').textContent='★ TEACH ARCADE ORIGINAL';$('teacher-set-title').textContent=bank.title;
-  $('teacher-set-meta').textContent=`By Teach Arcade · ${bank.subject}${bank.category?' · '+bank.category:''} · ${bank.questions.length} questions`;
-  $('teacher-set-description').textContent=bank.description||'Ready-made review questions from Teach Arcade.';
+  $('teacher-set-meta').textContent=originalSetLine({...bank,questionCount:bank.questions.length});
+  const description=$('teacher-set-description');
+  description.replaceChildren(el('span',bank.description||'Ready-made review questions from Teach Arcade.'));
+  if(bank.standards?.length){
+   const framework=bank.standards[0].startsWith('NGSS ')?'NGSS practice connections':
+    bank.standards[0].startsWith('Ohio SS 2026 ')?'Ohio Social Studies (2026)':'Ohio Learning Standards';
+   description.append(el('br'),el('span',framework+' · '+bank.standards.map(id=>id.replace(/^(NGSS |Ohio SS 2026 )/,'')).join(', ')));
+  }
   const play=el('a','Open in My Cabinet →');play.href='/teacher/#games&set='+encodeURIComponent(id);
   $('teacher-set-actions').replaceChildren(action('Customize a private copy',()=>customizeOriginal(id)),play);
   renderGameLinks(id);renderQuestionsPreview(bank.questions);status('Official Original · Make a private copy to remove, add, or edit questions.');$('teacher-set-title').tabIndex=-1;$('teacher-set-title').focus();

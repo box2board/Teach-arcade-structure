@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--5--american-revolution",
+  "title": "Grade 5 Social Studies — Causes and Consequences of the American Revolution",
+  "subject": "Social Studies",
+  "category": "American Revolution",
+  "topic": "American Revolution",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on taxation, independence, alliances, primary sources.",
+  "keywords": [
+    "taxation",
+    "independence",
+    "alliances",
+    "primary sources"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What did many colonists mean by “no taxation without representation”?",
+      "choices": [
+        "They wanted to end all elections in the colonies.",
+        "They wanted taxes set only by France.",
+        "They objected to taxes passed by a legislature in which they had no elected representatives.",
+        "They claimed there were no merchants to tax."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What did the Stamp Act tax?",
+      "choices": [
+        "only ocean water",
+        "many printed materials and legal papers",
+        "only farm-grown apples",
+        "all shoes from Mexico"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Why did protesters dump tea into Boston Harbor in 1773?",
+      "choices": [
+        "to open a shipping business",
+        "to celebrate a completed peace treaty",
+        "to raise money for a tea shop",
+        "to oppose British tea policy and taxation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Where did the first battles of the Revolutionary War take place in 1775?",
+      "choices": [
+        "Detroit and New Orleans",
+        "Lexington and Concord",
+        "Jamestown and Plymouth",
+        "Yorktown and Paris"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What did the Declaration of Independence announce?",
+      "choices": [
+        "The war was already over.",
+        "The colonies asked to join Parliament.",
+        "The colonies declared loyalty to France.",
+        "The colonies claimed to be independent states."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "When did the Continental Congress adopt the Declaration of Independence?",
+      "choices": [
+        "1765",
+        "1787",
+        "1783",
+        "1776"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Who served as commander in chief of the Continental Army?",
+      "choices": [
+        "Benjamin Franklin",
+        "Thomas Jefferson",
+        "George Washington",
+        "King George III"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which people wanted the colonies to remain part of Britain?",
+      "choices": [
+        "Loyalists",
+        "members of every Native nation",
+        "Patriots as a group",
+        "French soldiers"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which country formally allied with the United States in 1778?",
+      "choices": [
+        "Germany",
+        "Britain",
+        "France",
+        "Canada"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What agreement formally ended the war between Britain and the United States in 1783?",
+      "choices": [
+        "U.S. Constitution",
+        "Treaty of Paris",
+        "Stamp Act",
+        "Mayflower Compact"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which event came before Britain agreed to peace in 1783?",
+      "choices": [
+        "The Louisiana Purchase was completed.",
+        "British forces surrendered at Yorktown.",
+        "Ohio became a state.",
+        "The U.S. Constitution was written in 1787."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why might a merchant stop buying goods from Britain before the war?",
+      "choices": [
+        "to join a boycott in protest of British policies",
+        "to support higher taxes on the same goods",
+        "to vote in British Parliament",
+        "to make those goods cheaper in Britain directly"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which source could show how one Loyalist described the conflict?",
+      "choices": [
+        "a recent map with no comments",
+        "a modern price label for tea",
+        "a fictional story about a future election",
+        "a letter written by a Loyalist during the war"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Why were perspectives in the colonies different during the Revolution?",
+      "choices": [
+        "All Patriots wanted Britain to keep ruling.",
+        "No one knew which side their leaders chose.",
+        "People had different loyalties and risks.",
+        "Everyone had equal rights and agreed on what to do."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What goal did the Declaration express even though many people were still enslaved?",
+      "choices": [
+        "the end of all government",
+        "the claim that slavery had already ended everywhere",
+        "a ban on all writing",
+        "the ideal that people have equal rights"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Why did some enslaved people seek freedom through wartime service or escape?",
+      "choices": [
+        "They were trying to gain liberty for themselves and their families.",
+        "They already had the same legal freedom as everyone else.",
+        "They were required to pay taxes as members of Parliament.",
+        "All armies promised safety and freedom to everyone."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Why did some Native nations make alliances during the war?",
+      "choices": [
+        "They all wanted the new states to expand onto their lands.",
+        "To protect their lands and interests in a changing conflict.",
+        "They had no lands or governments to protect.",
+        "All Native nations made the same choice together."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What did a battle map help military leaders decide?",
+      "choices": [
+        "where to move troops and supplies",
+        "the price of tea in every town",
+        "what each soldier thought",
+        "who would write all future laws"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How did French support help the Americans at Yorktown?",
+      "choices": [
+        "French representatives wrote Britain's surrender before the battle began.",
+        "France fought for Britain at Yorktown.",
+        "French ships and troops helped block and pressure British forces.",
+        "French ships stopped American troops from reaching the area."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which timeline is in the correct order?",
+      "choices": [
+        "Boston Tea Party → Declaration of Independence → Treaty of Paris",
+        "Declaration of Independence → Boston Tea Party → Treaty of Paris",
+        "Declaration of Independence → Treaty of Paris → Boston Tea Party",
+        "Treaty of Paris → Boston Tea Party → Declaration of Independence"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

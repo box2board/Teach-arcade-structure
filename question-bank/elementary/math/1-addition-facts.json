@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--1--addition-facts",
+  "title": "Grade 1 Math — Addition Facts Within 20",
+  "subject": "Math",
+  "category": "Addition Facts",
+  "topic": "Addition Facts",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on sums, doubles, make ten, missing addend.",
+  "keywords": [
+    "sums",
+    "doubles",
+    "make ten",
+    "missing addend"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "1.OA.6"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Add 8 and 7. Think of making a ten first.",
+      "choices": [
+        "16",
+        "15",
+        "17",
+        "14"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which sum do you get by doubling 6?",
+      "choices": [
+        "14",
+        "12",
+        "13",
+        "11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Find the missing addend: 4 + __ = 13.",
+      "choices": [
+        "10",
+        "9",
+        "8",
+        "11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Break 8 into 3 and 5. What is 7 + 3 + 5?",
+      "choices": [
+        "14",
+        "17",
+        "16",
+        "15"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is 9 more than 9?",
+      "choices": [
+        "19",
+        "17",
+        "18",
+        "20"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Start at 11 and move 4 steps right. Where do you land?",
+      "choices": [
+        "16",
+        "17",
+        "15",
+        "14"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Add 6 and 8. What total do you get?",
+      "choices": [
+        "13",
+        "15",
+        "14",
+        "16"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "If 3 + 8 = 11, what is 8 + 3?",
+      "choices": [
+        "10",
+        "12",
+        "13",
+        "11"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is 5 + 5 + 2?",
+      "choices": [
+        "12",
+        "11",
+        "13",
+        "14"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What is one more than 7 + 7?",
+      "choices": [
+        "16",
+        "14",
+        "17",
+        "15"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What is 12 + 5?",
+      "choices": [
+        "18",
+        "19",
+        "17",
+        "16"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Two hands show 5 fingers each. Three more fingers are raised on another hand. How many fingers are raised?",
+      "choices": [
+        "15",
+        "13",
+        "14",
+        "12"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What goes in the blank to make 20? 14 + __.",
+      "choices": [
+        "6",
+        "7",
+        "8",
+        "5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A ten-frame is full. There are 6 more dots. How many dots in all?",
+      "choices": [
+        "15",
+        "17",
+        "18",
+        "16"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What is 8 + 8 + 1?",
+      "choices": [
+        "18",
+        "17",
+        "16",
+        "19"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What is 0 + 19?",
+      "choices": [
+        "19",
+        "21",
+        "18",
+        "20"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which total equals 4 + 6 + 7?",
+      "choices": [
+        "16",
+        "19",
+        "17",
+        "18"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Find the sum of 2 and 13.",
+      "choices": [
+        "15",
+        "16",
+        "17",
+        "14"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What is 19 + 1?",
+      "choices": [
+        "22",
+        "19",
+        "21",
+        "20"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Find the missing number: __ + 7 = 12.",
+      "choices": [
+        "5",
+        "6",
+        "4",
+        "7"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

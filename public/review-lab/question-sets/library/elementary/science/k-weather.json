@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--k--weather",
+  "title": "Kindergarten Science — Weather We Can Observe",
+  "subject": "Science",
+  "category": "Weather",
+  "topic": "Weather",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on clouds, rain, wind, daily changes.",
+  "keywords": [
+    "clouds",
+    "rain",
+    "wind",
+    "daily changes"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "K.ESS.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What falls from clouds as drops of water?",
+      "choices": [
+        "rain",
+        "wind",
+        "sunshine",
+        "fog"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What can make a flag wave?",
+      "choices": [
+        "shade",
+        "wind",
+        "snow",
+        "ice"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which word describes a sky covered in clouds?",
+      "choices": [
+        "cloudy",
+        "clear",
+        "dry",
+        "windless"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What falls as flakes when it is cold enough?",
+      "choices": [
+        "rain",
+        "mist",
+        "dew",
+        "snow"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What can make the air feel warmer on a clear day?",
+      "choices": [
+        "snow",
+        "sunlight",
+        "frost",
+        "shade"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What tool tells how warm the air is?",
+      "choices": [
+        "cup",
+        "clock",
+        "thermometer",
+        "ruler"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which could you wear to stay dry in rain?",
+      "choices": [
+        "sunglasses",
+        "raincoat",
+        "mittens",
+        "sandals"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which helps collect rain so you can see how much fell?",
+      "choices": [
+        "map",
+        "thermometer",
+        "flashlight",
+        "rain gauge"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What clothes help most on a cold, snowy day?",
+      "choices": [
+        "a swimsuit",
+        "shorts",
+        "a warm coat",
+        "flip-flops"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What can block rain above your head?",
+      "choices": [
+        "umbrella",
+        "scarf",
+        "socks",
+        "backpack"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A puddle is gone after a hot sunny day. What likely happened?",
+      "choices": [
+        "The water turned into sand.",
+        "The water stayed in the puddle.",
+        "The water went into the air.",
+        "The water became ice."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Which word means you can see far with no fog in the way?",
+      "choices": [
+        "clear",
+        "rainy",
+        "foggy",
+        "misty"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What do you hear after lightning during a storm?",
+      "choices": [
+        "sunlight",
+        "frost",
+        "thunder",
+        "a rainbow"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Leaves blow past you. What can you feel moving?",
+      "choices": [
+        "rocks",
+        "air",
+        "soil",
+        "wood"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Where can you take a break from direct sun?",
+      "choices": [
+        "on a bare rock",
+        "in the middle of a sunny yard",
+        "under a tree",
+        "in an open field"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "You see ice on the ground. What word best tells how it feels to touch?",
+      "choices": [
+        "soft",
+        "hot",
+        "fluffy",
+        "cold"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which is weather you might see in the morning and see change by lunch?",
+      "choices": [
+        "a green fence",
+        "a paved road",
+        "a tall hill",
+        "a cloudy sky"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "It rains at lunch and clears by dinner. What changed?",
+      "choices": [
+        "the day’s name",
+        "the road",
+        "the town",
+        "the weather"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A stream of air pushes a kite. What weather word names moving air?",
+      "choices": [
+        "snow",
+        "wind",
+        "rain",
+        "heat"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What may appear when sunlight shines through drops of water?",
+      "choices": [
+        "a rainbow",
+        "a shadow",
+        "a snowflake",
+        "a cloud"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

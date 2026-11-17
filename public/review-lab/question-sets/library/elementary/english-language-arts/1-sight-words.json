@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--1--sight-words",
+  "title": "Grade 1 ELA — Reading High-Frequency Words in Context",
+  "subject": "English Language Arts",
+  "category": "Sight Words",
+  "topic": "Sight Words",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on word recognition, fluency, reading.",
+  "keywords": [
+    "word recognition",
+    "fluency",
+    "reading"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RF.1.3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Fill in the blank: We __ our coats on before we go outside.",
+      "choices": [
+        "every",
+        "who",
+        "of",
+        "put"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Fill in the blank: __ is at the door?",
+      "choices": [
+        "Any",
+        "Only",
+        "With",
+        "Who"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Fill in the blank: Kim sat __ her friend.",
+      "choices": [
+        "they",
+        "with",
+        "many",
+        "some"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Fill in the blank: We stayed inside __ of the rain.",
+      "choices": [
+        "both",
+        "what",
+        "because",
+        "could"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Fill in the blank: The ducks swam across the pond, and __ they rested.",
+      "choices": [
+        "that",
+        "their",
+        "then",
+        "there"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What word tells when in “We can play now”?",
+      "choices": [
+        "we",
+        "now",
+        "play",
+        "can"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What word shows a question in “Where did the cat go”?",
+      "choices": [
+        "cat",
+        "Where",
+        "go",
+        "did"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Complete the sentence: I have two books. Do you have __ books?",
+      "choices": [
+        "any",
+        "they",
+        "was",
+        "from"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which word is missing: The turtle hid __ the log.",
+      "choices": [
+        "because",
+        "would",
+        "again",
+        "under"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Choose the best word: I ate lunch __ breakfast.",
+      "choices": [
+        "always",
+        "away",
+        "about",
+        "after"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which word in “Both girls wore red boots” means the two together?",
+      "choices": [
+        "Both",
+        "red",
+        "boots",
+        "girls"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Complete the sentence: Dana has a pencil __ a ruler.",
+      "choices": [
+        "at",
+        "if",
+        "and",
+        "it"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Choose the best word: Read this page one more time. Read it __.",
+      "choices": [
+        "again",
+        "here",
+        "first",
+        "only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Choose the best word: We rushed __ we did not want to be late.",
+      "choices": [
+        "some",
+        "because",
+        "before",
+        "little"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What tells how many in “Three ants went by”?",
+      "choices": [
+        "Three",
+        "by",
+        "went",
+        "ants"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Choose the best word: You can sit by me __ you want to.",
+      "choices": [
+        "at",
+        "my",
+        "if",
+        "of"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Fill in the blank: We __ a boat by the dock yesterday.",
+      "choices": [
+        "saw",
+        "see",
+        "say",
+        "so"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which word tells how often in “We always wave goodbye”?",
+      "choices": [
+        "we",
+        "wave",
+        "always",
+        "goodbye"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Fill in the blank: Ana finished the puzzle __ herself.",
+      "choices": [
+        "go",
+        "by",
+        "is",
+        "or"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Choose the best word: I __ like to see the duck, please.",
+      "choices": [
+        "from",
+        "away",
+        "under",
+        "would"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

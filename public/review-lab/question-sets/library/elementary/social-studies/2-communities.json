@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--2--communities",
+  "title": "Grade 2 Social Studies — Comparing Types of Communities",
+  "subject": "Social Studies",
+  "category": "Communities",
+  "topic": "Communities",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on urban, suburban, rural, neighborhoods.",
+  "keywords": [
+    "urban",
+    "suburban",
+    "rural",
+    "neighborhoods"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which place is most likely part of an urban area?",
+      "choices": [
+        "a dirt trail across a remote ranch",
+        "a small farm lane",
+        "scattered homes by large fields",
+        "blocks of tall buildings downtown"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which place is most likely rural?",
+      "choices": [
+        "a crowded city center",
+        "a row of offices beside a subway",
+        "a farming area with homes far apart",
+        "a busy downtown block"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What often describes a suburban community?",
+      "choices": [
+        "homes near a city, outside its busiest center",
+        "the center of an ocean",
+        "a mountain with no roads or houses",
+        "a farm alone on a distant plain"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which need can people have in urban, suburban, and rural communities?",
+      "choices": [
+        "wide farm fields on every block",
+        "tall office towers beside each home",
+        "a subway on every street",
+        "safe drinking water"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which detail most suggests a city center?",
+      "choices": [
+        "several miles between houses",
+        "crop fields along each road",
+        "wide fields with few buildings",
+        "many apartments close together"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which could a rural community have?",
+      "choices": [
+        "a school serving families from farms and small towns",
+        "a rule against all public buildings",
+        "a building tall enough to touch the Moon",
+        "no places for people to meet"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why might a small town share a library with nearby towns?",
+      "choices": [
+        "to stop sharing books",
+        "to serve more people using resources together",
+        "to make it harder to get books",
+        "to move all homes into the library"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What can a community map help you compare?",
+      "choices": [
+        "how near homes are to a park",
+        "how loud every bird sounds",
+        "what each person had for lunch",
+        "whether everyone likes the park"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which example shows communities working together?",
+      "choices": [
+        "Two towns get different amounts of snow.",
+        "Roads are longer in one town.",
+        "Each town puts signs in a different color.",
+        "Towns share a place to recycle materials."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A shop stands near homes, a school, and a small park. What do these places help make?",
+      "choices": [
+        "a mountain range",
+        "a neighborhood",
+        "an ocean",
+        "a state border"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What word names a group of people who live in or share a place?",
+      "choices": [
+        "community",
+        "currency",
+        "route",
+        "climate"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why might a city have more public bus stops close together than an area with widely spaced homes?",
+      "choices": [
+        "Rural areas never have roads.",
+        "City buses are always smaller.",
+        "Many people live or travel within a small area.",
+        "People in cities cannot walk."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What can be shared by families in very different communities?",
+      "choices": [
+        "exactly the same roads",
+        "identical weather every day",
+        "schools and places to meet",
+        "the same houses"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A map shows several houses close to a large city but outside its center. Which term may fit?",
+      "choices": [
+        "suburban",
+        "uninhabited",
+        "downtown",
+        "oceanic"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Why might some families in a less crowded area travel farther to reach shops?",
+      "choices": [
+        "Shops must stand on mountains.",
+        "The roads always turn away from shops.",
+        "Buildings may be spread farther apart.",
+        "All shops are open only at night."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which is a way residents can help their community?",
+      "choices": [
+        "remove bus signs",
+        "join a park cleanup",
+        "leave broken glass on paths",
+        "block public doors"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which detail would best help compare how crowded two areas are?",
+      "choices": [
+        "the color of each town's flag",
+        "how many people live in the same size of area",
+        "the name of the largest street",
+        "one person's favorite book"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which setting has homes and people closest together?",
+      "choices": [
+        "a wide wildlife area with one cabin",
+        "farms along a country road",
+        "isolated houses by a forest",
+        "a block of apartment buildings"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How might a town learn where a new playground is needed?",
+      "choices": [
+        "count only library books",
+        "ask families and map existing playgrounds",
+        "pick the site farthest from all homes",
+        "ask nobody and erase old maps"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What can change when a community grows?",
+      "choices": [
+        "all its roads immediately disappear",
+        "its seasons stop changing",
+        "it may need more places for people to live",
+        "everyone must have the same job"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

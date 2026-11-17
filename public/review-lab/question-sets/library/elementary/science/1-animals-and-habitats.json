@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--1--animals-and-habitats",
+  "title": "Grade 1 Science — Where Animals Find What They Need",
+  "subject": "Science",
+  "category": "Animals and Habitats",
+  "topic": "Animals and Habitats",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on shelter, water, food, habitat.",
+  "keywords": [
+    "shelter",
+    "water",
+    "food",
+    "habitat"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "1.LS.1",
+    "1.LS.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which animal is suited to living in a pond?",
+      "choices": [
+        "a house cat",
+        "a mountain goat",
+        "a frog",
+        "a desert camel"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Where is a clam most likely to live?",
+      "choices": [
+        "inside a tree trunk",
+        "on a bare hilltop",
+        "in dry sand far from water",
+        "in water"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Where might a woodpecker find insects?",
+      "choices": [
+        "under sea ice",
+        "in tree bark",
+        "on a glass window",
+        "in a sealed jar"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which gives a squirrel shelter?",
+      "choices": [
+        "a sunny sidewalk",
+        "a pool in the street",
+        "a nest in a tree",
+        "a cloud"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does a fish use to take oxygen from water?",
+      "choices": [
+        "feathers",
+        "claws",
+        "fur",
+        "gills"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which place has food for many bees?",
+      "choices": [
+        "a closet",
+        "a flower garden",
+        "a bare rock",
+        "an empty parking lot"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What animal is well suited to living under the soil?",
+      "choices": [
+        "an earthworm",
+        "a gull",
+        "a trout",
+        "a butterfly"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do birds often build nests in trees?",
+      "choices": [
+        "to hold eggs in a safe place",
+        "to make water",
+        "to change the weather",
+        "to make leaves grow"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What must an animal find in its habitat?",
+      "choices": [
+        "desks and chairs",
+        "chalk and paper",
+        "roads and cars",
+        "food and water"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Where may a wild rabbit hide close to the ground?",
+      "choices": [
+        "in thick bushes",
+        "on a chimney",
+        "on a high wire",
+        "in deep water"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which habitat may have waves and salty water?",
+      "choices": [
+        "a rocky mountain peak",
+        "the ocean",
+        "a freshwater pond",
+        "a meadow"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Where might a bat rest during the day?",
+      "choices": [
+        "a cave",
+        "an open pond",
+        "a flower petal",
+        "an icy river"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "If a pond dries up, what becomes harder for a pond fish to find there?",
+      "choices": [
+        "warm air",
+        "sand",
+        "water to live in",
+        "dry leaves"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "What helps a duck paddle in water?",
+      "choices": [
+        "a long tail",
+        "its eyelids",
+        "its bill color",
+        "webbed feet"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "How does a shady log help a small animal?",
+      "choices": [
+        "It turns into a cloud.",
+        "It provides a hiding place.",
+        "It pulls the sun up.",
+        "It makes a pond salty."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which animal finds grass to eat in a field?",
+      "choices": [
+        "a whale",
+        "an octopus",
+        "a cow",
+        "a shark"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A robin moves to a spot with more worms. What is it finding there?",
+      "choices": [
+        "less air",
+        "more food",
+        "fewer places to rest",
+        "more salt"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which place offers shade and moist soil for a snail?",
+      "choices": [
+        "a bare, hot roof",
+        "an open oven",
+        "a dry driveway",
+        "under a damp log"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What does a deer drink from a creek?",
+      "choices": [
+        "air",
+        "grass",
+        "water",
+        "soil"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which body part lets a bird fly to new places to find food?",
+      "choices": [
+        "wings",
+        "eyes",
+        "feet",
+        "beak"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

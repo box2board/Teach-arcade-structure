@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--5--fraction-operations",
+  "title": "Grade 5 Math — Adding, Subtracting, and Multiplying Fractions",
+  "subject": "Math",
+  "category": "Fraction Operations",
+  "topic": "Fraction Operations",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on common denominator, mixed number, product.",
+  "keywords": [
+    "common denominator",
+    "mixed number",
+    "product"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "5.NF.1",
+    "5.NF.4"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 1/3 + 1/4?",
+      "choices": [
+        "3/4",
+        "2/3",
+        "7/12",
+        "1/2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Find 5/6 − 1/4.",
+      "choices": [
+        "3/4",
+        "2/3",
+        "1/2",
+        "7/12"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "An artist colors 2/3 of a banner. Blue is 3/5 of the colored area. What fraction of the whole banner is blue?",
+      "choices": [
+        "3/5",
+        "1/5",
+        "4/5",
+        "2/5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Half of a three-fourths-meter ribbon is used. How much ribbon is used in meters?",
+      "choices": [
+        "1/2",
+        "1/4",
+        "3/8",
+        "5/8"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Add 3/8 and 1/2.",
+      "choices": [
+        "9/8",
+        "1",
+        "7/8",
+        "3/4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A jar was 4/5 full before 1/10 of a jar was poured out. What fraction of a jar remains?",
+      "choices": [
+        "9/10",
+        "7/10",
+        "3/5",
+        "4/5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is 2/5 of 15?",
+      "choices": [
+        "6",
+        "5",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Find 1 1/4 + 2 1/2 in decimal form.",
+      "choices": [
+        "3.74",
+        "3.75",
+        "3.85",
+        "3.76"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What fraction equals 1 − 2/9?",
+      "choices": [
+        "1",
+        "7/9",
+        "8/9",
+        "2/3"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Two strips are 3/4 meter and 5/8 meter long. How much longer is the first, in meters?",
+      "choices": [
+        "1/2",
+        "1/4",
+        "1/8",
+        "3/8"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Find the missing fraction: 3/7 + __ = 6/7.",
+      "choices": [
+        "5/7",
+        "3/7",
+        "4/7",
+        "2/7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What is two thirds of three fourths?",
+      "choices": [
+        "1",
+        "3/2",
+        "2",
+        "1/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is 4 × 5/8 in decimal form?",
+      "choices": [
+        "3.5",
+        "2.4",
+        "2.5",
+        "2.6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Find 7/10 + 4/5. Give the answer in decimal form.",
+      "choices": [
+        "2.5",
+        "1.6",
+        "1.4",
+        "1.5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A team paints 1/6 of a wall in the morning and 1/3 in the afternoon. What fraction remains unpainted?",
+      "choices": [
+        "1/2",
+        "3/2",
+        "2",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What is 3 1/2 − 1 3/4 in decimal form?",
+      "choices": [
+        "1.75",
+        "1.74",
+        "1.76",
+        "1.85"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Find the product of 5/6 and 3/10.",
+      "choices": [
+        "1/4",
+        "1/2",
+        "1",
+        "3/4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Two bags each hold 7/9 pound of flour. How much flour, in pounds, is in both bags?",
+      "choices": [
+        "13/9",
+        "14/9",
+        "16/9",
+        "5/3"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What is 5/12 + 1/8?",
+      "choices": [
+        "13/24",
+        "5/8",
+        "1/2",
+        "7/12"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What fraction of 20 is 15?",
+      "choices": [
+        "5/4",
+        "1/2",
+        "1",
+        "3/4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

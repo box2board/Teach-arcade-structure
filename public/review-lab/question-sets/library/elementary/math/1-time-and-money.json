@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--1--time-and-money",
+  "title": "Grade 1 Math — Clocks, Pennies, and Dimes",
+  "subject": "Math",
+  "category": "Time and Money",
+  "topic": "Time and Money",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on hours, half hours, pennies, dimes.",
+  "keywords": [
+    "hours",
+    "half hours",
+    "pennies",
+    "dimes"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "1.MD.3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "The big hand is on 12 and the small hand is on 4. What hour is it?",
+      "choices": [
+        "5",
+        "3",
+        "4",
+        "6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "The small hand is between 7 and 8. The big hand is on 6. How many minutes after 7 is it?",
+      "choices": [
+        "31",
+        "32",
+        "30",
+        "29"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What number is the big hand pointing to at 9 o’clock?",
+      "choices": [
+        "11",
+        "12",
+        "14",
+        "13"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A digital clock reads 3:30. What hour is it half past?",
+      "choices": [
+        "4",
+        "3",
+        "5",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "You arrive at 8 o’clock. One hour later, what hour is it?",
+      "choices": [
+        "9",
+        "8",
+        "10",
+        "11"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A penny is worth how many cents?",
+      "choices": [
+        "0",
+        "2",
+        "3",
+        "1"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A coin says “ONE CENT.” How many cents is it worth?",
+      "choices": [
+        "3",
+        "0",
+        "2",
+        "1"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How many cents is a dime worth?",
+      "choices": [
+        "12",
+        "11",
+        "10",
+        "9"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A small silver-colored U.S. coin says “ONE DIME.” How many cents is it worth?",
+      "choices": [
+        "11",
+        "12",
+        "10",
+        "9"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "How many cents do 3 pennies show together?",
+      "choices": [
+        "4",
+        "3",
+        "5",
+        "2"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "How many hours pass from 1 o’clock to 4 o’clock?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "The big hand is on 12 at 6 o’clock. What number does the small hand point to?",
+      "choices": [
+        "5",
+        "6",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "The small hand is halfway from 1 to 2. Which hour came last?",
+      "choices": [
+        "2",
+        "1",
+        "3",
+        "0"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What is the hour part of 10:30?",
+      "choices": [
+        "10",
+        "9",
+        "12",
+        "11"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "You go out at 11 o’clock and return at noon. How many hours pass?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "0"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "How many cents is one dime more than one penny?",
+      "choices": [
+        "8",
+        "11",
+        "9",
+        "10"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "I have one penny and no other coins. How many cents do I have?",
+      "choices": [
+        "2",
+        "3",
+        "0",
+        "1"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which total in cents can one dime pay exactly: 5, 8, 10, or 50?",
+      "choices": [
+        "10",
+        "8",
+        "50",
+        "5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "The big hand points to 6 at half past 2. What is the minutes part of the time?",
+      "choices": [
+        "32",
+        "31",
+        "29",
+        "30"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "The library opens at 7 o’clock and story time is at 9 o’clock. How many hours later is story time?",
+      "choices": [
+        "1",
+        "3",
+        "4",
+        "2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

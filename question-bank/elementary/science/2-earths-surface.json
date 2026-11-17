@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--2--earths-surface",
+  "title": "Grade 2 Science — Looking at Earth’s Surface",
+  "subject": "Science",
+  "category": "Earth’s Surface",
+  "topic": "Earth’s Surface",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on water, land, soil, sand, rocks.",
+  "keywords": [
+    "water",
+    "land",
+    "soil",
+    "sand",
+    "rocks"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What covers most of Earth's surface?",
+      "choices": [
+        "sand",
+        "snow",
+        "water",
+        "soil"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which land feature rises high above most nearby land?",
+      "choices": [
+        "mountain",
+        "valley",
+        "beach",
+        "plain"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which land feature lies low between higher land?",
+      "choices": [
+        "mountain peak",
+        "hilltop",
+        "ridge",
+        "valley"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which body of water flows along a channel?",
+      "choices": [
+        "pond",
+        "lake",
+        "puddle",
+        "river"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which body of water is large and salty?",
+      "choices": [
+        "spring",
+        "pond",
+        "creek",
+        "ocean"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which feature is flat or gently rolling land?",
+      "choices": [
+        "sea cliff",
+        "mountain peak",
+        "canyon wall",
+        "plain"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which place is usually where land meets the ocean?",
+      "choices": [
+        "cave",
+        "shore",
+        "middle of a continent",
+        "mountaintop"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What makes sand feel gritty?",
+      "choices": [
+        "its tiny grains",
+        "its sound",
+        "its shadows",
+        "its smell"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Where is a plant most likely to grow roots?",
+      "choices": [
+        "on a clean tile",
+        "in soil",
+        "in glass",
+        "on a steel spoon"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which can you find naturally on a gravel path?",
+      "choices": [
+        "glass rulers",
+        "small rocks",
+        "fruit from a vending machine",
+        "paper clips"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What shape can running water make in soil over time?",
+      "choices": [
+        "a small channel",
+        "a long glass rod",
+        "a metal ring",
+        "a perfect cube"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A trail goes from a hilltop into a valley. Which way does it go first?",
+      "choices": [
+        "out over open water",
+        "straight up",
+        "downhill",
+        "uphill"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which model best shows where land and water are on Earth?",
+      "choices": [
+        "a ruler",
+        "a compass by itself",
+        "a globe",
+        "a clock"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What can waves carry along a beach?",
+      "choices": [
+        "sand",
+        "the Sun",
+        "the entire ocean floor",
+        "a mountain peak"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which land surface soaks up rain best when it is dry?",
+      "choices": [
+        "a sealed road",
+        "loose soil",
+        "a metal roof",
+        "a glass plate"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "How could you describe most pebbles on a riverbed?",
+      "choices": [
+        "drops of water",
+        "tiny shells made of plastic",
+        "small pieces of rock",
+        "young plants"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "You want to see how two soils compare. What could you check in each sample?",
+      "choices": [
+        "the grain sizes",
+        "the name of the school",
+        "your shoe size",
+        "the day of the week"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 18,
+      "question": "Which sample might contain pieces of once-living leaves?",
+      "choices": [
+        "a sealed bag of salt",
+        "plastic beads",
+        "garden soil",
+        "clean glass"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which body of water is usually surrounded by land?",
+      "choices": [
+        "ocean",
+        "tide",
+        "bay",
+        "lake"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which feature may form when moving water cuts deeply into rock over a long time?",
+      "choices": [
+        "sand dune",
+        "canyon",
+        "glacier",
+        "island made by a volcano"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

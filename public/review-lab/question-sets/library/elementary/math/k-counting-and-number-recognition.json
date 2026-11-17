@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--k--counting-and-number-recognition",
+  "title": "Kindergarten Math — Counting to 20",
+  "subject": "Math",
+  "category": "Counting and Number Recognition",
+  "topic": "Counting and Number Recognition",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on numbers, numerals, sequence, how many.",
+  "keywords": [
+    "numbers",
+    "numerals",
+    "sequence",
+    "how many"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "K.CC.4",
+    "K.CC.5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Count the dots: ● ● ● ● ●",
+      "choices": [
+        "5",
+        "7",
+        "4",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What number comes just after 7?",
+      "choices": [
+        "9",
+        "8",
+        "10",
+        "7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What number comes just before 10?",
+      "choices": [
+        "10",
+        "9",
+        "8",
+        "11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which number is missing: 12, __, 14?",
+      "choices": [
+        "13",
+        "12",
+        "15",
+        "14"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Count the stars: ★ ★ ★ ★ ★ ★ ★",
+      "choices": [
+        "9",
+        "7",
+        "6",
+        "8"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which numeral means sixteen?",
+      "choices": [
+        "15",
+        "18",
+        "16",
+        "17"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Count up from 14. What comes next?",
+      "choices": [
+        "17",
+        "14",
+        "16",
+        "15"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "There are no cups on the mat. How many cups are on it?",
+      "choices": [
+        "5",
+        "2",
+        "1",
+        "0"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "How many claps make a pair?",
+      "choices": [
+        "2",
+        "1",
+        "4",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which number means one ten and seven more?",
+      "choices": [
+        "18",
+        "17",
+        "16",
+        "19"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Dot counts go 3, 4, 5, __. What comes next?",
+      "choices": [
+        "6",
+        "8",
+        "7",
+        "5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which number is just before 20?",
+      "choices": [
+        "20",
+        "18",
+        "19",
+        "21"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Count these marks: × × × ×.",
+      "choices": [
+        "3",
+        "6",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Count backward: 6, 5, __, 3.",
+      "choices": [
+        "6",
+        "5",
+        "4",
+        "3"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Mia counts 10 shells, then counts 2 more. How many shells?",
+      "choices": [
+        "14",
+        "12",
+        "13",
+        "11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "How many fingers are on one hand with all fingers and the thumb raised?",
+      "choices": [
+        "7",
+        "6",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What number is between 17 and 19?",
+      "choices": [
+        "17",
+        "20",
+        "18",
+        "19"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A puppy gets one treat. How many treats does it have?",
+      "choices": [
+        "3",
+        "0",
+        "2",
+        "1"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "There are three red rings and seven blue rings. How many rings?",
+      "choices": [
+        "12",
+        "11",
+        "9",
+        "10"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which numeral means twenty?",
+      "choices": [
+        "20",
+        "19",
+        "21",
+        "22"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

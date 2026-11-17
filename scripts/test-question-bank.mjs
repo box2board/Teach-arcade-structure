@@ -22,5 +22,14 @@ for(const metadata of BANK_SETS){
  assert.equal(JSON.stringify(bank),snapshot);totals[bank.subject]=(totals[bank.subject]||0)+1;
  for(const game of GAMES)assert(setsForGame(game.id).some(set=>set.id===bank.id));
 }
-assert.deepEqual(totals,{'Social Studies':75,Science:100,Math:75,'English Language Arts':25});
-console.log('PASS: 275 source hashes, static copies, 5,500 questions, all-game compatibility, answer remapping across five shuffled decks, immutable sources, and complete Category Clash boards.');
+const manifests=(await fs.readdir(new URL('../question-bank/',import.meta.url),{withFileTypes:true})).filter(entry=>entry.isDirectory());
+const expected={};
+for(const {name} of manifests){
+ const manifest=JSON.parse(await fs.readFile(new URL('../question-bank/'+name+'/manifest.json',import.meta.url)));
+ for(const set of manifest.sets){
+  const subject=manifest.subject||set.subject;
+  expected[subject]=(expected[subject]||0)+1;
+ }
+}
+assert.deepEqual(totals,expected);
+console.log(`PASS: ${BANK_SETS.length} source hashes, static copies, ${BANK_SETS.length*20} questions, all-game compatibility, answer remapping across five shuffled decks, immutable sources, and complete Category Clash boards.`);

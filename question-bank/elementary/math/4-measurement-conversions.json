@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--4--measurement-conversions",
+  "title": "Grade 4 Math — Measurement Conversions Within One System",
+  "subject": "Math",
+  "category": "Measurement Conversions",
+  "topic": "Measurement Conversions",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on meters, grams, pounds, liters, feet, time.",
+  "keywords": [
+    "meters",
+    "grams",
+    "pounds",
+    "liters",
+    "feet",
+    "time"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "4.MD.1",
+    "4.MD.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Convert 7 meters to centimeters.",
+      "choices": [
+        "720",
+        "710",
+        "690",
+        "700"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How many feet are in 8 yards?",
+      "choices": [
+        "23",
+        "26",
+        "24",
+        "25"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Convert 5 kilograms to grams.",
+      "choices": [
+        "4900",
+        "5200",
+        "5100",
+        "5000"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How many minutes are in 3 hours?",
+      "choices": [
+        "170",
+        "190",
+        "200",
+        "180"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A dog drinks 2 liters of water. How many milliliters?",
+      "choices": [
+        "2100",
+        "2000",
+        "2200",
+        "1900"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Convert 48 inches to feet.",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A rope is 3 yards and 2 feet long. How many feet long is it?",
+      "choices": [
+        "10",
+        "13",
+        "11",
+        "12"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A package weighs 4 pounds. How many ounces is that?",
+      "choices": [
+        "64",
+        "63",
+        "66",
+        "65"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Convert 250 centimeters to meters.",
+      "choices": [
+        "2.60",
+        "2.51",
+        "2.49",
+        "2.50"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "How many seconds are in 7 minutes?",
+      "choices": [
+        "430",
+        "420",
+        "440",
+        "410"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A container holds 2 liters and 350 milliliters. How many milliliters is that?",
+      "choices": [
+        "2350",
+        "2550",
+        "2250",
+        "2450"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A hike is 6 kilometers. How many meters?",
+      "choices": [
+        "5900",
+        "6200",
+        "6000",
+        "6100"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "How many cups are in 3 pints?",
+      "choices": [
+        "5",
+        "8",
+        "6",
+        "7"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How many quarts are in 2 gallons?",
+      "choices": [
+        "7",
+        "8",
+        "10",
+        "9"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A practice lasts 1 hour 25 minutes. How many minutes?",
+      "choices": [
+        "84",
+        "85",
+        "87",
+        "86"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A tunnel is 9 meters long. How many centimeters longer is it than a 7-meter tunnel?",
+      "choices": [
+        "210",
+        "200",
+        "190",
+        "220"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A recipe needs 2 quarts. The pitcher holds 1 quart. How many pints must be added?",
+      "choices": [
+        "4",
+        "3",
+        "2",
+        "1"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Two packages weigh 400 grams and 600 grams. How many kilograms together?",
+      "choices": [
+        "2",
+        "0",
+        "3",
+        "1"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Convert 6 feet and 5 inches to inches.",
+      "choices": [
+        "77",
+        "78",
+        "79",
+        "76"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "How many days are in 5 weeks?",
+      "choices": [
+        "35",
+        "36",
+        "34",
+        "37"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

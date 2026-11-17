@@ -1,0 +1,105 @@
+Math
+K|Counting and Number Recognition|Counting to 20|numbers, numerals, sequence, how many|K.CC.4,K.CC.5
+K|Shapes and Patterns|Shapes and Repeating Patterns|circles, triangles, squares, rectangles, repeats|K.G.4
+K|Comparing Numbers|More, Fewer, and Equal|greater, less, same, groups|K.CC.6,K.CC.7
+K|Basic Addition and Subtraction|Adding and Taking Away to 10|join, separate, totals, differences|K.OA.1,K.OA.2
+1|Addition Facts|Addition Facts Within 20|sums, doubles, make ten, missing addend|1.OA.6
+1|Subtraction Facts|Subtraction Facts Within 20|difference, take away, count back|1.OA.6
+1|Place Value|Tens and Ones|bundles, digits, two-digit numbers|1.NBT.2
+1|Time and Money|Clocks, Pennies, and Dimes|hours, half hours, pennies, dimes|1.MD.3
+1|Word Problems|Addition and Subtraction Stories|join, compare, missing part, equations|1.OA.1
+2|Two-Digit Addition|Adding Two-Digit Numbers|sum, regroup, tens, ones|2.NBT.5
+2|Two-Digit Subtraction|Subtracting Two-Digit Numbers|difference, regroup, two digits|2.NBT.5
+2|Place Value to 1000|Hundreds, Tens, and Ones|digits, expanded form, number comparison|2.NBT.1,2.NBT.3,2.NBT.4
+2|Measurement|Measuring and Comparing Lengths|inches, centimeters, rulers, distance|2.MD.1,2.MD.4,2.MD.5
+2|Money and Time|Counting Coins and Telling Time|cents, nickels, dimes, quarters, five minutes|2.MD.7,2.MD.8
+3|Multiplication Facts|Multiplication Facts and Equal Groups|factors, products, arrays, missing factors|3.OA.1,3.OA.7
+3|Division Facts|Division Facts and Fair Shares|quotient, equal groups, missing divisor|3.OA.2,3.OA.7
+3|Fractions|Fractions on Number Lines and in Groups|unit fractions, equal parts, numerators, denominators|3.NF.1,3.NF.2,3.NF.3
+3|Area and Perimeter|Area and Perimeter of Rectangles|square units, length, width, boundary|3.MD.7,3.MD.8
+3|Mixed Word Problems|Choosing Operations in Word Problems|addition, subtraction, multiplication, division, two steps|3.OA.8
+4|Multi-Digit Multiplication|Multi-Digit Multiplication|partial products, place value, area model|4.NBT.5
+4|Division|Multi-Digit Division and Remainders|quotient, divisor, leftovers, equal groups|4.NBT.6
+4|Equivalent Fractions|Finding and Comparing Equivalent Fractions|equal value, scaling, denominator, comparison|4.NF.1,4.NF.2
+4|Decimals|Decimal Tenths and Hundredths|decimal notation, fractions, comparing decimals|4.NF.6,4.NF.7
+4|Geometry|Lines, Angles, and Shape Attributes|parallel, perpendicular, acute, obtuse, lines of symmetry|4.G.1,4.G.2,4.G.3,4.MD.5
+4|Measurement Conversions|Measurement Conversions Within One System|meters, grams, pounds, liters, feet, time|4.MD.1,4.MD.2
+5|Fraction Operations|Adding, Subtracting, and Multiplying Fractions|common denominator, mixed number, product|5.NF.1,5.NF.4
+5|Decimal Operations|Operating with Decimals to Hundredths|adding, subtracting, multiplying, dividing, money|5.NBT.7
+5|Volume|Volume of Rectangular Prisms|cubic units, layers, length, width, height|5.MD.3,5.MD.5
+5|Order of Operations|Evaluating Expressions with Grouping Symbols|parentheses, brackets, braces, numerical expressions|5.OA.1
+5|Multi-Step Word Problems|Multi-Step Problems with Decimals and Fractions|planning, comparing, units, real-world problems|5.NF.2,5.NBT.7
+English Language Arts
+K|Letter Recognition|Uppercase and Lowercase Letters|alphabet, matching, capital letters|RF.K.1
+K|Beginning Sounds|Listening for Beginning Sounds|phonemic awareness, consonant sounds, letter sounds|RF.K.2,RF.K.3
+K|Rhyming Words|Finding Rhyming Words|sound play, phonological awareness, word families|RF.K.2
+K|Sight Words|Reading Common Little Words|high-frequency words, word recognition, early reading|RF.K.3
+1|Short and Long Vowels|Short and Long Vowel Patterns|silent e, CVC, CVCe, phonics|RF.1.3
+1|Sight Words|Reading High-Frequency Words in Context|word recognition, fluency, reading|RF.1.3
+1|Sentence Structure|Building Complete Sentences|word order, capitals, subjects, verbs|L.1.1,L.1.2
+1|Basic Reading Comprehension|Reading Short Stories and Finding Details|who, what, where, when, sequence|RL.1.1
+2|Parts of Speech|Nouns, Verbs, and Adjectives in Sentences|grammar, action words, describing words|L.2.1
+2|Vocabulary|Word Meanings and Word Parts|prefixes, suffixes, multiple meanings|L.2.4
+2|Punctuation|Punctuation That Helps Readers|periods, question marks, commas, apostrophes|L.2.2
+2|Reading Comprehension|Short Passages and Text Evidence|sequence, key details, cause and effect|RL.2.1
+3|Main Idea|Main Idea and Supporting Details|central idea, summary, supporting evidence|RI.3.2
+3|Context Clues|Working Out Word Meanings from Context|definitions, examples, contrasts, vocabulary|L.3.4
+3|Grammar|Grammar in Action|verbs, pronouns, agreement, conjunctions|L.3.1
+3|Synonyms and Antonyms|Words with Similar and Opposite Meanings|word choice, shades of meaning, synonyms|L.3.5
+4|Figurative Language|Figurative Language in Context|simile, metaphor, personification, idioms|L.4.5
+4|Text Structure|How Informational Text Is Organized|sequence, comparison, cause and effect, problem and solution|RI.4.5
+4|Vocabulary|Roots, Affixes, and Precise Word Choice|morphology, Greek roots, Latin roots, vocabulary|L.4.4
+4|Inference|Making Inferences from Evidence|clues, character, setting, text evidence|RL.4.1
+5|Theme|Finding Theme in Short Stories|central message, lesson, evidence|RL.5.2
+5|Literary Elements|How Story Elements Work Together|plot, conflict, narrator, setting, characterization|RL.5.3,RL.5.6
+5|Advanced Grammar|Editing for Clarity and Grammar|verb tense, conjunctions, pronouns, sentence editing|L.5.1
+5|Author’s Purpose|Why Authors Write and How You Can Tell|purpose, audience, persuade, explain, entertain
+5|Reading Comprehension|Reading and Comparing Short Texts|summary, evidence, paraphrase, inference|RI.5.1,RI.5.9
+Science
+K|Living and Nonliving Things|Which Things Are Living?|plants, animals, growth, basic needs|K.LS.1
+K|Weather|Weather We Can Observe|clouds, rain, wind, daily changes|K.ESS.1
+K|Five Senses|Using Our Senses to Notice the World|sight, hearing, touch, smell, taste|K.PS.1
+1|Plants|Plant Parts and Basic Needs|roots, stems, leaves, seeds, growth|1.LS.1
+1|Animals and Habitats|Where Animals Find What They Need|shelter, water, food, habitat|1.LS.1,1.LS.2
+1|Seasons|Looking for Signs of the Seasons|spring, summer, fall, winter, Ohio
+2|Life Cycles|Plant and Animal Life Cycles|seeds, frogs, butterflies, growth
+2|States of Matter|Solids, Liquids, and Gases|melting, freezing, evaporation, water
+2|Earth’s Surface|Looking at Earth’s Surface|water, land, soil, sand, rocks
+3|Forces and Motion|Pushes, Pulls, and Changes in Motion|gravity, friction, direction, speed|NGSS 3-PS2-1
+3|Ecosystems|Relationships in an Ecosystem|habitats, resources, producers, decomposers
+3|Weather and Climate|Daily Weather and Long-Term Climate|temperature, precipitation, graphs, observations|NGSS 3-ESS2-1,NGSS 3-ESS2-2
+4|Energy|Ways Energy Moves and Changes|light, heat, sound, motion, transfer|4.PS.2
+4|Earth’s Processes|Weathering, Erosion, and Deposition|water, wind, ice, sediment|4.ESS.1,4.ESS.2
+4|Plant and Animal Adaptations|How Traits Help Living Things Survive|camouflage, behaviors, structures, environment|NGSS 4-LS1-1
+4|Electricity and Magnetism|Simple Circuits and Magnets|conductors, switches, poles, attraction|4.PS.2
+5|Solar System|Earth and Its Solar System Neighbors|planets, gravity, orbits, rotation|5.ESS.1,5.ESS.2,5.ESS.3
+5|Matter and Its Properties|Properties and Changes of Matter|mass, volume, mixtures, dissolving|NGSS 5-PS1-2,NGSS 5-PS1-3
+5|Food Webs|Tracing Energy Through Food Webs|producers, consumers, decomposers, interdependence|5.LS.1,5.LS.2
+5|Earth’s Systems|How Air, Water, Land, and Life Interact|atmosphere, hydrosphere, geosphere, biosphere|NGSS 5-ESS2-1
+Social Studies
+K|Community Helpers|People Who Help Our Community|jobs, libraries, emergencies, schools|Ohio SS 2026 Grade K #10
+K|Rules and Responsibilities|Rules That Help Us Learn Together|fairness, taking turns, safety, classroom|Ohio SS 2026 Grade K #9
+K|American Symbols|Recognizing American Symbols|United States, flag, bald eagle, Statue of Liberty|Ohio SS 2026 Grade K #6
+1|Citizenship|Being a Helpful Member of a Group|respect, fairness, participation, responsibility|Ohio SS 2026 Grade 1 #4,Ohio SS 2026 Grade 1 #5
+1|Maps and Directions|Using Simple Maps and Directions|symbols, key, near, above, routes|Ohio SS 2026 Grade 1 #3
+1|National Holidays|U.S. Holidays and What They Remember|Independence Day, Veterans Day, Juneteenth, Thanksgiving
+2|Communities|Comparing Types of Communities|urban, suburban, rural, neighborhoods
+2|Goods and Services|Buying Goods and Using Services|products, producers, consumers, jobs|Ohio SS 2026 Grade 2 #12,Ohio SS 2026 Grade 2 #13
+2|Geography Skills|Map Keys, Directions, and Landmarks|compass rose, symbols, rivers, distance|Ohio SS 2026 Grade 2 #3
+3|Local Government|How Local Government Serves a Community|council, mayor, public services, voting|Ohio SS 2026 Grade 3 #12,Ohio SS 2026 Grade 3 #13
+3|Regions and Landforms|Regions, Landforms, and Bodies of Water|plains, plateau, mountains, geography
+3|Economics Basics|Choices, Resources, and Trade|scarcity, opportunity cost, needs, wants|Ohio SS 2026 Grade 3 #14,Ohio SS 2026 Grade 3 #15
+4|United States Geography|Reading the Geography of the United States|states, boundaries, regions, rivers, Great Lakes|Ohio SS 2026 Grade 4 #3,Ohio SS 2026 Grade 4 #12
+4|State and Local Government|How State and Local Government Work|Ohio, General Assembly, governor, services|Ohio SS 2026 Grade 4 #15
+4|Early American History|People and Change in Early America|colonies, historical evidence, trade, Ohio|Ohio SS 2026 Grade 4 #2,Ohio SS 2026 Grade 4 #6,Ohio SS 2026 Grade 4 #11
+4|Native American Cultures|Native Nations, Places, and Living Cultures|tribal sovereignty, Haudenosaunee, Shawnee, Myaamia|Ohio SS 2026 Grade 4 #6,Ohio SS 2026 Grade 4 #7,Ohio SS 2026 Grade 4 #11
+5|Colonial America|Daily Life and Choices in Colonial America|trade, labor, geography, sources, regional differences
+5|American Revolution|Causes and Consequences of the American Revolution|taxation, independence, alliances, primary sources
+5|U.S. Government Foundations|Foundations of U.S. Government|Constitution, separation of powers, rights, federalism
+5|Westward Expansion|Westward Expansion and Its Consequences|migration, sovereignty, land, removal, perspectives
+General Knowledge and Life Skills
+K|Safety and Healthy Habits|Safe and Healthy Everyday Choices|handwashing, trusted adults, helmets, hygiene
+1|Calendar and Everyday Routines|Using Calendars and Planning Routines|days, weeks, months, schedule, sequence
+2|Digital Citizenship|Making Safe and Kind Choices Online|privacy, permission, passwords, trustworthy adults
+3|Financial Literacy Basics|Spending, Saving, and Planning|budget, goals, needs, wants, price
+5|Problem Solving and Everyday Decision-Making|Solving Everyday Problems Step by Step|tradeoffs, planning, evidence, decisions

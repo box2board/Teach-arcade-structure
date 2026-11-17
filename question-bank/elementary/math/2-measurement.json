@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--2--measurement",
+  "title": "Grade 2 Math — Measuring and Comparing Lengths",
+  "subject": "Math",
+  "category": "Measurement",
+  "topic": "Measurement",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on inches, centimeters, rulers, distance.",
+  "keywords": [
+    "inches",
+    "centimeters",
+    "rulers",
+    "distance"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "2.MD.1",
+    "2.MD.4",
+    "2.MD.5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "A crayon is 8 cm long. A pen is 13 cm long. How much longer is the pen, in cm?",
+      "choices": [
+        "5",
+        "6",
+        "4",
+        "7"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A book begins at 2 inches on a ruler and ends at 9 inches. How long is it, in inches?",
+      "choices": [
+        "9",
+        "8",
+        "6",
+        "7"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A table is 70 cm wide. A desk is 62 cm wide. Find the difference, in cm.",
+      "choices": [
+        "7",
+        "9",
+        "8",
+        "10"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Two 9-inch strips touch end to end. How long are they together, in inches?",
+      "choices": [
+        "18",
+        "17",
+        "19",
+        "20"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A ribbon is 26 inches long. You cut away 11 inches. How many inches are left?",
+      "choices": [
+        "16",
+        "17",
+        "15",
+        "14"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "One toy cricket is 2 cm long. Another is 6 cm long. What is their total length, in cm?",
+      "choices": [
+        "7",
+        "9",
+        "8",
+        "10"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "There are 25 cm of tape. A label needs 10 cm. How many cm of tape remain?",
+      "choices": [
+        "16",
+        "15",
+        "17",
+        "14"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A pencil lines up with 0 on a ruler and ends at 14. What is its length, in ruler units?",
+      "choices": [
+        "15",
+        "16",
+        "14",
+        "13"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A worm starts at the 3 cm mark and ends at the 9 cm mark. How long is it?",
+      "choices": [
+        "5",
+        "6",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A 10-inch bar is 3 inches longer than a stick. How long is the stick, in inches?",
+      "choices": [
+        "6",
+        "9",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Estimate the total length of two toy trains that are each about 20 cm long.",
+      "choices": [
+        "41",
+        "42",
+        "39",
+        "40"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Gus measured 19 cm from the window to the hook. The shelf is 7 cm farther along the wall. How far from the window is the shelf?",
+      "choices": [
+        "26",
+        "28",
+        "27",
+        "25"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A board is 36 inches long. Paint covers the first 20 inches. How many inches still need paint?",
+      "choices": [
+        "17",
+        "15",
+        "18",
+        "16"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A toy car is 11 cm long. An eraser is 5 cm long. How long are they together, in cm?",
+      "choices": [
+        "15",
+        "16",
+        "18",
+        "17"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Tess needs 50 cm of yarn and has 38 cm. How many more cm does Tess need?",
+      "choices": [
+        "14",
+        "12",
+        "11",
+        "13"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "One trail segment is 42 meters. The next is 28 meters. Find their combined length in meters.",
+      "choices": [
+        "70",
+        "69",
+        "72",
+        "71"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Three 5-inch strips are placed end to end. How far do they reach, in inches?",
+      "choices": [
+        "17",
+        "16",
+        "15",
+        "14"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How many 10 cm pieces can be cut from a 40 cm cord without waste?",
+      "choices": [
+        "6",
+        "4",
+        "3",
+        "5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A stem grew from 7 cm to 12 cm. How many cm did it grow?",
+      "choices": [
+        "6",
+        "7",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A 17-inch bag must fit in a 15-inch gap. How many inches too long is the bag?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

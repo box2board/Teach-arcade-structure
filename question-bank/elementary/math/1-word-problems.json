@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--1--word-problems",
+  "title": "Grade 1 Math — Addition and Subtraction Stories",
+  "subject": "Math",
+  "category": "Word Problems",
+  "topic": "Word Problems",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on join, compare, missing part, equations.",
+  "keywords": [
+    "join",
+    "compare",
+    "missing part",
+    "equations"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "1.OA.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Kai has 6 pencils. He gets 7 more. How many pencils now?",
+      "choices": [
+        "15",
+        "14",
+        "13",
+        "12"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Nine ducks are in a pond. Four swim away. How many remain?",
+      "choices": [
+        "7",
+        "5",
+        "4",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Nia has 12 shells. Ada has 8. How many more shells does Nia have?",
+      "choices": [
+        "4",
+        "6",
+        "5",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Luz has 9 cards. She wants 15. How many more cards does she need?",
+      "choices": [
+        "8",
+        "7",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "There are 8 green beads and 5 white beads. How many beads are there?",
+      "choices": [
+        "13",
+        "15",
+        "12",
+        "14"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A tray had 11 cups. Now it has 7. How many were taken?",
+      "choices": [
+        "4",
+        "3",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "There are 14 hooks and 12 coats. Each coat gets a hook. How many hooks are empty?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Ben makes 5 paper boats. Jo makes 6. How many boats did they make in all?",
+      "choices": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Rae puts some books on a shelf. Then she adds 4, making 10. How many went on the shelf first?",
+      "choices": [
+        "5",
+        "6",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Mika has 10 cubes. Dev has 3 more than Mika. How many cubes does Dev have?",
+      "choices": [
+        "15",
+        "12",
+        "14",
+        "13"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "The basket holds 17 apples. Six are red and the rest are green. How many are green?",
+      "choices": [
+        "13",
+        "10",
+        "12",
+        "11"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A game starts with 16 tiles on a rug. Players move 9 off the rug. How many stay on it?",
+      "choices": [
+        "9",
+        "8",
+        "7",
+        "6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Twelve seats are taken. Three seats are empty. How many seats are there in all?",
+      "choices": [
+        "17",
+        "14",
+        "16",
+        "15"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Jin has 4 more stickers than Lee, who has 6. How many does Jin have?",
+      "choices": [
+        "9",
+        "11",
+        "10",
+        "12"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A team earns 5 points, then 3, then 2. How many points in all?",
+      "choices": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "There are 15 chairs. Five are blue and four are green. The rest are brown. How many are brown?",
+      "choices": [
+        "7",
+        "8",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Ana is on step 14. She walks down 6 steps. What step is she on?",
+      "choices": [
+        "10",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A bag has 7 round buttons and 7 square buttons. How many buttons are in it?",
+      "choices": [
+        "13",
+        "15",
+        "14",
+        "16"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A child has 18 blocks and wants to give away enough to keep 10. How many should the child give away?",
+      "choices": [
+        "10",
+        "8",
+        "7",
+        "9"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "At the park, 6 children are on swings and 5 are on the slide. Then 2 more join the slide. How many children are there now?",
+      "choices": [
+        "13",
+        "14",
+        "15",
+        "12"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

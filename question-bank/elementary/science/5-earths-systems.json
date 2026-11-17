@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--5--earths-systems",
+  "title": "Grade 5 Science — How Air, Water, Land, and Life Interact",
+  "subject": "Science",
+  "category": "Earth’s Systems",
+  "topic": "Earth’s Systems",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on atmosphere, hydrosphere, geosphere, biosphere.",
+  "keywords": [
+    "atmosphere",
+    "hydrosphere",
+    "geosphere",
+    "biosphere"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "NGSS 5-ESS2-1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which system includes the air around Earth?",
+      "choices": [
+        "geosphere",
+        "atmosphere",
+        "hydrosphere",
+        "biosphere"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which system includes living organisms?",
+      "choices": [
+        "atmosphere",
+        "biosphere",
+        "geosphere",
+        "hydrosphere"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which system includes most of Earth's rocks and soil minerals?",
+      "choices": [
+        "hydrosphere",
+        "biosphere",
+        "atmosphere",
+        "geosphere"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which system includes water in rivers and lakes?",
+      "choices": [
+        "biosphere",
+        "geosphere",
+        "atmosphere",
+        "hydrosphere"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A tree uses water from the ground. Which systems interact most directly in that uptake?",
+      "choices": [
+        "biosphere and hydrosphere",
+        "atmosphere alone",
+        "atmosphere and hydrosphere",
+        "geosphere and atmosphere"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Waves wear away a rocky shore. Which two systems interact?",
+      "choices": [
+        "geosphere and biosphere",
+        "biosphere alone",
+        "hydrosphere and geosphere",
+        "biosphere and atmosphere"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How does a volcano directly affect the atmosphere during an eruption?",
+      "choices": [
+        "It turns air to solid rock everywhere.",
+        "It stops all winds.",
+        "It releases ash and gases into air.",
+        "It removes all clouds."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which describes wind directly affecting the geosphere?",
+      "choices": [
+        "Wind pushes clouds across the sky.",
+        "Wind moves sand to build a dune.",
+        "Wind carries a hawk through the air.",
+        "Wind turns a toy pinwheel."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Rain runs across a farm field into a stream. Which system includes this moving water?",
+      "choices": [
+        "atmosphere",
+        "biosphere",
+        "hydrosphere",
+        "geosphere"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What is one way forest plants affect air next to them?",
+      "choices": [
+        "They turn all nitrogen into solid soil.",
+        "They stop Earth's winds permanently.",
+        "They prevent gas from moving.",
+        "Their leaves release water vapor."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which example directly links the biosphere with the geosphere?",
+      "choices": [
+        "Roots grow into cracks in rock.",
+        "Rain falls into a lake.",
+        "A storm blows leaves through the air.",
+        "A river drops sand at its mouth."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Clouds form as water vapor cools and makes droplets. Which systems meet in the cloud?",
+      "choices": [
+        "biosphere and geosphere",
+        "hydrosphere and atmosphere",
+        "geosphere and biosphere",
+        "geosphere and hydrosphere"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which process moves water from a lake to the air as vapor?",
+      "choices": [
+        "infiltration",
+        "freezing",
+        "melting",
+        "evaporation"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How can beavers affect the water in their habitat?",
+      "choices": [
+        "Their dams can slow streams and form ponds.",
+        "They turn fresh water salty in every stream.",
+        "They create new water inside rocks.",
+        "They stop rain from falling."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "How could sandy soil affect stormwater at the surface?",
+      "choices": [
+        "It can let water soak in through gaps.",
+        "It makes runoff impossible everywhere.",
+        "It makes clouds form below ground.",
+        "It changes water to air on contact."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "How can removing trees from a steep slope change interactions among Earth systems?",
+      "choices": [
+        "The slope will never get rain again.",
+        "Less cover can let runoff remove more soil.",
+        "Air stops moving above it.",
+        "Water can no longer flow downhill."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which chain shows water moving through different parts of Earth?",
+      "choices": [
+        "lake → humid air → rain → stream",
+        "cloud → rock type → earthquake → Moon",
+        "hill → compass → magnet → tide",
+        "dry rock → leaf color → sunlight → air pressure"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What can happen if river water floods a field?",
+      "choices": [
+        "Plants stop needing water.",
+        "The atmosphere disappears.",
+        "All the soil melts.",
+        "Water can leave sediment on the ground."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which system includes water stored as glacier ice?",
+      "choices": [
+        "geosphere only",
+        "atmosphere only",
+        "hydrosphere",
+        "biosphere"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which observation would best help compare a planted slope with a bare slope after a storm?",
+      "choices": [
+        "the distance to the Moon",
+        "the time school starts",
+        "the amount of sediment washed off each",
+        "the color of the nearest building"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}
