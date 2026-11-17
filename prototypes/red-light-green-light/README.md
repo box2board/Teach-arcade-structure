@@ -23,12 +23,28 @@ A single host can start a solo practice race using the same server path. If usin
 
 ## Rules, observed timing and results
 
-- The server owns the room clock, initial positions, movement, light changes, and results. It steps at 30 Hz and sends Colyseus state patches at 20 Hz. Clients send bounded directions, not positions or scored events. Client rendering smooths the latest authoritative poses.
+- The server owns the room clock, initial positions, movement, light changes, and results. It steps at 30 Hz and sends Colyseus state patches at 20 Hz. Clients send bounded directions, not positions or scored events. Client rendering smooths remote poses. The local runner uses shared acceleration immediately, bounded to 150 ms of travel from the latest server position. Prediction resets on red, elimination, rematch, and a state-update gap over 250 ms. Only server positions produce results.
 - After a three-second countdown, the lights cycle. Default green lasts 1.7–4.2 seconds and red lasts 1.3–3.2 seconds. The green and red durations are independently drawn on the server. A round lasts 65 seconds by default and the host can select 45 or 90 seconds. The adapter accepts bounded `greenMin`, `greenMax`, `redMin`, `redMax`, and `durationMs` in milliseconds.
-- The field freezes on red. Red starts with a 400 ms grace period. A fresh movement press after grace eliminates the player, even if they release immediately. A direction held through the transition is checked for 145 ms of sustained movement after grace. Red movement samples have to refer to this round and phase, include a server sample following grace, and reach the server within the freshness window. Expired inputs, stale prior-phase packets, and late packet bursts do not count as continuous input. This policy favors keeping a runner eligible if delivery gets too irregular to establish continuous input.
+- The field freezes on red. Red starts with a 400 ms grace period. A fresh movement press after grace eliminates the player, even if they release immediately. A direction held through the transition is checked for 145 ms of sustained movement after grace. Stop packets bypass movement throttling. A red input can reference a server sample up to 800 ms old, provided that sample follows this red phase’s grace period. Red movement samples have to refer to this round and phase, include a server sample following grace, and reach the server within the freshness window. Expired inputs, stale prior-phase packets, and late packet bursts do not count as continuous input. This policy favors keeping a runner eligible if delivery gets too irregular to establish continuous input.
 - Each eligible crossing earns a win. Same-tick crossings are ordered by estimated line-crossing fraction. In a multiplayer round, the final active, connected runner also wins. Red eliminations are handled as a group through the end of that red phase so two runners who both fail the same red can both be eliminated. If there are no finishers and everyone is eliminated, the round has no winner.
-- At time expiry, existing win credits remain. If there is precisely one active, connected competitor in a multiplayer round, that runner receives the survivor win. Otherwise unfinished runners are ranked by forward progress, with shared places for equal progress and no win credit. Eliminated players and forfeits are listed without a placement. Solo practice requires a finish to win.
+- At time expiry, existing win credits remain. If there is precisely one active, connected competitor in a multiplayer round, that runner receives the survivor win. Every participant receives a placement by points. Equal points use finish time and farthest distance as tie-breakers, with shared places for exact ties. Eliminated players and forfeits keep distance points. Late spectators get no placement until they race. Solo practice requires a finish to win.
 - Late arrivals watch and join the next round if there is room. An unexpected disconnect freezes the racer and reserves their seat for 12 seconds. Recovery restores the same player. Expiration or intentional leave forfeits that race. The host transfers to a connected player after their seat expires or they leave. The room and results live in memory.
+
+## Scoring
+
+Each round starts at zero. The server awards 1,000 distance points multiplied by the farthest fraction of the field reached, rounded down. Eliminations and disconnections retain those points. Passing back and forth adds no extra points.
+
+Crossing the finish line adds 500 finish points and up to 500 speed points. Speed points are `floor(500 * (1 - finishTime / roundLimit))`. Finish time starts after the countdown and includes time spent waiting on red. For a 65-second round, a 15-second finish earns 1,884 points and a 35-second finish earns 1,730. Same-tick crossing times are interpolated by the server.
+
+The last runner standing gets 250 survival points plus distance points. Finishing and speed bonuses require an actual crossing. This keeps every actual finisher above any unfinished survivor.
+
+Results show points, outcome, finish time when applicable, distance credit, and bonuses. During play the HUD shows current server points and network round-trip time.
+
+## Rendering and latency
+
+Avatars more than 22 field units away use reduced geometry from the same Midway model. Distant avatars update their visual poses at 10 Hz while nearby avatars animate every frame. The renderer measures a three-second frame-rate window and lowers pixel density when it remains under 36 FPS, down to 0.8. It cautiously restores density after sustained recovery above 56 FPS. The reusable arena exposes `diagnostics` with frame rate, pixel ratio, avatar count, draw calls and triangles for device checks.
+
+Network round-trip time and rendering frame rate measure different costs. The displayed ping measures application message turnaround. Server score and crossing checks always use authoritative movement.
 
 ## Reuse points
 

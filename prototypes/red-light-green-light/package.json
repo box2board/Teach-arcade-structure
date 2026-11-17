@@ -5,7 +5,7 @@
   "main": "server.mjs",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node --test rules.test.mjs characters.test.mjs",
+    "test": "node --test rules.test.mjs characters.test.mjs movement.test.mjs",
     "test:network": "node network.test.mjs"
   },
   "license": "ISC",

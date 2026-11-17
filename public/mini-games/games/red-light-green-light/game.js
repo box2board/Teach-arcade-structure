@@ -1,6 +1,7 @@
 import { createArena } from './arena.js';
 import { characters } from '../../shared/midway-characters/characters.js';
 import { FIELD, standings } from './rules.js';
+import { createMovementPreview } from './movement-preview.js';
 
 const ROOM_TYPE = 'red-light-green-light';
 const moves = {
@@ -14,6 +15,7 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
   const view = root.ownerDocument.defaultView;
   const doc = root.ownerDocument;
   const keys = new Map(), touches = new Map(), events = new AbortController();
+  const movementPreview = createMovementPreview();
   const storageKey = 'ta-red-light-reconnect';
   let room, state, arena, attempt = 0, round = -1, phase, received = 0, inputSeq = 0;
   let audio, sound = false, frame, active = false, spectator = false, disposed = false, arenaError = '';
@@ -53,13 +55,18 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
     oscillator.start(time);
     oscillator.stop(time + .3);
   }
+  function direction() {
+    const held = new Set([...keys.values(), ...touches.values()]);
+    return {
+      x: +held.has('right') - +held.has('left'),
+      z: +held.has('up') - +held.has('down')
+    };
+  }
   function sendInput(press = false) {
     if (!room || !active || !state || !live.has(state.phase)) return;
-    const held = new Set([...keys.values(), ...touches.values()]);
     room.send('input', {
       phaseId: state.phaseId, roundId: state.roundId, seq: ++inputSeq, sample: state.now,
-      press: press === true,
-      x: +held.has('right') - +held.has('left'), z: +held.has('up') - +held.has('down')
+      press: press === true, ...direction()
     });
   }
   function clear() {
@@ -110,7 +117,9 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
             finished: 'Finished', survivor: 'Last runner standing', time: 'Time expired · ' +
               Math.max(0, Math.round(player.z / FIELD.finish * 100)) + '%', out: 'Eliminated · Moved on red', left: 'Disconnected'
           }[player.status];
-          return (player.place ? '#' + player.place + ' ' : '') + player.name + ' · ' + label;
+          const time = player.status === 'finished' ? ' · ' + (player.finishMs / 1000).toFixed(2) + 's' : '';
+          return '#' + player.place + ' ' + player.name + ' · ' + player.points + ' pts · ' + label + time +
+            ' · ' + player.distancePoints + ' distance + ' + (player.finishBonus + player.speedBonus + player.survivalBonus) + ' bonus';
         }));
       }
     }
@@ -159,7 +168,10 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
         content('percent', percent + '%');
         if (el('progress').value !== percent) el('progress').value = percent;
       }
-      arena?.render(state, observed, now);
+      content('points', (player?.points ?? 0) + ' pts');
+      const local = active && observed === room?.sessionId && player
+        ? movementPreview.sample(player, state, direction(), now, now - received) : undefined;
+      arena?.render(state, observed, now, local);
     } else {
       arena?.render(null, '', now);
     }
@@ -168,6 +180,7 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
   function detach() {
     room = null;
     state = null;
+    movementPreview.reset();
     phase = undefined;
     active = false;
     spectator = false;
@@ -186,6 +199,11 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
     el('entry').hidden = true;
     status(arenaError);
     next.onStateChange(sync);
+    next.onMessage('pong', sent => {
+      if (room === next && Number.isFinite(sent)) {
+        content('latency', Math.round(view.performance.now() - sent) + ' ms');
+      }
+    });
     next.onLeave(async () => {
       if (room !== next || attempt !== myAttempt || disposed) return;
       detach();
@@ -304,6 +322,7 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
     }
   }
   const timer = view.setInterval(sendInput, 50);
+  const pingTimer = view.setInterval(() => room?.send('ping', view.performance.now()), 1500);
   on(view, 'pagehide', () => {
     clear();
     if (room) save({ roomId: room.roomId, token: room.reconnectionToken, seq: inputSeq });
@@ -331,6 +350,7 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
       disposed = true;
       events.abort();
       view.clearInterval(timer);
+    view.clearInterval(pingTimer);
       view.cancelAnimationFrame(frame);
       room?.leave();
       detach();

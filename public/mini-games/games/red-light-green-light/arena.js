@@ -163,9 +163,12 @@ export function createArena(canvas, { makeAvatar = makeMidwayAvatar } = {}) {
   runnerRing.visible = false;
   scene.add(runnerRing);
   const targetCamera = new THREE.Vector3(), gaze = new THREE.Vector3(), aim = new THREE.Vector3();
+  const resolutionCap = Math.min(devicePixelRatio || 1, 1.35);
+  const performanceStats = { fps: 0, pixelRatio: resolutionCap, avatars: 0, drawCalls: 0, triangles: 0 };
+  let sampleStarted = 0, sampleFrames = 0, lastAdjustment = 0;
   let round = -1, focus = '', previous = 0, width = 0, height = 0;
 
-  function render(state, id, now) {
+  function render(state, id, now, localPose) {
     const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
     if (w !== width || h !== height) {
@@ -174,13 +177,37 @@ export function createArena(canvas, { makeAvatar = makeMidwayAvatar } = {}) {
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
     }
+    if (!document.hidden) {
+      if (!sampleStarted) sampleStarted = now;
+      sampleFrames++;
+      if (now - sampleStarted >= 3000) {
+        performanceStats.fps = Math.round(sampleFrames * 1000 / (now - sampleStarted));
+        const current = renderer.getPixelRatio();
+        if (now - lastAdjustment > 6000 && performanceStats.fps < 36 && current > .8) {
+          renderer.setPixelRatio(Math.max(.8, current - .25));
+          width = 0;
+          lastAdjustment = now;
+        } else if (now - lastAdjustment > 18000 && performanceStats.fps > 56 && current < resolutionCap) {
+          renderer.setPixelRatio(Math.min(resolutionCap, current + .15));
+          width = 0;
+          lastAdjustment = now;
+        }
+        sampleStarted = now;
+        sampleFrames = 0;
+        performanceStats.pixelRatio = renderer.getPixelRatio();
+      }
+    } else {
+      sampleStarted = 0;
+      sampleFrames = 0;
+    }
     const dt = Math.min(.06, (now - previous) / 1000);
     previous = now;
     const follow = views.get(id);
     const snap = round !== state?.roundId || focus !== id;
     const seen = new Set();
     const me = state?.players.get(id);
-    for (const [key, player] of state?.players ?? []) {
+    for (const [key, source] of state?.players ?? []) {
+      const player = key === id && localPose ? localPose : source;
       if (player.status === 'waiting') continue;
       seen.add(key);
       let view = views.get(key);
@@ -192,7 +219,7 @@ export function createArena(canvas, { makeAvatar = makeMidwayAvatar } = {}) {
         shell.add(actor.root, name, track);
         name.position.y = actor.labelHeight ?? 3.5;
         scene.add(shell);
-        view = { shell, actor, name, characterId: player.characterId, status: '', changed: now };
+        view = { shell, actor, name, characterId: player.characterId, status: '', changed: now, posedAt: 0 };
         views.set(key, view);
         view.shell.position.set(player.x, .09, player.z);
       }
@@ -209,7 +236,10 @@ export function createArena(canvas, { makeAvatar = makeMidwayAvatar } = {}) {
       shell.visible = player.connected || player.status === 'out';
       const distance = Math.hypot(player.x - (me?.x ?? 0), player.z - (me?.z ?? 0));
       view.name.visible = distance < 26 || key === id;
-      actor.update(player, now / 1000, (now - view.changed) / 1000, reduced || distance > 50);
+      if (key === id || distance < 24 || now - view.posedAt >= 100 || snap) {
+        actor.update(player, now / 1000, (now - view.changed) / 1000, reduced || distance > 50, distance);
+        view.posedAt = now;
+      }
     }
     for (const [key, view] of views) if (!seen.has(key)) remove(key, view);
 
@@ -233,6 +263,9 @@ export function createArena(canvas, { makeAvatar = makeMidwayAvatar } = {}) {
     }
     sky.position.copy(camera.position);
     renderer.render(scene, camera);
+    performanceStats.avatars = views.size;
+    performanceStats.drawCalls = renderer.info.render.calls;
+    performanceStats.triangles = renderer.info.render.triangles;
   }
 
   function remove(key, view) {
@@ -242,7 +275,7 @@ export function createArena(canvas, { makeAvatar = makeMidwayAvatar } = {}) {
     view.actor.dispose?.();
     views.delete(key);
   }
-  return { render, dispose() {
+  return { render, diagnostics: performanceStats, dispose() {
     for (const [key, view] of views) remove(key, view);
     for (const sprite of [sign, startSign]) {
       sprite.material.map.dispose();

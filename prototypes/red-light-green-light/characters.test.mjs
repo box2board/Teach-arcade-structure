@@ -35,6 +35,18 @@ test('all 20 Midway characters animate and duplicates share baked geometry', () 
         totalMovement += point.distanceTo(baseline);
       }
       assert(totalMovement > 0);
+      const nearTriangles = mesh.geometry.index.count;
+      actor.update({ motion: 'run', status: 'racing' }, .4, .4, false, 40);
+      assert(mesh.geometry.index.count < nearTriangles, 'Distant model must use fewer triangles');
+      actor.root.updateMatrixWorld(true);
+      for (let i = 0; i < mesh.geometry.attributes.position.count; i += 7) {
+        point.fromBufferAttribute(mesh.geometry.attributes.position, i);
+        mesh.applyBoneTransform(i, point);
+        assert(Number.isFinite(point.length()));
+      }
+      actor.update({ motion: 'idle', status: 'racing' }, .5, .5, false, 0);
+      assert.equal(mesh.geometry.index.count, nearTriangles);
+
     }
   } finally {
     for (const actor of actors) actor.dispose();

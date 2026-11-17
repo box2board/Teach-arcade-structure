@@ -5,7 +5,7 @@ export const FIELD = Object.freeze({ width: 66, finish: 89, speed: 11 });
 export const STEP_MS = 1000 / 30;
 const GRACE = 400;
 const FRESH = 180;
-const MAX_RED_SAMPLE_AGE = 320;
+const MAX_RED_SAMPLE_AGE = 800;
 const HELD_RED = 145;
 const DEADZONE = .12;
 const LIVE = new Set(['green', 'red']);
@@ -52,7 +52,7 @@ export class Race {
     const participant = { id, name, characterId: this.characters.includes(characterId)
       ? characterId : this.characters[(color ?? 0) % this.characters.length],
     color: color ?? 0, connected: true, status: 'waiting', x: 0, z: 0,
-    vx: 0, vz: 0, facing: 0, motion: 'idle', input: zero(), seq: -1, finish: 0, outAt: 0 };
+    vx: 0, vz: 0, facing: 0, motion: 'idle', input: zero(), seq: -1, finish: 0, outAt: 0, maxZ: 0, finishMs: 0 };
     this.players.set(id, participant);
     if (host) this.hostId = id;
     return participant;
@@ -98,12 +98,13 @@ export class Race {
     this.phase = 'countdown';
     this.phaseId++;
     this.phaseEndsAt = now + 3000;
+    this.startedAt = this.phaseEndsAt;
     this.deadline = this.phaseEndsAt + this.config.durationMs;
     roster.forEach((player, index) => {
       const columns = Math.min(10, roster.length);
       Object.assign(player, { x: (index % columns - (columns - 1) / 2) * 5.8,
         z: -.8 - Math.floor(index / columns) * 2.3, vx: 0, vz: 0, facing: 0,
-        status: 'racing', finish: 0, outAt: 0, motion: 'idle', input: zero() });
+        status: 'racing', finish: 0, outAt: 0, maxZ: 0, finishMs: 0, motion: 'idle', input: zero() });
     });
     return true;
   }
@@ -151,6 +152,9 @@ export class Race {
   }
 
   mark(player, status, now) {
+    if (player.status !== 'racing') return;
+    player.maxZ = Math.max(player.maxZ, player.z);
+    if (status === 'finished') player.finishMs = Math.max(0, now - this.startedAt);
     player.status = status;
     player.motion = 'idle';
     if (status === 'finished' || status === 'survivor') player.finish = ++this.finishers;
@@ -207,19 +211,18 @@ export class Race {
         }
         continue;
       }
-      player.vx = approach(player.vx, input.x * FIELD.speed, 42 * dt);
-      player.vz = approach(player.vz, input.z * FIELD.speed, 42 * dt);
-      player.x = clamp(player.x + player.vx * dt, -FIELD.width / 2 + .6, FIELD.width / 2 - .6);
-      const nextZ = player.z + player.vz * dt;
-      if (nextZ >= FIELD.finish) {
-        finishBatch.push({ player, fraction: (FIELD.finish - player.z) / (nextZ - player.z) });
+      const before = player.z;
+      advanceMovement(player, input, dt);
+      player.maxZ = Math.max(player.maxZ, player.z);
+      if (player.z >= FIELD.finish && before < FIELD.finish) {
+        const travelled = player.vz * dt;
+        finishBatch.push({ player, fraction: clamp((FIELD.finish - before) / travelled, 0, 1) });
       }
-      player.z = clamp(nextZ, -10, FIELD.finish);
-      player.motion = Math.hypot(player.vx, player.vz) > .4 ? 'run' : 'idle';
-      if (player.motion === 'run') player.facing = Math.atan2(player.vx, player.vz);
     }
     finishBatch.sort((a, b) => a.fraction - b.fraction);
-    for (const { player } of finishBatch) this.mark(player, 'finished', now);
+    for (const { player, fraction } of finishBatch) {
+      this.mark(player, 'finished', Math.max(this.startedAt, now - dt * 1000 * (1 - fraction)));
+    }
     this.settle(now, this.phase === 'green');
   }
 
@@ -229,24 +232,59 @@ export class Race {
       phaseEndsAt: ['countdown', 'red'].includes(this.phase)
         ? (this.phase === 'red' ? this.redGraceEnd : this.phaseEndsAt) : 0,
       deadline: this.deadline, now, hostId: this.hostId, reason: this.reason,
-      players: [...this.players.values()].map(({ id, name, characterId, color, connected, status,
-        x, z, facing, motion, finish, outAt }) => ({ id, name, characterId, color, connected, status,
-        x: Math.round(x * 100) / 100, z: Math.round(z * 100) / 100,
-        facing: Math.round(facing * 1000) / 1000, motion, finish, outAt }))
+      players: [...this.players.values()].map(player => {
+        const { id, name, characterId, color, connected, status, x, z, facing, motion,
+          finish, outAt, vx, vz, seq, finishMs } = player;
+        const distance = clamp(Math.max(player.maxZ, z), 0, FIELD.finish);
+        return { id, name, characterId, color, connected, status,
+          x: Math.round(x * 100) / 100, z: Math.round(z * 100) / 100,
+          vx, vz, seq, facing: Math.round(facing * 1000) / 1000,
+          motion, finish, outAt, finishMs: Math.round(finishMs),
+          distance: Math.round(distance * 100) / 100,
+          ...scorePlayer(player, this.config.durationMs) };
+      })
     };
   }
 }
 
+// Shared motion keeps local visual prediction aligned with server acceleration.
+export function advanceMovement(player, input, dt) {
+  dt = clamp(dt, 0, .05);
+  let x = input.x, z = input.z;
+  const length = Math.hypot(x, z);
+  if (length > 1) { x /= length; z /= length; }
+  player.vx = approach(player.vx, x * FIELD.speed, 42 * dt);
+  player.vz = approach(player.vz, z * FIELD.speed, 42 * dt);
+  player.x = clamp(player.x + player.vx * dt, -FIELD.width / 2 + .6, FIELD.width / 2 - .6);
+  player.z = clamp(player.z + player.vz * dt, -10, FIELD.finish);
+  player.motion = Math.hypot(player.vx, player.vz) > .4 ? 'run' : 'idle';
+  if (player.motion === 'run') player.facing = Math.atan2(player.vx, player.vz);
+}
+
+export function scorePlayer(player, durationMs) {
+  const distance = clamp(Math.max(player.maxZ ?? player.z, player.z), 0, FIELD.finish);
+  const distancePoints = Math.floor(distance / FIELD.finish * 1000);
+  const finishBonus = player.status === 'finished' ? 500 : 0;
+  const speedBonus = player.status === 'finished'
+    ? Math.floor(500 * clamp(1 - player.finishMs / durationMs, 0, 1)) : 0;
+  const survivalBonus = player.status === 'survivor' ? 250 : 0;
+  return { distancePoints, finishBonus, speedBonus, survivalBonus,
+    points: distancePoints + finishBonus + speedBonus + survivalBonus };
+}
+
 export function standings(players) {
-  const ranked = players.filter(player => player.finish || player.status === 'time')
-    .sort((a, b) => (a.finish || Infinity) - (b.finish || Infinity) || b.z - a.z);
-  let last = null;
-  const rows = ranked.map((player, index) => {
-    const place = player.status === 'time' && last?.status === 'time' && last.z === player.z
-      ? last.place : index + 1;
+  const ranked = players.filter(player => player.status !== 'waiting')
+    .map(player => ({ ...player, points: player.points ?? scorePlayer(player, 65000).points }))
+    .sort((a, b) => b.points - a.points ||
+      (a.status === 'finished' ? a.finishMs : Infinity) - (b.status === 'finished' ? b.finishMs : Infinity) ||
+      (b.distance ?? b.z) - (a.distance ?? a.z));
+  let last;
+  return ranked.map((player, index) => {
+    const tied = last && last.points === player.points &&
+      (last.status === 'finished' ? last.finishMs : 0) === (player.status === 'finished' ? player.finishMs : 0) &&
+      (last.distance ?? last.z) === (player.distance ?? player.z);
+    const place = tied ? last.place : index + 1;
     last = { ...player, place };
     return last;
   });
-  return [...rows, ...players.filter(player => ['out', 'left'].includes(player.status))
-    .sort((a, b) => b.outAt - a.outAt).map(player => ({ ...player, place: null }))];
 }

@@ -7,7 +7,10 @@ class Racer extends Schema {}
 defineTypes(Racer, {
   id: 'string', name: 'string', characterId: 'string', color: 'number',
   connected: 'boolean', status: 'string', x: 'number', z: 'number',
-  facing: 'number', motion: 'string', finish: 'number', outAt: 'number'
+  facing: 'number', motion: 'string', finish: 'number', outAt: 'number',
+  vx: 'number', vz: 'number', seq: 'number', finishMs: 'number', distance: 'number',
+  points: 'number', distancePoints: 'number', finishBonus: 'number',
+  speedBonus: 'number', survivalBonus: 'number'
 });
 
 class RaceState extends Schema {
@@ -46,9 +49,13 @@ class RedLightRoom extends Room {
     this.onMessage('input', (client, input) => {
       const now = performance.now();
       const redPress = this.race.phase === 'red' && input?.press === true;
-      if (!redPress && now - (this.lastInput.get(client.sessionId) ?? -Infinity) < 16) return;
+      const stopping = input?.x === 0 && input?.z === 0;
+      if (!redPress && !stopping && now - (this.lastInput.get(client.sessionId) ?? -Infinity) < 16) return;
       this.lastInput.set(client.sessionId, now);
       this.race.command(client.sessionId, input, now);
+    });
+    this.onMessage('ping', (client, sent) => {
+      if (Number.isFinite(sent)) client.send('pong', sent);
     });
     this.onMessage('character', (client, id) => this.race.assign(client.sessionId, id));
     this.onMessage('start', (client, options) => {

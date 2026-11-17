@@ -16,6 +16,7 @@ export function makeMidwayAvatar(player, shape, tint) {
   let entry = models.get(player.characterId);
   if (!entry) {
     entry = bakeModel(model, pivots);
+    entry.distant = bakeModel(model, pivots, true).geometry;
     models.set(player.characterId, entry);
   }
   entry.users++;
@@ -45,7 +46,8 @@ export function makeMidwayAvatar(player, shape, tint) {
   return {
     root,
     labelHeight: entry.height + .42,
-    update(info, time, age, reduced) {
+    update(info, time, age, reduced, distance = 0) {
+      visible.geometry = distance > 22 ? entry.distant : entry.geometry;
       const won = info.status === 'finished' || info.status === 'survivor';
       const out = info.status === 'out' || info.status === 'left';
       const walking = info.motion === 'run' && !reduced;
@@ -64,6 +66,7 @@ export function makeMidwayAvatar(player, shape, tint) {
       skeleton.dispose();
       if (--entry.users === 0) {
         entry.geometry.dispose();
+        entry.distant.dispose();
         models.delete(player.characterId);
       }
       if (models.size === 0) {
@@ -74,7 +77,7 @@ export function makeMidwayAvatar(player, shape, tint) {
   };
 }
 
-function bakeModel(model, pivots) {
+function bakeModel(model, pivots, distant = false) {
   const indices = [], positions = [], normals = [], colors = [], joints = [], weights = [];
   const position = new THREE.Vector3(), normal = new THREE.Vector3(), normalMatrix = new THREE.Matrix3();
   const pivotIndices = new Map(pivots.map((pivot, index) => [pivot, index]));
@@ -83,7 +86,17 @@ function bakeModel(model, pivots) {
     let pivot = mesh;
     while (!pivotIndices.has(pivot)) pivot = pivot.parent;
     const joint = pivotIndices.get(pivot);
-    const geometry = mesh.geometry;
+    let geometry = mesh.geometry;
+    const sourceGeometry = geometry;
+    if (distant && geometry.type === 'SphereGeometry') {
+      const { radius, phiStart, phiLength, thetaStart, thetaLength } = geometry.parameters;
+      geometry = new THREE.SphereGeometry(radius, 8, 6, phiStart, phiLength, thetaStart, thetaLength);
+    } else if (distant && geometry.type === 'LatheGeometry') {
+      geometry = new THREE.LatheGeometry(geometry.parameters.points, 10);
+    } else if (distant && geometry.type === 'TubeGeometry') {
+      const { path, radius, closed } = geometry.parameters;
+      geometry = new THREE.TubeGeometry(path, 8, radius, 5, closed);
+    }
     const input = geometry.attributes;
     const groups = Array.isArray(mesh.material) ? geometry.groups :
       [{ start: 0, count: geometry.index?.count ?? input.position.count, materialIndex: 0 }];
@@ -106,6 +119,7 @@ function bakeModel(model, pivots) {
         indices.push(vertices.get(source));
       }
     }
+    if (geometry !== sourceGeometry) geometry.dispose();
   });
   const geometry = new THREE.BufferGeometry();
   geometry.setIndex(indices);

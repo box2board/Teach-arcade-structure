@@ -126,3 +126,10 @@ footer { padding: .65rem .1rem 0; color: var(--muted); font-size: .82rem; }
 #room .panel { display: flex; flex-direction: column; }
 #results { order: -1; margin-bottom: .85rem; border-bottom: 1px solid var(--line); }
 #result-title:focus { outline: none; }
+
+.race-stats { grid-area: time; justify-self: end; display: grid; justify-items: end; gap: .3rem; }
+.points { background: #102638; padding: .3rem .5rem; border-radius: .4rem; color: var(--gold); font-weight: 850; font-size: .87rem; white-space: nowrap; }
+#latency { background: #102638; color: #b7cdd4; padding: .12rem .3rem; border-radius: .25rem; font-size: .62rem; }
+.score-rule { color: var(--muted); font-size: .8rem; line-height: 1.4; }
+@media (max-width: 460px) { .points { font-size: .68rem; padding: .25rem; } }
+.race-stats .time { grid-area: auto; }

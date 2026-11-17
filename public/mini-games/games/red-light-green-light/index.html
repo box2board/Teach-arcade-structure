@@ -19,7 +19,8 @@
     <canvas id="field" tabindex="0" aria-label="Third-person race field"></canvas>
     <div class="race-hud" id="hud" hidden>
       <p class="signal" id="signal" role="status"></p>
-      <p class="time" id="clock"></p>
+      <div class="race-stats"><p class="time" id="clock"></p>
+        <p class="points" id="points">0 pts</p><small id="latency" aria-label="Network round-trip latency"></small></div>
       <div class="progress">
         <label for="progress">Finish line <span id="percent"></span></label>
         <progress id="progress" max="100" value="0"></progress>
@@ -29,6 +30,7 @@
       <form id="join" class="panel">
         <h2>Ready to race?</h2>
         <p>Run on green. Freeze on red.</p>
+        <p class="score-rule">Earn up to 1,000 distance points. Finish for 500 more, plus up to 500 for speed.</p>
         <label for="name">Player name</label>
         <input id="name" maxlength="20" autocomplete="off" placeholder="Runner">
         <label for="code">Room code</label>
@@ -53,6 +55,7 @@
         </div>
         <div id="results" hidden>
           <h2 id="result-title" tabindex="-1"></h2>
+          <p class="score-rule">Points = distance + finish and speed bonuses. Last runner standing earns 250 survival points.</p>
           <ol id="placements" class="placements"></ol>
         </div>
         <div class="actions">

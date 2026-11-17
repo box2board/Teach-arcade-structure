@@ -196,3 +196,87 @@ test('configuration clamps invalid phase bounds and duration', () => {
     greenMin: 6000, greenMax: 6000, redMin: 1300, redMax: 3200, durationMs: 15000
   });
 });
+
+test('five finishers earn more for faster finishes and preserve distance credit after elimination', () => {
+  const { race, start, now } = fixture(7);
+  start();
+  for (let i = 0; i < 5; i++) {
+    const player = race.players.get(String(i));
+    player.z = FIELD.finish;
+    race.mark(player, 'finished', race.startedAt + 15000 + i * 5000);
+  }
+  const eliminated = race.players.get('5');
+  eliminated.z = FIELD.finish * .75;
+  race.mark(eliminated, 'out', now());
+  const waiting = race.players.get('6');
+  waiting.z = FIELD.finish * .35;
+  race.end('time');
+  const rows = standings(race.snapshot(now()).players);
+  assert.equal(rows.length, 7);
+  assert.deepEqual(rows.slice(0, 5).map(player => player.id), ['0', '1', '2', '3', '4']);
+  for (let i = 0; i < 4; i++) assert(rows[i].points > rows[i + 1].points);
+  assert.equal(rows[5].distancePoints, 750);
+  assert.equal(rows[5].points, 750);
+  assert.equal(rows[6].points, 350);
+  assert.equal(rows[0].finishBonus, 500);
+  assert.equal(rows[0].speedBonus, Math.floor(500 * (1 - 15000 / race.config.durationMs)));
+  const original = rows[0].points;
+  race.mark(race.players.get('0'), 'finished', race.startedAt + 1);
+  assert.equal(race.snapshot(now()).players[0].points, original);
+});
+
+test('distance keeps the farthest legal position without awarding repeated travel or client points', () => {
+  const { race, start, signal, to, now } = fixture(2);
+  start();
+  const runner = race.players.get('0');
+  race.phaseEndsAt = now() + 3000;
+  for (let i = 0; i < 7; i++) { signal('0', 1, {points: 99999}); to(now() + 55); }
+  const best = runner.maxZ;
+  for (let i = 0; i < 14; i++) { signal('0', -1); to(now() + 55); }
+  const row = race.snapshot(now()).players[0];
+  assert(runner.z < best);
+  assert.equal(row.distancePoints, Math.floor(runner.maxZ / FIELD.finish * 1000));
+  assert.equal(row.points, row.distancePoints);
+  assert(row.points < 1000);
+  race.mark(runner, 'out', now());
+  const points = race.snapshot(now()).players[0].points;
+  assert.equal(signal('0', 1, {points: 99999}), false);
+  to(now() + 55);
+  assert.equal(race.snapshot(now()).players[0].points, points);
+});
+
+test('survival bonus rewards the last runner while every actual finisher scores higher', () => {
+  const { race, start, now } = fixture(3);
+  start();
+  const finisher = race.players.get('0');
+  finisher.z = FIELD.finish;
+  race.mark(finisher, 'finished', race.deadline);
+  race.players.get('1').z = FIELD.finish * .6;
+  race.mark(race.players.get('2'), 'out', now());
+  race.settle(now(), true);
+  const rows = standings(race.snapshot(now()).players);
+  assert.equal(rows[0].points, 1500);
+  assert.equal(rows[1].survivalBonus, 250);
+  assert.equal(rows[1].points, 850);
+  assert.equal(rows[1].finishBonus, 0);
+  assert.equal(rows[1].speedBonus, 0);
+});
+
+test('red release stays safe with delayed green packets and a 600ms round trip', () => {
+  const { race, start, red, signal, to } = fixture(2);
+  start();
+  const oldPhase = race.phaseId;
+  red();
+  const grace = race.redGraceEnd;
+  race.phaseEndsAt = grace + 1600;
+  to(grace + 400);
+  assert.equal(signal('0', 1, {phaseId: oldPhase, sample: grace - 100}), false);
+  assert.equal(signal('0', 1, {sample: grace - 40}), false);
+  assert(signal('0', 1, {sample: grace + 20}));
+  to(grace + 480);
+  assert(signal('0', 0, {sample: grace + 80}));
+  to(grace + 740);
+  assert.equal(race.players.get('0').status, 'racing');
+  assert(signal('1', 1, {sample: grace + 180, press: true}));
+  assert.equal(race.players.get('1').status, 'out');
+});

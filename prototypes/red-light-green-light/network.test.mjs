@@ -92,6 +92,14 @@ try {
   await until(() => clients.every(room => room.state.phase === 'results'), 'shared results');
   assert.equal(a.state.reason, 'no-winner');
   assert(racers().every(room => position(a, room.sessionId)?.status === 'out'));
+  assert(racers().every(room => {
+    const player = position(a, room.sessionId);
+    return Number.isFinite(player.points) && player.points === player.distancePoints &&
+      player.finishBonus === 0 && player.speedBonus === 0;
+  }));
+  const expected = Array.from(a.state.players.values(), player => [player.id,player.points]);
+  assert(clients.every(room => JSON.stringify(Array.from(room.state.players.values(), player =>
+    [player.id, player.points])) === JSON.stringify(expected)));
   if (late) {
     a.send('start', {});
     await until(() => position(a, late.sessionId)?.status === 'racing', 'late join participates in rematch');
