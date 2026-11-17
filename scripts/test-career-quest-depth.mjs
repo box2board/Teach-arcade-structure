@@ -783,15 +783,28 @@ for (const id of reviewedCareers) {
   assert(!api.pickScenario().id.startsWith("career-" + id + "-mentor"));
 }
 assert.equal(roleTitles.size, 10);
+const newlyReviewedCareers = [
+  "radiologic-technologist", "cybersecurity-analyst", "chef", "emt",
+  "accountant", "firefighter", "farmer", "veterinary-technician",
+  "hotel-manager", "pharmacist",
+];
+for (const id of newlyReviewedCareers) {
+  const run = installmentRun(1);
+  run.careerId = id;
+  const cards = api.careerWorkScenarios();
+  assert.equal(cards.length, 3);
+  assert.match(cards.find((card) => card.year === 1).id, new RegExp(`^career-${id}-`));
+  assert.match(cards.find((card) => card.year === 3).id, new RegExp(`^career-${id}-`));
+}
 
 // Fallback work prompts should read naturally for plural official occupation titles.
-const farmer = careers.find((c) => c.id === "farmer");
+const farmer = careers.find((c) => c.id === "carpenter");
 const farmerRun = installmentRun(1);
 farmerRun.careerId = farmer.id;
 const farmerPractice = api.careerWorkScenarios()[0];
 assert.match(farmerPractice.prompt, /^One task in this field is to /);
-assert(!farmerPractice.prompt.includes("in your work as Farmers"));
-assert(farmerPractice.prompt.includes("to collect and record growth"));
+assert(!farmerPractice.prompt.includes("in your work as Carpenters"));
+assert(farmerPractice.prompt.includes("to measure and mark"));
 const outsideHours = api.state.lifeScenarios.workplace.find(
   (s) => s.id === "v3-workplace-11",
 );

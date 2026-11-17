@@ -1247,5 +1247,805 @@
       ],
       "requires": "careerPractice"
     }
+  ],
+  "radiologic-technologist": [
+    {
+      "id": "career-radiologic-technologist-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Check an imaging protocol",
+      "prompt": "A revised imaging protocol changes how a patient is prepared for a scan. A senior technologist offers guided practice before the next shift.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-radiologic-technologist-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "A busy imaging shift creates a backlog. You can protect patient preparation time, accept extra appointments, or coordinate coverage with another technologist.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
+  ],
+  "cybersecurity-analyst": [
+    {
+      "id": "career-cybersecurity-analyst-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Rehearse an incident response",
+      "prompt": "Your team is updating its response plan for a possible security incident. A senior analyst offers a guided practice exercise.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-cybersecurity-analyst-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "A critical vulnerability needs attention while routine monitoring continues. You can reprioritize work, take paid extra hours, or split the response with a teammate.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
+  ],
+  "chef": [
+    {
+      "id": "career-chef-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Prepare for a high-volume service",
+      "prompt": "A large event will increase kitchen volume. The head chef offers supported practice with the service plan before the event.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-chef-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "Orders are backing up during a busy service. You can simplify the menu with approval, take extra paid hours, or coordinate stations with another cook.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
+  ],
+  "emt": [
+    {
+      "id": "career-emt-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Practice a shift-readiness handoff",
+      "prompt": "Your crew is reviewing equipment checks and patient handoffs before a shift. An experienced EMT offers supported practice.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-emt-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "Call volume is high and the next shift is delayed. You can clarify which calls need immediate coverage, take an extra paid shift, or coordinate handoff with another crew.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
+  ],
+  "accountant": [
+    {
+      "id": "career-accountant-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Reconcile a month-end close",
+      "prompt": "A new client file uses a different reconciliation process. A senior accountant offers guided practice before month-end close.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-accountant-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "A discrepancy appears near the reporting deadline. You can document and resolve it before filing, take paid extra hours, or divide the review with a colleague.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
+  ],
+  "firefighter": [
+    {
+      "id": "career-firefighter-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Review a readiness procedure",
+      "prompt": "Your station is reviewing a changed equipment-check procedure. An experienced firefighter offers supervised practice.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-firefighter-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "Several readiness tasks overlap before a shift change. You can reprioritize checks with the officer, take paid extra hours, or coordinate the checklist with your crew.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
+  ],
+  "farmer": [
+    {
+      "id": "career-farmer-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Review seasonal field records",
+      "prompt": "New field records need to be checked before the next planting decision. An experienced colleague offers guided practice.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-farmer-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "A narrow weather window overlaps with equipment maintenance. You can reorder work, pay for extra labor time, or coordinate tasks with a partner.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
+  ],
+  "veterinary-technician": [
+    {
+      "id": "career-veterinary-technician-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Practice a patient-monitoring handoff",
+      "prompt": "Your clinic is updating its patient-monitoring handoff. A licensed colleague offers supported practice before the next procedure.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-veterinary-technician-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "Several patients need monitoring at once. You can ask the veterinarian to set priorities, take paid extra hours, or coordinate coverage with another technician.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
+  ],
+  "hotel-manager": [
+    {
+      "id": "career-hotel-manager-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Practice a guest-service handoff",
+      "prompt": "Your hotel is changing how service requests are handed between shifts. An experienced manager offers guided practice.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-hotel-manager-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "A busy arrival period overlaps with room-turnover delays. You can reset priorities with the team, take paid extra hours, or coordinate coverage across departments.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
+  ],
+  "pharmacist": [
+    {
+      "id": "career-pharmacist-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Practice a prescription-verification workflow",
+      "prompt": "Your pharmacy is updating its verification workflow. An experienced pharmacist offers supervised practice before the next shift.",
+      "context": "This is a fictional workplace situation. The choice changes work skills and time, not qualification or legal scope.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay and commit two evenings to practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 3,
+            "workLife": -4,
+            "stress": 2
+          },
+          "feedback": "You build job-specific practice with support. This opens a later opportunity to help a colleague."
+        },
+        {
+          "label": "Take familiar paid work",
+          "text": "Earn $700 extra before taxes this year and use two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4
+          },
+          "feedback": "You earn extra pay while postponing supported practice."
+        },
+        {
+          "label": "Learn during scheduled hours",
+          "text": "Keep current pay and accept slower output temporarily.",
+          "effects": {
+            "adaptability": 3,
+            "performance": -2
+          },
+          "feedback": "You protect evenings and learn gradually during paid work time."
+        }
+      ]
+    },
+    {
+      "id": "career-pharmacist-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A workload decision in your field",
+      "prompt": "A prescription question requires follow-up while the queue grows. You can pause and clarify the order, take paid extra hours, or coordinate the queue with another pharmacist.",
+      "context": "The staffing and pay amounts are fictional classroom choices. Safety procedures and required standards still apply.",
+      "choices": [
+        {
+          "label": "Set priorities before adding work",
+          "text": "Keep current pay and move a lower-priority task.",
+          "effects": {
+            "communication": 3,
+            "stress": 2
+          },
+          "feedback": "You protect priority work. Some other tasks wait."
+        },
+        {
+          "label": "Take paid extra hours",
+          "text": "Earn $1,000 extra before taxes this year and give up several evenings.",
+          "effects": {
+            "income": 1000,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "The extra pay comes with more work and less personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2
+          },
+          "feedback": "Sharing the work limits your extra hours and requires coordination."
+        }
+      ]
+    }
   ]
 }

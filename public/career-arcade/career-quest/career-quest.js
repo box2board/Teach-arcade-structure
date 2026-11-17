@@ -204,7 +204,7 @@ async function init() {
   ];
   const data = await Promise.all(
     paths.map(async (p) => {
-      const revision = p.startsWith("scenarios-") ? "?v=14" : "";
+      const revision = p.startsWith("scenarios-") ? "?v=15" : "";
       const r = await fetch(`./data/${p}.json${revision}`);
       if (!r.ok) throw new Error("Activity data could not load.");
       return r.json();
@@ -1846,8 +1846,14 @@ function contextualScenario(scenario) {
   return variant ? { ...scenario, ...variant } : scenario;
 }
 function careerWorkScenarios() {
+  const tailored = state.careerScenarios[career().id] || [];
+  const generic = genericCareerWorkScenarios();
+  return generic.map((scenario) =>
+    tailored.find((candidate) => candidate.year === scenario.year) || scenario,
+  );
+}
+function genericCareerWorkScenarios() {
   const c = career();
-  if (state.careerScenarios[c.id]) return state.careerScenarios[c.id];
   const duty = c.duties[0].replace(/[.!?]+$/, "");
   const task = duty.charAt(0).toLowerCase() + duty.slice(1);
   const choice = (label, text, effects, feedback) => ({
@@ -2317,6 +2323,27 @@ function drawNextPlanForecast() {
     ...selected,
     movingCost: selected.housing === r.housing ? 0 : 650,
   });
+  const recoveryChoices = [];
+  for (const housing of ["shared", "solo"])
+    for (const transport of ["car", "transit", "carpool"])
+      for (const retirementRate of [0, 0.04, 0.08]) {
+        const plan = { year: r.year + 1, housing, transport, retirementRate };
+        const forecast = budgetForecast({
+          ...plan,
+          movingCost: housing === r.housing ? 0 : 650,
+        });
+        const unpaid = Math.max(0, -forecast.closingCash);
+        const changes =
+          Number(housing !== selected.housing) +
+          Number(transport !== selected.transport) +
+          Number(retirementRate !== selected.retirementRate);
+        recoveryChoices.push({ plan, forecast, score: unpaid * 10 + forecast.borrowing * 2 + changes * 100 });
+      }
+  recoveryChoices.sort((a, b) => a.score - b.score);
+  const recovery = recoveryChoices[0];
+  const recoveryNote = revised.borrowing || revised.closingCash < 0
+    ? `<p class="cq-note"><strong>Recovery option to compare:</strong> ${recovery.plan.housing === "shared" ? "shared housing" : "living alone"}, ${recovery.plan.transport}, and ${Math.round(recovery.plan.retirementRate * 100)}% retirement savings would project ${money(recovery.forecast.borrowing)} new borrowing${recovery.forecast.closingCash < 0 ? ` and ${money(-recovery.forecast.closingCash)} unpaid bills` : ""}. Try those settings above to see the comparison. This estimate excludes unexpected costs.</p>`
+    : "";
   const rows = [
     ["Monthly bills", baseline.bills, revised.bills],
     [
@@ -2332,7 +2359,7 @@ function drawNextPlanForecast() {
     ],
     ["New borrowing needed", baseline.borrowing, revised.borrowing],
   ];
-  target.innerHTML = `<h4>Year ${r.year + 1} budget estimate</h4><p class="cq-small">Uses next year’s pay and bills, scheduled debt payments, and your savings choice.</p><table class="cq-ledger"><thead><tr><th scope="col">Budget</th><th scope="col">Current plan</th><th scope="col">Selected plan</th></tr></thead><tbody>${rows.map(([label, before, after]) => `<tr><th scope="row">${label}</th><td>${money(before)}</td><td>${money(after)}</td></tr>`).join("")}</tbody></table>${forecastMessage(revised)}<p class="cq-small">Commute effect on life balance: ${commuteLifeImpact(selected.transport)} points while this plan is in use.</p>`;
+  target.innerHTML = `<h4>Year ${r.year + 1} budget estimate</h4><p class="cq-small">Uses next year’s pay and bills, scheduled debt payments, and your savings choice.</p><table class="cq-ledger"><thead><tr><th scope="col">Budget</th><th scope="col">Current plan</th><th scope="col">Selected plan</th></tr></thead><tbody>${rows.map(([label, before, after]) => `<tr><th scope="row">${label}</th><td>${money(before)}</td><td>${money(after)}</td></tr>`).join("")}</tbody></table>${forecastMessage(revised)}${recoveryNote}<p class="cq-small">Commute effect on life balance: ${commuteLifeImpact(selected.transport)} points while this plan is in use.</p>`;
 }
 function renderYearSummary() {
   const r = state.run,
