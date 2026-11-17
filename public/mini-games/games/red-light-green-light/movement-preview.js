@@ -6,7 +6,7 @@ export function createMovementPreview() {
   return {
     sample(player, state, input, now, stateAge) {
       const snap = !pose || roundId !== state.roundId || phaseId !== state.phaseId ||
-        state.phase !== 'green' || player.status !== 'racing' || !player.connected || stateAge > 250;
+        !['green', 'red'].includes(state.phase) || player.status !== 'racing' || !player.connected || stateAge > 250;
       const dt = Math.max(0, Math.min(.05, (now - lastFrame) / 1000));
       lastFrame = now;
       roundId = state.roundId;

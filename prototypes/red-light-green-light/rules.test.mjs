@@ -48,7 +48,7 @@ test('solo starts without an automatic win and can reach the finish using legal 
   assert.equal(race.phase, 'results');
 });
 
-test('rejects stale green inputs and delayed red movement sampled during grace', () => {
+test('rejects stale green inputs and allows red grace input without elimination', () => {
   const { race, start, red, signal, to } = fixture(2);
   start();
   const green = race.phaseId;
@@ -56,7 +56,7 @@ test('rejects stale green inputs and delayed red movement sampled during grace',
   const base = race.redGraceEnd;
   to(base + 15);
   assert.equal(signal('1', 1, { phaseId: green }), false);
-  assert.equal(signal('1', 1, { sample: base - .25 }), false);
+  assert(signal('1', 1, { sample: base - .25 }));
   assert.equal(signal('1', 1, { x: 2 }), false);
   assert.equal(signal('1', 1, { sample: base + 200 }), false);
   assert(signal('1', 1));
@@ -86,12 +86,13 @@ test('a fresh tap after red grace eliminates the runner without advancing them',
   const runner = race.players.get('0');
   const position = runner.z;
   to(base - 50);
-  assert.equal(signal('0', 1, { press: true }), false);
+  assert(signal('0', 1, { press: true }));
   assert.equal(runner.status, 'racing');
   to(base + 50);
-  assert.equal(signal('0', 1, { press: true, sample: base - 10 }), false);
+  assert(signal('0', 1, { press: true, sample: base - 10 }));
   assert(signal('0', 1, { press: true }));
-  assert.equal(runner.z, position);
+  const eliminatedPosition = runner.z;
+  assert(eliminatedPosition >= position);
   assert.equal(runner.status, 'out');
   assert.equal(race.phase, 'red');
   assert(signal('1', 1, { press: true }));
@@ -271,7 +272,7 @@ test('red release stays safe with delayed green packets and a 600ms round trip',
   race.phaseEndsAt = grace + 1600;
   to(grace + 400);
   assert.equal(signal('0', 1, {phaseId: oldPhase, sample: grace - 100}), false);
-  assert.equal(signal('0', 1, {sample: grace - 40}), false);
+  assert(signal('0', 1, {sample: grace - 40}));
   assert(signal('0', 1, {sample: grace + 20}));
   to(grace + 480);
   assert(signal('0', 0, {sample: grace + 80}));
@@ -279,4 +280,66 @@ test('red release stays safe with delayed green packets and a 600ms round trip',
   assert.equal(race.players.get('0').status, 'racing');
   assert(signal('1', 1, {sample: grace + 180, press: true}));
   assert.equal(race.players.get('1').status, 'out');
+});
+
+test('red keeps movement and animation, provides 500ms grace, and eliminates a held control afterward', () => {
+  const { race, start, signal, to, now, hold } = fixture(2);
+  start();
+  for (let i = 0; i < 6; i++) { signal('0', 1); to(now() + 50); }
+  const runner = race.players.get('0');
+  const velocity = runner.vz;
+  race.light('red', now());
+  assert.equal(race.redGraceEnd - now(), 500);
+  assert.equal(runner.vz, velocity);
+  assert.equal(runner.motion, 'run');
+  const began = now(), z = runner.z;
+  hold(['0'], began + 450);
+  assert.equal(runner.status, 'racing');
+  assert(runner.z > z);
+  assert.equal(runner.motion, 'run');
+  hold(['0'], began + 800);
+  assert.equal(runner.status, 'out');
+  assert(runner.z > z + 3);
+  const stopped = runner.z;
+  to(now() + 50);
+  assert.equal(runner.z, stopped);
+});
+
+test('releasing during red grace stops normally and a finish during grace is eligible', () => {
+  const { race, start, signal, to, now } = fixture(2);
+  start();
+  const runner = race.players.get('0');
+  runner.vz = FIELD.speed;
+  signal('0', 1);
+  race.light('red', now());
+  const began = now();
+  signal('0', 0);
+  to(began + 350);
+  const stopped = runner.z;
+  assert.equal(runner.vz, 0);
+  to(began + 700);
+  assert.equal(runner.z, stopped);
+  assert.equal(runner.status, 'racing');
+  race.light('green', now());
+  runner.z = FIELD.finish - .3;
+  runner.vz = FIELD.speed;
+  signal('0', 1);
+  race.light('red', now());
+  signal('0', 1);
+  to(now() + 34);
+  assert.equal(runner.status, 'finished');
+});
+
+test('crossing after red grace cannot collect a finish bonus', () => {
+  const { race, start, signal, to, now } = fixture(2);
+  start();
+  race.light('red', now());
+  to(race.redGraceEnd + 25);
+  const runner = race.players.get('0');
+  runner.z = FIELD.finish - .05;
+  runner.vz = FIELD.speed;
+  signal('0', 1);
+  to(now() + 34);
+  assert.equal(runner.status, 'racing');
+  assert.equal(race.snapshot(now()).players[0].finishBonus, 0);
 });

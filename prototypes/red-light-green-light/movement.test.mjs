@@ -34,3 +34,16 @@ test('server correction and rematch discard previous visual progress', () => {
   preview.reset();
   assert.equal(preview.sample({...player,z:5},state,{x:0,z:0},1032,0).z,5);
 });
+
+test('red movement preview follows held input until the server eliminates the runner', () => {
+  const preview = createMovementPreview();
+  const player = {x:0,z:2,vx:0,vz:11,facing:0,motion:'run',status:'racing',connected:true};
+  const state = {roundId:1,phaseId:3,phase:'red'};
+  preview.sample(player,state,{x:0,z:1},1000,0);
+  const moving = preview.sample(player,state,{x:0,z:1},1016,16);
+  assert(moving.z > player.z);
+  assert.equal(moving.motion,'run');
+  const eliminated = preview.sample({...player,status:'out',motion:'idle'},state,{x:0,z:1},1032,0);
+  assert.equal(eliminated.z,player.z);
+  assert.equal(eliminated.motion,'idle');
+});

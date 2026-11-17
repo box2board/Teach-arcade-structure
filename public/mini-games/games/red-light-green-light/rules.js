@@ -3,7 +3,7 @@ import { characters as midwayCharacters } from '../../shared/midway-characters/c
 const MIDWAY_IDS = midwayCharacters.map(character => character.id);
 export const FIELD = Object.freeze({ width: 66, finish: 89, speed: 11 });
 export const STEP_MS = 1000 / 30;
-const GRACE = 400;
+const GRACE = 500;
 const FRESH = 180;
 const MAX_RED_SAMPLE_AGE = 800;
 const HELD_RED = 145;
@@ -120,19 +120,19 @@ export class Race {
     const moving = length > DEADZONE;
     if (moving && this.phase === 'red' && (
       now >= Math.min(this.phaseEndsAt, this.deadline) ||
-      !Number.isFinite(packet.sample) || packet.sample < this.redGraceEnd ||
+      !Number.isFinite(packet.sample) || packet.sample < this.redGraceEnd - GRACE ||
       packet.sample > now || now - packet.sample > MAX_RED_SAMPLE_AGE
     )) return false;
     const previous = player.input;
     const continuous = now - previous.at <= FRESH && Number.isFinite(previous.first);
     player.seq = packet.seq;
-    if (this.phase === 'red' && moving && packet.press === true) {
+    if (this.phase === 'red' && moving && packet.press === true && packet.sample >= this.redGraceEnd) {
       this.mark(player, 'out', now);
       return true;
     }
     player.input = moving
       ? { x: packet.x / Math.max(length, 1), z: packet.z / Math.max(length, 1),
-          at: now, first: continuous ? previous.first : now }
+          at: now, first: continuous ? previous.first : now, sample: packet.sample }
       : { ...zero(), at: now };
     return true;
   }
@@ -144,11 +144,6 @@ export class Race {
     const max = this.config[phase + 'Max'];
     this.phaseEndsAt = now + min + this.random() * (max - min);
     this.redGraceEnd = now + GRACE;
-    for (const player of this.players.values()) {
-      player.input = zero();
-      player.vx = player.vz = 0;
-      player.motion = 'idle';
-    }
   }
 
   mark(player, status, now) {
@@ -205,18 +200,19 @@ export class Race {
       if (this.phase === 'red') {
         // Movement must arrive in a current-phase stream and persist after the grace.
         // A queued old packet or a delayed burst cannot supply elapsed server time.
-        if (Number.isFinite(input.first) && now >= this.redGraceEnd &&
+        if (Number.isFinite(input.first) && input.sample >= this.redGraceEnd && now >= this.redGraceEnd &&
           input.at - Math.max(input.first, this.redGraceEnd) >= HELD_RED) {
           this.mark(player, 'out', now);
+          continue;
         }
-        continue;
       }
       const before = player.z;
       advanceMovement(player, input, dt);
       player.maxZ = Math.max(player.maxZ, player.z);
-      if (player.z >= FIELD.finish && before < FIELD.finish) {
+      if (player.z >= FIELD.finish &&
+        (this.phase === 'green' || now <= this.redGraceEnd)) {
         const travelled = player.vz * dt;
-        finishBatch.push({ player, fraction: clamp((FIELD.finish - before) / travelled, 0, 1) });
+        finishBatch.push({ player, fraction: travelled > 0 ? clamp((FIELD.finish - before) / travelled, 0, 1) : 0 });
       }
     }
     finishBatch.sort((a, b) => a.fraction - b.fraction);
