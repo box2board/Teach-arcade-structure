@@ -282,22 +282,22 @@ test('red release stays safe with delayed green packets and a 600ms round trip',
   assert.equal(race.players.get('1').status, 'out');
 });
 
-test('red keeps movement and animation, provides 300ms grace, and eliminates a held control afterward', () => {
+test('red keeps movement and animation, provides 200ms grace, and eliminates a held control afterward', () => {
   const { race, start, signal, to, now, hold } = fixture(2);
   start();
   for (let i = 0; i < 6; i++) { signal('0', 1); to(now() + 50); }
   const runner = race.players.get('0');
   const velocity = runner.vz;
   race.light('red', now());
-  assert.equal(race.redGraceEnd - now(), 300);
+  assert.equal(race.redGraceEnd - now(), 200);
   assert.equal(runner.vz, velocity);
   assert.equal(runner.motion, 'run');
   const began = now(), z = runner.z;
-  hold(['0'], began + 250);
+  hold(['0'], began + 150);
   assert.equal(runner.status, 'racing');
   assert(runner.z > z);
   assert.equal(runner.motion, 'run');
-  hold(['0'], began + 600);
+  hold(['0'], began + 450);
   assert.equal(runner.status, 'out');
   assert(runner.z > z + 3);
   const stopped = runner.z;
