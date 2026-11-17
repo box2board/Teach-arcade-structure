@@ -48,6 +48,13 @@ const interestTypes = {
 };
 
 const educationPaths = {
+  apprenticeship: {
+    label: "Employer-funded apprenticeship",
+    debt: 0,
+    salaryMod: 1,
+    stress: 10,
+    skill: { techLiteracy: 4, problemSolving: 4 },
+  },
   workforce: {
     label: "Start working",
     debt: 1000,
@@ -193,10 +200,12 @@ async function init() {
     "scenarios-v3-core",
     "career-finances",
     "locations",
+    "scenarios-career-workplace",
   ];
   const data = await Promise.all(
     paths.map(async (p) => {
-      const r = await fetch(`./data/${p}.json`);
+      const revision = p.startsWith("scenarios-") ? "?v=15" : "";
+      const r = await fetch(`./data/${p}.json${revision}`);
       if (!r.ok) throw new Error("Activity data could not load.");
       return r.json();
     }),
@@ -206,6 +215,7 @@ async function init() {
   state.locations = data[10];
   state.interestSource = data[4];
   quizQuestions = data[5];
+  state.careerScenarios = data[11];
   state.lifeScenarios = { workplace: data[6], money: data[7], core: data[8] };
   state.scenarios = { core: data[1], workplace: data[2], money: data[3] };
   const saved = storage.get(SETTINGS_KEY) || {};
@@ -324,6 +334,9 @@ function startRun() {
     locationId: "US",
     interestAnswers: {},
     budgetAdjustments: {},
+    installments: {},
+    temporaryCosts: [],
+    decisionVersion: 2,
     flags: {},
     retirement: 0,
     incomeAdjustment: 0,
@@ -365,6 +378,21 @@ function continueRun() {
     return;
   }
   state.run = saved;
+  if (saved.modelVersion) {
+    migrateInstallments(saved);
+    migrateTemporaryCosts(saved);
+    if (saved.currentScenario) {
+      const { category, id } = saved.currentScenario;
+      const updated =
+        state.careerScenarios[saved.careerId]?.find((s) => s.id === id) ||
+        state.lifeScenarios[category]?.find((s) => s.id === id);
+      if (updated)
+        saved.currentScenario =
+          !updated.housing || updated.housing === saved.housing
+            ? contextualScenario(updated)
+            : null;
+    }
+  }
   if (saved.phase === "quiz" && !saved.modelVersion) {
     saved.interestAnswers = {};
     saved.quizIndex = 0;
@@ -1040,6 +1068,7 @@ const pathwayGroups = {
   ],
 };
 function pathsForCareer(c) {
+  if (c.id === "electrician") return ["apprenticeship", ...c.modelPaths];
   if (c.modelPaths?.length) return c.modelPaths;
   const group =
     Object.entries(pathwayGroups).find(([, ids]) => ids.includes(c.id))?.[0] ||
@@ -1058,7 +1087,7 @@ function financeProfile(c = career()) {
 }
 function trainingBudget(path) {
   const t = state.finances.tuition;
-  if (path === "workforce") return 0;
+  if (path === "workforce" || path === "apprenticeship") return 0;
   if (path === "trade") return t.certificateExample; // One-year public certificate example, not occupation tuition.
   if (path === "cc") return t.twoYearInDistrict * 2;
   if (path === "college") return t.fourYearInState * 4;
@@ -1086,20 +1115,91 @@ function financeSources(c = career()) {
   const f = financeProfile(c);
   return `<p>${esc(payExplanation(c))}</p><p>Wage year: 2025. Coverage: ${esc(f.scope)}.</p><a href="${esc(f.method === "illustrative-missing-wage" ? state.finances.sourceUrl : f.sourceUrl)}" target="_blank" rel="noopener noreferrer">BLS wage source ↗</a> · <a href="${esc(state.finances.wageMethodUrl)}" target="_blank" rel="noopener noreferrer">How BLS wage ranges work ↗</a><p>Training budgets use example program lengths and NCES 2023–24 public tuition averages: two-year in-district $4,074/year; four-year in-state $9,016/year; graduate in-state $11,827/year. A certificate uses a one-year $10,868 example. Graduate examples include four undergraduate years plus two graduate years. Doctoral/professional programs instead use an editable $120,000 game budget; the graduate average excludes professional-practice doctorates. These are not prices for this occupation or a complete cost of attendance. Grants, living costs, school choice, and program length can change borrowing. Working years start after training.</p><a href="${esc(state.finances.tuition.sourceUrl)}" target="_blank" rel="noopener noreferrer">NCES tuition source ↗</a>`;
 }
+function trainingRoute(path) {
+  const c = career();
+  if (path === "apprenticeship")
+    return {
+      label: educationPaths[path].label,
+      timing: "5 years in this example, with paid work during training.",
+      detail:
+        "This fictional employer covers instruction. Apprenticeship pay and living costs occur before the five working years; your playable journey still starts with $2,000 cash.",
+      source:
+        "https://www.bls.gov/ooh/construction-and-extraction/electricians.htm",
+    };
+  if (c.id === "electrician")
+    return {
+      label:
+        path === "trade"
+          ? "Technical school, then apprenticeship"
+          : "Two-year study, then apprenticeship",
+      timing:
+        path === "trade"
+          ? "1 year of study, then a 5-year apprenticeship in this example."
+          : "2 years of study, then a 5-year apprenticeship in this example.",
+      detail:
+        "The study budget pays for preparation before the paid apprenticeship. Compare program content and employer credit for previous study before choosing.",
+      source:
+        "https://www.bls.gov/ooh/construction-and-extraction/electricians.htm",
+    };
+  if (c.id === "police-officer" && path === "workforce")
+    return {
+      label: "Agency training pathway",
+      timing:
+        "Agency selection and training come before the five working years.",
+      detail:
+        "This game offer has no student tuition charge. Research the agency’s entry requirements and training schedule.",
+    };
+  if (c.id === "physical-therapist")
+    return {
+      label: "Undergraduate study, then professional training",
+      timing:
+        "4 undergraduate years plus 3 professional years in this example.",
+      detail:
+        "The editable $120,000 budget contains $36,064 for undergraduate tuition and $83,936 for professional study. Program and licensing requirements need separate research.",
+      source: "https://www.bls.gov/ooh/healthcare/physical-therapists.htm",
+    };
+  const timing = {
+    workforce: "Employer training is part of this entry route.",
+    trade: "1 year of study in this budget example.",
+    cc: "2 years of study in this budget example.",
+    college: "4 years of study in this budget example.",
+    grad: "Undergraduate and advanced study before entry.",
+  }[path];
+  let detail =
+    "Compare the program, required qualification, and opportunities to earn during training. Working years start after this stage.";
+  if (c.id === "registered-nurse")
+    detail =
+      path === "cc"
+        ? "An approved associate nursing program can lead to entry after licensing. The two-year tuition example may exclude prerequisites."
+        : "A nursing bachelor’s route includes additional study. Both routes use the same entry pay in this game; licensing and employer requirements still apply.";
+  return {
+    label: educationPaths[path].label,
+    timing,
+    detail,
+    source:
+      c.id === "registered-nurse"
+        ? "https://www.bls.gov/ooh/healthcare/registered-nurses.htm"
+        : null,
+  };
+}
+function trainingCostDetails(path) {
+  const route = trainingRoute(path);
+  return `<small>${esc(route.timing)}</small><small>${esc(route.detail)}</small><small>Training budget: ${money(trainingBudget(path))}. Paid through savings, grants, or other support: <span data-path-support="${path}">${money(trainingBudget(path) - startingDebt(path))}</span>.</small>`;
+}
 function renderEducationSelection() {
   const c = career(),
     modern = state.run.financeVersion;
   setScreen(
-    `<div class="cq-card"><p class="cq-eyebrow">PLAN · TRAINING</p><h2>Plan your training</h2><p class="cq-small">Career: ${esc(c.title)}</p><p>Pick a path. Your five working years start after training.</p>${modern ? `<p>Typical education: ${esc(c.typicalEducation)}. <a href="${esc(c.laborSourceUrl)}" target="_blank" rel="noopener noreferrer">See requirements ↗</a></p><label for="borrowing-share">How much will you borrow?<select id="borrowing-share"><option value="0">None</option><option value="0.5">Half</option><option value="1">All</option></select></label>` : ""}<div class="cq-option-list cq-paths">${pathsForCareer(
+    `<div class="cq-card"><p class="cq-eyebrow">PLAN · TRAINING</p><h2>Plan your training</h2><p class="cq-small">Career: ${esc(c.title)}</p><p>Pick a path. Your five working years start after training.</p>${modern && trainingRoute(pathsForCareer(c)[0]).source ? `<p><a href="${esc(trainingRoute(pathsForCareer(c)[0]).source)}" target="_blank" rel="noopener noreferrer">Read about this occupation’s training routes ↗</a></p>` : ""}${modern ? `<p>Typical education: ${esc(c.typicalEducation)}. <a href="${esc(c.laborSourceUrl)}" target="_blank" rel="noopener noreferrer">See requirements ↗</a></p><label for="borrowing-share">How much will you borrow?<select id="borrowing-share"><option value="0">None</option><option value="0.5">Half</option><option value="1">All</option></select></label>` : ""}<div class="cq-option-list cq-paths">${pathsForCareer(
       c,
     )
       .map(
         (k) =>
-          `<button class="cq-option" data-path="${k}"><strong>${educationPaths[k].label}</strong>Student debt: <span data-path-debt="${k}">${money(modern ? trainingBudget(k) * (state.run.borrowingShare ?? 0.5) : educationPaths[k].debt)}</span><small>Yearly pay before taxes: ${money(startingSalary(k))}</small></button>`,
+          `<button class="cq-option" data-path="${k}"><strong>${esc(trainingRoute(k).label)}</strong>${modern ? trainingCostDetails(k) : ""}Student debt: <span data-path-debt="${k}">${money(modern ? trainingBudget(k) * (state.run.borrowingShare ?? 0.5) : educationPaths[k].debt)}</span><small>Yearly pay before taxes: ${money(startingSalary(k))}</small></button>`,
       )
       .join(
         "",
-      )}</div><p class="cq-small">${modern ? "Pay uses career wage data. Training costs are examples." : "Debt and pay are game estimates."}</p>${modern && financeProfile(c).method !== "annual-25th-percentile" ? `<p class="cq-small">${esc(payExplanation(c))}</p>` : ""}<details class="cq-more-info"><summary>About training and costs</summary><p>Real careers may require specific degrees, practice, exams, or licenses. Check the career sources for requirements.</p>${modern ? financeSources(c) : "<p>These are example costs, not actual tuition or starting pay.</p>"}</details><button class="btn quiet" id="back-careers">Back to careers</button></div>`,
+      )}</div><p class="cq-small">${modern ? "These routes use the same entry pay for the same occupation. Compare time, borrowing, and preparation. Costs paid before work are separate from your $2,000 starting cash." : "Debt and pay are game estimates."}</p>${modern && financeProfile(c).method !== "annual-25th-percentile" ? `<p class="cq-small">${esc(payExplanation(c))}</p>` : ""}<details class="cq-more-info"><summary>About training and costs</summary><p>Real careers may require specific degrees, practice, exams, or licenses. Check the career sources for requirements.</p>${modern ? financeSources(c) : "<p>These are example costs, not actual tuition or starting pay.</p>"}</details><button class="btn quiet" id="back-careers">Back to careers</button></div>`,
     "plan",
   );
   const borrowing = document.getElementById("borrowing-share");
@@ -1115,6 +1215,12 @@ function renderEducationSelection() {
               trainingBudget(el.dataset.pathDebt) * state.run.borrowingShare,
             )),
         );
+      screen()
+        .querySelectorAll("[data-path-support]")
+        .forEach((el) => {
+          const cost = trainingBudget(el.dataset.pathSupport);
+          el.textContent = money(cost * (1 - state.run.borrowingShare));
+        });
       persistRun();
     };
   }
@@ -1265,7 +1371,63 @@ const expenseLabels = {
   care: "Family support",
   medical: "Routine medical costs",
   maintenance: "Repairs & replacements",
+  dentalPlan: "Dental installments",
+  phonePlan: "Phone installments",
 };
+const installmentTerms = {
+  dentalPlan: { monthly: 50, years: 1, previousCategory: "medical" },
+  phonePlan: { monthly: 35, years: 2, previousCategory: "phone" },
+};
+function migrateInstallments(run) {
+  if (run.installments) return;
+  run.installments = {};
+  // Older saves put the contract inside regular bills. Keep settled ledgers as recorded.
+  const renewal = run.history.findLast(
+    (entry) =>
+      entry.id === "v3-money-08" && entry.choice === "Start a new installment",
+  );
+  for (const [plan, { monthly, previousCategory }] of Object.entries(
+    installmentTerms,
+  )) {
+    const startYear =
+      run.flags?.[plan] || (plan === "phonePlan" && renewal?.year);
+    if (!startYear) continue;
+    run.budgetAdjustments[previousCategory] -= monthly;
+    run.installments[plan] = startYear;
+  }
+}
+function migrateTemporaryCosts(run) {
+  run.temporaryCosts ||= [];
+  if (run.decisionVersion === 2) return;
+  for (const entry of run.history) {
+    if (
+      entry.id !== "v3-workplace-05" ||
+      entry.effects.monthly?.transport !== 60
+    )
+      continue;
+    run.budgetAdjustments.transport =
+      (run.budgetAdjustments.transport || 0) - 60;
+    run.temporaryCosts.push({ year: entry.year, amounts: { transport: 60 } });
+  }
+  run.decisionVersion = 2;
+}
+function installmentPayments(year) {
+  return Object.entries(state.run.installments || {}).flatMap(
+    ([plan, start]) => {
+      const { monthly, years } = installmentTerms[plan];
+      return year >= start && year < start + years ? [[plan, monthly]] : [];
+    },
+  );
+}
+function remainingInstallments() {
+  const nextYear = state.run.year + 1;
+  return installmentPayments(nextYear).map(([plan, monthly]) => {
+    const months =
+      (state.run.installments[plan] + installmentTerms[plan].years - nextYear) *
+      12;
+    return `${expenseLabels[plan]}: ${money(monthly * months)} remains in ${months} monthly payments after the simulation.`;
+  });
+}
 function monthlyBreakdown(
   housing = state.run.housing,
   year = state.run.year,
@@ -1288,22 +1450,31 @@ function monthlyBreakdown(
     maintenance: 100,
   };
   const adjustments = state.run.budgetAdjustments || {};
-  return Object.fromEntries(
-    Object.entries(base).map(([k, v]) => [
-      k,
-      Math.max(
-        0,
-        Math.round(
-          (k === "rent" &&
-          state.run.locationVersion &&
-          Number.isFinite(state.run.rentOverrides?.[housing])
-            ? state.run.rentOverrides[housing] + (adjustments[k] || 0)
-            : (v + (adjustments[k] || 0)) * expenseLocationFactor(k)) *
-            inflation,
-        ),
+  const regularBills = Object.entries(base).map(([k, v]) => [
+    k,
+    Math.max(
+      0,
+      Math.round(
+        (k === "rent" &&
+        state.run.locationVersion &&
+        Number.isFinite(state.run.rentOverrides?.[housing])
+          ? state.run.rentOverrides[housing]
+          : v * expenseLocationFactor(k)) *
+          inflation +
+          (adjustments[k] || 0),
       ),
-    ]),
-  );
+    ),
+  ]);
+  const parts = Object.fromEntries([
+    ...regularBills,
+    ...installmentPayments(year),
+  ]);
+  for (const cost of state.run.temporaryCosts || []) {
+    if (cost.year !== year) continue;
+    for (const [category, amount] of Object.entries(cost.amounts))
+      parts[category] = (parts[category] || 0) + amount;
+  }
+  return parts;
 }
 function livingTotal(parts) {
   return Object.values(parts).reduce((a, b) => a + b, 0);
@@ -1314,7 +1485,7 @@ function yearGross(year = state.run.year) {
     0,
     Math.round(
       startingSalary() * 1.02 ** (year - 1) +
-        (r.incomeAdjustment || 0) +
+        (year === r.year ? r.incomeAdjustment || 0 : 0) +
         (r.annualIncome || 0),
     ),
   );
@@ -1337,7 +1508,7 @@ function renderBudget() {
   if (!state.run.modelVersion) return renderLegacyBudget();
   const r = state.run;
   setScreen(
-    `<div class="cq-card cq-budget-planner"><p class="cq-eyebrow">PLAN / BUILD YOUR EVERYDAY LIFE</p><h2>Build your budget</h2><p>Start with $2,000 cash and <span id="starting-debt">${money(startingDebt())}</span> in student debt. Choose how you will live.</p>${r.locationVersion ? `<label for="living-location">Where will you live and work?<select id="living-location">${locationOptions()}</select></label><p class="cq-small" id="location-summary"></p><p class="cq-small">State averages. City costs vary; you can edit rent below.</p><details class="cq-more-info"><summary>How location changes your budget</summary><div id="location-sources">${locationSources()}</div></details>` : ""}${r.financeVersion ? `<details class="cq-more-info"><summary>Try different pay, training, or rent</summary><div class="cq-budget-inputs"><label for="training-cost">Training budget ($)<input id="training-cost" type="number" min="0" max="1000000" step="1" value="${r.trainingCost ?? trainingBudget(r.educationKey)}"></label><label for="annual-pay">Yearly pay before taxes ($)<input id="annual-pay" type="number" min="0" max="1000000" step="1" value="${startingSalary()}"></label>${r.locationVersion ? `<label for="rent-shared">Your share of rent ($/month)<input id="rent-shared" type="number" min="0" max="100000" step="1" placeholder="Use state estimate" value="${r.rentOverrides?.shared ?? ""}"></label><label for="rent-solo">Rent living alone ($/month)<input id="rent-solo" type="number" min="0" max="100000" step="1" placeholder="Use state estimate" value="${r.rentOverrides?.solo ?? ""}"></label>` : ""}</div><p class="cq-small">Borrowing ${Math.round((r.borrowingShare ?? 0.5) * 100)}% of training costs. Edit these game amounts to compare plans.</p></details><details class="cq-more-info"><summary>Pay and training sources</summary>${financeSources()}</details>` : ""}<div class="cq-budget-inputs"><label for="transport-plan">Getting to work<select id="transport-plan"><option value="car">Car: payment/fuel + insurance</option><option value="transit">Transit: lower cost, longer commute</option><option value="carpool">Carpool: shared cost, less flexibility</option></select></label><label for="care-plan">Family costs<select id="care-plan"><option value="none">No regular family contribution</option><option value="family">Contribute $300/month to family</option><option value="dependent">Dependent care/support: $750/month</option></select></label><label for="retirement-plan">Retirement savings<select id="retirement-plan"><option value="0">0% · more cash now</option><option value="0.04" selected>4% · save some for later</option><option value="0.08">8% · save more for later</option></select></label></div><div id="budget-comparison" class="cq-budget-comparison"></div><p class="cq-small">These are game estimates. Real costs and pay vary.</p><details class="cq-more-info"><summary>How the money works</summary><p>Illustrative costs, not local price estimates. Bills rise 3.5% per year; base pay rises 2%. Withholding is a classroom approximation, not a tax calculation. Choose retirement contributions of 0%, 4%, or 8% of gross pay; these are separate from spending cash. Education debt uses 5% annual interest and a ten-year payment schedule; other debt uses 8% annual game interest and a scheduled payment of 30% of the interest-adjusted balance (at least $360/year, capped at the balance). The model caps new consumer credit at a $12,000 balance, excluding later interest. Gaps beyond available credit remain visible as unpaid shortfalls; balances are not forgiven. This is a classroom credit rule, not a lending offer. No investment returns are assumed. Working years begin after training.</p></details><button class="btn quiet" id="back-education">← Back to training</button></div>`,
+    `<div class="cq-card cq-budget-planner"><p class="cq-eyebrow">PLAN / BUILD YOUR EVERYDAY LIFE</p><h2>Build your budget</h2><p>Start with $2,000 cash and <span id="starting-debt">${money(startingDebt())}</span> in student debt. Choose how you will live.</p>${r.locationVersion ? `<label for="living-location">Where will you live and work?<select id="living-location">${locationOptions()}</select></label><p class="cq-small" id="location-summary"></p><p class="cq-small">State averages. City costs vary; you can edit rent below.</p><details class="cq-more-info"><summary>How location changes your budget</summary><div id="location-sources">${locationSources()}</div></details>` : ""}${r.financeVersion ? `<details class="cq-more-info"><summary>Try different pay, training, or rent</summary><div class="cq-budget-inputs"><label for="training-cost">Training budget ($)<input id="training-cost" type="number" min="0" max="1000000" step="1" value="${r.trainingCost ?? trainingBudget(r.educationKey)}"></label><label for="annual-pay">Yearly pay before taxes ($)<input id="annual-pay" type="number" min="0" max="1000000" step="1" value="${startingSalary()}"></label>${r.locationVersion ? `<label for="rent-shared">Your share of rent ($/month)<input id="rent-shared" type="number" min="0" max="100000" step="1" placeholder="Use state estimate" value="${r.rentOverrides?.shared ?? ""}"></label><label for="rent-solo">Rent living alone ($/month)<input id="rent-solo" type="number" min="0" max="100000" step="1" placeholder="Use state estimate" value="${r.rentOverrides?.solo ?? ""}"></label>` : ""}</div><p class="cq-small">Borrowing ${Math.round((r.borrowingShare ?? 0.5) * 100)}% of training costs. Edit these game amounts to compare plans.</p></details><details class="cq-more-info"><summary>Pay and training sources</summary>${financeSources()}</details>` : ""}<div class="cq-budget-inputs"><label for="transport-plan">Getting to work<select id="transport-plan"><option value="car">Car: payment/fuel + insurance</option><option value="transit">Transit: lower cost, longer commute (life balance −5)</option><option value="carpool">Carpool: lower cost, shared schedule (life balance −3)</option></select></label><label for="care-plan">Family costs<select id="care-plan"><option value="none">No regular family contribution</option><option value="family">Contribute $300/month to family</option><option value="dependent">Dependent care/support: $750/month</option></select></label><label for="retirement-plan">Retirement savings<select id="retirement-plan"><option value="0">0% · more cash now</option><option value="0.04" selected>4% · save some for later</option><option value="0.08">8% · save more for later</option></select></label></div><div id="budget-comparison" class="cq-budget-comparison"></div><p class="cq-small">These are game estimates. Real costs and pay vary.</p><details class="cq-more-info"><summary>How the money works</summary><p>Illustrative costs, not local price estimates. Bills rise 3.5% per year; base pay rises 2%. Withholding is a classroom approximation, not a tax calculation. Choose retirement contributions of 0%, 4%, or 8% of gross pay; these are separate from spending cash. Education debt uses 5% annual interest and a ten-year payment schedule; other debt uses 8% annual game interest and a scheduled payment of 30% of the interest-adjusted balance (at least $360/year, capped at the balance). The model caps new consumer credit at a $12,000 balance, excluding later interest. Gaps beyond available credit remain visible as unpaid shortfalls; balances are not forgiven. This is a classroom credit rule, not a lending offer. No investment returns are assumed. Working years begin after training.</p></details><button class="btn quiet" id="back-education">← Back to training</button></div>`,
     "plan",
   );
   function draw() {
@@ -1372,12 +1543,17 @@ function renderBudget() {
     document.getElementById("budget-comparison").innerHTML = ["shared", "solo"]
       .map((h) => {
         const parts = monthlyBreakdown(h, 1),
-          annual = livingTotal(parts) * 12,
-          gross = startingSalary(),
-          tax = estimatedWithholding(gross),
-          retirement = Math.round(gross * (r.retirementRate ?? 0.04)),
-          payment = educationPayment(startingDebt()),
-          margin = gross - tax - retirement - annual - payment;
+          forecast = budgetForecast({
+            year: 1,
+            housing: h,
+            transport: r.transport,
+            retirementRate: r.retirementRate ?? 0.04,
+            educationDebt: startingDebt(),
+            initialDebt: startingDebt(),
+            consumerDebt: 0,
+            openingCash: 2000,
+          }),
+          margin = forecast.margin;
         return `<article class="cq-budget-choice"><p class="cq-eyebrow">${h === "shared" ? "SHARED HOME" : "YOUR OWN PLACE"}</p><h3>${money(livingTotal(parts))}<small> / month in bills</small></h3><details class="cq-more-info"><summary>See monthly bills</summary><dl>${Object.entries(
           parts,
         )
@@ -1388,7 +1564,7 @@ function renderBudget() {
           )
           .join(
             "",
-          )}</dl></details><div class="cq-budget-margin ${margin < 0 ? "is-shortfall" : ""}"><span>${margin < 0 ? "Short each month" : "Left each month"}</span><strong>${money(Math.abs(Math.round(margin / 12)))}</strong><small>After bills, taxes, savings, and student loan payments. Before unexpected costs.</small></div><button class="btn" data-housing="${h}">Choose ${h === "shared" ? "a shared home" : "living alone"} →</button></article>`;
+          )}</dl></details><div class="cq-budget-margin ${margin < 0 ? "is-shortfall" : ""}"><span>${margin < 0 ? "Short each month" : "Left each month"}</span><strong>${money(Math.abs(Math.round(margin / 12)))}</strong><small>After bills, taxes, savings, and student loan payments. Before unexpected costs.</small></div>${forecastMessage(forecast)}<button class="btn" data-housing="${h}">Choose ${h === "shared" ? "a shared home" : "living alone"} →</button></article>`;
       })
       .join("");
     screen()
@@ -1418,8 +1594,8 @@ function renderBudget() {
             );
             r.stats.workLife = clamp(
               career().baselineWorkLife +
-                (r.housing === "shared" ? -3 : 3) -
-                (r.transport === "transit" ? 5 : 0) -
+                (r.housing === "shared" ? -3 : 3) +
+                commuteLifeImpact(r.transport) -
                 (r.care === "none" ? 0 : 5),
             );
             Object.entries(educationPaths[r.educationKey].skill).forEach(
@@ -1486,6 +1662,63 @@ function educationPayment(balance) {
     ? Math.round(((balance * rate) / (1 - (1 + rate) ** -n)) * 12)
     : 0;
 }
+function debtPayments(educationDebt, consumerDebt, initialDebt) {
+  const educationInterest = Math.round(educationDebt * 0.05);
+  const consumerInterest = Math.round(consumerDebt * BORROWING_RATE);
+  const educationDue = Math.min(
+    educationDebt + educationInterest,
+    educationPayment(initialDebt),
+  );
+  const consumerDue = Math.min(
+    consumerDebt + consumerInterest,
+    Math.max(360, Math.round((consumerDebt + consumerInterest) * 0.3)),
+  );
+  return { educationInterest, consumerInterest, educationDue, consumerDue };
+}
+function budgetForecast({
+  year,
+  housing,
+  transport,
+  retirementRate,
+  educationDebt = state.run.educationDebt,
+  consumerDebt = state.run.consumerDebt,
+  initialDebt = state.run.initialDebt,
+  openingCash = state.run.stats.cash,
+  movingCost = 0,
+}) {
+  const gross = yearGross(year);
+  const taxes = estimatedWithholding(gross);
+  const bills = livingTotal(monthlyBreakdown(housing, year, transport));
+  const retirement = Math.round(gross * retirementRate);
+  const debt = debtPayments(educationDebt, consumerDebt, initialDebt);
+  const payment = debt.educationDue + debt.consumerDue;
+  const margin = gross - taxes - bills * 12 - retirement - payment;
+  const cashBeforeCredit = openingCash - movingCost + margin;
+  const availableCredit = Math.max(
+    0,
+    12000 - (consumerDebt + debt.consumerInterest - debt.consumerDue),
+  );
+  const borrowing = Math.min(Math.max(0, -cashBeforeCredit), availableCredit);
+  return {
+    gross,
+    bills,
+    retirement,
+    payment,
+    margin,
+    movingCost,
+    cashBeforeCredit,
+    borrowing,
+    closingCash: cashBeforeCredit + borrowing,
+  };
+}
+function forecastMessage(forecast) {
+  if (forecast.borrowing || forecast.closingCash < 0)
+    return `<p class="cq-note">This plan would need ${money(forecast.borrowing)} in new borrowing${forecast.closingCash < 0 ? ` and leave ${money(-forecast.closingCash)} in unpaid bills` : ""}. Compare housing, travel, and savings before continuing.</p>`;
+  return '<p class="cq-small">Before future decisions and unexpected costs.</p>';
+}
+function commuteLifeImpact(transport) {
+  return { car: 0, transit: -5, carpool: -3 }[transport] || 0;
+}
 function settleLifeYear() {
   const r = state.run;
   if (r.yearLedgers.some((l) => l.year === r.year)) return;
@@ -1494,21 +1727,13 @@ function settleLifeYear() {
     taxes = estimatedWithholding(gross),
     parts = monthlyBreakdown(),
     living = livingTotal(parts) * 12;
-  const retirement = Math.round(gross * (r.retirementRate ?? 0.04)),
-    educationInterest = Math.round(r.educationDebt * 0.05),
-    consumerInterest = Math.round(r.consumerDebt * BORROWING_RATE),
-    interest = educationInterest + consumerInterest;
+  const retirement = Math.round(gross * (r.retirementRate ?? 0.04));
+  const { educationInterest, consumerInterest, educationDue, consumerDue } =
+    debtPayments(r.educationDebt, r.consumerDebt, r.initialDebt);
+  const interest = educationInterest + consumerInterest;
   r.educationDebt += educationInterest;
   r.consumerDebt += consumerInterest;
-  const educationDue = Math.min(
-      r.educationDebt,
-      educationPayment(r.initialDebt),
-    ),
-    consumerDue = Math.min(
-      r.consumerDebt,
-      Math.max(360, Math.round(r.consumerDebt * 0.3)),
-    ),
-    payment = educationDue + consumerDue;
+  const payment = educationDue + consumerDue;
   // Any unpaid cash-flow gap becomes visible consumer borrowing, rather than free negative cash.
   r.stats.cash += gross - taxes - living - retirement - payment;
   r.educationDebt -= educationDue;
@@ -1558,7 +1783,7 @@ function settleLifeYear() {
 
 function dashboard() {
   const r = state.run;
-  return `<aside class="cq-dashboard" aria-label="Your current status"><h3>${esc(career().title)}</h3><p>Year ${r.year} of 5 · ${educationPaths[r.educationKey].label}</p><div class="cq-stats">${[
+  return `<aside class="cq-dashboard" aria-label="Your current status"><h3>${esc(career().title)}</h3><p>Year ${r.year} of 5 · ${esc(trainingRoute(r.educationKey).label)}</p><div class="cq-stats">${[
     ["Cash", money(r.stats.cash), "Below zero = funding shortfall"],
     [
       "Debt",
@@ -1596,10 +1821,9 @@ function chapterArt(kind) {
     "business";
   return `<svg class="cq-chapter-art" viewBox="0 0 240 130" fill="none" aria-hidden="true"><circle cx="160" cy="48" r="44" fill="var(--scene-sun)"/><path d="M0 115Q45 77 96 112T240 100V130H0Z" fill="var(--scene-ground)"/><rect x="24" y="37" width="91" height="76" rx="13" fill="white" stroke="var(--scene-ink)" stroke-width="2" transform="rotate(-8 24 37)"/><g transform="translate(37 42) scale(.83)" stroke="var(--scene-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${iconPaths[key]}</g><path d="M141 87V55h17v32m10 0V38h17v49m10 0V20h17v67" fill="var(--scene-accent)"/><path d="M138 92h81" stroke="var(--scene-ink)" stroke-width="3" stroke-linecap="round"/><circle cx="126" cy="20" r="5" fill="var(--scene-accent)"/><path d="M217 110v-9m-4 4h9M15 17v10m-5-5h10" stroke="var(--scene-ink)" stroke-width="2"/></svg>`;
 }
-function chapterBanner() {
+function chapterBanner(step) {
   const r = state.run,
-    kind =
-      r.stepInYear === 0 ? "workplace" : r.stepInYear === 1 ? "money" : "core";
+    kind = step === 0 ? "workplace" : step === 1 ? "money" : "core";
   const words = {
     workplace: ["WORK & GROWTH", "A career is more than a paycheck."],
     money: ["MONEY & CHOICES", "Give every dollar a purpose."],
@@ -1614,8 +1838,124 @@ function financialSnapshot() {
     months = Math.max(0, r.stats.cash) / bills;
   return `<div class="cq-financial-snapshot"><div><span>Cash for bills</span><strong>${money(Math.max(0, r.stats.cash))}</strong><small>${r.stats.cash < 0 ? `Unpaid bills: ${money(-r.stats.cash)}` : `About ${months.toFixed(1)} months of bills`}</small></div><div><span>Other debt</span><strong>${money(r.consumerDebt)}</strong><small>${r.consumerDebt > 0 ? `${Math.round(BORROWING_RATE * 100)}% yearly interest in this game` : "No interest on a $0 balance"}</small></div><div><span>Retirement savings</span><strong>${money(r.retirement)}</strong><small>Saved for later, not everyday spending</small></div></div>`;
 }
-function layout(content) {
-  return `<div class="cq-layout"><div class="cq-card cq-live-card">${chapterBanner()}${years()}${content}</div>${dashboard()}</div>`;
+function layout(content, step = state.run.stepInYear) {
+  return `<div class="cq-layout"><div class="cq-card cq-live-card">${chapterBanner(step)}${years()}${content}</div>${dashboard()}</div>`;
+}
+function contextualScenario(scenario) {
+  const variant = scenario.transportVariants?.[state.run.transport];
+  return variant ? { ...scenario, ...variant } : scenario;
+}
+function careerWorkScenarios() {
+  const tailored = state.careerScenarios[career().id] || [];
+  const generic = genericCareerWorkScenarios();
+  return generic.map((scenario) =>
+    tailored.find((candidate) => candidate.year === scenario.year) || scenario,
+  );
+}
+function genericCareerWorkScenarios() {
+  const c = career();
+  const duty = c.duties[0].replace(/[.!?]+$/, "");
+  const task = duty.charAt(0).toLowerCase() + duty.slice(1);
+  const choice = (label, text, effects, feedback) => ({
+    label,
+    text,
+    effects,
+    feedback,
+  });
+  return [
+    {
+      id: "career-" + c.id + "-practice",
+      category: "workplace",
+      year: 1,
+      title: "Practice in your chosen field",
+      prompt: `One task in this field is to ${task}. An experienced colleague, mentor, or supervisor offers supported practice, a familiar paid assignment, or gradual learning during scheduled hours.`,
+      choices: [
+        choice(
+          "Join supported practice",
+          "Keep current pay; commit two evenings.",
+          { flag: "careerPractice", problemSolving: 3, workLife: -4 },
+          "Practice with a colleague opens a later opportunity to support others.",
+        ),
+        choice(
+          "Take familiar paid work",
+          "Earn $700 extra before taxes this year and use two evenings.",
+          { income: 700, workLife: -4 },
+          "You earn additional pay while postponing the supported practice.",
+        ),
+        choice(
+          "Learn during scheduled hours",
+          "Keep current pay and accept slower output temporarily.",
+          { adaptability: 3, performance: -2 },
+          "You protect evenings and learn more gradually.",
+        ),
+      ],
+    },
+    {
+      id: "career-" + c.id + "-workload",
+      category: "workplace",
+      year: 3,
+      title: "Make room for the next assignment",
+      prompt: `A new assignment in this field will require you to ${task}. You can reorder other work, take extra paid hours, or share the assignment with a colleague.`,
+      choices: [
+        choice(
+          "Agree on priorities",
+          "Keep current pay and move a lower-priority task.",
+          { communication: 3, stress: 2 },
+          "Clear priorities create room for the new assignment.",
+        ),
+        choice(
+          "Take extra paid hours",
+          "Earn $1,000 extra before taxes this year and give up several evenings.",
+          { income: 1000, workLife: -6, stress: 5 },
+          "The added pay comes with a larger workload.",
+        ),
+        choice(
+          "Share the assignment",
+          "Earn $400 extra before taxes this year and coordinate with a colleague.",
+          { income: 400, teamwork: 3, workLife: -2 },
+          "Shared work reduces your share of the extra hours.",
+        ),
+      ],
+    },
+    {
+      id: "career-" + c.id + "-support",
+      category: "workplace",
+      year: 4,
+      requires: "careerPractice",
+      title: "Use what you practiced",
+      prompt: `The supported practice you chose earlier has prepared you to help a colleague with this kind of task. You are offered a paid support assignment.`,
+      choices: [
+        choice(
+          "Accept the full assignment",
+          "Earn $1,000 extra before taxes this year and commit several evenings.",
+          {
+            income: 1000,
+            leadership: 3,
+            workLife: -5,
+            clearFlag: "careerPractice",
+          },
+          "Your earlier practice leads to a paid responsibility.",
+        ),
+        choice(
+          "Take a smaller role",
+          "Earn $400 extra before taxes this year and commit one evening.",
+          {
+            income: 400,
+            teamwork: 3,
+            workLife: -2,
+            clearFlag: "careerPractice",
+          },
+          "You contribute with less extra time.",
+        ),
+        choice(
+          "Keep your existing workload",
+          "Keep current pay and your evenings.",
+          { workLife: 2, clearFlag: "careerPractice" },
+          "You retain what you learned and pass on the extra assignment.",
+        ),
+      ],
+    },
+  ];
 }
 function pickScenario() {
   const run = state.run,
@@ -1625,11 +1965,21 @@ function pickScenario() {
         : run.stepInYear === 1
           ? "money"
           : "core";
+  if (run.modelVersion && mode === "workplace") {
+    const careerCard = careerWorkScenarios().find(
+      (s) =>
+        s.year === run.year &&
+        (!s.requires || run.flags?.[s.requires]) &&
+        !run.history.some((h) => h.id === s.id),
+    );
+    if (careerCard) return careerCard;
+  }
   const all = (run.modelVersion ? state.lifeScenarios : state.scenarios)[
       mode
     ].filter(
       (s) =>
         (!s.minYear || run.year >= s.minYear) &&
+        (!s.housing || s.housing === run.housing) &&
         (!s.requires ||
           (run.flags?.[s.requires] &&
             run.year - run.flags[s.requires] >= (s.waitYears || 1))),
@@ -1638,9 +1988,9 @@ function pickScenario() {
     pool = unused.length ? unused : all;
   if (run.modelVersion) {
     const follow = pool.find((s) => s.requires);
-    if (follow) return follow;
+    if (follow) return contextualScenario(follow);
   }
-  return pool[Math.floor(Math.random() * pool.length)];
+  return contextualScenario(pool[Math.floor(Math.random() * pool.length)]);
 }
 function renderScenario() {
   const run = state.run;
@@ -1687,8 +2037,21 @@ function applyChoice(s, c) {
   const r = state.run,
     before = snapshot(r.stats),
     effects = {},
+    feedback = c.feedback,
     mult = { easy: 0.8, normal: 1, hard: 1.25 }[settings().difficulty];
   Object.entries(c.effects).forEach(([k, v]) => {
+    if (r.modelVersion && k === "temporaryMonthly") {
+      r.temporaryCosts ||= [];
+      r.temporaryCosts.push({ year: r.year, amounts: v });
+      effects.temporaryMonthly = v;
+      return;
+    }
+    if (r.modelVersion && k === "installment") {
+      r.installments[v] = r.year;
+      r.flags[v] = r.year;
+      effects.installment = v;
+      return;
+    }
     if (
       r.modelVersion &&
       ["income", "annualIncome", "monthly", "flag", "clearFlag"].includes(k)
@@ -1746,6 +2109,17 @@ function applyChoice(s, c) {
         ? r.stats[k] + effects[k]
         : clamp(r.stats[k] + effects[k]);
   });
+  let resultFeedback = feedback;
+  if (r.modelVersion && Object.hasOwn(c.effects, "extraPayment")) {
+    const paid = Math.max(0, -(effects.cash || 0));
+    if (paid) {
+      resultFeedback = `You paid ${money(paid)} toward debt, reducing your cash and debt by the same amount. You have less cash available for an emergency.`;
+    } else if (r.stats.debt <= 0) {
+      resultFeedback = "No extra payment was made because no debt remains. Your cash is unchanged.";
+    } else {
+      resultFeedback = "No extra payment was made because no cash was available. Scheduled debt payments still apply.";
+    }
+  }
   r.stats.debt = Math.max(0, r.stats.debt);
   updateNetWorth();
   r.history.push({
@@ -1755,7 +2129,7 @@ function applyChoice(s, c) {
     choice: c.label,
     text: c.text,
     feedback:
-      c.feedback +
+      resultFeedback +
       (r.modelVersion && c.effects.debt && effects.debt < c.effects.debt
         ? " The requested borrowing exceeds the model credit limit; the remainder is charged to cash and may create an unpaid shortfall."
         : ""),
@@ -1788,6 +2162,11 @@ function deltas(before, after) {
       .join("") || "<span>No immediate status change</span>"
   }</div>`;
 }
+function installmentFeedback(plan) {
+  if (!plan) return "";
+  const { monthly, years } = installmentTerms[plan];
+  return `<p class="cq-note">${expenseLabels[plan]}: ${money(monthly)}/month for ${years * 12} months. This year’s budget includes ${money(monthly * 12)} in payments.</p>`;
+}
 function renderFeedback() {
   const r = state.run,
     h = r.history.at(-1);
@@ -1801,7 +2180,16 @@ function renderFeedback() {
               .map(([k, v]) => `${expenseLabels[k]} ${money(v)}`)
               .join(", ")}. This continues in later years.</p>`
           : ""
-      }<p>Pay and regular bills are added at the year review.</p><div class="cq-inline-actions"><button class="btn" id="continue-decision">${r.afterFeedback === "yearSummary" ? "Review this year" : "Next decision"}</button></div>`,
+      }${
+        h.effects.temporaryMonthly
+          ? `<p class="cq-note">Added monthly costs this year only: ${Object.entries(
+              h.effects.temporaryMonthly,
+            )
+              .map(([key, value]) => `${expenseLabels[key]} ${money(value)}`)
+              .join(", ")}. These end before next year.</p>`
+          : ""
+      }${installmentFeedback(h.effects.installment)}<p>Pay and regular bills are added at the year review.</p><div class="cq-inline-actions"><button class="btn" id="continue-decision">${r.afterFeedback === "yearSummary" ? "Review this year" : "Next decision"}</button></div>`,
+      r.stepInYear - 1,
     ),
     "live",
   );
@@ -1893,7 +2281,7 @@ function recap(items) {
 function nextYearPlan() {
   const r = state.run;
   if (!r.modelVersion || r.year === 5) return "";
-  return `<section class="cq-next-plan"><h3>Adjust before next year</h3><p>Adjust next year’s plan. Moving costs $650 in this game. Transit is available in this scenario.</p><div class="cq-budget-inputs"><label>Home<select id="next-home">${[
+  return `<section class="cq-next-plan"><h3>Adjust before next year</h3><p>Compare next year’s plan before you commit. Moving costs $650. This example has transit and carpool options; they reduce life balance by 5 and 3 points while you use them.</p><div class="cq-budget-inputs"><label>Home<select id="next-home">${[
     ["shared", "Shared home"],
     ["solo", "Live alone"],
   ]
@@ -1903,8 +2291,8 @@ function nextYearPlan() {
     )
     .join("")}</select></label><label>Travel<select id="next-transport">${[
     ["car", "Car"],
-    ["transit", "Transit"],
-    ["carpool", "Carpool"],
+    ["transit", "Transit · longer commute"],
+    ["carpool", "Carpool · shared schedule"],
   ]
     .map(
       ([v, t]) =>
@@ -1912,7 +2300,66 @@ function nextYearPlan() {
     )
     .join(
       "",
-    )}</select></label><label>Retirement savings<select id="next-retirement">${[0, 0.04, 0.08].map((v) => `<option value="${v}" ${(r.retirementRate ?? 0.04) === v ? "selected" : ""}>${Math.round(v * 100)}%</option>`).join("")}</select></label></div></section>`;
+    )}</select></label><label>Retirement savings<select id="next-retirement">${[0, 0.04, 0.08].map((v) => `<option value="${v}" ${(r.retirementRate ?? 0.04) === v ? "selected" : ""}>${Math.round(v * 100)}%</option>`).join("")}</select></label></div><div id="next-plan-forecast" aria-live="polite"></div></section>`;
+}
+function drawNextPlanForecast() {
+  const r = state.run;
+  const target = document.getElementById("next-plan-forecast");
+  if (!target) return;
+  const current = {
+    year: r.year + 1,
+    housing: r.housing,
+    transport: r.transport,
+    retirementRate: r.retirementRate ?? 0.04,
+  };
+  const selected = {
+    ...current,
+    housing: document.getElementById("next-home").value,
+    transport: document.getElementById("next-transport").value,
+    retirementRate: Number(document.getElementById("next-retirement").value),
+  };
+  const baseline = budgetForecast(current);
+  const revised = budgetForecast({
+    ...selected,
+    movingCost: selected.housing === r.housing ? 0 : 650,
+  });
+  const recoveryChoices = [];
+  for (const housing of ["shared", "solo"])
+    for (const transport of ["car", "transit", "carpool"])
+      for (const retirementRate of [0, 0.04, 0.08]) {
+        const plan = { year: r.year + 1, housing, transport, retirementRate };
+        const forecast = budgetForecast({
+          ...plan,
+          movingCost: housing === r.housing ? 0 : 650,
+        });
+        const unpaid = Math.max(0, -forecast.closingCash);
+        const changes =
+          Number(housing !== selected.housing) +
+          Number(transport !== selected.transport) +
+          Number(retirementRate !== selected.retirementRate);
+        recoveryChoices.push({ plan, forecast, score: unpaid * 10 + forecast.borrowing * 2 + changes * 100 });
+      }
+  recoveryChoices.sort((a, b) => a.score - b.score);
+  const recovery = recoveryChoices[0];
+  const recoveryNote = revised.borrowing || revised.closingCash < 0
+    ? `<p class="cq-note"><strong>Recovery option to compare:</strong> ${recovery.plan.housing === "shared" ? "shared housing" : "living alone"}, ${recovery.plan.transport}, and ${Math.round(recovery.plan.retirementRate * 100)}% retirement savings would project ${money(recovery.forecast.borrowing)} new borrowing${recovery.forecast.closingCash < 0 ? ` and ${money(-recovery.forecast.closingCash)} unpaid bills` : ""}. Try those settings above to see the comparison. This estimate excludes unexpected costs.</p>`
+    : "";
+  const rows = [
+    ["Monthly bills", baseline.bills, revised.bills],
+    [
+      "Monthly surplus or deficit",
+      Math.round(baseline.margin / 12),
+      Math.round(revised.margin / 12),
+    ],
+    ["One-time moving cost", 0, revised.movingCost],
+    [
+      "Year-end cash before new borrowing",
+      baseline.cashBeforeCredit,
+      revised.cashBeforeCredit,
+    ],
+    ["New borrowing needed", baseline.borrowing, revised.borrowing],
+  ];
+  target.innerHTML = `<h4>Year ${r.year + 1} budget estimate</h4><p class="cq-small">Uses next year’s pay and bills, scheduled debt payments, and your savings choice.</p><table class="cq-ledger"><thead><tr><th scope="col">Budget</th><th scope="col">Current plan</th><th scope="col">Selected plan</th></tr></thead><tbody>${rows.map(([label, before, after]) => `<tr><th scope="row">${label}</th><td>${money(before)}</td><td>${money(after)}</td></tr>`).join("")}</tbody></table>${forecastMessage(revised)}${recoveryNote}<p class="cq-small">Commute effect on life balance: ${commuteLifeImpact(selected.transport)} points while this plan is in use.</p>`;
 }
 function renderYearSummary() {
   const r = state.run,
@@ -1923,6 +2370,11 @@ function renderYearSummary() {
     ),
     "live",
   );
+  for (const id of ["next-home", "next-transport", "next-retirement"]) {
+    const input = document.getElementById(id);
+    if (input) input.addEventListener("change", drawNextPlanForecast);
+  }
+  drawNextPlanForecast();
   document.getElementById("next-year").addEventListener("click", () => {
     const nextHome = document.getElementById("next-home")?.value,
       nextTransport = document.getElementById("next-transport")?.value,
@@ -1943,6 +2395,16 @@ function renderYearSummary() {
       ) {
         const before = snapshot(r.stats),
           fee = r.housing !== nextHome ? 650 : 0;
+        const previousTransport = r.transport;
+        const previousHome = r.housing;
+        r.stats.workLife = clamp(
+          r.stats.workLife +
+            commuteLifeImpact(nextTransport) -
+            commuteLifeImpact(previousTransport) +
+            (nextHome === "shared" ? -3 : 3) -
+            (previousHome === "shared" ? -3 : 3),
+        );
+        if (previousTransport !== nextTransport) delete r.flags.repairDeferred;
         r.housing = nextHome;
         r.transport = nextTransport;
         r.retirementRate = nextRetirement;
@@ -1954,8 +2416,8 @@ function renderYearSummary() {
           year: r.year,
           choice: `${nextHome} / ${nextTransport} / retirement ${nextRetirement * 100}%`,
           text: "Plan changed at the previous year review",
-          feedback: `New costs apply this year. Housing transition cost: ${money(fee)}.`,
-          effects: { cash: -fee },
+          feedback: `New costs apply this year. Housing transition cost: ${money(fee)}. Life balance changes with housing and travel.${previousTransport !== nextTransport ? " The new commute replaces the earlier travel arrangement." : ""}`,
+          effects: { cash: -fee, workLife: r.stats.workLife - before.workLife },
           before,
           after: snapshot(r.stats),
         });
@@ -1981,7 +2443,7 @@ function renderReport() {
       .sort((a, b) => b[1] - a[1])
       .slice(0, 3);
   setScreen(
-    `<div class="cq-card cq-report"><p class="cq-eyebrow">REFLECT · FIVE YEARS COMPLETED</p><h2>Your future has more than one score.</h2><p>${esc(career().title)}${r.locationVersion ? ` · ${esc(locationName())}` : ""} · ${educationPaths[r.educationKey].label} · ${r.housing === "shared" ? "Shared home" : "Living alone"}</p><div class="cq-report-summary">${[
+    `<div class="cq-card cq-report"><p class="cq-eyebrow">REFLECT · FIVE YEARS COMPLETED</p><h2>Your future has more than one score.</h2><p>${esc(career().title)}${r.locationVersion ? ` · ${esc(locationName())}` : ""} · ${esc(trainingRoute(r.educationKey).label)} · ${r.housing === "shared" ? "Shared home" : "Living alone"}</p><div class="cq-report-summary">${[
       ["Cash", money(r.stats.cash)],
       [r.modelVersion ? "Total debt" : "Education debt", money(r.stats.debt)],
       ["Net worth", money(r.stats.netWorth)],
@@ -1992,7 +2454,11 @@ function renderReport() {
       )
       .join(
         "",
-      )}</div><p>Well-being: <strong>${r.stats.happiness}/100</strong> · Stress: <strong>${r.stats.stress}/100</strong> · Life balance: <strong>${r.stats.workLife}/100</strong> · Work performance: <strong>${r.stats.performance}/100</strong></p><p>Most practiced skills: ${growth.map(([k, v]) => `${labels[k]} (+${v})`).join(", ")}. Changes are measured from the start of your working years.</p>${financialSnapshot()}<h3>Your decision trail</h3><details><summary>Review all ${r.history.length} decisions</summary>${recap(r.history)}</details><details><summary>Review annual budgets</summary>${r.yearLedgers.map(ledgerTable).join("")}</details><h3>Explain your story</h3><p>Use your decision trail and budgets as evidence. Responses save on this device.</p>${reflectionPrompts()
+      )}</div><p>Well-being: <strong>${r.stats.happiness}/100</strong> · Stress: <strong>${r.stats.stress}/100</strong> · Life balance: <strong>${r.stats.workLife}/100</strong> · Work performance: <strong>${r.stats.performance}/100</strong></p><p>Most practiced skills: ${growth.map(([k, v]) => `${labels[k]} (+${v})`).join(", ")}. Changes are measured from the start of your working years.</p>${financialSnapshot()}${remainingInstallments()
+      .map((note) => `<p class="cq-note">${note}</p>`)
+      .join(
+        "",
+      )}<h3>Your decision trail</h3><details><summary>Review all ${r.history.length} decisions</summary>${recap(r.history)}</details><details><summary>Review annual budgets</summary>${r.yearLedgers.map(ledgerTable).join("")}</details><h3>Explain your story</h3><p>Use your decision trail and budgets as evidence. Responses save on this device.</p>${reflectionPrompts()
       .map(
         (p, i) =>
           `<label class="cq-reflection" for="reflection-${i}">${i + 1}. ${esc(p)}<textarea id="reflection-${i}" data-reflection="${i}" placeholder="Explain your thinking…">${esc(r.reflections[i] || "")}</textarea></label>`,
@@ -2025,11 +2491,12 @@ function downloadReport() {
     lines = [
       "CAREER QUEST — MY FIVE-YEAR STORY",
       career().title,
-      educationPaths[r.educationKey].label,
+      trainingRoute(r.educationKey).label,
       `Model settings: ${settings().difficulty} impact, ${r.locationVersion ? locationName() : settings().costOfLiving} living costs`,
       `Cash: ${money(r.stats.cash)} | Debt: ${money(r.stats.debt)} | Net worth: ${money(r.stats.netWorth)}`,
       `Well-being: ${r.stats.happiness}/100 | Stress: ${r.stats.stress}/100 | Life balance: ${r.stats.workLife}/100 | Performance: ${r.stats.performance}/100`,
       "",
+      ...remainingInstallments(),
       "DECISION TRAIL",
       ...r.history.map(
         (h) => `Year ${h.year}: ${h.title} — ${h.choice}\n${h.feedback}`,

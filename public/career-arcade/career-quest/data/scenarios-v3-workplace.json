@@ -94,7 +94,7 @@
           "stress": -5,
           "happiness": 3
         },
-        "feedback": "Recovery protects your well-being, while lost pay tightens the year\u2019s budget."
+        "feedback": "Recovery protects your well-being, while lost pay tightens the year’s budget."
       },
       {
         "label": "Arrange temporary shorter days",
@@ -194,16 +194,16 @@
       },
       {
         "label": "Negotiate a one-year trial arrangement",
-        "text": "Add $1,200 gross this year and $60/month in transport.",
+        "text": "Earn $1,200 extra before taxes and pay an extra $60/month for travel for this year only.",
         "effects": {
           "income": 1200,
-          "monthly": {
-            "transport": 60
-          },
           "workLife": -3,
-          "communication": 3
+          "communication": 3,
+          "temporaryMonthly": {
+            "transport": 60
+          }
         },
-        "feedback": "The fictional employer accepts a narrower trial. The smaller pay increase has a smaller commute cost."
+        "feedback": "The trial adds pay and travel costs this year. Both end before next year’s budget."
       }
     ],
     "minYear": 2
@@ -240,7 +240,7 @@
       },
       {
         "label": "Negotiate some travel support",
-        "text": "Keep the premium; cut the added commute spending by $60/month and end the trial.",
+        "text": "Keep the $3,000 premium for this year only; reduce the added commute cost by $60/month going forward.",
         "effects": {
           "income": 3000,
           "monthly": {
@@ -307,14 +307,14 @@
     "context": "This is a fictional workplace event; it is not a forecast about your occupation.",
     "choices": [
       {
-        "label": "Accept the reduced schedule",
-        "text": "Lose $4,000 gross this year; use the time to search for stable work.",
+        "label": "Work the reduced schedule and look for steadier work",
+        "text": "Earn $4,000 less before taxes this year and use some of the freed-up time to look for a steadier job.",
         "effects": {
           "income": -4000,
           "professionalism": 3,
           "stress": 7
         },
-        "feedback": "Your bills continue while pay falls. Time spent searching does not produce a guaranteed job."
+        "feedback": "Your bills continue while pay falls. You start looking for steadier work, and this year’s budget still reflects the reduced pay."
       },
       {
         "label": "Pick up temporary shifts elsewhere",
@@ -424,13 +424,13 @@
   {
     "id": "v3-workplace-11",
     "category": "workplace",
-    "title": "Boundaries with a demanding client",
-    "prompt": "Someone expects responses outside your scheduled hours. Your supervisor wants the relationship maintained but has not promised additional pay.",
-    "context": "There is no extra income for unpaid availability in this scenario.",
+    "title": "Work requests outside scheduled hours",
+    "prompt": "A recurring, non-urgent work request arrives after your scheduled hours. Your supervisor wants it handled but has not approved paid on-call time.",
+    "context": "There is no extra income for unpaid availability in this scenario. Urgent work should use the established coverage process.",
     "choices": [
       {
         "label": "Set a clear response schedule",
-        "text": "Explain when to expect a reply and provide an escalation route.",
+        "text": "Set a response window and clarify which issues need the urgent coverage process.",
         "effects": {
           "communication": 4,
           "professionalism": 3,
@@ -441,13 +441,13 @@
       },
       {
         "label": "Stay available every evening",
-        "text": "Keep the client satisfied by remaining on call informally.",
+        "text": "Respond every evening without an agreed end time or extra pay.",
         "effects": {
           "performance": 3,
           "stress": 9,
           "workLife": -10
         },
-        "feedback": "The relationship improves for now, but unpaid work takes over personal time."
+        "feedback": "The request is handled for now, but unpaid availability takes over personal time."
       },
       {
         "label": "Build a shared coverage plan",
@@ -458,7 +458,7 @@
           "stress": 3,
           "workLife": -2
         },
-        "feedback": "Shared coverage reduces individual pressure and still needs everyone\u2019s time."
+        "feedback": "Shared coverage reduces individual pressure and still needs everyone’s time."
       }
     ]
   },

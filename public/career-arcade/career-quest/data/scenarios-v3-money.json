@@ -35,7 +35,81 @@
         },
         "feedback": "You gain time rather than a permanent fix. A later transport decision will return to the problem."
       }
-    ]
+    ],
+    "transportVariants": {
+      "transit": {
+        "title": "Your usual transit service is disrupted",
+        "prompt": "Your usual transit service is suspended for an extended period. Your ordinary fare is already budgeted. You need an alternative way to reach work.",
+        "context": "These replacement travel costs apply to this fictional service disruption.",
+        "choices": [
+          {
+            "label": "Arrange replacement travel for the year",
+            "text": "Pay $1,600 once for a reliable replacement commute.",
+            "effects": {
+              "cash": -1600,
+              "stress": -2
+            },
+            "feedback": "The replacement commute is arranged for the year. You use cash while your ordinary transit fare remains budgeted."
+          },
+          {
+            "label": "Finance replacement travel",
+            "text": "Add $1,600 consumer debt for this year’s replacement commute.",
+            "effects": {
+              "debt": 1600,
+              "stress": 4
+            },
+            "feedback": "You arrange replacement travel and repay the additional cost through consumer debt."
+          },
+          {
+            "label": "Use a temporary route",
+            "text": "Pay $350 and spend more time traveling; reassess the route next year.",
+            "effects": {
+              "cash": -350,
+              "flag": "repairDeferred",
+              "workLife": -6,
+              "stress": 4
+            },
+            "feedback": "A slower route keeps you traveling for now. A later decision will revisit the service disruption."
+          }
+        ]
+      },
+      "carpool": {
+        "title": "Your carpool arrangement falls through",
+        "prompt": "Your regular driver can no longer provide the shared ride. Your ordinary carpool contribution is already budgeted. You need replacement travel for work.",
+        "context": "The extra costs below pay for replacement travel during this disruption.",
+        "choices": [
+          {
+            "label": "Arrange a replacement ride",
+            "text": "Spend $1,600 once on reliable replacement travel this year.",
+            "effects": {
+              "cash": -1600,
+              "stress": -2
+            },
+            "feedback": "The replacement ride restores reliable travel at an extra cost."
+          },
+          {
+            "label": "Finance replacement rides",
+            "text": "Add $1,600 consumer debt for replacement travel.",
+            "effects": {
+              "debt": 1600,
+              "stress": 4
+            },
+            "feedback": "Rides are arranged; repayment and interest remain in your budget."
+          },
+          {
+            "label": "Use a temporary arrangement",
+            "text": "Spend $350 and accept a less convenient commute.",
+            "effects": {
+              "cash": -350,
+              "flag": "repairDeferred",
+              "workLife": -6,
+              "stress": 4
+            },
+            "feedback": "The temporary arrangement takes more time. You will revisit it in a later year."
+          }
+        ]
+      }
+    }
   },
   {
     "id": "v3-money-02",
@@ -78,7 +152,87 @@
       }
     ],
     "requires": "repairDeferred",
-    "minYear": 2
+    "minYear": 2,
+    "transportVariants": {
+      "transit": {
+        "title": "The temporary commute needs a lasting solution",
+        "prompt": "Your temporary replacement commute still takes too much time. Reliable replacement travel costs $2,100 in this story. You can fund it now or continue the slower arrangement.",
+        "context": "This follows the travel arrangement you postponed earlier.",
+        "choices": [
+          {
+            "label": "Arrange reliable replacement travel",
+            "text": "Spend $2,100 once to resolve the disrupted commute.",
+            "effects": {
+              "cash": -2100,
+              "clearFlag": "repairDeferred",
+              "workLife": 4,
+              "stress": -2
+            },
+            "feedback": "Reliable replacement travel ends the temporary arrangement."
+          },
+          {
+            "label": "Borrow for replacement travel",
+            "text": "Add $2,100 consumer debt to restore a reliable commute.",
+            "effects": {
+              "debt": 2100,
+              "clearFlag": "repairDeferred",
+              "stress": 4
+            },
+            "feedback": "You resolve the travel problem and carry the balance through the debt model."
+          },
+          {
+            "label": "Continue the slower arrangement",
+            "text": "Spend another $450 and earn $800 less before taxes from missed work.",
+            "effects": {
+              "cash": -450,
+              "income": -800,
+              "stress": 7,
+              "workLife": -5
+            },
+            "feedback": "The slower arrangement still costs time and pay. You will revisit it while the problem remains."
+          }
+        ]
+      },
+      "carpool": {
+        "title": "The temporary commute needs a lasting solution",
+        "prompt": "Your temporary replacement commute still takes too much time. Reliable replacement travel costs $2,100 in this story. You can fund it now or continue the slower arrangement.",
+        "context": "This follows the travel arrangement you postponed earlier.",
+        "choices": [
+          {
+            "label": "Arrange reliable replacement travel",
+            "text": "Spend $2,100 once to resolve the disrupted commute.",
+            "effects": {
+              "cash": -2100,
+              "clearFlag": "repairDeferred",
+              "workLife": 4,
+              "stress": -2
+            },
+            "feedback": "Reliable replacement travel ends the temporary arrangement."
+          },
+          {
+            "label": "Borrow for replacement travel",
+            "text": "Add $2,100 consumer debt to restore a reliable commute.",
+            "effects": {
+              "debt": 2100,
+              "clearFlag": "repairDeferred",
+              "stress": 4
+            },
+            "feedback": "You resolve the travel problem and carry the balance through the debt model."
+          },
+          {
+            "label": "Continue the slower arrangement",
+            "text": "Spend another $450 and earn $800 less before taxes from missed work.",
+            "effects": {
+              "cash": -450,
+              "income": -800,
+              "stress": 7,
+              "workLife": -5
+            },
+            "feedback": "The slower arrangement still costs time and pay. You will revisit it while the problem remains."
+          }
+        ]
+      }
+    }
   },
   {
     "id": "v3-money-03",
@@ -142,16 +296,13 @@
       },
       {
         "label": "Use the offered staged plan",
-        "text": "Pay $500 now and $50/month for the next year.",
+        "text": "Pay $500 now, then $50/month for 12 months.",
         "effects": {
           "cash": -500,
-          "monthly": {
-            "medical": 50
-          },
-          "flag": "dentalPlan",
-          "stress": 2
+          "stress": 2,
+          "installment": "dentalPlan"
         },
-        "feedback": "You keep more cash now. The monthly commitment stays until the follow-up ends it."
+        "feedback": "You pay less upfront. The remaining $600 is paid in 12 monthly installments, starting this year."
       },
       {
         "label": "Use consumer credit",
@@ -168,27 +319,24 @@
     "id": "v3-money-05",
     "category": "money",
     "title": "The dental payment plan ends",
-    "prompt": "The staged dental plan has reached its final scheduled year. The $50 monthly payment can now come out of your regular budget. You also have other uses for that money.",
-    "context": "This follow-up removes the recurring cost introduced by your earlier choice.",
+    "prompt": "Your dental bill is paid off, freeing up $50 a month. What will you do with that room in your budget?",
+    "context": "The installment ended automatically. Any new spending you choose starts this year.",
     "choices": [
       {
         "label": "Return the payment to your buffer",
-        "text": "Remove the $50 monthly charge.",
+        "text": "Leave the $50/month available for emergencies.",
         "effects": {
-          "monthly": {
-            "medical": -50
-          },
           "clearFlag": "dentalPlan",
           "financialLiteracy": 3
         },
-        "feedback": "Your normal budget improves. Savings appear through lower bills rather than an invented cash reward."
+        "feedback": "Your regular bills are lower, so more cash is available for emergencies."
       },
       {
         "label": "Keep part for routine care",
-        "text": "Reduce the monthly charge by $25 and keep $25 for care.",
+        "text": "Put $25/month toward routine care.",
         "effects": {
           "monthly": {
-            "medical": -25
+            "medical": 25
           },
           "clearFlag": "dentalPlan",
           "stress": -2
@@ -197,10 +345,9 @@
       },
       {
         "label": "Redirect it to family support",
-        "text": "Remove the $50 medical charge; add $50/month to family support.",
+        "text": "Put $50/month toward family support.",
         "effects": {
           "monthly": {
-            "medical": -50,
             "care": 50
           },
           "clearFlag": "dentalPlan",
@@ -281,15 +428,12 @@
       },
       {
         "label": "Choose a two-year installment offer",
-        "text": "Add $35/month to the phone category.",
+        "text": "Pay $35/month for 24 months, starting this year.",
         "effects": {
-          "monthly": {
-            "phone": 35
-          },
-          "flag": "phonePlan",
-          "stress": 2
+          "stress": 2,
+          "installment": "phonePlan"
         },
-        "feedback": "The upfront price is lower. This recurring bill continues until its follow-up ends it."
+        "feedback": "You replace your phone and spread the $840 device cost over two years. Your regular phone service bill stays separate."
       }
     ]
   },
@@ -297,16 +441,13 @@
     "id": "v3-money-08",
     "category": "money",
     "title": "Your device installment is paid off",
-    "prompt": "The two-year phone installment is complete. Its $35 monthly charge can end. You can keep the working device or choose another upgrade.",
-    "context": "The follow-up ends the earlier installment before any new purchase is added.",
+    "prompt": "You finished paying off your phone, freeing up $35 a month. How will you handle your next device decision?",
+    "context": "The old installment ended automatically.",
     "choices": [
       {
         "label": "Keep the working device",
-        "text": "Remove $35/month from the phone bill.",
+        "text": "Keep using your phone with no new device payments.",
         "effects": {
-          "monthly": {
-            "phone": -35
-          },
           "clearFlag": "phonePlan",
           "financialLiteracy": 3
         },
@@ -314,12 +455,9 @@
       },
       {
         "label": "Replace the battery and keep it",
-        "text": "Spend $90 and remove $35/month.",
+        "text": "Spend $90 once and keep using your phone.",
         "effects": {
           "cash": -90,
-          "monthly": {
-            "phone": -35
-          },
           "clearFlag": "phonePlan",
           "problemSolving": 3
         },
@@ -327,12 +465,12 @@
       },
       {
         "label": "Start a new installment",
-        "text": "Keep the same $35 monthly charge for another device.",
+        "text": "Pay $35/month for 24 months for a replacement device.",
         "effects": {
-          "clearFlag": "phonePlan",
-          "happiness": 3
+          "happiness": 3,
+          "installment": "phonePlan"
         },
-        "feedback": "The old agreement ends, but a new ongoing charge takes its place. The model keeps that charge beyond this year."
+        "feedback": "You get a replacement device and start a new two-year payment plan."
       }
     ],
     "requires": "phonePlan",
@@ -389,8 +527,8 @@
   {
     "id": "v3-money-10",
     "category": "money",
-    "title": "Debt payment or a cash buffer?",
-    "prompt": "You can choose whether to use up to $1,000 of cash toward debt. Required yearly payments will still be settled later. A small buffer may matter when the next bill arrives.",
+    "title": "Debt, emergency savings, or time to recharge?",
+    "prompt": "You’re deciding what to do with the cash you have on hand. You could put up to $1,000 toward debt, keep the cash for your next unexpected bill, or spend $550 on a short break after a demanding stretch. Your scheduled debt payments are still due at the year review.",
     "context": "Extra payments are capped by cash and the remaining debt; consumer debt is paid first.",
     "choices": [
       {
@@ -410,7 +548,7 @@
           "financialLiteracy": 2,
           "stress": -2
         },
-        "feedback": "Liquidity stays available. Debt interest continues to accrue."
+        "feedback": "Cash stays available for unexpected bills. Your remaining debt still accrues interest."
       },
       {
         "label": "Spend on a short break",

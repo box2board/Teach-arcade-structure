@@ -57,11 +57,11 @@ w.confirm = () => true;
 w.fetch = async (url) => ({
   ok: true,
   json: async () =>
-    JSON.parse(fs.readFileSync(root + url.replace("./", ""), "utf8")),
+    JSON.parse(fs.readFileSync(new URL(url, pathToFileURL(root)), "utf8")),
 });
 w.eval(
   fs.readFileSync(root + "career-quest.js", "utf8") +
-    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase,financialSnapshot,startingSalary,startingDebt,trainingBudget,financeProfile,careerWage,locationRecord,expenseLocationFactor};",
+    "\nwindow.cq={state,interestProfile,hasInterestSignal,affinityScore,applyChoice,settleYear,pickScenario,snapshot,monthlyBreakdown,yearGross,estimatedWithholding,educationPayment,renderByPhase,financialSnapshot,startingSalary,startingDebt,trainingBudget,financeProfile,careerWage,locationRecord,expenseLocationFactor,budgetForecast,contextualScenario,careerWorkScenarios,migrateTemporaryCosts};",
 );
 await new Promise((r) => setTimeout(r, 0));
 w.document.getElementById("start-run").click();
@@ -401,6 +401,96 @@ assert.equal(
   "v3-money-08",
   "eligible plan follow-up must be selected",
 );
+const moneyCard = (id) =>
+  api.state.lifeScenarios.money.find((s) => s.id === id);
+const installmentRun = (year, housing = "shared") =>
+  (api.state.run = {
+    ...JSON.parse(JSON.stringify(base)),
+    careerId: nurse.id,
+    educationKey: "cc",
+    housing,
+    locationId: "OH",
+    educationDebt: 0,
+    initialDebt: 0,
+    consumerDebt: 0,
+    initialSkills: { ...base.stats.skills },
+    year,
+  });
+const settleInstallmentYear = () => {
+  const run = api.state.run;
+  run.yearStart = api.snapshot(run.stats);
+  api.settleYear();
+  return run.yearLedgers.at(-1);
+};
+const dentalRun = installmentRun(3);
+dentalRun.stepInYear = 1;
+const dentalCard = moneyCard("v3-money-04");
+const medicalBaseline = api.monthlyBreakdown().medical;
+api.applyChoice(dentalCard, dentalCard.choices[1]);
+api.renderByPhase();
+assert.match(
+  w.document.querySelector(".cq-chapter-banner h3").textContent,
+  /MONEY/,
+);
+assert.match(
+  w.document.getElementById("screen").textContent,
+  /\$50\/month for 12 months.*\$600/,
+);
+assert.equal(dentalRun.stats.cash, 1500);
+let ledger = settleInstallmentYear();
+assert.equal(ledger.parts.dentalPlan * 12, 600);
+assert.equal(ledger.parts.medical, medicalBaseline);
+assert.equal(
+  ledger.living,
+  Object.values(ledger.parts).reduce((sum, cost) => sum + cost * 12, 0),
+);
+dentalRun.year++;
+assert.equal(settleInstallmentYear().parts.dentalPlan, undefined);
+
+const phoneRun = installmentRun(2);
+const phoneCard = moneyCard("v3-money-07");
+api.applyChoice(phoneCard, phoneCard.choices[2]);
+assert.equal(settleInstallmentYear().parts.phonePlan * 12, 420);
+phoneRun.year++;
+assert.equal(settleInstallmentYear().parts.phonePlan * 12, 420);
+phoneRun.year++;
+assert.equal(api.monthlyBreakdown().phonePlan, undefined);
+const renewalCard = moneyCard("v3-money-08");
+api.applyChoice(renewalCard, renewalCard.choices[2]);
+assert.equal(settleInstallmentYear().parts.phonePlan * 12, 420);
+phoneRun.year++;
+assert.equal(settleInstallmentYear().parts.phonePlan * 12, 420);
+assert.equal(api.monthlyBreakdown("shared", 6).phonePlan, undefined);
+
+const latePhoneRun = installmentRun(5);
+api.applyChoice(phoneCard, phoneCard.choices[2]);
+settleInstallmentYear();
+latePhoneRun.phase = "report";
+api.renderByPhase();
+assert.match(
+  w.document.getElementById("screen").textContent,
+  /Phone installments: \$420 remains in 12 monthly payments after the simulation/,
+);
+
+const oldSave = installmentRun(5, "solo");
+delete oldSave.installments;
+oldSave.flags.dentalPlan = 3;
+oldSave.flags.phonePlan = 4;
+oldSave.budgetAdjustments = { medical: 50, phone: 35 };
+oldSave.phase = "scenario";
+oldSave.stepInYear = 2;
+oldSave.currentScenario = api.state.lifeScenarios.core.find(
+  (s) => s.id === "v3-core-02",
+);
+w.localStorage.setItem("taCareerQuestRun", JSON.stringify(oldSave));
+w.document.getElementById("continue-run").click();
+assert.notEqual(api.state.run.currentScenario.id, "v3-core-02");
+assert.equal(api.monthlyBreakdown().dentalPlan, undefined);
+assert.equal(api.monthlyBreakdown().phonePlan, 35);
+assert.equal(api.state.run.budgetAdjustments.medical, 0);
+assert.equal(api.state.run.budgetAdjustments.phone, 0);
+w.document.getElementById("continue-run").click();
+assert.equal(api.state.run.budgetAdjustments.phone, 0);
 assert.equal(errors.length, 0, errors[0]?.stack);
 // The year review changes the actual next-year plan and records the moving charge.
 const replanned = (api.state.run = JSON.parse(JSON.stringify(base)));
@@ -475,12 +565,12 @@ assert(
 );
 assert(
   w.document
-    .querySelector("[data-path] small")
+    .querySelector("[data-path] small:last-child")
     .textContent.includes("Yearly pay before taxes"),
 );
 assert(
-  visibleWords(w.document.getElementById("screen")) < 65,
-  "training should be readable at a glance",
+  visibleWords(w.document.getElementById("screen")) < 240,
+  "training routes should stay concise while explaining time and funding",
 );
 const trainingInfo = w.document.querySelector(".cq-more-info");
 assert(trainingInfo && !trainingInfo.open);
@@ -661,6 +751,230 @@ const sweepSummary = {
 assert(
   sweepSummary.withNewBorrowing > 0 && sweepSummary.withoutNewBorrowing > 0,
 );
+
+// Every reviewed career gets its own decisions, and practice unlocks a later role.
+const reviewedCareers = [
+  "electrician",
+  "registered-nurse",
+  "elementary-teacher",
+  "software-developer",
+  "police-officer",
+  "dental-hygienist",
+  "graphic-designer",
+  "truck-driver",
+  "welder",
+  "physical-therapist",
+];
+const roleTitles = new Set();
+for (const id of reviewedCareers) {
+  const run = installmentRun(1);
+  run.careerId = id;
+  run.stepInYear = 0;
+  const first = api.pickScenario();
+  assert(first.id.startsWith("career-" + id + "-"));
+  roleTitles.add(first.title);
+  api.applyChoice(first, first.choices[0]);
+  run.year = 3;
+  run.stepInYear = 0;
+  assert(api.pickScenario().id.startsWith("career-" + id + "-"));
+  run.year = 4;
+  assert.equal(api.pickScenario().requires, "careerPractice");
+  delete run.flags.careerPractice;
+  assert(!api.pickScenario().id.startsWith("career-" + id + "-mentor"));
+}
+assert.equal(roleTitles.size, 10);
+const newlyReviewedCareers = [
+  "radiologic-technologist", "cybersecurity-analyst", "chef", "emt",
+  "accountant", "firefighter", "farmer", "veterinary-technician",
+  "hotel-manager", "pharmacist",
+];
+for (const id of newlyReviewedCareers) {
+  const run = installmentRun(1);
+  run.careerId = id;
+  const cards = api.careerWorkScenarios();
+  assert.equal(cards.length, 3);
+  assert.match(cards.find((card) => card.year === 1).id, new RegExp(`^career-${id}-`));
+  assert.match(cards.find((card) => card.year === 3).id, new RegExp(`^career-${id}-`));
+}
+
+// Fallback work prompts should read naturally for plural official occupation titles.
+const farmer = careers.find((c) => c.id === "carpenter");
+const farmerRun = installmentRun(1);
+farmerRun.careerId = farmer.id;
+const farmerPractice = api.careerWorkScenarios()[0];
+assert.match(farmerPractice.prompt, /^One task in this field is to /);
+assert(!farmerPractice.prompt.includes("in your work as Carpenters"));
+assert(farmerPractice.prompt.includes("to measure and mark"));
+const outsideHours = api.state.lifeScenarios.workplace.find(
+  (s) => s.id === "v3-workplace-11",
+);
+assert.equal(outsideHours.title, "Work requests outside scheduled hours");
+assert(!/client|relationship maintained/i.test(outsideHours.title + outsideHours.prompt));
+assert.match(
+  outsideHours.context,
+  /Urgent work should use the established coverage process/,
+);
+
+// Extra-debt feedback reports the actual payment, including zero-pay cases.
+const debtChoice = api.state.lifeScenarios.money.find(
+  (s) => s.id === "v3-money-10",
+).choices[0];
+const paymentRun = (cash, debt) => {
+  const current = installmentRun(1);
+  current.stats.cash = cash;
+  current.stats.debt = debt;
+  current.consumerDebt = debt;
+  current.educationDebt = 0;
+  current.initialDebt = debt;
+  current.stepInYear = 0;
+  current.history = [];
+  api.applyChoice({ id: "test-extra-payment", title: "Test" }, debtChoice);
+  return current.history.at(-1);
+};
+const partialPayment = paymentRun(450, 1000);
+assert.equal(partialPayment.effects.cash, -450);
+assert.match(partialPayment.feedback, /paid \$450 toward debt/);
+const noCashPayment = paymentRun(0, 1000);
+assert.equal(Math.abs(noCashPayment.effects.cash), 0);
+assert.match(
+  noCashPayment.feedback,
+  /No extra payment was made because no cash was available/,
+);
+const noDebtPayment = paymentRun(500, 0);
+assert.equal(Math.abs(noDebtPayment.effects.cash), 0);
+assert.match(
+  noDebtPayment.feedback,
+  /No extra payment was made because no debt remains/,
+);
+
+// Transport scenarios describe the selected mode, including their follow-up.
+const travelRun = installmentRun(2);
+travelRun.transport = "transit";
+for (const id of ["v3-money-01", "v3-money-02"]) {
+  const card = api.contextualScenario(moneyCard(id));
+  assert(
+    !/repair/i.test(
+      card.title +
+        card.prompt +
+        card.choices.map((c) => c.label + c.text + c.feedback).join(" "),
+    ),
+  );
+}
+travelRun.transport = "carpool";
+assert.match(api.contextualScenario(moneyCard("v3-money-01")).title, /carpool/);
+travelRun.transport = "car";
+assert.match(api.contextualScenario(moneyCard("v3-money-01")).title, /repair/);
+
+// The trial cost and pay both expire after its year, even with inflation.
+const trialRun = installmentRun(3);
+trialRun.stepInYear = 0;
+trialRun.retirementRate = 0.04;
+const trialCard = api.state.lifeScenarios.workplace.find(
+  (s) => s.id === "v3-workplace-05",
+);
+const ordinaryTransport = api.monthlyBreakdown().transport;
+api.applyChoice(trialCard, trialCard.choices[2]);
+assert.equal(api.monthlyBreakdown().transport, ordinaryTransport + 60);
+settleInstallmentYear();
+const nextForecast = api.budgetForecast({
+  year: 4,
+  housing: "shared",
+  transport: "car",
+  retirementRate: 0.04,
+});
+trialRun.year = 4;
+const trialLedger = settleInstallmentYear();
+assert.equal(trialLedger.gross, nextForecast.gross);
+assert.equal(trialLedger.closing.cash, nextForecast.closingCash);
+assert.equal(trialLedger.newBorrowing, nextForecast.borrowing);
+assert.equal(trialLedger.incomeAdjustment, 0);
+assert.equal(
+  trialLedger.parts.transport,
+  Math.round(430 * api.expenseLocationFactor("transport") * 1.035 ** 3),
+);
+
+// A pre-update save loses only its obsolete trial charge, once.
+const savedTrial = installmentRun(4);
+delete savedTrial.decisionVersion;
+savedTrial.budgetAdjustments.transport = 220;
+savedTrial.history = [
+  {
+    id: trialCard.id,
+    year: 2,
+    effects: { monthly: { transport: 60 }, income: 1200 },
+  },
+];
+savedTrial.yearLedgers = [{ year: 2, parts: { transport: 499 } }];
+const settledBefore = JSON.stringify(savedTrial.yearLedgers);
+api.migrateTemporaryCosts(savedTrial);
+api.migrateTemporaryCosts(savedTrial);
+assert.equal(savedTrial.budgetAdjustments.transport, 160);
+assert.equal(savedTrial.temporaryCosts.length, 1);
+assert.equal(JSON.stringify(savedTrial.yearLedgers), settledBefore);
+
+// The recovery preview reconciles to the next settled year and includes its move.
+const forecastRun = installmentRun(2, "solo");
+forecastRun.baseAnnualPay = 29000;
+forecastRun.retirementRate = 0.04;
+forecastRun.transport = "car";
+forecastRun.consumerDebt = 10000;
+forecastRun.stats.cash = 100;
+forecastRun.stats.debt = 10000;
+settleInstallmentYear();
+forecastRun.phase = "yearSummary";
+api.renderByPhase();
+const beforePreview =
+  w.document.getElementById("next-plan-forecast").textContent;
+const nextHome = w.document.getElementById("next-home");
+nextHome.value = "shared";
+nextHome.dispatchEvent(new w.Event("change"));
+const nextTravel = w.document.getElementById("next-transport");
+nextTravel.value = "carpool";
+nextTravel.dispatchEvent(new w.Event("change"));
+const revised = w.document.getElementById("next-plan-forecast").textContent;
+assert.notEqual(revised, beforePreview);
+assert.match(revised, /\$650/);
+assert.match(revised, /New borrowing needed/);
+const selectedForecast = api.budgetForecast({
+  year: 3,
+  housing: "shared",
+  transport: "carpool",
+  retirementRate: 0.04,
+  movingCost: 650,
+});
+const previousLife = forecastRun.stats.workLife;
+w.document.getElementById("next-year").click();
+assert.equal(
+  forecastRun.stats.workLife,
+  Math.min(100, Math.max(0, previousLife - 9)),
+);
+const newLedger = settleInstallmentYear();
+assert.equal(newLedger.closing.cash, selectedForecast.closingCash);
+assert.equal(newLedger.newBorrowing, selectedForecast.borrowing);
+
+// Actual training controls show route timing, funding, and changed borrowing.
+const apprenticeshipRun = installmentRun(1);
+apprenticeshipRun.careerId = "electrician";
+apprenticeshipRun.phase = "education";
+api.renderByPhase();
+assert.match(
+  w.document.querySelector('[data-path="apprenticeship"]').textContent,
+  /paid work during training/,
+);
+assert.equal(api.trainingBudget("apprenticeship"), 0);
+const share = w.document.getElementById("borrowing-share");
+share.value = "1";
+share.dispatchEvent(new w.Event("change"));
+assert.equal(
+  w.document.querySelector('[data-path-support="trade"]').textContent,
+  "$0",
+);
+w.document.querySelector('[data-path="apprenticeship"]').click();
+w.document.querySelector('[data-housing="shared"]').click();
+assert.equal(apprenticeshipRun.educationDebt, 0);
+assert.equal(apprenticeshipRun.phase, "scenario");
+assert.equal(errors.length, 0, errors[0]?.stack);
+
 // A mid-journey legacy save retains the original economic rules and scenario bank.
 const old = (api.state.run = JSON.parse(JSON.stringify(base)));
 delete old.modelVersion;
