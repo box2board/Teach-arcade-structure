@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--4--vocabulary",
+  "title": "Grade 4 ELA — Roots, Affixes, and Precise Word Choice",
+  "subject": "English Language Arts",
+  "category": "Vocabulary",
+  "topic": "Vocabulary",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on morphology, Greek roots, Latin roots, vocabulary.",
+  "keywords": [
+    "morphology",
+    "Greek roots",
+    "Latin roots",
+    "vocabulary"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.4.4"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does “rebuild” mean?",
+      "choices": [
+        "build before",
+        "build again",
+        "stop building",
+        "build without tools"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which word means “not able to be seen”?",
+      "choices": [
+        "vision",
+        "invisible",
+        "visible",
+        "preview"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does the root “port” suggest in “portable”?",
+      "choices": [
+        "carry",
+        "hear",
+        "see",
+        "measure"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does “micro” signal in “microscope”?",
+      "choices": [
+        "half",
+        "large",
+        "small",
+        "far"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does “graph” suggest in “autograph”?",
+      "choices": [
+        "eat",
+        "walk",
+        "listen",
+        "write"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What does “tele” signal in “telescope”?",
+      "choices": [
+        "afterward",
+        "three",
+        "far away",
+        "inside"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does the prefix in “interstate” suggest?",
+      "choices": [
+        "below",
+        "before",
+        "without",
+        "between"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which word shares a root related to water with “aquarium”?",
+      "choices": [
+        "aquatic",
+        "acute",
+        "acorn",
+        "accurate"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What does “bi” mean in “bicycle”?",
+      "choices": [
+        "one",
+        "two",
+        "many",
+        "three"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What does “-less” add to the meaning of “fearless”?",
+      "choices": [
+        "like",
+        "before",
+        "full of",
+        "without"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which word means “able to be moved”?",
+      "choices": [
+        "mover",
+        "removal",
+        "movement",
+        "movable"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What does “misread” mean?",
+      "choices": [
+        "read incorrectly",
+        "read out loud",
+        "read before",
+        "read again"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "“Unpack” starts with a prefix that does what?",
+      "choices": [
+        "means doing it first",
+        "means doing it again",
+        "reverses an action",
+        "makes the action smaller"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What does “preheat” tell you to do with the oven?",
+      "choices": [
+        "heat it ahead of time",
+        "cool it first",
+        "heat two ovens",
+        "turn it off late"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which verb suggests walking quietly and carefully?",
+      "choices": [
+        "march",
+        "tiptoe",
+        "charge",
+        "stomp"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which word best describes steady, gentle rainfall?",
+      "choices": [
+        "hailstorm",
+        "drizzle",
+        "downpour",
+        "flood"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "The trail loops back to its start. What does “loops” mean?",
+      "choices": [
+        "ends early",
+        "sinks down",
+        "curves around",
+        "breaks apart"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which word contains a root that relates to earth, as in “geography”?",
+      "choices": [
+        "geranium",
+        "genetics",
+        "generator",
+        "geology"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What does “spect” suggest in “inspect”?",
+      "choices": [
+        "look",
+        "write",
+        "think aloud",
+        "run"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which word means “one who teaches”?",
+      "choices": [
+        "taught",
+        "teaching",
+        "teacher",
+        "teachable"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

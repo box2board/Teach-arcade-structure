@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--5--u-s-government-foundations",
+  "title": "Grade 5 Social Studies — Foundations of U.S. Government",
+  "subject": "Social Studies",
+  "category": "U.S. Government Foundations",
+  "topic": "U.S. Government Foundations",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on Constitution, separation of powers, rights, federalism.",
+  "keywords": [
+    "Constitution",
+    "separation of powers",
+    "rights",
+    "federalism"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main job of the U.S. Constitution?",
+      "choices": [
+        "lists daily weather forecasts",
+        "sets store prices in every state",
+        "sets out how the federal government works",
+        "announces the first battles of the Revolution"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which branch of the federal government makes laws?",
+      "choices": [
+        "military alone",
+        "legislative",
+        "executive",
+        "judicial"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which branch carries out federal laws?",
+      "choices": [
+        "judicial",
+        "executive",
+        "town council",
+        "legislative"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which branch decides court cases about federal laws?",
+      "choices": [
+        "legislative only",
+        "judicial",
+        "state highway department",
+        "executive only"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which two bodies form the U.S. Congress?",
+      "choices": [
+        "President and Supreme Court",
+        "House of Representatives and Senate",
+        "President and House of Representatives",
+        "Supreme Court and Senate"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What name is given to the first ten amendments?",
+      "choices": [
+        "Declaration of Independence",
+        "Treaty of Paris",
+        "Articles of Confederation",
+        "Bill of Rights"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is an amendment?",
+      "choices": [
+        "an official change or addition to the Constitution",
+        "a court building",
+        "a yearly budget alone",
+        "a political party"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Residents write to Congress asking it to change a law. Which First Amendment freedom does this illustrate?",
+      "choices": [
+        "the right to serve on a jury",
+        "the right to run for every office",
+        "the right to petition the government",
+        "the right to own a home"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What does it mean that the president can veto a bill?",
+      "choices": [
+        "The president can write laws without Congress in every case.",
+        "The president can appoint every governor.",
+        "The president can reject a bill passed by Congress.",
+        "The president can erase all court decisions."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which is an example of a check on government power?",
+      "choices": [
+        "A city mayor can replace Congress.",
+        "Every branch approves its own powers without limits.",
+        "The same person runs every branch for life.",
+        "Congress can override a presidential veto with enough votes."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What does federalism divide power between?",
+      "choices": [
+        "the national and state governments",
+        "the Senate and House alone",
+        "different grades at one school",
+        "only two national courts"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which power is assigned to the federal government?",
+      "choices": [
+        "write each city's parking rules",
+        "assign city library cards",
+        "coin U.S. money",
+        "set hours for a local playground"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which action most clearly involves a state power?",
+      "choices": [
+        "setting rules for state driver's licenses",
+        "coining U.S. money",
+        "declaring war on another country",
+        "making treaties with other countries"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Why are elections important in a representative system?",
+      "choices": [
+        "Eligible voters can choose people to act for them.",
+        "Leaders must inherit office.",
+        "Courts select all voters.",
+        "Only officials choose their successors."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What earlier national frame of government preceded the U.S. Constitution?",
+      "choices": [
+        "Treaty of Guadalupe Hidalgo",
+        "Articles of Confederation",
+        "Gettysburg Address",
+        "Bill of Rights"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What is one role of the U.S. Supreme Court?",
+      "choices": [
+        "decide cases involving the Constitution",
+        "lead local police departments",
+        "write all federal laws from scratch",
+        "run every state school"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which document announced independence, rather than setting up today's three federal branches?",
+      "choices": [
+        "U.S. Constitution",
+        "Bill of Rights",
+        "a state driver's handbook",
+        "Declaration of Independence"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What idea is introduced by “We the People” in the Constitution?",
+      "choices": [
+        "There can be only one branch.",
+        "States have no people of their own.",
+        "Government authority is based on the people.",
+        "The president alone is the source of all laws."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Why separate power among the branches?",
+      "choices": [
+        "so federal laws never change",
+        "so citizens never need representatives",
+        "so every branch has exactly the same tasks",
+        "to limit the power any one branch can use by itself"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What source should you use first to check which branch has a named constitutional power?",
+      "choices": [
+        "a sports article",
+        "a physical map of North America",
+        "an unsigned rumor",
+        "the text of the U.S. Constitution"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

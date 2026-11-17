@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--4--inference",
+  "title": "Grade 4 ELA — Making Inferences from Evidence",
+  "subject": "English Language Arts",
+  "category": "Inference",
+  "topic": "Inference",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on clues, character, setting, text evidence.",
+  "keywords": [
+    "clues",
+    "character",
+    "setting",
+    "text evidence"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RL.4.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Bo slipped a card into his sister's bag and grinned. He had hidden the crayons when she walked in. What can you infer Bo is planning?",
+      "choices": [
+        "to take her bag away",
+        "a surprise for his sister",
+        "to clean the whole room",
+        "to hide his shoes"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Bo slipped a card into his sister's bag and grinned. He had hidden the crayons when she walked in. Which clue most supports that idea?",
+      "choices": [
+        "There was a bag.",
+        "Bo could see the room.",
+        "His sister walked in.",
+        "He slipped a card into her bag."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "All the seats were folded up except one row. A hand-lettered sign said “Rehearsal.” A violin case rested by the stage. What will most likely happen soon?",
+      "choices": [
+        "The stage will become a swimming pool.",
+        "The seats will all be sold.",
+        "Someone will cook lunch.",
+        "People will practice a performance."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "All the seats were folded up except one row. A hand-lettered sign said “Rehearsal.” A violin case rested by the stage. Which pair of details best supports the inference?",
+      "choices": [
+        "the room and the doors",
+        "the folded seats and the case color",
+        "the floor and the walls",
+        "the rehearsal sign and violin case"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Ezra came in with cool cheeks and wet boots. He put his gloves by the heater. What can you infer about the weather outside?",
+      "choices": [
+        "It is probably hot and dry.",
+        "It is always exactly freezing.",
+        "It is probably cold and wet.",
+        "It is probably warm and windy only."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Nora read each instruction twice. When the first corner would not fit, she carefully folded it again. How does Nora seem to approach the task?",
+      "choices": [
+        "by rushing without checking",
+        "by ignoring the directions",
+        "with care and persistence",
+        "by giving up as soon as possible"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Overnight the river rose over the lowest trail. At sunrise a worker carried a rope and a CLOSED sign to its entrance. Why will the worker probably put the rope across the trail?",
+      "choices": [
+        "to keep visitors away from flooded ground",
+        "to show where to fish",
+        "to measure the length of a boat",
+        "to hold a sign open in strong sun"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Sam had practiced his speech with his brother many times. Outside the classroom, his notes shook in his hand. How does Sam most likely feel before speaking?",
+      "choices": [
+        "bored",
+        "angry at his brother",
+        "certain that he will fall asleep",
+        "nervous"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Ina heard a steady tap inside the sink cabinet. A puddle was spreading beneath a pipe. What is likely happening?",
+      "choices": [
+        "The pipe is leaking.",
+        "Ina is washing the dishes.",
+        "The tap sound is from the stairs.",
+        "Someone put ice inside the cabinet."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A hiker brushed leaf litter aside and pointed to a line of rinsed stones and a mud mark above the bank. What most likely happened before the hike?",
+      "choices": [
+        "The stones were painted green.",
+        "Water rose higher than usual.",
+        "The bank was paved.",
+        "The leaves fell up from the ground."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "By the time class began, Max's desk partner had an extra pencil and a clean eraser. Max had brought two of each. Why did Max most likely bring extras?",
+      "choices": [
+        "to count the chairs",
+        "to repair the school desks",
+        "to make a sign",
+        "to share with someone who might need them"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "A bent gate leaned open. The seed tray beyond it was empty, and tiny footprints crossed the dirt. What is one reasonable inference about the seed tray?",
+      "choices": [
+        "A small animal may have eaten the seeds.",
+        "The footprints were made by a bus.",
+        "The seeds flew to the Moon.",
+        "The gate never opened."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "On the way to the recital, Eli tapped a rhythm against his knee and hummed the beginning of a tune. What might Eli be doing?",
+      "choices": [
+        "checking how long the road is",
+        "searching for missing keys",
+        "reviewing a piece of music",
+        "reading the address aloud"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Before trying the ramp, Tali checked each bolt and asked her teammate to hold the base. Which word best describes Tali's approach?",
+      "choices": [
+        "uninterested",
+        "cautious",
+        "impatient",
+        "careless"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "After recess, Sol dried a bench before setting down the class notebooks. Umbrellas stood open near the door. What most likely happened earlier?",
+      "choices": [
+        "The umbrellas were used as pencils.",
+        "It rained.",
+        "It snowed indoors.",
+        "The notebooks were washed."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "The grass in the marked square was just as tall as outside it. The gardener wrote “not yet” on the chart and set another date to check. What was the gardener probably waiting to see?",
+      "choices": [
+        "where the chart was printed",
+        "when sunlight began",
+        "a visible difference in grass growth",
+        "what name the square had"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Jin put the wide wheels back on after the cart got stuck in loose sand with narrow wheels. What does Jin probably think will help?",
+      "choices": [
+        "taking every wheel off",
+        "making the cart narrower",
+        "using wheels that sink less in sand",
+        "putting more sand on the path"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Before dinner, Meera checked two bowls and moved the tiny one beside the dog's bed. What can you infer the tiny bowl might be for?",
+      "choices": [
+        "all dinner guests",
+        "the dog",
+        "an outdoor plant",
+        "the oven"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "“We still have ten minutes,” Ren said, but kept glancing at the clock and hurrying through his work. What do Ren's actions suggest?",
+      "choices": [
+        "He is worried about time.",
+        "He forgot how to read.",
+        "He wants the room to get darker.",
+        "He hopes to work all night."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "The note on the garden bed read, “These are too small this week. Please wait to pick them.” Small green tomatoes hung from the vines. What does the writer expect?",
+      "choices": [
+        "The tomatoes will grow and ripen later.",
+        "The note will make tomatoes change color right away.",
+        "The tomatoes are ready to pick now.",
+        "The vines will be moved indoors today."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    }
+  ]
+}

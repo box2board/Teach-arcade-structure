@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--5--volume",
+  "title": "Grade 5 Math — Volume of Rectangular Prisms",
+  "subject": "Math",
+  "category": "Volume",
+  "topic": "Volume",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on cubic units, layers, length, width, height.",
+  "keywords": [
+    "cubic units",
+    "layers",
+    "length",
+    "width",
+    "height"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "5.MD.3",
+    "5.MD.5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "A box is 5 units long, 3 wide, and 4 high. What is its volume in cubic units?",
+      "choices": [
+        "61",
+        "59",
+        "60",
+        "62"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A cube has 3-unit edges. Find the volume.",
+      "choices": [
+        "29",
+        "26",
+        "28",
+        "27"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A prism has volume 84 cubic units and base area 21 square units. What is its height?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A solid has 6 layers of 8 unit cubes. How many cubes total?",
+      "choices": [
+        "48",
+        "50",
+        "49",
+        "47"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "A drawer is 10 inches long, 6 wide, and 2 deep. What is its volume in cubic inches?",
+      "choices": [
+        "140",
+        "120",
+        "130",
+        "110"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Two prisms have volumes of 24 and 35 cubic units and do not overlap. What is their combined volume?",
+      "choices": [
+        "59",
+        "61",
+        "58",
+        "60"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A 12-by-5-by-2 prism loses a full 12-by-5 layer one unit thick. Find the remaining volume.",
+      "choices": [
+        "60",
+        "59",
+        "61",
+        "62"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A box holds 72 unit cubes. It is 6 units long and 4 units wide. How many layers are there?",
+      "choices": [
+        "5",
+        "4",
+        "3",
+        "2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A model has a 9-by-2 base and is 3 units high. What is its volume?",
+      "choices": [
+        "55",
+        "56",
+        "54",
+        "53"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A 2-by-3-by-5 box and a 3-by-3-by-4 box are compared. How many cubic units larger is the second?",
+      "choices": [
+        "8",
+        "7",
+        "6",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A prism with base area 12 square units is 7 units high. Find its volume.",
+      "choices": [
+        "86",
+        "83",
+        "85",
+        "84"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A box has volume 100 cubic units and height 4. What is the area of its base?",
+      "choices": [
+        "25",
+        "26",
+        "24",
+        "27"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is the volume of a 1-by-12-by-9 prism?",
+      "choices": [
+        "118",
+        "98",
+        "128",
+        "108"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A box holds 96 unit cubes. If its base is 8 units long and 3 wide, what is its height?",
+      "choices": [
+        "3",
+        "6",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A 4-by-2-by-3 box doubles in height. Find the new volume.",
+      "choices": [
+        "50",
+        "48",
+        "49",
+        "47"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Two 3-by-3-by-2 boxes sit side by side. What is their combined volume?",
+      "choices": [
+        "36",
+        "38",
+        "37",
+        "35"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A cube has side length 5 cm. Find its volume in cubic centimeters.",
+      "choices": [
+        "135",
+        "125",
+        "115",
+        "145"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A tank is 8 by 4 by 6 units. How many cubes fill half its volume?",
+      "choices": [
+        "95",
+        "98",
+        "97",
+        "96"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A base has 4 rows of 6 cubes. A prism has 3 such layers. Find its volume.",
+      "choices": [
+        "73",
+        "74",
+        "71",
+        "72"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A 2-by-2-by-8 prism is cut across its 8-unit length. What is the volume of the piece 3 units long?",
+      "choices": [
+        "14",
+        "12",
+        "13",
+        "11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

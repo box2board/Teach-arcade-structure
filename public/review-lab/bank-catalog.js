@@ -3869,5 +3869,2414 @@ export const BANK_SETS=[
     "questionCount": 20,
     "description": "World History · 7–12",
     "file": "social-studies/world-history/globalization-and-contemporary-world.json"
+  },
+  {
+    "id": "elementary--math--k--counting-and-number-recognition",
+    "title": "Kindergarten Math — Counting to 20",
+    "subject": "Math",
+    "category": "Counting and Number Recognition",
+    "topic": "Counting and Number Recognition",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on numbers, numerals, sequence, how many.",
+    "keywords": [
+      "numbers",
+      "numerals",
+      "sequence",
+      "how many"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "K.CC.4",
+      "K.CC.5"
+    ],
+    "file": "elementary/math/k-counting-and-number-recognition.json"
+  },
+  {
+    "id": "elementary--math--k--shapes-and-patterns",
+    "title": "Kindergarten Math — Shapes and Repeating Patterns",
+    "subject": "Math",
+    "category": "Shapes and Patterns",
+    "topic": "Shapes and Patterns",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on circles, triangles, squares, rectangles, repeats.",
+    "keywords": [
+      "circles",
+      "triangles",
+      "squares",
+      "rectangles",
+      "repeats"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "K.G.4"
+    ],
+    "file": "elementary/math/k-shapes-and-patterns.json"
+  },
+  {
+    "id": "elementary--math--k--comparing-numbers",
+    "title": "Kindergarten Math — More, Fewer, and Equal",
+    "subject": "Math",
+    "category": "Comparing Numbers",
+    "topic": "Comparing Numbers",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on greater, less, same, groups.",
+    "keywords": [
+      "greater",
+      "less",
+      "same",
+      "groups"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "K.CC.6",
+      "K.CC.7"
+    ],
+    "file": "elementary/math/k-comparing-numbers.json"
+  },
+  {
+    "id": "elementary--math--k--basic-addition-and-subtraction",
+    "title": "Kindergarten Math — Adding and Taking Away to 10",
+    "subject": "Math",
+    "category": "Basic Addition and Subtraction",
+    "topic": "Basic Addition and Subtraction",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on join, separate, totals, differences.",
+    "keywords": [
+      "join",
+      "separate",
+      "totals",
+      "differences"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "K.OA.1",
+      "K.OA.2"
+    ],
+    "file": "elementary/math/k-basic-addition-and-subtraction.json"
+  },
+  {
+    "id": "elementary--math--1--addition-facts",
+    "title": "Grade 1 Math — Addition Facts Within 20",
+    "subject": "Math",
+    "category": "Addition Facts",
+    "topic": "Addition Facts",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on sums, doubles, make ten, missing addend.",
+    "keywords": [
+      "sums",
+      "doubles",
+      "make ten",
+      "missing addend"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "1.OA.6"
+    ],
+    "file": "elementary/math/1-addition-facts.json"
+  },
+  {
+    "id": "elementary--math--1--subtraction-facts",
+    "title": "Grade 1 Math — Subtraction Facts Within 20",
+    "subject": "Math",
+    "category": "Subtraction Facts",
+    "topic": "Subtraction Facts",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on difference, take away, count back.",
+    "keywords": [
+      "difference",
+      "take away",
+      "count back"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "1.OA.6"
+    ],
+    "file": "elementary/math/1-subtraction-facts.json"
+  },
+  {
+    "id": "elementary--math--1--place-value",
+    "title": "Grade 1 Math — Tens and Ones",
+    "subject": "Math",
+    "category": "Place Value",
+    "topic": "Place Value",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on bundles, digits, two-digit numbers.",
+    "keywords": [
+      "bundles",
+      "digits",
+      "two-digit numbers"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "1.NBT.2"
+    ],
+    "file": "elementary/math/1-place-value.json"
+  },
+  {
+    "id": "elementary--math--1--time-and-money",
+    "title": "Grade 1 Math — Clocks, Pennies, and Dimes",
+    "subject": "Math",
+    "category": "Time and Money",
+    "topic": "Time and Money",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on hours, half hours, pennies, dimes.",
+    "keywords": [
+      "hours",
+      "half hours",
+      "pennies",
+      "dimes"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "1.MD.3"
+    ],
+    "file": "elementary/math/1-time-and-money.json"
+  },
+  {
+    "id": "elementary--math--1--word-problems",
+    "title": "Grade 1 Math — Addition and Subtraction Stories",
+    "subject": "Math",
+    "category": "Word Problems",
+    "topic": "Word Problems",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on join, compare, missing part, equations.",
+    "keywords": [
+      "join",
+      "compare",
+      "missing part",
+      "equations"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "1.OA.1"
+    ],
+    "file": "elementary/math/1-word-problems.json"
+  },
+  {
+    "id": "elementary--math--2--two-digit-addition",
+    "title": "Grade 2 Math — Adding Two-Digit Numbers",
+    "subject": "Math",
+    "category": "Two-Digit Addition",
+    "topic": "Two-Digit Addition",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on sum, regroup, tens, ones.",
+    "keywords": [
+      "sum",
+      "regroup",
+      "tens",
+      "ones"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "2.NBT.5"
+    ],
+    "file": "elementary/math/2-two-digit-addition.json"
+  },
+  {
+    "id": "elementary--math--2--two-digit-subtraction",
+    "title": "Grade 2 Math — Subtracting Two-Digit Numbers",
+    "subject": "Math",
+    "category": "Two-Digit Subtraction",
+    "topic": "Two-Digit Subtraction",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on difference, regroup, two digits.",
+    "keywords": [
+      "difference",
+      "regroup",
+      "two digits"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "2.NBT.5"
+    ],
+    "file": "elementary/math/2-two-digit-subtraction.json"
+  },
+  {
+    "id": "elementary--math--2--place-value-to-1000",
+    "title": "Grade 2 Math — Hundreds, Tens, and Ones",
+    "subject": "Math",
+    "category": "Place Value to 1000",
+    "topic": "Place Value to 1000",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on digits, expanded form, number comparison.",
+    "keywords": [
+      "digits",
+      "expanded form",
+      "number comparison"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "2.NBT.1",
+      "2.NBT.3",
+      "2.NBT.4"
+    ],
+    "file": "elementary/math/2-place-value-to-1000.json"
+  },
+  {
+    "id": "elementary--math--2--measurement",
+    "title": "Grade 2 Math — Measuring and Comparing Lengths",
+    "subject": "Math",
+    "category": "Measurement",
+    "topic": "Measurement",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on inches, centimeters, rulers, distance.",
+    "keywords": [
+      "inches",
+      "centimeters",
+      "rulers",
+      "distance"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "2.MD.1",
+      "2.MD.4",
+      "2.MD.5"
+    ],
+    "file": "elementary/math/2-measurement.json"
+  },
+  {
+    "id": "elementary--math--2--money-and-time",
+    "title": "Grade 2 Math — Counting Coins and Telling Time",
+    "subject": "Math",
+    "category": "Money and Time",
+    "topic": "Money and Time",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on cents, nickels, dimes, quarters, five minutes.",
+    "keywords": [
+      "cents",
+      "nickels",
+      "dimes",
+      "quarters",
+      "five minutes"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "2.MD.7",
+      "2.MD.8"
+    ],
+    "file": "elementary/math/2-money-and-time.json"
+  },
+  {
+    "id": "elementary--math--3--multiplication-facts",
+    "title": "Grade 3 Math — Multiplication Facts and Equal Groups",
+    "subject": "Math",
+    "category": "Multiplication Facts",
+    "topic": "Multiplication Facts",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on factors, products, arrays, missing factors.",
+    "keywords": [
+      "factors",
+      "products",
+      "arrays",
+      "missing factors"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "3.OA.1",
+      "3.OA.7"
+    ],
+    "file": "elementary/math/3-multiplication-facts.json"
+  },
+  {
+    "id": "elementary--math--3--division-facts",
+    "title": "Grade 3 Math — Division Facts and Fair Shares",
+    "subject": "Math",
+    "category": "Division Facts",
+    "topic": "Division Facts",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on quotient, equal groups, missing divisor.",
+    "keywords": [
+      "quotient",
+      "equal groups",
+      "missing divisor"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "3.OA.2",
+      "3.OA.7"
+    ],
+    "file": "elementary/math/3-division-facts.json"
+  },
+  {
+    "id": "elementary--math--3--fractions",
+    "title": "Grade 3 Math — Fractions on Number Lines and in Groups",
+    "subject": "Math",
+    "category": "Fractions",
+    "topic": "Fractions",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on unit fractions, equal parts, numerators, denominators.",
+    "keywords": [
+      "unit fractions",
+      "equal parts",
+      "numerators",
+      "denominators"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "3.NF.1",
+      "3.NF.2",
+      "3.NF.3"
+    ],
+    "file": "elementary/math/3-fractions.json"
+  },
+  {
+    "id": "elementary--math--3--area-and-perimeter",
+    "title": "Grade 3 Math — Area and Perimeter of Rectangles",
+    "subject": "Math",
+    "category": "Area and Perimeter",
+    "topic": "Area and Perimeter",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on square units, length, width, boundary.",
+    "keywords": [
+      "square units",
+      "length",
+      "width",
+      "boundary"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "3.MD.7",
+      "3.MD.8"
+    ],
+    "file": "elementary/math/3-area-and-perimeter.json"
+  },
+  {
+    "id": "elementary--math--3--mixed-word-problems",
+    "title": "Grade 3 Math — Choosing Operations in Word Problems",
+    "subject": "Math",
+    "category": "Mixed Word Problems",
+    "topic": "Mixed Word Problems",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on addition, subtraction, multiplication, division, two steps.",
+    "keywords": [
+      "addition",
+      "subtraction",
+      "multiplication",
+      "division",
+      "two steps"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "3.OA.8"
+    ],
+    "file": "elementary/math/3-mixed-word-problems.json"
+  },
+  {
+    "id": "elementary--math--4--multi-digit-multiplication",
+    "title": "Grade 4 Math — Multi-Digit Multiplication",
+    "subject": "Math",
+    "category": "Multi-Digit Multiplication",
+    "topic": "Multi-Digit Multiplication",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on partial products, place value, area model.",
+    "keywords": [
+      "partial products",
+      "place value",
+      "area model"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "4.NBT.5"
+    ],
+    "file": "elementary/math/4-multi-digit-multiplication.json"
+  },
+  {
+    "id": "elementary--math--4--division",
+    "title": "Grade 4 Math — Multi-Digit Division and Remainders",
+    "subject": "Math",
+    "category": "Division",
+    "topic": "Division",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on quotient, divisor, leftovers, equal groups.",
+    "keywords": [
+      "quotient",
+      "divisor",
+      "leftovers",
+      "equal groups"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "4.NBT.6"
+    ],
+    "file": "elementary/math/4-division.json"
+  },
+  {
+    "id": "elementary--math--4--equivalent-fractions",
+    "title": "Grade 4 Math — Finding and Comparing Equivalent Fractions",
+    "subject": "Math",
+    "category": "Equivalent Fractions",
+    "topic": "Equivalent Fractions",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on equal value, scaling, denominator, comparison.",
+    "keywords": [
+      "equal value",
+      "scaling",
+      "denominator",
+      "comparison"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "4.NF.1",
+      "4.NF.2"
+    ],
+    "file": "elementary/math/4-equivalent-fractions.json"
+  },
+  {
+    "id": "elementary--math--4--decimals",
+    "title": "Grade 4 Math — Decimal Tenths and Hundredths",
+    "subject": "Math",
+    "category": "Decimals",
+    "topic": "Decimals",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on decimal notation, fractions, comparing decimals.",
+    "keywords": [
+      "decimal notation",
+      "fractions",
+      "comparing decimals"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "4.NF.6",
+      "4.NF.7"
+    ],
+    "file": "elementary/math/4-decimals.json"
+  },
+  {
+    "id": "elementary--math--4--geometry",
+    "title": "Grade 4 Math — Lines, Angles, and Shape Attributes",
+    "subject": "Math",
+    "category": "Geometry",
+    "topic": "Geometry",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on parallel, perpendicular, acute, obtuse, lines of symmetry.",
+    "keywords": [
+      "parallel",
+      "perpendicular",
+      "acute",
+      "obtuse",
+      "lines of symmetry"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "4.G.1",
+      "4.G.2",
+      "4.G.3",
+      "4.MD.5"
+    ],
+    "file": "elementary/math/4-geometry.json"
+  },
+  {
+    "id": "elementary--math--4--measurement-conversions",
+    "title": "Grade 4 Math — Measurement Conversions Within One System",
+    "subject": "Math",
+    "category": "Measurement Conversions",
+    "topic": "Measurement Conversions",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on meters, grams, pounds, liters, feet, time.",
+    "keywords": [
+      "meters",
+      "grams",
+      "pounds",
+      "liters",
+      "feet",
+      "time"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "4.MD.1",
+      "4.MD.2"
+    ],
+    "file": "elementary/math/4-measurement-conversions.json"
+  },
+  {
+    "id": "elementary--math--5--fraction-operations",
+    "title": "Grade 5 Math — Adding, Subtracting, and Multiplying Fractions",
+    "subject": "Math",
+    "category": "Fraction Operations",
+    "topic": "Fraction Operations",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on common denominator, mixed number, product.",
+    "keywords": [
+      "common denominator",
+      "mixed number",
+      "product"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "5.NF.1",
+      "5.NF.4"
+    ],
+    "file": "elementary/math/5-fraction-operations.json"
+  },
+  {
+    "id": "elementary--math--5--decimal-operations",
+    "title": "Grade 5 Math — Operating with Decimals to Hundredths",
+    "subject": "Math",
+    "category": "Decimal Operations",
+    "topic": "Decimal Operations",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on adding, subtracting, multiplying, dividing, money.",
+    "keywords": [
+      "adding",
+      "subtracting",
+      "multiplying",
+      "dividing",
+      "money"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "5.NBT.7"
+    ],
+    "file": "elementary/math/5-decimal-operations.json"
+  },
+  {
+    "id": "elementary--math--5--volume",
+    "title": "Grade 5 Math — Volume of Rectangular Prisms",
+    "subject": "Math",
+    "category": "Volume",
+    "topic": "Volume",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on cubic units, layers, length, width, height.",
+    "keywords": [
+      "cubic units",
+      "layers",
+      "length",
+      "width",
+      "height"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "5.MD.3",
+      "5.MD.5"
+    ],
+    "file": "elementary/math/5-volume.json"
+  },
+  {
+    "id": "elementary--math--5--order-of-operations",
+    "title": "Grade 5 Math — Evaluating Expressions with Grouping Symbols",
+    "subject": "Math",
+    "category": "Order of Operations",
+    "topic": "Order of Operations",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on parentheses, brackets, braces, numerical expressions.",
+    "keywords": [
+      "parentheses",
+      "brackets",
+      "braces",
+      "numerical expressions"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "5.OA.1"
+    ],
+    "file": "elementary/math/5-order-of-operations.json"
+  },
+  {
+    "id": "elementary--math--5--multi-step-word-problems",
+    "title": "Grade 5 Math — Multi-Step Problems with Decimals and Fractions",
+    "subject": "Math",
+    "category": "Multi-Step Word Problems",
+    "topic": "Multi-Step Word Problems",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on planning, comparing, units, real-world problems.",
+    "keywords": [
+      "planning",
+      "comparing",
+      "units",
+      "real-world problems"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "5.NF.2",
+      "5.NBT.7"
+    ],
+    "file": "elementary/math/5-multi-step-word-problems.json"
+  },
+  {
+    "id": "elementary--english-language-arts--k--letter-recognition",
+    "title": "Kindergarten ELA — Uppercase and Lowercase Letters",
+    "subject": "English Language Arts",
+    "category": "Letter Recognition",
+    "topic": "Letter Recognition",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on alphabet, matching, capital letters.",
+    "keywords": [
+      "alphabet",
+      "matching",
+      "capital letters"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RF.K.1"
+    ],
+    "file": "elementary/english-language-arts/k-letter-recognition.json"
+  },
+  {
+    "id": "elementary--english-language-arts--k--beginning-sounds",
+    "title": "Kindergarten ELA — Listening for Beginning Sounds",
+    "subject": "English Language Arts",
+    "category": "Beginning Sounds",
+    "topic": "Beginning Sounds",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on phonemic awareness, consonant sounds, letter sounds.",
+    "keywords": [
+      "phonemic awareness",
+      "consonant sounds",
+      "letter sounds"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RF.K.2",
+      "RF.K.3"
+    ],
+    "file": "elementary/english-language-arts/k-beginning-sounds.json"
+  },
+  {
+    "id": "elementary--english-language-arts--k--rhyming-words",
+    "title": "Kindergarten ELA — Finding Rhyming Words",
+    "subject": "English Language Arts",
+    "category": "Rhyming Words",
+    "topic": "Rhyming Words",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on sound play, phonological awareness, word families.",
+    "keywords": [
+      "sound play",
+      "phonological awareness",
+      "word families"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RF.K.2"
+    ],
+    "file": "elementary/english-language-arts/k-rhyming-words.json"
+  },
+  {
+    "id": "elementary--english-language-arts--k--sight-words",
+    "title": "Kindergarten ELA — Reading Common Little Words",
+    "subject": "English Language Arts",
+    "category": "Sight Words",
+    "topic": "Sight Words",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on high-frequency words, word recognition, early reading.",
+    "keywords": [
+      "high-frequency words",
+      "word recognition",
+      "early reading"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RF.K.3"
+    ],
+    "file": "elementary/english-language-arts/k-sight-words.json"
+  },
+  {
+    "id": "elementary--english-language-arts--1--short-and-long-vowels",
+    "title": "Grade 1 ELA — Short and Long Vowel Patterns",
+    "subject": "English Language Arts",
+    "category": "Short and Long Vowels",
+    "topic": "Short and Long Vowels",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on silent e, CVC, CVCe, phonics.",
+    "keywords": [
+      "silent e",
+      "CVC",
+      "CVCe",
+      "phonics"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RF.1.3"
+    ],
+    "file": "elementary/english-language-arts/1-short-and-long-vowels.json"
+  },
+  {
+    "id": "elementary--english-language-arts--1--sight-words",
+    "title": "Grade 1 ELA — Reading High-Frequency Words in Context",
+    "subject": "English Language Arts",
+    "category": "Sight Words",
+    "topic": "Sight Words",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on word recognition, fluency, reading.",
+    "keywords": [
+      "word recognition",
+      "fluency",
+      "reading"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RF.1.3"
+    ],
+    "file": "elementary/english-language-arts/1-sight-words.json"
+  },
+  {
+    "id": "elementary--english-language-arts--1--sentence-structure",
+    "title": "Grade 1 ELA — Building Complete Sentences",
+    "subject": "English Language Arts",
+    "category": "Sentence Structure",
+    "topic": "Sentence Structure",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on word order, capitals, subjects, verbs.",
+    "keywords": [
+      "word order",
+      "capitals",
+      "subjects",
+      "verbs"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.1.1",
+      "L.1.2"
+    ],
+    "file": "elementary/english-language-arts/1-sentence-structure.json"
+  },
+  {
+    "id": "elementary--english-language-arts--1--basic-reading-comprehension",
+    "title": "Grade 1 ELA — Reading Short Stories and Finding Details",
+    "subject": "English Language Arts",
+    "category": "Basic Reading Comprehension",
+    "topic": "Basic Reading Comprehension",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on who, what, where, when, sequence.",
+    "keywords": [
+      "who",
+      "what",
+      "where",
+      "when",
+      "sequence"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RL.1.1"
+    ],
+    "file": "elementary/english-language-arts/1-basic-reading-comprehension.json"
+  },
+  {
+    "id": "elementary--english-language-arts--2--parts-of-speech",
+    "title": "Grade 2 ELA — Nouns, Verbs, and Adjectives in Sentences",
+    "subject": "English Language Arts",
+    "category": "Parts of Speech",
+    "topic": "Parts of Speech",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on grammar, action words, describing words.",
+    "keywords": [
+      "grammar",
+      "action words",
+      "describing words"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.2.1"
+    ],
+    "file": "elementary/english-language-arts/2-parts-of-speech.json"
+  },
+  {
+    "id": "elementary--english-language-arts--2--vocabulary",
+    "title": "Grade 2 ELA — Word Meanings and Word Parts",
+    "subject": "English Language Arts",
+    "category": "Vocabulary",
+    "topic": "Vocabulary",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on prefixes, suffixes, multiple meanings.",
+    "keywords": [
+      "prefixes",
+      "suffixes",
+      "multiple meanings"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.2.4"
+    ],
+    "file": "elementary/english-language-arts/2-vocabulary.json"
+  },
+  {
+    "id": "elementary--english-language-arts--2--punctuation",
+    "title": "Grade 2 ELA — Punctuation That Helps Readers",
+    "subject": "English Language Arts",
+    "category": "Punctuation",
+    "topic": "Punctuation",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on periods, question marks, commas, apostrophes.",
+    "keywords": [
+      "periods",
+      "question marks",
+      "commas",
+      "apostrophes"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.2.2"
+    ],
+    "file": "elementary/english-language-arts/2-punctuation.json"
+  },
+  {
+    "id": "elementary--english-language-arts--2--reading-comprehension",
+    "title": "Grade 2 ELA — Short Passages and Text Evidence",
+    "subject": "English Language Arts",
+    "category": "Reading Comprehension",
+    "topic": "Reading Comprehension",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on sequence, key details, cause and effect.",
+    "keywords": [
+      "sequence",
+      "key details",
+      "cause and effect"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RL.2.1"
+    ],
+    "file": "elementary/english-language-arts/2-reading-comprehension.json"
+  },
+  {
+    "id": "elementary--english-language-arts--3--main-idea",
+    "title": "Grade 3 ELA — Main Idea and Supporting Details",
+    "subject": "English Language Arts",
+    "category": "Main Idea",
+    "topic": "Main Idea",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on central idea, summary, supporting evidence.",
+    "keywords": [
+      "central idea",
+      "summary",
+      "supporting evidence"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RI.3.2"
+    ],
+    "file": "elementary/english-language-arts/3-main-idea.json"
+  },
+  {
+    "id": "elementary--english-language-arts--3--context-clues",
+    "title": "Grade 3 ELA — Working Out Word Meanings from Context",
+    "subject": "English Language Arts",
+    "category": "Context Clues",
+    "topic": "Context Clues",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on definitions, examples, contrasts, vocabulary.",
+    "keywords": [
+      "definitions",
+      "examples",
+      "contrasts",
+      "vocabulary"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.3.4"
+    ],
+    "file": "elementary/english-language-arts/3-context-clues.json"
+  },
+  {
+    "id": "elementary--english-language-arts--3--grammar",
+    "title": "Grade 3 ELA — Grammar in Action",
+    "subject": "English Language Arts",
+    "category": "Grammar",
+    "topic": "Grammar",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on verbs, pronouns, agreement, conjunctions.",
+    "keywords": [
+      "verbs",
+      "pronouns",
+      "agreement",
+      "conjunctions"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.3.1"
+    ],
+    "file": "elementary/english-language-arts/3-grammar.json"
+  },
+  {
+    "id": "elementary--english-language-arts--3--synonyms-and-antonyms",
+    "title": "Grade 3 ELA — Words with Similar and Opposite Meanings",
+    "subject": "English Language Arts",
+    "category": "Synonyms and Antonyms",
+    "topic": "Synonyms and Antonyms",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on word choice, shades of meaning, synonyms.",
+    "keywords": [
+      "word choice",
+      "shades of meaning",
+      "synonyms"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.3.5"
+    ],
+    "file": "elementary/english-language-arts/3-synonyms-and-antonyms.json"
+  },
+  {
+    "id": "elementary--english-language-arts--4--figurative-language",
+    "title": "Grade 4 ELA — Figurative Language in Context",
+    "subject": "English Language Arts",
+    "category": "Figurative Language",
+    "topic": "Figurative Language",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on simile, metaphor, personification, idioms.",
+    "keywords": [
+      "simile",
+      "metaphor",
+      "personification",
+      "idioms"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.4.5"
+    ],
+    "file": "elementary/english-language-arts/4-figurative-language.json"
+  },
+  {
+    "id": "elementary--english-language-arts--4--text-structure",
+    "title": "Grade 4 ELA — How Informational Text Is Organized",
+    "subject": "English Language Arts",
+    "category": "Text Structure",
+    "topic": "Text Structure",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on sequence, comparison, cause and effect, problem and solution.",
+    "keywords": [
+      "sequence",
+      "comparison",
+      "cause and effect",
+      "problem and solution"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RI.4.5"
+    ],
+    "file": "elementary/english-language-arts/4-text-structure.json"
+  },
+  {
+    "id": "elementary--english-language-arts--4--vocabulary",
+    "title": "Grade 4 ELA — Roots, Affixes, and Precise Word Choice",
+    "subject": "English Language Arts",
+    "category": "Vocabulary",
+    "topic": "Vocabulary",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on morphology, Greek roots, Latin roots, vocabulary.",
+    "keywords": [
+      "morphology",
+      "Greek roots",
+      "Latin roots",
+      "vocabulary"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.4.4"
+    ],
+    "file": "elementary/english-language-arts/4-vocabulary.json"
+  },
+  {
+    "id": "elementary--english-language-arts--4--inference",
+    "title": "Grade 4 ELA — Making Inferences from Evidence",
+    "subject": "English Language Arts",
+    "category": "Inference",
+    "topic": "Inference",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on clues, character, setting, text evidence.",
+    "keywords": [
+      "clues",
+      "character",
+      "setting",
+      "text evidence"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RL.4.1"
+    ],
+    "file": "elementary/english-language-arts/4-inference.json"
+  },
+  {
+    "id": "elementary--english-language-arts--5--theme",
+    "title": "Grade 5 ELA — Finding Theme in Short Stories",
+    "subject": "English Language Arts",
+    "category": "Theme",
+    "topic": "Theme",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on central message, lesson, evidence.",
+    "keywords": [
+      "central message",
+      "lesson",
+      "evidence"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RL.5.2"
+    ],
+    "file": "elementary/english-language-arts/5-theme.json"
+  },
+  {
+    "id": "elementary--english-language-arts--5--literary-elements",
+    "title": "Grade 5 ELA — How Story Elements Work Together",
+    "subject": "English Language Arts",
+    "category": "Literary Elements",
+    "topic": "Literary Elements",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on plot, conflict, narrator, setting, characterization.",
+    "keywords": [
+      "plot",
+      "conflict",
+      "narrator",
+      "setting",
+      "characterization"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RL.5.3",
+      "RL.5.6"
+    ],
+    "file": "elementary/english-language-arts/5-literary-elements.json"
+  },
+  {
+    "id": "elementary--english-language-arts--5--advanced-grammar",
+    "title": "Grade 5 ELA — Editing for Clarity and Grammar",
+    "subject": "English Language Arts",
+    "category": "Advanced Grammar",
+    "topic": "Advanced Grammar",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on verb tense, conjunctions, pronouns, sentence editing.",
+    "keywords": [
+      "verb tense",
+      "conjunctions",
+      "pronouns",
+      "sentence editing"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "L.5.1"
+    ],
+    "file": "elementary/english-language-arts/5-advanced-grammar.json"
+  },
+  {
+    "id": "elementary--english-language-arts--5--authors-purpose",
+    "title": "Grade 5 ELA — Why Authors Write and How You Can Tell",
+    "subject": "English Language Arts",
+    "category": "Author’s Purpose",
+    "topic": "Author’s Purpose",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on purpose, audience, persuade, explain, entertain.",
+    "keywords": [
+      "purpose",
+      "audience",
+      "persuade",
+      "explain",
+      "entertain"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/english-language-arts/5-authors-purpose.json"
+  },
+  {
+    "id": "elementary--english-language-arts--5--reading-comprehension",
+    "title": "Grade 5 ELA — Reading and Comparing Short Texts",
+    "subject": "English Language Arts",
+    "category": "Reading Comprehension",
+    "topic": "Reading Comprehension",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on summary, evidence, paraphrase, inference.",
+    "keywords": [
+      "summary",
+      "evidence",
+      "paraphrase",
+      "inference"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "RI.5.1",
+      "RI.5.9"
+    ],
+    "file": "elementary/english-language-arts/5-reading-comprehension.json"
+  },
+  {
+    "id": "elementary--science--k--living-and-nonliving-things",
+    "title": "Kindergarten Science — Which Things Are Living?",
+    "subject": "Science",
+    "category": "Living and Nonliving Things",
+    "topic": "Living and Nonliving Things",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on plants, animals, growth, basic needs.",
+    "keywords": [
+      "plants",
+      "animals",
+      "growth",
+      "basic needs"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "K.LS.1"
+    ],
+    "file": "elementary/science/k-living-and-nonliving-things.json"
+  },
+  {
+    "id": "elementary--science--k--weather",
+    "title": "Kindergarten Science — Weather We Can Observe",
+    "subject": "Science",
+    "category": "Weather",
+    "topic": "Weather",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on clouds, rain, wind, daily changes.",
+    "keywords": [
+      "clouds",
+      "rain",
+      "wind",
+      "daily changes"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "K.ESS.1"
+    ],
+    "file": "elementary/science/k-weather.json"
+  },
+  {
+    "id": "elementary--science--k--five-senses",
+    "title": "Kindergarten Science — Using Our Senses to Notice the World",
+    "subject": "Science",
+    "category": "Five Senses",
+    "topic": "Five Senses",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on sight, hearing, touch, smell, taste.",
+    "keywords": [
+      "sight",
+      "hearing",
+      "touch",
+      "smell",
+      "taste"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "K.PS.1"
+    ],
+    "file": "elementary/science/k-five-senses.json"
+  },
+  {
+    "id": "elementary--science--1--plants",
+    "title": "Grade 1 Science — Plant Parts and Basic Needs",
+    "subject": "Science",
+    "category": "Plants",
+    "topic": "Plants",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on roots, stems, leaves, seeds, growth.",
+    "keywords": [
+      "roots",
+      "stems",
+      "leaves",
+      "seeds",
+      "growth"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "1.LS.1"
+    ],
+    "file": "elementary/science/1-plants.json"
+  },
+  {
+    "id": "elementary--science--1--animals-and-habitats",
+    "title": "Grade 1 Science — Where Animals Find What They Need",
+    "subject": "Science",
+    "category": "Animals and Habitats",
+    "topic": "Animals and Habitats",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on shelter, water, food, habitat.",
+    "keywords": [
+      "shelter",
+      "water",
+      "food",
+      "habitat"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "1.LS.1",
+      "1.LS.2"
+    ],
+    "file": "elementary/science/1-animals-and-habitats.json"
+  },
+  {
+    "id": "elementary--science--1--seasons",
+    "title": "Grade 1 Science — Looking for Signs of the Seasons",
+    "subject": "Science",
+    "category": "Seasons",
+    "topic": "Seasons",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on spring, summer, fall, winter, Ohio.",
+    "keywords": [
+      "spring",
+      "summer",
+      "fall",
+      "winter",
+      "Ohio"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/science/1-seasons.json"
+  },
+  {
+    "id": "elementary--science--2--life-cycles",
+    "title": "Grade 2 Science — Plant and Animal Life Cycles",
+    "subject": "Science",
+    "category": "Life Cycles",
+    "topic": "Life Cycles",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on seeds, frogs, butterflies, growth.",
+    "keywords": [
+      "seeds",
+      "frogs",
+      "butterflies",
+      "growth"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/science/2-life-cycles.json"
+  },
+  {
+    "id": "elementary--science--2--states-of-matter",
+    "title": "Grade 2 Science — Solids, Liquids, and Gases",
+    "subject": "Science",
+    "category": "States of Matter",
+    "topic": "States of Matter",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on melting, freezing, evaporation, water.",
+    "keywords": [
+      "melting",
+      "freezing",
+      "evaporation",
+      "water"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/science/2-states-of-matter.json"
+  },
+  {
+    "id": "elementary--science--2--earths-surface",
+    "title": "Grade 2 Science — Looking at Earth’s Surface",
+    "subject": "Science",
+    "category": "Earth’s Surface",
+    "topic": "Earth’s Surface",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on water, land, soil, sand, rocks.",
+    "keywords": [
+      "water",
+      "land",
+      "soil",
+      "sand",
+      "rocks"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/science/2-earths-surface.json"
+  },
+  {
+    "id": "elementary--science--3--forces-and-motion",
+    "title": "Grade 3 Science — Pushes, Pulls, and Changes in Motion",
+    "subject": "Science",
+    "category": "Forces and Motion",
+    "topic": "Forces and Motion",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on gravity, friction, direction, speed.",
+    "keywords": [
+      "gravity",
+      "friction",
+      "direction",
+      "speed"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "NGSS 3-PS2-1"
+    ],
+    "file": "elementary/science/3-forces-and-motion.json"
+  },
+  {
+    "id": "elementary--science--3--ecosystems",
+    "title": "Grade 3 Science — Relationships in an Ecosystem",
+    "subject": "Science",
+    "category": "Ecosystems",
+    "topic": "Ecosystems",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on habitats, resources, producers, decomposers.",
+    "keywords": [
+      "habitats",
+      "resources",
+      "producers",
+      "decomposers"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/science/3-ecosystems.json"
+  },
+  {
+    "id": "elementary--science--3--weather-and-climate",
+    "title": "Grade 3 Science — Daily Weather and Long-Term Climate",
+    "subject": "Science",
+    "category": "Weather and Climate",
+    "topic": "Weather and Climate",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on temperature, precipitation, graphs, observations.",
+    "keywords": [
+      "temperature",
+      "precipitation",
+      "graphs",
+      "observations"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "NGSS 3-ESS2-1",
+      "NGSS 3-ESS2-2"
+    ],
+    "file": "elementary/science/3-weather-and-climate.json"
+  },
+  {
+    "id": "elementary--science--4--energy",
+    "title": "Grade 4 Science — Ways Energy Moves and Changes",
+    "subject": "Science",
+    "category": "Energy",
+    "topic": "Energy",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on light, heat, sound, motion, transfer.",
+    "keywords": [
+      "light",
+      "heat",
+      "sound",
+      "motion",
+      "transfer"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "4.PS.2"
+    ],
+    "file": "elementary/science/4-energy.json"
+  },
+  {
+    "id": "elementary--science--4--earths-processes",
+    "title": "Grade 4 Science — Weathering, Erosion, and Deposition",
+    "subject": "Science",
+    "category": "Earth’s Processes",
+    "topic": "Earth’s Processes",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on water, wind, ice, sediment.",
+    "keywords": [
+      "water",
+      "wind",
+      "ice",
+      "sediment"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "4.ESS.1",
+      "4.ESS.2"
+    ],
+    "file": "elementary/science/4-earths-processes.json"
+  },
+  {
+    "id": "elementary--science--4--plant-and-animal-adaptations",
+    "title": "Grade 4 Science — How Traits Help Living Things Survive",
+    "subject": "Science",
+    "category": "Plant and Animal Adaptations",
+    "topic": "Plant and Animal Adaptations",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on camouflage, behaviors, structures, environment.",
+    "keywords": [
+      "camouflage",
+      "behaviors",
+      "structures",
+      "environment"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "NGSS 4-LS1-1"
+    ],
+    "file": "elementary/science/4-plant-and-animal-adaptations.json"
+  },
+  {
+    "id": "elementary--science--4--electricity-and-magnetism",
+    "title": "Grade 4 Science — Simple Circuits and Magnets",
+    "subject": "Science",
+    "category": "Electricity and Magnetism",
+    "topic": "Electricity and Magnetism",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on conductors, switches, poles, attraction.",
+    "keywords": [
+      "conductors",
+      "switches",
+      "poles",
+      "attraction"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "4.PS.2"
+    ],
+    "file": "elementary/science/4-electricity-and-magnetism.json"
+  },
+  {
+    "id": "elementary--science--5--solar-system",
+    "title": "Grade 5 Science — Earth and Its Solar System Neighbors",
+    "subject": "Science",
+    "category": "Solar System",
+    "topic": "Solar System",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on planets, gravity, orbits, rotation.",
+    "keywords": [
+      "planets",
+      "gravity",
+      "orbits",
+      "rotation"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "5.ESS.1",
+      "5.ESS.2",
+      "5.ESS.3"
+    ],
+    "file": "elementary/science/5-solar-system.json"
+  },
+  {
+    "id": "elementary--science--5--matter-and-its-properties",
+    "title": "Grade 5 Science — Properties and Changes of Matter",
+    "subject": "Science",
+    "category": "Matter and Its Properties",
+    "topic": "Matter and Its Properties",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on mass, volume, mixtures, dissolving.",
+    "keywords": [
+      "mass",
+      "volume",
+      "mixtures",
+      "dissolving"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "NGSS 5-PS1-2",
+      "NGSS 5-PS1-3"
+    ],
+    "file": "elementary/science/5-matter-and-its-properties.json"
+  },
+  {
+    "id": "elementary--science--5--food-webs",
+    "title": "Grade 5 Science — Tracing Energy Through Food Webs",
+    "subject": "Science",
+    "category": "Food Webs",
+    "topic": "Food Webs",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on producers, consumers, decomposers, interdependence.",
+    "keywords": [
+      "producers",
+      "consumers",
+      "decomposers",
+      "interdependence"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "5.LS.1",
+      "5.LS.2"
+    ],
+    "file": "elementary/science/5-food-webs.json"
+  },
+  {
+    "id": "elementary--science--5--earths-systems",
+    "title": "Grade 5 Science — How Air, Water, Land, and Life Interact",
+    "subject": "Science",
+    "category": "Earth’s Systems",
+    "topic": "Earth’s Systems",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on atmosphere, hydrosphere, geosphere, biosphere.",
+    "keywords": [
+      "atmosphere",
+      "hydrosphere",
+      "geosphere",
+      "biosphere"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "NGSS 5-ESS2-1"
+    ],
+    "file": "elementary/science/5-earths-systems.json"
+  },
+  {
+    "id": "elementary--social-studies--k--community-helpers",
+    "title": "Kindergarten Social Studies — People Who Help Our Community",
+    "subject": "Social Studies",
+    "category": "Community Helpers",
+    "topic": "Community Helpers",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on jobs, libraries, emergencies, schools.",
+    "keywords": [
+      "jobs",
+      "libraries",
+      "emergencies",
+      "schools"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade K #10"
+    ],
+    "file": "elementary/social-studies/k-community-helpers.json"
+  },
+  {
+    "id": "elementary--social-studies--k--rules-and-responsibilities",
+    "title": "Kindergarten Social Studies — Rules That Help Us Learn Together",
+    "subject": "Social Studies",
+    "category": "Rules and Responsibilities",
+    "topic": "Rules and Responsibilities",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on fairness, taking turns, safety, classroom.",
+    "keywords": [
+      "fairness",
+      "taking turns",
+      "safety",
+      "classroom"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade K #9"
+    ],
+    "file": "elementary/social-studies/k-rules-and-responsibilities.json"
+  },
+  {
+    "id": "elementary--social-studies--k--american-symbols",
+    "title": "Kindergarten Social Studies — Recognizing American Symbols",
+    "subject": "Social Studies",
+    "category": "American Symbols",
+    "topic": "American Symbols",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on United States, flag, bald eagle, Statue of Liberty.",
+    "keywords": [
+      "United States",
+      "flag",
+      "bald eagle",
+      "Statue of Liberty"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade K #6"
+    ],
+    "file": "elementary/social-studies/k-american-symbols.json"
+  },
+  {
+    "id": "elementary--social-studies--1--citizenship",
+    "title": "Grade 1 Social Studies — Being a Helpful Member of a Group",
+    "subject": "Social Studies",
+    "category": "Citizenship",
+    "topic": "Citizenship",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on respect, fairness, participation, responsibility.",
+    "keywords": [
+      "respect",
+      "fairness",
+      "participation",
+      "responsibility"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 1 #4",
+      "Ohio SS 2026 Grade 1 #5"
+    ],
+    "file": "elementary/social-studies/1-citizenship.json"
+  },
+  {
+    "id": "elementary--social-studies--1--maps-and-directions",
+    "title": "Grade 1 Social Studies — Using Simple Maps and Directions",
+    "subject": "Social Studies",
+    "category": "Maps and Directions",
+    "topic": "Maps and Directions",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on symbols, key, near, above, routes.",
+    "keywords": [
+      "symbols",
+      "key",
+      "near",
+      "above",
+      "routes"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 1 #3"
+    ],
+    "file": "elementary/social-studies/1-maps-and-directions.json"
+  },
+  {
+    "id": "elementary--social-studies--1--national-holidays",
+    "title": "Grade 1 Social Studies — U.S. Holidays and What They Remember",
+    "subject": "Social Studies",
+    "category": "National Holidays",
+    "topic": "National Holidays",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on Independence Day, Veterans Day, Juneteenth, Thanksgiving.",
+    "keywords": [
+      "Independence Day",
+      "Veterans Day",
+      "Juneteenth",
+      "Thanksgiving"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/social-studies/1-national-holidays.json"
+  },
+  {
+    "id": "elementary--social-studies--2--communities",
+    "title": "Grade 2 Social Studies — Comparing Types of Communities",
+    "subject": "Social Studies",
+    "category": "Communities",
+    "topic": "Communities",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on urban, suburban, rural, neighborhoods.",
+    "keywords": [
+      "urban",
+      "suburban",
+      "rural",
+      "neighborhoods"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/social-studies/2-communities.json"
+  },
+  {
+    "id": "elementary--social-studies--2--goods-and-services",
+    "title": "Grade 2 Social Studies — Buying Goods and Using Services",
+    "subject": "Social Studies",
+    "category": "Goods and Services",
+    "topic": "Goods and Services",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on products, producers, consumers, jobs.",
+    "keywords": [
+      "products",
+      "producers",
+      "consumers",
+      "jobs"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 2 #12",
+      "Ohio SS 2026 Grade 2 #13"
+    ],
+    "file": "elementary/social-studies/2-goods-and-services.json"
+  },
+  {
+    "id": "elementary--social-studies--2--geography-skills",
+    "title": "Grade 2 Social Studies — Map Keys, Directions, and Landmarks",
+    "subject": "Social Studies",
+    "category": "Geography Skills",
+    "topic": "Geography Skills",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on compass rose, symbols, rivers, distance.",
+    "keywords": [
+      "compass rose",
+      "symbols",
+      "rivers",
+      "distance"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 2 #3"
+    ],
+    "file": "elementary/social-studies/2-geography-skills.json"
+  },
+  {
+    "id": "elementary--social-studies--3--local-government",
+    "title": "Grade 3 Social Studies — How Local Government Serves a Community",
+    "subject": "Social Studies",
+    "category": "Local Government",
+    "topic": "Local Government",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on council, mayor, public services, voting.",
+    "keywords": [
+      "council",
+      "mayor",
+      "public services",
+      "voting"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 3 #12",
+      "Ohio SS 2026 Grade 3 #13"
+    ],
+    "file": "elementary/social-studies/3-local-government.json"
+  },
+  {
+    "id": "elementary--social-studies--3--regions-and-landforms",
+    "title": "Grade 3 Social Studies — Regions, Landforms, and Bodies of Water",
+    "subject": "Social Studies",
+    "category": "Regions and Landforms",
+    "topic": "Regions and Landforms",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on plains, plateau, mountains, geography.",
+    "keywords": [
+      "plains",
+      "plateau",
+      "mountains",
+      "geography"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/social-studies/3-regions-and-landforms.json"
+  },
+  {
+    "id": "elementary--social-studies--3--economics-basics",
+    "title": "Grade 3 Social Studies — Choices, Resources, and Trade",
+    "subject": "Social Studies",
+    "category": "Economics Basics",
+    "topic": "Economics Basics",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on scarcity, opportunity cost, needs, wants.",
+    "keywords": [
+      "scarcity",
+      "opportunity cost",
+      "needs",
+      "wants"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 3 #14",
+      "Ohio SS 2026 Grade 3 #15"
+    ],
+    "file": "elementary/social-studies/3-economics-basics.json"
+  },
+  {
+    "id": "elementary--social-studies--4--united-states-geography",
+    "title": "Grade 4 Social Studies — Reading the Geography of the United States",
+    "subject": "Social Studies",
+    "category": "United States Geography",
+    "topic": "United States Geography",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on states, boundaries, regions, rivers, Great Lakes.",
+    "keywords": [
+      "states",
+      "boundaries",
+      "regions",
+      "rivers",
+      "Great Lakes"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 4 #3",
+      "Ohio SS 2026 Grade 4 #12"
+    ],
+    "file": "elementary/social-studies/4-united-states-geography.json"
+  },
+  {
+    "id": "elementary--social-studies--4--state-and-local-government",
+    "title": "Grade 4 Social Studies — How State and Local Government Work",
+    "subject": "Social Studies",
+    "category": "State and Local Government",
+    "topic": "State and Local Government",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on Ohio, General Assembly, governor, services.",
+    "keywords": [
+      "Ohio",
+      "General Assembly",
+      "governor",
+      "services"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 4 #15"
+    ],
+    "file": "elementary/social-studies/4-state-and-local-government.json"
+  },
+  {
+    "id": "elementary--social-studies--4--early-american-history",
+    "title": "Grade 4 Social Studies — People and Change in Early America",
+    "subject": "Social Studies",
+    "category": "Early American History",
+    "topic": "Early American History",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on colonies, historical evidence, trade, Ohio.",
+    "keywords": [
+      "colonies",
+      "historical evidence",
+      "trade",
+      "Ohio"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 4 #2",
+      "Ohio SS 2026 Grade 4 #6",
+      "Ohio SS 2026 Grade 4 #11"
+    ],
+    "file": "elementary/social-studies/4-early-american-history.json"
+  },
+  {
+    "id": "elementary--social-studies--4--native-american-cultures",
+    "title": "Grade 4 Social Studies — Native Nations, Places, and Living Cultures",
+    "subject": "Social Studies",
+    "category": "Native American Cultures",
+    "topic": "Native American Cultures",
+    "primaryGrade": "4",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on tribal sovereignty, Haudenosaunee, Shawnee, Myaamia.",
+    "keywords": [
+      "tribal sovereignty",
+      "Haudenosaunee",
+      "Shawnee",
+      "Myaamia"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [
+      "Ohio SS 2026 Grade 4 #6",
+      "Ohio SS 2026 Grade 4 #7",
+      "Ohio SS 2026 Grade 4 #11"
+    ],
+    "file": "elementary/social-studies/4-native-american-cultures.json"
+  },
+  {
+    "id": "elementary--social-studies--5--colonial-america",
+    "title": "Grade 5 Social Studies — Daily Life and Choices in Colonial America",
+    "subject": "Social Studies",
+    "category": "Colonial America",
+    "topic": "Colonial America",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on trade, labor, geography, sources, regional differences.",
+    "keywords": [
+      "trade",
+      "labor",
+      "geography",
+      "sources",
+      "regional differences"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/social-studies/5-colonial-america.json"
+  },
+  {
+    "id": "elementary--social-studies--5--american-revolution",
+    "title": "Grade 5 Social Studies — Causes and Consequences of the American Revolution",
+    "subject": "Social Studies",
+    "category": "American Revolution",
+    "topic": "American Revolution",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on taxation, independence, alliances, primary sources.",
+    "keywords": [
+      "taxation",
+      "independence",
+      "alliances",
+      "primary sources"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/social-studies/5-american-revolution.json"
+  },
+  {
+    "id": "elementary--social-studies--5--u-s-government-foundations",
+    "title": "Grade 5 Social Studies — Foundations of U.S. Government",
+    "subject": "Social Studies",
+    "category": "U.S. Government Foundations",
+    "topic": "U.S. Government Foundations",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on Constitution, separation of powers, rights, federalism.",
+    "keywords": [
+      "Constitution",
+      "separation of powers",
+      "rights",
+      "federalism"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/social-studies/5-u-s-government-foundations.json"
+  },
+  {
+    "id": "elementary--social-studies--5--westward-expansion",
+    "title": "Grade 5 Social Studies — Westward Expansion and Its Consequences",
+    "subject": "Social Studies",
+    "category": "Westward Expansion",
+    "topic": "Westward Expansion",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on migration, sovereignty, land, removal, perspectives.",
+    "keywords": [
+      "migration",
+      "sovereignty",
+      "land",
+      "removal",
+      "perspectives"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/social-studies/5-westward-expansion.json"
+  },
+  {
+    "id": "elementary--general-knowledge-and-life-skills--k--safety-and-healthy-habits",
+    "title": "Kindergarten Life Skills — Safe and Healthy Everyday Choices",
+    "subject": "General Knowledge and Life Skills",
+    "category": "Safety and Healthy Habits",
+    "topic": "Safety and Healthy Habits",
+    "primaryGrade": "K",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on handwashing, trusted adults, helmets, hygiene.",
+    "keywords": [
+      "handwashing",
+      "trusted adults",
+      "helmets",
+      "hygiene"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/general-knowledge-and-life-skills/k-safety-and-healthy-habits.json"
+  },
+  {
+    "id": "elementary--general-knowledge-and-life-skills--1--calendar-and-everyday-routines",
+    "title": "Grade 1 Life Skills — Using Calendars and Planning Routines",
+    "subject": "General Knowledge and Life Skills",
+    "category": "Calendar and Everyday Routines",
+    "topic": "Calendar and Everyday Routines",
+    "primaryGrade": "1",
+    "gradeBand": "K–1",
+    "difficulty": "Foundational",
+    "questionCount": 20,
+    "description": "Practice with questions on days, weeks, months, schedule, sequence.",
+    "keywords": [
+      "days",
+      "weeks",
+      "months",
+      "schedule",
+      "sequence"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/general-knowledge-and-life-skills/1-calendar-and-everyday-routines.json"
+  },
+  {
+    "id": "elementary--general-knowledge-and-life-skills--2--digital-citizenship",
+    "title": "Grade 2 Life Skills — Making Safe and Kind Choices Online",
+    "subject": "General Knowledge and Life Skills",
+    "category": "Digital Citizenship",
+    "topic": "Digital Citizenship",
+    "primaryGrade": "2",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on privacy, permission, passwords, trustworthy adults.",
+    "keywords": [
+      "privacy",
+      "permission",
+      "passwords",
+      "trustworthy adults"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/general-knowledge-and-life-skills/2-digital-citizenship.json"
+  },
+  {
+    "id": "elementary--general-knowledge-and-life-skills--3--financial-literacy-basics",
+    "title": "Grade 3 Life Skills — Spending, Saving, and Planning",
+    "subject": "General Knowledge and Life Skills",
+    "category": "Financial Literacy Basics",
+    "topic": "Financial Literacy Basics",
+    "primaryGrade": "3",
+    "gradeBand": "2–3",
+    "difficulty": "Developing",
+    "questionCount": 20,
+    "description": "Practice with questions on budget, goals, needs, wants, price.",
+    "keywords": [
+      "budget",
+      "goals",
+      "needs",
+      "wants",
+      "price"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/general-knowledge-and-life-skills/3-financial-literacy-basics.json"
+  },
+  {
+    "id": "elementary--general-knowledge-and-life-skills--5--problem-solving-and-everyday-decision-making",
+    "title": "Grade 5 Life Skills — Solving Everyday Problems Step by Step",
+    "subject": "General Knowledge and Life Skills",
+    "category": "Problem Solving and Everyday Decision-Making",
+    "topic": "Problem Solving and Everyday Decision-Making",
+    "primaryGrade": "5",
+    "gradeBand": "4–5",
+    "difficulty": "Application",
+    "questionCount": 20,
+    "description": "Practice with questions on tradeoffs, planning, evidence, decisions.",
+    "keywords": [
+      "tradeoffs",
+      "planning",
+      "evidence",
+      "decisions"
+    ],
+    "creator": "Teach Arcade",
+    "visibility": "public",
+    "standards": [],
+    "file": "elementary/general-knowledge-and-life-skills/5-problem-solving-and-everyday-decision-making.json"
   }
 ];

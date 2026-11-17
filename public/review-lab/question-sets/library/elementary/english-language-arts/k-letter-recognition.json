@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--k--letter-recognition",
+  "title": "Kindergarten ELA — Uppercase and Lowercase Letters",
+  "subject": "English Language Arts",
+  "category": "Letter Recognition",
+  "topic": "Letter Recognition",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on alphabet, matching, capital letters.",
+  "keywords": [
+    "alphabet",
+    "matching",
+    "capital letters"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RF.K.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Find the lowercase letter for A.",
+      "choices": [
+        "u",
+        "o",
+        "e",
+        "a"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Find the lowercase letter for B.",
+      "choices": [
+        "b",
+        "p",
+        "d",
+        "q"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Find the lowercase letter for F.",
+      "choices": [
+        "i",
+        "f",
+        "l",
+        "t"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Find the lowercase letter for G.",
+      "choices": [
+        "y",
+        "q",
+        "c",
+        "g"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Find the lowercase letter for H.",
+      "choices": [
+        "r",
+        "m",
+        "n",
+        "h"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Find the lowercase letter for J.",
+      "choices": [
+        "j",
+        "i",
+        "l",
+        "t"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Find the lowercase letter for M.",
+      "choices": [
+        "v",
+        "n",
+        "m",
+        "w"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Find the lowercase letter for R.",
+      "choices": [
+        "r",
+        "m",
+        "h",
+        "n"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Find the uppercase letter for d.",
+      "choices": [
+        "P",
+        "D",
+        "B",
+        "O"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Find the uppercase letter for e.",
+      "choices": [
+        "H",
+        "L",
+        "E",
+        "F"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Find the uppercase letter for k.",
+      "choices": [
+        "Y",
+        "V",
+        "X",
+        "K"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Find the uppercase letter for p.",
+      "choices": [
+        "P",
+        "R",
+        "Q",
+        "B"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Find the uppercase letter for s.",
+      "choices": [
+        "G",
+        "Z",
+        "S",
+        "C"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Find the uppercase letter for u.",
+      "choices": [
+        "V",
+        "U",
+        "Y",
+        "W"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Find the uppercase letter for y.",
+      "choices": [
+        "T",
+        "X",
+        "Y",
+        "V"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which letter comes just after C?",
+      "choices": [
+        "A",
+        "F",
+        "B",
+        "D"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which letter is first in zoo?",
+      "choices": [
+        "s",
+        "z",
+        "n",
+        "o"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which letter appears two times in moon?",
+      "choices": [
+        "o",
+        "n",
+        "u",
+        "m"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which pair shows the same letter in two sizes?",
+      "choices": [
+        "P and q",
+        "M and w",
+        "T and t",
+        "D and b"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which letter is last in leaf?",
+      "choices": [
+        "l",
+        "f",
+        "a",
+        "e"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

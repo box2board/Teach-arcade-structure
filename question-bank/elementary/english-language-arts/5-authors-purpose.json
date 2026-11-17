@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--5--authors-purpose",
+  "title": "Grade 5 ELA — Why Authors Write and How You Can Tell",
+  "subject": "English Language Arts",
+  "category": "Author’s Purpose",
+  "topic": "Author’s Purpose",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on purpose, audience, persuade, explain, entertain.",
+  "keywords": [
+    "purpose",
+    "audience",
+    "persuade",
+    "explain",
+    "entertain"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "“We should plant a tree near the benches. Its shade would keep them cooler at lunch.” Why did the author most likely write this?",
+      "choices": [
+        "to tell a story about a tree",
+        "to explain how to measure a bench",
+        "to persuade people to plant a tree",
+        "to describe a tree that already grew there"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "“We should plant a tree near the benches. Its shade would keep them cooler at lunch.” Which words best signal that purpose?",
+      "choices": [
+        "“at lunch”",
+        "“keep them cooler”",
+        "“We should plant”",
+        "“near the benches”"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "“When warm air cools, some water vapor becomes tiny drops. A group of these drops can form a cloud.” What is the main purpose?",
+      "choices": [
+        "to explain how clouds can form",
+        "to tell a story about one storm",
+        "to convince people to stay inside",
+        "to teach readers how to make a kite"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "“When warm air cools, some water vapor becomes tiny drops. A group of these drops can form a cloud.” Who would most likely use this text?",
+      "choices": [
+        "a student learning about weather",
+        "a driver looking for a street address",
+        "a coach planning a game schedule",
+        "a cook choosing a soup recipe"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "“The goose stole the mayor's hat and wore it to the parade. By noon, the mayor was marching in a nest.” What is the main purpose?",
+      "choices": [
+        "to report election results",
+        "to explain goose behavior using data",
+        "to teach readers to weave hats",
+        "to entertain with an unlikely story"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "“The goose stole the mayor's hat and wore it to the parade. By noon, the mayor was marching in a nest.” Which feature supports the purpose?",
+      "choices": [
+        "a humorous and unlikely event",
+        "a set of repair steps",
+        "a chart with facts",
+        "a warning in bold text"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "“Step 1: Fill the tray halfway. Step 2: Place seeds on the soil. Step 3: Add a thin layer of soil.” What is the author trying to do?",
+      "choices": [
+        "persuade readers to buy a tray",
+        "tell a folktale",
+        "compare three kinds of seeds",
+        "guide readers through planting seeds"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "“Step 1: Fill the tray halfway. Step 2: Place seeds on the soil. Step 3: Add a thin layer of soil.” Which feature serves this purpose most directly?",
+      "choices": [
+        "a price sticker",
+        "a drawing of shade",
+        "an author biography",
+        "numbered steps"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "“Return books by Friday so others can check them out. Leave returns in the basket by the door.” Where would this message be most useful?",
+      "choices": [
+        "on a notice for library borrowers",
+        "on a road map",
+        "in a book catalog's subject index",
+        "in a story about gardening"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "“Return books by Friday so others can check them out. Leave returns in the basket by the door.” What is the purpose of including “by Friday”?",
+      "choices": [
+        "give readers a deadline",
+        "name a type of book",
+        "tell readers who wrote it",
+        "show how the basket was made"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "“Return books by Friday so others can check them out. Leave returns in the basket by the door.” Which line is mainly meant to persuade?",
+      "choices": [
+        "The station stands beside the sink.",
+        "Our class counted twelve cups on Thursday.",
+        "Choose the refill station so our class uses fewer cups.",
+        "Water flows when the button is pressed."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "“Return books by Friday so others can check them out. Leave returns in the basket by the door.” Which text would best inform a reader about where oak trees grow?",
+      "choices": [
+        "a fictional scene about a talking oak",
+        "a guide with maps and habitat descriptions",
+        "a poem comparing oak leaves to hands",
+        "an ad selling oak furniture"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "“Return books by Friday so others can check them out. Leave returns in the basket by the door.” What is the likely purpose of a photo caption naming each part of a bicycle?",
+      "choices": [
+        "to argue every person needs a bicycle",
+        "to identify parts readers can see",
+        "to entertain with a riddle",
+        "to recount a race finish"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "“Return books by Friday so others can check them out. Leave returns in the basket by the door.” Which is most useful to readers deciding whether to join an after-school club?",
+      "choices": [
+        "the price of a bus ticket in another city",
+        "the age of a different club's founder",
+        "meeting times and examples of activities",
+        "the hall's paint color"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "“Return books by Friday so others can check them out. Leave returns in the basket by the door.” Which line mainly explains a cause?",
+      "choices": [
+        "I slipped twice and laughed.",
+        "The path became muddy because of heavy rain.",
+        "Let's close the path today.",
+        "Bring boots when you walk the path."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "An article describes two bus routes, with the costs and times for each. What is its likely purpose?",
+      "choices": [
+        "to make readers laugh",
+        "to help readers compare travel options",
+        "to persuade everyone to choose the same bus",
+        "to describe bus engine parts"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "“Only three days left to support our shelter! Your gift can pay for food and blankets.” What does the author want readers to do?",
+      "choices": [
+        "learn how days are counted",
+        "compare fabric types",
+        "draw a picture of a blanket",
+        "donate to the shelter"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "“I remember the squeak of the porch swing on summer nights, and the cool wood under my bare feet.” What is a likely purpose of these details?",
+      "choices": [
+        "to persuade readers to remove a porch",
+        "to compare two towns using data",
+        "to teach steps for building a swing",
+        "to help readers experience a personal memory"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "“I remember the squeak of the porch swing on summer nights, and the cool wood under my bare feet.” Which headline most clearly signals an explanation?",
+      "choices": [
+        "Vote for a New Park",
+        "Come Buy Our Leaf Prints",
+        "Why Some Leaves Change Color",
+        "The Leaf That Learned to Speak"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "“The trail entrance has moved. Begin your hike beside the visitor center until repairs are finished.” Why does the notice address hikers?",
+      "choices": [
+        "to sell equipment at the center",
+        "to direct them to a temporary entrance",
+        "to teach where visitors used to live",
+        "to entertain them before the hike"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    }
+  ]
+}

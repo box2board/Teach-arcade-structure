@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--5--reading-comprehension",
+  "title": "Grade 5 ELA — Reading and Comparing Short Texts",
+  "subject": "English Language Arts",
+  "category": "Reading Comprehension",
+  "topic": "Reading Comprehension",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on summary, evidence, paraphrase, inference.",
+  "keywords": [
+    "summary",
+    "evidence",
+    "paraphrase",
+    "inference"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RI.5.1",
+    "RI.5.9"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Text A: Our town painted bike lanes on Main Street to make space for riders. Text B: Riders asked for a rack next to the market so they could lock their bikes. What do both texts describe?",
+      "choices": [
+        "reasons to close the market",
+        "how to fix a flat tire",
+        "plans to widen highways",
+        "ways a town can support people who bike"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Text A: Our town painted bike lanes on Main Street to make space for riders. Text B: Riders asked for a rack next to the market so they could lock their bikes. Which detail comes only from Text B?",
+      "choices": [
+        "The town uses streets.",
+        "The changes concern biking.",
+        "The town painted Main Street bike lanes.",
+        "Riders asked for a place to lock bikes."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Text A: Volunteers carried records upstairs before the river flooded the library. Text B: After flooding, neighbors helped dry books and replace wet shelves. How do the texts differ?",
+      "choices": [
+        "A describes cleanup; B describes preparing.",
+        "A is about a school flood; B is about forest fires.",
+        "A describes preparing for a flood; B describes cleanup.",
+        "A describes repairs; B explains why it rained."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Text A: Volunteers carried records upstairs before the river flooded the library. Text B: After flooding, neighbors helped dry books and replace wet shelves. Which summary covers both?",
+      "choices": [
+        "A river flooded because books were moved.",
+        "People helped protect and restore a library around the time of a flood.",
+        "Neighbors rebuilt an entire town before a storm.",
+        "Volunteers closed a library and never returned."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Text A: Wood chips spread over garden soil slowed water loss. Text B: Fallen leaves covered the soil and decomposed into organic matter. What do both materials do at first?",
+      "choices": [
+        "stop all rain from falling",
+        "pull seeds out of the ground",
+        "turn soil to plastic",
+        "cover the soil"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Text A: Wood chips spread over garden soil slowed water loss. Text B: Fallen leaves covered the soil and decomposed into organic matter. What result is stated only in Text B?",
+      "choices": [
+        "Water loss slowed.",
+        "The material decomposed into organic matter.",
+        "The garden got more rain.",
+        "The soil was covered."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Text A: An owl hunts after dark and can find prey with its hearing. Text B: A hawk often hunts during the day and can see small prey from far away. Which contrast is supported?",
+      "choices": [
+        "Both birds only hunt after dark.",
+        "The owl cannot hunt moving prey.",
+        "The hawk hunts only by hearing.",
+        "The texts emphasize hearing for the owl and sight for the hawk."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Text A: An owl hunts after dark and can find prey with its hearing. Text B: A hawk often hunts during the day and can see small prey from far away. Which detail supports a claim about the owl's hearing?",
+      "choices": [
+        "It has large wings.",
+        "It can find prey using sound after dark.",
+        "It can see small prey from far away.",
+        "It always hunts beside water."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Text A: The school counted 80 plastic bottles in the trash one week. Text B: After a refill station opened, the school counted 45 bottles the next week. What does the comparison show?",
+      "choices": [
+        "The second week's count was lower.",
+        "Bottles became heavier.",
+        "The first count was smaller.",
+        "The refill station opened years earlier."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Text A: The school counted 80 plastic bottles in the trash one week. Text B: After a refill station opened, the school counted 45 bottles the next week. Which claim needs more evidence?",
+      "choices": [
+        "One count was 80.",
+        "The station was open by the second count.",
+        "The station caused all of the drop in bottles.",
+        "The second count was 45."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Text A: A diary describes a winter market and the smell of fresh bread. Text B: A store ledger lists loaves sold and prices for each day. Which source gives the writer's personal experience directly?",
+      "choices": [
+        "Text A",
+        "neither text",
+        "Text B",
+        "both texts equally"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Text A: A diary describes a winter market and the smell of fresh bread. Text B: A store ledger lists loaves sold and prices for each day. Which question is Text B best suited to answer?",
+      "choices": [
+        "How many loaves were sold each day?",
+        "How did buyers feel about the bread?",
+        "What did the baker feel about winter?",
+        "What did each loaf smell like?"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Text A: A class built birdhouses with small doors for small birds. Text B: A class built bat boxes with narrow gaps for bats to enter. Which shared idea fits both?",
+      "choices": [
+        "A shelter's entrance can suit the animal that uses it.",
+        "Neither shelter needs an entrance.",
+        "Bats and birds use identical shelters.",
+        "All animals need the same door size."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Text A: A class built birdhouses with small doors for small birds. Text B: A class built bat boxes with narrow gaps for bats to enter. Which difference is stated in the texts?",
+      "choices": [
+        "Only the bat shelter was built by students.",
+        "Both groups studied bats.",
+        "One shelter uses a small door; the other uses a narrow gap.",
+        "The birdhouse was put in a cave."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Text A: The long trail stays on firm ground most of the year. Text B: The short route passes low ground that turns muddy after storms. Which route would a hiker likely choose to avoid mud after rain?",
+      "choices": [
+        "the short route",
+        "neither route because both are stated to flood",
+        "the long trail",
+        "either one because the ground is described as the same"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Text A: The long trail stays on firm ground most of the year. Text B: The short route passes low ground that turns muddy after storms. What is one tradeoff shown in the texts?",
+      "choices": [
+        "The shorter route may be muddier.",
+        "The short path is farther from its start.",
+        "Both paths are always dry.",
+        "The longer route closes every day."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Text A: A gardener trimmed some tomato leaves to let more light reach the fruit. Text B: Another gardener put straw under the plants to cover bare soil. What goal is shared?",
+      "choices": [
+        "Both removed straw from the soil.",
+        "Both gardeners changed how they cared for tomato plants.",
+        "Both sold the same harvest.",
+        "Both tried to reduce light on the fruit."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Text A: A gardener trimmed some tomato leaves to let more light reach the fruit. Text B: Another gardener put straw under the plants to cover bare soil. What problem is the second action most directly meant to address?",
+      "choices": [
+        "tangled leaves around each fruit",
+        "too little light on the fruit",
+        "exposed soil",
+        "a missing garden fence"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Text A: The class placed signs near a stream asking hikers to stay on the path. Text B: The parks crew later counted fewer footprints on the streambank. What do the texts together suggest?",
+      "choices": [
+        "Footprints made the class move the stream.",
+        "The crew moved the trail before signs went up.",
+        "The signs caused every footprint to vanish.",
+        "The signs may have encouraged hikers to use the path."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Text A: The class placed signs near a stream asking hikers to stay on the path. Text B: The parks crew later counted fewer footprints on the streambank. Which follow-up would strengthen the inference?",
+      "choices": [
+        "Measure the height of a nearby school.",
+        "Compare footprint counts across several similar weeks before and after the signs.",
+        "Count the number of letters in one sign.",
+        "Ask how many kinds of fish live elsewhere."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    }
+  ]
+}

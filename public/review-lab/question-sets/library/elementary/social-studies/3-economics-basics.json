@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--3--economics-basics",
+  "title": "Grade 3 Social Studies — Choices, Resources, and Trade",
+  "subject": "Social Studies",
+  "category": "Economics Basics",
+  "topic": "Economics Basics",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on scarcity, opportunity cost, needs, wants.",
+  "keywords": [
+    "scarcity",
+    "opportunity cost",
+    "needs",
+    "wants"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 3 #14",
+    "Ohio SS 2026 Grade 3 #15"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which is usually a need rather than a want?",
+      "choices": [
+        "decorative stickers",
+        "a new toy",
+        "safe drinking water",
+        "a second bicycle"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which is usually a want rather than a basic need?",
+      "choices": [
+        "food to eat",
+        "a souvenir key ring",
+        "water to drink",
+        "a safe place to sleep"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "You have enough for a book or a soccer ball and choose the book. What did you give up?",
+      "choices": [
+        "the book",
+        "all other books in the store",
+        "the soccer ball",
+        "the money in someone else's bag"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A class has six brushes for eight painters. Why must students make choices?",
+      "choices": [
+        "brushes cannot be shared",
+        "paint never runs out",
+        "everyone has a separate brush",
+        "brushes are limited"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which resource comes from nature?",
+      "choices": [
+        "a factory-made ruler",
+        "water in a stream",
+        "a computer program",
+        "a wooden desk after it is made"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is barter?",
+      "choices": [
+        "using a card to pay cash price",
+        "saving money in a bank",
+        "trading goods or services without money",
+        "throwing extra goods away"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which is an example of a producer?",
+      "choices": [
+        "a baker who makes rolls for sale",
+        "a bank customer waiting in line",
+        "a shopper who eats a roll",
+        "a park visitor"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can a village benefit from trade with a nearby town?",
+      "choices": [
+        "It must make all items itself.",
+        "It can get products it does not make.",
+        "It always stops selling its own products.",
+        "It no longer has needs."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What usually happens to time you spend on one activity?",
+      "choices": [
+        "The time is saved forever.",
+        "The hour grows longer.",
+        "You can always repeat the hour.",
+        "You cannot use that same time for a different activity."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which action is saving?",
+      "choices": [
+        "putting part of your money aside for a later purchase",
+        "buying the first thing you see",
+        "spending every dollar you receive",
+        "giving the price of a toy to a store"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which is an example of a capital resource used to make goods?",
+      "choices": [
+        "sunlight reaching a nearby field",
+        "the money a customer spends",
+        "an oven in a bakery",
+        "the baker's skill"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which choice shows specialization?",
+      "choices": [
+        "One worker makes shoes and another repairs bikes.",
+        "Customers trade every job each hour.",
+        "Every worker makes every item alone.",
+        "One buyer changes the price signs."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is a budget?",
+      "choices": [
+        "a plan for using money",
+        "a label on one item",
+        "a bag for grocery shopping",
+        "a list of town holidays"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "If you need one notebook, which same-size one costs least?",
+      "choices": [
+        "a $3 notebook",
+        "a $5 notebook",
+        "a $2 notebook",
+        "a $4 notebook"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A class chooses more books instead of more art paper. What is the class's opportunity cost?",
+      "choices": [
+        "the extra art paper it gave up",
+        "the books it bought",
+        "all supplies at school",
+        "the amount of time in a day"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Why might a farmer sell apples to people in a city?",
+      "choices": [
+        "Every city already has free apples.",
+        "People in cities never buy food.",
+        "Selling apples makes them disappear from farms.",
+        "The farmer has apples and the buyers want them."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "When a choice is made because money is limited, what economic idea appears?",
+      "choices": [
+        "latitude",
+        "scarcity",
+        "elevation",
+        "climate"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which action compares tradeoffs?",
+      "choices": [
+        "assuming the first backpack is always best",
+        "buying by color without checking anything else",
+        "refusing to look at any prices",
+        "checking both price and how long two backpacks might last"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Two stores sell equal bags of rice at different prices. What can help a buyer spend less?",
+      "choices": [
+        "count only the store windows",
+        "buy both bags because prices differ",
+        "choose by the tallest shelf",
+        "compare prices for those same-size bags"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which example uses money as a way to trade?",
+      "choices": [
+        "lending a ruler for free",
+        "paying a shop for a loaf of bread",
+        "trading a hat for a scarf without money",
+        "making a pencil as a gift"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

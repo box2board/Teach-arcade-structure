@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--1--seasons",
+  "title": "Grade 1 Science — Looking for Signs of the Seasons",
+  "subject": "Science",
+  "category": "Seasons",
+  "topic": "Seasons",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on spring, summer, fall, winter, Ohio.",
+  "keywords": [
+    "spring",
+    "summer",
+    "fall",
+    "winter",
+    "Ohio"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "In Ohio, which season often brings the coldest days?",
+      "choices": [
+        "fall",
+        "summer",
+        "spring",
+        "winter"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "In Ohio, when do many new leaves start growing?",
+      "choices": [
+        "summer",
+        "spring",
+        "winter",
+        "fall"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "In Ohio, when are days generally warmest?",
+      "choices": [
+        "spring",
+        "winter",
+        "summer",
+        "fall"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "In Ohio, when do maple leaves often turn red or yellow?",
+      "choices": [
+        "fall",
+        "spring",
+        "summer",
+        "winter"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "In Ohio, when is the longest day of the year?",
+      "choices": [
+        "spring",
+        "fall",
+        "summer",
+        "winter"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which season comes right after spring?",
+      "choices": [
+        "summer",
+        "winter",
+        "spring",
+        "fall"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which season comes just before winter?",
+      "choices": [
+        "fall",
+        "winter",
+        "spring",
+        "summer"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which season comes after winter?",
+      "choices": [
+        "spring",
+        "summer",
+        "winter",
+        "fall"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which season usually has the most snow in Ohio?",
+      "choices": [
+        "summer",
+        "winter",
+        "spring",
+        "fall"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which season follows summer?",
+      "choices": [
+        "winter",
+        "summer",
+        "spring",
+        "fall"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What is a common sign of spring in Ohio?",
+      "choices": [
+        "the longest daylight of the year",
+        "new buds on branches",
+        "frozen ground all day",
+        "maple leaves turning red"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why might you wear thicker clothes in winter?",
+      "choices": [
+        "The air is colder.",
+        "The sky is higher.",
+        "The rain is louder.",
+        "The street is wider."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What might an Ohio park look like in late fall?",
+      "choices": [
+        "trees making their first spring buds",
+        "many fallen leaves",
+        "flowers just coming up",
+        "the longest daylight of the year"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "In summer, how does daylight in Ohio usually compare with winter?",
+      "choices": [
+        "It is exactly the same every day.",
+        "There is no daylight.",
+        "It lasts longer.",
+        "It lasts less time."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which is likely in an Ohio yard on a cold winter morning?",
+      "choices": [
+        "tomatoes ripening",
+        "ripe strawberries growing",
+        "frost on grass",
+        "new vegetable seedlings outdoors"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which habit fits a hot day at a summer park?",
+      "choices": [
+        "Wear ice skates.",
+        "Bring drinking water.",
+        "Look for a frozen pond.",
+        "Bring a snow shovel."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which Ohio season fits this note: Warm days return and the last piles of snow melt?",
+      "choices": [
+        "winter",
+        "late summer",
+        "spring",
+        "late fall"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "How would you study how the same tree changes through the seasons?",
+      "choices": [
+        "Count its leaves one time.",
+        "Draw four trees on one day.",
+        "Measure four rocks once.",
+        "Draw it at different times of year."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "An Ohio afternoon is cool in September. What would show a seasonal pattern?",
+      "choices": [
+        "One bird flies past.",
+        "One summer day was rainy.",
+        "A car drives by.",
+        "Many Septembers show cooler days than July."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which usually happens to Ohio daylight from fall into winter?",
+      "choices": [
+        "Daylight gets longer until midwinter.",
+        "The Sun stays up all night.",
+        "Each day has exactly 12 hours of light.",
+        "Daylight gets shorter."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

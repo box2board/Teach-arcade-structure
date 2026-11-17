@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--4--plant-and-animal-adaptations",
+  "title": "Grade 4 Science — How Traits Help Living Things Survive",
+  "subject": "Science",
+  "category": "Plant and Animal Adaptations",
+  "topic": "Plant and Animal Adaptations",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on camouflage, behaviors, structures, environment.",
+  "keywords": [
+    "camouflage",
+    "behaviors",
+    "structures",
+    "environment"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "NGSS 4-LS1-1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "A snowshoe hare's broad feet help it do what?",
+      "choices": [
+        "store food in its fur",
+        "hold its breath underwater",
+        "move over soft snow",
+        "climb taller plants"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What helps a cactus lose less water in a dry place?",
+      "choices": [
+        "large thin leaves",
+        "a waxy outer layer",
+        "soft feathers",
+        "shallow puddles year-round"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A walking stick insect looks like a twig. How may that help it?",
+      "choices": [
+        "It can make sunlight.",
+        "Predators may overlook it.",
+        "It grows bark each day.",
+        "It becomes heavier than a twig."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Why are many duck feet webbed?",
+      "choices": [
+        "They catch seeds while flying.",
+        "They push water better while swimming.",
+        "They make water warmer.",
+        "They collect more sunlight."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which bird beak is useful for cracking hard seeds?",
+      "choices": [
+        "a very narrow probe",
+        "a long, thin beak for nectar",
+        "a soft, flat beak",
+        "a short, strong beak"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What helps many fish move through water with less drag?",
+      "choices": [
+        "a wide square shell",
+        "a streamlined body",
+        "large flat feathers",
+        "branching antlers"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Why do some birds migrate before winter?",
+      "choices": [
+        "Their feathers turn into leaves.",
+        "Earth stops rotating in winter.",
+        "They never need water while flying.",
+        "They can reach places with more food."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can thick fur help a mammal in a cold habitat?",
+      "choices": [
+        "It slows heat loss.",
+        "It stops the animal from eating.",
+        "It turns snow into food.",
+        "It makes the air warm everywhere."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "How do lungs help a whale even though it lives in water?",
+      "choices": [
+        "They allow it to stay underwater forever.",
+        "They help its skin make food from sunlight.",
+        "They take in oxygen from air when it surfaces.",
+        "They take oxygen directly from water like gills."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Why are many seeds with hooks carried to new places?",
+      "choices": [
+        "They are pulled only by magnets.",
+        "They sink through dry rock.",
+        "They stick to animal fur.",
+        "They melt in sunlight."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Some flowers bloom at night. Which visitor might move pollen between them?",
+      "choices": [
+        "an insect that only visits in daylight",
+        "a turtle sleeping underwater",
+        "a frog buried all night",
+        "a night-flying moth"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "How can warning colors protect some animals?",
+      "choices": [
+        "Bright colors make all sounds quiet.",
+        "Colors stop an animal from needing food.",
+        "All warning colors blend into snow.",
+        "Predators learn to avoid them."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What behavior can help a desert animal avoid daytime heat?",
+      "choices": [
+        "stay in direct sun at noon",
+        "climb into a sun-heated rock crack at noon",
+        "rest in a burrow by day",
+        "leave its shelter at the hottest hour"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Why might a plant with deep roots fare well during a short drought?",
+      "choices": [
+        "Its stems stop needing water.",
+        "Its leaves become waterproof stones.",
+        "Its roots can reach moisture farther down.",
+        "Its flowers make rain immediately."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "How can a flat body and a mottled pattern help a bottom-dwelling fish?",
+      "choices": [
+        "They help it blend with the bottom.",
+        "They allow it to breathe air forever.",
+        "They help it climb trees for food.",
+        "They change salt water to fresh."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which action is a behavior rather than a body structure?",
+      "choices": [
+        "seeking shade on a hot day",
+        "growing thick fur",
+        "having broad feet",
+        "having a long bill"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What can sharp, hooked talons help a hawk do?",
+      "choices": [
+        "grip prey",
+        "filter tiny plants from water",
+        "grow larger wings",
+        "chew seeds"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why can broad leaves help some plants grow in shade?",
+      "choices": [
+        "They make the soil hotter at night.",
+        "They collect more of the available light.",
+        "They prevent all water loss.",
+        "They stop other plants from growing."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How might a hollow tree help a bat survive winter?",
+      "choices": [
+        "It produces fish for the bat.",
+        "It keeps daylight constant.",
+        "It stops the air from cooling.",
+        "It can provide shelter from cold wind."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "In a rocky place, brown beetles are harder for birds to see than bright white ones. Which advantage could they have?",
+      "choices": [
+        "They may be eaten less often.",
+        "They cannot get cold.",
+        "They change the color of the rocks.",
+        "They do not need air."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

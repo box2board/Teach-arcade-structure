@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--1--basic-reading-comprehension",
+  "title": "Grade 1 ELA — Reading Short Stories and Finding Details",
+  "subject": "English Language Arts",
+  "category": "Basic Reading Comprehension",
+  "topic": "Basic Reading Comprehension",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on who, what, where, when, sequence.",
+  "keywords": [
+    "who",
+    "what",
+    "where",
+    "when",
+    "sequence"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RL.1.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Ada puts a red cup by the sink. Her dad puts a blue cup beside it. Who puts down a red cup?",
+      "choices": [
+        "Dad",
+        "a friend",
+        "Ada",
+        "a dog"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Ada puts a red cup by the sink. Her dad puts a blue cup beside it. Where is the blue cup?",
+      "choices": [
+        "on the floor",
+        "in a bag",
+        "by the red cup",
+        "in the sink"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Jo sees a wet kitten on the porch. Jo brings it a towel. What animal does Jo see?",
+      "choices": [
+        "a kitten",
+        "a dog",
+        "a duck",
+        "a mouse"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Jo sees a wet kitten on the porch. Jo brings it a towel. Why might Jo bring a towel?",
+      "choices": [
+        "to feed the kitten",
+        "to water a plant",
+        "to sweep the porch",
+        "to dry the kitten"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Min helps Dad bake. They mix flour first. They put the pan in the oven last. What do they do first?",
+      "choices": [
+        "eat the food",
+        "wash the pan",
+        "put the pan in the oven",
+        "mix flour"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Min helps Dad bake. They mix flour first. They put the pan in the oven last. What goes into the oven?",
+      "choices": [
+        "the pan",
+        "a spoon",
+        "a cup of milk",
+        "the table"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "The bus stopped at the park. Children got off and walked to the swings. Where did the bus stop?",
+      "choices": [
+        "at school",
+        "at the park",
+        "at the pool",
+        "at the zoo"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "The bus stopped at the park. Children got off and walked to the swings. Where did the children go after getting off?",
+      "choices": [
+        "to a pond",
+        "to the bus door",
+        "to a store",
+        "to the swings"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Rae hangs a bell by the back door. The wind blows and the bell rings. What makes the bell ring?",
+      "choices": [
+        "rain",
+        "Rae's hand",
+        "a cat",
+        "wind"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Rae hangs a bell by the back door. The wind blows and the bell rings. Where is the bell?",
+      "choices": [
+        "under a rug",
+        "by the back door",
+        "at the park",
+        "in a box"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Ben planted a seed. A week later, a leaf peeked out of the soil. What did Ben plant?",
+      "choices": [
+        "a flower",
+        "a seed",
+        "a stick",
+        "a leaf"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Ben planted a seed. A week later, a leaf peeked out of the soil. What did Ben see later?",
+      "choices": [
+        "a new pot",
+        "a blue bird",
+        "a button",
+        "a leaf"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Luz and Ana built a tower. A wheel rolled into it. The tower fell. What did the children build?",
+      "choices": [
+        "a wheel",
+        "a tower",
+        "a bridge",
+        "a road"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Luz and Ana built a tower. A wheel rolled into it. The tower fell. What made it fall?",
+      "choices": [
+        "a wheel hit it",
+        "the room got dark",
+        "a bird landed on it",
+        "the children lifted it"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Eli packed an apple and a book. At the park, he ate the apple before he read. What did Eli pack to read?",
+      "choices": [
+        "a map",
+        "a note",
+        "a book",
+        "an apple"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Eli packed an apple and a book. At the park, he ate the apple before he read. Which happened first at the park?",
+      "choices": [
+        "He drew a tree.",
+        "He read the book.",
+        "He ate the apple.",
+        "He packed a bag at the park."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Sam went to the pond. Sam saw three ducks. Then one duck flew away. What did Sam see at the pond?",
+      "choices": [
+        "ducks",
+        "ants",
+        "snakes",
+        "cats"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Sam went to the pond. Sam saw three ducks. Then one duck flew away. What did one duck do next?",
+      "choices": [
+        "It flew away.",
+        "It fell asleep.",
+        "It went under a rock.",
+        "It ate a seed."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Meg lost a glove. She looked under the bed. She found it in her coat. What had Meg lost?",
+      "choices": [
+        "a coat",
+        "a glove",
+        "a shoe",
+        "a hat"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Meg lost a glove. She looked under the bed. She found it in her coat. Where did she find it?",
+      "choices": [
+        "on a shelf",
+        "under the bed",
+        "in her coat",
+        "at school"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    }
+  ]
+}

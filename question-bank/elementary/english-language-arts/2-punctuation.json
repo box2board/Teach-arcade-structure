@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--2--punctuation",
+  "title": "Grade 2 ELA — Punctuation That Helps Readers",
+  "subject": "English Language Arts",
+  "category": "Punctuation",
+  "topic": "Punctuation",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on periods, question marks, commas, apostrophes.",
+  "keywords": [
+    "periods",
+    "question marks",
+    "commas",
+    "apostrophes"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.2.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which mark ends a direct question?",
+      "choices": [
+        ",",
+        "?",
+        "!",
+        "."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which mark fits this calm statement: “I see a cat__”",
+      "choices": [
+        ":",
+        "?",
+        ".",
+        ","
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which mark best shows excitement in “We won__”",
+      "choices": [
+        "!",
+        ",",
+        ":",
+        "?"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which mark separates “red” and “blue” in a list of three colors?",
+      "choices": [
+        ".",
+        "!",
+        ",",
+        "?"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which mark shows missing letters in “can't”?",
+      "choices": [
+        ".",
+        ",",
+        "'",
+        "?"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which is a correctly punctuated question?",
+      "choices": [
+        "Did you see the kite,",
+        "Did you see the kite.",
+        "Did, you see the kite?",
+        "Did you see the kite?"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which sentence uses commas correctly in a list?",
+      "choices": [
+        "I packed, a pen, paper and, tape.",
+        "I packed a pen paper, and, tape.",
+        "I packed, a pen paper and tape.",
+        "I packed a pen, paper, and tape."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which is an accepted short form for “do not”?",
+      "choices": [
+        "don't",
+        "do'nt",
+        "do not'",
+        "dont'"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which shows one dog owns the bone?",
+      "choices": [
+        "the dog bone's",
+        "the dog's bone",
+        "the dogs bone",
+        "the dogs' bone"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which correctly ends a calm direction?",
+      "choices": [
+        "Put your bag down?",
+        "Put your bag down:",
+        "Put your bag down,",
+        "Put your bag down."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which needs a question mark?",
+      "choices": [
+        "What is your name",
+        "My name is Ana",
+        "Tell me your name",
+        "This is my name"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "How do you write “I am” in a contraction?",
+      "choices": [
+        "I,m",
+        "I'm",
+        "I'am",
+        "Im'"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which is a correct way to write a month and day?",
+      "choices": [
+        "June? 4",
+        "June 4",
+        "June, 4",
+        "June. 4"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which mark fits “Watch out__” if the speaker shouts a warning?",
+      "choices": [
+        ",",
+        ":",
+        "!",
+        "?"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which separates the day from the year in “May 2__ 2026”?",
+      "choices": [
+        "-",
+        "?",
+        ".",
+        ","
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which spelling correctly shortens “we are”?",
+      "choices": [
+        "were'",
+        "w'ere",
+        "we,re",
+        "we're"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which sentence is split correctly into two statements?",
+      "choices": [
+        "I drew? Lu painted?",
+        "I. drew Lu painted.",
+        "I drew. Lu painted.",
+        "I drew, Lu painted."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which line addresses Ben directly, using a comma correctly?",
+      "choices": [
+        "Ben, please shut the door.",
+        "Ben please shut the, door.",
+        "Ben please shut, the door.",
+        "Ben please, shut the door."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which uses an apostrophe to show one bird owns the nest?",
+      "choices": [
+        "the birds' nest",
+        "the bird's nest",
+        "the birds nest",
+        "the bir'ds nest"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which mark correctly ends “How did you get here__”?",
+      "choices": [
+        "?",
+        ".",
+        ",",
+        ";"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

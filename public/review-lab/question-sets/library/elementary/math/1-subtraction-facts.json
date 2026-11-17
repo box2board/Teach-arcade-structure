@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--1--subtraction-facts",
+  "title": "Grade 1 Math — Subtraction Facts Within 20",
+  "subject": "Math",
+  "category": "Subtraction Facts",
+  "topic": "Subtraction Facts",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on difference, take away, count back.",
+  "keywords": [
+    "difference",
+    "take away",
+    "count back"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "1.OA.6"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 13 − 7?",
+      "choices": [
+        "6",
+        "5",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Use 8 + 5 = 13. What is 13 − 8?",
+      "choices": [
+        "7",
+        "5",
+        "4",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Count back 2 from 17. Where do you land?",
+      "choices": [
+        "17",
+        "15",
+        "16",
+        "14"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Find the missing number: 15 − __ = 11.",
+      "choices": [
+        "5",
+        "3",
+        "6",
+        "4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is 19 − 0?",
+      "choices": [
+        "18",
+        "20",
+        "21",
+        "19"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How much less than 14 is 9?",
+      "choices": [
+        "7",
+        "6",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is 16 minus 4?",
+      "choices": [
+        "11",
+        "12",
+        "14",
+        "13"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Take 5 away from 12. What remains?",
+      "choices": [
+        "6",
+        "9",
+        "7",
+        "8"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is 18 − 9?",
+      "choices": [
+        "8",
+        "9",
+        "11",
+        "10"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What is 10 − 4 − 3?",
+      "choices": [
+        "4",
+        "2",
+        "3",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Find the starting number: __ − 3 = 14.",
+      "choices": [
+        "18",
+        "19",
+        "16",
+        "17"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Sam uses 10 counters to make 10 − 6. How many does he cross out?",
+      "choices": [
+        "8",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is 20 − 10?",
+      "choices": [
+        "9",
+        "10",
+        "12",
+        "11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What is 11 less than 19?",
+      "choices": [
+        "10",
+        "7",
+        "9",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What is the difference between 16 and 7?",
+      "choices": [
+        "9",
+        "10",
+        "11",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What is 8 less than 8?",
+      "choices": [
+        "5",
+        "1",
+        "0",
+        "2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Subtract the smaller number from the larger: 5 and 14.",
+      "choices": [
+        "9",
+        "10",
+        "11",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What is 17 − 6?",
+      "choices": [
+        "12",
+        "13",
+        "10",
+        "11"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How many steps left from 12 bring you to 4?",
+      "choices": [
+        "8",
+        "10",
+        "7",
+        "9"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What is two less than 15 − 5?",
+      "choices": [
+        "8",
+        "7",
+        "10",
+        "9"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

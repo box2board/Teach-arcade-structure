@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--4--native-american-cultures",
+  "title": "Grade 4 Social Studies — Native Nations, Places, and Living Cultures",
+  "subject": "Social Studies",
+  "category": "Native American Cultures",
+  "topic": "Native American Cultures",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on tribal sovereignty, Haudenosaunee, Shawnee, Myaamia.",
+  "keywords": [
+    "tribal sovereignty",
+    "Haudenosaunee",
+    "Shawnee",
+    "Myaamia"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 4 #6",
+    "Ohio SS 2026 Grade 4 #7",
+    "Ohio SS 2026 Grade 4 #11"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Why is it more accurate to name a specific Native nation when describing its traditions?",
+      "choices": [
+        "Native nations never share any traditions.",
+        "All nations speak the same language.",
+        "Different nations have distinct histories and practices.",
+        "A tradition cannot belong to a living community."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which is true of many Native nations today?",
+      "choices": [
+        "They only appear in historical stories.",
+        "They no longer teach their languages.",
+        "They have their own governments and living cultures.",
+        "They all share one government for every nation."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which is the best primary choice for learning how a Native nation describes its own culture today?",
+      "choices": [
+        "a movie with no named nation",
+        "an old toy label",
+        "materials shared by that nation's cultural office",
+        "a travel flyer without sources"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does tribal sovereignty include?",
+      "choices": [
+        "the idea that every nation uses identical laws",
+        "a Native nation's authority to govern itself",
+        "a rule making every community a museum",
+        "control of all foreign governments"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Why might Native people describe the same river in more than one language?",
+      "choices": [
+        "Communities can have different languages and histories in a place.",
+        "A river's name always comes from maps published today.",
+        "Each river can have only one name.",
+        "A language cannot describe natural places."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which name refers to a confederacy of Native nations also known as the Six Nations?",
+      "choices": [
+        "Thirteen Colonies",
+        "Haudenosaunee Confederacy",
+        "Ohio General Assembly",
+        "United States Congress"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which nation works with the Myaamia Center to support the Myaamia language and culture?",
+      "choices": [
+        "Miami Tribe of Oklahoma",
+        "Navajo Nation",
+        "Cherokee Nation",
+        "Osage Nation"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why do some Native communities support language programs?",
+      "choices": [
+        "to replace every language in the world",
+        "to help people learn and use their language across generations",
+        "to make books impossible to read",
+        "to keep people from speaking to their elders"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which source best shows that Native culture continues in the present?",
+      "choices": [
+        "an unlabeled drawing made by a tourist long ago",
+        "a blank timeline ending in 1800",
+        "a recent interview with a Native artist about their current work",
+        "a sign with no date or author"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What did the historic earthworks in Ohio require their builders to do?",
+      "choices": [
+        "use printed road signs from modern cities",
+        "organize and plan large building projects",
+        "wait for European machines to arrive",
+        "live without measuring space"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which label accurately describes a group with historic connections to the Ohio River region?",
+      "choices": [
+        "Shawnee people",
+        "all French-speaking communities",
+        "every Native nation in North America",
+        "the British Parliament"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "If a museum label uses one word for all Native cultures, what is a good improvement?",
+      "choices": [
+        "remove the item's date and place",
+        "change all names to “unknown” even when they are known",
+        "identify the nation and explain the item's own context",
+        "label every object with the same maker"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Why can comparing historical housing designs show adaptation?",
+      "choices": [
+        "Every nation had identical weather and resources.",
+        "Homes show nothing about how people live.",
+        "All houses were temporary everywhere.",
+        "Different resources and climates can shape different designs."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which is a good way to handle a story that a community shares only in certain settings?",
+      "choices": [
+        "follow the community's guidance",
+        "say the community has no stories",
+        "post it publicly without asking",
+        "write a different ending and call it original"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What is one reason to study Native nations both before and after early contact with Europeans?",
+      "choices": [
+        "It keeps you from noticing change over time.",
+        "It shows every nation had the same experience.",
+        "It proves each nation stopped existing at first contact.",
+        "It shows histories that began earlier and continued through change."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What can a territory map and a present-day nation website show together?",
+      "choices": [
+        "historic places and present-day community life",
+        "exactly what every person in history thought",
+        "that communities have no ties to land",
+        "why all Native nations share one language"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which is an example of cultural knowledge that can be passed down?",
+      "choices": [
+        "what all people must eat on the same day",
+        "a random list of street numbers with no context",
+        "a rule that all nations tell the same stories",
+        "how and when to gather a food safely in a certain place"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What does a treaty show best on its own?",
+      "choices": [
+        "whether everyone freely agreed to it",
+        "that both sides always followed it",
+        "how everyone felt about it",
+        "what a written agreement says"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What could a school group do before using a design linked to a Native nation?",
+      "choices": [
+        "say it belongs to every nation",
+        "learn its purpose through sources from the nation and ask about permission",
+        "use it for any purpose without checking",
+        "copy it and invent a meaning"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which is an accurate way to describe Native nations?",
+      "choices": [
+        "They belong only in the past.",
+        "They all have identical ways of choosing leaders.",
+        "They formed only after the U.S. became a country.",
+        "They have changed over time while maintaining distinct identities."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

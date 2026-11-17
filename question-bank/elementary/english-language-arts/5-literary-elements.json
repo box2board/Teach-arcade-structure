@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--5--literary-elements",
+  "title": "Grade 5 ELA — How Story Elements Work Together",
+  "subject": "English Language Arts",
+  "category": "Literary Elements",
+  "topic": "Literary Elements",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on plot, conflict, narrator, setting, characterization.",
+  "keywords": [
+    "plot",
+    "conflict",
+    "narrator",
+    "setting",
+    "characterization"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RL.5.3",
+    "RL.5.6"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "As I stepped onto the stage, I could hear my sister cheering. I had practiced the song, but my hands shook. What point of view is used?",
+      "choices": [
+        "first person",
+        "an outside news report",
+        "second person",
+        "third person"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "As I stepped onto the stage, I could hear my sister cheering. I had practiced the song, but my hands shook. Which detail shows the character's inner conflict?",
+      "choices": [
+        "Their sister cheers.",
+        "A stage has lights.",
+        "They enter a building.",
+        "Their hands shake even after practice."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "A storm washed out the bridge on Don's usual road. Don drew a new route, but it meant reaching the market after it closed. How does setting shape the plot?",
+      "choices": [
+        "The road makes Don forget his name.",
+        "Don chooses what to sell at the market.",
+        "The storm affects which route Don can take.",
+        "The market sells road maps."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "A storm washed out the bridge on Don's usual road. Don drew a new route, but it meant reaching the market after it closed. What is Don's main problem?",
+      "choices": [
+        "The usual road is blocked and the other route takes longer.",
+        "The storm starts after Don gets home.",
+        "There are too many market stalls.",
+        "Don cannot draw a bridge."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Sol teased his cousin about collecting odd stones. After one sparked Sol's interest, he borrowed a field guide and began a collection too. How does Sol change?",
+      "choices": [
+        "He stops noticing stones altogether.",
+        "He gets angry about field guides.",
+        "He replaces his cousin's collection.",
+        "He comes to appreciate his cousin's interest."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Sol teased his cousin about collecting odd stones. After one sparked Sol's interest, he borrowed a field guide and began a collection too. Which event turns the story toward that change?",
+      "choices": [
+        "One of the stones catches Sol's interest.",
+        "The story ends with a new collection.",
+        "Sol jokes about the collection at first.",
+        "The cousin already owns some stones."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "“I do not need directions,” Mina said. When her team got lost, she unfolded the map and asked everyone what they noticed. Which trait does Mina show at the end?",
+      "choices": [
+        "certainty she never needs help",
+        "willingness to accept help",
+        "avoidance of her teammates",
+        "interest only in speed"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "“I do not need directions,” Mina said. When her team got lost, she unfolded the map and asked everyone what they noticed. What shows her change most directly?",
+      "choices": [
+        "She begins with a confident claim.",
+        "She asks for observations from the team.",
+        "A map can be folded.",
+        "The team gets lost."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "At midnight the lookout heard a crack below the ice. She lifted the lantern and saw water spreading across the path. Which detail most directly contributes to a tense mood?",
+      "choices": [
+        "the path's name",
+        "the crack below the ice",
+        "the existence of a lookout",
+        "the type of lantern handle"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "At midnight the lookout heard a crack below the ice. She lifted the lantern and saw water spreading across the path. When does this scene take place?",
+      "choices": [
+        "at breakfast",
+        "in the late afternoon",
+        "around midnight",
+        "at sunrise"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Dev wanted to finish the tower before the timer rang. The bottom leaned, so he took it apart and built a wider base. It stood when the timer rang. What resolves the problem?",
+      "choices": [
+        "Dev builds a wider base.",
+        "The tower starts to lean.",
+        "Dev hopes to work quickly.",
+        "The timer has a loud bell."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Dev wanted to finish the tower before the timer rang. The bottom leaned, so he took it apart and built a wider base. It stood when the timer rang. Which event raises the stakes before the resolution?",
+      "choices": [
+        "The base begins to lean as time runs short.",
+        "The rebuilt tower stays up.",
+        "The timer rings at the end.",
+        "Dev leaves with a standing tower."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Neither Lee nor Kam wanted to give up the drum for the solo. Then they tried alternating lines and decided to perform as a pair. What kind of conflict begins the story?",
+      "choices": [
+        "character against wild animals",
+        "character against a machine",
+        "character against weather",
+        "character against character"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Neither Lee nor Kam wanted to give up the drum for the solo. Then they tried alternating lines and decided to perform as a pair. What event makes the ending possible?",
+      "choices": [
+        "They both want a solo.",
+        "The drum is on a stage.",
+        "They try alternating lines.",
+        "They ask to perform on different days."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "At the old station, Ada tucked a coin inside a crack in the wall. Ten years later she returned and found it still there. What signals the jump in time?",
+      "choices": [
+        "“old station”",
+        "“in the wall”",
+        "“a coin”",
+        "“Ten years later”"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "At the old station, Ada tucked a coin inside a crack in the wall. Ten years later she returned and found it still there. Which object connects the two scenes?",
+      "choices": [
+        "a train",
+        "the coin",
+        "a clock",
+        "a ticket"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "In the dry summer, the creek shrank to a few pools. Jo carried the stranded fish to a deeper pool with help from a ranger. Which best describes the main conflict?",
+      "choices": [
+        "Two rangers argue about directions.",
+        "A machine breaks during a race.",
+        "A character fights a classroom rule.",
+        "A character responds to a problem caused by nature."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "In the dry summer, the creek shrank to a few pools. Jo carried the stranded fish to a deeper pool with help from a ranger. What motivates Jo most directly?",
+      "choices": [
+        "wanting to make the pools disappear",
+        "wanting to help the stranded fish",
+        "wanting to dam the creek",
+        "wanting to find a ranger's badge"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "The narrator describes Lina's hope aloud to the reader, then tells what Pax secretly fears. Lina and Pax do not know each other's thoughts. What does the narrator know?",
+      "choices": [
+        "only the place and time",
+        "only Lina's words",
+        "private thoughts of more than one character",
+        "only what the reader thinks"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "The narrator describes Lina's hope aloud to the reader, then tells what Pax secretly fears. Lina and Pax do not know each other's thoughts. What can this narration show that Lina alone could not report?",
+      "choices": [
+        "the location of the scene Lina sees",
+        "what Lina hopes will happen",
+        "Pax's private fear",
+        "Lina's own words"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    }
+  ]
+}

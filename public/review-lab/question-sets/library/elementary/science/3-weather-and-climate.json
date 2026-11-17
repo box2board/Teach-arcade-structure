@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--3--weather-and-climate",
+  "title": "Grade 3 Science — Daily Weather and Long-Term Climate",
+  "subject": "Science",
+  "category": "Weather and Climate",
+  "topic": "Weather and Climate",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on temperature, precipitation, graphs, observations.",
+  "keywords": [
+    "temperature",
+    "precipitation",
+    "graphs",
+    "observations"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "NGSS 3-ESS2-1",
+    "NGSS 3-ESS2-2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which describes weather?",
+      "choices": [
+        "Winters are usually snowy here.",
+        "The area is usually dry.",
+        "It rained this afternoon.",
+        "Summers are warm most years."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which describes climate?",
+      "choices": [
+        "Clouds moved in at noon.",
+        "Today was warm.",
+        "This town usually has rainy springs.",
+        "It snowed last night."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What instrument measures air temperature?",
+      "choices": [
+        "thermometer",
+        "wind vane",
+        "rain gauge",
+        "ruler"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which tool measures how much it rained?",
+      "choices": [
+        "compass rose",
+        "rain gauge",
+        "thermometer",
+        "clock"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which tool can show the direction the wind comes from?",
+      "choices": [
+        "wind vane",
+        "balance scale",
+        "yardstick",
+        "rain gauge"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What evidence best describes a city's climate?",
+      "choices": [
+        "weather records from many years",
+        "yesterday's sunset time",
+        "one photo taken today",
+        "a forecast for tomorrow"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which is a form of precipitation?",
+      "choices": [
+        "wind",
+        "sunshine",
+        "snow",
+        "shadow"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A chart shows five sunny days in a row. What can you conclude?",
+      "choices": [
+        "The region has no winters.",
+        "It was sunny each of those five days.",
+        "It will always be sunny there.",
+        "It never rains in the town."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Why might two towns have different weather on the same day?",
+      "choices": [
+        "They both use the same clock.",
+        "They have the same name.",
+        "Weather is identical across states.",
+        "They are in different places."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A place is usually dry. It rained hard today. Which could both be true?",
+      "choices": [
+        "A rainy day means its climate is always wet.",
+        "Its climate is dry and its weather was rainy today.",
+        "The rain changed every past day.",
+        "A dry climate can never get rain."
+      ],
+      "correctAnswer": 1,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which measurement helps show which town was colder at noon today?",
+      "choices": [
+        "each town's noon air temperature",
+        "each town's distance from a river",
+        "each town's town hall height",
+        "each town's total daylight last year"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What does a weather forecast tell?",
+      "choices": [
+        "which clouds were visible 100 years ago",
+        "how many roads a town has",
+        "what weather is likely soon",
+        "the exact climate next century"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which record supports a claim about long-term snowfall?",
+      "choices": [
+        "one morning's temperature",
+        "a windy afternoon",
+        "a snow photo from once",
+        "the yearly totals from 30 winters"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Three days had high temperatures of 21°C, 19°C, and 24°C. Which was warmest?",
+      "choices": [
+        "They were tied.",
+        "21°C",
+        "19°C",
+        "24°C"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which is shown on a graph of rain totals by month?",
+      "choices": [
+        "exactly when every drop fell",
+        "the amount of rain in each month",
+        "the color of each cloud",
+        "the wind direction every day"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Clouds cover the park today, though the park has many sunny days most years. What does cloudy describe?",
+      "choices": [
+        "the park's long-term climate",
+        "the week's total rainfall",
+        "today's weather",
+        "the park's location"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "What can a wind speed reading help you tell?",
+      "choices": [
+        "how much rain fell",
+        "how fast air is moving",
+        "how deep a lake is",
+        "how warm a puddle is"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which example compares climates?",
+      "choices": [
+        "Today was colder than yesterday.",
+        "The morning was cloudy and lunch was sunny.",
+        "The rain stopped at 5 p.m.",
+        "Town A usually has colder winters than Town B."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A student wants to measure outdoor air temperature fairly each day. What should stay the same?",
+      "choices": [
+        "where the thermometer is placed",
+        "how much it rains",
+        "whether clouds appear",
+        "the temperature reading"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A forecast shows possible rain. Which plan fits the information?",
+      "choices": [
+        "Assume it will rain at one exact minute.",
+        "Expect snow every day next year.",
+        "Assume rain is impossible.",
+        "Bring a raincoat in case it rains."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--3--mixed-word-problems",
+  "title": "Grade 3 Math — Choosing Operations in Word Problems",
+  "subject": "Math",
+  "category": "Mixed Word Problems",
+  "topic": "Mixed Word Problems",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on addition, subtraction, multiplication, division, two steps.",
+  "keywords": [
+    "addition",
+    "subtraction",
+    "multiplication",
+    "division",
+    "two steps"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "3.OA.8"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Four bags hold 8 markers each. How many markers are in all?",
+      "choices": [
+        "32",
+        "34",
+        "33",
+        "31"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A team has 50 points and loses 17. How many points remain?",
+      "choices": [
+        "35",
+        "34",
+        "33",
+        "32"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Mia shares 27 shells evenly among 3 friends. How many does each get?",
+      "choices": [
+        "9",
+        "8",
+        "10",
+        "11"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A bus has 38 seats. Twenty-nine are taken. How many are open?",
+      "choices": [
+        "11",
+        "9",
+        "10",
+        "8"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Five tables each seat 6 children. Four chairs are empty. How many children are seated?",
+      "choices": [
+        "28",
+        "26",
+        "25",
+        "27"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Jules read 29 pages on Monday and 38 on Tuesday. How many pages altogether?",
+      "choices": [
+        "66",
+        "68",
+        "69",
+        "67"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A coach splits 48 players between 8 teams. Two players from each team bring flags. How many players bring flags?",
+      "choices": [
+        "17",
+        "18",
+        "16",
+        "15"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Ana makes 3 rows of 9 paper stars. She gives away 12. How many remain?",
+      "choices": [
+        "14",
+        "17",
+        "16",
+        "15"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A 7-foot path is extended by 5 feet. How many feet long is it now?",
+      "choices": [
+        "13",
+        "11",
+        "12",
+        "14"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "There are 36 photos and 4 pages. Put the same number on every page. How many go on each?",
+      "choices": [
+        "11",
+        "9",
+        "8",
+        "10"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A class raises 21 dollars, then 35 more. It spends 8 dollars. How many dollars remain?",
+      "choices": [
+        "47",
+        "50",
+        "48",
+        "49"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A jar holds 5 red and 7 blue beads. Each of 4 identical jars holds the same amounts. How many blue beads in all?",
+      "choices": [
+        "30",
+        "28",
+        "29",
+        "27"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "There are 8 bags with 6 limes each. The limes are split between 2 baskets. How many go in each basket?",
+      "choices": [
+        "26",
+        "23",
+        "24",
+        "25"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A shop had 80 tickets. It sold 6 groups of 7 tickets. How many remain?",
+      "choices": [
+        "38",
+        "40",
+        "39",
+        "37"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Lena folds 15 planes. Dev folds twice as many. How many planes did they fold together?",
+      "choices": [
+        "45",
+        "47",
+        "46",
+        "44"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A 9-meter ribbon is joined with a 15-meter ribbon. The new ribbon is cut into 3 equal lengths. How long is each, in meters?",
+      "choices": [
+        "8",
+        "7",
+        "9",
+        "10"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Two classes each collect 24 books. Nine books are damaged. How many undamaged books are there?",
+      "choices": [
+        "40",
+        "38",
+        "41",
+        "39"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A library has 64 books on 8 equal shelves. How many books are on three shelves together?",
+      "choices": [
+        "26",
+        "25",
+        "23",
+        "24"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A garden has four rows. Two rows have 7 plants and two rows have 5 plants. How many plants are there?",
+      "choices": [
+        "25",
+        "24",
+        "23",
+        "26"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Nora has 30 beads. She spends 4 beads on each of 7 bracelets. How many beads are left?",
+      "choices": [
+        "1",
+        "3",
+        "4",
+        "2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

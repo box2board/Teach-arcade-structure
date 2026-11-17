@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--4--text-structure",
+  "title": "Grade 4 ELA — How Informational Text Is Organized",
+  "subject": "English Language Arts",
+  "category": "Text Structure",
+  "topic": "Text Structure",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on sequence, comparison, cause and effect, problem and solution.",
+  "keywords": [
+    "sequence",
+    "comparison",
+    "cause and effect",
+    "problem and solution"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RI.4.5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "We left at dawn. By noon we reached the falls. We returned at sunset. How are the details arranged?",
+      "choices": [
+        "cause and effect",
+        "problem and solution",
+        "comparison",
+        "chronological order"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Too much rain filled the creek. As a result, the bridge path flooded. How does the author connect events?",
+      "choices": [
+        "sequence of directions",
+        "comparison",
+        "description only",
+        "cause and effect"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Both foxes and coyotes eat small animals. Coyotes are usually larger than foxes. What structure does the writer use?",
+      "choices": [
+        "problem and solution",
+        "procedure",
+        "compare and contrast",
+        "cause and effect"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "The class kept losing its paint brushes. It solved the problem by labeling a cup for each table. Which structure fits?",
+      "choices": [
+        "compare and contrast",
+        "definition and example",
+        "problem and solution",
+        "description only"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "A moth has two pairs of wings. Its wings are covered in tiny scales. What does the author mainly do?",
+      "choices": [
+        "compare two kinds of animals",
+        "propose a solution",
+        "show how to build a wing",
+        "describe features"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "First unplug the device. Next wipe it with a dry cloth. Finally, let it sit before plugging it in. Which structure helps the reader use this text?",
+      "choices": [
+        "problem and solution only",
+        "sequence of steps",
+        "cause and effect only",
+        "comparison of options"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "The strings of the instruments looked alike. Unlike the violin, the cello rests on the floor while it is played. Which word signals a difference?",
+      "choices": [
+        "Unlike",
+        "played",
+        "alike",
+        "rests"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Because a pipe burst, the gym floor became wet. Which part names the cause?",
+      "choices": [
+        "the floor was in a gym",
+        "a pipe burst",
+        "the gym floor became wet",
+        "the word “wet”"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "The lights near the bridge failed. The town installed new ones to make the crossing easier to see. Which detail tells the solution?",
+      "choices": [
+        "The crossing was hard to see.",
+        "The old lights failed.",
+        "There was a bridge.",
+        "The town installed new lights."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "The lights near the bridge failed. The town installed new ones to make the crossing easier to see. Which heading best fits a compare-and-contrast article?",
+      "choices": [
+        "Why a Lake Froze",
+        "How Moths and Butterflies Are Alike and Different",
+        "Features of One Oak Leaf",
+        "Steps for Making Paper"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "The lights near the bridge failed. The town installed new ones to make the crossing easier to see. Which organizer best shows two similarities and two differences?",
+      "choices": [
+        "a numbered recipe",
+        "one calendar date",
+        "a single label",
+        "a comparison table"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "The lights near the bridge failed. The town installed new ones to make the crossing easier to see. Which word often signals that an effect follows?",
+      "choices": [
+        "therefore",
+        "unlike",
+        "nearby",
+        "first"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "The lights near the bridge failed. The town installed new ones to make the crossing easier to see. Which sentence signals the last action in a procedure?",
+      "choices": [
+        "Unlike bees, wasps have a smooth body.",
+        "Finally, close the lid.",
+        "Because the lid was gone, the paint dried.",
+        "The lid is blue."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "In May, crews repaired the trail. In July, they rebuilt the bridge. In October, they painted signs. Why did the author include months?",
+      "choices": [
+        "to explain why a sign is blue",
+        "to help show when each event happened",
+        "to tell where crews live",
+        "to contrast two paint colors"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Spruce trees keep needles through winter. Maple trees typically lose their leaves in fall. What information might best complete this comparison?",
+      "choices": [
+        "how both kinds of trees make and use seeds",
+        "directions for building a fence",
+        "how to bake a loaf of bread",
+        "how to make winter boots"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "When salt was spread, some ice melted. Meltwater ran toward a drain. What effect was linked to adding salt?",
+      "choices": [
+        "The drain moved uphill.",
+        "Salt became a leaf.",
+        "Some ice melted.",
+        "The Sun stopped shining."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Cracks in the sidewalk tripped walkers. Workers filled the cracks with a firm patch. What is the problem?",
+      "choices": [
+        "The cracks tripped walkers.",
+        "Walkers used the sidewalk later.",
+        "Workers filled the cracks.",
+        "A patch covered the cracks."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "A ladybug has a round body, a spotted outer shell, and small legs. Why is description a useful structure here?",
+      "choices": [
+        "It solves a safety problem.",
+        "It proves two animals are alike.",
+        "It helps the reader picture the ladybug.",
+        "It lists the order of steps."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "We sorted the rocks. Next we labeled the types. Last we put the groups on display. Which event came between sorting and displaying the rocks?",
+      "choices": [
+        "collecting new soil",
+        "putting the groups on display",
+        "labeling the types",
+        "sorting the rocks again"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Both routes reach the pond. Trail A is short but steep. Trail B is long but flat. Why might the writer compare the routes?",
+      "choices": [
+        "to help hikers choose a route",
+        "to list what happened on a hike",
+        "to describe what lives in the water",
+        "to explain why the pond froze"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    }
+  ]
+}

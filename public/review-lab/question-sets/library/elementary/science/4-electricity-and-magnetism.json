@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--4--electricity-and-magnetism",
+  "title": "Grade 4 Science — Simple Circuits and Magnets",
+  "subject": "Science",
+  "category": "Electricity and Magnetism",
+  "topic": "Electricity and Magnetism",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on conductors, switches, poles, attraction.",
+  "keywords": [
+    "conductors",
+    "switches",
+    "poles",
+    "attraction"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "4.PS.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What must a simple circuit have for its bulb to light?",
+      "choices": [
+        "an open switch",
+        "two loose ends",
+        "a closed path through the bulb and battery",
+        "a broken wire"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What happens when you open a switch in a simple circuit?",
+      "choices": [
+        "It adds insulation to every wire.",
+        "It breaks the path for current.",
+        "It makes current flow faster.",
+        "It creates a second battery."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which material usually conducts electricity well?",
+      "choices": [
+        "dry wood",
+        "rubber",
+        "copper",
+        "plastic"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which is often used to insulate the outside of a wire?",
+      "choices": [
+        "aluminum",
+        "copper",
+        "plastic",
+        "iron"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What happens when two north magnetic poles are brought together?",
+      "choices": [
+        "They change into electric wires.",
+        "They both become south poles.",
+        "They attract strongly.",
+        "They repel."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What happens when a north pole nears a south pole?",
+      "choices": [
+        "They repel.",
+        "They lose all their magnetism.",
+        "They attract.",
+        "They both turn into copper."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which object is most likely to stick to a typical classroom magnet?",
+      "choices": [
+        "wooden block",
+        "steel paper clip",
+        "aluminum foil",
+        "plastic button"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which item supplies energy in a simple battery-and-bulb circuit?",
+      "choices": [
+        "the glass around the bulb",
+        "the battery",
+        "the plastic coating",
+        "the switch handle"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Why might a magnet attract an iron clip through paper?",
+      "choices": [
+        "A magnetic force can act across a small gap.",
+        "Paper creates a new battery.",
+        "The clip sends out light.",
+        "Paper turns into iron."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which step would help test whether a key conducts electricity?",
+      "choices": [
+        "Measure its length.",
+        "Put it on a thermometer.",
+        "Hold a magnet near it only.",
+        "Put it across a gap in a safe low-voltage test circuit."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A working light stops after one wire is removed. What explains the change?",
+      "choices": [
+        "The battery turned into a switch.",
+        "The bulb has become a magnet.",
+        "The wire was making sunlight.",
+        "The circuit is no longer closed."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which can turn a coil of wire with an iron core into a simple electromagnet?",
+      "choices": [
+        "electric current through the coil",
+        "light falling on the coil",
+        "a folded paper label",
+        "a plastic cover around the coil alone"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which tool uses a magnet to show direction?",
+      "choices": [
+        "thermometer",
+        "balance",
+        "ruler",
+        "compass"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which pattern helps show the space around a bar magnet where magnetic force acts?",
+      "choices": [
+        "salt cubes dissolving",
+        "iron filings lining up around the magnet",
+        "wax melting",
+        "marks carved in a block of wood"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What changes most directly when a switch is closed?",
+      "choices": [
+        "The gap in the conducting path closes.",
+        "The battery grows larger.",
+        "The metal turns to rubber.",
+        "The bulb changes shape."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which comparison tests how distance affects magnetic force on a clip?",
+      "choices": [
+        "Use the same magnet and clip at several distances.",
+        "Use different clips and magnets each time.",
+        "Use only one distance.",
+        "Change the clip material at every distance."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which can attract an unmagnetized iron object without touching it?",
+      "choices": [
+        "a cold plastic cup",
+        "a nearby magnet",
+        "a glass marble",
+        "a wooden ruler"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What usually happens when a bar magnet breaks into two pieces?",
+      "choices": [
+        "Each piece has both a north and south pole.",
+        "Only one piece can attract anything.",
+        "The pieces become plastic.",
+        "The pieces each have one pole."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Why are wires coated except at their connection points?",
+      "choices": [
+        "The coating adds another battery.",
+        "Bare ends block all current.",
+        "The coating absorbs all light from a bulb.",
+        "The coating prevents contact while bare ends can conduct."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A magnet pulls some objects from a mix. Which mix could be separated this way?",
+      "choices": [
+        "wood blocks and plastic beads",
+        "paper scraps and yarn",
+        "steel clips and plastic beads",
+        "glass marbles and rubber bands"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

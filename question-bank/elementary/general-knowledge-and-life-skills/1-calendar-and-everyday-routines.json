@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--general-knowledge-and-life-skills--1--calendar-and-everyday-routines",
+  "title": "Grade 1 Life Skills — Using Calendars and Planning Routines",
+  "subject": "General Knowledge and Life Skills",
+  "category": "Calendar and Everyday Routines",
+  "topic": "Calendar and Everyday Routines",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on days, weeks, months, schedule, sequence.",
+  "keywords": [
+    "days",
+    "weeks",
+    "months",
+    "schedule",
+    "sequence"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "How many days make one week?",
+      "choices": [
+        "7",
+        "5",
+        "12",
+        "10"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What day comes just after Monday?",
+      "choices": [
+        "Friday",
+        "Sunday",
+        "Thursday",
+        "Tuesday"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What day comes just before Saturday?",
+      "choices": [
+        "Tuesday",
+        "Friday",
+        "Thursday",
+        "Sunday"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "If today is Wednesday, what day was yesterday?",
+      "choices": [
+        "Friday",
+        "Tuesday",
+        "Monday",
+        "Thursday"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What day comes two days after Thursday?",
+      "choices": [
+        "Saturday",
+        "Friday",
+        "Wednesday",
+        "Monday"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which month comes after March?",
+      "choices": [
+        "February",
+        "August",
+        "January",
+        "April"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which month begins a new calendar year?",
+      "choices": [
+        "December",
+        "June",
+        "January",
+        "September"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which is the last month of the calendar year?",
+      "choices": [
+        "January",
+        "November",
+        "October",
+        "December"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What does a calendar help you find?",
+      "choices": [
+        "the date of a future event",
+        "the taste of an apple",
+        "how heavy your backpack is",
+        "the length of your shoe"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Your note says “Library day: Tuesday.” Which day should you bring the books?",
+      "choices": [
+        "Thursday",
+        "Friday",
+        "Monday",
+        "Tuesday"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which usually happens first in a school day?",
+      "choices": [
+        "going home after class",
+        "packing up at dismissal",
+        "taking the bus home",
+        "arriving at school"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What can you do before putting on shoes if you also need socks?",
+      "choices": [
+        "tie the shoes to the socks",
+        "put on the socks",
+        "take off shoes you are not wearing",
+        "put the shoes into your backpack"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Lunch is at noon. Recess is right after lunch. What comes first?",
+      "choices": [
+        "neither event happens",
+        "they start at the same time",
+        "lunch",
+        "recess"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Today is Friday. The picnic is tomorrow. What day is the picnic?",
+      "choices": [
+        "Thursday",
+        "Monday",
+        "Saturday",
+        "Sunday"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What is the date one day after May 6?",
+      "choices": [
+        "May 8",
+        "May 7",
+        "June 6",
+        "May 5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which thing can remind you that an event is next week?",
+      "choices": [
+        "a mark on next week's calendar",
+        "the word on your shirt",
+        "yesterday's lunch plate",
+        "a blank ruler"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which step belongs just before turning in a school paper?",
+      "choices": [
+        "erase everyone's name",
+        "put it in the lunchbox for next year",
+        "put your name on it",
+        "use it to wipe the table"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which list runs from earliest to latest in a day?",
+      "choices": [
+        "dinner, lunch, breakfast",
+        "lunch, breakfast, dinner",
+        "breakfast, lunch, dinner",
+        "dinner, breakfast, lunch"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "You wash a cup, dry it, and put it away. What comes between washing and putting it away?",
+      "choices": [
+        "drying it",
+        "using it for a drink",
+        "buying a new one",
+        "taking it out again"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which plan helps you remember gym shoes on Monday morning?",
+      "choices": [
+        "leave them at the park on Sunday",
+        "set them beside your bag on Sunday evening",
+        "wait until Tuesday to look at your calendar",
+        "hide them in a different room"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

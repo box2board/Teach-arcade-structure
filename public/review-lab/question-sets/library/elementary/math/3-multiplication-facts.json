@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--3--multiplication-facts",
+  "title": "Grade 3 Math — Multiplication Facts and Equal Groups",
+  "subject": "Math",
+  "category": "Multiplication Facts",
+  "topic": "Multiplication Facts",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on factors, products, arrays, missing factors.",
+  "keywords": [
+    "factors",
+    "products",
+    "arrays",
+    "missing factors"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "3.OA.1",
+    "3.OA.7"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 7 × 8?",
+      "choices": [
+        "55",
+        "56",
+        "58",
+        "57"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "An array has 4 rows of 9 dots. How many dots?",
+      "choices": [
+        "37",
+        "38",
+        "36",
+        "35"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What factor is missing? 6 × __ = 48.",
+      "choices": [
+        "7",
+        "9",
+        "10",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "How many wheels are on 7 tricycles?",
+      "choices": [
+        "22",
+        "21",
+        "23",
+        "20"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Find the product of 9 and 6.",
+      "choices": [
+        "54",
+        "53",
+        "55",
+        "56"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "If 5 × 8 = 40, what is 6 × 8?",
+      "choices": [
+        "50",
+        "47",
+        "48",
+        "49"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "How many squares are in a 3-by-7 grid?",
+      "choices": [
+        "21",
+        "23",
+        "22",
+        "20"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is the product of 0 and 9?",
+      "choices": [
+        "0",
+        "2",
+        "1",
+        "5"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A pack holds 8 batteries. How many batteries are in 4 packs?",
+      "choices": [
+        "31",
+        "34",
+        "33",
+        "32"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Double 3 × 5. What do you get?",
+      "choices": [
+        "30",
+        "31",
+        "29",
+        "32"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What is the missing factor? __ × 7 = 63.",
+      "choices": [
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What is 7 groups of 7?",
+      "choices": [
+        "51",
+        "49",
+        "48",
+        "50"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Each team has 6 players. How many players are on 6 teams?",
+      "choices": [
+        "35",
+        "38",
+        "36",
+        "37"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What is 10 × 9 minus one group of 9?",
+      "choices": [
+        "80",
+        "83",
+        "81",
+        "82"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which product equals 5 × 9?",
+      "choices": [
+        "46",
+        "45",
+        "47",
+        "44"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "How many buttons are on 8 vests if each vest has 4 buttons?",
+      "choices": [
+        "34",
+        "31",
+        "32",
+        "33"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Find the total of 8 + 8 + 8 + 8 + 8.",
+      "choices": [
+        "41",
+        "39",
+        "42",
+        "40"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "If 9 × 3 is 27, what is 3 × 9?",
+      "choices": [
+        "27",
+        "28",
+        "29",
+        "26"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What is 2 × 8 + 3 × 8?",
+      "choices": [
+        "42",
+        "41",
+        "39",
+        "40"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "How many items are in 9 groups of 1?",
+      "choices": [
+        "10",
+        "8",
+        "11",
+        "9"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

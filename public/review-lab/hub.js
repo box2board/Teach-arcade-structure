@@ -1,7 +1,9 @@
+import {matchesSetSearch,matchesSetFields,mountSetFilters,originalSetLine} from './set-filters.js';
 import {GAMES,QUESTION_SETS,gamesForSet,setsForGame,gameUrl} from './catalog.js';
 const $=id=>document.getElementById(id);
 const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let view='games',selectedSet;
+const filters=mountSetFilters($('topic-filters'),QUESTION_SETS,['primaryGrade','gradeBand','subject','category','difficulty'],render);
 function readLocation(){
   view=location.hash==='#topics'?'topics':'games';
   const id=new URLSearchParams(location.search).get('set');
@@ -13,7 +15,7 @@ function navigate(nextView,setId){
   history.pushState(null,'',url);readLocation();render();
 }
 function gameCard(game){
-  const sets=setsForGame(game.id),topics=`${sets.length} topics · Science, Math, Social Studies`;
+  const sets=setsForGame(game.id),topics=`${sets.length} topics`;
   const facts=game.facts||[`${game.levels} levels`,`${game.questionCount} questions per run`,'3 gameplay difficulties'];
   const topic=selectedSet?.title||topics||game.topicLabel;
   return `<article class="game-card"><img class="game-art" src="${escapeHTML(game.image)}" srcset="${escapeHTML(game.imageSrcset)}" sizes="(max-width:720px) 92vw, 510px" alt="${escapeHTML(game.imageAlt)}" width="768" height="512" loading="lazy" decoding="async"><div class="game-details"><p class="eyebrow">${escapeHTML(game.mode)} REVIEW GAME</p><h2>${escapeHTML(game.title)}</h2><p>${escapeHTML(game.description)}</p><ul class="facts">${facts.map(fact=>`<li>${escapeHTML(fact)}</li>`).join('')}</ul><p class="topic-label">${selectedSet?'Review topic':sets.length?'Available topic'+(sets.length===1?'':'s'):'Available now'}: <strong>${escapeHTML(topic)}</strong></p><a class="primary" href="${gameUrl(game.id,selectedSet?.id)}">${selectedSet?'Play '+escapeHTML(game.title):game.launchLabel?escapeHTML(game.launchLabel):'Choose a topic &amp; play'}</a></div></article>`;
@@ -30,10 +32,10 @@ function render(){
     $('catalog-count').textContent=`${games.length} game${games.length===1?'':'s'} available`;
     $('catalog').innerHTML='<h2 id="catalog-heading" class="sr-only">Review games</h2>'+games.map(gameCard).join('');
   }else{
-    const search=$('topic-search').value.toLowerCase().trim(),subject=$('topic-subject').value;
-    const filtered=QUESTION_SETS.filter(s=>(!subject||s.subject===subject)&&(`${s.title} ${s.category||''}`.toLowerCase().includes(search)));
-    $('catalog-count').textContent=`${filtered.length} topic${QUESTION_SETS.length===1?'':'s'} available`;
-    $('catalog').innerHTML='<h2 id="catalog-heading" class="sr-only">Review topics</h2><div class="topic-grid">'+filtered.map(set=>`<article class="topic-card"><p class="eyebrow">${escapeHTML(set.subject)}</p><h3>${escapeHTML(set.title)}</h3><p>${escapeHTML(set.description)}</p><p class="metadata">${set.questionCount} questions in this bank · ${gamesForSet(set.id).length} compatible game${gamesForSet(set.id).length===1?'':'s'}</p><button class="primary" type="button" data-set="${escapeHTML(set.id)}">Choose a game</button></article>`).join('')+'</div>';
+    const search=$('topic-search').value,selected=filters.values();
+    const filtered=QUESTION_SETS.filter(s=>matchesSetFields(s,selected)&&matchesSetSearch(s,search));
+    $('catalog-count').textContent=`${filtered.length} topic${filtered.length===1?'':'s'} available`;
+    $('catalog').innerHTML='<h2 id="catalog-heading" class="sr-only">Review topics</h2><div class="topic-grid">'+filtered.map(set=>`<article class="topic-card"><p class="eyebrow">${escapeHTML(originalSetLine(set))}</p><h3>${escapeHTML(set.title)}</h3><p>${escapeHTML(set.description)}</p><p class="metadata">${gamesForSet(set.id).length} compatible game${gamesForSet(set.id).length===1?'':'s'}</p><button class="primary" type="button" data-set="${escapeHTML(set.id)}">Choose a game</button></article>`).join('')+'</div>';
     document.querySelectorAll('[data-set]').forEach(button=>button.onclick=()=>{navigate('games',button.dataset.set);$('catalog').querySelector('.primary')?.focus();});
   }
 }
@@ -42,4 +44,4 @@ window.addEventListener('popstate',()=>{readLocation();render();});
 window.addEventListener('hashchange',()=>{readLocation();render();});
 readLocation();render();
 
-$('topic-search').addEventListener('input',render);$('topic-subject').addEventListener('change',render);
+$('topic-search').addEventListener('input',render);

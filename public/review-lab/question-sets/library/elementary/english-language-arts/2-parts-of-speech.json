@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--2--parts-of-speech",
+  "title": "Grade 2 ELA — Nouns, Verbs, and Adjectives in Sentences",
+  "subject": "English Language Arts",
+  "category": "Parts of Speech",
+  "topic": "Parts of Speech",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on grammar, action words, describing words.",
+  "keywords": [
+    "grammar",
+    "action words",
+    "describing words"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.2.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which word names a person, place, or thing in “One small dog barked.”?",
+      "choices": [
+        "small",
+        "dog",
+        "one",
+        "barked"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which word names a person, place, or thing in “The baby cried loudly.”?",
+      "choices": [
+        "baby",
+        "cried",
+        "the",
+        "loudly"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which word names a person, place, or thing in “The old library closed early.”?",
+      "choices": [
+        "library",
+        "early",
+        "closed",
+        "old"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which word names a person, place, or thing in “A bird flew away.”?",
+      "choices": [
+        "away",
+        "bird",
+        "flew",
+        "a"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which word names a person, place, or thing in “Those heavy boxes fell.”?",
+      "choices": [
+        "those",
+        "heavy",
+        "boxes",
+        "fell"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which word shows action in “Mira draws neat stars.”?",
+      "choices": [
+        "Mira",
+        "neat",
+        "stars",
+        "draws"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which word shows action in “Two frogs jumped far.”?",
+      "choices": [
+        "two",
+        "frogs",
+        "far",
+        "jumped"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which word shows action in “We stitched blue cloth.”?",
+      "choices": [
+        "we",
+        "blue",
+        "stitched",
+        "cloth"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which word shows action in “The rabbit nibbled slowly.”?",
+      "choices": [
+        "slowly",
+        "rabbit",
+        "the",
+        "nibbled"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which word shows action in “Sasha kicked the ball.”?",
+      "choices": [
+        "the",
+        "kicked",
+        "ball",
+        "Sasha"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which word describes a noun in “They wore striped socks.”?",
+      "choices": [
+        "striped",
+        "they",
+        "wore",
+        "socks"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which word describes a noun in “The bright moon rose.”?",
+      "choices": [
+        "the",
+        "bright",
+        "moon",
+        "rose"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which word describes a noun in “Cold rain fell softly.”?",
+      "choices": [
+        "softly",
+        "fell",
+        "Cold",
+        "rain"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which word describes a noun in “Ben lifted a heavy crate.”?",
+      "choices": [
+        "Ben",
+        "lifted",
+        "crate",
+        "heavy"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which word describes a noun in “That glass is empty.”?",
+      "choices": [
+        "is",
+        "glass",
+        "that",
+        "empty"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which word can replace “small” in “a small shell” and still describe its size?",
+      "choices": [
+        "tiny",
+        "runs",
+        "loud",
+        "green"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Add an action to “The cat __ on the step.”",
+      "choices": [
+        "sleeps",
+        "pail",
+        "under",
+        "soft"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which word names a place?",
+      "choices": [
+        "bright",
+        "softly",
+        "school",
+        "laugh"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which word names a kind of thing in “We drink milk”?",
+      "choices": [
+        "drink",
+        "milk",
+        "we",
+        "quickly"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "In which sentence is “paint” an action?",
+      "choices": [
+        "The paint is wet.",
+        "The paint dried.",
+        "I paint signs.",
+        "We spilled paint."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

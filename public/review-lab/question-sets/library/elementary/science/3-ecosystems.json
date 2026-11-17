@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--3--ecosystems",
+  "title": "Grade 3 Science — Relationships in an Ecosystem",
+  "subject": "Science",
+  "category": "Ecosystems",
+  "topic": "Ecosystems",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on habitats, resources, producers, decomposers.",
+  "keywords": [
+    "habitats",
+    "resources",
+    "producers",
+    "decomposers"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What feature is part of both a forest and a pond ecosystem?",
+      "choices": [
+        "living things",
+        "salty ocean waves",
+        "fire hydrants",
+        "traffic signals"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which is a nonliving part of a woodland ecosystem?",
+      "choices": [
+        "mushroom",
+        "maple",
+        "snail",
+        "sunlight"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which is a producer in a meadow?",
+      "choices": [
+        "grass",
+        "worm",
+        "rabbit",
+        "hawk"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which meadow animal eats plant leaves?",
+      "choices": [
+        "wolf",
+        "rabbit",
+        "hawk",
+        "owl"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What helps break down a dead tree?",
+      "choices": [
+        "a smooth pebble",
+        "fungi",
+        "sunlight alone",
+        "a clear pond"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What resource might two birds compete for?",
+      "choices": [
+        "the Moon",
+        "nesting space",
+        "gravity",
+        "the town name"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "If a drought dries a frog's breeding pond, what resource is lost?",
+      "choices": [
+        "soil",
+        "water",
+        "air",
+        "sunlight"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which animal helps an oak by moving acorns to new places?",
+      "choices": [
+        "squirrel",
+        "jellyfish",
+        "perch",
+        "coral"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What does a honeybee find on many flowers?",
+      "choices": [
+        "sand",
+        "stones",
+        "ice",
+        "nectar"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A new plant shades small plants below it. What do the small plants receive less of?",
+      "choices": [
+        "gravity",
+        "air pressure",
+        "light",
+        "sand"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 11,
+      "question": "Which living thing might use a hollow tree for shelter?",
+      "choices": [
+        "coral",
+        "owl",
+        "shark",
+        "tuna"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A stream under a bridge stays cooler in shade. What affects its temperature?",
+      "choices": [
+        "the amount of sunlight",
+        "the name of the stream",
+        "the color of the sky alone",
+        "the sound of traffic"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What could you count to compare how common dandelions are in two equally sized plots?",
+      "choices": [
+        "clouds on each day",
+        "how tall the fence is",
+        "how far you walked to school",
+        "dandelions in each plot"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A recycling of nutrients happens when fallen leaves do what?",
+      "choices": [
+        "put out flowers again",
+        "stay sealed in plastic",
+        "break down",
+        "float into space"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which is part of a habitat that can help an animal escape predators?",
+      "choices": [
+        "a louder alarm clock",
+        "a store sign",
+        "darker paint on a toy",
+        "a hiding place"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "If insect-eating birds lose many of the insects they eat, what may become harder for the birds?",
+      "choices": [
+        "finding air to breathe",
+        "feeling gravity",
+        "finding food",
+        "finding sunlight"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "Which pair shows an animal and one thing it eats?",
+      "choices": [
+        "a caterpillar and a leaf",
+        "a trout and a twig",
+        "an owl and a rock",
+        "a fox and table salt"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which two organisms can depend on the same oak tree for different things?",
+      "choices": [
+        "a seal and a penguin on sea ice",
+        "two cacti growing in a desert",
+        "a squirrel that eats acorns and a bird that nests there",
+        "two fish in deep ocean water"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Why can a rotting log still matter to an ecosystem?",
+      "choices": [
+        "It is harder than every rock.",
+        "It makes new sunlight.",
+        "It can shelter insects and fungi.",
+        "It makes the creek salty."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A class wants to protect frogs in a park. Which action protects their habitat?",
+      "choices": [
+        "Pave the wet area.",
+        "Remove all plants around the pond.",
+        "Drain the pond.",
+        "Keep trash out of the pond."
+      ],
+      "correctAnswer": 3,
+      "skill": "reasoning"
+    }
+  ]
+}

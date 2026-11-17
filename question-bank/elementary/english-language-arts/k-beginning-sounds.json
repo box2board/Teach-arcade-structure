@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--k--beginning-sounds",
+  "title": "Kindergarten ELA — Listening for Beginning Sounds",
+  "subject": "English Language Arts",
+  "category": "Beginning Sounds",
+  "topic": "Beginning Sounds",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on phonemic awareness, consonant sounds, letter sounds.",
+  "keywords": [
+    "phonemic awareness",
+    "consonant sounds",
+    "letter sounds"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RF.K.2",
+    "RF.K.3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Say “sun.” Which letter stands for its first sound?",
+      "choices": [
+        "s",
+        "t",
+        "f",
+        "m"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Say “map.” Which letter stands for its first sound?",
+      "choices": [
+        "n",
+        "p",
+        "m",
+        "r"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Say “fish.” Which letter stands for its first sound?",
+      "choices": [
+        "m",
+        "s",
+        "b",
+        "f"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Say “top.” Which letter stands for its first sound?",
+      "choices": [
+        "d",
+        "t",
+        "g",
+        "p"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Say “jam.” Which letter stands for its first sound?",
+      "choices": [
+        "g",
+        "j",
+        "m",
+        "b"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Say “nose.” Which letter stands for its first sound?",
+      "choices": [
+        "n",
+        "l",
+        "z",
+        "m"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Say “rug.” Which letter stands for its first sound?",
+      "choices": [
+        "w",
+        "g",
+        "l",
+        "r"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Say “leaf.” Which letter stands for its first sound?",
+      "choices": [
+        "f",
+        "r",
+        "n",
+        "l"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which word starts with the same sound as “bat”?",
+      "choices": [
+        "mat",
+        "pat",
+        "cup",
+        "bed"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which word starts with the same sound as “dog”?",
+      "choices": [
+        "log",
+        "goat",
+        "duck",
+        "pig"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which word starts with the same sound as “pan”?",
+      "choices": [
+        "fan",
+        "pig",
+        "tan",
+        "bat"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which word starts with the same sound as “cow”?",
+      "choices": [
+        "cup",
+        "how",
+        "go",
+        "bow"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which word starts with the same sound as “van”?",
+      "choices": [
+        "ban",
+        "vest",
+        "fan",
+        "can"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which word starts with the same sound as “goat”?",
+      "choices": [
+        "gum",
+        "joke",
+        "coat",
+        "boat"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which word starts with the same sound as “web”?",
+      "choices": [
+        "bed",
+        "wig",
+        "leg",
+        "hen"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which pair begins with the same sound?",
+      "choices": [
+        "lake and rake",
+        "boat and coat",
+        "zip and zoo",
+        "moon and noon"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Bear, bell, bat, fish. Which starts with a different sound?",
+      "choices": [
+        "fish",
+        "bat",
+        "bear",
+        "bell"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which sound begins both “hat” and “hop”?",
+      "choices": [
+        "s",
+        "p",
+        "h",
+        "t"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which word begins with the /s/ sound in “sock”?",
+      "choices": [
+        "chip",
+        "ship",
+        "tip",
+        "sip"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Say “box.” Is its first sound like the first sound in bag, fox, top, or mop?",
+      "choices": [
+        "fox",
+        "top",
+        "bag",
+        "mop"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--4--decimals",
+  "title": "Grade 4 Math — Decimal Tenths and Hundredths",
+  "subject": "Math",
+  "category": "Decimals",
+  "topic": "Decimals",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on decimal notation, fractions, comparing decimals.",
+  "keywords": [
+    "decimal notation",
+    "fractions",
+    "comparing decimals"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "4.NF.6",
+    "4.NF.7"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Write 43/100 as a decimal.",
+      "choices": [
+        "0.43",
+        "0.44",
+        "0.53",
+        "0.42"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Write 9/10 as a decimal.",
+      "choices": [
+        "1.9",
+        "1.0",
+        "0.9",
+        "0.8"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What digit is in the hundredths place in 0.57?",
+      "choices": [
+        "9",
+        "6",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which is greater: 0.35, 0.52, 0.45, or 0.25?",
+      "choices": [
+        "0.45",
+        "0.35",
+        "0.52",
+        "0.25"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which listed decimal equals six tenths?",
+      "choices": [
+        "0.06",
+        "0.16",
+        "0.60",
+        "0.66"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How many hundredths is 0.81?",
+      "choices": [
+        "80",
+        "83",
+        "81",
+        "82"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Write 4 tenths and 3 hundredths as a decimal.",
+      "choices": [
+        "0.53",
+        "0.44",
+        "0.42",
+        "0.43"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is 0.07 as a fraction with denominator 100?",
+      "choices": [
+        "70/100",
+        "7/100",
+        "77/100",
+        "17/100"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which is farthest from zero: 0.09, 0.19, 0.10, or 0.90?",
+      "choices": [
+        "0.90",
+        "0.10",
+        "0.09",
+        "0.19"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which decimal is between 0.22 and 0.24?",
+      "choices": [
+        "0.23",
+        "0.32",
+        "0.25",
+        "0.21"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which decimal is the same as 2 wholes and 5 hundredths?",
+      "choices": [
+        "0.25",
+        "2.05",
+        "2.50",
+        "2.55"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "How many tenths is 0.80?",
+      "choices": [
+        "10",
+        "7",
+        "9",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which is least: 0.4, 0.39, 0.41, or 0.49?",
+      "choices": [
+        "0.49",
+        "0.41",
+        "0.39",
+        "0.4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "An inch is split into 100 equal parts. A mark is at part 4. What decimal is that?",
+      "choices": [
+        "0.14",
+        "0.04",
+        "0.05",
+        "0.03"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which decimal is closest to 1: 0.68, 0.97, 0.79, or 0.87?",
+      "choices": [
+        "0.87",
+        "0.68",
+        "0.79",
+        "0.97"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What digit is in the tenths place in 0.29?",
+      "choices": [
+        "3",
+        "4",
+        "1",
+        "2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "How many hundredths equal 0.3?",
+      "choices": [
+        "32",
+        "30",
+        "29",
+        "31"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Write 16/100 in decimal form.",
+      "choices": [
+        "0.16",
+        "0.15",
+        "0.26",
+        "0.17"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which value equals 0.54?",
+      "choices": [
+        "5/100",
+        "54/100",
+        "45/100",
+        "4/10"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What decimal marks seven tenths and one hundredth?",
+      "choices": [
+        "0.71",
+        "0.70",
+        "0.81",
+        "0.72"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

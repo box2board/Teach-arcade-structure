@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--2--reading-comprehension",
+  "title": "Grade 2 ELA — Short Passages and Text Evidence",
+  "subject": "English Language Arts",
+  "category": "Reading Comprehension",
+  "topic": "Reading Comprehension",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on sequence, key details, cause and effect.",
+  "keywords": [
+    "sequence",
+    "key details",
+    "cause and effect"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RL.2.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "A snowstorm covered the path to the shed. Jada used a shovel before she carried out the birdseed. Soon the feeder had three visitors. Why did Jada likely shovel first?",
+      "choices": [
+        "to feed the shovel",
+        "to cover the feeder",
+        "to hide the seed",
+        "to clear a path"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "A snowstorm covered the path to the shed. Jada used a shovel before she carried out the birdseed. Soon the feeder had three visitors. What happened after Jada carried birdseed out?",
+      "choices": [
+        "The path first got covered.",
+        "The snowstorm began.",
+        "Jada first took out the shovel.",
+        "Visitors came to the feeder."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Ava wanted to build a paper bridge. Her first bridge fell under a toy car. She folded the sides up on her next bridge. That bridge held the car. What was Ava's problem at first?",
+      "choices": [
+        "She had no paper.",
+        "The bridge was already strong.",
+        "The bridge fell under the car.",
+        "The toy had no wheels."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Ava wanted to build a paper bridge. Her first bridge fell under a toy car. She folded the sides up on her next bridge. That bridge held the car. What change helped the bridge work?",
+      "choices": [
+        "She cut the bridge in half.",
+        "She used a bigger car.",
+        "She folded up its sides.",
+        "She took the wheels off."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Mateo found dry soil in a pot by the window. He added water, left the pot by the window, and checked it again later. What told Mateo that the pot might need water?",
+      "choices": [
+        "The pot was green.",
+        "The pot sat by a door.",
+        "A new leaf was blue.",
+        "The soil was dry."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "Mateo found dry soil in a pot by the window. He added water, left the pot by the window, and checked it again later. What stayed the same after Mateo added water?",
+      "choices": [
+        "the dryness of the soil",
+        "the time of day",
+        "The pot’s spot by the window",
+        "the amount of water"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Kim made name cards for the art show. The blue cards went beside clay work and the yellow ones beside drawings. Only one drawing was missing a card. What color card did the drawing need?",
+      "choices": [
+        "red",
+        "green",
+        "yellow",
+        "blue"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "Kim made name cards for the art show. The blue cards went beside clay work and the yellow ones beside drawings. Only one drawing was missing a card. Where did Kim put the blue cards?",
+      "choices": [
+        "at the front door",
+        "beside the clay work",
+        "under the art table",
+        "beside every drawing"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "A park sign said the pond trail was muddy. Jess and Lee chose the hill trail instead. They reached the lookout just before lunch. Why did they skip the pond trail?",
+      "choices": [
+        "It led away from town.",
+        "The sign said it was muddy.",
+        "It was for bikes only.",
+        "It opened after lunch."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "A park sign said the pond trail was muddy. Jess and Lee chose the hill trail instead. They reached the lookout just before lunch. Which event happened last?",
+      "choices": [
+        "They chose a trail.",
+        "They reached the lookout.",
+        "They read the sign.",
+        "They found out the pond trail was muddy."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "Ava read aloud while Mel drew birds. They stopped when a timer rang. Then they took the drawings to the hall display. Who drew birds?",
+      "choices": [
+        "Ava",
+        "Mel",
+        "none of them",
+        "the timer"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "Ava read aloud while Mel drew birds. They stopped when a timer rang. Then they took the drawings to the hall display. What told them to stop?",
+      "choices": [
+        "the display fell",
+        "Mel dropped a pencil",
+        "Ava lost the book",
+        "the timer rang"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "Rob's family used to put kitchen scraps in the trash. Now they put fruit peels in a compost bin. They use the finished compost in their garden. Where do their fruit peels go now?",
+      "choices": [
+        "the sink",
+        "the trash",
+        "the sidewalk",
+        "the compost bin"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "Rob's family used to put kitchen scraps in the trash. Now they put fruit peels in a compost bin. They use the finished compost in their garden. What do they use in their garden?",
+      "choices": [
+        "finished compost",
+        "plastic wrappers",
+        "the kitchen bin lid",
+        "fresh trash bags"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Sana's team planted three sunflowers. Two grew tall, but one stayed short. The short plant sat in shade next to the shed. Where was the short plant?",
+      "choices": [
+        "by the sunny fence",
+        "next to the shed",
+        "on a windowsill",
+        "in the kitchen"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "Sana's team planted three sunflowers. Two grew tall, but one stayed short. The short plant sat in shade next to the shed. Which could explain why that plant grew less?",
+      "choices": [
+        "It got less sunlight.",
+        "All three plants sat in the same shade.",
+        "It was beside two dogs.",
+        "It got a taller pot."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "First the class made paper signs. Next they put bins by the door. Last they showed other classes where to recycle paper. What came right after making the signs?",
+      "choices": [
+        "putting bins by the door",
+        "throwing the signs out",
+        "recycling pencil shavings",
+        "showing other classes where to go"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "First the class made paper signs. Next they put bins by the door. Last they showed other classes where to recycle paper. What were the signs and bins for?",
+      "choices": [
+        "collecting coats",
+        "saving seats",
+        "recycling paper",
+        "counting students"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "During a dry week, Ada counted only one frog by a pond. After rain, she counted five. Ada decided to keep a daily frog chart. What difference did Ada see after rain?",
+      "choices": [
+        "She counted more frogs.",
+        "The pond went away.",
+        "She saw no frogs.",
+        "She counted fewer frogs."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "During a dry week, Ada counted only one frog by a pond. After rain, she counted five. Ada decided to keep a daily frog chart. What did Ada decide to do?",
+      "choices": [
+        "keep a daily frog chart",
+        "move the pond",
+        "feed all the frogs",
+        "stop visiting the pond"
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    }
+  ]
+}

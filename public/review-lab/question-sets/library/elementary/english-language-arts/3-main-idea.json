@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--3--main-idea",
+  "title": "Grade 3 ELA — Main Idea and Supporting Details",
+  "subject": "English Language Arts",
+  "category": "Main Idea",
+  "topic": "Main Idea",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on central idea, summary, supporting evidence.",
+  "keywords": [
+    "central idea",
+    "summary",
+    "supporting evidence"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RI.3.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Prairie plants do well in dry summers. Some have deep roots. Others have narrow leaves that lose less water. What is the main idea?",
+      "choices": [
+        "All plants have narrow leaves.",
+        "Prairie plants have traits that help them in dry weather.",
+        "Roots tell the age of plants.",
+        "Summers are always wet."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 2,
+      "question": "Prairie plants do well in dry summers. Some have deep roots. Others have narrow leaves that lose less water. Which detail supports this idea?",
+      "choices": [
+        "Some plants have deep roots.",
+        "Narrow leaves lose more water.",
+        "The prairie gets snow every day.",
+        "All roots are shallow."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 3,
+      "question": "Neighbors turned a vacant lot into a garden. One group cleared the trash. Another built raised beds. Families planted and watered the vegetables. What is this paragraph mainly about?",
+      "choices": [
+        "A family moved away from a vacant lot.",
+        "Trash is heavy to carry.",
+        "Neighbors worked together to start a garden.",
+        "Raised beds are hard to water."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 4,
+      "question": "Every evening, volunteers mark where their town's fireflies appear. They record the time and the weather, too. Scientists use the notes to learn about firefly activity. Which title fits the whole paragraph?",
+      "choices": [
+        "How to Catch All Insects",
+        "A Guide to Telling Time",
+        "Tracking Fireflies Together",
+        "What to Do in a Storm"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 5,
+      "question": "Every evening, volunteers mark where their town's fireflies appear. They record the time and the weather, too. Scientists use the notes to learn about firefly activity. Which detail shows that the volunteers do more than count fireflies?",
+      "choices": [
+        "They remove plants from the town.",
+        "They write down the weather and the time.",
+        "They work during the day.",
+        "They keep the insects in jars."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 6,
+      "question": "A kayak is easy to steer in narrow water. A low seat keeps the paddler near the surface. One paddle, with a blade at each end, moves the boat. What is the paragraph mainly about?",
+      "choices": [
+        "Different ways to climb into trees",
+        "Features of a kayak and how it works",
+        "How to swim in rough water",
+        "The history of boat races"
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 7,
+      "question": "Some libraries lend seeds. Visitors pick up seeds to plant. Later, gardeners save seeds and return some so other people can use them. What is the central idea?",
+      "choices": [
+        "Libraries keep all their seeds locked up.",
+        "Gardening always takes a year.",
+        "A seed library helps people share seeds.",
+        "Visitors only borrow gardening books."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 8,
+      "question": "To make a snow shelter, builders pack snow into a pile. They wait for it to firm up. Then they hollow out a space inside. Which summary keeps the main steps?",
+      "choices": [
+        "Spread loose snow flat and leave it there.",
+        "Hollow out a space, then pack snow around it all at once.",
+        "Wait for rain, then dig into soft soil.",
+        "Pack snow, wait for it to firm up, then hollow it out."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 9,
+      "question": "Roofs covered in plants can help a city. Plants take up some rain and shade buildings. Some roofs also offer spaces for insects. Which detail supports the idea that green roofs help with rain?",
+      "choices": [
+        "Insects may find a place there.",
+        "Plants can shade roofs.",
+        "Some buildings are tall.",
+        "Plants take up some of the water."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 10,
+      "question": "Roofs covered in plants can help a city. Plants take up some rain and shade buildings. Some roofs also offer spaces for insects. Which main idea fits all the details?",
+      "choices": [
+        "Planted roofs can help cities in several ways.",
+        "Tall buildings get more rain.",
+        "Rain damages every green roof.",
+        "All insects live on rooftops."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 11,
+      "question": "A young owl can spend nights near its nest even after it learns to fly. Adult owls still bring it food until it gets better at hunting. What is the point of the paragraph?",
+      "choices": [
+        "Owl parents teach every bird in the forest.",
+        "Young owls sleep all day in ponds.",
+        "Young owls can still need help after they learn to fly.",
+        "Owls stop eating once they can fly."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 12,
+      "question": "People use trail signs for different reasons. Arrows help hikers follow a route. Other signs show the distance back or warn about rough ground. What is the main idea?",
+      "choices": [
+        "Trail signs mostly sell things.",
+        "All trails end at the same place.",
+        "Hikers should remove signs after use.",
+        "Trail signs give hikers several kinds of help."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 13,
+      "question": "First, the class found a leak in a tap. Then they checked how much water dripped into a cup. They showed the results and asked for the tap to be fixed. What best sums up the class's work?",
+      "choices": [
+        "They measured a leak and acted on what they found.",
+        "They decided to stop using water at school.",
+        "They fixed all the taps themselves.",
+        "They made a cup to decorate the classroom."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 14,
+      "question": "A bicycle repair shop holds a free class. Riders learn to fill tires, check brakes, and oil a chain. Which is a supporting detail about safety?",
+      "choices": [
+        "The store has a bell.",
+        "Riders learn to check brakes.",
+        "The shop sells colorful signs.",
+        "The class always meets outside."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    },
+    {
+      "id": 15,
+      "question": "Many bird beaks are suited to certain foods. A finch can crack seeds. A long, thin beak can reach nectar inside certain flowers. Which sentence tells the main idea?",
+      "choices": [
+        "Different beaks help birds get different foods.",
+        "Flowers come in different colors.",
+        "All seeds are easy to crack.",
+        "All birds drink nectar."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 16,
+      "question": "During a park cleanup, one crew counted cans while another kept track of wrappers. Their chart showed where bins might be most useful. Which title fits this paragraph?",
+      "choices": [
+        "Building a Fence Around a Park",
+        "Why Metal Shines",
+        "Learning to Wrap a Gift",
+        "Using Cleanup Data to Plan for Bins"
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 17,
+      "question": "On icy mornings, drivers slow down. They leave more room to stop. Walkers also take shorter, careful steps. What idea links the details?",
+      "choices": [
+        "Ice only forms on sidewalks.",
+        "Drivers and walkers take the same steps.",
+        "Everyone travels faster when roads freeze.",
+        "People adjust how they move on ice."
+      ],
+      "correctAnswer": 3,
+      "skill": "understanding"
+    },
+    {
+      "id": 18,
+      "question": "Some animal tracks are clear in mud. Tracks are easy to miss on dry stones. Looking after a light snow can reveal prints, too. What is the paragraph mostly about?",
+      "choices": [
+        "Surfaces affect how easily tracks can be seen.",
+        "Stones soak up heavy rain.",
+        "Snow hides every trail.",
+        "All animals leave the same tracks."
+      ],
+      "correctAnswer": 0,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "Our class reused jars as paint cups. We used scrap paper to test colors. We turned old shirts into cleaning rags. Which statement includes the whole main idea?",
+      "choices": [
+        "Paper scraps get dirty.",
+        "The jars were full of bright paint.",
+        "The class found new uses for old materials.",
+        "Students chose a color for their shirts."
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Some city buses have ramps for wheelchairs. Bright signs help riders find stops. Recorded messages announce the next stop. What point do the details support?",
+      "choices": [
+        "Recorded messages replace drivers.",
+        "Buses can use several features to make travel easier.",
+        "Every bus route is the same length.",
+        "Buses only stop close to schools."
+      ],
+      "correctAnswer": 1,
+      "skill": "understanding"
+    }
+  ]
+}

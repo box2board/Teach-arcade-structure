@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--k--community-helpers",
+  "title": "Kindergarten Social Studies — People Who Help Our Community",
+  "subject": "Social Studies",
+  "category": "Community Helpers",
+  "topic": "Community Helpers",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on jobs, libraries, emergencies, schools.",
+  "keywords": [
+    "jobs",
+    "libraries",
+    "emergencies",
+    "schools"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade K #10"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who helps people find a library book?",
+      "choices": [
+        "librarian",
+        "firefighter",
+        "mail carrier",
+        "dentist"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Who helps children learn in a classroom?",
+      "choices": [
+        "teacher",
+        "librarian",
+        "farmer",
+        "mail carrier"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Who fixes a leaking sink pipe?",
+      "choices": [
+        "veterinarian",
+        "farmer",
+        "mechanic",
+        "plumber"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Who delivers letters to homes?",
+      "choices": [
+        "mail carrier",
+        "plumber",
+        "mechanic",
+        "firefighter"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Who helps put out a house fire?",
+      "choices": [
+        "park worker",
+        "mail carrier",
+        "firefighter",
+        "dentist"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Who treats sick animals?",
+      "choices": [
+        "teacher",
+        "plumber",
+        "mail carrier",
+        "veterinarian"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Who helps care for teeth?",
+      "choices": [
+        "dentist",
+        "mail carrier",
+        "firefighter",
+        "veterinarian"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Who helps grow food for a market?",
+      "choices": [
+        "park worker",
+        "farmer",
+        "mail carrier",
+        "dentist"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Who repairs a flat bus tire at the garage?",
+      "choices": [
+        "mail carrier",
+        "farmer",
+        "mechanic",
+        "firefighter"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Who keeps park paths and grounds cared for?",
+      "choices": [
+        "mechanic",
+        "firefighter",
+        "veterinarian",
+        "park worker"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "The class wants to visit a library. Who can show them where books go back?",
+      "choices": [
+        "a plumber",
+        "a mechanic",
+        "a librarian",
+        "a dentist"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "There is smoke and fire in a house. Which helpers put out the fire?",
+      "choices": [
+        "cooks",
+        "bus drivers",
+        "farmers",
+        "firefighters"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which helper checks for holes in a tooth?",
+      "choices": [
+        "a gardener",
+        "a mail carrier",
+        "a vet for pets",
+        "a dentist"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Where would you go to borrow a picture book?",
+      "choices": [
+        "a library",
+        "a garage",
+        "a fire station",
+        "a farm shed"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A family pet is sick. Where could it get care?",
+      "choices": [
+        "a library",
+        "an animal clinic",
+        "a post office",
+        "a bus stop"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A pipe breaks in a school. Who could repair it?",
+      "choices": [
+        "a coach",
+        "a plumber",
+        "a bus driver",
+        "a baker"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which helper often works in a kitchen to make meals?",
+      "choices": [
+        "a carpenter",
+        "a mail carrier",
+        "a cook",
+        "a bus driver"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which person helps people ride to school without driving a car?",
+      "choices": [
+        "a farmer",
+        "a dentist",
+        "a school bus driver",
+        "a tailor"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What tool helps a mail carrier know where to bring a letter?",
+      "choices": [
+        "the bus driver's name",
+        "the address on the letter",
+        "the color of the shoes",
+        "the weight of a loaf"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "The class found a lost book with a library label. What helps get it back?",
+      "choices": [
+        "hide it under a bench",
+        "bring it to the library",
+        "pull off the label",
+        "leave it out in rain"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

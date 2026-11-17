@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--1--short-and-long-vowels",
+  "title": "Grade 1 ELA — Short and Long Vowel Patterns",
+  "subject": "English Language Arts",
+  "category": "Short and Long Vowels",
+  "topic": "Short and Long Vowels",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on silent e, CVC, CVCe, phonics.",
+  "keywords": [
+    "silent e",
+    "CVC",
+    "CVCe",
+    "phonics"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RF.1.3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which word has the same vowel sound as “cat”?",
+      "choices": [
+        "cot",
+        "map",
+        "cup",
+        "cake"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which word has the same vowel sound as “bed”?",
+      "choices": [
+        "bead",
+        "bud",
+        "hen",
+        "bad"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which word has the same vowel sound as “sit”?",
+      "choices": [
+        "site",
+        "set",
+        "sat",
+        "pig"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which word has the same vowel sound as “hop”?",
+      "choices": [
+        "heat",
+        "hope",
+        "hut",
+        "pot"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which word has the same vowel sound as “cup”?",
+      "choices": [
+        "mud",
+        "keep",
+        "cop",
+        "cap"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which word has the same vowel sound as “cake”?",
+      "choices": [
+        "cap",
+        "cat",
+        "can",
+        "rain"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which word has the same vowel sound as “feet”?",
+      "choices": [
+        "fat",
+        "fed",
+        "seed",
+        "fit"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which word has the same vowel sound as “bike”?",
+      "choices": [
+        "boot",
+        "bit",
+        "light",
+        "bet"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which word has the same vowel sound as “rope”?",
+      "choices": [
+        "boat",
+        "rap",
+        "rot",
+        "rat"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which word has the same vowel sound as “cube”?",
+      "choices": [
+        "cup",
+        "cute",
+        "cub",
+        "cab"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Add silent e to “kit.” Which word do you make?",
+      "choices": [
+        "kite",
+        "kept",
+        "kites",
+        "kitten"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Change “hop” to a word with a long o.",
+      "choices": [
+        "hip",
+        "hop",
+        "hot",
+        "hope"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which vowel sound does “cap” have?",
+      "choices": [
+        "short a",
+        "short o",
+        "long i",
+        "long a"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which pair shows short i changing to long i?",
+      "choices": [
+        "pin to pine",
+        "tap to tape",
+        "cub to cube",
+        "hop to hope"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which word uses “ee” for long e?",
+      "choices": [
+        "grin",
+        "green",
+        "grown",
+        "grain"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which word has short u?",
+      "choices": [
+        "tube",
+        "cube",
+        "cute",
+        "cut"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which word has long a?",
+      "choices": [
+        "grass",
+        "gate",
+        "gap",
+        "gas"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which word starts with short e?",
+      "choices": [
+        "eagle",
+        "egg",
+        "eat",
+        "each"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which word would rhyme with “ride”?",
+      "choices": [
+        "rod",
+        "red",
+        "hide",
+        "hid"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which word has long o like “go”?",
+      "choices": [
+        "hot",
+        "hop",
+        "home",
+        "hog"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

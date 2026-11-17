@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--5--advanced-grammar",
+  "title": "Grade 5 ELA — Editing for Clarity and Grammar",
+  "subject": "English Language Arts",
+  "category": "Advanced Grammar",
+  "topic": "Advanced Grammar",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on verb tense, conjunctions, pronouns, sentence editing.",
+  "keywords": [
+    "verb tense",
+    "conjunctions",
+    "pronouns",
+    "sentence editing"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.5.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which revision keeps the verbs in the same tense?",
+      "choices": [
+        "We sketched the leaf and labeled its veins.",
+        "We sketch the leaf and will labeled its veins.",
+        "We sketch the leaf and labeled its veins.",
+        "We sketched the leaf and label its veins."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Choose the pronoun: Rosa and __ will present the results.",
+      "choices": [
+        "my",
+        "I",
+        "mine",
+        "me"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Choose the pronoun: Please hand the charts to Rosa and __.",
+      "choices": [
+        "mine",
+        "me",
+        "my",
+        "I"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which revision clarifies that Malik finished the model?",
+      "choices": [
+        "After Malik finished the model, he called Lee.",
+        "Malik called Lee after he finished it.",
+        "He finished it after Lee's call.",
+        "After he finished it, Lee got a call."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which word shows a contrast? “It was late, __ we continued working.”",
+      "choices": [
+        "and then",
+        "so",
+        "yet",
+        "because"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which pair of conjunctions completes the idea? “__ the pen __ the pencil is in my bag; both are on my desk.”",
+      "choices": [
+        "Not only … but also",
+        "Both … and",
+        "Either … or",
+        "Neither … nor"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which has a comma after an introductory phrase?",
+      "choices": [
+        "After, the game we returned the balls.",
+        "After the game we, returned the balls.",
+        "After the game we returned, the balls.",
+        "After the game, we returned the balls."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which joins two full ideas correctly with “but”?",
+      "choices": [
+        "The room was cold but, the water stayed warm.",
+        "The room was cold, but the water stayed warm.",
+        "The room, was cold but the water stayed warm.",
+        "The room was cold, but, the water stayed warm."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Choose the verb that agrees with the subject: “The box of colored pencils __ on the top shelf.”",
+      "choices": [
+        "were",
+        "are",
+        "have",
+        "is"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which sentence uses the correct form of “to lie” in the present?",
+      "choices": [
+        "The cat lie in the sun each morning.",
+        "The cat lying in the sun each morning.",
+        "The cat lies in the sun each morning.",
+        "The cat lays in the sun each morning."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which revision avoids a fragment?",
+      "choices": [
+        "Turning back at the trail.",
+        "Because the trail flooded.",
+        "Because the trail flooded, we turned back.",
+        "The flooded trail after rain."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which revision fixes a run-on?",
+      "choices": [
+        "I packed, the tent Bea brought the map.",
+        "I packed the tent. Bea brought the map.",
+        "I packed the tent, Bea brought the map.",
+        "I packed the tent Bea brought the map."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which sentence shows an action already finished before the bell rang?",
+      "choices": [
+        "I had packed my bag before the bell rang.",
+        "I will pack my bag before the bell rang.",
+        "I am packing my bag when the bell rang.",
+        "I pack my bag every time."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Choose the plural possessive for backpacks belonging to several players.",
+      "choices": [
+        "the player backpacks'",
+        "the players backpacks",
+        "the player's backpacks",
+        "the players' backpacks"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which verb completes the past tense sentence? “Yesterday, we __ the last bus at six.”",
+      "choices": [
+        "catch",
+        "catching",
+        "catches",
+        "caught"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which sentence uses a paired construction correctly?",
+      "choices": [
+        "We can either walk or ride the bus.",
+        "We can neither walk or ride the bus.",
+        "We can either walk nor ride the bus.",
+        "We can both walk or ride the bus."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which sentence makes it clear that the coins were inside the display case?",
+      "choices": [
+        "We saw three coins that were inside the display case.",
+        "While we were inside the display case, we saw coins.",
+        "In the display case, we looked out toward the coins.",
+        "We stood inside the display case to look at coins."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which revision means Priya made exactly one stop?",
+      "choices": [
+        "Priya stopped only on the trail.",
+        "Priya stopped only once on the trail.",
+        "Priya stopped once on only the trail.",
+        "Only Priya stopped on the trail."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which word connects the ideas by showing time? “We waited __ the gates opened.”",
+      "choices": [
+        "because of",
+        "beside",
+        "until",
+        "unless of"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which choice uses parallel verb forms?",
+      "choices": [
+        "We like hiking, paddle, and to skate.",
+        "We like to hike, paddling, and skate.",
+        "We like hiking, paddling, and skating.",
+        "We like hike, paddling, and skating."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

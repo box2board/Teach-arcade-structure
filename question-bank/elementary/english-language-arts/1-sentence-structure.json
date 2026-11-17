@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--1--sentence-structure",
+  "title": "Grade 1 ELA — Building Complete Sentences",
+  "subject": "English Language Arts",
+  "category": "Sentence Structure",
+  "topic": "Sentence Structure",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on word order, capitals, subjects, verbs.",
+  "keywords": [
+    "word order",
+    "capitals",
+    "subjects",
+    "verbs"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.1.1",
+    "L.1.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which is a complete sentence?",
+      "choices": [
+        "The brown dog.",
+        "The dog ran.",
+        "Under the tree.",
+        "Ran past."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Put the words in order: flies, A, kite.",
+      "choices": [
+        "Kite a flies.",
+        "A flies kite.",
+        "Flies kite a.",
+        "A kite flies."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What starts the sentence “The bird sings”?",
+      "choices": [
+        "sings",
+        "the last word",
+        "The",
+        "bird"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which word shows the action in “The frog jumps”?",
+      "choices": [
+        "the",
+        "none",
+        "jumps",
+        "frog"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which tells who in “Mia draws a sun”?",
+      "choices": [
+        "a",
+        "draws",
+        "sun",
+        "Mia"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which begins correctly?",
+      "choices": [
+        "they See frogs.",
+        "we see birds.",
+        "We see fish.",
+        "yOu see cats."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which end mark fits “Where is my cup”?",
+      "choices": [
+        "?",
+        ",",
+        ".",
+        ":"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What fits: Leo __ the door.",
+      "choices": [
+        "door",
+        "opens",
+        "the",
+        "his"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which group of words asks a full question?",
+      "choices": [
+        "Can I play?",
+        "The yellow ball?",
+        "My blue shoes?",
+        "In the yard?"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which sentence tells about more than one bird?",
+      "choices": [
+        "One bird sings.",
+        "The bird sings.",
+        "A bird sings.",
+        "The birds sing."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which word is missing: My shoes __ wet.",
+      "choices": [
+        "are",
+        "be",
+        "am",
+        "is"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which sentence is about the past?",
+      "choices": [
+        "We are walking home.",
+        "We walked home.",
+        "We walk home each day.",
+        "We will walk home."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Put the words in order: my, see, I, dog.",
+      "choices": [
+        "I see my dog.",
+        "Dog see my I.",
+        "My I see dog.",
+        "See I dog my."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What could be added to “The cat” to make a sentence?",
+      "choices": [
+        "under.",
+        "the.",
+        "and.",
+        "slept."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which is a full sentence that gives a direction?",
+      "choices": [
+        "By the gate.",
+        "The open gate.",
+        "Close the gate.",
+        "A fence and a gate."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which word is missing: __ is my hat?",
+      "choices": [
+        "On",
+        "The",
+        "My",
+        "Where"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which word tells when in “We left early”?",
+      "choices": [
+        "early",
+        "left",
+        "we",
+        "the"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What end mark fits “Dad is reading a book”?",
+      "choices": [
+        "?",
+        ".",
+        ":",
+        ","
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which has the words in the standard order for a statement?",
+      "choices": [
+        "Baby the lunch ate.",
+        "Ate baby the lunch.",
+        "The baby ate lunch.",
+        "Lunch the ate baby."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Nora uses she and her. Which word can replace “Nora” in “Nora reads a book”?",
+      "choices": [
+        "We",
+        "She",
+        "They",
+        "It"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

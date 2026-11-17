@@ -1,0 +1,659 @@
+@Letter Recognition
+?Find the lowercase letter for {}.
+A|a|o|e|u
+B|b|d|p|q
+F|f|t|l|i
+G|g|q|c|y
+H|h|n|r|m
+J|j|i|l|t
+M|m|n|w|v
+R|r|n|h|m
+--
+?Find the uppercase letter for {}.
+d|D|O|B|P
+e|E|F|L|H
+k|K|X|Y|V
+p|P|R|B|Q
+s|S|Z|C|G
+u|U|V|W|Y
+y|Y|V|X|T
+--
+Which letter comes just after C?|D|B|A|F
+Which letter is first in zoo?|z|o|s|n
+Which letter appears two times in moon?|o|m|n|u
+Which pair shows the same letter in two sizes?|T and t|D and b|P and q|M and w
+Which letter is last in leaf?|f|l|e|a
+@Beginning Sounds
+?Say “{}.” Which letter stands for its first sound?
+sun|s|f|t|m
+map|m|n|r|p
+fish|f|s|m|b
+top|t|d|g|p
+jam|j|g|m|b
+nose|n|l|m|z
+rug|r|g|w|l
+leaf|l|f|n|r
+--
+?Which word starts with the same sound as “{}”?
+bat|bed|mat|cup|pat
+dog|duck|log|goat|pig
+pan|pig|fan|bat|tan
+cow|cup|bow|how|go
+van|vest|fan|ban|can
+goat|gum|coat|joke|boat
+web|wig|bed|hen|leg
+--
+Which pair begins with the same sound?|zip and zoo|moon and noon|boat and coat|lake and rake
+Bear, bell, bat, fish. Which starts with a different sound?|fish|bear|bell|bat
+Which sound begins both “hat” and “hop”?|h|t|p|s
+Which word begins with the /s/ sound in “sock”?|sip|ship|chip|tip
+Say “box.” Is its first sound like the first sound in bag, fox, top, or mop?|bag|fox|top|mop
+@Rhyming Words
+?Which word rhymes with “{}”?
+cat|hat|cup|dog|sit
+hop|top|hat|hot|map
+cake|lake|cup|coat|duck
+bee|tree|bed|boat|bell
+log|frog|leg|leaf|lock
+pail|snail|pan|pole|pool
+bell|shell|ball|bat|book
+kite|light|cup|cat|kit
+moon|spoon|man|mop|mat
+nose|rose|nest|net|nap
+sock|rock|sack|sun|sip
+duck|truck|dot|dish|deck
+rain|train|run|ring|rug
+seed|feed|said|set|sat
+--
+Which pair rhymes?|sand and hand|fish and fan|sun and sock|frog and flag
+Which two words in “bed, red, run” rhyme?|bed and red|red and run|bed and run|run and fun
+Which word does not rhyme with “boat”?|book|goat|coat|float
+Fill in the rhyme: One, two, tie your __.|shoe|hat|coat|belt
+Which pair ends with the same sounds?|bug and rug|leg and log|dog and dig|hat and hot
+Fill in the rhyme: Look up high. I see the __.|sky|sun|cloud|bird
+@Sight Words
+?Find the word “{}.”
+the|the|they|then|them
+was|was|saw|way|want
+said|said|sad|sit|seed
+you|you|your|yes|yet
+one|one|on|once|own
+little|little|letter|litter|title
+look|look|lock|book|loop
+come|come|came|cone|some
+here|here|her|he|hear
+play|play|pay|plan|stay
+--
+Fill in the blank: I __ a red hat.|see|can|my|the
+Fill in the blank: __ dog can run.|The|Bye|Go|See
+Which word tells who can jump in “I can jump”?|I|can|jump|my
+Which word is missing: __ can go with me.|You|Go|With|Me
+Read “a big dog.” Which is the size word?|big|a|dog|go
+Which word is first in “Look at me”?|Look|at|me|see
+Fill in the blank: This is __ apple.|an|a|to|we
+Which word names the place in “Come here”?|here|come|can|my
+Which word fills the blank: I have __ cup and a plate.|a|an|to|on
+What is the last word in “We can go”?|go|we|can|so
+@Short and Long Vowels
+?Which word has the same vowel sound as “{}”?
+cat|map|cake|cup|cot
+bed|hen|bead|bad|bud
+sit|pig|site|set|sat
+hop|pot|hope|heat|hut
+cup|mud|cap|cop|keep
+cake|rain|cat|cap|can
+feet|seed|fed|fit|fat
+bike|light|bit|bet|boot
+rope|boat|rot|rap|rat
+cube|cute|cub|cab|cup
+--
+Add silent e to “kit.” Which word do you make?|kite|kitten|kites|kept
+Change “hop” to a word with a long o.|hope|hip|hot|hop
+Which vowel sound does “cap” have?|short a|long a|short o|long i
+Which pair shows short i changing to long i?|pin to pine|tap to tape|hop to hope|cub to cube
+Which word uses “ee” for long e?|green|grain|grown|grin
+Which word has short u?|cut|cute|cube|tube
+Which word has long a?|gate|gap|gas|grass
+Which word starts with short e?|egg|eagle|eat|each
+Which word would rhyme with “ride”?|hide|hid|red|rod
+Which word has long o like “go”?|home|hop|hot|hog
+@Sight Words
+Fill in the blank: We __ our coats on before we go outside.|put|who|every|of
+Fill in the blank: __ is at the door?|Who|With|Any|Only
+Fill in the blank: Kim sat __ her friend.|with|they|many|some
+Fill in the blank: We stayed inside __ of the rain.|because|what|both|could
+Fill in the blank: The ducks swam across the pond, and __ they rested.|then|that|their|there
+What word tells when in “We can play now”?|now|we|can|play
+What word shows a question in “Where did the cat go”?|Where|did|cat|go
+Complete the sentence: I have two books. Do you have __ books?|any|was|they|from
+Which word is missing: The turtle hid __ the log.|under|would|again|because
+Choose the best word: I ate lunch __ breakfast.|after|about|away|always
+Which word in “Both girls wore red boots” means the two together?|Both|girls|red|boots
+Complete the sentence: Dana has a pencil __ a ruler.|and|it|at|if
+Choose the best word: Read this page one more time. Read it __.|again|here|first|only
+Choose the best word: We rushed __ we did not want to be late.|because|before|little|some
+What tells how many in “Three ants went by”?|Three|ants|went|by
+Choose the best word: You can sit by me __ you want to.|if|of|my|at
+Fill in the blank: We __ a boat by the dock yesterday.|saw|see|say|so
+Which word tells how often in “We always wave goodbye”?|always|we|wave|goodbye
+Fill in the blank: Ana finished the puzzle __ herself.|by|go|or|is
+Choose the best word: I __ like to see the duck, please.|would|from|under|away
+@Sentence Structure
+Which is a complete sentence?|The dog ran.|The brown dog.|Ran past.|Under the tree.
+Put the words in order: flies, A, kite.|A kite flies.|Flies kite a.|Kite a flies.|A flies kite.
+What starts the sentence “The bird sings”?|The|bird|sings|the last word
+Which word shows the action in “The frog jumps”?|jumps|frog|the|none
+Which tells who in “Mia draws a sun”?|Mia|draws|a|sun
+Which begins correctly?|We see fish.|we see birds.|yOu see cats.|they See frogs.
+Which end mark fits “Where is my cup”?|?|.|,|:
+What fits: Leo __ the door.|opens|door|his|the
+Which group of words asks a full question?|Can I play?|The yellow ball?|In the yard?|My blue shoes?
+Which sentence tells about more than one bird?|The birds sing.|The bird sings.|A bird sings.|One bird sings.
+Which word is missing: My shoes __ wet.|are|am|is|be
+Which sentence is about the past?|We walked home.|We will walk home.|We walk home each day.|We are walking home.
+Put the words in order: my, see, I, dog.|I see my dog.|My I see dog.|Dog see my I.|See I dog my.
+What could be added to “The cat” to make a sentence?|slept.|under.|and.|the.
+Which is a full sentence that gives a direction?|Close the gate.|By the gate.|The open gate.|A fence and a gate.
+Which word is missing: __ is my hat?|Where|On|The|My
+Which word tells when in “We left early”?|early|we|left|the
+What end mark fits “Dad is reading a book”?|.|?|,|:
+Which has the words in the standard order for a statement?|The baby ate lunch.|Ate baby the lunch.|Lunch the ate baby.|Baby the lunch ate.
+Nora uses she and her. Which word can replace “Nora” in “Nora reads a book”?|She|They|It|We
+@Basic Reading Comprehension
+>Ada puts a red cup by the sink. Her dad puts a blue cup beside it.
+Who puts down a red cup?|Ada|Dad|a friend|a dog
+Where is the blue cup?|by the red cup|in the sink|in a bag|on the floor
+>Jo sees a wet kitten on the porch. Jo brings it a towel.
+What animal does Jo see?|a kitten|a dog|a mouse|a duck
+Why might Jo bring a towel?|to dry the kitten|to feed the kitten|to water a plant|to sweep the porch
+>Min helps Dad bake. They mix flour first. They put the pan in the oven last.
+What do they do first?|mix flour|wash the pan|eat the food|put the pan in the oven
+What goes into the oven?|the pan|a spoon|the table|a cup of milk
+>The bus stopped at the park. Children got off and walked to the swings.
+Where did the bus stop?|at the park|at the pool|at the zoo|at school
+Where did the children go after getting off?|to the swings|to the bus door|to a pond|to a store
+>Rae hangs a bell by the back door. The wind blows and the bell rings.
+What makes the bell ring?|wind|rain|Rae's hand|a cat
+Where is the bell?|by the back door|at the park|in a box|under a rug
+>Ben planted a seed. A week later, a leaf peeked out of the soil.
+What did Ben plant?|a seed|a leaf|a flower|a stick
+What did Ben see later?|a leaf|a new pot|a button|a blue bird
+>Luz and Ana built a tower. A wheel rolled into it. The tower fell.
+What did the children build?|a tower|a road|a wheel|a bridge
+What made it fall?|a wheel hit it|the room got dark|a bird landed on it|the children lifted it
+>Eli packed an apple and a book. At the park, he ate the apple before he read.
+What did Eli pack to read?|a book|an apple|a map|a note
+Which happened first at the park?|He ate the apple.|He read the book.|He drew a tree.|He packed a bag at the park.
+>Sam went to the pond. Sam saw three ducks. Then one duck flew away.
+What did Sam see at the pond?|ducks|snakes|cats|ants
+What did one duck do next?|It flew away.|It fell asleep.|It went under a rock.|It ate a seed.
+>Meg lost a glove. She looked under the bed. She found it in her coat.
+What had Meg lost?|a glove|a coat|a shoe|a hat
+Where did she find it?|in her coat|under the bed|at school|on a shelf
+@Parts of Speech
+?Which word names a person, place, or thing in “{}”?
+One small dog barked.|dog|one|small|barked
+The baby cried loudly.|baby|the|cried|loudly
+The old library closed early.|library|old|closed|early
+A bird flew away.|bird|a|flew|away
+Those heavy boxes fell.|boxes|those|heavy|fell
+--
+?Which word shows action in “{}”?
+Mira draws neat stars.|draws|Mira|neat|stars
+Two frogs jumped far.|jumped|frogs|two|far
+We stitched blue cloth.|stitched|we|blue|cloth
+The rabbit nibbled slowly.|nibbled|the|rabbit|slowly
+Sasha kicked the ball.|kicked|Sasha|the|ball
+--
+?Which word describes a noun in “{}”?
+They wore striped socks.|striped|they|wore|socks
+The bright moon rose.|bright|the|moon|rose
+Cold rain fell softly.|Cold|rain|fell|softly
+Ben lifted a heavy crate.|heavy|lifted|Ben|crate
+That glass is empty.|empty|that|glass|is
+--
+Which word can replace “small” in “a small shell” and still describe its size?|tiny|green|loud|runs
+Add an action to “The cat __ on the step.”|sleeps|soft|pail|under
+Which word names a place?|school|laugh|bright|softly
+Which word names a kind of thing in “We drink milk”?|milk|drink|we|quickly
+In which sentence is “paint” an action?|I paint signs.|The paint is wet.|We spilled paint.|The paint dried.
+@Vocabulary
+What does “reread” mean?|read again|read aloud|read quickly|stop reading
+What does “unfair” mean?|not fair|very fair|fair every time|fair again
+What does “preview” mean?|look at before|look at after|look away from|look from below
+What does “careless” mean?|not taking enough care|always kind|full of care|careful again
+What does “hopeful” mean?|full of hope|without hope|to hope again|sharing only a little hope
+In “a light backpack,” what does “light” mean?|not heavy|bright|turned on|pale in color
+In “the bark of a tree,” what is “bark”?|outer covering|dog sound|flower|branch tip
+In “the bat flew out of the cave,” what is the bat?|an animal|a baseball tool|a boat|a stone
+In “sign your name,” what does “sign” mean?|write|read aloud|erase|fold
+In “a fair turn,” what does “fair” mean?|following a just rule|light in color|at a carnival|sunny
+Which word means without a home?|homeless|homeward|homes|homeful
+Which two words make “sunflower”?|sun and flower|sung and lower|sun and flier|snow and flower
+Which word names someone who farms?|farmer|farmed|farming|farmhouse
+A patch is muddy after rain. What is “muddy”?|covered in wet dirt|very cold|tall and narrow|made of dry sand
+What is a “pair” of socks?|two socks|one sock|none|a stack of ten socks
+Which word means almost the same as “quick”?|fast|soft|slow|warm
+In “The path is narrow,” what does “narrow” mean?|not wide|very short|brightly lit|not straight
+A frog leaped across a log. What did it do?|jumped|slept|sang|turned
+Which word describes something you can wash?|washable|washed|washer|washing
+Which word means the opposite of “arrive”?|leave|come|enter|reach
+@Punctuation
+Which mark ends a direct question?|?|.|!|,
+Which mark fits this calm statement: “I see a cat__”|.|?|,|:
+Which mark best shows excitement in “We won__”|!|?|,|:
+Which mark separates “red” and “blue” in a list of three colors?|,|.|?|!
+Which mark shows missing letters in “can't”?|'|,|.|?
+Which is a correctly punctuated question?|Did you see the kite?|Did you see the kite.|Did, you see the kite?|Did you see the kite,
+Which sentence uses commas correctly in a list?|I packed a pen, paper, and tape.|I packed, a pen paper and tape.|I packed a pen paper, and, tape.|I packed, a pen, paper and, tape.
+Which is an accepted short form for “do not”?|don't|dont'|do'nt|do not'
+Which shows one dog owns the bone?|the dog's bone|the dogs bone|the dogs' bone|the dog bone's
+Which correctly ends a calm direction?|Put your bag down.|Put your bag down?|Put your bag down,|Put your bag down:
+Which needs a question mark?|What is your name|Tell me your name|My name is Ana|This is my name
+How do you write “I am” in a contraction?|I'm|Im'|I'am|I,m
+Which is a correct way to write a month and day?|June 4|June, 4|June. 4|June? 4
+Which mark fits “Watch out__” if the speaker shouts a warning?|!|?|,|:
+Which separates the day from the year in “May 2__ 2026”?|,|.|?|-
+Which spelling correctly shortens “we are”?|we're|were'|we,re|w'ere
+Which sentence is split correctly into two statements?|I drew. Lu painted.|I drew, Lu painted.|I drew? Lu painted?|I. drew Lu painted.
+Which line addresses Ben directly, using a comma correctly?|Ben, please shut the door.|Ben please, shut the door.|Ben please shut, the door.|Ben please shut the, door.
+Which uses an apostrophe to show one bird owns the nest?|the bird's nest|the birds nest|the bir'ds nest|the birds' nest
+Which mark correctly ends “How did you get here__”?|?|.|,|;
+@Reading Comprehension
+>A snowstorm covered the path to the shed. Jada used a shovel before she carried out the birdseed. Soon the feeder had three visitors.
+Why did Jada likely shovel first?|to clear a path|to feed the shovel|to cover the feeder|to hide the seed
+What happened after Jada carried birdseed out?|Visitors came to the feeder.|The snowstorm began.|The path first got covered.|Jada first took out the shovel.
+>Ava wanted to build a paper bridge. Her first bridge fell under a toy car. She folded the sides up on her next bridge. That bridge held the car.
+What was Ava's problem at first?|The bridge fell under the car.|She had no paper.|The toy had no wheels.|The bridge was already strong.
+What change helped the bridge work?|She folded up its sides.|She took the wheels off.|She used a bigger car.|She cut the bridge in half.
+>Mateo found dry soil in a pot by the window. He added water, left the pot by the window, and checked it again later.
+What told Mateo that the pot might need water?|The soil was dry.|The pot sat by a door.|The pot was green.|A new leaf was blue.
+What stayed the same after Mateo added water?|The pot’s spot by the window|the amount of water|the dryness of the soil|the time of day
+>Kim made name cards for the art show. The blue cards went beside clay work and the yellow ones beside drawings. Only one drawing was missing a card.
+What color card did the drawing need?|yellow|blue|red|green
+Where did Kim put the blue cards?|beside the clay work|beside every drawing|under the art table|at the front door
+>A park sign said the pond trail was muddy. Jess and Lee chose the hill trail instead. They reached the lookout just before lunch.
+Why did they skip the pond trail?|The sign said it was muddy.|It led away from town.|It was for bikes only.|It opened after lunch.
+Which event happened last?|They reached the lookout.|They read the sign.|They chose a trail.|They found out the pond trail was muddy.
+>Ava read aloud while Mel drew birds. They stopped when a timer rang. Then they took the drawings to the hall display.
+Who drew birds?|Mel|Ava|the timer|none of them
+What told them to stop?|the timer rang|the display fell|Ava lost the book|Mel dropped a pencil
+>Rob's family used to put kitchen scraps in the trash. Now they put fruit peels in a compost bin. They use the finished compost in their garden.
+Where do their fruit peels go now?|the compost bin|the trash|the sidewalk|the sink
+What do they use in their garden?|finished compost|fresh trash bags|the kitchen bin lid|plastic wrappers
+>Sana's team planted three sunflowers. Two grew tall, but one stayed short. The short plant sat in shade next to the shed.
+Where was the short plant?|next to the shed|in the kitchen|on a windowsill|by the sunny fence
+Which could explain why that plant grew less?|It got less sunlight.|It was beside two dogs.|It got a taller pot.|All three plants sat in the same shade.
+>First the class made paper signs. Next they put bins by the door. Last they showed other classes where to recycle paper.
+What came right after making the signs?|putting bins by the door|recycling pencil shavings|showing other classes where to go|throwing the signs out
+What were the signs and bins for?|recycling paper|collecting coats|saving seats|counting students
+>During a dry week, Ada counted only one frog by a pond. After rain, she counted five. Ada decided to keep a daily frog chart.
+What difference did Ada see after rain?|She counted more frogs.|She counted fewer frogs.|The pond went away.|She saw no frogs.
+What did Ada decide to do?|keep a daily frog chart|stop visiting the pond|feed all the frogs|move the pond
+@Main Idea
+>Prairie plants do well in dry summers. Some have deep roots. Others have narrow leaves that lose less water.
+What is the main idea?|Prairie plants have traits that help them in dry weather.|All plants have narrow leaves.|Summers are always wet.|Roots tell the age of plants.
+Which detail supports this idea?|Some plants have deep roots.|All roots are shallow.|The prairie gets snow every day.|Narrow leaves lose more water.
+>Neighbors turned a vacant lot into a garden. One group cleared the trash. Another built raised beds. Families planted and watered the vegetables.
+What is this paragraph mainly about?|Neighbors worked together to start a garden.|A family moved away from a vacant lot.|Raised beds are hard to water.|Trash is heavy to carry.
+>Every evening, volunteers mark where their town's fireflies appear. They record the time and the weather, too. Scientists use the notes to learn about firefly activity.
+Which title fits the whole paragraph?|Tracking Fireflies Together|A Guide to Telling Time|How to Catch All Insects|What to Do in a Storm
+Which detail shows that the volunteers do more than count fireflies?|They write down the weather and the time.|They work during the day.|They keep the insects in jars.|They remove plants from the town.
+>A kayak is easy to steer in narrow water. A low seat keeps the paddler near the surface. One paddle, with a blade at each end, moves the boat.
+What is the paragraph mainly about?|Features of a kayak and how it works|How to swim in rough water|Different ways to climb into trees|The history of boat races
+>Some libraries lend seeds. Visitors pick up seeds to plant. Later, gardeners save seeds and return some so other people can use them.
+What is the central idea?|A seed library helps people share seeds.|Gardening always takes a year.|Libraries keep all their seeds locked up.|Visitors only borrow gardening books.
+>To make a snow shelter, builders pack snow into a pile. They wait for it to firm up. Then they hollow out a space inside.
+Which summary keeps the main steps?|Pack snow, wait for it to firm up, then hollow it out.|Hollow out a space, then pack snow around it all at once.|Wait for rain, then dig into soft soil.|Spread loose snow flat and leave it there.
+>Roofs covered in plants can help a city. Plants take up some rain and shade buildings. Some roofs also offer spaces for insects.
+Which detail supports the idea that green roofs help with rain?|Plants take up some of the water.|Insects may find a place there.|Some buildings are tall.|Plants can shade roofs.
+Which main idea fits all the details?|Planted roofs can help cities in several ways.|Tall buildings get more rain.|All insects live on rooftops.|Rain damages every green roof.
+>A young owl can spend nights near its nest even after it learns to fly. Adult owls still bring it food until it gets better at hunting.
+What is the point of the paragraph?|Young owls can still need help after they learn to fly.|Owls stop eating once they can fly.|Young owls sleep all day in ponds.|Owl parents teach every bird in the forest.
+>People use trail signs for different reasons. Arrows help hikers follow a route. Other signs show the distance back or warn about rough ground.
+What is the main idea?|Trail signs give hikers several kinds of help.|All trails end at the same place.|Hikers should remove signs after use.|Trail signs mostly sell things.
+>First, the class found a leak in a tap. Then they checked how much water dripped into a cup. They showed the results and asked for the tap to be fixed.
+What best sums up the class's work?|They measured a leak and acted on what they found.|They decided to stop using water at school.|They made a cup to decorate the classroom.|They fixed all the taps themselves.
+>A bicycle repair shop holds a free class. Riders learn to fill tires, check brakes, and oil a chain.
+Which is a supporting detail about safety?|Riders learn to check brakes.|The shop sells colorful signs.|The class always meets outside.|The store has a bell.
+>Many bird beaks are suited to certain foods. A finch can crack seeds. A long, thin beak can reach nectar inside certain flowers.
+Which sentence tells the main idea?|Different beaks help birds get different foods.|All seeds are easy to crack.|Flowers come in different colors.|All birds drink nectar.
+>During a park cleanup, one crew counted cans while another kept track of wrappers. Their chart showed where bins might be most useful.
+Which title fits this paragraph?|Using Cleanup Data to Plan for Bins|Why Metal Shines|Learning to Wrap a Gift|Building a Fence Around a Park
+>On icy mornings, drivers slow down. They leave more room to stop. Walkers also take shorter, careful steps.
+What idea links the details?|People adjust how they move on ice.|Drivers and walkers take the same steps.|Ice only forms on sidewalks.|Everyone travels faster when roads freeze.
+>Some animal tracks are clear in mud. Tracks are easy to miss on dry stones. Looking after a light snow can reveal prints, too.
+What is the paragraph mostly about?|Surfaces affect how easily tracks can be seen.|All animals leave the same tracks.|Stones soak up heavy rain.|Snow hides every trail.
+>Our class reused jars as paint cups. We used scrap paper to test colors. We turned old shirts into cleaning rags.
+Which statement includes the whole main idea?|The class found new uses for old materials.|The jars were full of bright paint.|Students chose a color for their shirts.|Paper scraps get dirty.
+>Some city buses have ramps for wheelchairs. Bright signs help riders find stops. Recorded messages announce the next stop.
+What point do the details support?|Buses can use several features to make travel easier.|Buses only stop close to schools.|Every bus route is the same length.|Recorded messages replace drivers.
+@Context Clues
+The creek was shallow. I could see stones just under the water. What does “shallow” mean?|not deep|very cold|moving fast|full of salt
+Mara was reluctant to step on the bridge. She held back until her brother crossed. What does “reluctant” mean?|not eager|very loud|certain about the time|already across
+The puppy was drowsy, so it yawned and closed its eyes. What does “drowsy” mean?|sleepy|hungry|afraid|muddy
+The path was slick after rain, and my shoes slipped. What does “slick” mean here?|slippery|dry|steep|short
+A sturdy shelf can hold heavy books without bending. What does “sturdy” mean?|strong|thin|empty|new
+Ava made a shelter, a safe spot out of the rain. What does “shelter” mean?|a place that offers cover|a kind of rain|a short walk|a loud crash
+We had scarce paper, only two sheets for the whole group. What does “scarce” mean?|hard to get or in short supply|large in size|freshly painted|easy to tear
+The hill was steep, unlike the flat path below. What does “steep” mean?|rising sharply|entirely level|covered with grass|very sunny
+The class examined the leaf carefully, checking each edge. What does “examined” mean?|looked at closely|threw away|painted green|wrote on
+The fog began to disperse, and soon we could see the whole yard. What does “disperse” mean?|spread out and clear away|get darker|freeze in place|come down as heavy rain
+The hill was barren; no plants grew there. What does “barren” mean here?|without plants|crowded with trees|full of birds|under water
+Leaves drifted, floating slowly down the stream. What does “drifted” mean?|moved slowly with the water|sank like rocks|grew on branches|flew uphill against the wind
+The two signs were identical. Even the tiny letters matched. What does “identical” mean?|exactly alike|quite different|very old|hard to read
+The soup was bland until Dad added herbs. What does “bland” mean?|without much flavor|too hot to touch|full of salt|dark red
+A brief shower ended in two minutes. What does “brief” mean?|short in time|long and steady|very cold|loud
+We collected debris such as wrappers and broken sticks. What does “debris” mean?|scattered waste or pieces|new work tools|clean rainwater|an amount of time
+Nia conserved water by turning off the tap while brushing. What does “conserved” mean?|used less so it would not be wasted|colored|heated quickly|carried outdoors
+A visible crack caught our eye from across the room. What does “visible” mean?|able to be seen|very old|fully covered|hard to touch
+Rugs muffled our steps. The room became much quieter. What does “muffled” mean?|made the sound quieter|made the floor higher|turned steps into music|made the room colder
+A catalog lists all the items the shop sells. What does “catalog” mean here?|a list of items|a cash register|a shelf|a receipt for one item
+@Grammar
+Which is the past tense of “go”?|went|goes|going|goed
+Which is the past tense of “bring”?|brought|brings|bringing|bringed
+Pick the pronoun for “Ana and I” in “Ana and I ran.”|We|Us|They|Her
+In “Leo dropped his glove,” whose glove is it?|Leo's|mine|the reader's|no one's
+Pick the verb that agrees: These birds __ early.|wake|wakes|waking|is wake
+Which sentence uses the same past tense throughout?|We walked home and cooked dinner.|We walked home and cook dinner.|We walk home and cooked dinner.|We will walk home and cooked dinner.
+Choose the word that shows a reason: I wore boots __ the path was wet.|because|or|but|until
+Join the ideas to show a contrast: The hill was steep, __ we kept climbing.|but|because|or|so
+Which word joins two choices: Would you like peas __ corn?|or|because|before|so
+Which sentence has a plural noun?|The wolves howled.|A wolf howled.|The wolf ran.|One wolf slept.
+Which is the plural of “child”?|children|childs|childes|childrens
+Which sentence uses “their” correctly?|They put on their coats.|Their are three coats.|They went over their.|Their coming with us.
+Choose the helping verb: I __ reading when you called.|was|were|are|will
+Which changes “I sing” to show the future?|I will sing.|I sang.|I was singing.|I had sung.
+Choose the subject: “Under the bridge, a duck swam.”|a duck|under the bridge|swam|bridge
+Which word tells how they walked in “They walked quietly”?|quietly|they|walked|the
+Which sentence has correct subject and verb agreement?|My aunt makes soup.|My aunt make soup.|My aunts makes soup.|My aunt making soup.
+Which is the object pronoun in “Ben handed her the cup”?|her|Ben|cup|handed
+Pick the comparative: The second route is __ than the first.|shorter|shortest|short|more shorter
+Pick the conjunction in “We stayed because the show was fun.”|because|stayed|show|fun
+@Synonyms and Antonyms
+?Which word means nearly the same as “{}”?
+rapid|fast|slow|late|weak
+silent|quiet|noisy|empty|rough
+tiny|small|huge|wide|tall
+damp|moist|dry|bright|hard
+select|choose|scatter|ignore|hide
+repair|fix|break|find|move
+finish|complete|begin|copy|pause
+assist|help|stop|lift|borrow
+eager|keen|unwilling|calm|sleepy
+observe|notice|miss|build|travel
+--
+?Which word means the opposite of “{}”?
+wide|narrow|long|huge|open
+rough|smooth|bumpy|rocky|sharp
+early|late|first|soon|quick
+generous|stingy|giving|kind|fair
+include|exclude|add|join|enter
+gather|scatter|collect|bring|group
+visible|hidden|bright|clear|seen
+ancient|modern|historic|old|worn
+--
+Which word suggests a stronger feeling than “pleased”?|thrilled|sleepy|calm|tired
+Which change keeps nearly the same meaning as “The rabbit darted away”?|The rabbit rushed away.|The rabbit stayed there.|The rabbit crawled away.|The rabbit rested nearby.
+@Figurative Language
+“The classroom was a beehive before the show.” What does that suggest?|The room was busy.|There was a swarm of real bees.|Students built a hive.|The lights went out.
+“Her voice was as soft as falling snow.” What is being compared?|her voice and falling snow|snow and a window|her face and a cloud|the classroom and snow
+“The wind whispered through the curtains.” What human action is given to wind?|whispering|walking|dancing|writing
+What does “break the ice” mean when someone tells a joke to a quiet group?|help people feel more comfortable|freeze a cup of water|end a sports game|tell people to stop talking
+“Milo zipped past like a rocket.” What does the simile stress?|his speed|his height|his color|his weight
+“Stars winked at us” gives stars a human action. What is this technique?|personification|a literal report|a rhyme|a fact about distance
+Which sentence contains a simile?|The mud felt like thick glue.|The mud was on my boots.|I stepped around the mud.|The mud dried in the sun.
+Which is a metaphor?|That test was a mountain.|The test was ten questions long.|I took the test after lunch.|The test was as long as a movie.
+What does “lend a hand” mean in “Can you lend a hand with the boxes?”|help carry them|give someone a hand-shaped tool|count everyone's fingers|write your name on the box
+“The old house groaned in the wind.” What real sound does the writer likely describe?|creaking boards|a person singing|a ringing phone|children laughing
+“I've told you a million times” is likely meant to show what?|the speaker has said it often|the speaker kept an exact count|the listener won money|a timer stopped
+“He felt under the weather.” What does the idiom mean?|He felt ill.|He stood in a storm.|He studied a cloud.|He held an umbrella.
+“Time crawled while we waited.” What did waiting feel like?|slow|hot|noisy|short
+“Her grin was a flashlight in a dark room.” What does that suggest about her grin?|It lifted the mood.|It lit the room with a bulb.|It turned off quickly.|It was in her pocket.
+Which sentence uses “sharp” figuratively?|She has a sharp memory.|The knife has a sharp edge.|The pine needles are sharp.|The pencil tip is sharp.
+Which sentence gives a thing a human action?|The river danced over stones.|The river was cold.|The river was deep.|The river flowed past the bank.
+What would “on the same page” mean during a team project?|having the same understanding|writing in the same notebook only|putting work aside|announcing the project is finished
+Which detail acts as a comparison with “as”?|His feet were as cold as ice.|He wore dry socks.|He slid across the floor.|He stepped away from the ice.
+“The news hit me like cold water.” What feeling does the comparison suggest?|sudden shock|long sleepiness|steady warmth|mild hunger
+“The trail ribboned across the valley.” What did the trail likely look like?|a long, curving strip|a steep wall|a deep round hole|a pile of stones
+@Text Structure
+>We left at dawn. By noon we reached the falls. We returned at sunset.
+How are the details arranged?|chronological order|comparison|cause and effect|problem and solution
+>Too much rain filled the creek. As a result, the bridge path flooded.
+How does the author connect events?|cause and effect|sequence of directions|comparison|description only
+>Both foxes and coyotes eat small animals. Coyotes are usually larger than foxes.
+What structure does the writer use?|compare and contrast|cause and effect|procedure|problem and solution
+>The class kept losing its paint brushes. It solved the problem by labeling a cup for each table.
+Which structure fits?|problem and solution|compare and contrast|description only|definition and example
+>A moth has two pairs of wings. Its wings are covered in tiny scales.
+What does the author mainly do?|describe features|compare two kinds of animals|show how to build a wing|propose a solution
+>First unplug the device. Next wipe it with a dry cloth. Finally, let it sit before plugging it in.
+Which structure helps the reader use this text?|sequence of steps|comparison of options|cause and effect only|problem and solution only
+>The strings of the instruments looked alike. Unlike the violin, the cello rests on the floor while it is played.
+Which word signals a difference?|Unlike|rests|alike|played
+>Because a pipe burst, the gym floor became wet.
+Which part names the cause?|a pipe burst|the gym floor became wet|the floor was in a gym|the word “wet”
+>The lights near the bridge failed. The town installed new ones to make the crossing easier to see.
+Which detail tells the solution?|The town installed new lights.|The old lights failed.|There was a bridge.|The crossing was hard to see.
+Which heading best fits a compare-and-contrast article?|How Moths and Butterflies Are Alike and Different|Steps for Making Paper|Why a Lake Froze|Features of One Oak Leaf
+Which organizer best shows two similarities and two differences?|a comparison table|one calendar date|a numbered recipe|a single label
+Which word often signals that an effect follows?|therefore|first|unlike|nearby
+Which sentence signals the last action in a procedure?|Finally, close the lid.|Unlike bees, wasps have a smooth body.|The lid is blue.|Because the lid was gone, the paint dried.
+>In May, crews repaired the trail. In July, they rebuilt the bridge. In October, they painted signs.
+Why did the author include months?|to help show when each event happened|to explain why a sign is blue|to tell where crews live|to contrast two paint colors
+>Spruce trees keep needles through winter. Maple trees typically lose their leaves in fall.
+What information might best complete this comparison?|how both kinds of trees make and use seeds|how to bake a loaf of bread|directions for building a fence|how to make winter boots
+>When salt was spread, some ice melted. Meltwater ran toward a drain.
+What effect was linked to adding salt?|Some ice melted.|Salt became a leaf.|The drain moved uphill.|The Sun stopped shining.
+>Cracks in the sidewalk tripped walkers. Workers filled the cracks with a firm patch.
+What is the problem?|The cracks tripped walkers.|Workers filled the cracks.|A patch covered the cracks.|Walkers used the sidewalk later.
+>A ladybug has a round body, a spotted outer shell, and small legs.
+Why is description a useful structure here?|It helps the reader picture the ladybug.|It lists the order of steps.|It solves a safety problem.|It proves two animals are alike.
+>We sorted the rocks. Next we labeled the types. Last we put the groups on display.
+Which event came between sorting and displaying the rocks?|labeling the types|collecting new soil|putting the groups on display|sorting the rocks again
+>Both routes reach the pond. Trail A is short but steep. Trail B is long but flat.
+Why might the writer compare the routes?|to help hikers choose a route|to explain why the pond froze|to describe what lives in the water|to list what happened on a hike
+@Vocabulary
+What does “rebuild” mean?|build again|build before|build without tools|stop building
+Which word means “not able to be seen”?|invisible|visible|vision|preview
+What does the root “port” suggest in “portable”?|carry|see|hear|measure
+What does “micro” signal in “microscope”?|small|large|half|far
+What does “graph” suggest in “autograph”?|write|walk|listen|eat
+What does “tele” signal in “telescope”?|far away|inside|afterward|three
+What does the prefix in “interstate” suggest?|between|before|below|without
+Which word shares a root related to water with “aquarium”?|aquatic|accurate|acorn|acute
+What does “bi” mean in “bicycle”?|two|three|one|many
+What does “-less” add to the meaning of “fearless”?|without|full of|before|like
+Which word means “able to be moved”?|movable|movement|removal|mover
+What does “misread” mean?|read incorrectly|read before|read out loud|read again
+“Unpack” starts with a prefix that does what?|reverses an action|means doing it again|means doing it first|makes the action smaller
+What does “preheat” tell you to do with the oven?|heat it ahead of time|cool it first|turn it off late|heat two ovens
+Which verb suggests walking quietly and carefully?|tiptoe|stomp|charge|march
+Which word best describes steady, gentle rainfall?|drizzle|downpour|flood|hailstorm
+The trail loops back to its start. What does “loops” mean?|curves around|breaks apart|sinks down|ends early
+Which word contains a root that relates to earth, as in “geography”?|geology|genetics|generator|geranium
+What does “spect” suggest in “inspect”?|look|think aloud|write|run
+Which word means “one who teaches”?|teacher|teachable|teaching|taught
+@Inference
+>Bo slipped a card into his sister's bag and grinned. He had hidden the crayons when she walked in.
+What can you infer Bo is planning?|a surprise for his sister|to take her bag away|to clean the whole room|to hide his shoes
+Which clue most supports that idea?|He slipped a card into her bag.|His sister walked in.|There was a bag.|Bo could see the room.
+>All the seats were folded up except one row. A hand-lettered sign said “Rehearsal.” A violin case rested by the stage.
+What will most likely happen soon?|People will practice a performance.|The stage will become a swimming pool.|The seats will all be sold.|Someone will cook lunch.
+Which pair of details best supports the inference?|the rehearsal sign and violin case|the folded seats and the case color|the floor and the walls|the room and the doors
+>Ezra came in with cool cheeks and wet boots. He put his gloves by the heater.
+What can you infer about the weather outside?|It is probably cold and wet.|It is probably hot and dry.|It is probably warm and windy only.|It is always exactly freezing.
+>Nora read each instruction twice. When the first corner would not fit, she carefully folded it again.
+How does Nora seem to approach the task?|with care and persistence|by ignoring the directions|by giving up as soon as possible|by rushing without checking
+>Overnight the river rose over the lowest trail. At sunrise a worker carried a rope and a CLOSED sign to its entrance.
+Why will the worker probably put the rope across the trail?|to keep visitors away from flooded ground|to show where to fish|to measure the length of a boat|to hold a sign open in strong sun
+>Sam had practiced his speech with his brother many times. Outside the classroom, his notes shook in his hand.
+How does Sam most likely feel before speaking?|nervous|bored|angry at his brother|certain that he will fall asleep
+>Ina heard a steady tap inside the sink cabinet. A puddle was spreading beneath a pipe.
+What is likely happening?|The pipe is leaking.|Someone put ice inside the cabinet.|The tap sound is from the stairs.|Ina is washing the dishes.
+>A hiker brushed leaf litter aside and pointed to a line of rinsed stones and a mud mark above the bank.
+What most likely happened before the hike?|Water rose higher than usual.|The bank was paved.|The stones were painted green.|The leaves fell up from the ground.
+>By the time class began, Max's desk partner had an extra pencil and a clean eraser. Max had brought two of each.
+Why did Max most likely bring extras?|to share with someone who might need them|to repair the school desks|to count the chairs|to make a sign
+>A bent gate leaned open. The seed tray beyond it was empty, and tiny footprints crossed the dirt.
+What is one reasonable inference about the seed tray?|A small animal may have eaten the seeds.|The seeds flew to the Moon.|The gate never opened.|The footprints were made by a bus.
+>On the way to the recital, Eli tapped a rhythm against his knee and hummed the beginning of a tune.
+What might Eli be doing?|reviewing a piece of music|searching for missing keys|checking how long the road is|reading the address aloud
+>Before trying the ramp, Tali checked each bolt and asked her teammate to hold the base.
+Which word best describes Tali's approach?|cautious|careless|impatient|uninterested
+>After recess, Sol dried a bench before setting down the class notebooks. Umbrellas stood open near the door.
+What most likely happened earlier?|It rained.|It snowed indoors.|The notebooks were washed.|The umbrellas were used as pencils.
+>The grass in the marked square was just as tall as outside it. The gardener wrote “not yet” on the chart and set another date to check.
+What was the gardener probably waiting to see?|a visible difference in grass growth|where the chart was printed|what name the square had|when sunlight began
+>Jin put the wide wheels back on after the cart got stuck in loose sand with narrow wheels.
+What does Jin probably think will help?|using wheels that sink less in sand|making the cart narrower|putting more sand on the path|taking every wheel off
+>Before dinner, Meera checked two bowls and moved the tiny one beside the dog's bed.
+What can you infer the tiny bowl might be for?|the dog|an outdoor plant|all dinner guests|the oven
+>“We still have ten minutes,” Ren said, but kept glancing at the clock and hurrying through his work.
+What do Ren's actions suggest?|He is worried about time.|He forgot how to read.|He hopes to work all night.|He wants the room to get darker.
+>The note on the garden bed read, “These are too small this week. Please wait to pick them.” Small green tomatoes hung from the vines.
+What does the writer expect?|The tomatoes will grow and ripen later.|The tomatoes are ready to pick now.|The vines will be moved indoors today.|The note will make tomatoes change color right away.
+@Theme
+>Meera tried to finish a kite alone. The frame bent twice. She asked Jo to hold the sticks while she tied them, and together they flew it.
+What theme fits?|Asking for help can make a hard job possible.|Kites always fly well.|Friends should choose identical hobbies.|Being first matters most.
+Which action develops this theme?|Meera asks Jo to hold the sticks.|The frame bends once.|Jo watches a kite.|Meera picks the color.
+>Teo set aside every crooked bowl. At the art show, a visitor chose the bowl Teo had nearly thrown out because it looked like a wave.
+What lesson fits?|Something you see as a flaw may have value.|Things can only be useful if they look the same.|Visitors always know the artist's intention.|Artists should never show their work.
+Which detail gives the strongest evidence for the lesson?|A visitor likes the bowl Teo almost discards.|Teo makes several bowls.|A bowl sits on a table.|There is an art show.
+>Lena ran too fast at the start of every race and tired early. At practice she learned to keep a steady pace. In the next race she had energy at the end.
+What message fits?|Pacing yourself can help you reach a goal.|Winning requires starting fastest.|Practice makes every task easy.|Races should be shorter.
+Which event shows Lena putting the lesson into practice?|She saves energy for the finish.|She chooses a different sport.|She leaves before the race.|She runs fastest at the start again.
+>Max found an extra ticket beside his seat. He wanted to keep it for a friend, but returned it. A younger child nearby stopped crying when it was found.
+What theme fits?|Doing the honest thing can help someone else.|Tickets make people impatient.|Friends should always sit together.|A noisy room is hard to search.
+Which moment shows the effect of Max's choice?|The younger child stops crying.|Max notices the ticket.|Max thinks about a friend.|A seat is empty.
+>Ina tried three ways to make a paper bridge. After each test she changed one part. The last bridge held all the toy cars.
+What theme fits?|Mistakes can show what to try next.|Planning matters only for bridges.|You can always solve a problem on the first try.|More toys make a bridge stronger.
+Which detail best supports the theme?|Ina changes one part after each test.|The toy cars are small.|Paper comes in many colors.|The last test happens at a table.
+>Ren's team picked quiet Bea to share their design. She listened to each idea and explained how the parts worked together. The audience finally understood their plan.
+What message fits?|Listening carefully can help you explain a group's ideas.|Only the loudest people can lead.|A design needs a long speech.|Teams must agree before hearing ideas.
+Which action supports the message?|Bea listens to each teammate before speaking.|The audience enters the room.|Ren joins the team.|The design has several parts.
+>Aki heard a friend say the pond club was boring. She attended once and liked studying the insects. She invited the friend to visit with her.
+Which theme fits best?|Trying something yourself can change what you think.|Friends must like the same things.|All clubs study insects.|It is best to avoid new places.
+What event helps Aki discover the lesson?|She visits the club and enjoys studying insects.|She hears someone call it boring.|Her friend refuses a visit.|The insects leave the pond.
+>When a storm broke the garden fence, Lee wanted to blame someone. Then neighbors brought tools and repaired it together. Lee helped carry boards.
+What idea grows through the story?|Working together helps more than looking for someone to blame.|A fence can stop all storms.|Neighbors should bring identical tools.|Boards are more useful before rain than after it.
+Which detail shows Lee acting on this idea?|Lee helps carry boards.|A storm breaks the fence.|Lee wants to blame someone.|The neighbors see the storm.
+>Zara was afraid to read her poem aloud. She read just the first two lines to a friend. After several short tries, she read the whole poem at the assembly.
+What message fits?|Small steps can help you face a fear.|Poems must rhyme to be read aloud.|Friends should write your work for you.|An assembly should always be quiet.
+Which choice best describes Zara's progress?|She starts with two lines and builds confidence.|She waits for someone to read for her.|She avoids reading the poem at all.|She memorizes a different poem.
+>Two children wanted the sunny garden bed. They learned that only one of their plants needed full sun. They shared the beds in a way that helped both plants.
+What theme fits?|Learning what others need can help solve a disagreement.|Every plant grows best in shade.|Neighbors should all grow the same plant.|Only one person can gain from a decision.
+Which event is most important to this message?|They find out they need different amounts of sunlight.|They both point at the sunny bed.|They carry seeds to the garden.|They look at the fence.
+@Literary Elements
+>As I stepped onto the stage, I could hear my sister cheering. I had practiced the song, but my hands shook.
+What point of view is used?|first person|second person|third person|an outside news report
+Which detail shows the character's inner conflict?|Their hands shake even after practice.|Their sister cheers.|They enter a building.|A stage has lights.
+>A storm washed out the bridge on Don's usual road. Don drew a new route, but it meant reaching the market after it closed.
+How does setting shape the plot?|The storm affects which route Don can take.|The market sells road maps.|Don chooses what to sell at the market.|The road makes Don forget his name.
+What is Don's main problem?|The usual road is blocked and the other route takes longer.|There are too many market stalls.|Don cannot draw a bridge.|The storm starts after Don gets home.
+>Sol teased his cousin about collecting odd stones. After one sparked Sol's interest, he borrowed a field guide and began a collection too.
+How does Sol change?|He comes to appreciate his cousin's interest.|He stops noticing stones altogether.|He gets angry about field guides.|He replaces his cousin's collection.
+Which event turns the story toward that change?|One of the stones catches Sol's interest.|Sol jokes about the collection at first.|The cousin already owns some stones.|The story ends with a new collection.
+>“I do not need directions,” Mina said. When her team got lost, she unfolded the map and asked everyone what they noticed.
+Which trait does Mina show at the end?|willingness to accept help|certainty she never needs help|avoidance of her teammates|interest only in speed
+What shows her change most directly?|She asks for observations from the team.|The team gets lost.|She begins with a confident claim.|A map can be folded.
+>At midnight the lookout heard a crack below the ice. She lifted the lantern and saw water spreading across the path.
+Which detail most directly contributes to a tense mood?|the crack below the ice|the existence of a lookout|the path's name|the type of lantern handle
+When does this scene take place?|around midnight|at breakfast|in the late afternoon|at sunrise
+>Dev wanted to finish the tower before the timer rang. The bottom leaned, so he took it apart and built a wider base. It stood when the timer rang.
+What resolves the problem?|Dev builds a wider base.|The tower starts to lean.|The timer has a loud bell.|Dev hopes to work quickly.
+Which event raises the stakes before the resolution?|The base begins to lean as time runs short.|The rebuilt tower stays up.|The timer rings at the end.|Dev leaves with a standing tower.
+>Neither Lee nor Kam wanted to give up the drum for the solo. Then they tried alternating lines and decided to perform as a pair.
+What kind of conflict begins the story?|character against character|character against weather|character against a machine|character against wild animals
+What event makes the ending possible?|They try alternating lines.|They both want a solo.|The drum is on a stage.|They ask to perform on different days.
+>At the old station, Ada tucked a coin inside a crack in the wall. Ten years later she returned and found it still there.
+What signals the jump in time?|“Ten years later”|“in the wall”|“old station”|“a coin”
+Which object connects the two scenes?|the coin|a ticket|a clock|a train
+>In the dry summer, the creek shrank to a few pools. Jo carried the stranded fish to a deeper pool with help from a ranger.
+Which best describes the main conflict?|A character responds to a problem caused by nature.|Two rangers argue about directions.|A character fights a classroom rule.|A machine breaks during a race.
+What motivates Jo most directly?|wanting to help the stranded fish|wanting to dam the creek|wanting to find a ranger's badge|wanting to make the pools disappear
+>The narrator describes Lina's hope aloud to the reader, then tells what Pax secretly fears. Lina and Pax do not know each other's thoughts.
+What does the narrator know?|private thoughts of more than one character|only Lina's words|only what the reader thinks|only the place and time
+What can this narration show that Lina alone could not report?|Pax's private fear|the location of the scene Lina sees|Lina's own words|what Lina hopes will happen
+@Advanced Grammar
+Which revision keeps the verbs in the same tense?|We sketched the leaf and labeled its veins.|We sketched the leaf and label its veins.|We sketch the leaf and labeled its veins.|We sketch the leaf and will labeled its veins.
+Choose the pronoun: Rosa and __ will present the results.|I|me|my|mine
+Choose the pronoun: Please hand the charts to Rosa and __.|me|I|my|mine
+Which revision clarifies that Malik finished the model?|After Malik finished the model, he called Lee.|After he finished it, Lee got a call.|Malik called Lee after he finished it.|He finished it after Lee's call.
+Which word shows a contrast? “It was late, __ we continued working.”|yet|because|so|and then
+Which pair of conjunctions completes the idea? “__ the pen __ the pencil is in my bag; both are on my desk.”|Neither … nor|Both … and|Not only … but also|Either … or
+Which has a comma after an introductory phrase?|After the game, we returned the balls.|After, the game we returned the balls.|After the game we, returned the balls.|After the game we returned, the balls.
+Which joins two full ideas correctly with “but”?|The room was cold, but the water stayed warm.|The room, was cold but the water stayed warm.|The room was cold but, the water stayed warm.|The room was cold, but, the water stayed warm.
+Choose the verb that agrees with the subject: “The box of colored pencils __ on the top shelf.”|is|are|were|have
+Which sentence uses the correct form of “to lie” in the present?|The cat lies in the sun each morning.|The cat lays in the sun each morning.|The cat lie in the sun each morning.|The cat lying in the sun each morning.
+Which revision avoids a fragment?|Because the trail flooded, we turned back.|Because the trail flooded.|The flooded trail after rain.|Turning back at the trail.
+Which revision fixes a run-on?|I packed the tent. Bea brought the map.|I packed the tent Bea brought the map.|I packed the tent, Bea brought the map.|I packed, the tent Bea brought the map.
+Which sentence shows an action already finished before the bell rang?|I had packed my bag before the bell rang.|I will pack my bag before the bell rang.|I am packing my bag when the bell rang.|I pack my bag every time.
+Choose the plural possessive for backpacks belonging to several players.|the players' backpacks|the player's backpacks|the players backpacks|the player backpacks'
+Which verb completes the past tense sentence? “Yesterday, we __ the last bus at six.”|caught|catch|catches|catching
+Which sentence uses a paired construction correctly?|We can either walk or ride the bus.|We can either walk nor ride the bus.|We can neither walk or ride the bus.|We can both walk or ride the bus.
+Which sentence makes it clear that the coins were inside the display case?|We saw three coins that were inside the display case.|While we were inside the display case, we saw coins.|We stood inside the display case to look at coins.|In the display case, we looked out toward the coins.
+Which revision means Priya made exactly one stop?|Priya stopped only once on the trail.|Only Priya stopped on the trail.|Priya stopped only on the trail.|Priya stopped once on only the trail.
+Which word connects the ideas by showing time? “We waited __ the gates opened.”|until|because of|beside|unless of
+Which choice uses parallel verb forms?|We like hiking, paddling, and skating.|We like hiking, paddle, and to skate.|We like to hike, paddling, and skate.|We like hike, paddling, and skating.
+@Author’s Purpose
+>“We should plant a tree near the benches. Its shade would keep them cooler at lunch.”
+Why did the author most likely write this?|to persuade people to plant a tree|to describe a tree that already grew there|to tell a story about a tree|to explain how to measure a bench
+Which words best signal that purpose?|“We should plant”|“near the benches”|“at lunch”|“keep them cooler”
+>“When warm air cools, some water vapor becomes tiny drops. A group of these drops can form a cloud.”
+What is the main purpose?|to explain how clouds can form|to convince people to stay inside|to tell a story about one storm|to teach readers how to make a kite
+Who would most likely use this text?|a student learning about weather|a coach planning a game schedule|a cook choosing a soup recipe|a driver looking for a street address
+>“The goose stole the mayor's hat and wore it to the parade. By noon, the mayor was marching in a nest.”
+What is the main purpose?|to entertain with an unlikely story|to report election results|to explain goose behavior using data|to teach readers to weave hats
+Which feature supports the purpose?|a humorous and unlikely event|a chart with facts|a warning in bold text|a set of repair steps
+>“Step 1: Fill the tray halfway. Step 2: Place seeds on the soil. Step 3: Add a thin layer of soil.”
+What is the author trying to do?|guide readers through planting seeds|compare three kinds of seeds|persuade readers to buy a tray|tell a folktale
+Which feature serves this purpose most directly?|numbered steps|a price sticker|a drawing of shade|an author biography
+>“Return books by Friday so others can check them out. Leave returns in the basket by the door.”
+Where would this message be most useful?|on a notice for library borrowers|in a story about gardening|on a road map|in a book catalog's subject index
+What is the purpose of including “by Friday”?|give readers a deadline|name a type of book|tell readers who wrote it|show how the basket was made
+Which line is mainly meant to persuade?|Choose the refill station so our class uses fewer cups.|The station stands beside the sink.|Water flows when the button is pressed.|Our class counted twelve cups on Thursday.
+Which text would best inform a reader about where oak trees grow?|a guide with maps and habitat descriptions|an ad selling oak furniture|a poem comparing oak leaves to hands|a fictional scene about a talking oak
+What is the likely purpose of a photo caption naming each part of a bicycle?|to identify parts readers can see|to argue every person needs a bicycle|to entertain with a riddle|to recount a race finish
+Which is most useful to readers deciding whether to join an after-school club?|meeting times and examples of activities|the hall's paint color|the age of a different club's founder|the price of a bus ticket in another city
+Which line mainly explains a cause?|The path became muddy because of heavy rain.|Let's close the path today.|I slipped twice and laughed.|Bring boots when you walk the path.
+>An article describes two bus routes, with the costs and times for each.
+What is its likely purpose?|to help readers compare travel options|to persuade everyone to choose the same bus|to make readers laugh|to describe bus engine parts
+>“Only three days left to support our shelter! Your gift can pay for food and blankets.”
+What does the author want readers to do?|donate to the shelter|draw a picture of a blanket|compare fabric types|learn how days are counted
+>“I remember the squeak of the porch swing on summer nights, and the cool wood under my bare feet.”
+What is a likely purpose of these details?|to help readers experience a personal memory|to teach steps for building a swing|to compare two towns using data|to persuade readers to remove a porch
+Which headline most clearly signals an explanation?|Why Some Leaves Change Color|Come Buy Our Leaf Prints|The Leaf That Learned to Speak|Vote for a New Park
+>“The trail entrance has moved. Begin your hike beside the visitor center until repairs are finished.”
+Why does the notice address hikers?|to direct them to a temporary entrance|to teach where visitors used to live|to entertain them before the hike|to sell equipment at the center
+@Reading Comprehension
+>Text A: Our town painted bike lanes on Main Street to make space for riders. Text B: Riders asked for a rack next to the market so they could lock their bikes.
+What do both texts describe?|ways a town can support people who bike|how to fix a flat tire|reasons to close the market|plans to widen highways
+Which detail comes only from Text B?|Riders asked for a place to lock bikes.|The town painted Main Street bike lanes.|The changes concern biking.|The town uses streets.
+>Text A: Volunteers carried records upstairs before the river flooded the library. Text B: After flooding, neighbors helped dry books and replace wet shelves.
+How do the texts differ?|A describes preparing for a flood; B describes cleanup.|A describes cleanup; B describes preparing.|A is about a school flood; B is about forest fires.|A describes repairs; B explains why it rained.
+Which summary covers both?|People helped protect and restore a library around the time of a flood.|A river flooded because books were moved.|Neighbors rebuilt an entire town before a storm.|Volunteers closed a library and never returned.
+>Text A: Wood chips spread over garden soil slowed water loss. Text B: Fallen leaves covered the soil and decomposed into organic matter.
+What do both materials do at first?|cover the soil|turn soil to plastic|pull seeds out of the ground|stop all rain from falling
+What result is stated only in Text B?|The material decomposed into organic matter.|The garden got more rain.|Water loss slowed.|The soil was covered.
+>Text A: An owl hunts after dark and can find prey with its hearing. Text B: A hawk often hunts during the day and can see small prey from far away.
+Which contrast is supported?|The texts emphasize hearing for the owl and sight for the hawk.|Both birds only hunt after dark.|The hawk hunts only by hearing.|The owl cannot hunt moving prey.
+Which detail supports a claim about the owl's hearing?|It can find prey using sound after dark.|It has large wings.|It always hunts beside water.|It can see small prey from far away.
+>Text A: The school counted 80 plastic bottles in the trash one week. Text B: After a refill station opened, the school counted 45 bottles the next week.
+What does the comparison show?|The second week's count was lower.|Bottles became heavier.|The first count was smaller.|The refill station opened years earlier.
+Which claim needs more evidence?|The station caused all of the drop in bottles.|One count was 80.|The second count was 45.|The station was open by the second count.
+>Text A: A diary describes a winter market and the smell of fresh bread. Text B: A store ledger lists loaves sold and prices for each day.
+Which source gives the writer's personal experience directly?|Text A|Text B|both texts equally|neither text
+Which question is Text B best suited to answer?|How many loaves were sold each day?|What did the baker feel about winter?|What did each loaf smell like?|How did buyers feel about the bread?
+>Text A: A class built birdhouses with small doors for small birds. Text B: A class built bat boxes with narrow gaps for bats to enter.
+Which shared idea fits both?|A shelter's entrance can suit the animal that uses it.|All animals need the same door size.|Bats and birds use identical shelters.|Neither shelter needs an entrance.
+Which difference is stated in the texts?|One shelter uses a small door; the other uses a narrow gap.|Only the bat shelter was built by students.|The birdhouse was put in a cave.|Both groups studied bats.
+>Text A: The long trail stays on firm ground most of the year. Text B: The short route passes low ground that turns muddy after storms.
+Which route would a hiker likely choose to avoid mud after rain?|the long trail|the short route|neither route because both are stated to flood|either one because the ground is described as the same
+What is one tradeoff shown in the texts?|The shorter route may be muddier.|The longer route closes every day.|The short path is farther from its start.|Both paths are always dry.
+>Text A: A gardener trimmed some tomato leaves to let more light reach the fruit. Text B: Another gardener put straw under the plants to cover bare soil.
+What goal is shared?|Both gardeners changed how they cared for tomato plants.|Both removed straw from the soil.|Both tried to reduce light on the fruit.|Both sold the same harvest.
+What problem is the second action most directly meant to address?|exposed soil|too little light on the fruit|tangled leaves around each fruit|a missing garden fence
+>Text A: The class placed signs near a stream asking hikers to stay on the path. Text B: The parks crew later counted fewer footprints on the streambank.
+What do the texts together suggest?|The signs may have encouraged hikers to use the path.|Footprints made the class move the stream.|The signs caused every footprint to vanish.|The crew moved the trail before signs went up.
+Which follow-up would strengthen the inference?|Compare footprint counts across several similar weeks before and after the signs.|Measure the height of a nearby school.|Count the number of letters in one sign.|Ask how many kinds of fish live elsewhere.

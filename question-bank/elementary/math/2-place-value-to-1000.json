@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--2--place-value-to-1000",
+  "title": "Grade 2 Math — Hundreds, Tens, and Ones",
+  "subject": "Math",
+  "category": "Place Value to 1000",
+  "topic": "Place Value to 1000",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on digits, expanded form, number comparison.",
+  "keywords": [
+    "digits",
+    "expanded form",
+    "number comparison"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "2.NBT.1",
+    "2.NBT.3",
+    "2.NBT.4"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What number has 5 hundreds, 0 tens, and 8 ones?",
+      "choices": [
+        "528",
+        "498",
+        "518",
+        "508"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What value does 7 have in 274?",
+      "choices": [
+        "71",
+        "72",
+        "70",
+        "69"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A base-ten model has 3 hundreds, 12 tens, and no ones. Which number does it show?",
+      "choices": [
+        "440",
+        "430",
+        "410",
+        "420"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which digit is in the hundreds place in 816?",
+      "choices": [
+        "9",
+        "8",
+        "7",
+        "10"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is 600 + 30 + 2?",
+      "choices": [
+        "622",
+        "652",
+        "632",
+        "642"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How many tens make 100?",
+      "choices": [
+        "9",
+        "11",
+        "12",
+        "10"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which is greater: 407, 470, 374, or 473?",
+      "choices": [
+        "374",
+        "473",
+        "407",
+        "470"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What is 100 less than 921?",
+      "choices": [
+        "821",
+        "811",
+        "831",
+        "841"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which number comes right before 700?",
+      "choices": [
+        "699",
+        "689",
+        "719",
+        "709"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "How many hundreds make 1,000?",
+      "choices": [
+        "11",
+        "10",
+        "9",
+        "12"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What is the least number you can make with 4, 7, and 2 once each?",
+      "choices": [
+        "274",
+        "427",
+        "247",
+        "742"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What is 10 more than 389?",
+      "choices": [
+        "419",
+        "399",
+        "389",
+        "409"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "How many ones does 990 show in its ones place?",
+      "choices": [
+        "0",
+        "5",
+        "2",
+        "1"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How much is the first 3 in 338 worth?",
+      "choices": [
+        "290",
+        "320",
+        "310",
+        "300"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What number comes just after 999?",
+      "choices": [
+        "1200",
+        "1000",
+        "900",
+        "1100"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What number is between 765 and 767?",
+      "choices": [
+        "766",
+        "756",
+        "786",
+        "776"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which is closest to 600: 612, 645, 578, or 520?",
+      "choices": [
+        "520",
+        "578",
+        "645",
+        "612"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Write the number two hundred ninety in digits.",
+      "choices": [
+        "300",
+        "280",
+        "290",
+        "310"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How many tens are in 340 if you trade all the hundreds for tens?",
+      "choices": [
+        "36",
+        "35",
+        "34",
+        "33"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What is 1,000 − 100?",
+      "choices": [
+        "900",
+        "910",
+        "890",
+        "920"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

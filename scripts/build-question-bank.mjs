@@ -1,29 +1,69 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
-const root=new URL('../',import.meta.url), entries=[],ids=new Set(), hashes=JSON.parse(await fs.readFile(new URL('question-bank/source-hashes.json',root)));
-const output=new URL('public/review-lab/question-sets/library/',root);
-const subjectDirs=(await fs.readdir(new URL('question-bank/',root),{withFileTypes:true}))
- .filter(entry=>entry.isDirectory()).map(entry=>entry.name).sort();
-for(const subject of subjectDirs){
- const dir=new URL(`question-bank/${subject}/`,root),manifest=JSON.parse(await fs.readFile(new URL('manifest.json',dir)));
- if(manifest.sets.length!==manifest.setCount)throw Error('Manifest count mismatch');
- for(const set of manifest.sets){
-  const relative=set.file.startsWith(subject+'/')?set.file.slice(subject.length+1):set.file;
-  if(relative.includes('..')||path.isAbsolute(relative)||!relative.endsWith('.json'))throw Error('Unsafe bank path');
-  const source=`question-bank/${subject}/${relative}`,bytes=await fs.readFile(new URL(source,root)),bank=JSON.parse(bytes);
-  if(crypto.createHash('sha256').update(bytes).digest('hex')!==hashes[source])throw Error(`Source changed: ${source}`);
-  if(ids.has(bank.id)||bank.id!==set.id||bank.title!==set.title||bank.category!==set.category||bank.subject!==manifest.subject||bank.schemaVersion!==1||bank.gradeBand!=='7–12'||bank.questionCount!==20||bank.questions?.length!==20)throw Error(`Invalid bank: ${source}`);
-  ids.add(bank.id);const qids=new Set(),prompts=new Set();
-  for(const q of bank.questions){
-   const normalize=s=>s.normalize('NFKC').toLowerCase().trim().replace(/\s+/g,' ');
-   if(!Number.isInteger(q.id)||qids.has(q.id)||!q.question?.trim()||prompts.has(normalize(q.question))||q.choices?.length!==4||q.choices.some(c=>typeof c!=='string'||!c.trim())||new Set(q.choices.map(normalize)).size!==4||!Number.isInteger(q.correctAnswer)||q.correctAnswer<0||q.correctAnswer>3||!['recall','understanding','reasoning'].includes(q.skill))throw Error(`Invalid question: ${source} #${q.id}`);
-   qids.add(q.id);prompts.add(normalize(q.question));
+
+const root = new URL('../', import.meta.url);
+const sourceRoot = new URL('question-bank/', root);
+const output = new URL('public/review-lab/question-sets/library/', root);
+const hashes = JSON.parse(await fs.readFile(new URL('source-hashes.json', sourceRoot)));
+const entries = [], ids = new Set();
+const gradeBands = {'K':'K–1','1':'K–1','2':'2–3','3':'2–3','4':'4–5','5':'4–5'};
+const text = value => typeof value === 'string' && value.trim();
+const normalize = value => value.normalize('NFKC').toLowerCase().trim().replace(/\s+/g, ' ');
+const subjectDirs = (await fs.readdir(sourceRoot, {withFileTypes:true}))
+  .filter(entry => entry.isDirectory() && entry.name !== 'elementary').map(entry => entry.name).sort();
+
+for (const directory of [...subjectDirs, 'elementary']) {
+  const elementary = directory === 'elementary';
+  const dir = new URL(directory + '/', sourceRoot);
+  const manifest = JSON.parse(await fs.readFile(new URL('manifest.json', dir)));
+  if (manifest.sets.length !== manifest.setCount) throw Error('Manifest count mismatch: ' + directory);
+  for (const set of manifest.sets) {
+    const relative = set.file.startsWith(directory + '/') ? set.file.slice(directory.length + 1) : set.file;
+    if (relative.includes('..') || path.isAbsolute(relative) || !relative.endsWith('.json')) throw Error('Unsafe bank path');
+    const file = directory + '/' + relative;
+    const source = 'question-bank/' + file;
+    const bytes = await fs.readFile(new URL(relative, dir));
+    const bank = JSON.parse(bytes);
+    if (crypto.createHash('sha256').update(bytes).digest('hex') !== hashes[source]) throw Error('Source changed: ' + source);
+    if (ids.has(bank.id) || bank.id !== set.id || bank.title !== set.title || bank.category !== set.category ||
+        bank.subject !== (elementary ? set.subject : manifest.subject) || bank.schemaVersion !== 1 ||
+        bank.questionCount !== 20 || bank.questions?.length !== 20) throw Error('Invalid bank: ' + source);
+
+    const {questions, schemaVersion, ...metadata} = bank;
+    if (elementary) {
+      const {file: manifestFile, ...manifestMetadata} = set;
+      if (!bank.id.startsWith('elementary--') || bank.gradeBand !== gradeBands[bank.primaryGrade] ||
+          !text(bank.title) || !text(bank.topic) || bank.category !== bank.topic || !text(bank.description) ||
+          !['Foundational','Developing','Application'].includes(bank.difficulty) ||
+          !Array.isArray(bank.keywords) || !bank.keywords.length || !bank.keywords.every(text) ||
+          !Array.isArray(bank.standards) || !bank.standards.every(text) ||
+          bank.creator !== 'Teach Arcade' || bank.visibility !== 'public' ||
+          JSON.stringify(metadata) !== JSON.stringify(manifestMetadata)) throw Error('Invalid elementary metadata: ' + source);
+    } else if (bank.gradeBand !== '7–12') {
+      throw Error('Invalid secondary grade band: ' + source);
+    }
+
+    ids.add(bank.id);
+    const qids = new Set(), prompts = new Set();
+    for (const q of questions) {
+      if (!Number.isInteger(q.id) || qids.has(q.id) || !text(q.question) || prompts.has(normalize(q.question)) ||
+          q.choices?.length !== 4 || !q.choices.every(text) || new Set(q.choices.map(normalize)).size !== 4 ||
+          !Number.isInteger(q.correctAnswer) || q.correctAnswer < 0 || q.correctAnswer > 3 ||
+          !['recall','understanding','reasoning'].includes(q.skill)) throw Error(`Invalid question: ${source} #${q.id}`);
+      qids.add(q.id);
+      prompts.add(normalize(q.question));
+    }
+    const target = new URL(file, output);
+    await fs.mkdir(new URL('./', target), {recursive:true});
+    await fs.writeFile(target, bytes);
+    entries.push(elementary ? {...metadata, file} : {
+      id: bank.id, title: bank.title, subject: bank.subject, category: bank.category,
+      gradeBand: bank.gradeBand, questionCount: 20, description: `${bank.category} · ${bank.gradeBand}`, file
+    });
   }
-  const file=`${subject}/${relative}`,target=new URL(file,output);await fs.mkdir(new URL('./',target),{recursive:true});await fs.writeFile(target,bytes);
-  entries.push({id:bank.id,title:bank.title,subject:bank.subject,category:bank.category,gradeBand:bank.gradeBand,questionCount:20,description:`${bank.category} · ${bank.gradeBand}`,file});
- }
 }
-if(entries.length!==Object.keys(hashes).length)throw Error('Incomplete recovered library');
-await fs.writeFile(new URL('public/review-lab/bank-catalog.js',root),'// Generated by scripts/build-question-bank.mjs; edit canonical question-bank sources.\nexport const BANK_SETS='+JSON.stringify(entries,null,2)+';\n');
-console.log(`Validated and published ${entries.length} source sets / ${entries.length*20} questions to static assets.`);
+if (entries.length !== Object.keys(hashes).length) throw Error('Question bank files and source hashes must match.');
+await fs.writeFile(new URL('public/review-lab/bank-catalog.js', root),
+  '// Generated by scripts/build-question-bank.mjs; edit canonical question-bank sources.\nexport const BANK_SETS=' + JSON.stringify(entries, null, 2) + ';\n');
+console.log(`Validated and published ${entries.length} source sets / ${entries.length * 20} questions to static assets.`);

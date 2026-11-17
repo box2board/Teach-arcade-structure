@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--4--division",
+  "title": "Grade 4 Math — Multi-Digit Division and Remainders",
+  "subject": "Math",
+  "category": "Division",
+  "topic": "Division",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on quotient, divisor, leftovers, equal groups.",
+  "keywords": [
+    "quotient",
+    "divisor",
+    "leftovers",
+    "equal groups"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "4.NBT.6"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is 864 ÷ 4?",
+      "choices": [
+        "216",
+        "236",
+        "226",
+        "206"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A library packs 137 books into boxes of 8. How many books are left after filling as many boxes as possible?",
+      "choices": [
+        "3",
+        "1",
+        "2",
+        "0"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Share 715 beads equally among 5 trays. How many are on each tray?",
+      "choices": [
+        "163",
+        "133",
+        "153",
+        "143"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A van can hold 6 students. How many vans are needed for 43 students?",
+      "choices": [
+        "8",
+        "9",
+        "10",
+        "7"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is 1,224 ÷ 6?",
+      "choices": [
+        "194",
+        "214",
+        "224",
+        "204"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A mill divides 936 boards into 3 equal stacks. How many per stack?",
+      "choices": [
+        "322",
+        "302",
+        "332",
+        "312"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which number is a possible remainder when dividing by 4?",
+      "choices": [
+        "3",
+        "6",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Find the whole-number quotient of 452 ÷ 7.",
+      "choices": [
+        "65",
+        "64",
+        "63",
+        "66"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is the remainder in 705 ÷ 9?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A bakery fills trays of 9 with 256 rolls. How many trays are full?",
+      "choices": [
+        "29",
+        "30",
+        "28",
+        "27"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Nine boxes hold 864 pencils evenly. How many pencils per box?",
+      "choices": [
+        "98",
+        "97",
+        "96",
+        "95"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What is 2,456 ÷ 8?",
+      "choices": [
+        "327",
+        "307",
+        "317",
+        "297"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A coach has 76 jerseys for 5 teams. Teams get the same number. How many jerseys does each team get if the coach gives out as many as possible?",
+      "choices": [
+        "17",
+        "14",
+        "15",
+        "16"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What number times 7 equals 1,491?",
+      "choices": [
+        "233",
+        "203",
+        "223",
+        "213"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Divide 632 by 4. How many tens are in the quotient's tens place?",
+      "choices": [
+        "4",
+        "5",
+        "7",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Mai has 383 stickers. She gives each friend 6 stickers and has 5 left. How many friends got stickers?",
+      "choices": [
+        "62",
+        "65",
+        "64",
+        "63"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "How many hundreds are in 3,200 ÷ 8?",
+      "choices": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A cord is 650 cm long. How many whole 7 cm pieces can be cut from it?",
+      "choices": [
+        "94",
+        "91",
+        "92",
+        "93"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Divide 1,005 by 5.",
+      "choices": [
+        "191",
+        "221",
+        "201",
+        "211"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "If 8 × 54 = 432, how much is 440 ÷ 8?",
+      "choices": [
+        "55",
+        "54",
+        "56",
+        "57"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--3--regions-and-landforms",
+  "title": "Grade 3 Social Studies — Regions, Landforms, and Bodies of Water",
+  "subject": "Social Studies",
+  "category": "Regions and Landforms",
+  "topic": "Regions and Landforms",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on plains, plateau, mountains, geography.",
+  "keywords": [
+    "plains",
+    "plateau",
+    "mountains",
+    "geography"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a region?",
+      "choices": [
+        "a scale for measuring weight",
+        "a kind of compass",
+        "a single point with no area",
+        "an area grouped by one or more shared features"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which landform is broad and mostly level?",
+      "choices": [
+        "mountain peak",
+        "sea cliff",
+        "canyon wall",
+        "plain"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which is a raised area with a broad flat top?",
+      "choices": [
+        "plateau",
+        "beach",
+        "river mouth",
+        "valley"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which feature lies between higher hills or mountains?",
+      "choices": [
+        "hilltop",
+        "valley",
+        "ridge",
+        "peak"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a peninsula?",
+      "choices": [
+        "a place where all rivers meet",
+        "land with water on all sides",
+        "a stream flowing into a larger river",
+        "land with water on most sides and a connection to more land"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What is an island?",
+      "choices": [
+        "a lake surrounded by land",
+        "a high flat platform",
+        "land surrounded by water",
+        "a long narrow valley"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is a mountain range?",
+      "choices": [
+        "a line of lakes only",
+        "a group of connected or nearby mountains",
+        "a layer of clouds",
+        "a group of city streets"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which is a tributary?",
+      "choices": [
+        "a path along a lake",
+        "a mountain that divides two valleys",
+        "a smaller stream that flows into a larger river",
+        "a band of sand at the ocean"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which landform is a deep, narrow valley with steep sides?",
+      "choices": [
+        "island",
+        "floodplain",
+        "canyon",
+        "plateau"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What may form where sediment builds up at the mouth of a river?",
+      "choices": [
+        "cave",
+        "mountain peak",
+        "delta",
+        "deep glacier"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Why might people draw a region around places with many farms?",
+      "choices": [
+        "They all belong to the same family.",
+        "They share a type of land use.",
+        "They all have the same town name.",
+        "They always get the same rainfall each day."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which feature marks a possible natural boundary between two places?",
+      "choices": [
+        "a river",
+        "a school directory",
+        "a calendar",
+        "a city flag"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What is a shoreline?",
+      "choices": [
+        "the edge where land meets water",
+        "the deepest part of a lake",
+        "the top of a tall mountain",
+        "the center of a desert"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Where would a river generally move faster, with other conditions equal?",
+      "choices": [
+        "across flat ground",
+        "down a steep slope",
+        "in a still pond",
+        "in a closed jar"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which map could help find the highest land in a region?",
+      "choices": [
+        "one that shows elevation",
+        "a chart of store hours",
+        "a bus schedule with no map",
+        "a list of nearby books"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which detail best distinguishes a plateau from a low plain?",
+      "choices": [
+        "It can have some plants.",
+        "It has some rock in its soil.",
+        "It is elevated above much of the surrounding land.",
+        "It receives sunlight."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What groups the places in a coastal region?",
+      "choices": [
+        "They are near a coast.",
+        "They all use the same library.",
+        "They are all at the same street address.",
+        "They all have a volcano."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What is one way a mountain range can affect travel?",
+      "choices": [
+        "Every road across it must be straight and flat.",
+        "It makes every town the same distance away.",
+        "It removes the need for bridges.",
+        "Roads may follow a pass between peaks."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which example groups places by a human feature?",
+      "choices": [
+        "forests with the same tree species",
+        "towns that share one public transit system",
+        "hills of similar height",
+        "rivers draining into one bay"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A map shows a narrow strip of land between two larger areas, with water on both sides. What is that feature?",
+      "choices": [
+        "lake",
+        "delta",
+        "island",
+        "isthmus"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

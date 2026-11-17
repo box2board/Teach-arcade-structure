@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--k--shapes-and-patterns",
+  "title": "Kindergarten Math — Shapes and Repeating Patterns",
+  "subject": "Math",
+  "category": "Shapes and Patterns",
+  "topic": "Shapes and Patterns",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on circles, triangles, squares, rectangles, repeats.",
+  "keywords": [
+    "circles",
+    "triangles",
+    "squares",
+    "rectangles",
+    "repeats"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "K.G.4"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "How many sides does a triangle have?",
+      "choices": [
+        "3",
+        "2",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "How many corners does a square have?",
+      "choices": [
+        "6",
+        "5",
+        "3",
+        "4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "How many straight sides does a circle have?",
+      "choices": [
+        "1",
+        "0",
+        "2",
+        "5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "All sides of a square are the same length. How many equal sides does it have?",
+      "choices": [
+        "6",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Count the sides of two triangles.",
+      "choices": [
+        "7",
+        "8",
+        "5",
+        "6"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A shape has four sides and four square corners. Two sides are long. How many sides are short?",
+      "choices": [
+        "4",
+        "2",
+        "1",
+        "3"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "The color pattern repeats red, blue, green. How many colors are in each repeat?",
+      "choices": [
+        "3",
+        "2",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "In the repeat tap, tap, clap, how many taps come before each clap?",
+      "choices": [
+        "4",
+        "1",
+        "2",
+        "3"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A circle has no straight sides. If you draw two circles, how many straight sides do they have together?",
+      "choices": [
+        "5",
+        "0",
+        "2",
+        "1"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Two squares sit apart. How many corners are there in all?",
+      "choices": [
+        "10",
+        "8",
+        "7",
+        "9"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "The pattern is 1, 2, 3, 1, 2, __. What is missing?",
+      "choices": [
+        "4",
+        "5",
+        "3",
+        "2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A repeating group is 4, 4, 5. Which number starts each group?",
+      "choices": [
+        "5",
+        "6",
+        "4",
+        "3"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "The repeat is 2, 5, 2, 5, 2, __. What comes next?",
+      "choices": [
+        "5",
+        "4",
+        "7",
+        "6"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How many corners does a triangle have?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A square is turned. How many sides does it still have?",
+      "choices": [
+        "3",
+        "5",
+        "4",
+        "6"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A cube has a square on each face. How many corners are on just one face?",
+      "choices": [
+        "5",
+        "6",
+        "3",
+        "4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "The repeating group is 7, 6, 6. How many numbers are in one group?",
+      "choices": [
+        "4",
+        "2",
+        "5",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "The pattern is 1, 1, 2, 1, 1, __. What comes next?",
+      "choices": [
+        "2",
+        "3",
+        "1",
+        "4"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A ball rolls. How many corners does it have?",
+      "choices": [
+        "1",
+        "5",
+        "2",
+        "0"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "A footstep pattern goes left, right, right. How many right steps are in one group?",
+      "choices": [
+        "2",
+        "4",
+        "1",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

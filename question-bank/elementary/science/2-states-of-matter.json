@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--2--states-of-matter",
+  "title": "Grade 2 Science — Solids, Liquids, and Gases",
+  "subject": "Science",
+  "category": "States of Matter",
+  "topic": "States of Matter",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on melting, freezing, evaporation, water.",
+  "keywords": [
+    "melting",
+    "freezing",
+    "evaporation",
+    "water"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What state of matter keeps its own shape on a plate?",
+      "choices": [
+        "gas",
+        "solid",
+        "liquid",
+        "no matter"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What state of matter takes the shape of the bottom of a jar but has a set amount of space?",
+      "choices": [
+        "no matter",
+        "solid",
+        "gas",
+        "liquid"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What state of matter can spread to fill an entire closed jar?",
+      "choices": [
+        "no matter",
+        "solid",
+        "liquid",
+        "gas"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What state is liquid water in after it freezes?",
+      "choices": [
+        "no matter",
+        "solid",
+        "liquid",
+        "gas"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What state is water vapor?",
+      "choices": [
+        "solid",
+        "gas",
+        "no matter",
+        "liquid"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What change turns ice into liquid water?",
+      "choices": [
+        "condensation",
+        "freezing",
+        "melting",
+        "evaporation"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What change turns water into ice?",
+      "choices": [
+        "freezing",
+        "evaporation",
+        "melting",
+        "condensation"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What change happens as water in a puddle goes into the air?",
+      "choices": [
+        "melting",
+        "freezing",
+        "evaporation",
+        "condensation"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What change forms water drops from vapor on a cold cup?",
+      "choices": [
+        "condensation",
+        "evaporation",
+        "melting",
+        "freezing"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What change is happening when an ice pop softens into a puddle?",
+      "choices": [
+        "freezing",
+        "condensation",
+        "melting",
+        "evaporation"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which is a liquid at normal room temperature?",
+      "choices": [
+        "ice cubes",
+        "milk",
+        "sand grains",
+        "oxygen"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which is a solid at normal room temperature?",
+      "choices": [
+        "a wooden block",
+        "air in a room",
+        "water in a cup",
+        "milk in a bottle"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which example contains gas you cannot see?",
+      "choices": [
+        "an ice cube",
+        "air in a balloon",
+        "a coin on a table",
+        "juice in a glass"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Pour the same juice into a wider glass without spilling. What changes?",
+      "choices": [
+        "the total amount of juice",
+        "the kind of liquid",
+        "the shape of the juice",
+        "the color of the juice"
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "What could you do to slow an ice cube from melting?",
+      "choices": [
+        "Put it in a freezer.",
+        "Pour warm water on it.",
+        "Place it beside a heater.",
+        "Set it in the sun."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What is needed for ice to melt?",
+      "choices": [
+        "It must gain warmth.",
+        "It must lose warmth.",
+        "It must gain salt.",
+        "It must turn into a rock."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Why can you pour dry sand even though it is solid?",
+      "choices": [
+        "Each grain is a gas.",
+        "Each grain melts in the bowl.",
+        "The grains turn to water.",
+        "Many tiny solid grains can move past each other."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Wet clothes dry on a line. Where did much of the water go?",
+      "choices": [
+        "into a block of ice",
+        "inside the cloth forever",
+        "into the air",
+        "into the color of the cloth"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 19,
+      "question": "A balloon gets bigger as you blow it up. What went inside?",
+      "choices": [
+        "liquid water",
+        "ice",
+        "sand",
+        "air"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which is a sign that a solid became a liquid?",
+      "choices": [
+        "A rock still sits on a shelf.",
+        "Air fills a balloon.",
+        "Water drips from a tap.",
+        "A wax puddle forms from a warm candle."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

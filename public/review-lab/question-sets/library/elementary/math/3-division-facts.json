@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--3--division-facts",
+  "title": "Grade 3 Math — Division Facts and Fair Shares",
+  "subject": "Math",
+  "category": "Division Facts",
+  "topic": "Division Facts",
+  "primaryGrade": "3",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on quotient, equal groups, missing divisor.",
+  "keywords": [
+    "quotient",
+    "equal groups",
+    "missing divisor"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "3.OA.2",
+    "3.OA.7"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Six lunch bags share 42 crackers equally. How many crackers per bag?",
+      "choices": [
+        "9",
+        "6",
+        "8",
+        "7"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Share 35 grapes equally among 5 plates. How many go on each plate?",
+      "choices": [
+        "7",
+        "6",
+        "9",
+        "8"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A shelf has 48 books. Each box holds 8 books. How many boxes will be full?",
+      "choices": [
+        "7",
+        "8",
+        "6",
+        "5"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which number times 9 is 81?",
+      "choices": [
+        "10",
+        "9",
+        "8",
+        "11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Find the missing divisor: 56 ÷ __ = 8.",
+      "choices": [
+        "7",
+        "8",
+        "6",
+        "9"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "How many teams of 4 can you make from 32 players?",
+      "choices": [
+        "10",
+        "8",
+        "7",
+        "9"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is 0 ÷ 3?",
+      "choices": [
+        "5",
+        "1",
+        "2",
+        "0"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A chart splits 63 points into 7 equal rows. How many points are in one row?",
+      "choices": [
+        "8",
+        "11",
+        "10",
+        "9"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "If 5 × 6 = 30, what is 30 ÷ 6?",
+      "choices": [
+        "7",
+        "6",
+        "5",
+        "4"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What is 18 ÷ 2?",
+      "choices": [
+        "10",
+        "9",
+        "8",
+        "11"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Find the missing number: __ ÷ 4 = 6.",
+      "choices": [
+        "24",
+        "25",
+        "26",
+        "23"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Six friends share 6 muffins equally. How many does each get?",
+      "choices": [
+        "3",
+        "1",
+        "2",
+        "0"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "There are 72 beads. A bracelet uses 8 beads. How many bracelets can you make?",
+      "choices": [
+        "8",
+        "10",
+        "9",
+        "11"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How many groups of 10 are in 90?",
+      "choices": [
+        "11",
+        "10",
+        "9",
+        "8"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "What is 49 ÷ 7?",
+      "choices": [
+        "8",
+        "7",
+        "9",
+        "6"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "After dividing 27 books equally among 3 shelves, how many books are on two of the shelves combined?",
+      "choices": [
+        "18",
+        "20",
+        "19",
+        "17"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What is 40 ÷ 5?",
+      "choices": [
+        "9",
+        "7",
+        "10",
+        "8"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Dev says 24 ÷ 3 = 7. What quotient should Dev write?",
+      "choices": [
+        "7",
+        "9",
+        "8",
+        "10"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A shop packs 28 cards in 7 equal sets. How many are in one set?",
+      "choices": [
+        "4",
+        "6",
+        "5",
+        "3"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What is the difference between 45 ÷ 5 and 36 ÷ 6?",
+      "choices": [
+        "4",
+        "5",
+        "2",
+        "3"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

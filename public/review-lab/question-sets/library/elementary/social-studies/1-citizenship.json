@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--1--citizenship",
+  "title": "Grade 1 Social Studies — Being a Helpful Member of a Group",
+  "subject": "Social Studies",
+  "category": "Citizenship",
+  "topic": "Citizenship",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on respect, fairness, participation, responsibility.",
+  "keywords": [
+    "respect",
+    "fairness",
+    "participation",
+    "responsibility"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 1 #4",
+    "Ohio SS 2026 Grade 1 #5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which action helps a new student join a group game?",
+      "choices": [
+        "hide the game pieces",
+        "invite them and explain the rules",
+        "make up secret rules",
+        "tell them to go away"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Two people want different books for story time. What can the group do fairly?",
+      "choices": [
+        "hide both books",
+        "choose the person sitting closest",
+        "let only one person speak",
+        "take a vote after hearing both choices"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "What does following through on a promise show?",
+      "choices": [
+        "impatience",
+        "rudeness",
+        "forgetfulness",
+        "responsibility"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What should you do before using a friend's crayons?",
+      "choices": [
+        "ask permission",
+        "throw out the used ones",
+        "take them home",
+        "mix them into your bag"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "When someone has an idea you disagree with, what can you do?",
+      "choices": [
+        "make fun of their voice",
+        "listen and explain your idea kindly",
+        "ignore every word",
+        "shout until they stop talking"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which action helps care for a shared park?",
+      "choices": [
+        "pick up your litter",
+        "write on every sign",
+        "leave food wrappers on a bench",
+        "pull out planted flowers"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A classmate needs help finding the office. What is helpful?",
+      "choices": [
+        "keep walking without listening",
+        "tell them to take your seat",
+        "point out the way or ask a teacher",
+        "give wrong directions"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Why might a group vote?",
+      "choices": [
+        "to hide what choices it has",
+        "to make a shared choice",
+        "to keep everyone from choosing",
+        "to erase a rule without talking"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "A game was set up with space for only fast runners. What can make it more open?",
+      "choices": [
+        "change the rules so more people can join",
+        "let the fastest pick all the teams",
+        "send slow runners away",
+        "make the field smaller without asking"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What is one example of respectful listening?",
+      "choices": [
+        "turn up music while they talk",
+        "finish every sentence for them",
+        "talk to someone else at the same time",
+        "let a speaker finish before you speak"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which action is an example of volunteering?",
+      "choices": [
+        "choosing to help sort donated books",
+        "forgetting your book at home",
+        "watching someone clean alone",
+        "being paid to fix a sink on a work shift"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Why should everyone have a chance to share an idea?",
+      "choices": [
+        "Different ideas can help the group choose.",
+        "Plans work best if no one asks questions.",
+        "Only the last speaker can be right.",
+        "Strong voices always have the best idea."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Who can care for a library by returning borrowed books on time?",
+      "choices": [
+        "only the mayor",
+        "anyone who borrows a book",
+        "only the librarian",
+        "only book writers"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A playground has an empty water bottle on the path. What helps others?",
+      "choices": [
+        "kick it toward another person",
+        "put it in the correct bin or tell an adult",
+        "hide it under a slide",
+        "open it and pour it on the ground"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Two students disagree about a shared toy. What can they do first?",
+      "choices": [
+        "keep it from everyone",
+        "break the toy",
+        "talk about what each wants",
+        "push each other"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which is a responsibility when you use a shared tablet?",
+      "choices": [
+        "leave it outside",
+        "delete other people's work",
+        "handle it carefully and return it",
+        "write on the screen"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A class chooses a name for its reading corner. What is fair before the vote?",
+      "choices": [
+        "count one person's vote many times",
+        "pick a winner before voting",
+        "hide half the names",
+        "share the choices with the whole class"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What can you do if you see someone being left out again and again?",
+      "choices": [
+        "tell more people to leave them out",
+        "take away their supplies",
+        "invite them and tell a trusted adult if help is needed",
+        "make it a new rule"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "What means treating someone with respect?",
+      "choices": [
+        "always make them agree",
+        "keep them from trying",
+        "decide all their games",
+        "speak kindly and take their ideas seriously"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "How can families help a neighborhood event?",
+      "choices": [
+        "block every walkway",
+        "hide schedules from the group",
+        "choose a job to help with",
+        "move the event without telling anybody"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

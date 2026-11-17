@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--1--plants",
+  "title": "Grade 1 Science — Plant Parts and Basic Needs",
+  "subject": "Science",
+  "category": "Plants",
+  "topic": "Plants",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on roots, stems, leaves, seeds, growth.",
+  "keywords": [
+    "roots",
+    "stems",
+    "leaves",
+    "seeds",
+    "growth"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "1.LS.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which plant part usually takes in water from the soil?",
+      "choices": [
+        "fruit",
+        "flower",
+        "roots",
+        "stem"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which part holds leaves up and carries water?",
+      "choices": [
+        "fruit",
+        "roots",
+        "flower",
+        "stem"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which parts use light to help the plant make food?",
+      "choices": [
+        "leaves",
+        "roots",
+        "stem",
+        "flower"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which part of a sunflower may attract bees?",
+      "choices": [
+        "flower",
+        "roots",
+        "leaves",
+        "fruit"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which part of an apple plant holds seeds inside it?",
+      "choices": [
+        "stem",
+        "fruit",
+        "leaves",
+        "roots"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What needs to reach most young plants from the sky so they can make food?",
+      "choices": [
+        "salt",
+        "sand",
+        "pebbles",
+        "sunlight"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What can a gardener give a dry bean plant to help it grow?",
+      "choices": [
+        "water",
+        "glue",
+        "paper",
+        "soap"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What can grow into a new bean plant?",
+      "choices": [
+        "a stone",
+        "a bean seed",
+        "a glass bead",
+        "a dry twig"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Two bean plants get equal light. One is watered and one stays dry. What are you testing?",
+      "choices": [
+        "the effect of water",
+        "the effect of pot color",
+        "the effect of light",
+        "the effect of wind"
+      ],
+      "correctAnswer": 0,
+      "skill": "reasoning"
+    },
+    {
+      "id": 10,
+      "question": "What is a good way to measure how much taller a seedling gets?",
+      "choices": [
+        "Count the pots.",
+        "Weigh its water.",
+        "Use a ruler.",
+        "Tell its color."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which foods are the roots of their plants?",
+      "choices": [
+        "apples",
+        "carrots",
+        "peas",
+        "grapes"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which food is usually a leaf?",
+      "choices": [
+        "lettuce",
+        "potato",
+        "apple",
+        "corn kernel"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "What holds most plants in the ground when wind blows?",
+      "choices": [
+        "seeds",
+        "roots",
+        "petals",
+        "fruit"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which part does a plant often grow above the ground to get more light?",
+      "choices": [
+        "soil",
+        "rocks",
+        "roots",
+        "leaves"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A seedling bends toward a bright window. What is it growing toward?",
+      "choices": [
+        "paint",
+        "cold air",
+        "light",
+        "food scraps"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which of these can spread a light, fluffy dandelion seed?",
+      "choices": [
+        "a lamp",
+        "wind",
+        "a rock wall",
+        "shade"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Where could you look for seeds in a cut tomato?",
+      "choices": [
+        "on the stem",
+        "under the pot",
+        "inside the fruit",
+        "under its leaves"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which garden tool would help give a plant water gently?",
+      "choices": [
+        "rake",
+        "gloves",
+        "watering can",
+        "shovel"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How could you tell that a seed has started to grow?",
+      "choices": [
+        "The soil feels cool.",
+        "The pot changes color.",
+        "The seed rolls down a hill.",
+        "A tiny root comes out."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which plant part usually grows first out of a bean seed?",
+      "choices": [
+        "a ripe bean pod",
+        "a flower",
+        "a full-size leaf",
+        "a small root"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

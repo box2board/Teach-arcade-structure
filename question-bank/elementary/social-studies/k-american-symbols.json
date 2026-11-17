@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--k--american-symbols",
+  "title": "Kindergarten Social Studies — Recognizing American Symbols",
+  "subject": "Social Studies",
+  "category": "American Symbols",
+  "topic": "American Symbols",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on United States, flag, bald eagle, Statue of Liberty.",
+  "keywords": [
+    "United States",
+    "flag",
+    "bald eagle",
+    "Statue of Liberty"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade K #6"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What shape can you see many times on the U.S. flag?",
+      "choices": [
+        "a circle",
+        "a star",
+        "a triangle",
+        "a heart"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which colors are on the U.S. flag?",
+      "choices": [
+        "black, orange, and red",
+        "pink, gray, and green",
+        "red, white, and blue",
+        "green, red, and gold"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which national symbol is a bird?",
+      "choices": [
+        "U.S. flag",
+        "bald eagle",
+        "Liberty Bell",
+        "Statue of Liberty"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which symbol holds a torch?",
+      "choices": [
+        "U.S. flag",
+        "bald eagle",
+        "Liberty Bell",
+        "Statue of Liberty"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What marks look like long red and white bands on the flag?",
+      "choices": [
+        "circles",
+        "numbers",
+        "stripes",
+        "stars"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Where are the stars on the U.S. flag?",
+      "choices": [
+        "along the pole",
+        "under its lowest stripe",
+        "in a blue field",
+        "on every stripe"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What do the 50 stars on the U.S. flag stand for?",
+      "choices": [
+        "the 50 states",
+        "50 past presidents",
+        "50 oceans",
+        "50 months"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What do the 13 stripes stand for?",
+      "choices": [
+        "13 seas",
+        "the 13 original colonies",
+        "13 national parks",
+        "13 singers"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which symbol is a large bell with a famous crack?",
+      "choices": [
+        "U.S. flag",
+        "Liberty Bell",
+        "bald eagle",
+        "Statue of Liberty"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which means a symbol stands for something?",
+      "choices": [
+        "It can help people think of an idea or place.",
+        "It has to look like a number.",
+        "It has to fit in a pocket.",
+        "It has to make a loud sound."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "How might you know which country a flag stands for at a parade?",
+      "choices": [
+        "look for a flag design you know",
+        "count the people beside it",
+        "listen for rain",
+        "measure the pole"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which pair are both symbols of the United States?",
+      "choices": [
+        "park bench and pencil",
+        "panda and maple leaf flag",
+        "bus and school door",
+        "bald eagle and U.S. flag"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which bird has a white head as an adult and is a U.S. symbol?",
+      "choices": [
+        "bald eagle",
+        "crow",
+        "blue jay",
+        "robin"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "The Statue of Liberty is a large statue. What does liberty mean here?",
+      "choices": [
+        "height",
+        "quiet",
+        "darkness",
+        "freedom"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which can be a symbol made of music?",
+      "choices": [
+        "a street sign",
+        "a map key",
+        "a national anthem",
+        "a bell tower"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which symbol might you see on a pole outside a U.S. school?",
+      "choices": [
+        "Liberty Bell",
+        "Statue of Liberty",
+        "a live bald eagle",
+        "U.S. flag"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What can you use to find out what the stars on the flag mean?",
+      "choices": [
+        "a book that explains the flag",
+        "a bus ticket",
+        "a clock",
+        "a menu"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which part of the U.S. flag alternates red and white?",
+      "choices": [
+        "the pole",
+        "the blue rectangle",
+        "the stars",
+        "the stripes"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which symbol can remind people of a country without using words?",
+      "choices": [
+        "a grocery list",
+        "a bus schedule",
+        "its flag",
+        "its phone numbers"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "One symbol stands by New York Harbor. Which one is it?",
+      "choices": [
+        "Liberty Bell",
+        "Statue of Liberty",
+        "Golden Gate Bridge",
+        "Mount Rushmore"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

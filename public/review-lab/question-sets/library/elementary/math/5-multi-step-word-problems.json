@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--5--multi-step-word-problems",
+  "title": "Grade 5 Math — Multi-Step Problems with Decimals and Fractions",
+  "subject": "Math",
+  "category": "Multi-Step Word Problems",
+  "topic": "Multi-Step Word Problems",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on planning, comparing, units, real-world problems.",
+  "keywords": [
+    "planning",
+    "comparing",
+    "units",
+    "real-world problems"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "5.NF.2",
+    "5.NBT.7"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Three $2.45 snacks are paid for with $10. What is the change in dollars?",
+      "choices": [
+        "2.64",
+        "2.75",
+        "2.66",
+        "2.65"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A runner plans 8 km, runs 2.75 km before lunch and 1.9 km after. How many km remain?",
+      "choices": [
+        "3.36",
+        "3.45",
+        "3.35",
+        "3.34"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A tank held 16 L. Half is poured out, then 3.5 L is added. How many liters are in it now?",
+      "choices": [
+        "11.50",
+        "11.49",
+        "11.60",
+        "11.51"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Mila reads 3/8 of a book on Monday and 1/4 on Tuesday. What fraction remains?",
+      "choices": [
+        "5/8",
+        "1/4",
+        "3/8",
+        "1/2"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Two trays hold 2.4 kg each. One holds another 0.35 kg. Find their combined mass in kg.",
+      "choices": [
+        "5.16",
+        "5.25",
+        "5.14",
+        "5.15"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "An art club has 20 meters of blue ribbon and uses 3/5 of it, then uses 2 more meters. How many meters of blue ribbon remain?",
+      "choices": [
+        "6",
+        "8",
+        "5",
+        "7"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "A bag with 3.6 kg of feed is split into 8 equal portions. What is the mass in kg of 3 portions?",
+      "choices": [
+        "1.36",
+        "1.35",
+        "1.45",
+        "1.34"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "A tank starts with 12.5 L. It loses 1.25 L each day for 3 days. How many liters remain?",
+      "choices": [
+        "8.74",
+        "8.75",
+        "8.76",
+        "8.85"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Two ropes are each 9 inches long. Cut each into two equal pieces. How long is one piece, in inches?",
+      "choices": [
+        "4.51",
+        "4.50",
+        "4.60",
+        "4.49"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A garden is 6 m by 5 m. Flowers use one third of its area. How many square meters are left?",
+      "choices": [
+        "20",
+        "21",
+        "19",
+        "22"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A fundraiser gets $28.40 from one class and $34.25 from another. Supplies cost $13.65. How many dollars remain?",
+      "choices": [
+        "48",
+        "50",
+        "49",
+        "51"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A jug held 3 L. Ben poured out 3/4 L, then 5/8 L. How many liters remain? Give a decimal.",
+      "choices": [
+        "1.624",
+        "1.635",
+        "1.626",
+        "1.625"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A recipe needs 0.65 kg of apples per batch. How many kg are left after making three batches from a 2.5 kg bag?",
+      "choices": [
+        "0.56",
+        "0.65",
+        "0.55",
+        "0.54"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Two trails are 4.38 km and 3.6 km. A shortcut makes the longer one 1.12 km shorter. How many km longer is the unshortened trail now?",
+      "choices": [
+        "0.33",
+        "0.44",
+        "0.34",
+        "0.35"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "A tank is 2/3 full. One quarter of the water in it spills. What fraction of the full tank remains?",
+      "choices": [
+        "3/2",
+        "1",
+        "2",
+        "1/2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A shop packs 12 pencils per box. It sells 4 of its 9 full boxes. How many pencils remain?",
+      "choices": [
+        "60",
+        "59",
+        "62",
+        "61"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "You buy 2.5 meters of fabric for $4 per meter. A coupon takes $1.25 off. What is the cost in dollars?",
+      "choices": [
+        "8.85",
+        "8.75",
+        "8.74",
+        "8.76"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A cooler holds 18 L. Three pitchers add 2.7 L each to 8.4 L already in it. How many liters short of full is it?",
+      "choices": [
+        "1.50",
+        "1.51",
+        "1.60",
+        "1.49"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Nora has $24. She saves 3/8 of it and spends $6.50. How many dollars are neither saved nor spent?",
+      "choices": [
+        "8.60",
+        "8.50",
+        "8.51",
+        "8.49"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Two teams walk 1.25 km and 1.75 km each lap. Both walk 4 laps. How many km farther does the second team walk?",
+      "choices": [
+        "4",
+        "1",
+        "3",
+        "2"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    }
+  ]
+}

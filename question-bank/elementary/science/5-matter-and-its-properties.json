@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--5--matter-and-its-properties",
+  "title": "Grade 5 Science — Properties and Changes of Matter",
+  "subject": "Science",
+  "category": "Matter and Its Properties",
+  "topic": "Matter and Its Properties",
+  "primaryGrade": "5",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on mass, volume, mixtures, dissolving.",
+  "keywords": [
+    "mass",
+    "volume",
+    "mixtures",
+    "dissolving"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "NGSS 5-PS1-2",
+    "NGSS 5-PS1-3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which tool can measure the mass of a sample?",
+      "choices": [
+        "thermometer",
+        "stopwatch",
+        "meterstick",
+        "balance"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which property describes how much space an object takes up?",
+      "choices": [
+        "volume",
+        "length alone",
+        "temperature",
+        "color"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "A stone raises the water level from 30 mL to 42 mL. What is the stone's volume?",
+      "choices": [
+        "72 mL",
+        "12 mL",
+        "30 mL",
+        "42 mL"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which substance is most likely to dissolve in water?",
+      "choices": [
+        "sand",
+        "gravel",
+        "a glass marble",
+        "sugar"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "How could you separate sand from water?",
+      "choices": [
+        "add more water and stir",
+        "pour the mix through a filter",
+        "put the mixture in a closed jar",
+        "crush the wet sand"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "After sugar dissolves in water in a sealed container, what happens to the total mass?",
+      "choices": [
+        "It becomes the mass of sugar alone.",
+        "It drops to zero.",
+        "It always doubles.",
+        "It stays the same."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which property can help separate iron filings from dry sand?",
+      "choices": [
+        "their ability to absorb water",
+        "similar color",
+        "magnetic attraction",
+        "similar size"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What can happen to salt when salt water evaporates?",
+      "choices": [
+        "It must become iron.",
+        "It turns into sunlight.",
+        "It remains as solid salt.",
+        "It creates more water."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which example involves a new substance forming?",
+      "choices": [
+        "iron rusting",
+        "paper being cut",
+        "ice melting",
+        "sugar dissolving in water"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which is a change of state without a new substance forming?",
+      "choices": [
+        "wood burning",
+        "a cake baking",
+        "water freezing",
+        "a nail rusting"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What property lets you compare how easily samples are scratched?",
+      "choices": [
+        "volume",
+        "temperature",
+        "hardness",
+        "length"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which would be best to compare the volume of two liquids?",
+      "choices": [
+        "a hand lens",
+        "a clock",
+        "a compass",
+        "a graduated cylinder"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which observation shows that air takes up space?",
+      "choices": [
+        "Air blown into a balloon makes it larger.",
+        "Water becomes warm in sunlight.",
+        "A metal plate looks shiny.",
+        "A candle gives off light."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which example is a mixture rather than a single substance?",
+      "choices": [
+        "a pure copper wire",
+        "pure distilled water",
+        "a piece of pure iron",
+        "sand and small pebbles mixed together"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which setup tests whether warming water changes how fast sugar dissolves?",
+      "choices": [
+        "Stir only the cold cup.",
+        "Use more sugar only in the warm water.",
+        "Use equal sugar and water amounts at two temperatures.",
+        "Observe both for different amounts of time without recording."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A cup of water changes to ice in a closed container. What happens to its total mass?",
+      "choices": [
+        "It stays the same.",
+        "It increases because ice floats.",
+        "It decreases because ice is cold.",
+        "It becomes zero."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which property helps you sort pebbles with a mesh screen?",
+      "choices": [
+        "particle temperature",
+        "particle size",
+        "magnetic attraction alone",
+        "particle color"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A metal spoon is shiny. What kind of observation is that?",
+      "choices": [
+        "a change of state",
+        "a physical property",
+        "a chemical reaction",
+        "a measurement of mass"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which result supports the claim that a gas formed during a reaction in liquid?",
+      "choices": [
+        "Bubbles appeared as the materials reacted.",
+        "The container got taller.",
+        "The liquid turned solid before mixing.",
+        "The spoon used for stirring was long."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which pair could have equal volumes but different masses?",
+      "choices": [
+        "two identical cubes of the same material",
+        "same-size blocks made of wood and metal",
+        "equal drops from one glass of water",
+        "two drops from the same oil sample with equal size"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--math--4--multi-digit-multiplication",
+  "title": "Grade 4 Math — Multi-Digit Multiplication",
+  "subject": "Math",
+  "category": "Multi-Digit Multiplication",
+  "topic": "Multi-Digit Multiplication",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on partial products, place value, area model.",
+  "keywords": [
+    "partial products",
+    "place value",
+    "area model"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "4.NBT.5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "A tray holds 24 jars in each of 16 rows. How many jars fit on the tray?",
+      "choices": [
+        "404",
+        "384",
+        "374",
+        "394"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "A carton holds 136 tiles. How many tiles fill 4 cartons?",
+      "choices": [
+        "564",
+        "554",
+        "544",
+        "534"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Break 42 into 40 + 2. Find the larger partial product in 42 × 6.",
+      "choices": [
+        "250",
+        "230",
+        "240",
+        "260"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A 28-seat bus makes 17 full trips. How many seats were filled across all trips?",
+      "choices": [
+        "466",
+        "476",
+        "496",
+        "486"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Multiply 307 by 8.",
+      "choices": [
+        "2356",
+        "2456",
+        "2656",
+        "2556"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "A printer makes 75 flyers each minute for 12 minutes. How many flyers?",
+      "choices": [
+        "890",
+        "910",
+        "920",
+        "900"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "In 35 × 21, what is the partial product of 35 × 20?",
+      "choices": [
+        "710",
+        "700",
+        "720",
+        "690"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Find the area of a 19-by-13 rectangle in square units.",
+      "choices": [
+        "267",
+        "237",
+        "247",
+        "257"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is 1,205 × 3?",
+      "choices": [
+        "3715",
+        "3515",
+        "3815",
+        "3615"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "A factory packs 42 crayons per box. How many crayons are in 25 boxes?",
+      "choices": [
+        "1050",
+        "1250",
+        "950",
+        "1150"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "A number multiplied by 4 gives 368. What is the number?",
+      "choices": [
+        "91",
+        "93",
+        "94",
+        "92"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What is 540 × 7?",
+      "choices": [
+        "3780",
+        "3980",
+        "3880",
+        "3680"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Use 49 × 6 = 294. How much is 50 × 6?",
+      "choices": [
+        "300",
+        "310",
+        "320",
+        "290"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "What is 68 × 14?",
+      "choices": [
+        "962",
+        "952",
+        "942",
+        "972"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "If 420 × 5 is 2,100, what is 421 × 5?",
+      "choices": [
+        "2205",
+        "2305",
+        "2005",
+        "2105"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "A shop makes 53 loaves a day for 19 days. How many loaves?",
+      "choices": [
+        "1007",
+        "1107",
+        "907",
+        "1207"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What is the smallest partial product when multiplying (60 + 4) by (20 + 7)?",
+      "choices": [
+        "27",
+        "30",
+        "28",
+        "29"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A theater has 24 rows of 36 seats. How many seats?",
+      "choices": [
+        "854",
+        "874",
+        "884",
+        "864"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Find the product of 63 and 18.",
+      "choices": [
+        "1134",
+        "1034",
+        "1234",
+        "1334"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What number is missing? 9 × 462 = (9 × 400) + (9 × __) + (9 × 2).",
+      "choices": [
+        "62",
+        "61",
+        "60",
+        "59"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

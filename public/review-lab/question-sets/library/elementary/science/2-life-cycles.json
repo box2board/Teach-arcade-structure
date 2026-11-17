@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--2--life-cycles",
+  "title": "Grade 2 Science — Plant and Animal Life Cycles",
+  "subject": "Science",
+  "category": "Life Cycles",
+  "topic": "Life Cycles",
+  "primaryGrade": "2",
+  "gradeBand": "2–3",
+  "difficulty": "Developing",
+  "questionCount": 20,
+  "description": "Practice with questions on seeds, frogs, butterflies, growth.",
+  "keywords": [
+    "seeds",
+    "frogs",
+    "butterflies",
+    "growth"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which stage comes right after a butterfly egg hatches?",
+      "choices": [
+        "chrysalis",
+        "adult butterfly",
+        "another egg",
+        "caterpillar"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does a tadpole grow into?",
+      "choices": [
+        "frog",
+        "snail",
+        "turtle",
+        "fish"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which stage starts the life cycle of a bean plant?",
+      "choices": [
+        "seed",
+        "flower",
+        "full-grown vine",
+        "ripe pod"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What forms inside many flowers after pollination?",
+      "choices": [
+        "seeds",
+        "feathers",
+        "soil",
+        "rocks"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What is a very young plant called?",
+      "choices": [
+        "adult plant",
+        "fruit",
+        "seedling",
+        "petal"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "What stage comes just before the adult butterfly emerges?",
+      "choices": [
+        "new caterpillar",
+        "chrysalis",
+        "egg",
+        "adult butterfly"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which part grows from a bean seed before the leaves unfold?",
+      "choices": [
+        "flower",
+        "root",
+        "fruit",
+        "petal"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What marks the start of a chicken's life outside its egg?",
+      "choices": [
+        "nesting",
+        "hatching",
+        "molting",
+        "flying"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which is a change a tadpole goes through as it becomes a frog?",
+      "choices": [
+        "It grows fur.",
+        "It grows feathers.",
+        "It grows legs.",
+        "It grows a shell."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which life cycle includes a caterpillar?",
+      "choices": [
+        "bean",
+        "butterfly",
+        "frog",
+        "chicken"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which plant stage can make a new generation of seeds?",
+      "choices": [
+        "a newly opened root",
+        "a seed asleep in dry soil",
+        "a just-sprouted seedling",
+        "a mature flowering plant"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which example shows reproduction?",
+      "choices": [
+        "A chick grows feathers.",
+        "A seedling grows a leaf.",
+        "A caterpillar eats a leaf.",
+        "An adult hen lays eggs that can hatch."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which change happens in both plant and animal life cycles?",
+      "choices": [
+        "All grow flowers.",
+        "All start in a hard shell.",
+        "All hatch in water.",
+        "Young living things grow."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "A caterpillar seems still inside a chrysalis. What happens there?",
+      "choices": [
+        "It grows seeds.",
+        "It lays bird eggs.",
+        "Its body changes into an adult butterfly.",
+        "It becomes a tadpole."
+      ],
+      "correctAnswer": 2,
+      "skill": "reasoning"
+    },
+    {
+      "id": 15,
+      "question": "Which plant stage would you see first after a bean starts growing?",
+      "choices": [
+        "a long flowering vine",
+        "a ripe pod",
+        "a bean flower",
+        "a small root"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Why is it called a life cycle?",
+      "choices": [
+        "A living thing stays the same size.",
+        "All changes take one day.",
+        "The stages repeat in the next generation.",
+        "An animal always walks in circles."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which pair has the young stage first?",
+      "choices": [
+        "adult chicken, chick",
+        "tadpole, adult frog",
+        "bean flower, seedling",
+        "adult butterfly, caterpillar"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What might an adult butterfly do that a caterpillar cannot do?",
+      "choices": [
+        "lay eggs",
+        "grow",
+        "move",
+        "eat plants"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "The pods on a pea plant dry and open. What can spread to start new plants?",
+      "choices": [
+        "soil from the pot",
+        "roots",
+        "peas that are seeds",
+        "flower petals"
+      ],
+      "correctAnswer": 2,
+      "skill": "understanding"
+    },
+    {
+      "id": 20,
+      "question": "Which often changes less in shape as it grows, compared with a frog?",
+      "choices": [
+        "a kitten",
+        "a moth",
+        "a butterfly",
+        "a mosquito"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--1--national-holidays",
+  "title": "Grade 1 Social Studies — U.S. Holidays and What They Remember",
+  "subject": "Social Studies",
+  "category": "National Holidays",
+  "topic": "National Holidays",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on Independence Day, Veterans Day, Juneteenth, Thanksgiving.",
+  "keywords": [
+    "Independence Day",
+    "Veterans Day",
+    "Juneteenth",
+    "Thanksgiving"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [],
+  "questions": [
+    {
+      "id": 1,
+      "question": "When is Independence Day in the United States?",
+      "choices": [
+        "November 11",
+        "June 19",
+        "January 1",
+        "July 4"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "What does Independence Day remember?",
+      "choices": [
+        "the declaration of independence from Britain",
+        "the work of all firefighters",
+        "the first day of summer",
+        "the first day of every new year"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Who is honored on Veterans Day?",
+      "choices": [
+        "only people who deliver mail",
+        "all school teachers",
+        "people who served in the U.S. armed forces",
+        "all people who have been president"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does Memorial Day honor?",
+      "choices": [
+        "all people born in May",
+        "people who died while serving in the U.S. military",
+        "all new citizens",
+        "only current presidents"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "What does Juneteenth help us remember?",
+      "choices": [
+        "the start of a new calendar year",
+        "the opening of the first post office",
+        "the naming of the Pacific Ocean",
+        "the end of slavery and news of freedom reaching enslaved people in Texas"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "On what date is Juneteenth?",
+      "choices": [
+        "July 4",
+        "June 19",
+        "November 11",
+        "May 1"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What does Martin Luther King Jr. Day honor?",
+      "choices": [
+        "a famous builder of trains",
+        "a leader who worked for civil rights",
+        "the first clock in the U.S.",
+        "the first trip to the Moon"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Labor Day honors which group?",
+      "choices": [
+        "only students",
+        "only park visitors",
+        "only presidents",
+        "workers"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What is one common way people in the U.S. mark Thanksgiving?",
+      "choices": [
+        "mark the signing of the Constitution",
+        "honor only people who served in war",
+        "celebrate a new calendar year",
+        "share a meal and give thanks"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which holiday is January 1?",
+      "choices": [
+        "New Year's Day",
+        "Juneteenth",
+        "Labor Day",
+        "Independence Day"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which holiday's federal name is Washington's Birthday?",
+      "choices": [
+        "Memorial Day",
+        "Veterans Day",
+        "Labor Day",
+        "the holiday often called Presidents Day"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "A school puts up a display about fair treatment and civil rights. Which holiday best fits?",
+      "choices": [
+        "Martin Luther King Jr. Day",
+        "Labor Day",
+        "New Year's Day",
+        "Thanksgiving"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which holiday is on November 11?",
+      "choices": [
+        "Memorial Day",
+        "Veterans Day",
+        "Labor Day",
+        "Independence Day"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "How are Memorial Day and Veterans Day different?",
+      "choices": [
+        "Both celebrate the first day of summer.",
+        "Veterans Day honors only presidents; Memorial Day honors teachers.",
+        "Memorial Day remembers those who died in service; Veterans Day honors those who served.",
+        "Veterans Day celebrates workers; Memorial Day starts a new year."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which calendar clue points to Labor Day in the U.S.?",
+      "choices": [
+        "the first Monday in September",
+        "the first day of January",
+        "the nineteenth day of June",
+        "the fourth day of July"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Why might a community have a parade on July 4?",
+      "choices": [
+        "to mark the end of a school year everywhere",
+        "to celebrate U.S. independence",
+        "to honor the first workers in a town",
+        "to announce a map change"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which would help you find the date of a holiday this year?",
+      "choices": [
+        "a calendar for this year",
+        "a road sign",
+        "a grocery list",
+        "a ruler"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "What does a holiday often give people a chance to do?",
+      "choices": [
+        "make every town the same",
+        "change the order of days",
+        "remember or celebrate something together",
+        "stop time for everyone"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "A class studies why June 19, 1865, is remembered in Texas. Which holiday will it learn about?",
+      "choices": [
+        "Independence Day",
+        "Labor Day",
+        "Juneteenth",
+        "Veterans Day"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which two are both national holidays that always fall on the same numbered date each year?",
+      "choices": [
+        "Labor Day and Memorial Day",
+        "Thanksgiving and Labor Day",
+        "Independence Day and Veterans Day",
+        "Memorial Day and Thanksgiving"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

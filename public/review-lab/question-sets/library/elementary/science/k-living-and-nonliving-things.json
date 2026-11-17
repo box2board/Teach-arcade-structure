@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--science--k--living-and-nonliving-things",
+  "title": "Kindergarten Science — Which Things Are Living?",
+  "subject": "Science",
+  "category": "Living and Nonliving Things",
+  "topic": "Living and Nonliving Things",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on plants, animals, growth, basic needs.",
+  "keywords": [
+    "plants",
+    "animals",
+    "growth",
+    "basic needs"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "K.LS.1"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which grows from a seed?",
+      "choices": [
+        "brick",
+        "tin can",
+        "toy car",
+        "bean plant"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which can drink water?",
+      "choices": [
+        "rock",
+        "shoe",
+        "puppy",
+        "cup"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which is alive now?",
+      "choices": [
+        "a fish in a pond",
+        "a glass bead",
+        "a toy fish",
+        "a shell on a shelf"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does a rabbit need every day?",
+      "choices": [
+        "a jacket",
+        "water",
+        "a pencil",
+        "a bell"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which can make more of its own kind?",
+      "choices": [
+        "a ball",
+        "a frog",
+        "a spoon",
+        "a fan"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which is not alive?",
+      "choices": [
+        "a grass plant",
+        "a squirrel",
+        "a bird",
+        "a garden rock"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which clue helps show a chick is alive?",
+      "choices": [
+        "It has a name.",
+        "It is small.",
+        "It grows.",
+        "It is yellow."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "What does a tree get through its roots?",
+      "choices": [
+        "sunlight",
+        "leaves",
+        "seeds",
+        "water"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which begins life as a seed?",
+      "choices": [
+        "a goldfish",
+        "a kitten",
+        "a butterfly",
+        "a sunflower"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which was made in a factory?",
+      "choices": [
+        "a crow",
+        "a clam",
+        "a plastic shovel",
+        "a tulip"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which living thing could hatch from an egg?",
+      "choices": [
+        "a dog",
+        "a mouse",
+        "a goat",
+        "a duck"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which pair is made of two living things?",
+      "choices": [
+        "a shirt and a bird",
+        "a worm and a tree",
+        "a lamp and a snail",
+        "a desk and a rock"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "A toy bird moves when you wind it. What makes a real bird different?",
+      "choices": [
+        "It needs food.",
+        "It can fit in a box.",
+        "It can be red.",
+        "It has a shape."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which part of a living plant often grows down into soil?",
+      "choices": [
+        "roots",
+        "flowers",
+        "petals",
+        "fruit"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which can change from a kitten into a cat?",
+      "choices": [
+        "a cat-shaped cup",
+        "a living animal",
+        "a toy cat",
+        "a cat drawing"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What must a goldfish have to live?",
+      "choices": [
+        "a toy boat",
+        "food",
+        "a bell",
+        "a clock"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which object came from something that was once alive?",
+      "choices": [
+        "a steel spoon",
+        "a glass jar",
+        "a piece of wood",
+        "a brick"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A bean plant gets taller each week. What is it doing?",
+      "choices": [
+        "melting",
+        "rolling",
+        "growing",
+        "drying"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which can grow new leaves?",
+      "choices": [
+        "a living tree",
+        "a paper bag",
+        "a wooden bench",
+        "a steel pole"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which is a real animal?",
+      "choices": [
+        "an ant",
+        "a kite",
+        "a doll",
+        "a sponge block"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

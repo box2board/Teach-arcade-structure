@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--1--maps-and-directions",
+  "title": "Grade 1 Social Studies — Using Simple Maps and Directions",
+  "subject": "Social Studies",
+  "category": "Maps and Directions",
+  "topic": "Maps and Directions",
+  "primaryGrade": "1",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on symbols, key, near, above, routes.",
+  "keywords": [
+    "symbols",
+    "key",
+    "near",
+    "above",
+    "routes"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 1 #3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What does a map show?",
+      "choices": [
+        "how music sounds",
+        "where places are",
+        "how soup tastes",
+        "what shoes weigh"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Where can you look to find what a map symbol means?",
+      "choices": [
+        "the map key",
+        "the title alone",
+        "the page number",
+        "the back cover"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which would make sense as a map picture for a school?",
+      "choices": [
+        "a picture of a fork",
+        "a pair of socks",
+        "a small school building",
+        "a swimming fish"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "A map has the pond above the bench. Where is the bench compared with the pond?",
+      "choices": [
+        "in it",
+        "above it",
+        "in the same spot",
+        "below it"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "On a map the shop is right of the library. Which way should you look from the library toward the shop?",
+      "choices": [
+        "behind the paper",
+        "left",
+        "right",
+        "above"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "The path from your desk to the door goes along the rug. What could a map show?",
+      "choices": [
+        "what color shoes you wore",
+        "where to go along the rug",
+        "what someone said at the door",
+        "how soft the rug feels"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which map title fits a picture of rooms at school?",
+      "choices": [
+        "Our School",
+        "My Favorite Foods",
+        "A Trip to the Moon",
+        "Winter Clothes"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "The map shows a tree beside a fountain. Which feature is next to the tree?",
+      "choices": [
+        "a swing",
+        "a fountain",
+        "a bus",
+        "a river"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "If you walk to a bench and turn left, which direction is your first turn?",
+      "choices": [
+        "left",
+        "straight ahead",
+        "around twice",
+        "right"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What can a line between two places show on a simple trail map?",
+      "choices": [
+        "what time it is",
+        "who drew the line",
+        "how heavy the places are",
+        "a path to follow"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which object can help you tell north outside?",
+      "choices": [
+        "a raincoat",
+        "a spoon",
+        "a clock face alone",
+        "a compass"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What does the letter N often mean on a map?",
+      "choices": [
+        "number",
+        "new",
+        "north",
+        "night"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "On a classroom map, the sink is next to the door. Which place is close to the door?",
+      "choices": [
+        "sink",
+        "outside field",
+        "bus stop",
+        "roof"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Where would you put a label for a pond?",
+      "choices": [
+        "on every road",
+        "inside the word “map”",
+        "next to the pond symbol",
+        "on the page number"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "How can you make a simple map easier to read?",
+      "choices": [
+        "turn all the words upside down",
+        "erase all paths",
+        "make every place look the same and omit the key",
+        "label the important places"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Zoe walks past a bench, then reaches the gate. Which place comes first on her route?",
+      "choices": [
+        "a tree not on the route",
+        "the gate",
+        "the roof",
+        "the bench"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A map key shows a little book for a library. What does a little book on that map show?",
+      "choices": [
+        "where the author lives",
+        "where a library is",
+        "that a book is heavy",
+        "a reading level"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "A dot labeled “You are here” on a map shows what?",
+      "choices": [
+        "the size of the map",
+        "the date",
+        "your present place",
+        "the final stop"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "How could you show a street on a drawing of your block?",
+      "choices": [
+        "draw only your shoes",
+        "draw a line in the right place and label it",
+        "list the street's sounds only",
+        "make the map larger without drawing it"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which map best helps students find a classroom?",
+      "choices": [
+        "a map of their school",
+        "a map of the ocean floor",
+        "a map of the Moon",
+        "a map of a faraway train line"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    }
+  ]
+}

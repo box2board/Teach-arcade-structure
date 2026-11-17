@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--k--sight-words",
+  "title": "Kindergarten ELA — Reading Common Little Words",
+  "subject": "English Language Arts",
+  "category": "Sight Words",
+  "topic": "Sight Words",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on high-frequency words, word recognition, early reading.",
+  "keywords": [
+    "high-frequency words",
+    "word recognition",
+    "early reading"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RF.K.3"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Find the word “the.”",
+      "choices": [
+        "they",
+        "them",
+        "then",
+        "the"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Find the word “was.”",
+      "choices": [
+        "saw",
+        "way",
+        "was",
+        "want"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Find the word “said.”",
+      "choices": [
+        "said",
+        "sad",
+        "seed",
+        "sit"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Find the word “you.”",
+      "choices": [
+        "yes",
+        "yet",
+        "you",
+        "your"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Find the word “one.”",
+      "choices": [
+        "once",
+        "own",
+        "one",
+        "on"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Find the word “little.”",
+      "choices": [
+        "litter",
+        "title",
+        "letter",
+        "little"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Find the word “look.”",
+      "choices": [
+        "lock",
+        "book",
+        "loop",
+        "look"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Find the word “come.”",
+      "choices": [
+        "some",
+        "come",
+        "cone",
+        "came"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Find the word “here.”",
+      "choices": [
+        "he",
+        "her",
+        "hear",
+        "here"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Find the word “play.”",
+      "choices": [
+        "pay",
+        "plan",
+        "play",
+        "stay"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Fill in the blank: I __ a red hat.",
+      "choices": [
+        "see",
+        "the",
+        "can",
+        "my"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Fill in the blank: __ dog can run.",
+      "choices": [
+        "See",
+        "Go",
+        "Bye",
+        "The"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which word tells who can jump in “I can jump”?",
+      "choices": [
+        "jump",
+        "I",
+        "can",
+        "my"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which word is missing: __ can go with me.",
+      "choices": [
+        "With",
+        "You",
+        "Go",
+        "Me"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Read “a big dog.” Which is the size word?",
+      "choices": [
+        "dog",
+        "go",
+        "big",
+        "a"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which word is first in “Look at me”?",
+      "choices": [
+        "see",
+        "Look",
+        "at",
+        "me"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Fill in the blank: This is __ apple.",
+      "choices": [
+        "an",
+        "to",
+        "a",
+        "we"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which word names the place in “Come here”?",
+      "choices": [
+        "here",
+        "come",
+        "can",
+        "my"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which word fills the blank: I have __ cup and a plate.",
+      "choices": [
+        "a",
+        "to",
+        "an",
+        "on"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "What is the last word in “We can go”?",
+      "choices": [
+        "we",
+        "go",
+        "so",
+        "can"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

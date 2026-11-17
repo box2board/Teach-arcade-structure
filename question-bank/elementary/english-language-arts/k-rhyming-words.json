@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--k--rhyming-words",
+  "title": "Kindergarten ELA — Finding Rhyming Words",
+  "subject": "English Language Arts",
+  "category": "Rhyming Words",
+  "topic": "Rhyming Words",
+  "primaryGrade": "K",
+  "gradeBand": "K–1",
+  "difficulty": "Foundational",
+  "questionCount": 20,
+  "description": "Practice with questions on sound play, phonological awareness, word families.",
+  "keywords": [
+    "sound play",
+    "phonological awareness",
+    "word families"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "RF.K.2"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Which word rhymes with “cat”?",
+      "choices": [
+        "sit",
+        "hat",
+        "dog",
+        "cup"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "Which word rhymes with “hop”?",
+      "choices": [
+        "hat",
+        "hot",
+        "map",
+        "top"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which word rhymes with “cake”?",
+      "choices": [
+        "coat",
+        "duck",
+        "lake",
+        "cup"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Which word rhymes with “bee”?",
+      "choices": [
+        "boat",
+        "bed",
+        "tree",
+        "bell"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which word rhymes with “log”?",
+      "choices": [
+        "lock",
+        "leg",
+        "frog",
+        "leaf"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Which word rhymes with “pail”?",
+      "choices": [
+        "pan",
+        "pole",
+        "pool",
+        "snail"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which word rhymes with “bell”?",
+      "choices": [
+        "bat",
+        "shell",
+        "ball",
+        "book"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which word rhymes with “kite”?",
+      "choices": [
+        "light",
+        "cup",
+        "kit",
+        "cat"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which word rhymes with “moon”?",
+      "choices": [
+        "mat",
+        "spoon",
+        "man",
+        "mop"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "Which word rhymes with “nose”?",
+      "choices": [
+        "rose",
+        "nap",
+        "net",
+        "nest"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "Which word rhymes with “sock”?",
+      "choices": [
+        "sun",
+        "rock",
+        "sip",
+        "sack"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "Which word rhymes with “duck”?",
+      "choices": [
+        "dot",
+        "deck",
+        "dish",
+        "truck"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which word rhymes with “rain”?",
+      "choices": [
+        "train",
+        "ring",
+        "rug",
+        "run"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Which word rhymes with “seed”?",
+      "choices": [
+        "feed",
+        "set",
+        "sat",
+        "said"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which pair rhymes?",
+      "choices": [
+        "frog and flag",
+        "fish and fan",
+        "sun and sock",
+        "sand and hand"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which two words in “bed, red, run” rhyme?",
+      "choices": [
+        "run and fun",
+        "bed and run",
+        "bed and red",
+        "red and run"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "Which word does not rhyme with “boat”?",
+      "choices": [
+        "coat",
+        "float",
+        "goat",
+        "book"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Fill in the rhyme: One, two, tie your __.",
+      "choices": [
+        "shoe",
+        "coat",
+        "hat",
+        "belt"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which pair ends with the same sounds?",
+      "choices": [
+        "leg and log",
+        "hat and hot",
+        "bug and rug",
+        "dog and dig"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Fill in the rhyme: Look up high. I see the __.",
+      "choices": [
+        "bird",
+        "sky",
+        "sun",
+        "cloud"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}

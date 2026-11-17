@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--english-language-arts--4--figurative-language",
+  "title": "Grade 4 ELA — Figurative Language in Context",
+  "subject": "English Language Arts",
+  "category": "Figurative Language",
+  "topic": "Figurative Language",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on simile, metaphor, personification, idioms.",
+  "keywords": [
+    "simile",
+    "metaphor",
+    "personification",
+    "idioms"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "L.4.5"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "“The classroom was a beehive before the show.” What does that suggest?",
+      "choices": [
+        "Students built a hive.",
+        "The lights went out.",
+        "The room was busy.",
+        "There was a swarm of real bees."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "“Her voice was as soft as falling snow.” What is being compared?",
+      "choices": [
+        "snow and a window",
+        "her voice and falling snow",
+        "her face and a cloud",
+        "the classroom and snow"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "“The wind whispered through the curtains.” What human action is given to wind?",
+      "choices": [
+        "writing",
+        "whispering",
+        "walking",
+        "dancing"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "What does “break the ice” mean when someone tells a joke to a quiet group?",
+      "choices": [
+        "tell people to stop talking",
+        "freeze a cup of water",
+        "end a sports game",
+        "help people feel more comfortable"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "“Milo zipped past like a rocket.” What does the simile stress?",
+      "choices": [
+        "his weight",
+        "his height",
+        "his speed",
+        "his color"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "“Stars winked at us” gives stars a human action. What is this technique?",
+      "choices": [
+        "personification",
+        "a literal report",
+        "a fact about distance",
+        "a rhyme"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "Which sentence contains a simile?",
+      "choices": [
+        "The mud felt like thick glue.",
+        "The mud was on my boots.",
+        "The mud dried in the sun.",
+        "I stepped around the mud."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "Which is a metaphor?",
+      "choices": [
+        "The test was ten questions long.",
+        "I took the test after lunch.",
+        "The test was as long as a movie.",
+        "That test was a mountain."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "What does “lend a hand” mean in “Can you lend a hand with the boxes?”",
+      "choices": [
+        "give someone a hand-shaped tool",
+        "write your name on the box",
+        "count everyone's fingers",
+        "help carry them"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "“The old house groaned in the wind.” What real sound does the writer likely describe?",
+      "choices": [
+        "a person singing",
+        "children laughing",
+        "creaking boards",
+        "a ringing phone"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "“I've told you a million times” is likely meant to show what?",
+      "choices": [
+        "the listener won money",
+        "the speaker has said it often",
+        "the speaker kept an exact count",
+        "a timer stopped"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "“He felt under the weather.” What does the idiom mean?",
+      "choices": [
+        "He studied a cloud.",
+        "He held an umbrella.",
+        "He stood in a storm.",
+        "He felt ill."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "“Time crawled while we waited.” What did waiting feel like?",
+      "choices": [
+        "short",
+        "hot",
+        "slow",
+        "noisy"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "“Her grin was a flashlight in a dark room.” What does that suggest about her grin?",
+      "choices": [
+        "It lit the room with a bulb.",
+        "It turned off quickly.",
+        "It was in her pocket.",
+        "It lifted the mood."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which sentence uses “sharp” figuratively?",
+      "choices": [
+        "She has a sharp memory.",
+        "The pine needles are sharp.",
+        "The knife has a sharp edge.",
+        "The pencil tip is sharp."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "Which sentence gives a thing a human action?",
+      "choices": [
+        "The river was cold.",
+        "The river danced over stones.",
+        "The river was deep.",
+        "The river flowed past the bank."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "What would “on the same page” mean during a team project?",
+      "choices": [
+        "having the same understanding",
+        "putting work aside",
+        "announcing the project is finished",
+        "writing in the same notebook only"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Which detail acts as a comparison with “as”?",
+      "choices": [
+        "He slid across the floor.",
+        "His feet were as cold as ice.",
+        "He wore dry socks.",
+        "He stepped away from the ice."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "“The news hit me like cold water.” What feeling does the comparison suggest?",
+      "choices": [
+        "sudden shock",
+        "mild hunger",
+        "steady warmth",
+        "long sleepiness"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "“The trail ribboned across the valley.” What did the trail likely look like?",
+      "choices": [
+        "a pile of stones",
+        "a deep round hole",
+        "a long, curving strip",
+        "a steep wall"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    }
+  ]
+}

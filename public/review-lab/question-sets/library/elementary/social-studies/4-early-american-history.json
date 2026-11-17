@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "id": "elementary--social-studies--4--early-american-history",
+  "title": "Grade 4 Social Studies — People and Change in Early America",
+  "subject": "Social Studies",
+  "category": "Early American History",
+  "topic": "Early American History",
+  "primaryGrade": "4",
+  "gradeBand": "4–5",
+  "difficulty": "Application",
+  "questionCount": 20,
+  "description": "Practice with questions on colonies, historical evidence, trade, Ohio.",
+  "keywords": [
+    "colonies",
+    "historical evidence",
+    "trade",
+    "Ohio"
+  ],
+  "creator": "Teach Arcade",
+  "visibility": "public",
+  "standards": [
+    "Ohio SS 2026 Grade 4 #2",
+    "Ohio SS 2026 Grade 4 #6",
+    "Ohio SS 2026 Grade 4 #11"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a primary source for learning about daily life in a colony?",
+      "choices": [
+        "a diary written by someone living there",
+        "a new map of today's roads",
+        "a modern movie based on a rumor",
+        "a recent novel about another country"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 2,
+      "question": "People lived in what is now Ohio before Europeans arrived. What can surviving earthworks show?",
+      "choices": [
+        "Every community was built by Europeans.",
+        "No one knew how to shape the land.",
+        "Native peoples lived only on ocean islands.",
+        "Native communities planned and built large structures."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 3,
+      "question": "Which European country founded Jamestown in 1607?",
+      "choices": [
+        "Spain",
+        "France",
+        "England",
+        "Portugal"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 4,
+      "question": "Why did waterways matter to many early settlements?",
+      "choices": [
+        "All waterways could be crossed on foot.",
+        "Boats could never enter the rivers.",
+        "Boats could carry people and goods.",
+        "Water made every crop grow equally well."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 5,
+      "question": "Which earlier event belongs before Jamestown on a timeline?",
+      "choices": [
+        "The United States declared independence in 1776.",
+        "Ohio became a state in 1803.",
+        "Spain founded St. Augustine in 1565.",
+        "The U.S. Constitution was written in 1787."
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 6,
+      "question": "Who were the Powhatan peoples when Jamestown was founded?",
+      "choices": [
+        "Native communities already living in the area",
+        "French traders living on the Ohio River",
+        "U.S. officials working for Congress",
+        "English settlers who built Jamestown"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 7,
+      "question": "What is one reason Europeans built trading posts near rivers in the Ohio Country?",
+      "choices": [
+        "to prevent people from traveling by boat",
+        "to find an ocean coastline in Ohio",
+        "to plant all crops under water",
+        "to move trade goods along waterways"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 8,
+      "question": "How can archaeologists learn about people who left no written record at a site?",
+      "choices": [
+        "read future newspaper stories",
+        "study objects and where they were found",
+        "use only a map of modern buses",
+        "make up names for all residents"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 9,
+      "question": "Which was true of enslaved people brought to English colonies?",
+      "choices": [
+        "They chose jobs that always paid wages.",
+        "They had the same legal rights as others.",
+        "They could always quit and go home.",
+        "They were forced to work and denied freedom."
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 10,
+      "question": "What was one result of European settlement on Native lands?",
+      "choices": [
+        "Some Native communities lost land or faced pressure to move.",
+        "All newcomers and Native communities agreed on every treaty.",
+        "Native people stopped having their own governments.",
+        "All Native nations chose to move at the same time."
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 11,
+      "question": "What might historians learn from a colonial shop's account book?",
+      "choices": [
+        "the age of every road in the colony",
+        "the owner's thoughts on every customer",
+        "the flavor of each meal sold nearby",
+        "which goods the shop sold and what they cost"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 12,
+      "question": "What might a tool found at a historic farm reveal?",
+      "choices": [
+        "the exact date of every event in the colony",
+        "which crops were never grown anywhere",
+        "how some work was done",
+        "the name of every person who touched it"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 13,
+      "question": "Which is a source Native communities may use to pass on knowledge?",
+      "choices": [
+        "oral histories shared by community members",
+        "only writing printed before 1500",
+        "only maps drawn by European settlers",
+        "only federal court lists"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 14,
+      "question": "Why compare a settler's letter with a Native community's account of an event?",
+      "choices": [
+        "All accounts must describe precisely the same details.",
+        "Each may describe different parts or viewpoints.",
+        "If they differ, neither can be studied.",
+        "One automatically cancels the other."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 15,
+      "question": "Which shows early Americans adapting to the climate where they lived?",
+      "choices": [
+        "building homes to keep out winter cold",
+        "using only one house design in every climate",
+        "building a home with no roof during each storm",
+        "ignoring the need for safe shelter"
+      ],
+      "correctAnswer": 0,
+      "skill": "recall"
+    },
+    {
+      "id": 16,
+      "question": "What made Atlantic trade connect faraway communities?",
+      "choices": [
+        "All farms stood in one village.",
+        "Ships moved people and goods across the ocean.",
+        "The ocean always stopped trade entirely.",
+        "Colonies never bought goods from abroad."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 17,
+      "question": "A timeline shows a fort was built in 1754 and rebuilt in 1765. What happened first?",
+      "choices": [
+        "the fort was rebuilt",
+        "the order cannot be known",
+        "the original fort was built",
+        "both happened in 1765"
+      ],
+      "correctAnswer": 2,
+      "skill": "recall"
+    },
+    {
+      "id": 18,
+      "question": "Why should you ask who made a map of early Ohio and when?",
+      "choices": [
+        "A person's name makes the map exact.",
+        "The maker and date affect what the map can show.",
+        "Every old map shows all communities equally.",
+        "The date changes the distance between places."
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    },
+    {
+      "id": 19,
+      "question": "Which work might involve learning a trade from a skilled person?",
+      "choices": [
+        "buying a printed book once",
+        "visiting a river for one hour",
+        "keeping a calendar with no job",
+        "apprenticing with a printer"
+      ],
+      "correctAnswer": 3,
+      "skill": "recall"
+    },
+    {
+      "id": 20,
+      "question": "Which material best shows what the writer of a letter valued at the time?",
+      "choices": [
+        "the price of a new frame for the letter",
+        "what the writer chose to describe and ask about",
+        "the color of a library shelf",
+        "the colors of a modern folder"
+      ],
+      "correctAnswer": 1,
+      "skill": "recall"
+    }
+  ]
+}
