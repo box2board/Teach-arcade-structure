@@ -424,13 +424,13 @@
   {
     "id": "v3-workplace-11",
     "category": "workplace",
-    "title": "Boundaries with a demanding client",
-    "prompt": "Someone expects responses outside your scheduled hours. Your supervisor wants the relationship maintained but has not promised additional pay.",
-    "context": "There is no extra income for unpaid availability in this scenario.",
+    "title": "Work requests outside scheduled hours",
+    "prompt": "A recurring, non-urgent work request arrives after your scheduled hours. Your supervisor wants it handled but has not approved paid on-call time.",
+    "context": "There is no extra income for unpaid availability in this scenario. Urgent work should use the established coverage process.",
     "choices": [
       {
         "label": "Set a clear response schedule",
-        "text": "Explain when to expect a reply and provide an escalation route.",
+        "text": "Set a response window and clarify which issues need the urgent coverage process.",
         "effects": {
           "communication": 4,
           "professionalism": 3,
@@ -441,13 +441,13 @@
       },
       {
         "label": "Stay available every evening",
-        "text": "Keep the client satisfied by remaining on call informally.",
+        "text": "Respond every evening without an agreed end time or extra pay.",
         "effects": {
           "performance": 3,
           "stress": 9,
           "workLife": -10
         },
-        "feedback": "The relationship improves for now, but unpaid work takes over personal time."
+        "feedback": "The request is handled for now, but unpaid availability takes over personal time."
       },
       {
         "label": "Build a shared coverage plan",

@@ -204,7 +204,7 @@ async function init() {
   ];
   const data = await Promise.all(
     paths.map(async (p) => {
-      const revision = p.startsWith("scenarios-") ? "?v=13" : "";
+      const revision = p.startsWith("scenarios-") ? "?v=14" : "";
       const r = await fetch(`./data/${p}.json${revision}`);
       if (!r.ok) throw new Error("Activity data could not load.");
       return r.json();
@@ -1848,7 +1848,8 @@ function contextualScenario(scenario) {
 function careerWorkScenarios() {
   const c = career();
   if (state.careerScenarios[c.id]) return state.careerScenarios[c.id];
-  const duty = c.duties[0];
+  const duty = c.duties[0].replace(/[.!?]+$/, "");
+  const task = duty.charAt(0).toLowerCase() + duty.slice(1);
   const choice = (label, text, effects, feedback) => ({
     label,
     text,
@@ -1861,7 +1862,7 @@ function careerWorkScenarios() {
       category: "workplace",
       year: 1,
       title: "Practice in your chosen field",
-      prompt: `In your work as ${c.title}, one task to prepare for is “${duty}” Your supervisor offers supported practice, a familiar paid assignment, or gradual learning during scheduled hours.`,
+      prompt: `One task in this field is to ${task}. An experienced colleague, mentor, or supervisor offers supported practice, a familiar paid assignment, or gradual learning during scheduled hours.`,
       choices: [
         choice(
           "Join supported practice",
@@ -1888,7 +1889,7 @@ function careerWorkScenarios() {
       category: "workplace",
       year: 3,
       title: "Make room for the next assignment",
-      prompt: `Your next assignment as ${c.title} includes this task: “${duty}” Your supervisor offers extra pay to add it to your workload or a chance to renegotiate the schedule.`,
+      prompt: `A new assignment in this field will require you to ${task}. You can reorder other work, take extra paid hours, or share the assignment with a colleague.`,
       choices: [
         choice(
           "Agree on priorities",
@@ -1916,7 +1917,7 @@ function careerWorkScenarios() {
       year: 4,
       requires: "careerPractice",
       title: "Use what you practiced",
-      prompt: `Your earlier practice as ${c.title} has prepared you to help a colleague with the task. You are offered a paid support assignment.`,
+      prompt: `The supported practice you chose earlier has prepared you to help a colleague with this kind of task. You are offered a paid support assignment.`,
       choices: [
         choice(
           "Accept the full assignment",
@@ -2030,6 +2031,7 @@ function applyChoice(s, c) {
   const r = state.run,
     before = snapshot(r.stats),
     effects = {},
+    feedback = c.feedback,
     mult = { easy: 0.8, normal: 1, hard: 1.25 }[settings().difficulty];
   Object.entries(c.effects).forEach(([k, v]) => {
     if (r.modelVersion && k === "temporaryMonthly") {
@@ -2101,6 +2103,17 @@ function applyChoice(s, c) {
         ? r.stats[k] + effects[k]
         : clamp(r.stats[k] + effects[k]);
   });
+  let resultFeedback = feedback;
+  if (r.modelVersion && Object.hasOwn(c.effects, "extraPayment")) {
+    const paid = Math.max(0, -(effects.cash || 0));
+    if (paid) {
+      resultFeedback = `You paid ${money(paid)} toward debt, reducing your cash and debt by the same amount. You have less cash available for an emergency.`;
+    } else if (r.stats.debt <= 0) {
+      resultFeedback = "No extra payment was made because no debt remains. Your cash is unchanged.";
+    } else {
+      resultFeedback = "No extra payment was made because no cash was available. Scheduled debt payments still apply.";
+    }
+  }
   r.stats.debt = Math.max(0, r.stats.debt);
   updateNetWorth();
   r.history.push({
@@ -2110,7 +2123,7 @@ function applyChoice(s, c) {
     choice: c.label,
     text: c.text,
     feedback:
-      c.feedback +
+      resultFeedback +
       (r.modelVersion && c.effects.debt && effects.debt < c.effects.debt
         ? " The requested borrowing exceeds the model credit limit; the remainder is charged to cash and may create an unpaid shortfall."
         : ""),

@@ -784,6 +784,56 @@ for (const id of reviewedCareers) {
 }
 assert.equal(roleTitles.size, 10);
 
+// Fallback work prompts should read naturally for plural official occupation titles.
+const farmer = careers.find((c) => c.id === "farmer");
+const farmerRun = installmentRun(1);
+farmerRun.careerId = farmer.id;
+const farmerPractice = api.careerWorkScenarios()[0];
+assert.match(farmerPractice.prompt, /^One task in this field is to /);
+assert(!farmerPractice.prompt.includes("in your work as Farmers"));
+assert(farmerPractice.prompt.includes("to collect and record growth"));
+const outsideHours = api.state.lifeScenarios.workplace.find(
+  (s) => s.id === "v3-workplace-11",
+);
+assert.equal(outsideHours.title, "Work requests outside scheduled hours");
+assert(!/client|relationship maintained/i.test(outsideHours.title + outsideHours.prompt));
+assert.match(
+  outsideHours.context,
+  /Urgent work should use the established coverage process/,
+);
+
+// Extra-debt feedback reports the actual payment, including zero-pay cases.
+const debtChoice = api.state.lifeScenarios.money.find(
+  (s) => s.id === "v3-money-10",
+).choices[0];
+const paymentRun = (cash, debt) => {
+  const current = installmentRun(1);
+  current.stats.cash = cash;
+  current.stats.debt = debt;
+  current.consumerDebt = debt;
+  current.educationDebt = 0;
+  current.initialDebt = debt;
+  current.stepInYear = 0;
+  current.history = [];
+  api.applyChoice({ id: "test-extra-payment", title: "Test" }, debtChoice);
+  return current.history.at(-1);
+};
+const partialPayment = paymentRun(450, 1000);
+assert.equal(partialPayment.effects.cash, -450);
+assert.match(partialPayment.feedback, /paid \$450 toward debt/);
+const noCashPayment = paymentRun(0, 1000);
+assert.equal(Math.abs(noCashPayment.effects.cash), 0);
+assert.match(
+  noCashPayment.feedback,
+  /No extra payment was made because no cash was available/,
+);
+const noDebtPayment = paymentRun(500, 0);
+assert.equal(Math.abs(noDebtPayment.effects.cash), 0);
+assert.match(
+  noDebtPayment.feedback,
+  /No extra payment was made because no debt remains/,
+);
+
 // Transport scenarios describe the selected mode, including their follow-up.
 const travelRun = installmentRun(2);
 travelRun.transport = "transit";
