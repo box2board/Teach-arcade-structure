@@ -142,16 +142,13 @@
       },
       {
         "label": "Use the offered staged plan",
-        "text": "Pay $500 now and $50/month for the next year.",
+        "text": "Pay $500 now, then $50/month for 12 months.",
         "effects": {
           "cash": -500,
-          "monthly": {
-            "medical": 50
-          },
-          "flag": "dentalPlan",
-          "stress": 2
+          "stress": 2,
+          "installment": "dentalPlan"
         },
-        "feedback": "You keep more cash now. The monthly commitment stays until the follow-up ends it."
+        "feedback": "You pay less upfront. The remaining $600 is paid in 12 monthly installments, starting this year."
       },
       {
         "label": "Use consumer credit",
@@ -168,27 +165,24 @@
     "id": "v3-money-05",
     "category": "money",
     "title": "The dental payment plan ends",
-    "prompt": "The staged dental plan has reached its final scheduled year. The $50 monthly payment can now come out of your regular budget. You also have other uses for that money.",
-    "context": "This follow-up removes the recurring cost introduced by your earlier choice.",
+    "prompt": "Your dental bill is paid off, freeing up $50 a month. What will you do with that room in your budget?",
+    "context": "The installment ended automatically. Any new spending you choose starts this year.",
     "choices": [
       {
         "label": "Return the payment to your buffer",
-        "text": "Remove the $50 monthly charge.",
+        "text": "Leave the $50/month available for emergencies.",
         "effects": {
-          "monthly": {
-            "medical": -50
-          },
           "clearFlag": "dentalPlan",
           "financialLiteracy": 3
         },
-        "feedback": "Your normal budget improves. Savings appear through lower bills rather than an invented cash reward."
+        "feedback": "Your regular bills are lower, so more cash is available for emergencies."
       },
       {
         "label": "Keep part for routine care",
-        "text": "Reduce the monthly charge by $25 and keep $25 for care.",
+        "text": "Put $25/month toward routine care.",
         "effects": {
           "monthly": {
-            "medical": -25
+            "medical": 25
           },
           "clearFlag": "dentalPlan",
           "stress": -2
@@ -197,10 +191,9 @@
       },
       {
         "label": "Redirect it to family support",
-        "text": "Remove the $50 medical charge; add $50/month to family support.",
+        "text": "Put $50/month toward family support.",
         "effects": {
           "monthly": {
-            "medical": -50,
             "care": 50
           },
           "clearFlag": "dentalPlan",
@@ -281,15 +274,12 @@
       },
       {
         "label": "Choose a two-year installment offer",
-        "text": "Add $35/month to the phone category.",
+        "text": "Pay $35/month for 24 months, starting this year.",
         "effects": {
-          "monthly": {
-            "phone": 35
-          },
-          "flag": "phonePlan",
-          "stress": 2
+          "stress": 2,
+          "installment": "phonePlan"
         },
-        "feedback": "The upfront price is lower. This recurring bill continues until its follow-up ends it."
+        "feedback": "You replace your phone and spread the $840 device cost over two years. Your regular phone service bill stays separate."
       }
     ]
   },
@@ -297,16 +287,13 @@
     "id": "v3-money-08",
     "category": "money",
     "title": "Your device installment is paid off",
-    "prompt": "The two-year phone installment is complete. Its $35 monthly charge can end. You can keep the working device or choose another upgrade.",
-    "context": "The follow-up ends the earlier installment before any new purchase is added.",
+    "prompt": "You finished paying off your phone, freeing up $35 a month. How will you handle your next device decision?",
+    "context": "The old installment ended automatically.",
     "choices": [
       {
         "label": "Keep the working device",
-        "text": "Remove $35/month from the phone bill.",
+        "text": "Keep using your phone with no new device payments.",
         "effects": {
-          "monthly": {
-            "phone": -35
-          },
           "clearFlag": "phonePlan",
           "financialLiteracy": 3
         },
@@ -314,12 +301,9 @@
       },
       {
         "label": "Replace the battery and keep it",
-        "text": "Spend $90 and remove $35/month.",
+        "text": "Spend $90 once and keep using your phone.",
         "effects": {
           "cash": -90,
-          "monthly": {
-            "phone": -35
-          },
           "clearFlag": "phonePlan",
           "problemSolving": 3
         },
@@ -327,12 +311,12 @@
       },
       {
         "label": "Start a new installment",
-        "text": "Keep the same $35 monthly charge for another device.",
+        "text": "Pay $35/month for 24 months for a replacement device.",
         "effects": {
-          "clearFlag": "phonePlan",
-          "happiness": 3
+          "happiness": 3,
+          "installment": "phonePlan"
         },
-        "feedback": "The old agreement ends, but a new ongoing charge takes its place. The model keeps that charge beyond this year."
+        "feedback": "You get a replacement device and start a new two-year payment plan."
       }
     ],
     "requires": "phonePlan",
@@ -389,8 +373,8 @@
   {
     "id": "v3-money-10",
     "category": "money",
-    "title": "Debt payment or a cash buffer?",
-    "prompt": "You can choose whether to use up to $1,000 of cash toward debt. Required yearly payments will still be settled later. A small buffer may matter when the next bill arrives.",
+    "title": "Debt, emergency savings, or time to recharge?",
+    "prompt": "You’re deciding what to do with the cash you have on hand. You could put up to $1,000 toward debt, keep the cash for your next unexpected bill, or spend $550 on a short break after a demanding stretch. Your scheduled debt payments are still due at the year review.",
     "context": "Extra payments are capped by cash and the remaining debt; consumer debt is paid first.",
     "choices": [
       {
@@ -410,7 +394,7 @@
           "financialLiteracy": 2,
           "stress": -2
         },
-        "feedback": "Liquidity stays available. Debt interest continues to accrue."
+        "feedback": "Cash stays available for unexpected bills. Your remaining debt still accrues interest."
       },
       {
         "label": "Spend on a short break",

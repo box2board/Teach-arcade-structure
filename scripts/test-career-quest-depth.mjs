@@ -57,7 +57,7 @@ w.confirm = () => true;
 w.fetch = async (url) => ({
   ok: true,
   json: async () =>
-    JSON.parse(fs.readFileSync(root + url.replace("./", ""), "utf8")),
+    JSON.parse(fs.readFileSync(new URL(url, pathToFileURL(root)), "utf8")),
 });
 w.eval(
   fs.readFileSync(root + "career-quest.js", "utf8") +
@@ -401,6 +401,96 @@ assert.equal(
   "v3-money-08",
   "eligible plan follow-up must be selected",
 );
+const moneyCard = (id) =>
+  api.state.lifeScenarios.money.find((s) => s.id === id);
+const installmentRun = (year, housing = "shared") =>
+  (api.state.run = {
+    ...JSON.parse(JSON.stringify(base)),
+    careerId: nurse.id,
+    educationKey: "cc",
+    housing,
+    locationId: "OH",
+    educationDebt: 0,
+    initialDebt: 0,
+    consumerDebt: 0,
+    initialSkills: { ...base.stats.skills },
+    year,
+  });
+const settleInstallmentYear = () => {
+  const run = api.state.run;
+  run.yearStart = api.snapshot(run.stats);
+  api.settleYear();
+  return run.yearLedgers.at(-1);
+};
+const dentalRun = installmentRun(3);
+dentalRun.stepInYear = 1;
+const dentalCard = moneyCard("v3-money-04");
+const medicalBaseline = api.monthlyBreakdown().medical;
+api.applyChoice(dentalCard, dentalCard.choices[1]);
+api.renderByPhase();
+assert.match(
+  w.document.querySelector(".cq-chapter-banner h3").textContent,
+  /MONEY/,
+);
+assert.match(
+  w.document.getElementById("screen").textContent,
+  /\$50\/month for 12 months.*\$600/,
+);
+assert.equal(dentalRun.stats.cash, 1500);
+let ledger = settleInstallmentYear();
+assert.equal(ledger.parts.dentalPlan * 12, 600);
+assert.equal(ledger.parts.medical, medicalBaseline);
+assert.equal(
+  ledger.living,
+  Object.values(ledger.parts).reduce((sum, cost) => sum + cost * 12, 0),
+);
+dentalRun.year++;
+assert.equal(settleInstallmentYear().parts.dentalPlan, undefined);
+
+const phoneRun = installmentRun(2);
+const phoneCard = moneyCard("v3-money-07");
+api.applyChoice(phoneCard, phoneCard.choices[2]);
+assert.equal(settleInstallmentYear().parts.phonePlan * 12, 420);
+phoneRun.year++;
+assert.equal(settleInstallmentYear().parts.phonePlan * 12, 420);
+phoneRun.year++;
+assert.equal(api.monthlyBreakdown().phonePlan, undefined);
+const renewalCard = moneyCard("v3-money-08");
+api.applyChoice(renewalCard, renewalCard.choices[2]);
+assert.equal(settleInstallmentYear().parts.phonePlan * 12, 420);
+phoneRun.year++;
+assert.equal(settleInstallmentYear().parts.phonePlan * 12, 420);
+assert.equal(api.monthlyBreakdown("shared", 6).phonePlan, undefined);
+
+const latePhoneRun = installmentRun(5);
+api.applyChoice(phoneCard, phoneCard.choices[2]);
+settleInstallmentYear();
+latePhoneRun.phase = "report";
+api.renderByPhase();
+assert.match(
+  w.document.getElementById("screen").textContent,
+  /Phone installments: \$420 remains in 12 monthly payments after the simulation/,
+);
+
+const oldSave = installmentRun(5, "solo");
+delete oldSave.installments;
+oldSave.flags.dentalPlan = 3;
+oldSave.flags.phonePlan = 4;
+oldSave.budgetAdjustments = { medical: 50, phone: 35 };
+oldSave.phase = "scenario";
+oldSave.stepInYear = 2;
+oldSave.currentScenario = api.state.lifeScenarios.core.find(
+  (s) => s.id === "v3-core-02",
+);
+w.localStorage.setItem("taCareerQuestRun", JSON.stringify(oldSave));
+w.document.getElementById("continue-run").click();
+assert.notEqual(api.state.run.currentScenario.id, "v3-core-02");
+assert.equal(api.monthlyBreakdown().dentalPlan, undefined);
+assert.equal(api.monthlyBreakdown().phonePlan, 35);
+assert.equal(api.state.run.budgetAdjustments.medical, 0);
+assert.equal(api.state.run.budgetAdjustments.phone, 0);
+w.document.getElementById("continue-run").click();
+assert.equal(api.state.run.budgetAdjustments.phone, 0);
 assert.equal(errors.length, 0, errors[0]?.stack);
 // The year review changes the actual next-year plan and records the moving charge.
 const replanned = (api.state.run = JSON.parse(JSON.stringify(base)));

@@ -307,14 +307,14 @@
     "context": "This is a fictional workplace event; it is not a forecast about your occupation.",
     "choices": [
       {
-        "label": "Accept the reduced schedule",
-        "text": "Lose $4,000 gross this year; use the time to search for stable work.",
+        "label": "Work the reduced schedule and look for steadier work",
+        "text": "Earn $4,000 less before taxes this year and use some of the freed-up time to look for a steadier job.",
         "effects": {
           "income": -4000,
           "professionalism": 3,
           "stress": 7
         },
-        "feedback": "Your bills continue while pay falls. Time spent searching does not produce a guaranteed job."
+        "feedback": "Your bills continue while pay falls. You start looking for steadier work, and this year’s budget still reflects the reduced pay."
       },
       {
         "label": "Pick up temporary shifts elsewhere",

@@ -196,7 +196,8 @@ async function init() {
   ];
   const data = await Promise.all(
     paths.map(async (p) => {
-      const r = await fetch(`./data/${p}.json`);
+      const revision = p.startsWith("scenarios-v3-") ? "?v=12" : "";
+      const r = await fetch(`./data/${p}.json${revision}`);
       if (!r.ok) throw new Error("Activity data could not load.");
       return r.json();
     }),
@@ -324,6 +325,7 @@ function startRun() {
     locationId: "US",
     interestAnswers: {},
     budgetAdjustments: {},
+    installments: {},
     flags: {},
     retirement: 0,
     incomeAdjustment: 0,
@@ -365,6 +367,18 @@ function continueRun() {
     return;
   }
   state.run = saved;
+  if (saved.modelVersion) {
+    migrateInstallments(saved);
+    if (saved.currentScenario) {
+      const { category, id } = saved.currentScenario;
+      const updated = state.lifeScenarios[category]?.find((s) => s.id === id);
+      if (updated)
+        saved.currentScenario =
+          !updated.housing || updated.housing === saved.housing
+            ? updated
+            : null;
+    }
+  }
   if (saved.phase === "quiz" && !saved.modelVersion) {
     saved.interestAnswers = {};
     saved.quizIndex = 0;
@@ -1265,7 +1279,48 @@ const expenseLabels = {
   care: "Family support",
   medical: "Routine medical costs",
   maintenance: "Repairs & replacements",
+  dentalPlan: "Dental installments",
+  phonePlan: "Phone installments",
 };
+const installmentTerms = {
+  dentalPlan: { monthly: 50, years: 1, previousCategory: "medical" },
+  phonePlan: { monthly: 35, years: 2, previousCategory: "phone" },
+};
+function migrateInstallments(run) {
+  if (run.installments) return;
+  run.installments = {};
+  // Older saves put the contract inside regular bills. Keep settled ledgers as recorded.
+  const renewal = run.history.findLast(
+    (entry) =>
+      entry.id === "v3-money-08" && entry.choice === "Start a new installment",
+  );
+  for (const [plan, { monthly, previousCategory }] of Object.entries(
+    installmentTerms,
+  )) {
+    const startYear =
+      run.flags?.[plan] || (plan === "phonePlan" && renewal?.year);
+    if (!startYear) continue;
+    run.budgetAdjustments[previousCategory] -= monthly;
+    run.installments[plan] = startYear;
+  }
+}
+function installmentPayments(year) {
+  return Object.entries(state.run.installments || {}).flatMap(
+    ([plan, start]) => {
+      const { monthly, years } = installmentTerms[plan];
+      return year >= start && year < start + years ? [[plan, monthly]] : [];
+    },
+  );
+}
+function remainingInstallments() {
+  const nextYear = state.run.year + 1;
+  return installmentPayments(nextYear).map(([plan, monthly]) => {
+    const months =
+      (state.run.installments[plan] + installmentTerms[plan].years - nextYear) *
+      12;
+    return `${expenseLabels[plan]}: ${money(monthly * months)} remains in ${months} monthly payments after the simulation.`;
+  });
+}
 function monthlyBreakdown(
   housing = state.run.housing,
   year = state.run.year,
@@ -1288,22 +1343,20 @@ function monthlyBreakdown(
     maintenance: 100,
   };
   const adjustments = state.run.budgetAdjustments || {};
-  return Object.fromEntries(
-    Object.entries(base).map(([k, v]) => [
-      k,
-      Math.max(
-        0,
-        Math.round(
-          (k === "rent" &&
-          state.run.locationVersion &&
-          Number.isFinite(state.run.rentOverrides?.[housing])
-            ? state.run.rentOverrides[housing] + (adjustments[k] || 0)
-            : (v + (adjustments[k] || 0)) * expenseLocationFactor(k)) *
-            inflation,
-        ),
+  const regularBills = Object.entries(base).map(([k, v]) => [
+    k,
+    Math.max(
+      0,
+      Math.round(
+        (k === "rent" &&
+        state.run.locationVersion &&
+        Number.isFinite(state.run.rentOverrides?.[housing])
+          ? state.run.rentOverrides[housing] + (adjustments[k] || 0)
+          : (v + (adjustments[k] || 0)) * expenseLocationFactor(k)) * inflation,
       ),
-    ]),
-  );
+    ),
+  ]);
+  return Object.fromEntries([...regularBills, ...installmentPayments(year)]);
 }
 function livingTotal(parts) {
   return Object.values(parts).reduce((a, b) => a + b, 0);
@@ -1596,10 +1649,9 @@ function chapterArt(kind) {
     "business";
   return `<svg class="cq-chapter-art" viewBox="0 0 240 130" fill="none" aria-hidden="true"><circle cx="160" cy="48" r="44" fill="var(--scene-sun)"/><path d="M0 115Q45 77 96 112T240 100V130H0Z" fill="var(--scene-ground)"/><rect x="24" y="37" width="91" height="76" rx="13" fill="white" stroke="var(--scene-ink)" stroke-width="2" transform="rotate(-8 24 37)"/><g transform="translate(37 42) scale(.83)" stroke="var(--scene-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${iconPaths[key]}</g><path d="M141 87V55h17v32m10 0V38h17v49m10 0V20h17v67" fill="var(--scene-accent)"/><path d="M138 92h81" stroke="var(--scene-ink)" stroke-width="3" stroke-linecap="round"/><circle cx="126" cy="20" r="5" fill="var(--scene-accent)"/><path d="M217 110v-9m-4 4h9M15 17v10m-5-5h10" stroke="var(--scene-ink)" stroke-width="2"/></svg>`;
 }
-function chapterBanner() {
+function chapterBanner(step) {
   const r = state.run,
-    kind =
-      r.stepInYear === 0 ? "workplace" : r.stepInYear === 1 ? "money" : "core";
+    kind = step === 0 ? "workplace" : step === 1 ? "money" : "core";
   const words = {
     workplace: ["WORK & GROWTH", "A career is more than a paycheck."],
     money: ["MONEY & CHOICES", "Give every dollar a purpose."],
@@ -1614,8 +1666,8 @@ function financialSnapshot() {
     months = Math.max(0, r.stats.cash) / bills;
   return `<div class="cq-financial-snapshot"><div><span>Cash for bills</span><strong>${money(Math.max(0, r.stats.cash))}</strong><small>${r.stats.cash < 0 ? `Unpaid bills: ${money(-r.stats.cash)}` : `About ${months.toFixed(1)} months of bills`}</small></div><div><span>Other debt</span><strong>${money(r.consumerDebt)}</strong><small>${r.consumerDebt > 0 ? `${Math.round(BORROWING_RATE * 100)}% yearly interest in this game` : "No interest on a $0 balance"}</small></div><div><span>Retirement savings</span><strong>${money(r.retirement)}</strong><small>Saved for later, not everyday spending</small></div></div>`;
 }
-function layout(content) {
-  return `<div class="cq-layout"><div class="cq-card cq-live-card">${chapterBanner()}${years()}${content}</div>${dashboard()}</div>`;
+function layout(content, step = state.run.stepInYear) {
+  return `<div class="cq-layout"><div class="cq-card cq-live-card">${chapterBanner(step)}${years()}${content}</div>${dashboard()}</div>`;
 }
 function pickScenario() {
   const run = state.run,
@@ -1630,6 +1682,7 @@ function pickScenario() {
     ].filter(
       (s) =>
         (!s.minYear || run.year >= s.minYear) &&
+        (!s.housing || s.housing === run.housing) &&
         (!s.requires ||
           (run.flags?.[s.requires] &&
             run.year - run.flags[s.requires] >= (s.waitYears || 1))),
@@ -1689,6 +1742,12 @@ function applyChoice(s, c) {
     effects = {},
     mult = { easy: 0.8, normal: 1, hard: 1.25 }[settings().difficulty];
   Object.entries(c.effects).forEach(([k, v]) => {
+    if (r.modelVersion && k === "installment") {
+      r.installments[v] = r.year;
+      r.flags[v] = r.year;
+      effects.installment = v;
+      return;
+    }
     if (
       r.modelVersion &&
       ["income", "annualIncome", "monthly", "flag", "clearFlag"].includes(k)
@@ -1788,6 +1847,11 @@ function deltas(before, after) {
       .join("") || "<span>No immediate status change</span>"
   }</div>`;
 }
+function installmentFeedback(plan) {
+  if (!plan) return "";
+  const { monthly, years } = installmentTerms[plan];
+  return `<p class="cq-note">${expenseLabels[plan]}: ${money(monthly)}/month for ${years * 12} months. This year’s budget includes ${money(monthly * 12)} in payments.</p>`;
+}
 function renderFeedback() {
   const r = state.run,
     h = r.history.at(-1);
@@ -1801,7 +1865,8 @@ function renderFeedback() {
               .map(([k, v]) => `${expenseLabels[k]} ${money(v)}`)
               .join(", ")}. This continues in later years.</p>`
           : ""
-      }<p>Pay and regular bills are added at the year review.</p><div class="cq-inline-actions"><button class="btn" id="continue-decision">${r.afterFeedback === "yearSummary" ? "Review this year" : "Next decision"}</button></div>`,
+      }${installmentFeedback(h.effects.installment)}<p>Pay and regular bills are added at the year review.</p><div class="cq-inline-actions"><button class="btn" id="continue-decision">${r.afterFeedback === "yearSummary" ? "Review this year" : "Next decision"}</button></div>`,
+      r.stepInYear - 1,
     ),
     "live",
   );
@@ -1992,7 +2057,11 @@ function renderReport() {
       )
       .join(
         "",
-      )}</div><p>Well-being: <strong>${r.stats.happiness}/100</strong> · Stress: <strong>${r.stats.stress}/100</strong> · Life balance: <strong>${r.stats.workLife}/100</strong> · Work performance: <strong>${r.stats.performance}/100</strong></p><p>Most practiced skills: ${growth.map(([k, v]) => `${labels[k]} (+${v})`).join(", ")}. Changes are measured from the start of your working years.</p>${financialSnapshot()}<h3>Your decision trail</h3><details><summary>Review all ${r.history.length} decisions</summary>${recap(r.history)}</details><details><summary>Review annual budgets</summary>${r.yearLedgers.map(ledgerTable).join("")}</details><h3>Explain your story</h3><p>Use your decision trail and budgets as evidence. Responses save on this device.</p>${reflectionPrompts()
+      )}</div><p>Well-being: <strong>${r.stats.happiness}/100</strong> · Stress: <strong>${r.stats.stress}/100</strong> · Life balance: <strong>${r.stats.workLife}/100</strong> · Work performance: <strong>${r.stats.performance}/100</strong></p><p>Most practiced skills: ${growth.map(([k, v]) => `${labels[k]} (+${v})`).join(", ")}. Changes are measured from the start of your working years.</p>${financialSnapshot()}${remainingInstallments()
+      .map((note) => `<p class="cq-note">${note}</p>`)
+      .join(
+        "",
+      )}<h3>Your decision trail</h3><details><summary>Review all ${r.history.length} decisions</summary>${recap(r.history)}</details><details><summary>Review annual budgets</summary>${r.yearLedgers.map(ledgerTable).join("")}</details><h3>Explain your story</h3><p>Use your decision trail and budgets as evidence. Responses save on this device.</p>${reflectionPrompts()
       .map(
         (p, i) =>
           `<label class="cq-reflection" for="reflection-${i}">${i + 1}. ${esc(p)}<textarea id="reflection-${i}" data-reflection="${i}" placeholder="Explain your thinking…">${esc(r.reflections[i] || "")}</textarea></label>`,
@@ -2030,6 +2099,7 @@ function downloadReport() {
       `Cash: ${money(r.stats.cash)} | Debt: ${money(r.stats.debt)} | Net worth: ${money(r.stats.netWorth)}`,
       `Well-being: ${r.stats.happiness}/100 | Stress: ${r.stats.stress}/100 | Life balance: ${r.stats.workLife}/100 | Performance: ${r.stats.performance}/100`,
       "",
+      ...remainingInstallments(),
       "DECISION TRAIL",
       ...r.history.map(
         (h) => `Year ${h.year}: ${h.title} — ${h.choice}\n${h.feedback}`,

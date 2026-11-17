@@ -43,8 +43,9 @@
   {
     "id": "v3-core-02",
     "category": "core",
+    "housing": "shared",
     "title": "The roommate moves out",
-    "prompt": "Someone sharing household costs leaves unexpectedly. Even if you live alone, this story represents losing a contribution you had counted on. You need a temporary plan.",
+    "prompt": "Your roommate moves out unexpectedly. You were counting on their share of the household bills and need a temporary plan to cover the gap.",
     "context": "This additional cost is a one-year disruption, not another permanent rent increase.",
     "choices": [
       {

@@ -34,7 +34,7 @@ async function boot(saved = {}, badStorage = false) {
   w.fetch = async (url) => ({
     ok: true,
     json: async () =>
-      JSON.parse(fs.readFileSync(root + url.replace("./", ""), "utf8")),
+      JSON.parse(fs.readFileSync(new URL(url, pathToFileURL(root)), "utf8")),
   });
   w.Math.random = () => 0;
   w.eval(
