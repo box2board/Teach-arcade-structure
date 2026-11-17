@@ -1,0 +1,1251 @@
+{
+  "electrician": [
+    {
+      "id": "career-electrician-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Practice on a new installation system",
+      "prompt": "Your crew will use a new lighting-control system on an upcoming job. The shop offers supervised practice during two evenings. Alternatively, you can take familiar paid assignments or reserve work time to learn.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-electrician-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A delivery misses the installation date",
+      "prompt": "The specified fixtures have not arrived. The supervisor can reschedule the installation, approve a more expensive substitute, or assign you to another site for this week. Each option changes your schedule or pay.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Ask for a rescheduled installation",
+          "text": "Keep your pay; spend extra time coordinating the new date.",
+          "effects": {
+            "communication": 3,
+            "stress": 3,
+            "workLife": -2
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Take the substitute-fixture assignment",
+          "text": "Earn $900 extra before taxes this year and work two extra evenings.",
+          "effects": {
+            "income": 900,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Work at the alternate site",
+          "text": "Earn $300 extra before taxes this year, with $120 in one-time travel costs.",
+          "effects": {
+            "income": 300,
+            "cash": -120,
+            "adaptability": 3
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-electrician-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "You used the new lighting-control system successfully. Your supervisor offers a paid role helping the next crew learn it.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ],
+  "registered-nurse": [
+    {
+      "id": "career-registered-nurse-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Learn a new patient-record system",
+      "prompt": "Your unit is introducing a patient-record system. Paid shifts continue as usual. You can join a supported practice group after work, take familiar extra shifts, or use a shorter orientation during work hours.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-registered-nurse-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "The next month’s shift schedule",
+      "prompt": "Your unit offers a choice for next month: keep your regular shifts, cover additional shifts for extra pay, or trade some shifts to create longer stretches off. Coverage and recovery time matter.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Keep your regular shifts",
+          "text": "Keep your current pay and predictable schedule.",
+          "effects": {
+            "stress": -2
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Cover the additional shifts",
+          "text": "Earn $1,800 extra before taxes this year and lose several recovery days.",
+          "effects": {
+            "income": 1800,
+            "stress": 7,
+            "workLife": -7
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Arrange a shift trade",
+          "text": "Keep current pay; spend time arranging coverage and gain two free weekends.",
+          "effects": {
+            "communication": 3,
+            "workLife": 4,
+            "stress": 2
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-registered-nurse-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "Your practice with the record system has helped the unit. You are offered paid hours supporting colleagues during its next rollout.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ],
+  "elementary-teacher": [
+    {
+      "id": "career-elementary-teacher-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Try a new classroom assessment tool",
+      "prompt": "Your school will use a classroom assessment tool next term. You can join an after-school practice group, accept paid tutoring with materials you already know, or learn through brief planning-period sessions.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-elementary-teacher-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A paid after-school assignment",
+      "prompt": "The school needs an adviser for a short after-school program. You already have lessons to plan. You can decline, lead the full program for extra pay, or share the assignment.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Protect your planning time",
+          "text": "Keep your current pay and leave evenings for planning and rest.",
+          "effects": {
+            "stress": -3,
+            "workLife": 2
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Lead the full program",
+          "text": "Earn $1,200 extra before taxes this year; give up two afternoons most weeks.",
+          "effects": {
+            "income": 1200,
+            "stress": 6,
+            "workLife": -7
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Share the assignment",
+          "text": "Earn $500 extra before taxes this year; coordinate with a colleague.",
+          "effects": {
+            "income": 500,
+            "teamwork": 3,
+            "workLife": -3
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-elementary-teacher-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "Your assessment-tool practice produced a useful classroom example. The school offers paid hours to help colleagues adapt it.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ],
+  "software-developer": [
+    {
+      "id": "career-software-developer-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Learn the team’s new testing framework",
+      "prompt": "Your team plans to adopt a testing framework. You can join evening practice with a mentor, accept paid support for the current system, or learn during a smaller block of work time.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-software-developer-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A release deadline is approaching",
+      "prompt": "A feature works in demonstrations, but important test cases remain. The team can reduce the release scope, pay for an additional testing shift, or move the deadline and explain the delay to the client.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Release a smaller tested feature",
+          "text": "Keep pay unchanged; spend time agreeing on a smaller scope.",
+          "effects": {
+            "problemSolving": 4,
+            "communication": 2,
+            "stress": 3
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Take the additional testing shift",
+          "text": "Earn $1,000 extra before taxes this year and give up a weekend.",
+          "effects": {
+            "income": 1000,
+            "stress": 6,
+            "workLife": -6
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Propose a later release",
+          "text": "Keep pay unchanged; take time to explain the schedule change.",
+          "effects": {
+            "communication": 4,
+            "performance": 2,
+            "stress": 4
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-software-developer-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "Your framework practice helped the team catch errors. A temporary paid assignment is available to help another team adopt it.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ],
+  "police-officer": [
+    {
+      "id": "career-police-officer-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Practice the updated reporting system",
+      "prompt": "Your department is changing its reporting system. Your scheduled duties remain. You can attend evening practice with an instructor, take a familiar paid coverage assignment, or use shorter practice sessions during duty hours.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-police-officer-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "Choose next month’s coverage",
+      "prompt": "The department needs additional coverage for community events. You can keep your roster, accept extra shifts for pay, or split coverage with another officer. The offers below are specific to this fictional department.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Keep the regular roster",
+          "text": "Keep current pay and scheduled days off.",
+          "effects": {
+            "stress": -2,
+            "workLife": 2
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Accept all additional shifts",
+          "text": "Earn $1,500 extra before taxes this year and lose several days off.",
+          "effects": {
+            "income": 1500,
+            "stress": 7,
+            "workLife": -7
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Split the coverage",
+          "text": "Earn $600 extra before taxes this year and coordinate two schedule changes.",
+          "effects": {
+            "income": 600,
+            "teamwork": 3,
+            "workLife": -3
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-police-officer-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "Your reporting-system practice helped improve handovers. The department offers paid hours helping the next group use it.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ],
+  "dental-hygienist": [
+    {
+      "id": "career-dental-hygienist-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Practice with the clinic’s new charting tools",
+      "prompt": "Your clinic is updating its charting tools. You can join an evening practice group, cover familiar paid appointments, or learn through short sessions within your existing schedule.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-dental-hygienist-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "Two clinic schedules to compare",
+      "prompt": "The clinic can keep your current appointment pattern or offer a busier temporary schedule. A third option splits the extra appointments with a colleague. More appointments leave less time between them.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Keep the current appointment pattern",
+          "text": "Keep current pay and time between appointments.",
+          "effects": {
+            "stress": -2
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Take the full temporary schedule",
+          "text": "Earn $1,400 extra before taxes this year and lose several free afternoons.",
+          "effects": {
+            "income": 1400,
+            "stress": 6,
+            "workLife": -6
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Share the extra appointments",
+          "text": "Earn $600 extra before taxes this year; coordinate the shared schedule.",
+          "effects": {
+            "income": 600,
+            "teamwork": 3,
+            "workLife": -3
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-dental-hygienist-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "Your charting practice helped the clinic use its new tools. Paid hours are available to help train the next group.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ],
+  "graphic-designer": [
+    {
+      "id": "career-graphic-designer-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Build a reusable design workflow",
+      "prompt": "Your studio plans to use a new layout workflow. You can practice with a mentor after work, take a familiar paid production project, or learn gradually during existing project time.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-graphic-designer-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A rush design project",
+      "prompt": "A client requests a complete design package on a tight deadline. The studio offers extra pay for the full rush assignment. You can also propose a smaller package or preserve your current workload.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Propose a smaller first delivery",
+          "text": "Keep pay unchanged; negotiate a smaller delivery and a second deadline.",
+          "effects": {
+            "communication": 4,
+            "problemSolving": 3,
+            "stress": 3
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Take the full rush assignment",
+          "text": "Earn $1,000 extra before taxes this year; spend several evenings on revisions.",
+          "effects": {
+            "income": 1000,
+            "workLife": -7,
+            "stress": 6
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Keep your current workload",
+          "text": "Decline the extra pay and keep your existing schedule.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-graphic-designer-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "Your reusable workflow has saved the studio time. You are offered paid hours helping another designer put it into practice.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ],
+  "truck-driver": [
+    {
+      "id": "career-truck-driver-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Learn a new route-planning tool",
+      "prompt": "Your company is adopting a route-planning tool. You can practice with an instructor during two evenings, take a familiar paid run, or learn in short sessions between existing assignments.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-truck-driver-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A route with more nights away",
+      "prompt": "Dispatch offers a temporary route assignment with higher pay and more nights away from home. You can keep the current route, take the full assignment, or ask for a shorter version. All schedules in this story include required rest.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Keep the current route",
+          "text": "Keep current pay and nights at home.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Take the higher-paying assignment",
+          "text": "Earn $2,000 extra before taxes this year and spend several more nights away.",
+          "effects": {
+            "income": 2000,
+            "workLife": -8,
+            "stress": 6
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Request a shorter assignment",
+          "text": "Earn $800 extra before taxes this year and accept fewer nights away.",
+          "effects": {
+            "income": 800,
+            "communication": 3,
+            "workLife": -3
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-truck-driver-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "Your route-planning practice helped with a difficult assignment. The company offers paid hours supporting new drivers with the tool.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ],
+  "welder": [
+    {
+      "id": "career-welder-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Practice a new fabrication process",
+      "prompt": "Your shop expects work using a different fabrication process. You can join supervised practice after work, take a familiar paid production assignment, or learn during smaller blocks of shop time.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-welder-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "A new fabrication order",
+      "prompt": "The shop receives an order with an unfamiliar specification. The supervisor offers supervised practice on normal hours, extra paid preparation time, or a familiar assignment elsewhere in the shop.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Request supervised practice",
+          "text": "Keep pay unchanged; accept a temporary reduction in output while learning.",
+          "effects": {
+            "problemSolving": 4,
+            "performance": -2,
+            "stress": 3
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Take the paid preparation assignment",
+          "text": "Earn $900 extra before taxes this year and spend extra evenings preparing.",
+          "effects": {
+            "income": 900,
+            "workLife": -6,
+            "stress": 5
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Stay on the familiar assignment",
+          "text": "Keep current pay and output while postponing this learning opportunity.",
+          "effects": {
+            "stress": -2
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-welder-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "Your supervised practice helped complete the new process. The shop offers paid hours helping the next group prepare.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ],
+  "physical-therapist": [
+    {
+      "id": "career-physical-therapist-learn",
+      "category": "workplace",
+      "year": 1,
+      "title": "Learn the clinic’s new documentation workflow",
+      "prompt": "Your clinic is changing how it schedules and documents visits. You can practice after work with a colleague, take familiar paid appointment coverage, or learn gradually within existing hours.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Practice with support",
+          "text": "Keep regular pay; commit two evenings to supported practice.",
+          "effects": {
+            "flag": "careerPractice",
+            "problemSolving": 4,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You gain practice and a colleague sees your progress. This opens a later opportunity to support others."
+        },
+        {
+          "label": "Take the familiar paid assignment",
+          "text": "Earn $700 extra before taxes this year; use the same two evenings.",
+          "effects": {
+            "income": 700,
+            "workLife": -4,
+            "stress": 3
+          },
+          "feedback": "You earn extra pay on familiar work. You can still learn the new approach gradually at work."
+        },
+        {
+          "label": "Learn within scheduled work hours",
+          "text": "Keep pay unchanged; learn gradually and accept slower output during the transition.",
+          "effects": {
+            "performance": -2,
+            "adaptability": 3,
+            "stress": 2
+          },
+          "feedback": "You protect evenings while building familiarity more slowly."
+        }
+      ]
+    },
+    {
+      "id": "career-physical-therapist-schedule",
+      "category": "workplace",
+      "year": 3,
+      "title": "Protect time for documentation",
+      "prompt": "The clinic offers a temporary appointment schedule with extra pay. Documentation still needs time. You can keep your current schedule, accept the full offer, or negotiate a smaller appointment increase.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Keep time between appointments",
+          "text": "Keep current pay and documentation time.",
+          "effects": {
+            "stress": -3,
+            "workLife": 2
+          },
+          "feedback": "You protect time or manage the scope of the work. The situation still needs coordination."
+        },
+        {
+          "label": "Accept the full extra schedule",
+          "text": "Earn $1,600 extra before taxes this year and use several evenings for documentation.",
+          "effects": {
+            "income": 1600,
+            "stress": 7,
+            "workLife": -7
+          },
+          "feedback": "Extra pay is added at this year’s review. The schedule costs you personal time."
+        },
+        {
+          "label": "Negotiate a smaller increase",
+          "text": "Earn $700 extra before taxes this year; preserve some time between visits.",
+          "effects": {
+            "income": 700,
+            "communication": 3,
+            "workLife": -3
+          },
+          "feedback": "This arrangement changes your workload within the terms you agreed."
+        }
+      ]
+    },
+    {
+      "id": "career-physical-therapist-mentor",
+      "category": "workplace",
+      "year": 4,
+      "title": "Your practice opens another opportunity",
+      "prompt": "Your documentation-workflow practice helped the clinic. You are offered paid hours supporting colleagues as it expands.",
+      "context": "Pay, costs, and working arrangements are fictional classroom offers for this journey.",
+      "choices": [
+        {
+          "label": "Accept the full support assignment",
+          "text": "Earn $1,000 extra before taxes this year; commit several evenings.",
+          "effects": {
+            "income": 1000,
+            "leadership": 4,
+            "workLife": -5,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "Your earlier practice leads to paid responsibility. Extra pay and personal time change together."
+        },
+        {
+          "label": "Agree to a smaller support role",
+          "text": "Earn $400 extra before taxes this year; commit one evening.",
+          "effects": {
+            "income": 400,
+            "teamwork": 3,
+            "workLife": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You use what you learned and keep most of your personal time."
+        },
+        {
+          "label": "Keep your current responsibilities",
+          "text": "Keep current pay and protect evenings.",
+          "effects": {
+            "workLife": 2,
+            "stress": -2,
+            "clearFlag": "careerPractice"
+          },
+          "feedback": "You retain the skills you practiced and pass on the additional assignment."
+        }
+      ],
+      "requires": "careerPractice"
+    }
+  ]
+}

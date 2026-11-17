@@ -94,7 +94,7 @@
           "stress": -5,
           "happiness": 3
         },
-        "feedback": "Recovery protects your well-being, while lost pay tightens the year\u2019s budget."
+        "feedback": "Recovery protects your well-being, while lost pay tightens the year’s budget."
       },
       {
         "label": "Arrange temporary shorter days",
@@ -194,16 +194,16 @@
       },
       {
         "label": "Negotiate a one-year trial arrangement",
-        "text": "Add $1,200 gross this year and $60/month in transport.",
+        "text": "Earn $1,200 extra before taxes and pay an extra $60/month for travel for this year only.",
         "effects": {
           "income": 1200,
-          "monthly": {
-            "transport": 60
-          },
           "workLife": -3,
-          "communication": 3
+          "communication": 3,
+          "temporaryMonthly": {
+            "transport": 60
+          }
         },
-        "feedback": "The fictional employer accepts a narrower trial. The smaller pay increase has a smaller commute cost."
+        "feedback": "The trial adds pay and travel costs this year. Both end before next year’s budget."
       }
     ],
     "minYear": 2
@@ -240,7 +240,7 @@
       },
       {
         "label": "Negotiate some travel support",
-        "text": "Keep the premium; cut the added commute spending by $60/month and end the trial.",
+        "text": "Keep the $3,000 premium for this year only; reduce the added commute cost by $60/month going forward.",
         "effects": {
           "income": 3000,
           "monthly": {
@@ -458,7 +458,7 @@
           "stress": 3,
           "workLife": -2
         },
-        "feedback": "Shared coverage reduces individual pressure and still needs everyone\u2019s time."
+        "feedback": "Shared coverage reduces individual pressure and still needs everyone’s time."
       }
     ]
   },

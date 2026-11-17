@@ -35,7 +35,81 @@
         },
         "feedback": "You gain time rather than a permanent fix. A later transport decision will return to the problem."
       }
-    ]
+    ],
+    "transportVariants": {
+      "transit": {
+        "title": "Your usual transit service is disrupted",
+        "prompt": "Your usual transit service is suspended for an extended period. Your ordinary fare is already budgeted. You need an alternative way to reach work.",
+        "context": "These replacement travel costs apply to this fictional service disruption.",
+        "choices": [
+          {
+            "label": "Arrange replacement travel for the year",
+            "text": "Pay $1,600 once for a reliable replacement commute.",
+            "effects": {
+              "cash": -1600,
+              "stress": -2
+            },
+            "feedback": "The replacement commute is arranged for the year. You use cash while your ordinary transit fare remains budgeted."
+          },
+          {
+            "label": "Finance replacement travel",
+            "text": "Add $1,600 consumer debt for this year’s replacement commute.",
+            "effects": {
+              "debt": 1600,
+              "stress": 4
+            },
+            "feedback": "You arrange replacement travel and repay the additional cost through consumer debt."
+          },
+          {
+            "label": "Use a temporary route",
+            "text": "Pay $350 and spend more time traveling; reassess the route next year.",
+            "effects": {
+              "cash": -350,
+              "flag": "repairDeferred",
+              "workLife": -6,
+              "stress": 4
+            },
+            "feedback": "A slower route keeps you traveling for now. A later decision will revisit the service disruption."
+          }
+        ]
+      },
+      "carpool": {
+        "title": "Your carpool arrangement falls through",
+        "prompt": "Your regular driver can no longer provide the shared ride. Your ordinary carpool contribution is already budgeted. You need replacement travel for work.",
+        "context": "The extra costs below pay for replacement travel during this disruption.",
+        "choices": [
+          {
+            "label": "Arrange a replacement ride",
+            "text": "Spend $1,600 once on reliable replacement travel this year.",
+            "effects": {
+              "cash": -1600,
+              "stress": -2
+            },
+            "feedback": "The replacement ride restores reliable travel at an extra cost."
+          },
+          {
+            "label": "Finance replacement rides",
+            "text": "Add $1,600 consumer debt for replacement travel.",
+            "effects": {
+              "debt": 1600,
+              "stress": 4
+            },
+            "feedback": "Rides are arranged; repayment and interest remain in your budget."
+          },
+          {
+            "label": "Use a temporary arrangement",
+            "text": "Spend $350 and accept a less convenient commute.",
+            "effects": {
+              "cash": -350,
+              "flag": "repairDeferred",
+              "workLife": -6,
+              "stress": 4
+            },
+            "feedback": "The temporary arrangement takes more time. You will revisit it in a later year."
+          }
+        ]
+      }
+    }
   },
   {
     "id": "v3-money-02",
@@ -78,7 +152,87 @@
       }
     ],
     "requires": "repairDeferred",
-    "minYear": 2
+    "minYear": 2,
+    "transportVariants": {
+      "transit": {
+        "title": "The temporary commute needs a lasting solution",
+        "prompt": "Your temporary replacement commute still takes too much time. Reliable replacement travel costs $2,100 in this story. You can fund it now or continue the slower arrangement.",
+        "context": "This follows the travel arrangement you postponed earlier.",
+        "choices": [
+          {
+            "label": "Arrange reliable replacement travel",
+            "text": "Spend $2,100 once to resolve the disrupted commute.",
+            "effects": {
+              "cash": -2100,
+              "clearFlag": "repairDeferred",
+              "workLife": 4,
+              "stress": -2
+            },
+            "feedback": "Reliable replacement travel ends the temporary arrangement."
+          },
+          {
+            "label": "Borrow for replacement travel",
+            "text": "Add $2,100 consumer debt to restore a reliable commute.",
+            "effects": {
+              "debt": 2100,
+              "clearFlag": "repairDeferred",
+              "stress": 4
+            },
+            "feedback": "You resolve the travel problem and carry the balance through the debt model."
+          },
+          {
+            "label": "Continue the slower arrangement",
+            "text": "Spend another $450 and earn $800 less before taxes from missed work.",
+            "effects": {
+              "cash": -450,
+              "income": -800,
+              "stress": 7,
+              "workLife": -5
+            },
+            "feedback": "The slower arrangement still costs time and pay. You will revisit it while the problem remains."
+          }
+        ]
+      },
+      "carpool": {
+        "title": "The temporary commute needs a lasting solution",
+        "prompt": "Your temporary replacement commute still takes too much time. Reliable replacement travel costs $2,100 in this story. You can fund it now or continue the slower arrangement.",
+        "context": "This follows the travel arrangement you postponed earlier.",
+        "choices": [
+          {
+            "label": "Arrange reliable replacement travel",
+            "text": "Spend $2,100 once to resolve the disrupted commute.",
+            "effects": {
+              "cash": -2100,
+              "clearFlag": "repairDeferred",
+              "workLife": 4,
+              "stress": -2
+            },
+            "feedback": "Reliable replacement travel ends the temporary arrangement."
+          },
+          {
+            "label": "Borrow for replacement travel",
+            "text": "Add $2,100 consumer debt to restore a reliable commute.",
+            "effects": {
+              "debt": 2100,
+              "clearFlag": "repairDeferred",
+              "stress": 4
+            },
+            "feedback": "You resolve the travel problem and carry the balance through the debt model."
+          },
+          {
+            "label": "Continue the slower arrangement",
+            "text": "Spend another $450 and earn $800 less before taxes from missed work.",
+            "effects": {
+              "cash": -450,
+              "income": -800,
+              "stress": 7,
+              "workLife": -5
+            },
+            "feedback": "The slower arrangement still costs time and pay. You will revisit it while the problem remains."
+          }
+        ]
+      }
+    }
   },
   {
     "id": "v3-money-03",
