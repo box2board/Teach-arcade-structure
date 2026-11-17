@@ -66,3 +66,8 @@ RLGL_TEST_CLIENTS=40 npm run test:network
 ```
 
 The rules suite covers solo play, stale and malformed movement, freeze timing, a full 40-racer simulation, all-out and last-runner outcomes, finish ordering, time limits, duplicate colors, disconnection and late join. A separate test covers all 20 animated Midway models, duplicate geometry, and cleanup. The WebSocket harness checks real SDK connections, host authority, replication, duplicate roster entries, reconnection, simultaneous red elimination and rematch. It does not measure rendered FPS, real devices or classroom Wi-Fi.
+
+
+## Teach Arcade library integration
+
+The Mini Games library entry uses the dedicated Railway multiplayer service at `https://red-light-green-light-preview-review.up.railway.app`. The page loads the Colyseus browser client from that server and opens its WebSocket connection there; local runs use the local server when opened on `localhost`. The game page is indexable from the public Mini Games catalog.
