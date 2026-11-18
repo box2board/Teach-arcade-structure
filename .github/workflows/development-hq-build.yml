@@ -41,7 +41,7 @@ jobs:
         with:
           node-version: '22'
       - name: Install dependencies without running lifecycle scripts
-        run: npm install --ignore-scripts --no-audit --no-fund
+        run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Check local safety invariants
         run: npm run check:safety
       - name: Build Development HQ
