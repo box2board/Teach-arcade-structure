@@ -9,3 +9,32 @@ textarea{display:block;box-sizing:border-box;width:100%;padding:12px;background:
 .original-set{border:2px solid #f1c45a;background:linear-gradient(145deg,#29213e,#17283d);box-shadow:inset 0 4px #f1c45a33}.original-badge{color:#ffe18d;font-weight:800;letter-spacing:.08em;font-size:.75rem}
 
 .original-filters[hidden]{display:none}.original-filters label{min-width:min(130px,100%)}.original-filters select{min-width:0;width:100%}
+
+.original-badge{display:flex;align-items:center;gap:8px}
+.original-badge img{border-radius:50%;object-fit:contain}
+#question-picker{position:fixed;inset:auto 0 0;margin:0 auto;box-sizing:border-box;max-height:88dvh;width:min(100%,1024px);max-width:100%;overflow:auto;border-radius:18px 18px 0 0;padding:clamp(12px,3vw,26px)}
+.picker-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.picker-header h2,.picker-pane h3{margin:0;overflow-wrap:anywhere}
+#question-picker .set-toolbar{margin:12px 0}
+.picker-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:14px}
+.picker-pane{max-height:min(48dvh,600px);overflow:auto;padding:12px;border:1px solid var(--line);border-radius:10px;scrollbar-gutter:stable}
+#picker-sets button[aria-pressed=true]{border-color:var(--cyan);background:#263454}
+#picker-question-list article{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px;overflow-wrap:anywhere}
+#picker-question-list summary{cursor:pointer;white-space:pre-wrap}
+#question-picker :is(button,summary){min-height:44px}
+@media(max-width:600px){
+ .picker-layout{grid-template-columns:minmax(0,1fr)}
+ .picker-pane:first-child{max-height:24dvh}
+ .picker-pane:last-child{max-height:none;overflow:visible}
+}
+#picker-sets,#picker-question-list{display:grid;gap:8px;margin:12px 0}
+#picker-sets button{text-align:left;overflow-wrap:anywhere}
+#picker-question-list article{border:1px solid var(--line);padding:12px;border-radius:9px}
+#picker-question-list details{margin:8px 0}
+.sets-hero{padding:clamp(16px,3vw,32px);background:#151d3b;border:1px solid var(--line);border-radius:16px}
+.sets-hero .set-toolbar{margin-bottom:0}
+.set-collections{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,145px),1fr));gap:10px;margin:16px 0}
+.set-collections button{min-height:52px;text-align:left;background:#e6e1ff;color:#18233c;border-color:transparent}
+.set-collections button:nth-child(2){background:#ffe9cf}
+.set-collections button:nth-child(3){background:#d9f4ef}
+#teacher-sets .set{border-top:4px solid var(--subject-color,#acb7d3)}

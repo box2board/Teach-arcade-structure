@@ -42,25 +42,25 @@ test('public list does not download questions; title search is escaped and pagin
  const url=new URL(calls[0]);assert.equal(url.searchParams.get('visibility'),'eq.public');assert.ok(!url.searchParams.get('select').includes('questions'));assert.equal(url.searchParams.get('offset'),'25');assert.equal(url.searchParams.get('title'),'ilike.*x*visibility*eq*private*');
  assert.equal((await call('public',{query:{offset:'-1'}})).status,400);
 });
-test('new set ignores client ownership and starts private under verified JWT',async()=>{
- configure();const calls=[];global.fetch=async(url,options)=>{calls.push({url,options});return response(url.endsWith('/user')?{id:'teacher-a'}:[set()]);};
+test('new set honors public-by-default visibility and ignores client ownership under verified JWT',async()=>{
+ configure();const calls=[];global.fetch=async(url,options)=>{calls.push({url,options});if(url.endsWith('/user'))return response({id:'teacher-a'});if(url.includes('/rpc/create_teacher_question_set_v2'))return response({id});if(url.includes('/teacher_question_set_items'))return response([]);return response([{...set(),visibility:'private'}]);};
  const r=await call('create',{method:'POST',authenticated:true,body:{...set(),owner_id:'teacher-b',visibility:'public'}});
- assert.equal(r.status,201);const options=calls.at(-1).options;assert.equal(options.headers.Authorization,'Bearer teacher-jwt');assert.equal(JSON.parse(options.body).owner_id,undefined);assert.equal(JSON.parse(options.body).visibility,undefined);assert.equal(JSON.parse(options.body).id,undefined);
+ assert.equal(r.status,201);const request=calls.find(c=>c.url.includes('/rpc/create_teacher_question_set_v2'));const payload=JSON.parse(request.options.body);assert.equal(request.options.headers.Authorization,'Bearer teacher-jwt');assert.equal(payload.p_metadata.owner_id,undefined);assert.equal(payload.p_metadata.visibility,'public');assert.equal(payload.p_metadata.id,undefined);assert.equal(payload.p_questions.length,12);
 });
 test('only owner updates; revision mismatch and concurrent change preserve existing data',async()=>{
- configure();let patches=0,changed=false;
+ configure();let writes=0,changed=false;
  global.fetch=async(url,options)=>{
   if(url.endsWith('/user'))return response({id:'teacher-a'});
-  if(options.method==='PATCH'){patches++;assert.ok(url.includes('revision=eq.2'));return response(changed?[]:[{...set(),revision:3}]);}
+  if(url.includes('/rpc/update_teacher_question_set_v2')){writes++;return response({conflict:true});}
   return response([{...set(),owner_id:changed?'teacher-a':'teacher-b'}]);
  };
- assert.equal((await call('update',{method:'POST',authenticated:true,body:{id,revision:2}})).status,403);assert.equal(patches,0);
- changed=true;assert.equal((await call('update',{method:'POST',authenticated:true,body:{id,revision:1}})).status,409);assert.equal(patches,0);
- assert.equal((await call('update',{method:'POST',authenticated:true,body:{id,revision:2,title:'Updated'}})).status,409);assert.equal(patches,1);
+ assert.equal((await call('update',{method:'POST',authenticated:true,body:{id,revision:2}})).status,403);assert.equal(writes,0);
+ changed=true;assert.equal((await call('update',{method:'POST',authenticated:true,body:{id,revision:1}})).status,409);assert.equal(writes,0);
+ assert.equal((await call('update',{method:'POST',authenticated:true,body:{id,revision:2,title:'Updated'}})).status,409);assert.equal(writes,1);
 });
 test('public copy creates independent private content; missing private source cannot be copied',async()=>{
- configure();const calls=[];let missing=false;global.fetch=async(url,options)=>{calls.push({url,options});return response(url.endsWith('/user')?{id:'teacher-b'}:options.method==='POST'?[set()]:missing?[]:[{...set(),visibility:'public'}]);};
- const r=await call('copy',{method:'POST',authenticated:true,body:{id,owner_id:'teacher-a'}});assert.equal(r.status,201);const body=JSON.parse(calls.at(-1).options.body);assert.equal(body.title,'A teacher set (copy)');assert.equal(body.visibility,undefined);assert.equal(body.owner_id,undefined);assert.deepEqual(body.questions,set().questions);
+ configure();const calls=[];let missing=false;global.fetch=async(url,options)=>{calls.push({url,options});if(url.endsWith('/user'))return response({id:'teacher-b'});if(url.includes('/rpc/copy_teacher_question_set_v2'))return response({id});if(url.includes('/teacher_question_set_items'))return response([]);return missing?response([]):response([{...set(),visibility:'public'}]);};
+ const r=await call('copy',{method:'POST',authenticated:true,body:{id,owner_id:'teacher-a'}});assert.equal(r.status,201);const rpc=calls.find(c=>c.url.includes('/rpc/copy_teacher_question_set_v2'));const body=JSON.parse(rpc.options.body);assert.equal(body.p_title,'A teacher set (copy)');assert.equal(body.p_source,id);
  missing=true;assert.equal((await call('copy',{method:'POST',authenticated:true,body:{id}})).status,404);
 });
 test('saved collection joins visible sets and bookmarks cannot spoof teachers',async()=>{
@@ -99,9 +99,9 @@ test('multiple correct answers survive validation and publication; legacy single
 });
 test('create and copy preserve multiple correct answer indices through the API',async()=>{
  configure();const multiple=set();multiple.questions[0].answer=[0,2];let inserted;
- global.fetch=async(url,options)=>{if(url.endsWith('/user'))return response({id:'teacher-a'});if(options.method==='POST'){inserted=JSON.parse(options.body);return response([multiple]);}return response([multiple]);};
- assert.equal((await call('create',{method:'POST',authenticated:true,body:multiple})).status,201);assert.deepEqual(inserted.questions[0].answer,[0,2]);
- assert.equal((await call('copy',{method:'POST',authenticated:true,body:{id}})).status,201);assert.deepEqual(inserted.questions[0].answer,[0,2]);
+ global.fetch=async(url,options)=>{if(url.endsWith('/user'))return response({id:'teacher-a'});if(url.includes('/rpc/create_teacher_question_set_v2')){inserted=JSON.parse(options.body);return response({id});}if(url.includes('/rpc/copy_teacher_question_set_v2')){inserted=JSON.parse(options.body);return response({id});}if(url.includes('/teacher_question_set_items'))return response([]);return response([multiple]);};
+ assert.equal((await call('create',{method:'POST',authenticated:true,body:multiple})).status,201);assert.deepEqual(inserted.p_questions[0].answer,[0,2]);
+ assert.equal((await call('copy',{method:'POST',authenticated:true,body:{id}})).status,201);assert.equal(inserted.p_source,id);
 });
 test('reports require sign-in and another visible public set; identity is server controlled and duplicates are safe',async()=>{
  configure();let writes=[];let current={...set(),visibility:'public',owner_id:'teacher-b'};
@@ -121,17 +121,74 @@ test('an elementary Original uses the authenticated private-draft create route',
  let inserted;
  global.fetch=async(url,options)=>{
   if(url.endsWith('/user'))return response({id:'teacher-a'});
-  assert.equal(options.method,'POST');
-  assert.equal(options.headers.Authorization,'Bearer teacher-jwt');
-  inserted=JSON.parse(options.body);
-  return response([{...inserted,id,owner_id:'teacher-a',visibility:'private'}]);
+  if(url.includes('/rpc/create_teacher_question_set_v2')){assert.equal(options.method,'POST');assert.equal(options.headers.Authorization,'Bearer teacher-jwt');inserted=JSON.parse(options.body);return response({id});}
+  if(url.includes('/teacher_question_set_items'))return response([]);
+  return response([{...inserted.p_metadata,id,owner_id:'teacher-a',visibility:'private',question_count:inserted.p_questions.length}]);
  };
  const result=await call('create',{method:'POST',authenticated:true,body});
  assert.equal(result.status,201);
  assert.equal(result.data.set.visibility,'private');
- assert.equal(inserted.subject,'ELA');
- assert.equal(inserted.questions.length,20);
- assert.equal(inserted.owner_id,undefined);
- assert.equal(inserted.visibility,undefined);
- assert.deepEqual(inserted.questions.map(q=>q.choices[q.answer]),bank.questions.map(q=>q.choices[q.answer]));
+ assert.equal(inserted.p_metadata.subject,'ELA');
+ assert.equal(inserted.p_questions.length,20);
+ assert.equal(inserted.p_metadata.owner_id,undefined);
+ assert.equal(inserted.p_metadata.visibility,'private');
+ assert.deepEqual(inserted.p_questions.map(q=>q.choices[q.answer]),bank.questions.map(q=>q.choices[q.answer]));
+});
+
+test('catalog discovery uses current published, unmoderated records and searches their metadata',async()=>{
+ configure();
+ let current={...set(),title:'Plants',description:'Photosynthesis',visibility:'private',moderation_hidden:false};
+ global.fetch=async input=>{
+  const url=new URL(input);
+  assert.equal(url.searchParams.get('visibility'),'eq.public');
+  assert.equal(url.searchParams.get('moderation_hidden'),'eq.false');
+  assert.equal(url.searchParams.get('subject'),'eq.Science');
+  assert.equal(url.searchParams.get('or'),'(title.ilike.*photosynthesis*,description.ilike.*photosynthesis*,subject.ilike.*photosynthesis*,topic.ilike.*photosynthesis*)');
+  assert(!url.searchParams.get('select').includes('questions'));
+  return response(current.visibility==='public'&&!current.moderation_hidden?[{id:current.id,title:current.title}]:[]);
+ };
+ const search=()=>call('public',{query:{search:'catalog',subject:'Science',q:'photosynthesis'}});
+ assert.deepEqual((await search()).data.sets,[]);
+ current={...current,visibility:'public'};
+ assert.deepEqual((await search()).data.sets,[{id,title:'Plants'}]);
+ current={...current,moderation_hidden:true};
+ assert.deepEqual((await search()).data.sets,[]);
+ current={...current,moderation_hidden:false,visibility:'private'};
+ assert.deepEqual((await search()).data.sets,[]);
+});
+
+test('a newly created draft can be listed and reopened only by its Cabinet owner',async()=>{
+ configure();
+ const owner='00000000-0000-4000-8000-000000000002';
+ const other='00000000-0000-4000-8000-000000000003';
+ let stored, signedInAs=owner;
+ global.fetch=async (input,options)=>{
+  const url=new URL(input);
+  if(url.pathname==='/auth/v1/user')return response({id:signedInAs});
+  if(url.pathname.includes('/rpc/create_teacher_question_set_v2')){
+   assert.equal(options.headers.Authorization,'Bearer teacher-jwt');
+   const payload=JSON.parse(options.body);stored={...payload.p_metadata,questions:payload.p_questions,id,owner_id:signedInAs,visibility:'private',revision:1};
+   return response({id},201);
+  }
+  if(url.pathname.includes('/teacher_question_set_items')){
+   if(stored.owner_id!==signedInAs||!options.headers.Authorization)return response([]);
+   return response(stored.questions.map((q,position)=>({position,question_version_id:`version-${position}`,source_attribution:{},question_content_versions:{question:q,source_key:null}})));
+  }
+  if(url.searchParams.has('owner_id')){
+   assert.equal(url.searchParams.get('owner_id'),'eq.'+signedInAs);
+   assert.equal(url.searchParams.get('order'),'updated_at.desc,id.asc');
+   return response(stored.owner_id===signedInAs?[stored]:[]);
+  }
+  assert.equal(url.searchParams.get('id'),'eq.'+id);
+  return response(stored.owner_id===signedInAs&&options.headers.Authorization?[stored]:[]);
+ };
+ const {data:{set:draft}}=await call('create',{method:'POST',authenticated:true,body:{...set(),visibility:'public',owner_id:other}});
+ assert.equal(draft.visibility,'private');
+ assert.equal(draft.owner_id,owner);
+ assert.deepEqual((await call('mine',{authenticated:true})).data.sets.map(set=>set.id),[draft.id]);
+ assert.deepEqual((await call('detail',{authenticated:true,query:{id:draft.id}})).data.set.questions,draft.questions);
+ assert.equal((await call('mine')).status,401);
+ signedInAs=other;
+ assert.deepEqual((await call('mine',{authenticated:true})).data.sets,[]);
+ assert.equal((await call('detail',{authenticated:true,query:{id:draft.id}})).status,404);
 });

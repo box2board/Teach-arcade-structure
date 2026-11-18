@@ -16,6 +16,7 @@ export function setInput(input){
  const text=(value,max,label,required=false)=>{if(typeof value!=='string'||value.length>max||(required&&!value.trim()))fail(`${label}${required?' is required and':''} must be ${max} characters or fewer.`);return value.trim();};
  const title=text(input.title,120,'Title',true),description=text(input.description??'',1000,'Description'),subject=input.subject;
  if(!SET_SUBJECTS.includes(subject))fail('Choose a subject.');
+ const topic=text(input.topic??'',100,'Topic'),primary_grade=text(input.primary_grade??'',16,'Grade'),grade_band=text(input.grade_band??'',24,'Grade band'),difficulty=text(input.difficulty??'',32,'Difficulty');
  if(!Array.isArray(input.questions)||input.questions.length>MAX_QUESTIONS)fail('A set can contain up to 100 questions.');
  const questions=input.questions.map((q,i)=>{
   if(!q||!Array.isArray(q.choices)||q.choices.length!==4||!validAnswer(q.answer))fail(`Question ${i+1} needs four choices and a correct-answer selection.`);
@@ -24,7 +25,7 @@ export function setInput(input){
  const visibility=input.visibility??'private';
  if(!['private','public'].includes(visibility))fail('Choose private or public visibility.');
  if(visibility==='public'&&(questions.length<MIN_PLAY_QUESTIONS||!questions.every(completeQuestion)))fail('To publish, add at least one complete question, each with four different answers and at least one correct answer.');
- return {title,description,subject,questions,visibility};
+ return {title,description,subject,topic,primary_grade,grade_band,difficulty,questions,visibility,question_version_ids:input.questions.map(q=>q?._versionId||null),question_source_keys:input.questions.map(q=>q?._sourceKey||null),attributions:input.questions.map(q=>q?._attribution||{})};
 }
 export function teacherBank(set){
  if(set.questions.length<MIN_PLAY_QUESTIONS||!set.questions.every(completeQuestion))throw Error('This draft needs at least one complete question before playing.');

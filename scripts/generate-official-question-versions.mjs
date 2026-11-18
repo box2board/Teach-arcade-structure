@@ -1,0 +1,7 @@
+import {writeFile} from 'node:fs/promises';
+import {QUESTION_SETS,loadQuestionSet} from '../public/review-lab/catalog.js';
+import {createHash} from 'node:crypto';
+const rows=[],keys=new Set();
+for(const meta of QUESTION_SETS){if(meta.id.startsWith('teacher:'))continue;const bank=await loadQuestionSet(meta.id);for(const q of bank.questions){const question={question:q.question,choices:q.choices,answer:Array.isArray(q.answer)?q.answer:Number.isInteger(q.answer)?q.answer:-1,explanation:q.explanation||''};const key=`original:${bank.id}:${q.id}`;if(keys.has(key))throw Error('Duplicate source key '+key);keys.add(key);const hash=createHash('md5').update(JSON.stringify(question)).digest('hex');rows.push(`('${key.replaceAll("'","''")}',1,'${JSON.stringify(question).replaceAll("'","''")}'::jsonb,'${hash}','official',NULL,NULL,'${bank.title.replaceAll("'","''")}')`);}}
+for(let b=0;b<10;b++){let sql='begin;\n';for(let j=b*1000;j<Math.min(rows.length,(b+1)*1000);j+=100){sql+='insert into public.question_content_versions(source_key,version_number,question,content_hash,source_type,creator_id,source_set_id,source_title) values\n'+rows.slice(j,Math.min(rows.length,(b+1)*1000,j+100)).join(',\n')+'\non conflict(source_key,version_number) do nothing;\n';}sql+='commit;\n';await writeFile(`supabase/migrations/2026111715210${b}_seed_official_question_versions.sql`,sql);}
+console.log(`${rows.length} official questions in 10 seed files`);
