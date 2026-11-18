@@ -1,3 +1,5 @@
+import {teacherSetsRequest} from './sets-client.js';
+import {teacherSetId} from './set-contract.js';
 import {matchesSetSearch,matchesSetFields,mountSetFilters,originalSetLine} from '../review-lab/set-filters.js';
 import {mountProjects} from './projects-view.js';
 import {request} from './project-client.js';
@@ -10,6 +12,7 @@ request('availability').then(({enabled})=>{projectsEnabled=enabled;document.quer
 let accountLoading=true,accountFailed=false;
 let user=null,configured=false,saved=new Set(),savedView=false,limit=24,previewRequest=0;
 let selectedSet=null,preferredGame=null,pendingSave=null,returnRoute='sets';
+let recentSets=[],recentSetsRequest=0;
 let cabinetEnabled=false,cabinetLoaded=false,bookmarks=new Set(),favoritesLoaded=false;
 const codeCooldowns=new Map();let codeSending=false,codeTimer=null;
 const loginEmail=()=>$('email').value.trim().toLowerCase();
@@ -31,7 +34,7 @@ function startCodeWait(seconds){
 const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
 async function api(action,body){
  const response=await fetch(`/api/teacher?action=${action}`,{method:body?'POST':'GET',credentials:'same-origin',headers:body?{'Content-Type':'application/json'}:{},...(body?{body:JSON.stringify(body)}:{})});
- const data=await response.json();if(!response.ok){if(response.status===401){user=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();}const error=new Error(data.error||'Account request failed.');error.status=response.status;error.retryAfter=data.retryAfter;throw error;}return data;
+ const data=await response.json();if(!response.ok){if(response.status===401){user=null;recentSets=[];recentSetsRequest++;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();}const error=new Error(data.error||'Account request failed.');error.status=response.status;error.retryAfter=data.retryAfter;throw error;}return data;
 }
 function notice(text){$('notice').textContent=text;}
 function route(){
@@ -82,8 +85,36 @@ function bookmarkButton(type,item){
   catch(error){notice(error.message);button.disabled=false;}
  };return button;
 }
+function renderRecentSets(){
+ const visible=user&&recentSets.length>0;
+ $('recent-question-sets').hidden=!visible;
+ $('recent-question-set-list').replaceChildren(...(visible?recentSets.map(set=>{
+  const card=node('article',undefined,'set');
+  const actions=node('div',undefined,'set-actions'),edit=node('a','Edit set','primary');
+  edit.href='/teacher/sets/?view=mine&edit='+encodeURIComponent(set.id);
+  edit.setAttribute('aria-label','Edit '+set.title);
+  card.append(node('p',set.visibility==='public'?'Public':'Private draft','eyebrow'),node('h3',set.title),
+   node('p',`${set.subject} · ${set.question_count} ${set.question_count===1?'question':'questions'}`,'muted'),actions);
+  actions.append(edit);
+  return card;
+ }):[]));
+}
+async function loadRecentSets(){
+ const owner=user?.id,request=++recentSetsRequest;
+ recentSets=[];
+ renderRecentSets();
+ if(!owner)return;
+ try{
+  const {sets}=await teacherSetsRequest('mine');
+  if(request!==recentSetsRequest||user?.id!==owner)return;
+  recentSets=sets.filter(set=>set.owner_id===owner&&teacherSetId(set.id)).slice(0,3);
+  renderRecentSets();
+ }catch{
+  // The account's full collection remains available from My Question Sets.
+ }
+}
 function renderCollections(){
- $('sets-summary').textContent='Create, save, and explore teacher sets';
+ renderRecentSets();
  for(const [type,items,container,routeName] of [['game',CABINET_GAMES,'cabinet-games','my-games'],['tool',TOOLS,'cabinet-tools','tools']]){
   const params=new URLSearchParams(location.hash.slice(1)),browse=params.get('view')==='browse',ready=!!user&&cabinetLoaded;
   const savedItems=items.filter(item=>bookmarks.has(`${type}:${item.id}`));
@@ -173,25 +204,28 @@ $('verify-form').onsubmit=async e=>{e.preventDefault();const button=e.submitter;
 $('retry-save').onclick=finishPendingSave;
 for(const [type,name] of [['game','my-games'],['tool','tools']]){ $(`${type}-saved`).onclick=()=>{location.hash=name;};$(`${type}-browse`).onclick=()=>{location.hash=`${name}&view=browse`;};}
 $('retry-account').onclick=async()=>{const button=$('retry-account');button.disabled=true;try{await account();}finally{button.disabled=false;}};
-$('logout').onclick=async()=>{try{await api('logout',{});user=null;pendingSave=null;$('auth-status').textContent='';saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();}catch(error){notice(error.message);}};
+$('logout').onclick=async()=>{try{await api('logout',{});user=null;recentSets=[];recentSetsRequest++;pendingSave=null;$('auth-status').textContent='';saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;paintAccount();render();}catch(error){notice(error.message);}};
 function returnToQuestionSets(){
  const params=new URLSearchParams(location.search);if(params.get('return')!=='teacher-sets')return false;
  const original=params.get('original');
- const target=original&&QUESTION_SETS.some(s=>s.id===original&&!s.id.startsWith('teacher:'))?'?original='+encodeURIComponent(original):params.get('intent')==='create'?'?create=1':'';
+ const id=params.get('id'),edit=params.get('edit');
+ const target=teacherSetId(edit)?'?view=mine&edit='+encodeURIComponent(edit):params.get('view')==='mine'?'?view=mine':teacherSetId(id)?'?id='+encodeURIComponent(id):original&&QUESTION_SETS.some(s=>s.id===original&&!s.id.startsWith('teacher:'))?'?original='+encodeURIComponent(original):params.get('intent')==='create'?'?create=1':'';
  location.assign('/teacher/sets/'+target);return true;
 }
 async function account(){
- accountLoading=true;accountFailed=false;render();$('retry-account').hidden=true;
+ accountLoading=true;accountFailed=false;recentSets=[];recentSetsRequest++;render();$('retry-account').hidden=true;
  try{
   const data=await api('session');configured=data.configured;user=data.user;cabinetEnabled=data.cabinetEnabled===true;cabinetLoaded=false;bookmarks.clear();favoritesLoaded=false;
+  loadRecentSets();
   if(user){try{const favorites=await api('favorites');saved=new Set(favorites.ids);favoritesLoaded=true;}catch(error){saved.clear();accountLoading=false;paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again; public practice is still available.':'Signed in, but saved sets could not load. Open Account to retry the connection.');return;}
    if(cabinetEnabled){try{const cabinet=await api('cabinet');bookmarks=new Set(cabinet.items.map(item=>`${item.type}:${item.id}`));cabinetLoaded=true;}catch(error){accountLoading=false;paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again.':'Your games and tools could not load. Open Account to retry.');return;}}
   }
   accountLoading=false;paintAccount();render();
- }catch(error){accountFailed=true;configured=error.status===401;user=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;accountLoading=false;paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again; public practice is still available.':'Account service unavailable. Browse topics and launch public practice without signing in.');}
+ }catch(error){accountFailed=true;configured=error.status===401;user=null;recentSets=[];recentSetsRequest++;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;accountLoading=false;paintAccount();render();$('retry-account').hidden=false;notice(error.status===401?'Your session has ended. Sign in again; public practice is still available.':'Account service unavailable. Browse topics and launch public practice without signing in.');}
 }
 const subjects=[...new Set(QUESTION_SETS.map(s=>s.subject))].sort();subjects.forEach(s=>{$('subject').append(new Option(s,s));const row=node('a',undefined,'subject-row');row.href='#sets';row.dataset.subject=s;const symbols={'Social Studies':'◎',Science:'⚗',Math:'∑',ELA:'Aa'};row.append(node('span',symbols[s]||'✦','subject-symbol'),node('strong',s),node('span',`${QUESTION_SETS.filter(q=>q.subject===s).length} sets →`));row.onclick=()=>{savedView=false;limit=24;$('subject').value=s;$('search').value='';$('category').value='';gradeFilters.reset();categories();render();};$('subject-summary').append(row);});
-window.addEventListener('hashchange',route);categories();render();route();account().then(()=>{if(user)returnToQuestionSets();});
+window.addEventListener('hashchange',route);
+window.addEventListener('pageshow',event=>{if(event.persisted)account();});categories();render();route();account().then(()=>{if(user)returnToQuestionSets();});
 document.querySelectorAll('[data-preferred-game]').forEach(a=>{a.onclick=()=>{preferredGame=a.dataset.preferredGame;savedView=false;render();};});
 
 $('delete-account-form').onsubmit=async event=>{
@@ -199,7 +233,7 @@ $('delete-account-form').onsubmit=async event=>{
  if($('delete-confirmation').value!=='DELETE')return;
  if(!window.confirm('Permanently delete your teacher account and all your original question sets? This cannot be undone.'))return;
  button.disabled=true;$('delete-status').textContent='Deleting account…';
- try{await api('delete-account',{confirmation:'DELETE'});user=null;pendingSave=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;$('delete-confirmation').value='';paintAccount();render();notice('Your teacher account and original question sets have been deleted. Public games and tools remain available.');}
+ try{await api('delete-account',{confirmation:'DELETE'});user=null;recentSets=[];recentSetsRequest++;pendingSave=null;saved.clear();bookmarks.clear();cabinetLoaded=false;favoritesLoaded=false;$('delete-confirmation').value='';paintAccount();render();notice('Your teacher account and original question sets have been deleted. Public games and tools remain available.');}
  catch(error){$('delete-status').textContent=error.message;}
  finally{button.disabled=false;}
 };

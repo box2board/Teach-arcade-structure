@@ -3,15 +3,18 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
-import {SET_SUBJECTS,completeQuestion,setInput,teacherBank,MAX_QUESTIONS,correctAnswers} from '../public/teacher/set-contract.js';
+import {SET_SUBJECTS,teacherSetId,completeQuestion,setInput,teacherBank,MAX_QUESTIONS,correctAnswers} from '../public/teacher/set-contract.js';
 import {GAMES,QUESTION_SETS,loadQuestionSet} from '../public/review-lab/catalog.js';
 import {originalCopy} from '../public/teacher/originals.js';
+import {matchesSetSearch,matchesSetFields,originalSetLine} from '../public/review-lab/set-filters.js';
 const html=await readFile(new URL('../public/teacher/sets/index.html',import.meta.url),'utf8');
 const source=(await readFile(new URL('../public/teacher/sets/app.js',import.meta.url),'utf8')).replace(/^import .*;\n/gm,'');
 class Element{
- constructor(tag='div'){this.tagName=tag;this.children=[];this.value='';this.hidden=false;this.dataset={};this.attributes={};}
+ constructor(tag='div'){this.tagName=tag;this.children=[];this.value='';this.hidden=false;this.dataset={};this.attributes={};this.style={setProperty(){}};this.classList={toggle(){}};}
  append(...children){this.children.push(...children);}
  replaceChildren(...children){this.children=[...children];}
+ get textContent(){return this._textContent??this.children.map(child=>typeof child==='string'?child:child.textContent||'').join('');}
+ set textContent(value){this._textContent=String(value);this.children=[];}
  setAttribute(key,value){this.attributes[key]=value;}
  focus(){this.focused=true;}
  querySelector(tag){return this.children.find(c=>c.tagName===tag)||this.children.map(c=>c.querySelector?.(tag)).find(Boolean);}
@@ -22,7 +25,10 @@ async function app(fetchImpl,search=''){
  const navigations=[];
  const elements=Object.fromEntries([...html.matchAll(/id="([^"]+)"/g)].map(m=>[m[1],new Element()]));
  const tabs=['mine','saved','public','originals'].map(view=>Object.assign(new Element('button'),{dataset:{view}}));
- const context=vm.createContext({GAMES,QUESTION_SETS,loadQuestionSet,originalCopy,SET_SUBJECTS,completeQuestion,setInput,teacherBank,MAX_QUESTIONS,correctAnswers,URLSearchParams,structuredClone,history:{replaceState(){}},location:{search,assign:url=>navigations.push(url)},window:{confirm:()=>true,addEventListener(){}},fetch:fetchImpl,document:{getElementById:id=>elements[id],createElement:tag=>new Element(tag),querySelectorAll:selector=>selector==='[data-view]'?tabs:[]}});
+ const mountSetFilters=()=>({values:()=>({}),reset(){},updateTopics(){}});
+ const mountQuestionPicker=()=>{};
+ const api=async(action,body,params={})=>{const query=new URLSearchParams({action,...params});const response=await fetchImpl('/api/teacher-sets?'+query,{method:body?'POST':'GET',...(body?{body:JSON.stringify(body)}:{})});const data=await response.json();if(!response.ok){const error=new Error(data.error||'Request failed');error.status=response.status;throw error;}return data;};
+ const context=vm.createContext({GAMES,QUESTION_SETS,loadQuestionSet,originalCopy,matchesSetSearch,matchesSetFields,mountSetFilters,mountQuestionPicker,originalSetLine,api,SET_SUBJECTS,teacherSetId,completeQuestion,setInput,teacherBank,MAX_QUESTIONS,correctAnswers,URLSearchParams,structuredClone,history:{replaceState(){}},location:{search,assign:url=>navigations.push(url)},window:{confirm:()=>true,addEventListener(){}},fetch:fetchImpl,document:{getElementById:id=>elements[id],createElement:tag=>new Element(tag),querySelectorAll:selector=>selector==='[data-view]'?tabs:[]}});
  const hooks=await vm.runInContext('(async()=>{'+source+';return {editSet,save,openSet,list,openOriginal,customizeOriginal,editing:()=>editing,dirty:()=>dirty};})()',context);
  return {elements,hooks,tabs,navigations};
 }
@@ -32,17 +38,17 @@ test('draft create, save, edit after save, and save again retain the new questio
  let stored,writes=[];
  const editor=await app(async(url,options)=>{
   if(url.startsWith('/api/teacher?'))return reply({user:{id:'teacher-a'}});
-  if(options.method==='POST'){const body=JSON.parse(options.body);writes.push(body);stored={...body,id,owner_id:'teacher-a',revision:(stored?.revision||0)+1,visibility:'private'};return reply({set:structuredClone(stored)});}
+  if(options.method==='POST'){const body=JSON.parse(options.body);writes.push(body);stored={...body,id,owner_id:'teacher-a',revision:(stored?.revision||0)+1,visibility:body.visibility};return reply({set:structuredClone(stored)});}
   return reply({sets:[]});
  });
  await editor.hooks.editSet();editor.elements['set-title'].value='My science draft';editor.elements['set-title'].oninput();
- await editor.hooks.save();assert.equal(writes.length,1);assert.equal(editor.hooks.dirty(),false);
+ await editor.hooks.save('private');assert.equal(writes.length,1);assert.equal(editor.hooks.dirty(),false);
  const prompt=editor.elements['question-editor'].children[0].querySelector('textarea');prompt.value='Updated after first save';prompt.oninput();
- await editor.hooks.save();assert.equal(writes[1].questions[0].question,'Updated after first save');assert.equal(writes[1].revision,1);
+ await editor.hooks.save('private');assert.equal(writes[1].questions[0].question,'Updated after first save');assert.equal(writes[1].revision,1);
 });
 test('failed save preserves question edits and offers retry without claiming success',async()=>{
  const editor=await app(async(url,options)=>url.startsWith('/api/teacher?')?reply({user:{id:'teacher-a'}}):options.method==='POST'?{ok:false,status:502,json:async()=>({error:'Connection failed; try again.'})}:reply({sets:[]}));
- await editor.hooks.editSet();editor.elements['set-title'].value='Keep my edits';editor.elements['set-title'].oninput();await editor.hooks.save();
+ await editor.hooks.editSet();editor.elements['set-title'].value='Keep my edits';editor.elements['set-title'].oninput();await editor.hooks.save('private');
  assert.equal(editor.hooks.dirty(),true);assert.equal(editor.hooks.editing().title,'Keep my edits');assert.match(editor.elements['editor-status'].textContent,/Connection failed/);assert.equal(editor.elements['editor-fields'].disabled,false);
 });
 
@@ -57,7 +63,7 @@ test('signed-in Create and the sign-in return open the question editor',async()=
  const fetch=async url=>reply(url.startsWith('/api/teacher?')?{user:{id:'teacher-a'}}:{sets:[]});
  const editor=await app(fetch);await editor.elements['new-set'].onclick();
  assert.equal(editor.elements['set-editor'].hidden,false);assert.equal(editor.elements['set-title'].focused,true);
- const returned=await app(fetch,'?create=1');assert.equal(returned.elements['set-editor'].hidden,false);assert.equal(returned.hooks.editing().visibility,'private');
+ const returned=await app(fetch,'?create=1');assert.equal(returned.elements['set-editor'].hidden,false);assert.equal(returned.hooks.editing().visibility,'public');
 });
 
 test('checkboxes select, deselect, save and reload multiple correct answers independently',async()=>{
@@ -68,7 +74,10 @@ test('checkboxes select, deselect, save and reload multiple correct answers inde
   return reply({sets:[]});
  });
  await editor.hooks.editSet();editor.elements['set-title'].value='Multiple answers';editor.elements['set-title'].oninput();
+ const question=editor.elements['question-editor'].children[0].children[1].children[0];question.value='Which choices are correct?';question.oninput();
  const boxes=()=>editor.elements['question-editor'].children[0].children.find(e=>e.className==='answer-list').children.map(row=>row.children[0]);
+ const answers=()=>editor.elements['question-editor'].children[0].children.find(e=>e.className==='answer-list').children;
+ for(let i=0;i<4;i++){const input=answers()[i].children[1].children[0];input.value=`Choice ${i+1}`;input.oninput();}
  assert.ok(boxes().every(b=>b.type==='checkbox'));
  for(const i of [0,2]){boxes()[i].checked=true;boxes()[i].onchange();}
  await editor.hooks.save();assert.deepEqual(stored.questions[0].answer,[0,2]);assert.equal(boxes()[0].checked,true);assert.equal(boxes()[2].checked,true);assert.equal(boxes()[1].checked,false);
@@ -79,9 +88,9 @@ test('Originals are browsable without an account and branded separately from com
  const editor=await app(async url=>reply(url.startsWith('/api/teacher?')?{user:null}:{sets:[]}), '?view=originals');
  const cards=editor.elements['teacher-sets'].children;
  assert.equal(cards.length,25);assert.equal(cards[0].className,'set original-set');
- assert.match(cards[0].children[0].textContent,/TEACH ARCADE ORIGINAL/);
+ assert.match(cards[0].children[0].textContent,/TEACH ARCADE ORIGINAL/i);
  await editor.hooks.openOriginal('us-history--world-war-i');
- assert.match(editor.elements['set-source-label'].textContent,/ORIGINAL/);
+ assert.match(editor.elements['set-source-label'].textContent,/ORIGINAL/i);
  assert.equal(editor.elements['teacher-set-questions'].children.length,20);
  await editor.hooks.customizeOriginal('us-history--world-war-i');
  assert.deepEqual(editor.navigations,['/teacher/?return=teacher-sets&original=us-history--world-war-i#account']);
