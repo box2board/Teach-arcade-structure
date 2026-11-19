@@ -11,9 +11,9 @@ export const MINI_GAMES=Object.freeze(validateCatalog([
   },
   {
     "id": "mini:ultimate-skeeball",
-    "title": "Ultimate Neon Roll",
+    "title": "Midway Skee-Ball",
     "url": "/mini-games/games/ultimate-skeeball/",
-    "description": "A longer table, moving cups, orbiting targets, a timed 500-point vault, and a tiny 1,000-point slot.",
+    "description": "Roll the wooden ball up the lane, bank into scoring rings, and chase moving cups and ticket jackpots.",
     "symbol": "✦",
     "collection": "Mini Games"
   },
