@@ -17,10 +17,15 @@ export async function getGitHubStatus() {
       githubJson(`/repos/${OWNER}/${REPO}/branches/${encodeURIComponent(BRANCH)}`),
       githubJson(`/repos/${OWNER}/${REPO}/pulls?state=open&head=${OWNER}:${encodeURIComponent(BRANCH)}&per_page=5`),
     ]);
+    const baseBranch = await githubJson(`/repos/${OWNER}/${REPO}/branches/main`);
     return {
       connected: true, repository: `${OWNER}/${REPO}`, branch: BRANCH,
       commit: branch.commit.sha, commitMessage: branch.commit.commit.message.split('\n')[0],
       updatedAt: branch.commit.commit.author?.date ?? null,
+      baseCommit: baseBranch.commit.sha,
+      baseCommitMessage: baseBranch.commit.commit.message.split('\n')[0],
+      baseUpdatedAt: baseBranch.commit.commit.author?.date ?? null,
+      baseBranchUrl: `https://github.com/${OWNER}/${REPO}/tree/main`,
       pullRequests: pulls.map(({ number, title, html_url, draft }) => ({ number, title, url: html_url, draft })),
     };
   } catch (error) {

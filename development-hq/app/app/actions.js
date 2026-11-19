@@ -2,8 +2,8 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { requireAdmin, auth } from '../lib/neon';
+import { PROJECT_NAMES } from '../lib/projects';
 
-const PROJECTS = ['Multiplayer Arcade','Midway Mashup','Trench Run V2','Factory Flow','Teacher HQ','New Game'];
 const CATEGORIES = ['Gameplay feature','Bug fix','Visual quality','New game prototype','Testing and QA'];
 
 export async function createTask(formData) {
@@ -11,7 +11,7 @@ export async function createTask(formData) {
   const project = String(formData.get('project') ?? '');
   const category = String(formData.get('category') ?? '');
   const description = String(formData.get('description') ?? '').trim();
-  if (!PROJECTS.includes(project) || !CATEGORIES.includes(category) || description.length < 12 || description.length > 5000)
+  if (!PROJECT_NAMES.includes(project) || !CATEGORIES.includes(category) || description.length < 12 || description.length > 5000)
     redirect('/?error=invalid');
   try {
     await sql`INSERT INTO devhq_tasks (owner_id, project, category, description, status, mode)
