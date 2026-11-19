@@ -6,7 +6,7 @@
   isolation: isolate;
   display: flex;
   flex-direction: column;
-  padding: 18px 18px 0;
+  padding: 14px 14px 0;
   background: #0a1d35;
   border-radius: 15px 15px 0 0;
 }
@@ -25,8 +25,8 @@
 .featured-cabinet .cabinet-marquee {
   display: grid;
   place-items: center;
-  min-height: 100px;
-  padding: 12px 8px;
+  min-height: 84px;
+  padding: 8px;
   border-top: 5px solid var(--cabinet-accent);
   border-bottom: 5px solid var(--cabinet-accent);
   background: #102943;
@@ -42,13 +42,18 @@
   overflow-wrap: anywhere;
 }
 .featured-cabinet .cabinet-screen {
-  margin: 20px 10px 0;
+  box-sizing: border-box;
+  width: min(100%, 210px);
+  margin: 12px auto 0;
   padding: 7px;
   border-radius: 13px;
   background: #051326;
   box-shadow: 0 0 0 5px #163957;
 }
 .featured-cabinet .home-tile-art {
+  display: block;
+  width: 100%;
+  height: auto;
   aspect-ratio: 1;
   border-radius: 7px;
   background: #102943;
@@ -59,19 +64,19 @@
   align-items: center;
   justify-content: flex-end;
   gap: 17px;
-  height: 63px;
-  margin-top: 7px;
-  padding: 0 20px;
+  height: 52px;
+  margin-top: 6px;
+  padding: 0 16px;
   border-radius: 9px 9px 0 0;
   background: #1c3d60;
-  box-shadow: inset 0 -9px 0 #112b49;
+  box-shadow: inset 0 -8px 0 #112b49;
 }
-.cabinet-joystick { position: relative; width: 37px; height: 12px; margin-right: auto; margin-top: 20px; border-radius: 50%; background: #071b31; box-shadow: 0 2px 0 #315d83; }
-.cabinet-joystick::before { content: ''; position: absolute; left: 16px; bottom: 6px; height: 24px; width: 6px; background: #10253d; border: 1px solid #4f6a83; }
-.cabinet-joystick::after { content: ''; position: absolute; left: 5px; bottom: 22px; width: 27px; height: 27px; border-radius: 50%; background: #f36442; box-shadow: inset -4px -5px 0 #bd3d2b, inset 3px 3px 0 #ff9a6d, 0 2px 0 #08203a; }
+.cabinet-joystick { position: relative; width: 37px; height: 12px; margin-right: auto; margin-top: 14px; border-radius: 50%; background: #071b31; box-shadow: 0 2px 0 #315d83; }
+.cabinet-joystick::before { content: ''; position: absolute; left: 16px; bottom: 6px; height: 20px; width: 6px; background: #10253d; border: 1px solid #4f6a83; }
+.cabinet-joystick::after { content: ''; position: absolute; left: 5px; bottom: 19px; width: 27px; height: 27px; border-radius: 50%; background: #f36442; box-shadow: inset -4px -5px 0 #bd3d2b, inset 3px 3px 0 #ff9a6d, 0 2px 0 #08203a; }
 .cabinet-button { width: 27px; height: 17px; border-radius: 50%; background: #ffc44d; box-shadow: inset 0 3px 0 #ffdd83, 0 4px 0 #9d681e, 0 6px 0 #0b2038; }
 .cabinet-button:last-child { background: #29a0e8; box-shadow: inset 0 3px 0 #70c9f7, 0 4px 0 #1b6396, 0 6px 0 #0b2038; }
-.featured-cabinet .home-art-copy { flex: 1; padding: 18px 20px 20px; background: #fffaf0; }
+.featured-cabinet .home-art-copy { flex: 1; padding: 14px 18px 16px; background: #fffaf0; }
 .featured-cabinet .subject-desc { margin: 0; color: #16314e; line-height: 1.55; }
 .featured-cabinet:focus-visible { outline: 3px solid #0f766e; outline-offset: 4px; }
 @media (max-width: 900px) { .featured-cabinets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -79,4 +84,5 @@
 @media (max-width: 520px) {
   .featured-cabinets { grid-template-columns: 1fr; }
   .featured-cabinet .subject-title { font-size: clamp(17px, 4.5vw, 22px); }
+  .featured-cabinet .cabinet-screen { width: min(100%, 260px); }
 }
