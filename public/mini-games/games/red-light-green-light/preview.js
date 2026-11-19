@@ -42,7 +42,7 @@ loadSdkFrom(sdkUrls[0], [0, 750])
   .catch(() => loadSdkFrom(sdkUrls[1], clientRetries))
   .then(() => {
     const client = new window.Colyseus.Client(endpoint);
-    mountGame(root, { client });
+    mountGame(root, { client, serverUrl: endpoint });
   })
   .catch(() => {
     const status = root.querySelector('#connection');
