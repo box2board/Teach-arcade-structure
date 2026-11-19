@@ -263,9 +263,14 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
       } else next = await client.joinById(code, options);
       await attach(next, myAttempt);
       content('entry-status', '');
-    } catch {
-      if (attempt === myAttempt) content('entry-status', host ? 'Could not open a room. Check the preview server.'
-        : 'Could not join. Check the room code and ask the host if there is space.');
+    } catch (error) {
+      console.error('Red Light, Green Light multiplayer connection failed', error);
+      if (attempt === myAttempt) {
+        const detail = typeof error?.message === 'string' ? error.message.trim().slice(0, 180) : '';
+        content('entry-status', host
+          ? 'Could not open a room' + (detail ? ': ' + detail : '. Check the preview server.')
+          : 'Could not join' + (detail ? ': ' + detail : '. Check the room code and ask the host if there is space.'));
+      }
     } finally {
       controls.forEach(button => { button.disabled = false; });
     }
