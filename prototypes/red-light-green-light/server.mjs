@@ -18,7 +18,14 @@ export async function start(port = Number(process.env.PORT) || 2567, gameConfig)
   const app = express();
   const http = createServer(app);
   app.get('/', (_, response) => response.redirect(root));
-  app.get('/health', (_, response) => response.json({ ok: true }));
+  app.get('/health', (request, response) => {
+    const origin = request.headers.origin;
+    console.info('[health] origin=' + (origin || 'none'));
+    response.setHeader('Access-Control-Allow-Origin',
+      WEB_ORIGINS.has(origin) ? origin : 'https://www.teacharcade.com');
+    response.setHeader('Vary', 'Origin');
+    response.json({ ok: true });
+  });
   app.use(root, express.static(fromHere(MINI_GAMES + '/games/red-light-green-light/')));
   app.use('/mini-games/vendor', express.static(fromHere(MINI_GAMES + '/vendor/')));
   app.use('/mini-games/shared/midway-characters',

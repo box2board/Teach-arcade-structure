@@ -10,7 +10,7 @@ const moves = {
 };
 const live = new Set(['green', 'red']);
 
-export function mountGame(root, { client, makeAvatar, avatars = characters } = {}) {
+export function mountGame(root, { client, serverUrl, makeAvatar, avatars = characters } = {}) {
   const el = id => root.querySelector('#' + id);
   const view = root.ownerDocument.defaultView;
   const doc = root.ownerDocument;
@@ -224,6 +224,34 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
     });
     if (next.state?.phase) sync(next.state);
   }
+  async function waitForMultiplayerService() {
+    const healthUrl = new URL('/health', serverUrl || view.location.origin);
+    const expiresAt = Date.now() + 45000;
+    let lastError;
+    while (Date.now() < expiresAt) {
+      const controller = new view.AbortController();
+      const timeout = view.setTimeout(() => controller.abort(), 7000);
+      try {
+        const response = await view.fetch(healthUrl.href, {
+          cache: 'no-store',
+          signal: controller.signal
+        });
+        if (!response.ok) throw new Error('Health check returned HTTP ' + response.status + '.');
+        const health = await response.json();
+        if (health?.ok === true) return;
+        throw new Error('The multiplayer server is not ready yet.');
+      } catch (error) {
+        lastError = error;
+        content('entry-status', 'Waking the multiplayer service…');
+      } finally {
+        view.clearTimeout(timeout);
+      }
+      if (Date.now() < expiresAt) await new Promise(resolve => view.setTimeout(resolve, 1200));
+    }
+    throw new Error('Multiplayer service did not wake within 45 seconds.' +
+      (lastError?.message ? ' ' + lastError.message : ''));
+  }
+
   async function createHostedRoom(options) {
     const retryDelays = [1000, 2000, 4000, 8000];
     for (let retry = 0; ; retry++) {
@@ -251,10 +279,11 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
     const controls = [...el('join').querySelectorAll('button')];
     controls.forEach(button => { button.disabled = true; });
     const options = { name: el('name').value };
-    content('entry-status', host ? 'Opening a room…' : 'Joining room…');
+    content('entry-status', host ? 'Connecting to multiplayer…' : 'Connecting to multiplayer…');
     save(null);
     inputSeq = 0;
     try {
+      await waitForMultiplayerService();
       let next;
       if (host) {
         options.hostKey = Array.from(crypto.getRandomValues(new Uint8Array(16)),
