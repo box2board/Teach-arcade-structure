@@ -20,7 +20,7 @@ export async function start(port = Number(process.env.PORT) || 2567, gameConfig)
   app.get('/', (_, response) => response.redirect(root));
   app.get('/health', (request, response) => {
     const origin = request.headers.origin;
-    console.info('[health] origin=' + (origin || 'none'));
+    response.setHeader('Cache-Control', 'no-store');
     response.setHeader('Access-Control-Allow-Origin',
       WEB_ORIGINS.has(origin) ? origin : 'https://www.teacharcade.com');
     response.setHeader('Vary', 'Origin');
@@ -34,7 +34,7 @@ export async function start(port = Number(process.env.PORT) || 2567, gameConfig)
     response.sendFile(fromHere('./node_modules/colyseus.js/dist/colyseus.js')));
   const server = new Server({ transport: new WebSocketTransport({ server: http, maxPayload: 4096 }) });
   http.on('upgrade', (request) => {
-    console.info('[websocket upgrade]', request.url, 'origin=' + (request.headers.origin || 'none'));
+    console.info('[websocket upgrade] origin=' + (request.headers.origin || 'none'));
   });
   matchMaker.controller.getCorsHeaders = (request) => {
     const origin = request.headers.origin;
