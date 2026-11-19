@@ -59,3 +59,10 @@ export const PROJECTS = [
 export const PROJECT_NAMES = PROJECTS.map((project) => project.name);
 
 export const SOURCE_REPOSITORY = PROJECTS[0].repository;
+
+export async function getProjectAreas(sql, ownerId) {
+  return sql`SELECT id, slug, name, description, repository_name,
+      repository_url, public_url, base_branch, development_branch,
+      vercel_project_id, documentation_url, lifecycle
+    FROM devhq_projects WHERE owner_id=${ownerId} ORDER BY created_at ASC`;
+}

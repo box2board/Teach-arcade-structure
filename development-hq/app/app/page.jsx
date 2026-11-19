@@ -1,8 +1,8 @@
 import { requireAdmin } from '../lib/neon';
-import { createTask, archiveTask, signOut } from './actions';
+import { createTask, archiveTask, signOut, updateProject, createProject } from './actions';
 import CopyTask from './CopyTask';
 import { getGitHubStatus, getVercelStatus } from '../lib/integrations';
-import { PROJECTS } from '../lib/projects';
+import { PROJECTS, getProjectAreas } from '../lib/projects';
 
 export const dynamic = 'force-dynamic';
 const categories = ['Gameplay feature','Bug fix','Visual quality','New game prototype','Testing and QA'];
@@ -10,14 +10,27 @@ const categories = ['Gameplay feature','Bug fix','Visual quality','New game prot
 export default async function Home({ searchParams }) {
   const { user, sql } = await requireAdmin();
   const [github, vercel] = await Promise.all([getGitHubStatus(), getVercelStatus()]);
-  let tasks = [], databaseError = false;
+  let tasks = [], projects = [], databaseError = false, projectDatabaseError = false;
   try {
-    tasks = await sql`SELECT id, project, category, description, status, mode, created_at
-      FROM devhq_tasks WHERE owner_id=${user.id} AND status <> 'archived'
-      ORDER BY created_at DESC LIMIT 100`;
+    tasks = await sql`SELECT t.id, COALESCE(p.name, t.project) AS project, t.project_id,
+        t.category, t.description, t.status, t.mode, t.created_at
+      FROM devhq_tasks t LEFT JOIN devhq_projects p ON p.id=t.project_id AND p.owner_id=t.owner_id
+      WHERE t.owner_id=${user.id} AND t.status <> 'archived'
+      ORDER BY t.created_at DESC LIMIT 100`;
   } catch {
     databaseError = true;
   }
+  try { projects = await getProjectAreas(sql,user.id); }
+  catch {
+    projectDatabaseError = true;
+    projects = PROJECTS.filter(project=>!project.unassigned).map((project,index)=>({
+      id:`unavailable-${index}`,slug:project.id,name:project.name,description:project.description,
+      repository_name:project.repository.name,repository_url:project.repository.url,public_url:project.publicUrl,
+      base_branch:project.baseBranch,development_branch:project.developmentBranch,
+      vercel_project_id:project.vercelProjectId,documentation_url:project.documentationUrl,lifecycle:project.lifecycle,
+    }));
+  }
+  const taskProjects=projects.filter(project=>project.lifecycle==='active');
   const q = await searchParams;
   return <div className="shell">
     <header><div><div className="eyebrow">TEACH ARCADE</div><h1>Development HQ</h1>
@@ -43,21 +56,50 @@ export default async function Home({ searchParams }) {
       </article>
     </section>
     <section className="projects-section">
-      <div className="section-heading"><div><div className="eyebrow">PROJECT PORTFOLIO</div><h2>Project areas</h2></div><span className="pill">{PROJECTS.filter(project=>!project.unassigned).length} tracked</span></div>
-      <p className="section-intro">These workstreams share the Teach Arcade repository. The repository’s <b>{PROJECTS[0].baseBranch}</b> branch is the source branch; a task-specific work branch is assigned when execution is connected. Vercel health for the public site is not yet linked here.</p>
-      <div className="project-grid">{PROJECTS.filter(project=>!project.unassigned).map(project=>{
-        const draftCount=tasks.filter(task=>task.project===project.name).length;
+      <div className="section-heading"><div><div className="eyebrow">PROJECT PORTFOLIO</div><h2>Project areas</h2></div><span className="pill">{projects.length} tracked</span></div>
+      <p className="section-intro">Each area can keep its purpose, source repository, branches, documentation, and Vercel project reference. These settings organize work; they do not trigger builds, merges, or deployments.</p>
+      {projectDatabaseError && <p className="integration-note">Project settings are unavailable until the HQ database update is applied.</p>}
+      {q?.projectSaved && <p className="alert">Project settings saved.</p>}{q?.projectCreated && <p className="alert">Project area added.</p>}
+      {(q?.error==='project'||q?.error==='project-save') && <p role="alert" className="error">Project settings could not be saved. Check the values and try again.</p>}
+      <div className="project-grid">{projects.map(project=>{
+        const draftCount=tasks.filter(task=>task.project_id===project.id).length;
         return <article className="project-card" key={project.id}>
-          <div className="project-title"><h3>{project.name}</h3><span className="pill">Workstream</span></div>
-          <p>{project.description}</p>
+          <div className="project-title"><h3>{project.name}</h3><span className={`pill ${project.lifecycle==='active'?'connected':''}`}>{project.lifecycle}</span></div>
           <div className="project-count"><strong>{draftCount}</strong><span>saved {draftCount===1?'draft':'drafts'}</span></div>
-          <a href={project.repository.url} target="_blank" rel="noreferrer">{project.repository.name}</a>
-          <div className="project-source">Base branch: <a href={github.baseBranchUrl ?? `${project.repository.url}/tree/${project.baseBranch}`} target="_blank" rel="noreferrer"><code>{project.baseBranch}{github.baseCommit ? ` · ${github.baseCommit.slice(0,7)}` : ''}</code></a><br/>Task branch: not assigned</div>
-          <div className="project-source"><a href={project.publicUrl} target="_blank" rel="noreferrer">Open Teach Arcade</a></div>
-          <div className="project-health">{github.connected ? 'GitHub source available' : 'GitHub source status unavailable'} · Public site deployment: not linked</div>
+          <details className="project-editor" open={q?.editProject===project.id}>
+            <summary>Edit project details</summary>
+            <form action={updateProject}>
+              <input type="hidden" name="id" value={project.id}/>
+              <label>Name<input name="name" defaultValue={project.name} required minLength="2" maxLength="80"/></label>
+              <label>Purpose<textarea name="description" defaultValue={project.description} maxLength="500"/></label>
+              <label>GitHub repository name<input name="repository_name" defaultValue={project.repository_name} maxLength="200" required/></label>
+              <label>GitHub repository URL<input type="url" name="repository_url" defaultValue={project.repository_url} required/></label>
+              <label>Public site URL<input type="url" name="public_url" defaultValue={project.public_url ?? ''}/></label>
+              <div className="fields"><label>Base branch<input name="base_branch" defaultValue={project.base_branch} maxLength="120" required/></label>
+              <label>Development branch<input name="development_branch" defaultValue={project.development_branch ?? ''} maxLength="160"/></label></div>
+              <label>Vercel project ID<input name="vercel_project_id" defaultValue={project.vercel_project_id ?? ''} maxLength="200"/></label>
+              <label>Project documentation URL<input type="url" name="documentation_url" defaultValue={project.documentation_url ?? ''}/></label>
+              <label>Workstream status<select name="lifecycle" defaultValue={project.lifecycle}><option value="active">Active</option><option value="paused">Paused</option><option value="archived">Archived</option></select></label>
+              <button disabled={projectDatabaseError || project.id.startsWith('unavailable-')}>Save project settings</button>
+            </form>
+          </details>
+          <div className="project-source"><a href={project.repository_url} target="_blank" rel="noreferrer">{project.repository_name}</a></div>
+          <div className="project-source">Base branch: <a href={`${project.repository_url}/tree/${project.base_branch}`} target="_blank" rel="noreferrer"><code>{project.base_branch}</code></a><br/>Development branch: {project.development_branch || 'not assigned'}</div>
+          {project.public_url && <div className="project-source"><a href={project.public_url} target="_blank" rel="noreferrer">Open public site</a></div>}
+          {project.documentation_url && <div className="project-source"><a href={project.documentation_url} target="_blank" rel="noreferrer">Project documentation</a></div>}
+          <div className="project-health">{github.connected ? 'GitHub source available' : 'GitHub source status unavailable'} · {project.vercel_project_id ? 'Vercel project configured' : 'Vercel project not linked'}</div>
         </article>;
       })}</div>
-      <p className="registry-note"><b>Registry note:</b> This first pass uses the HQ’s existing workstream names. New Game remains available on task drafts as an unassigned routing choice; it is not listed as a tracked project.</p>
+      {!projectDatabaseError && <details className="add-project"><summary>Add a project area</summary><form action={createProject}>
+        <div className="fields"><label>Name<input name="name" required minLength="2" maxLength="80" placeholder="Project or workstream name"/></label><label>Workstream status<select name="lifecycle"><option value="active">Active</option><option value="paused">Paused</option></select></label></div>
+        <label>Purpose<textarea name="description" maxLength="500" placeholder="What belongs in this workstream?"/></label>
+        <div className="fields"><label>GitHub repository name<input name="repository_name" defaultValue="box2board/Teach-arcade-structure" required/></label><label>GitHub repository URL<input type="url" name="repository_url" defaultValue="https://github.com/box2board/Teach-arcade-structure" required/></label></div>
+        <div className="fields"><label>Public site URL<input type="url" name="public_url" placeholder="https://..."/></label><label>Base branch<input name="base_branch" defaultValue="main" required/></label></div>
+        <div className="fields"><label>Development branch<input name="development_branch" maxLength="160" placeholder="Optional"/></label><label>Vercel project ID<input name="vercel_project_id" maxLength="200" placeholder="Optional"/></label></div>
+        <label>Project documentation URL<input type="url" name="documentation_url" placeholder="Optional https://..."/></label>
+        <button>Add project area</button>
+      </form></details>}
+      <p className="registry-note"><b>Project links are informational.</b> Saving repository or Vercel identifiers does not grant the HQ access or run deployments. New Game remains an unassigned task route.</p>
     </section>
     <section className="modes">
       <article className="card"><div className="eyebrow">MODE 1 · PREFERRED</div><h2>ChatGPT Plus / Codex</h2><span className="pill">Not connected</span><p>Task drafts can be handed to a supported Codex workflow. Subscription-backed direct execution requires eligibility verification.</p></article>
@@ -65,12 +107,12 @@ export default async function Home({ searchParams }) {
     </section>
     <section className="card"><h2>Create development task</h2><p>Create a permanent task record. Nothing is submitted to an AI agent.</p>
       {q?.created && <p className="alert">Task draft saved.</p>}
-      {q?.error && <p role="alert" className="error">Unable to save task. Check the fields and database setup.</p>}
+      {q?.error && q.error!=='project' && q.error!=='project-save' && <p role="alert" className="error">Unable to save task. Check the fields and database setup.</p>}
       <form action={createTask}><div className="fields"><div><label htmlFor="project">Project</label>
-      <select id="project" name="project">{PROJECTS.map(x=><option key={x.name}>{x.name}</option>)}</select></div>
+      <select id="project" name="project">{taskProjects.map(x=><option key={x.id} value={x.id}>{x.name}</option>)}<option value="unassigned-new-game">New Game (unassigned)</option></select></div>
       <div><label htmlFor="category">Work type</label><select id="category" name="category">{categories.map(x=><option key={x}>{x}</option>)}</select></div></div>
       <label htmlFor="description">Development request</label><textarea id="description" name="description" minLength="12" maxLength="5000" required placeholder="Describe the game, bug, or improvement, including anything that must be preserved."/>
-      <button>Save task draft</button></form></section>
+      <button disabled={databaseError || projectDatabaseError}>Save task draft</button></form></section>
     <section className="card"><h2>Saved development tasks</h2>
       {databaseError && <p role="alert" className="error">Task database not provisioned or temporarily unavailable. No production data was changed.</p>}
       {!databaseError && !tasks.length && <p>No tasks yet. Use the form above to create your first development task.</p>}
