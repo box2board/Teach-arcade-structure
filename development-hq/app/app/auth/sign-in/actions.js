@@ -31,7 +31,7 @@ export async function requestAdminCode(_state, formData) {
 export async function verifyAdminCode(_state, formData) {
   const email = String(formData.get('email') ?? '').trim().toLowerCase();
   const otp = String(formData.get('otp') ?? '').trim();
-  if (email !== ADMIN_EMAIL || !/^\\d{6}$/.test(otp)) {
+  if (email !== ADMIN_EMAIL || !/^\d{6}$/.test(otp)) {
     return { stage: 'verify', email, error: 'That code is invalid or expired. Request a new code and try again.' };
   }
 
