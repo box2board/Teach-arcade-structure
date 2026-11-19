@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS public.devhq_tasks (
   project_id uuid REFERENCES public.devhq_projects(id) ON DELETE RESTRICT,
   category text NOT NULL CHECK (category IN ('Gameplay feature','Bug fix','Visual quality','New game prototype','Testing and QA')),
   description text NOT NULL CHECK (char_length(description) BETWEEN 12 AND 5000),
-  status text NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','archived')),
+  status text NOT NULL DEFAULT 'draft' CHECK (status IN ('draft','ready','in_progress','review','complete','archived')),
   mode text NOT NULL DEFAULT 'plus' CHECK (mode = 'plus'),
   created_at timestamptz NOT NULL DEFAULT now(),
   updated_at timestamptz NOT NULL DEFAULT now()

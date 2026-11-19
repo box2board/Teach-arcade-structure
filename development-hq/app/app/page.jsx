@@ -1,11 +1,16 @@
 import { requireAdmin } from '../lib/neon';
-import { createTask, archiveTask, signOut, updateProject, createProject } from './actions';
+import { createTask, updateTaskStatus, signOut, updateProject, createProject } from './actions';
 import CopyTask from './CopyTask';
 import { getGitHubStatus, getVercelStatus } from '../lib/integrations';
 import { PROJECTS, getProjectAreas } from '../lib/projects';
 
 export const dynamic = 'force-dynamic';
 const categories = ['Gameplay feature','Bug fix','Visual quality','New game prototype','Testing and QA'];
+const statusLabels = { draft:'Draft', ready:'Ready', in_progress:'In progress', review:'Needs review', complete:'Complete', archived:'Archived' };
+const queueFilters = [
+  { id:'active', label:'Active' }, { id:'draft', label:'Draft' }, { id:'ready', label:'Ready' },
+  { id:'in_progress', label:'In progress' }, { id:'review', label:'Needs review' }, { id:'complete', label:'Complete' },
+];
 
 export default async function Home({ searchParams }) {
   const { user, sql } = await requireAdmin();
@@ -32,13 +37,18 @@ export default async function Home({ searchParams }) {
   }
   const taskProjects=projects.filter(project=>project.lifecycle==='active');
   const q = await searchParams;
+  const queueFilter=queueFilters.some(filter=>filter.id===q?.queue)?q.queue:'active';
+  const filteredTasks=tasks.filter(task=>queueFilter==='active'?task.status!=='complete':task.status===queueFilter);
+  const activeTaskCount=tasks.filter(task=>task.status!=='complete').length;
+  const readyCount=tasks.filter(task=>task.status==='ready').length;
+  const reviewCount=tasks.filter(task=>task.status==='review').length;
   return <div className="shell">
     <header><div><div className="eyebrow">TEACH ARCADE</div><h1>Development HQ</h1>
       <p>Private development operations · Administrator</p></div>
       <form action={signOut}><button className="subtle">Sign out</button></form></header>
     <div className="banner"><b>Safe foundation:</b> No AI tasks are executed. Mode 2 API billing is OFF. No merge, deploy, or production controls are available.</div>
     <section className="stats">
-      <article><span>Task drafts</span><strong>{databaseError ? '—' : tasks.filter(t=>t.status==='draft').length}</strong></article>
+      <article><span>Active task queue</span><strong>{databaseError ? '—' : activeTaskCount}</strong><small>{readyCount} ready · {reviewCount} need review</small></article>
       <article><span>AI executions</span><strong>0</strong><small>Runner not connected</small></article>
       <article><span>GitHub / Vercel</span><strong>{github.connected ? 'GitHub live' : 'Unavailable'}</strong><small>GitHub {github.connected ? 'connected' : 'unavailable'} · Vercel {vercel.connected ? 'connected' : 'not connected'}</small></article>
     </section>
@@ -62,10 +72,10 @@ export default async function Home({ searchParams }) {
       {q?.projectSaved && <p className="alert">Project settings saved.</p>}{q?.projectCreated && <p className="alert">Project area added.</p>}
       {(q?.error==='project'||q?.error==='project-save') && <p role="alert" className="error">Project settings could not be saved. Check the values and try again.</p>}
       <div className="project-grid">{projects.map(project=>{
-        const draftCount=tasks.filter(task=>task.project_id===project.id).length;
+        const projectTaskCount=tasks.filter(task=>task.project_id===project.id).length;
         return <article className="project-card" key={project.id}>
           <div className="project-title"><h3>{project.name}</h3><span className={`pill ${project.lifecycle==='active'?'connected':''}`}>{project.lifecycle}</span></div>
-          <div className="project-count"><strong>{draftCount}</strong><span>saved {draftCount===1?'draft':'drafts'}</span></div>
+          <div className="project-count"><strong>{projectTaskCount}</strong><span>{projectTaskCount===1?'task':'tasks'} in queue</span></div>
           <details className="project-editor" open={q?.editProject===project.id}>
             <summary>Edit project details</summary>
             <form action={updateProject}>
@@ -113,13 +123,24 @@ export default async function Home({ searchParams }) {
       <div><label htmlFor="category">Work type</label><select id="category" name="category">{categories.map(x=><option key={x}>{x}</option>)}</select></div></div>
       <label htmlFor="description">Development request</label><textarea id="description" name="description" minLength="12" maxLength="5000" required placeholder="Describe the game, bug, or improvement, including anything that must be preserved."/>
       <button disabled={databaseError || projectDatabaseError}>Save task draft</button></form></section>
-    <section className="card"><h2>Saved development tasks</h2>
+    <section className="card queue-card"><div className="section-heading"><div><div className="eyebrow">DEVELOPMENT WORK</div><h2>Task queue</h2></div><span className="pill">{databaseError?'—':tasks.length} shown</span></div>
+      <p>Move tasks through the workflow as you shape, hand off, and review the work. Status changes do not start an agent or deploy anything.</p>
+      {q?.statusUpdated && <p className="alert">Task status updated.</p>}
+      {q?.error==='task-status' && <p role="alert" className="error">The task status could not be updated. Try again.</p>}
+      <nav className="queue-filters" aria-label="Filter tasks">{queueFilters.map(filter=><a key={filter.id} className={queueFilter===filter.id?'selected':''} href={`/?queue=${filter.id}`}>{filter.label}</a>)}</nav>
       {databaseError && <p role="alert" className="error">Task database not provisioned or temporarily unavailable. No production data was changed.</p>}
-      {!databaseError && !tasks.length && <p>No tasks yet. Use the form above to create your first development task.</p>}
-      {tasks.map(t=><div className="task" key={t.id}><div><div className="eyebrow">{t.project} · {t.category}</div>
-        <p>{t.description}</p><small>{t.status.toUpperCase()} · {new Date(t.created_at).toLocaleDateString('en-US',{timeZone:'UTC'})}</small>
-        </div><div className="task-actions"><CopyTask task={{project:t.project,category:t.category,description:t.description}}/>
-        <form action={archiveTask}><input type="hidden" name="id" value={t.id}/><button className="subtle">Archive</button></form></div></div>)}
+      {!databaseError && !filteredTasks.length && <p className="empty-queue">{tasks.length?'No tasks in this view.':'No tasks yet. Create a task draft above to start the queue.'}</p>}
+      {filteredTasks.map(task=><article className="queue-task" key={task.id}>
+        <div className="queue-task-main"><div className="eyebrow">{task.project} · {task.category}</div><p>{task.description}</p>
+          <small>{new Date(task.created_at).toLocaleDateString('en-US',{timeZone:'UTC'})}</small></div>
+        <span className={`pill status-${task.status}`}>{statusLabels[task.status]??task.status}</span>
+        <div className="queue-task-actions"><CopyTask task={{project:task.project,category:task.category,description:task.description}}/>
+          {task.status!=='complete' && <form action={updateTaskStatus} className="status-form"><input type="hidden" name="id" value={task.id}/>
+            <label className="sr-only" htmlFor={`status-${task.id}`}>Task status for {task.project}</label>
+            <select id={`status-${task.id}`} name="status" defaultValue={task.status}>{queueFilters.filter(filter=>filter.id!=='active').map(filter=><option key={filter.id} value={filter.id}>{filter.label}</option>)}<option value="archived">Archived</option></select>
+            <button className="subtle">Update status</button></form>}
+        </div>
+      </article>)}
     </section>
     <footer>Development HQ alpha · separate from public Teach Arcade · human approval required for releases</footer>
   </div>;

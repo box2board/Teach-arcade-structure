@@ -5,6 +5,7 @@ import { requireAdmin, auth } from '../lib/neon';
 import { SOURCE_REPOSITORY } from '../lib/projects';
 
 const CATEGORIES = ['Gameplay feature','Bug fix','Visual quality','New game prototype','Testing and QA'];
+const TASK_STATUSES = ['draft','ready','in_progress','review','complete','archived'];
 
 export async function createTask(formData) {
   const { user, sql } = await requireAdmin();
@@ -90,18 +91,19 @@ export async function createProject(formData) {
   redirect('/?projectCreated=1');
 }
 
-export async function archiveTask(formData) {
+export async function updateTaskStatus(formData) {
   const { user, sql } = await requireAdmin();
-  const id = String(formData.get('id') ?? '');
-  if (!/^[0-9a-f-]{36}$/i.test(id)) redirect('/?error=invalid');
+  const id = field(formData, 'id');
+  const status = field(formData, 'status');
+  if (!/^[0-9a-f-]{36}$/i.test(id) || !TASK_STATUSES.includes(status)) redirect('/?error=invalid');
   try {
-    await sql`UPDATE devhq_tasks SET status='archived', updated_at=now()
-      WHERE id=${id}::uuid AND owner_id=${user.id} AND status='draft'`;
+    await sql`UPDATE devhq_tasks SET status=${status}, updated_at=now()
+      WHERE id=${id}::uuid AND owner_id=${user.id} AND status <> 'archived'`;
   } catch {
-    redirect('/?error=save');
+    redirect('/?error=task-status');
   }
   revalidatePath('/');
-  redirect('/');
+  redirect('/?statusUpdated=1');
 }
 
 export async function signOut() {
