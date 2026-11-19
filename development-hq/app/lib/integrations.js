@@ -32,6 +32,20 @@ export async function getVercelStatus() {
   const token = process.env.VERCEL_API_TOKEN;
   const teamId = process.env.VERCEL_TEAM_ID;
   const projectId = process.env.VERCEL_PROJECT_ID;
+  if ((!token || !teamId || !projectId) && process.env.VERCEL_URL) {
+    return {
+      connected: true,
+      currentOnly: true,
+      deployments: [{
+        id: process.env.VERCEL_DEPLOYMENT_ID ?? process.env.VERCEL_URL,
+        url: `https://${process.env.VERCEL_URL}`,
+        state: 'Current HQ deployment',
+        target: process.env.VERCEL_ENV ?? 'Vercel environment',
+        branch: process.env.VERCEL_GIT_COMMIT_REF ?? null,
+        commit: process.env.VERCEL_GIT_COMMIT_SHA ?? null,
+      }],
+    };
+  }
   if (!token || !teamId || !projectId) return { connected: false, deployments: [], missing: ['VERCEL_API_TOKEN', 'VERCEL_TEAM_ID', 'VERCEL_PROJECT_ID'] };
   try {
     const url = new URL('https://api.vercel.com/v6/deployments');
