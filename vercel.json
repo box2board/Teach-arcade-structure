@@ -19,7 +19,6 @@
     { "source": "/assets/styles.css", "destination": "/assets/styles-visibility-pass.css" },
     { "source": "/escape/css/hub.css", "destination": "/escape/css/hub-visibility-pass.css" }
   ],
-  "outputDirectory": "public",
   "functions": {
     "api/resources.js": { "maxDuration": 10 }
   }
