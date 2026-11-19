@@ -224,6 +224,19 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
     });
     if (next.state?.phase) sync(next.state);
   }
+  async function createHostedRoom(options) {
+    const retryDelays = [1000, 2000, 4000, 8000];
+    for (let retry = 0; ; retry++) {
+      try {
+        return await client.create(ROOM_TYPE, options);
+      } catch (error) {
+        if (retry >= retryDelays.length) throw error;
+        content('entry-status', 'Waking the multiplayer service… retry ' + (retry + 1) + ' of ' + retryDelays.length);
+        await new Promise(resolve => view.setTimeout(resolve, retryDelays[retry]));
+      }
+    }
+  }
+
   async function connect(host) {
     if (!client) {
       content('entry-status', 'Open the game through the local multiplayer preview server.');
@@ -246,7 +259,7 @@ export function mountGame(root, { client, makeAvatar, avatars = characters } = {
       if (host) {
         options.hostKey = Array.from(crypto.getRandomValues(new Uint8Array(16)),
           byte => byte.toString(16).padStart(2, '0')).join('');
-        next = await client.create(ROOM_TYPE, options);
+        next = await createHostedRoom(options);
       } else next = await client.joinById(code, options);
       await attach(next, myAttempt);
       content('entry-status', '');
