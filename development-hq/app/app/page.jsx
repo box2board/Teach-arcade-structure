@@ -1,6 +1,7 @@
 import { requireAdmin } from '../lib/neon';
 import { createTask, archiveTask, signOut } from './actions';
 import CopyTask from './CopyTask';
+import { getGitHubStatus, getVercelStatus } from '../lib/integrations';
 
 export const dynamic = 'force-dynamic';
 const projects = ['Multiplayer Arcade','Midway Mashup','Trench Run V2','Factory Flow','Teacher HQ','New Game'];
@@ -8,6 +9,7 @@ const categories = ['Gameplay feature','Bug fix','Visual quality','New game prot
 
 export default async function Home({ searchParams }) {
   const { user, sql } = await requireAdmin();
+  const [github, vercel] = await Promise.all([getGitHubStatus(), getVercelStatus()]);
   let tasks = [], databaseError = false;
   try {
     tasks = await sql`SELECT id, project, category, description, status, mode, created_at
@@ -25,7 +27,20 @@ export default async function Home({ searchParams }) {
     <section className="stats">
       <article><span>Task drafts</span><strong>{databaseError ? '—' : tasks.filter(t=>t.status==='draft').length}</strong></article>
       <article><span>AI executions</span><strong>0</strong><small>Runner not connected</small></article>
-      <article><span>GitHub / Vercel</span><strong>Pending</strong><small>Read-only integration planned</small></article>
+      <article><span>GitHub / Vercel</span><strong>{github.connected ? 'GitHub live' : 'Unavailable'}</strong><small>GitHub {github.connected ? 'connected' : 'unavailable'} · Vercel {vercel.connected ? 'connected' : 'not connected'}</small></article>
+    </section>
+    <section className="integrations">
+      <article className="card"><div className="eyebrow">READ-ONLY SOURCE STATUS</div><h2>GitHub</h2>
+        {github.connected ? <><span className="pill connected">Connected · read-only</span><p><b>{github.repository}</b><br/>Branch: <code>{github.branch}</code></p>
+          <p>Latest commit: <code>{github.commit.slice(0, 7)}</code> · {github.commitMessage}</p>
+          {github.pullRequests.length ? <div><b>Open pull requests</b>{github.pullRequests.map(pr=><p className="integration-row" key={pr.number}><a href={pr.url} target="_blank" rel="noreferrer">#{pr.number} {pr.title}</a>{pr.draft && <span className="tag">Draft</span>}</p>)}</div> : <p>No open pull request for this branch.</p>}
+          {github.updatedAt && <small>Latest commit {new Date(github.updatedAt).toLocaleString('en-US',{timeZone:'UTC'})} UTC</small>}</>
+          : <><span className="pill">Unavailable</span><p>GitHub status could not be loaded. {github.error}</p></>}
+      </article>
+      <article className="card"><div className="eyebrow">READ-ONLY DEPLOYMENT STATUS</div><h2>Vercel</h2>
+        {vercel.connected ? <><span className="pill connected">Connected · read-only</span>{vercel.deployments.length ? vercel.deployments.map(d=><div className="deployment" key={d.id}><b>{d.state}</b> · {d.target}{d.branch && <> · <code>{d.branch}</code></>}{d.url && <> · <a href={d.url} target="_blank" rel="noreferrer">Open preview</a></>}{d.createdAt && <small>{new Date(d.createdAt).toLocaleString('en-US',{timeZone:'UTC'})} UTC</small>}</div>) : <p>No deployments returned for this project.</p>}</>
+          : <><span className="pill">{vercel.error ? 'Connection error' : 'Not connected to this app'}</span><p>{vercel.error ? `Vercel status could not be loaded. ${vercel.error}` : 'The Vercel account is connected in ChatGPT, but this private dashboard has no Vercel API credentials yet. Add the server-only settings below to show its latest deployments.'}</p>{vercel.missing && <p className="setup-hint"><code>VERCEL_API_TOKEN</code>, <code>VERCEL_TEAM_ID</code>, and <code>VERCEL_PROJECT_ID</code></p>}</>}
+      </article>
     </section>
     <section className="modes">
       <article className="card"><div className="eyebrow">MODE 1 · PREFERRED</div><h2>ChatGPT Plus / Codex</h2><span className="pill">Not connected</span><p>Task drafts can be handed to a supported Codex workflow. Subscription-backed direct execution requires eligibility verification.</p></article>
