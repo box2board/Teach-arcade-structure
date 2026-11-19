@@ -8,6 +8,9 @@ export const auth = createNeonAuth({
   cookies: {
     secret: process.env.NEON_AUTH_COOKIE_SECRET,
     sessionDataTtl: 30, // SDK requires a positive value; short cache for admin-only UI.
+    // Magic-link verification returns from the Neon Auth host to this app.
+    // Lax cookies survive that top-level GET callback; Strict cookies do not.
+    sameSite: 'lax',
   },
 });
 
