@@ -10,7 +10,7 @@ const moves = {
 };
 const live = new Set(['green', 'red']);
 
-export function mountGame(root, { client, serverUrl, makeAvatar, avatars = characters } = {}) {
+export function mountGame(root, { client, healthUrl, makeAvatar, avatars = characters } = {}) {
   const el = id => root.querySelector('#' + id);
   const view = root.ownerDocument.defaultView;
   const doc = root.ownerDocument;
@@ -225,14 +225,14 @@ export function mountGame(root, { client, serverUrl, makeAvatar, avatars = chara
     if (next.state?.phase) sync(next.state);
   }
   async function waitForMultiplayerService() {
-    const healthUrl = new URL('/health', serverUrl || view.location.origin);
+    if (!healthUrl) return;
     const expiresAt = Date.now() + 45000;
     let lastError;
     while (Date.now() < expiresAt) {
       const controller = new view.AbortController();
       const timeout = view.setTimeout(() => controller.abort(), 7000);
       try {
-        const response = await view.fetch(healthUrl.href, {
+        const response = await view.fetch(healthUrl, {
           cache: 'no-store',
           signal: controller.signal
         });

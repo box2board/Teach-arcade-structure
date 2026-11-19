@@ -1,4 +1,4 @@
-import { mountGame } from './game.js?v=20261119-4';
+import { mountGame } from './game.js?v=20261119-5';
 
 const root = document.querySelector('#game');
 const localHost = ['localhost', '127.0.0.1'].includes(location.hostname);
@@ -42,7 +42,11 @@ loadSdkFrom(sdkUrls[0], [0, 750])
   .catch(() => loadSdkFrom(sdkUrls[1], clientRetries))
   .then(() => {
     const client = new window.Colyseus.Client(endpoint);
-    mountGame(root, { client, serverUrl: endpoint });
+    const onTeachArcade = ['teacharcade.com', 'www.teacharcade.com'].includes(location.hostname);
+    const healthUrl = onTeachArcade
+      ? '/mini-games/games/red-light-green-light/service-health'
+      : new URL('/health', endpoint).href;
+    mountGame(root, { client, healthUrl });
   })
   .catch(() => {
     const status = root.querySelector('#connection');
