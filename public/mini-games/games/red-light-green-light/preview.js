@@ -1,4 +1,4 @@
-import { mountGame } from './game.js';
+import { mountGame } from './game.js?v=20261119-3';
 
 const root = document.querySelector('#game');
 const localHost = ['localhost', '127.0.0.1'].includes(location.hostname);
