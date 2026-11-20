@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel Quest — The Paris Print Shop</title><link rel="stylesheet" href="panel-quest.css"></head><body>
+<div class="shell"><header><div class="brand"><div class="seal" aria-hidden="true">✦</div><div>Panel Quest<small>A playable graphic novel</small></div></div><div class="edition">Teach Arcade · Issue 01</div></header>
+<main class="frame"><div class="topline"><span id="issueTitle"></span><div class="progress-wrap"><span id="progressText">Ready</span><div class="progress" role="progressbar" aria-label="Historical clues" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><span id="bar"></span></div></div><button class="secondary" id="notebookBtn" hidden>Evidence <span id="clueCount">0</span></button></div><div id="view"></div></main>
+<footer>Original fictional story · Historical context: 1789–1799 · Progress saves on this device when available.</footer><p class="save-status" id="saveStatus" role="status"></p></div>
+<dialog id="notebook" aria-labelledby="notebookTitle"><div class="notebook-top"><h2 id="notebookTitle">Your evidence file</h2><button class="secondary" id="closeNotebook" autofocus>Close</button></div><p>Historical context and fictional story evidence are labeled separately.</p><div id="clues"></div></dialog>
+<script src="paris-print-shop.js"></script><script src="paris-print-shop-story.js"></script><script src="panel-quest-engine.js"></script><script>PanelQuest.mount(window.PANEL_QUEST_EDITION);</script>
+</body></html>
