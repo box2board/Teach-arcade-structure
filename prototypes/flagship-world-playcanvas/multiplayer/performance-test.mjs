@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { enqueueInput } from './input-queue.js';
+import { initialPlayer, step } from './physics.js';
+const queue=[];
+for(let seq=1;seq<=12;seq++)enqueueInput(queue,{seq,x:1,z:0,jump:seq===1});
+assert.deepEqual(queue.map(i=>i.seq),[10,11,12]);
+assert.equal(queue[0].jump,true);
+assert.equal(queue.filter(i=>i.jump).length,1);
+const p=initialPlayer();step(p,queue.shift(),[]);
+assert.equal(p.seq,10);assert(p.x<.1,'A burst must not simulate multiple movement steps');
+const obstacle={piece:'pillar',x:0,z:-4,rotation:0,level:0};
+const a={...initialPlayer(),vz:6.2},b={...a};
+step(a,{seq:1,x:0,z:1},[obstacle]);
+step(b,{seq:1,x:0,z:1},new Map([['a',obstacle]]).values());
+assert.deepEqual(a,b);assert.equal(a.z,-5,'Z collision must survive the X-axis iterator scan');
+console.log('PASS: bounded burst backlog, buffered jump, fixed movement budget, iterator collision parity');
