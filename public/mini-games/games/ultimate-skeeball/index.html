@@ -27,7 +27,7 @@ button,select{background:#1a3853;border-color:#b48248}
 .overlay{background:#08182a66;backdrop-filter:none}
 .card{max-width:420px;border:3px solid #f2cb72;background:linear-gradient(145deg,#244c67,#16334c);box-shadow:0 18px 55px #07152288,inset 0 1px 0 #fff1c866}
 .eyebrow,.result{color:#ffdc7b}.card p{color:#f0dfc6}.ultimate-guide{border-color:#c79a58;background:#122e45;color:#f5e5c8}.card .ultimate-guide b{color:#ffdf79}
-.callout{color:#fffae8;text-shadow:0 2px 5px #0c2036}
+.callout{position:static;flex:none;margin:0;padding:8px 12px;background:#17394b;border-top:1px solid #d7ac6355;color:#fff4d8;font-size:12px;line-height:1.4;font-weight:650;text-shadow:none;text-align:center}
 @media(max-width:950px) and (orientation:portrait),(max-width:650px){.app{min-height:650px}}
 
 
@@ -47,7 +47,7 @@ button,select{background:#1a3853;border-color:#b48248}
 <header><div><a href="../../" style="color:#a9bfd2;font-size:12px">← Library</a><div class="brand">BOARDWALK · TICKET CHALLENGE</div><h1>MIDWAY <span>SKEE-BALL</span></h1></div><a href="../magnet-mayhem/" style="color:#ffe482;font-size:12px">Magnet Mayhem →</a><button class="sound" id="sound" aria-pressed="false">Sound off</button></header>
 <div class="layout"><section class="machine" aria-label="Skeeball game">
 <div class="marquee" id="marquee" aria-live="polite">ROLL THE LANE · WIN TICKETS</div><div class="hud"><div class="total"><small id="who">PLAYER 1</small><strong id="score">0000</strong></div><div><small>BALLS LEFT</small><strong id="balls">9</strong></div><div class="clock"><small>TIME</small><strong id="time">60</strong></div></div>
-<div class="canvas-wrap"><canvas id="game" width="960" height="750" aria-label="Skeeball lane. Aim the ball, then hold and release Roll. Keyboard: left and right arrows to aim, hold and release Space to roll."></canvas><div class="callout" id="tip">Swipe a ball up the lane · or use the controls</div></div>
+<div class="canvas-wrap"><canvas id="game" width="960" height="750" aria-label="Skeeball lane. Aim the ball, then hold and release Roll. Keyboard: left and right arrows to aim, hold and release Space to roll."></canvas></div><div class="callout" id="tip">Swipe up to roll · or use the controls below</div>
 <div class="overlay" id="overlay"><div class="card"><div class="eyebrow" id="eyebrow">MIDWAY CHALLENGE</div><h2 id="title">Roll for the big score.</h2><p id="description">Send the wooden ball up the lane, bank into the scoring rings, and rack up tickets. Aim for the easy ring or time a moving bonus cup.</p><div class="ultimate-guide"><b>50:</b> easy ring · <b>75–200:</b> moving cups<br><b>500:</b> timed ticket vault · <b>1,000:</b> precision jackpot</div><div class="result" id="result" hidden></div><select id="mode" aria-label="Player mode"><option value="1">Solo practice</option><option value="2">2 players · pass and play</option></select><button class="primary" id="start">Start round</button></div></div>
 </section><aside class="panel"><h2>Your next roll</h2><div class="controls"><div><div class="label"><span>AIM</span><span id="aimText">CENTER</span></div><input id="aim" aria-label="Aim left or right" type="range" min="-15" max="15" step="0.25" value="0"><div class="hint keys">← Left &nbsp; Right →</div></div><div><div class="label"><span>POWER</span><span id="powerText">52%</span></div><div class="meter"><i id="powerBar"></i></div><button id="roll" class="roll">Hold to charge · release to roll</button></div></div><p class="hint long-hint">Hold <span class="keys">Space</span> to charge. Release to roll.<br>On touch, swipe upward on the lane. A longer swipe means more power.</p><div class="divider"></div><div class="players" id="players"></div><div class="live" id="message" role="status" aria-live="polite">Ready for your first roll</div><div class="secondary"><button id="pause">Pause</button><button id="restart">New round</button></div><p class="hint long-hint">Bank the ball into the moving cups. The 500-point vault opens on a timer. Aim carefully for the 1,000-point jackpot. Full power can rebound.</p></aside></div><div class="footer">Midway Skee-Ball · Teach Arcade</div>
 </main><script>
@@ -255,9 +255,6 @@ if(ready()){
 const a=aim*Math.PI/180;ctx.setLineDash([9,14]);line([project(0,.18,.02),project(Math.sin(a)*4.45,4.45,.02)],'#537cbb',4);ctx.setLineDash([]);
 for(let s=.9;s<4.3;s+=.7){const p=project(Math.sin(a)*s,s,.025);text('⌃',p.x,p.y,30,'#537cbb');}
 }
-poly([{x:W*.025,y:895},{x:W*.975,y:895},{x:W*.95,y:977},{x:W*.05,y:977}],'#316cb6','#ffdb6b',6);
-text('ROLL FOR TICKETS',W/2,950,16,'#fff2cc',1000);
-for(let i=0;i<Math.max(0,MAX_BALLS-used-1);i++){ctx.beginPath();ctx.arc(W*.18+i*W*.045,917,8,0,Math.PI*2);ctx.fillStyle='#fff1bd';ctx.fill();}
 let drawBall=ball;if(!drawBall&&ready())drawBall={x:0,s:.13,y:.075,phase:'ready',spin:0};
 if(drawBall)drawBallArt(drawBall);
 for(const p of particles){ctx.globalAlpha=Math.max(0,1-p.t/.7);ctx.fillStyle=p.color;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.t*7+p.vx);ctx.fillRect(-3,-2,6,4);ctx.restore();}ctx.globalAlpha=1;
