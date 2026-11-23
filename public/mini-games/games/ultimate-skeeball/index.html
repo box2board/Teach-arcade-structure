@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ultimate Neon Roll · Teach Arcade Mini-games</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Midway Skee-Ball · Teach Arcade Mini-games</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#0a1120;color:#eef8ff;font:15px system-ui,-apple-system,sans-serif}button,select,input{font:inherit}button,select{color:inherit;border:1px solid #39465b;background:#1a263a;border-radius:12px;padding:10px 16px}button{cursor:pointer;font-weight:750}button:hover{filter:brightness(1.15)}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ffd36c;outline-offset:3px}.app{max-width:1100px;margin:auto;padding:18px}header{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}.brand{font-size:12px;color:#82a1bb;letter-spacing:3px;font-weight:800}h1{font-size:clamp(24px,4vw,36px);margin:3px 0 0;letter-spacing:-1px}h1 span{color:#63f3d0}.layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:16px}.machine{position:relative;border:1px solid #34445d;border-radius:22px;overflow:hidden;background:#0b172a;box-shadow:0 20px 70px #0007}.hud{display:flex;justify-content:space-between;gap:8px;padding:14px 20px;background:#111d30}.hud small{display:block;color:#91a6bb;font-size:10px;font-weight:800;letter-spacing:1.6px}.hud strong{display:block;font-size:27px;font-variant-numeric:tabular-nums}.hud .clock strong{color:#ffd36c}.canvas-wrap{position:relative;aspect-ratio:960/750}canvas{display:block;width:100%;height:100%;touch-action:none}.callout{position:absolute;left:12px;right:12px;bottom:12px;text-align:center;pointer-events:none;color:#d9eeff;font-size:13px;text-shadow:0 2px 5px #000}.panel{border:1px solid #2a3b52;background:#111d30;border-radius:20px;padding:18px;align-self:start}h2{font-size:18px;margin:0 0 14px}.label{display:flex;justify-content:space-between;font-size:12px;color:#9eb5cb;margin:18px 0 8px}input[type=range]{width:100%;accent-color:#67f1d1}.meter{height:15px;border-radius:10px;background:#070e1a;border:1px solid #354358;overflow:hidden}.meter i{display:block;width:52%;height:100%;background:linear-gradient(90deg,#40bdf5,#62f2cf,#ffd36c);transition:width .03s linear}.roll{width:100%;margin:14px 0 4px;background:#63f3d0;color:#08251e;border:0;touch-action:none;user-select:none;-webkit-user-select:none;padding:15px}.hint{font-size:12px;line-height:1.6;color:#9eb5cb}.keys{color:#e4f3ff}.divider{height:1px;background:#29394e;margin:18px 0}.players{display:flex;gap:8px}.player{flex:1;background:#0a1424;border:1px solid #273950;border-radius:10px;padding:10px;font-size:11px;color:#9cb1c5}.player.active{border-color:#63f3d0}.player b{display:block;color:#fff;font-size:21px}.secondary{display:flex;gap:8px;margin-top:12px}.secondary button{flex:1;padding:9px;font-size:12px}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#05101bba;backdrop-filter:blur(5px);z-index:3;padding:20px}.overlay[hidden]{display:none}.card{width:100%;max-width:390px;border:1px solid #4b6a7d;border-radius:22px;background:linear-gradient(145deg,#1a3048,#101b2c);padding:28px;text-align:center;box-shadow:0 25px 70px #0008}.eyebrow{color:#63f3d0;font-size:11px;letter-spacing:2px;font-weight:800}.card h2{font-size:32px;margin:10px 0}.card p{color:#aec1d2;line-height:1.6}.card select{width:100%;margin:4px 0 12px}.primary{background:#63f3d0;color:#08251e;border:0;width:100%}.result{font-size:50px;color:#ffd36c;font-weight:900;margin:12px 0}.footer{font-size:11px;color:#6f879e;margin-top:12px;text-align:center}.sound{font-size:12px;padding:9px 12px}.live{min-height:20px;color:#ffd36c;font-size:13px;margin-top:12px;text-align:center}@media(max-width:720px){.app{padding:10px}.layout{grid-template-columns:1fr;gap:10px}.panel{padding:14px}.canvas-wrap{aspect-ratio:960/740}.panel h2,.panel .divider,.panel .long-hint{display:none}.controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}.label{margin-top:0}.roll{margin-top:7px;padding:12px}.players{margin-top:12px}.hud{padding:10px 15px}.hud strong{font-size:23px}header{margin-bottom:10px}.live{margin-top:5px}.hint{margin:6px 0}}
 
@@ -8,6 +8,27 @@ html{background:#38105f}body{background:radial-gradient(ellipse at top,#733aaa,#
 @media(max-width:950px) and (orientation:portrait),(max-width:650px){.app{padding:6px 7px 8px;gap:6px;min-height:650px}header{min-height:35px}header>div{gap:12px}header a{font-size:10px!important}h1{font-size:21px}.layout{display:flex;flex-direction:column;gap:8px}.machine{flex:1;min-height:0;border-width:3px;border-radius:19px}.panel{align-self:stretch;padding:8px 12px;border-radius:15px}.panel h2,.panel .divider,.panel .long-hint,.panel .keys{display:none}.controls{grid-template-columns:1fr 1.25fr;gap:16px}.label{margin:0 0 3px;font-size:10px}.roll{margin:5px 0 0;padding:8px;font-size:11px;min-height:37px}.meter{height:12px}.hud{padding:10px 15px 11px;gap:8px}.hud .total strong{font-size:48px}.hud strong{font-size:24px}.hud small{font-size:9px}.marquee{font-size:10px;padding:5px;letter-spacing:1.5px}.secondary{margin-top:5px;gap:6px}.secondary button{padding:5px;min-height:28px;font-size:10px}.live{font-size:11px;margin-top:5px;min-height:14px}.players:has(.player:only-child){display:none}.players{gap:6px;margin-top:5px}.player{padding:4px 8px}.player b{display:inline;margin-left:8px;font-size:14px}.callout{font-size:9px}.card{padding:20px}.card p{font-size:13px}.canvas-wrap{aspect-ratio:auto}}
 @media(min-width:651px) and (orientation:landscape) and (max-height:700px){.app{min-height:480px}.hud{padding:8px 20px}.hud .total strong{font-size:42px}.panel{padding:12px}.panel .long-hint{display:none}h1{font-size:20px}.marquee{padding:4px}}
 @media(prefers-reduced-motion:reduce){.machine.scored .hud{animation:none}}
+
+/* Boardwalk midway art direction: keep the lane readable behind the intro card. */
+html{background:#10243a}body{background:radial-gradient(ellipse at 50% -18%,#315c78 0,#182c46 48%,#0e1d31 100%);color:#fff9ec}
+.app{max-width:1460px}
+.machine{border-color:#f6c86d;background:#15304a;box-shadow:0 0 0 3px #10263d,0 0 0 6px #e9ad55,0 20px 55px #081421aa}
+.marquee{background:linear-gradient(180deg,#b94342,#842b3a);color:#fff4c9;border-bottom:3px solid #f5c665;text-shadow:0 2px 1px #602333;letter-spacing:2.5px}
+.hud{background:linear-gradient(110deg,#284d68,#1b3855 52%,#30546b);border-bottom-color:#eab75e}
+.hud small{color:#f4dcae}.hud strong{color:#fff4c8}
+.hud .total{background:linear-gradient(145deg,#14283c,#0c1d30);border-color:#dcae60;box-shadow:inset 0 3px 10px #050e1bbb,0 2px 0 #fff1c455}
+.hud .total strong{color:#ffe58c;text-shadow:0 0 8px #fbbf53,0 2px #24172d}
+.panel{border-color:#be8c4b;background:linear-gradient(155deg,#254863,#182f49);box-shadow:0 12px 32px #08142166}
+button,select{background:#1a3853;border-color:#b48248}
+.roll,.primary{background:linear-gradient(#ffe58f,#efad4d);color:#352b36;border:0;border-bottom:4px solid #bd7039;box-shadow:inset 0 2px 0 #fff9d5,0 4px 10px #091b2c55}
+.label{color:#f4dfbb}input[type=range]{accent-color:#efbd5d}
+.meter{background:#10263c;border-color:#b18550}.meter i{background:linear-gradient(90deg,#43c4ba,#f6d56e,#ec8056)}
+.hint{color:#c8d8e1}.keys{color:#fff1bd}.player{background:#112b43;border-color:#6d8290}.player.active{border-color:#f3ce74}.player b,.live{color:#ffe28a}
+.overlay{background:#08182a66;backdrop-filter:none}
+.card{max-width:420px;border:3px solid #f2cb72;background:linear-gradient(145deg,#244c67,#16334c);box-shadow:0 18px 55px #07152288,inset 0 1px 0 #fff1c866}
+.eyebrow,.result{color:#ffdc7b}.card p{color:#f0dfc6}.ultimate-guide{border-color:#c79a58;background:#122e45;color:#f5e5c8}.card .ultimate-guide b{color:#ffdf79}
+.callout{position:static;flex:none;margin:0;padding:8px 12px;background:#17394b;border-top:1px solid #d7ac6355;color:#fff4d8;font-size:12px;line-height:1.4;font-weight:650;text-shadow:none;text-align:center}
+@media(max-width:950px) and (orientation:portrait),(max-width:650px){.app{min-height:650px}}
 
 
 /* Cabinet bezel, warm lamps, and inset score glass. */
@@ -23,31 +44,34 @@ html{background:#38105f}body{background:radial-gradient(ellipse at top,#733aaa,#
 
 .card{max-width:440px}.card p{font-size:13px}.ultimate-guide{font-size:11px;color:#c7d7f5;line-height:1.55;text-align:left;margin:12px 0;padding:10px;border:1px solid #ad91e9;border-radius:12px;background:#26174d}.panel .ultimate-guide{margin-top:16px}.card .ultimate-guide b{color:#ffe46b}h1{font-size:22px}@media(max-width:650px){header a{font-size:10px!important}.panel .ultimate-guide{display:none}h1{font-size:17px}header>div{gap:7px}}
 </style></head><body><main class="app">
-<header><div><a href="../../" style="color:#a9bfd2;font-size:12px">← Library</a><div class="brand">ULTIMATE · MOVING TARGET CHALLENGE</div><h1>ULTIMATE <span>ROLL</span></h1></div><a href="../magnet-mayhem/" style="color:#ffe482;font-size:12px">Magnet Mayhem →</a><button class="sound" id="sound" aria-pressed="false">Sound off</button></header>
+<header><div><a href="../../" style="color:#a9bfd2;font-size:12px">← Library</a><div class="brand">BOARDWALK · TICKET CHALLENGE</div><h1>MIDWAY <span>SKEE-BALL</span></h1></div><a href="../magnet-mayhem/" style="color:#ffe482;font-size:12px">Magnet Mayhem →</a><button class="sound" id="sound" aria-pressed="false">Sound off</button></header>
 <div class="layout"><section class="machine" aria-label="Skeeball game">
-<div class="marquee" id="marquee" aria-live="polite">ULTIMATE · MOVING TARGET MAYHEM</div><div class="hud"><div class="total"><small id="who">PLAYER 1</small><strong id="score">0000</strong></div><div><small>BALLS LEFT</small><strong id="balls">9</strong></div><div class="clock"><small>TIME</small><strong id="time">60</strong></div></div>
-<div class="canvas-wrap"><canvas id="game" width="960" height="750" aria-label="Skeeball lane. Use the aim slider, then hold and release Roll. Keyboard: left and right arrows to aim, hold and release Space to roll."></canvas><div class="callout" id="tip">Swipe a ball up the lane · or use the controls</div></div>
-<div class="overlay" id="overlay"><div class="card"><div class="eyebrow" id="eyebrow">AIM · CHARGE · ROLL</div><h2 id="title">Go big. Aim ahead.</h2><p id="description">A longer table. Nine balls. Sixty seconds. Lead the moving cups, time the shutter, and chase the tiny 1,000-point slot.</p><div class="ultimate-guide"><b>50:</b> big safe cup · <b>75–200:</b> moving targets<br><b>500:</b> timed shutter · <b>1,000:</b> moving precision slot</div><div class="result" id="result" hidden></div><select id="mode" aria-label="Player mode"><option value="1">Solo practice</option><option value="2">2 players · pass and play</option></select><button class="primary" id="start">Start round</button></div></div>
-</section><aside class="panel"><h2>Your next roll</h2><div class="controls"><div><div class="label"><span>AIM</span><span id="aimText">CENTER</span></div><input id="aim" aria-label="Aim left or right" type="range" min="-15" max="15" step="0.25" value="0"><div class="hint keys">← Left &nbsp; Right →</div></div><div><div class="label"><span>POWER</span><span id="powerText">52%</span></div><div class="meter"><i id="powerBar"></i></div><button id="roll" class="roll">Hold to charge · release to roll</button></div></div><p class="hint long-hint">Hold <span class="keys">Space</span> to charge. Release to roll.<br>On touch, swipe upward on the lane. A longer swipe means more power.</p><div class="divider"></div><div class="players" id="players"></div><div class="live" id="message" role="status" aria-live="polite">Ready for your first roll</div><div class="secondary"><button id="pause">Pause</button><button id="restart">New round</button></div><p class="hint long-hint">Aim ahead of the moving cups. The 500-point vault opens on a timed cycle. The tiny 1,000-point slot keeps moving. Full power can rebound.</p></aside></div><div class="footer">Ultimate Skeeball · independent mini-game development</div>
+<div class="marquee" id="marquee" aria-live="polite">ROLL THE LANE · WIN TICKETS</div><div class="hud"><div class="total"><small id="who">PLAYER 1</small><strong id="score">0000</strong></div><div><small>BALLS LEFT</small><strong id="balls">9</strong></div><div class="clock"><small>TIME</small><strong id="time">60</strong></div></div>
+<div class="canvas-wrap"><canvas id="game" width="960" height="750" aria-label="Skeeball lane. Aim the ball, then hold and release Roll. Keyboard: left and right arrows to aim, hold and release Space to roll."></canvas></div><div class="callout" id="tip">Swipe up to roll · or use the controls below</div>
+<div class="overlay" id="overlay"><div class="card"><div class="eyebrow" id="eyebrow">MIDWAY CHALLENGE</div><h2 id="title">Roll for the big score.</h2><p id="description">Send the wooden ball up the lane, bank into the scoring rings, and rack up tickets. Aim for the easy ring or time a moving bonus cup.</p><div class="ultimate-guide"><b>50:</b> easy ring · <b>75–200:</b> moving cups<br><b>500:</b> timed ticket vault · <b>1,000:</b> precision jackpot</div><div class="result" id="result" hidden></div><select id="mode" aria-label="Player mode"><option value="1">Solo practice</option><option value="2">2 players · pass and play</option></select><button class="primary" id="start">Start round</button></div></div>
+</section><aside class="panel"><h2>Your next roll</h2><div class="controls"><div><div class="label"><span>AIM</span><span id="aimText">CENTER</span></div><input id="aim" aria-label="Aim left or right" type="range" min="-15" max="15" step="0.25" value="0"><div class="hint keys">← Left &nbsp; Right →</div></div><div><div class="label"><span>POWER</span><span id="powerText">52%</span></div><div class="meter"><i id="powerBar"></i></div><button id="roll" class="roll">Hold to charge · release to roll</button></div></div><p class="hint long-hint">Hold <span class="keys">Space</span> to charge. Release to roll.<br>On touch, swipe upward on the lane. A longer swipe means more power.</p><div class="divider"></div><div class="players" id="players"></div><div class="live" id="message" role="status" aria-live="polite">Ready for your first roll</div><div class="secondary"><button id="pause">Pause</button><button id="restart">New round</button></div><p class="hint long-hint">Bank the ball into the moving cups. The 500-point vault opens on a timer. Aim carefully for the 1,000-point jackpot. Full power can rebound.</p></aside></div><div class="footer">Midway Skee-Ball · Teach Arcade</div>
 </main><script>
 (()=>{'use strict';
 const elements=new Map(),$=id=>{if(!elements.has(id))elements.set(id,document.getElementById(id));return elements.get(id);},c=$('game');
 let ctx=c.getContext('2d');
 const cabinetLayer=document.createElement('canvas');
+const cabinetArt=new Image();
+cabinetArt.src='./assets/midway-skeeball-bg.webp';
+cabinetArt.onload=()=>{cabinetDirty=true;};
 let cabinetDirty=true,resizeDirty=true;
 const machine=document.querySelector('.machine');
 const performanceStats={frames:0,paintMs:0,cabinetBuilds:0};
 let W=640;const H=1000,MAX_BALLS=9,ROUND_SECONDS=60;
 const holes=[
-{id:'big',x:0,s:5.35,rx:.46,r:.30,n:50,color:'#28d7e1',motion:'still',label:'BIG EASY'},
-{id:'slider',x:0,s:6.05,rx:.30,r:.23,n:75,color:'#48dd98',motion:'slide',ax:.56,speed:1.1,phase:0,label:'SHUTTLE'},
-{id:'left',x:-.73,s:6.76,rx:.27,r:.23,n:100,color:'#ffca42',motion:'bob',az:.18,speed:1.1,phase:0,label:'BOBBER'},
-{id:'right',x:.73,s:6.76,rx:.27,r:.23,n:100,color:'#ffca42',motion:'bob',az:.18,speed:1.1,phase:Math.PI,label:'BOBBER'},
-{id:'sweeper',x:0,s:7.40,rx:.26,r:.20,n:150,color:'#6bc4ff',motion:'slide',ax:.56,speed:1.5,phase:1.2,label:'SWEEPER'},
-{id:'orbitL',x:-.67,s:8.03,rx:.22,r:.19,n:200,color:'#e3a3ff',motion:'orbit',ax:.13,az:.16,speed:1.6,phase:0,label:'ORBIT'},
-{id:'orbitR',x:.67,s:8.03,rx:.22,r:.19,n:200,color:'#e3a3ff',motion:'orbit',ax:.13,az:.16,speed:1.6,phase:Math.PI,label:'ORBIT'},
-{id:'vault',x:0,s:8.12,rx:.20,r:.17,n:500,color:'#ffe46b',motion:'gate',speed:1,phase:0,label:'VAULT'},
-{id:'needle',x:0,s:8.65,rx:.13,r:.14,n:1000,color:'#a6f2ff',motion:'slide',ax:.72,speed:1.65,phase:2,label:'NEEDLE'}
+{id:'big',x:0,s:5.35,rx:.46,r:.30,n:50,color:'#45c5b0',motion:'still',label:'BIG EASY'},
+{id:'slider',x:0,s:6.05,rx:.30,r:.23,n:75,color:'#f17b5d',motion:'slide',ax:.56,speed:1.1,phase:0,label:'SHUTTLE'},
+{id:'left',x:-.73,s:6.76,rx:.27,r:.23,n:100,color:'#f3bd4d',motion:'bob',az:.18,speed:1.1,phase:0,label:'BOBBER'},
+{id:'right',x:.73,s:6.76,rx:.27,r:.23,n:100,color:'#f3bd4d',motion:'bob',az:.18,speed:1.1,phase:Math.PI,label:'BOBBER'},
+{id:'sweeper',x:0,s:7.40,rx:.26,r:.20,n:150,color:'#6daed1',motion:'slide',ax:.56,speed:1.5,phase:1.2,label:'SWEEPER'},
+{id:'orbitL',x:-.67,s:8.03,rx:.22,r:.19,n:200,color:'#d58b69',motion:'orbit',ax:.13,az:.16,speed:1.6,phase:0,label:'ORBIT'},
+{id:'orbitR',x:.67,s:8.03,rx:.22,r:.19,n:200,color:'#d58b69',motion:'orbit',ax:.13,az:.16,speed:1.6,phase:Math.PI,label:'ORBIT'},
+{id:'vault',x:0,s:8.12,rx:.20,r:.17,n:500,color:'#f5d46e',motion:'gate',speed:1,phase:0,label:'VAULT'},
+{id:'needle',x:0,s:8.65,rx:.13,r:.14,n:1000,color:'#82d9cc',motion:'slide',ax:.72,speed:1.65,phase:2,label:'NEEDLE'}
 ].map(h=>({...h,baseX:h.x,baseS:h.s,open:true}));
 let targetTime=0;
 let shownScore=0;
@@ -73,10 +97,10 @@ setText('aimText',Math.abs(aim)<.3?'CENTER':`${Math.abs(aim).toFixed(1)}° ${aim
 const locked=!ready(),paused=!['playing','paused'].includes(state);if($('roll').disabled!==locked)$('roll').disabled=locked;if($('pause').disabled!==paused)$('pause').disabled=paused;setText('pause',state==='paused'?'Resume':'Pause');
 const markup=players.map((p,i)=>`<div class="player ${i===current?'active':''}">${p.name}<b>${p.score}</b></div>`).join('');if(markup!==playerMarkup){$('players').innerHTML=markup;playerMarkup=markup;}}
 
-function overlay(title,desc,label,eyebrow='NEON ROLL',result=null){$('overlay').hidden=false;$('title').textContent=title;$('description').textContent=desc;$('start').textContent=label;$('eyebrow').textContent=eyebrow;$('result').hidden=result===null;$('result').textContent=result===null?'':result;$('mode').hidden=state!=='intro'&&state!=='finished';}
+function overlay(title,desc,label,eyebrow='MIDWAY SKEE-BALL',result=null){$('overlay').hidden=false;$('title').textContent=title;$('description').textContent=desc;$('start').textContent=label;$('eyebrow').textContent=eyebrow;$('result').hidden=result===null;$('result').textContent=result===null?'':result;$('mode').hidden=state!=='intro'&&state!=='finished';}
 function startRound(opts={}){config=opts;const count=clamp(Number(opts.playerCount||$('mode').value)||1,1,4);players=Array.from({length:count},(_,i)=>({id:opts.players?.[i]?.id||`player-${i+1}`,name:`Player ${i+1}`,score:0}));current=0;beginTurn();}
 function beginTurn(){last=0;targetTime=0;advanceTargets(0);state='playing';shownScore=0;used=0;remaining=ROUND_SECONDS;aim=0;power=.52;ball=null;particles=[];floating=[];flash=null;pending=0;clearInput();$('overlay').hidden=true;$('message').textContent='Aim, then hold and release to roll';updateUI();}
-function finishTurn(){clearInput();ball=null;if(current<players.length-1){state='handoff';overlay('Pass the controls',`${players[current].name} scored ${players[current].score}. ${players[current+1].name}, you get nine balls and sixty seconds.`,'Start next player','NEXT UP');}else{state='finished';const best=Math.max(...players.map(p=>p.score)),winners=players.filter(p=>p.score===best);const title=players.length===1?'Round complete':winners.length>1?'It’s a tie!':`${winners[0].name} wins!`;overlay(title,players.length===1?'Try leading a moving cup or timing the 500-point vault. The 1,000-point needle takes a precise shot.':players.map(p=>`${p.name}: ${p.score}`).join(' · '),'Play again','FINAL SCORE',best);const results=players.map(p=>({playerId:p.id,score:p.score,rank:1+players.filter(q=>q.score>p.score).length}));const detail={gameId:'ultimate-neon-roll',version:1,results};window.dispatchEvent(new CustomEvent('sparks:minigame:complete',{detail}));if(typeof config.onComplete==='function')config.onComplete(detail);}updateUI();}
+function finishTurn(){clearInput();ball=null;if(current<players.length-1){state='handoff';overlay('Pass the controls',`${players[current].name} scored ${players[current].score}. ${players[current+1].name}, you get nine balls and sixty seconds.`,'Start next player','NEXT UP');}else{state='finished';const best=Math.max(...players.map(p=>p.score)),winners=players.filter(p=>p.score===best);const title=players.length===1?'Round complete':winners.length>1?'It’s a tie!':`${winners[0].name} wins!`;overlay(title,players.length===1?'Try banking into a moving cup or timing the 500-point ticket vault. The 1,000-point jackpot takes a precise shot.':players.map(p=>`${p.name}: ${p.score}`).join(' · '),'Play again','FINAL SCORE',best);const results=players.map(p=>({playerId:p.id,score:p.score,rank:1+players.filter(q=>q.score>p.score).length}));const detail={gameId:'ultimate-neon-roll',version:1,results};window.dispatchEvent(new CustomEvent('sparks:minigame:complete',{detail}));if(typeof config.onComplete==='function')config.onComplete(detail);}updateUI();}
 function shoot(){if(!ready())return;charge=false;swipe=null;used++;const a=aim*Math.PI/180;ball={x:0,s:0,y:.075,vx:Math.sin(a)*(3+power*4.6),vs:3+power*4.6,vy:0,power,phase:'roll',age:0,spin:0};$('message').textContent='Rolling…';beep(170,.11,'triangle',.035);updateUI();}
 function land(b){let hit=null,best=Infinity,blocked=false;for(const h of holes){if(!h.open){if(Math.hypot((b.x-h.x)/(h.rx+.025),(b.s-h.s)/(h.r+.025))<=1.05)blocked=true;continue;}const assist=h.n>=500?.025:.07;const d=Math.hypot((b.x-h.x)/(h.rx+assist),(b.s-h.s)/(h.r+assist));if(d<=1.05&&d<best){hit=h;best=d;}}b.phase=hit?'sink':'miss';b.age=0;b.missS=b.s;b.missX=b.x;if(hit){b.targetHole=hit;b.targetX=hit.x;b.targetS=hit.s;players[current].score+=hit.n;flash={h:hit,t:0};floating.push({x:project(hit.x,hit.s).x,y:project(hit.x,hit.s).y,t:0,n:hit.n});for(let i=0;i<20;i++)particles.push({x:project(hit.x,hit.s).x,y:project(hit.x,hit.s).y,vx:(Math.random()-.5)*230,vy:-80-Math.random()*170,t:0,color:i%2?'#63f3d0':'#ffd36c'});$('message').textContent=`+${hit.n} points${hit.n>=500?' · JACKPOT!':''}`;beep(hit.n===100?1050:480+hit.n*6,.32,'sine',.08);}else{$('message').textContent=blocked?'Vault closed · wait for green':'Miss · lead the target or adjust power';beep(130,.17,'triangle',.035);}updateUI();}
 function updateBall(dt){
@@ -177,23 +201,41 @@ ctx.strokeStyle='#bd7a3f88';ctx.lineWidth=1.3;ctx.beginPath();ctx.arc(0,0,r,0,Ma
 }
 
 function paintCabinet(){
-const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#3265d7');bg.addColorStop(.5,'#3938a3');bg.addColorStop(1,'#6a278b');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
-for(let i=0;i<24;i++){ctx.globalAlpha=.13;text(i%3?'✦':'★',(i*137.3)%W,(i*83)%H,15+i%4*5,'#fff1b8');}ctx.globalAlpha=1;
-const body=ctx.createLinearGradient(0,60,W,950);body.addColorStop(0,'#91c9ff');body.addColorStop(.22,'#3d80d7');body.addColorStop(.7,'#2449a2');body.addColorStop(1,'#56a9ef');
-ctx.save();ctx.shadowColor='#0b0b4888';ctx.shadowBlur=22;ctx.shadowOffsetY=15;surface(-1.16,1.16,0,9.02,body,'#ffdd80',9);ctx.restore();
-const lane=ctx.createLinearGradient(0,500,0,900);lane.addColorStop(0,'#fff4d5');lane.addColorStop(1,'#ffd391');surface(-1.02,1.02,0,4.8,lane);
-for(let x=-.85;x<1;x+=.17)line([project(x,0,.005),project(x,4.8,.005)],'#c9843d22',2);
-const ramp=ctx.createLinearGradient(0,570,0,638);ramp.addColorStop(0,'#edb05f');ramp.addColorStop(.28,'#fff5cb');ramp.addColorStop(.72,'#ffda8c');ramp.addColorStop(1,'#f6c16a');surface(-1.015,1.015,4.25,4.8,ramp);
-for(let i=0;i<65;i++){const x=-.96+(i*.137)%1.92,s=(i*.291)%4.2;const p=project(x,s,.008);ctx.globalAlpha=.08;line([{x:p.x,y:p.y},{x:p.x+.8,y:p.y+14+i%13}],'#935f27',1);}ctx.globalAlpha=1;
-const bank=ctx.createLinearGradient(0,100,0,550);bank.addColorStop(0,'#1b3d9b');bank.addColorStop(.5,'#3575dd');bank.addColorStop(1,'#669cee');surface(-1.02,1.02,4.8,9.02,bank,'#ffe79c',5);
-ctx.save();surface(-.97,-.84,4.8,8.95,'#aee9ff22');surface(.86,.97,4.8,8.95,'#081c6433');ctx.restore();
-poly([project(-1.02,9.02),project(1.02,9.02),project(1.02,9.02,floor(9.02)+.26),project(-1.02,9.02,floor(9.02)+.26)],'#4989d6','#fff0a0',5);
-for(const side of [-1,1]){
-const rail=[project(side*1.1,0,.08),project(side*1.1,4.8,.08),project(side*1.1,9.02,floor(9.02)+.08)];
-line(rail,'#26327c',31);line(rail,'#a1d9ff',24);line(rail,'#3977c5',15);line(rail,'#ffe684',5);
-
+if(cabinetArt.complete&&cabinetArt.naturalWidth){
+ const sourceRatio=cabinetArt.naturalWidth/cabinetArt.naturalHeight;
+ const targetRatio=W/H;
+ let sx=0,sy=0,sw=cabinetArt.naturalWidth,sh=cabinetArt.naturalHeight;
+ if(sourceRatio>targetRatio){sw=Math.round(cabinetArt.naturalHeight*targetRatio);sx=Math.round((cabinetArt.naturalWidth-sw)/2);}
+ else {sh=Math.round(cabinetArt.naturalWidth/targetRatio);sy=Math.round((cabinetArt.naturalHeight-sh)/2);}
+ ctx.drawImage(cabinetArt,sx,sy,sw,sh,0,0,W,H);
+ return;
 }
-text('★  U L T I M A T E  ★',W/2,48,22,'#fff0a0');
+const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#15334e');bg.addColorStop(.38,'#47718a');bg.addColorStop(1,'#cf8d55');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+// Warm midway lights frame a recognizable skee-ball cabinet without competing with the lane.
+const awning=ctx.createLinearGradient(0,0,0,250);awning.addColorStop(0,'#263e53');awning.addColorStop(1,'#152d43');ctx.fillStyle=awning;ctx.fillRect(0,0,W,285);
+for(let i=0;i<9;i++){const x=i*W/8;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x+W/8,0);ctx.lineTo(x+W/8-18,260);ctx.lineTo(x+18,260);ctx.closePath();ctx.fillStyle=i%2?'#b74243':'#e9d5a9';ctx.globalAlpha=.52;ctx.fill();}ctx.globalAlpha=1;
+ctx.save();ctx.shadowColor='#081725aa';ctx.shadowBlur=24;ctx.shadowOffsetY=10;ctx.fillStyle='#8d303c';ctx.fillRect(W*.17,28,W*.66,78);ctx.restore();
+ctx.strokeStyle='#f6d27c';ctx.lineWidth=6;ctx.strokeRect(W*.17,28,W*.66,78);text('MIDWAY  SKEE-BALL',W/2,67,27,'#fff1c2',900);
+for(let i=0;i<15;i++){const x=W*.2+i*W*.6/14;ctx.beginPath();ctx.arc(x,32,3,0,Math.PI*2);ctx.fillStyle=i%2?'#ffe996':'#fff4d0';ctx.fill();ctx.beginPath();ctx.arc(x,102,3,0,Math.PI*2);ctx.fill();}
+for(let i=0;i<14;i++){const x=(i+.5)*W/14;ctx.globalAlpha=.2;ctx.fillStyle=i%2?'#ffe49b':'#fff';ctx.beginPath();ctx.ellipse(x,225,14,5,0,0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;
+const body=ctx.createLinearGradient(0,60,W,950);body.addColorStop(0,'#f4c567');body.addColorStop(.10,'#b84a42');body.addColorStop(.45,'#7d3542');body.addColorStop(.72,'#274f68');body.addColorStop(1,'#17324b');
+ctx.save();ctx.shadowColor='#091928bb';ctx.shadowBlur=26;ctx.shadowOffsetY=18;surface(-1.16,1.16,0,9.02,body,'#f3cf7d',10);ctx.restore();
+for(let side of [-1,1]){const panel=ctx.createLinearGradient(0,180,0,850);panel.addColorStop(0,'#e17353');panel.addColorStop(.4,'#b94342');panel.addColorStop(1,'#723144');surface(side<0?-1.13:.91,side<0?-.91:1.13,0,9.02,panel,'#f8d67f',4);}
+const lane=ctx.createLinearGradient(0,420,0,900);lane.addColorStop(0,'#f6e7bd');lane.addColorStop(.45,'#e8c58e');lane.addColorStop(1,'#c88b55');surface(-1.02,1.02,0,4.8,lane,'#fff1ce',3);
+for(let x=-.9;x<1;x+=.15)line([project(x,0,.009),project(x,4.8,.009)],'#8c562c2b',2);
+for(let s=.22;s<4.7;s+=.32){const a=project(-1,s,.012),b=project(1,s,.012);line([a,b],'#fff1ce35',1);}
+const ramp=ctx.createLinearGradient(0,570,0,638);ramp.addColorStop(0,'#bd7548');ramp.addColorStop(.23,'#f8dfa6');ramp.addColorStop(.62,'#efd198');ramp.addColorStop(1,'#b86f45');surface(-1.015,1.015,4.25,4.8,ramp,'#fff0c4',3);
+const bank=ctx.createLinearGradient(0,280,0,590);bank.addColorStop(0,'#315b70');bank.addColorStop(.55,'#24465e');bank.addColorStop(1,'#17334c');surface(-1.02,1.02,4.8,9.02,bank,'#f3d17d',6);
+// Gold scoring lanes and inset trim make the backboard and target field read as a real cabinet.
+for(const x of [-.69,-.35,0,.35,.69])line([project(x,4.93,.012),project(x,8.88,.012)],'#e9c77933',2);
+line([project(-.92,5.04,.02),project(.92,5.04,.02)],'#ffe2a0',4);line([project(-.92,8.9,.02),project(.92,8.9,.02)],'#ffe2a0',4);
+ctx.save();surface(-.97,-.84,4.8,8.95,'#fff0c817');surface(.86,.97,4.8,8.95,'#081c641f');ctx.restore();
+poly([project(-1.02,9.02),project(1.02,9.02),project(1.02,9.02,floor(9.02)+.26),project(-1.02,9.02,floor(9.02)+.26)],'#203f58','#f5d17a',6);
+for(const side of [-1,1]){
+ const rail=[project(side*1.1,0,.08),project(side*1.1,4.8,.08),project(side*1.1,9.02,floor(9.02)+.08)];
+ line(rail,'#54283b',34);line(rail,'#e5a65f',27);line(rail,'#8d3941',18);line(rail,'#ffdf84',5);
+ for(let s=.25;s<8.9;s+=.48){const p=project(side*1.1,s,.105);ctx.beginPath();ctx.arc(p.x,p.y,4,0,Math.PI*2);ctx.fillStyle='#fff0b5';ctx.fill();}
+}
 }
 function paint(){
 resizeCanvas();
@@ -213,16 +255,13 @@ if(ready()){
 const a=aim*Math.PI/180;ctx.setLineDash([9,14]);line([project(0,.18,.02),project(Math.sin(a)*4.45,4.45,.02)],'#537cbb',4);ctx.setLineDash([]);
 for(let s=.9;s<4.3;s+=.7){const p=project(Math.sin(a)*s,s,.025);text('⌃',p.x,p.y,30,'#537cbb');}
 }
-poly([{x:W*.025,y:895},{x:W*.975,y:895},{x:W*.95,y:977},{x:W*.05,y:977}],'#316cb6','#ffdb6b',6);
-text('LONG TABLE · BIG RISKS',W/2,950,16,'#fff5cb',1000);
-for(let i=0;i<Math.max(0,MAX_BALLS-used-1);i++){ctx.beginPath();ctx.arc(W*.18+i*W*.045,917,8,0,Math.PI*2);ctx.fillStyle='#fff1bd';ctx.fill();}
 let drawBall=ball;if(!drawBall&&ready())drawBall={x:0,s:.13,y:.075,phase:'ready',spin:0};
 if(drawBall)drawBallArt(drawBall);
 for(const p of particles){ctx.globalAlpha=Math.max(0,1-p.t/.7);ctx.fillStyle=p.color;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.t*7+p.vx);ctx.fillRect(-3,-2,6,4);ctx.restore();}ctx.globalAlpha=1;
 for(const f of floating){ctx.globalAlpha=Math.max(0,1-f.t/.9);text('+'+f.n,f.x,f.y-f.t*90-18,44,'#fff292');}ctx.globalAlpha=1;
 if(charge||swipe)text(Math.round(power*100)+'% POWER',W/2,810,26,'#315789');
 const celebrating=flash&&flash.t<1.4;
-const marquee=celebrating?(flash.h.n>=500?'★ JACKPOT! +'+flash.h.n+' ★':'★ +'+flash.h.n+' · NICE ROLL! ★'):state==='paused'?'TAKE A BREATHER · PAUSED':state==='playing'?'LEAD THE TARGET · TIME THE VAULT':'ULTIMATE · MOVING TARGET MAYHEM';
+const marquee=celebrating?(flash.h.n>=500?'★ JACKPOT! +'+flash.h.n+' ★':'★ +'+flash.h.n+' · NICE ROLL! ★'):state==='paused'?'TAKE A BREATHER · PAUSED':state==='playing'?'AIM FOR THE CUPS · ROLL FOR TICKETS':'ROLL THE LANE · WIN TICKETS';
 if($('marquee').textContent!==marquee)$('marquee').textContent=marquee;
 if(machine.classList.contains('scored')!==!!celebrating)machine.classList.toggle('scored',!!celebrating);
 if(ready()&&(charge||swipe)&&!reducedMotion){const p=project(0,.13,.025);ctx.globalAlpha=.35;ctx.strokeStyle='#ffec86';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(p.x,p.y+8,40+power*14,12+power*4,0,0,Math.PI*2);ctx.stroke();ctx.globalAlpha=1;}
