@@ -55,6 +55,9 @@ button,select{background:#1a3853;border-color:#b48248}
 const elements=new Map(),$=id=>{if(!elements.has(id))elements.set(id,document.getElementById(id));return elements.get(id);},c=$('game');
 let ctx=c.getContext('2d');
 const cabinetLayer=document.createElement('canvas');
+const cabinetArt=new Image();
+cabinetArt.src='./assets/midway-skeeball-bg.webp';
+cabinetArt.onload=()=>{cabinetDirty=true;};
 let cabinetDirty=true,resizeDirty=true;
 const machine=document.querySelector('.machine');
 const performanceStats={frames:0,paintMs:0,cabinetBuilds:0};
@@ -198,6 +201,15 @@ ctx.strokeStyle='#bd7a3f88';ctx.lineWidth=1.3;ctx.beginPath();ctx.arc(0,0,r,0,Ma
 }
 
 function paintCabinet(){
+if(cabinetArt.complete&&cabinetArt.naturalWidth){
+ const sourceRatio=cabinetArt.naturalWidth/cabinetArt.naturalHeight;
+ const targetRatio=W/H;
+ let sx=0,sy=0,sw=cabinetArt.naturalWidth,sh=cabinetArt.naturalHeight;
+ if(sourceRatio>targetRatio){sw=Math.round(cabinetArt.naturalHeight*targetRatio);sx=Math.round((cabinetArt.naturalWidth-sw)/2);}
+ else {sh=Math.round(cabinetArt.naturalWidth/targetRatio);sy=Math.round((cabinetArt.naturalHeight-sh)/2);}
+ ctx.drawImage(cabinetArt,sx,sy,sw,sh,0,0,W,H);
+ return;
+}
 const bg=ctx.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#15334e');bg.addColorStop(.38,'#47718a');bg.addColorStop(1,'#cf8d55');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
 // Warm midway lights frame a recognizable skee-ball cabinet without competing with the lane.
 const awning=ctx.createLinearGradient(0,0,0,250);awning.addColorStop(0,'#263e53');awning.addColorStop(1,'#152d43');ctx.fillStyle=awning;ctx.fillRect(0,0,W,285);
