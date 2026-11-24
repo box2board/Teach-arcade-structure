@@ -68,7 +68,7 @@ export function createCanvasArena(canvas) {
       context.translate(x,y);
       const scale=width<500?.52:.68;
       context.scale(scale,scale);
-      drawCharacterToken(context,{...player,x:0,y:0,walk:now/100},palette.get(player.characterId));
+      drawCharacterToken(context,{...player,x:0,y:0,walk:player.motion==='idle'?0:now/100},palette.get(player.characterId));
       context.restore();
       context.font=isLocal?'bold 12px system-ui':'11px system-ui';
       context.textAlign='center';

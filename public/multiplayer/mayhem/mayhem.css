@@ -1,8 +1,5 @@
 :root{color-scheme:dark;font:16px/1.5 system-ui;color:#fff8e7;background:#10182d;--panel:#202d49;--gold:#ffd371}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0}main{max-width:1380px;margin:auto;padding:clamp(14px,3vw,36px)}header{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:20px}h1{font-size:clamp(30px,6vw,58px);line-height:1;margin:0;color:var(--gold)}h2{margin:0 0 14px;font-size:25px}.brand{color:#a9bad9;letter-spacing:.1em;font-size:12px;margin:0 0 6px}.entry,.layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}.layout{grid-template-columns:minmax(0,2fr) minmax(270px,1fr);align-items:start}form,.panel{background:var(--panel);border:1px solid #465776;padding:20px;border-radius:18px}label{display:block;margin:12px 0}input,select{display:block;width:100%;margin-top:4px;color:inherit;background:#151f36;border:1px solid #71819e;padding:10px;border-radius:9px;font:inherit}button{font:700 16px/1.25 system-ui;background:var(--gold);color:#181a31;border:0;border-radius:10px;padding:11px 15px;min-height:44px;cursor:pointer}button:disabled{opacity:.55;cursor:wait}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #60e3df;outline-offset:3px}.scores{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}.score{border-left:4px solid var(--team);background:var(--panel);padding:8px 12px;border-radius:8px;flex:1 0 95px}.score b{display:block;font-size:22px}#stage{position:relative;border-radius:18px;overflow:hidden;background:#176984;aspect-ratio:4/3}canvas{display:block;width:100%;height:100%}#legend{position:absolute;bottom:9px;left:10px;background:#131e33e8;border-radius:8px;padding:4px 8px;font-size:12px}#clock{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:800;margin:0 0 9px}#room-label{text-align:right;font-weight:800;color:#d5e6ff}#error{background:#632c38;padding:10px;border-radius:8px}.answers{display:grid;gap:8px}.answers button{text-align:left;background:#354766;color:white}.mini-view{height:220px;background:#131b32;border-radius:12px;margin:10px 0}.symbol{font-size:40px;text-align:center;color:var(--gold);margin:8px 0}.muted{color:#c3cfe8}summary{cursor:pointer;margin-bottom:10px}a{color:#8fe4ed}@media(max-width:740px){.layout,.entry{grid-template-columns:1fr}.layout .panel{grid-row:1}#stage{max-height:48vh}.panel,form{padding:14px}.mini-view{height:170px}}
 
-.cabinet-round .layout{grid-template-columns:1fr}
-.cabinet-round #stage{display:none}
-.cabinet-frame{display:block;width:100%;height:clamp(460px,72svh,880px);border:0;background:#131b32;border-radius:12px}
 
 .answers button[aria-pressed=true]{outline:2px solid #ffe178;outline-offset:1px;background:#56447b}
 .teacher-overview{margin:0 0 16px;padding:12px 14px;border:1px solid #60769b;border-radius:12px;background:#18243c}
@@ -32,10 +29,6 @@
 .menu-note{margin:12px 0 0;text-align:center;color:#aebede;font-size:13px}
 
 /* Keep the random mini-game selection unmistakable when each round begins. */
-.mini-game-pick{display:grid;gap:5px;margin:0 0 14px;padding:16px 18px;border:2px solid #ffe284;border-radius:16px;background:radial-gradient(circle at 100% 0,#f65a8c 0 5%,transparent 5.5%),linear-gradient(115deg,#5f35a1,#305ab1 60%,#087d91);box-shadow:0 5px 0 #1a1d53,0 0 22px #ffd85833}
-.pick-kicker{color:#ffe383;font-size:11px;font-weight:950;letter-spacing:.14em}
-.mini-game-pick strong{font-size:clamp(24px,3vw,36px);line-height:1.1;color:white;text-shadow:0 2px #322264}
-.mini-game-pick small{font-size:14px;color:#e8f4ff}
 
 /* Make the movement die a large, obvious action for the current driver. */
 .die-roll-control{display:grid;grid-template-columns:82px 1fr;grid-template-rows:1fr 1fr;column-gap:16px;align-items:center;width:100%;min-height:112px;margin:12px 0;padding:14px 18px;border:2px solid #fff0a4;border-radius:18px;background:linear-gradient(115deg,#ffdb70,#f9a339);box-shadow:0 7px 0 #a25133,0 10px 20px #0005;color:#201932;text-align:left}
@@ -59,5 +52,16 @@
 #content>.answers button:hover{filter:brightness(1.15);transform:translateY(-2px)}
 #content>p{font-weight:700;color:#e0eaff}
 
-.mini-round .layout{grid-template-columns:1fr}
-.mini-round .teacher-overview{margin-bottom:10px}
+
+/* Keep the arena and its controls in view during student play. */
+body>main.mini-active{padding:8px clamp(8px,2vw,18px)}
+.mini-active>header{align-items:center;margin:0 0 4px;min-height:30px;gap:8px}
+.mini-active>header .brand{display:none}
+.mini-active>header h1{font-size:clamp(16px,2vw,24px);line-height:1.2;margin:0}
+.mini-active #room-label{font-size:13px}
+.mini-round .layout{display:block}
+.mini-round #scores{display:flex;gap:6px;margin:0 0 6px;overflow:auto}
+.mini-round #scores .score{padding:3px 6px;white-space:nowrap;font-size:12px}
+.mini-round #scores .score b{display:inline;margin-left:6px;font-size:inherit}
+.mini-round #panel{padding:4px;border:0;background:none;box-shadow:none}
+.mini-round #clock{display:none}

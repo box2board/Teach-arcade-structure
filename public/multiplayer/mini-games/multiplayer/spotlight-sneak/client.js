@@ -6,7 +6,7 @@ export function mount({container,initial,now}){
  const d=container.ownerDocument,host=d.createElement('div'),shadow=host.attachShadow({mode:'open'});container.append(host);
  const style=d.createElement('style');style.textContent=`
  :host{display:block;color:#f9edce;font:15px system-ui}*{box-sizing:border-box}
- .wrap{background:#101f30;border-radius:16px;overflow:hidden;max-width:min(600px,calc((100dvh - 160px)*.857));margin:auto}
+ .wrap{background:#101f30;border-radius:16px;overflow:hidden;max-width:min(600px,calc((100dvh - 225px)*.857));margin:auto}
  .wrap{border:1px solid #b58b58;box-shadow:0 10px 40px #060e18}header{background:linear-gradient(115deg,#30233e,#172c3b);border-bottom:2px solid #c29760}h2{font-family:Georgia,serif;color:#ffe2aa}.stats{font-variant-numeric:tabular-nums}.stats span{border:1px solid #546572;border-radius:7px;padding:4px 7px}.notice{font-weight:700;letter-spacing:.04em} header,footer{padding:10px 16px}header{display:flex;justify-content:space-between;align-items:center;gap:8px}
  h2,p{margin:3px 0}small{color:#9ddac9}.stats{display:flex;gap:16px;align-items:center;font-weight:800}
  canvas{width:100%;display:block;touch-action:none;background:#102630}

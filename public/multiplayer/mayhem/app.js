@@ -1,7 +1,6 @@
 import {createMiniGameHost} from '../lib/minigame-host.js';
 import {postSession,startSessionPolling} from '../lib/session-network.js';
 import {board,nodes} from './presentation.js';
-import {miniGames} from '../lib/game-labels.js';
 const $=id=>document.getElementById(id);
 const node=(tag,value='',className='')=>{const el=document.createElement(tag);el.textContent=value;el.className=className;return el;};
 const params=new URLSearchParams(location.search);
@@ -33,6 +32,7 @@ function accept(next){
   $('stage').hidden=playingMini;
   $('world').hidden=playingMini||!board3d;
   $('session').classList.toggle('mini-round',playingMini);
+  $('session').closest('main').classList.toggle('mini-active',playingMini);
   if(!playingMini)loadBoard();
   const key=JSON.stringify({
     phase:state.phase,since:state.since,turn:state.turn,driver:state.driver,roll:state.roll,remaining:state.remaining,
@@ -96,7 +96,13 @@ function renderScores(){
 function render(){
   const s=state,c=$('content');
   miniHost.destroy();
-  const heading={lobby:'Waiting for players',lightning:'Lightning round',standings:'Team standings',roll:'Roll the die',route:'Choose a path',landing:'Team landing',qualifier:'Mini-game qualifier',mini:'Surprise mini-game!','round-result':'Round results',finished:'Final standings'};
+  if(s.phase==='mini'){
+    const container=node('section');
+    c.replaceChildren(container);
+    if(miniHost.supports(s.game))void miniHost.mount(s.game,container,miniContext(s));
+    return;
+  }
+  const heading={lobby:'Waiting for players',lightning:'Lightning round',standings:'Team standings',roll:'Roll the die',route:'Choose a path',landing:'Team landing',qualifier:'Mini-game qualifier','round-result':'Round results',finished:'Final standings'};
   c.replaceChildren(node('h2',heading[s.phase]));
   const line=(v)=>c.append(node('p',v));
   if(s.shared&&s.host&&s.phase!=='lobby'){
@@ -157,16 +163,6 @@ function render(){
       s.routes.forEach((id,i)=>choices.append(button((i===0?'Stay in ':'Cross to ')+board.districts[nodes[id].district].name,()=>command('route',{destination:id}),!s.canDrive)));
       c.append(choices);
     }else{c.append(dieRollControl(false,s.roll));line('Rolled '+s.roll+' · '+team.landing+' space · +'+team.reward+' points');}
-    return;
-  }
-  if(s.phase==='mini'){
-    const picked=node('section','','mini-game-pick');
-    picked.append(node('strong',miniGames[s.game]?.name||'Arcade challenge'),node('small','Play this challenge to earn tickets for your team.'));
-    c.append(picked);
-    if(miniHost.supports(s.game)){
-      const container=node('section');c.append(container);
-      void miniHost.mount(s.game,container,miniContext(s));
-    }
     return;
   }
   if(s.phase==='round-result')line(s.player?'Mini-game points for your team: '+s.player.lastAward:'Mini-game points are included in the team totals.');
