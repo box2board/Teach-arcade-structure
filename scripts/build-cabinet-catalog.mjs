@@ -2,6 +2,7 @@ import {readFile,writeFile,access} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {validateCatalog} from '../public/teacher/catalog-contract.js';
 import {GAMES} from '../public/review-lab/catalog.js';
+import {FEATURES} from '../public/assets/scripts/feature-registry.js';
 
 const root=new URL('../public/',import.meta.url);
 const decode=text=>text.replace(/<[^>]*>/g,'').replace(/&(amp|lt|gt|quot|#39|nbsp);/g,(_,name)=>({amp:'&',lt:'<',gt:'>',quot:'"','#39':"'",nbsp:' '}[name])).trim();
@@ -64,7 +65,16 @@ async function resources(entries,collection){
 }
 export const cabinetGames=entries=>resources(entries,'Arcade Review Games');
 export const cabinetTools=entries=>resources(entries,'Teacher Tools');
-export const cabinetBrainGames=entries=>resources(entries,'Brain Arcade');
+export const cabinetBrainGames=entries=>{
+ // Preserve permanent resource identity and canonical metadata for the pilot even
+ // when a feature tile is moved or removed from this particular page.
+ const byId=new Map(entries.map(entry=>[entry.id,entry]));
+ for(const f of Object.values(FEATURES)){
+  const old=byId.get(f.resourceId);
+  byId.set(f.resourceId,{...old,id:f.resourceId,title:f.name,href:f.url,desc:f.description,icon:old?.icon||'▶',image:f.image,imageAlt:f.imageAlt});
+ }
+ return resources([...byId.values()],'Brain Arcade');
+};
 export const cabinetMiniGames=entries=>resources(entries,'Mini Games');
 const moduleText=(name,items,source)=>`// Generated from ${source}. Run node scripts/build-cabinet-catalog.mjs.\nimport {validateCatalog} from './catalog-contract.js';\nexport const ${name}=Object.freeze(validateCatalog(${JSON.stringify(items,null,2)},'${name}').map(Object.freeze));\n`;
 export async function buildCabinetCatalog(){

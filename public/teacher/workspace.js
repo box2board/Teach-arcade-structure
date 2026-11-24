@@ -5,6 +5,8 @@ import {mountProjects} from './projects-view.js';
 import {request} from './project-client.js';
 import {QUESTION_SETS,GAMES,loadQuestionSet,gamesForSet,gameUrl} from '../review-lab/catalog.js';
 import {TOOLS,CABINET_GAMES} from './cabinet-catalog.js';
+import {initFeatureAvailability} from '../assets/scripts/feature-availability.js';
+initFeatureAvailability();
 const $=id=>document.getElementById(id);
 const renderProjects=mountProjects($('projects'));
 let projectsEnabled=false;
@@ -130,6 +132,7 @@ function renderCollections(){
    if(item.subject)content.append(node('p',item.subject,'muted'));
    const open=node('a',type==='game'?(item.chooseTopic?'Choose a topic & play →':'Open game ↗'):'Open free tool ↗','primary');
    open.href=item.chooseTopic?'#sets':item.url;
+   open.dataset.resourceId=item.id;
    if(item.chooseTopic)open.onclick=()=>{preferredGame=item.id;savedView=false;render();};
    else{open.target='_blank';open.rel='noopener';open.setAttribute('aria-label',`Open ${item.title} in a new tab`);}
    content.append(open,bookmarkButton(type,item));card.append(content);return card;

@@ -644,3 +644,6 @@
 
   renderInteractiveSection();
 })();
+
+// Shared feature labels follow launch links, independent of page layout.
+import('/assets/scripts/feature-availability.js').then(m=>m.initFeatureAvailability()).catch(()=>{});

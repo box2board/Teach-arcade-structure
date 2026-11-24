@@ -386,8 +386,6 @@
 }
   </script>
 <link rel="stylesheet" href="/assets/brain-arcade-tile-art.css?v=1">
-  <link rel="stylesheet" href="/assets/feature-availability.css">
-  <script defer src="/assets/scripts/feature-availability.js"></script>
 </head>
 
 <body>
@@ -415,8 +413,8 @@
       <p>Jump into four familiar favorites. We’ll update this section with real play data as Brain Arcade grows.</p>
       <div class="featured-grid">
         <a class="featured-card" href="/brain-arcade/solitaire.html"><img class="brain-tile-art" src="/assets/images/brain-arcade/solitaire-flat-768.webp" srcset="/assets/images/brain-arcade/solitaire-flat-384.webp 384w, /assets/images/brain-arcade/solitaire-flat-768.webp 768w" sizes="(max-width: 480px) calc(100vw - 34px), (max-width: 800px) calc((100vw - 46px) / 2), 254px" width="768" height="512" alt="" loading="lazy" decoding="async"><strong>Solitaire</strong><span>Play the classic Klondike card game and clear the table.</span></a>
-        <a class="featured-card" href="/brain-arcade/chess/"><img class="brain-tile-art" src="/assets/images/brain-arcade/chess-flat-768.webp" srcset="/assets/images/brain-arcade/chess-flat-384.webp 384w, /assets/images/brain-arcade/chess-flat-768.webp 768w" sizes="(max-width: 480px) calc(100vw - 34px), (max-width: 800px) calc((100vw - 46px) / 2), 254px" width="768" height="512" alt="" loading="lazy" decoding="async"><strong>Chess</strong><span>Plan your attack, protect your king, and outthink your opponent.</span></a>
-        <a class="featured-card" href="/brain-arcade/sudoku/"><img class="brain-tile-art" src="/assets/images/brain-arcade/sudoku-flat-768.webp" srcset="/assets/images/brain-arcade/sudoku-flat-384.webp 384w, /assets/images/brain-arcade/sudoku-flat-768.webp 768w" sizes="(max-width: 480px) calc(100vw - 34px), (max-width: 800px) calc((100vw - 46px) / 2), 254px" width="768" height="512" alt="" loading="lazy" decoding="async"><strong>Sudoku</strong><span>Choose a difficulty and solve the grid using logic alone.</span></a>
+        <a class="featured-card" data-feature-id="brain-chess" href="/brain-arcade/chess/"><img class="brain-tile-art" src="/assets/images/brain-arcade/chess-flat-768.webp" srcset="/assets/images/brain-arcade/chess-flat-384.webp 384w, /assets/images/brain-arcade/chess-flat-768.webp 768w" sizes="(max-width: 480px) calc(100vw - 34px), (max-width: 800px) calc((100vw - 46px) / 2), 254px" width="768" height="512" alt="" loading="lazy" decoding="async"><strong>Chess</strong><span>Plan your attack, protect your king, and outthink your opponent.</span></a>
+        <a class="featured-card" data-feature-id="brain-sudoku" href="/brain-arcade/sudoku/"><img class="brain-tile-art" src="/assets/images/brain-arcade/sudoku-flat-768.webp" srcset="/assets/images/brain-arcade/sudoku-flat-384.webp 384w, /assets/images/brain-arcade/sudoku-flat-768.webp 768w" sizes="(max-width: 480px) calc(100vw - 34px), (max-width: 800px) calc((100vw - 46px) / 2), 254px" width="768" height="512" alt="" loading="lazy" decoding="async"><strong>Sudoku</strong><span>Choose a difficulty and solve the grid using logic alone.</span></a>
         <a class="featured-card" href="/brain-arcade/word-search/"><img class="brain-tile-art" src="/assets/images/brain-arcade/word-search-flat-768.webp" srcset="/assets/images/brain-arcade/word-search-flat-384.webp 384w, /assets/images/brain-arcade/word-search-flat-768.webp 768w" sizes="(max-width: 480px) calc(100vw - 34px), (max-width: 800px) calc((100vw - 46px) / 2), 254px" width="768" height="512" alt="" loading="lazy" decoding="async"><strong>Word Search</strong><span>Scan the grid and find every hidden word.</span></a>
       </div>
     </section>
@@ -427,7 +425,7 @@
     <div class="section-wrap">
       <div class="grid" id="games">
         <!-- RV Road Trip Mayhem -->
-        <a data-resource-id="brain:rv-road-trip-mayhem" class="game-card" data-category="arcade" href="/brain-arcade/rv-road-trip-mayhem/" aria-label="Play RV Road Trip Mayhem">
+        <a data-resource-id="brain:rv-road-trip-mayhem" class="game-card" data-category="arcade" data-feature-id="brain-rv-road-trip-mayhem" href="/brain-arcade/rv-road-trip-mayhem/" aria-label="Play RV Road Trip Mayhem">
           <img class="brain-tile-art" src="/assets/images/brain-arcade/rv-road-trip-mayhem-768.webp" srcset="/assets/images/brain-arcade/rv-road-trip-mayhem-384.webp 384w, /assets/images/brain-arcade/rv-road-trip-mayhem-768.webp 768w" sizes="(max-width: 529px) calc(100vw - 34px), (max-width: 787px) calc((100vw - 52px) / 2), (max-width: 1045px) calc((100vw - 70px) / 3), 254px" width="768" height="512" alt="" loading="lazy" decoding="async">
           <div class="badge">New</div>
           <h3 class="game-title">RV Road Trip Mayhem</h3>
@@ -476,7 +474,7 @@
         </a>
 
         <!-- Chess -->
-        <a data-resource-id="brain:chess" class="game-card" data-category="strategy" href="/brain-arcade/chess/" aria-label="Play Chess">
+        <a data-resource-id="brain:chess" class="game-card" data-category="strategy" data-feature-id="brain-chess" href="/brain-arcade/chess/" aria-label="Play Chess">
           <img class="brain-tile-art" src="/assets/images/brain-arcade/chess-flat-768.webp" srcset="/assets/images/brain-arcade/chess-flat-384.webp 384w, /assets/images/brain-arcade/chess-flat-768.webp 768w" sizes="(max-width: 529px) calc(100vw - 34px), (max-width: 787px) calc((100vw - 52px) / 2), (max-width: 1045px) calc((100vw - 70px) / 3), 254px" width="768" height="512" alt="" loading="lazy" decoding="async">
           <div class="badge">Classic</div>
 
@@ -511,7 +509,7 @@
         </a>
 
         <!-- Sudoku -->
-        <a data-resource-id="brain:sudoku" class="game-card" data-category="puzzle strategy" href="/brain-arcade/sudoku/" aria-label="Play Sudoku">
+        <a data-resource-id="brain:sudoku" class="game-card" data-category="puzzle strategy" data-feature-id="brain-sudoku" href="/brain-arcade/sudoku/" aria-label="Play Sudoku">
           <img class="brain-tile-art" src="/assets/images/brain-arcade/sudoku-flat-768.webp" srcset="/assets/images/brain-arcade/sudoku-flat-384.webp 384w, /assets/images/brain-arcade/sudoku-flat-768.webp 768w" sizes="(max-width: 529px) calc(100vw - 34px), (max-width: 787px) calc((100vw - 52px) / 2), (max-width: 1045px) calc((100vw - 70px) / 3), 254px" width="768" height="512" alt="" loading="lazy" decoding="async">
           <div class="badge">Classic</div>
 
