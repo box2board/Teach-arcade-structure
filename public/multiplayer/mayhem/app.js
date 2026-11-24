@@ -122,7 +122,7 @@ function render(){
     c.append(dashboard);
   }
   if(s.phase==='lobby'){
-    location.replace(slot==='host'?'/multiplayer/':'/multiplayer/join/');
+    location.replace(slot==='host'?'/multiplayer/':'/join');
     return;
   }
   if(s.phase==='lightning'||s.phase==='qualifier'){
@@ -177,7 +177,7 @@ function render(){
     }
     c.append(button('Return to setup',()=>{sessionStorage.removeItem(savedKey);
       sessionStorage.removeItem('teach-arcade-lobby:'+slot);
-      location.assign(slot==='host'?'/multiplayer/':'/multiplayer/join/');
+      location.assign(slot==='host'?'/multiplayer/':'/join');
     }));
   }
 }

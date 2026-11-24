@@ -1,10 +1,12 @@
+import {joinPath, studentJoinUrl} from './lib/join-link.js';
 import {miniGames} from './lib/game-labels.js';
 import {characterOptions} from './lib/character-options.js';
 import {postSession,startSessionPolling} from './lib/session-network.js';
 const app = document.querySelector('#app');
 const message = document.querySelector('#notification');
 const params = new URLSearchParams(location.search);
-const mode = location.pathname.startsWith('/multiplayer/join') ? 'student' : location.pathname.startsWith('/multiplayer/project') ? 'project' : 'host';
+const path = location.pathname.replace(/\/$/, '');
+const mode = [joinPath, '/multiplayer/join'].includes(path) ? 'student' : path === '/multiplayer/project' ? 'project' : 'host';
 const key = 'teach-arcade-lobby:'+mode;
 const joinKey = 'teach-arcade-lobby:attempt';
 const codePattern = /^\d{6}$/;
@@ -49,7 +51,8 @@ function numericOptions(min,max,initial) {
   return selectOptions(Array.from({length:max-min+1},(_,index)=>({id:min+index,title:min+index})),initial);
 }
 
-function joinAddress(code) { return new URL('/multiplayer/join/?code='+code,location.origin); }
+function joinAddress(code) { return studentJoinUrl(location.origin, code); }
+function joinLabel(url) { return (url.host === 'www.teacharcade.com' ? 'teacharcade.com' : url.host) + url.pathname; }
 
 let banks=[];
 let unavailableSet=null;
@@ -143,7 +146,7 @@ function lobbyView() {
     (disconnected?button('Remove disconnected ('+disconnected+')','prune-disconnected','danger'):'')+
     button('Start game','start','primary',!state.canStart)+button('Close lobby','clear')+'</p>'+
     '</section><aside class="panel"><h2>Room code</h2><div class="slot">'+text(state.code)+'</div>'+
-    '<p class="muted"><a href="'+text(url.href)+'" target="_blank" rel="noopener">'+text(url.host)+'/multiplayer/join</a></p>'+
+    '<p class="muted"><a href="'+text(url.href)+'" target="_blank" rel="noopener">'+text(joinLabel(url))+'</a></p>'+
     '<p class="actions">'+button('Copy join link','copy')+'<a href="/multiplayer/project/?code='+text(state.code)+'" target="_blank" rel="noopener">Open projector view</a></p>'+
     '</aside></div>';
 }
@@ -157,7 +160,7 @@ function render() {
       const waiting=state.phase==='lobby';
       const phaseNames={lightning:'Lightning round',standings:'Team standings',roll:'Team turn',route:'Choose a path',landing:'Team landing',qualifier:'Mini-game qualifier',mini:'Arcade challenge','round-result':'Round results',finished:'Final standings'};
       const scoreboard=(state.teams||[]).slice().sort((a,b)=>b.score-a.score).map(team=>'<li><span class="project-team" style="--team:'+text(team.color)+'">'+text(team.name)+'</span><strong>'+text(team.score)+'</strong></li>').join('');
-      app.innerHTML='<section class="panel project '+(waiting?'':'project-game')+'"><div class="project-main"><p class="brand">TEACH ARCADE · CLASSROOM SCREEN</p><h1>'+text(state.game)+'</h1><p class="project-phase">'+(waiting?'Students join here':text(phaseNames[state.phase]||'Game in progress'))+'</p><div class="slot">'+text(state.code)+'</div><p>'+state.count+' students '+(waiting?'joined':'playing')+(state.rounds?' · Round '+state.round+'/'+state.rounds:'')+'</p>'+(state.driver&&!waiting?'<p>Current driver · '+text(state.driver)+'</p>':'')+'</div>'+(waiting?'<div class="project-qr"><p>'+text(url.host)+'/multiplayer/join</p><img class="qr" src="'+text(state.qr)+'" alt="QR code for the student join page"></div>':'<aside class="project-score"><h2>Team scores</h2><ol>'+scoreboard+'</ol></aside>')+'</section>';
+      app.innerHTML='<section class="panel project '+(waiting?'':'project-game')+'"><div class="project-main"><p class="brand">TEACH ARCADE · CLASSROOM SCREEN</p><h1>'+text(state.game)+'</h1><p class="project-phase">'+(waiting?'Students join here':text(phaseNames[state.phase]||'Game in progress'))+'</p><div class="slot">'+text(state.code)+'</div><p>'+state.count+' students '+(waiting?'joined':'playing')+(state.rounds?' · Round '+state.round+'/'+state.rounds:'')+'</p>'+(state.driver&&!waiting?'<p>Current driver · '+text(state.driver)+'</p>':'')+'</div>'+(waiting?'<div class="project-qr"><p>'+text(joinLabel(url))+'</p><img class="qr" src="'+text(state.qr)+'" alt="QR code for the student join page"></div>':'<aside class="project-score"><h2>Team scores</h2><ol>'+scoreboard+'</ol></aside>')+'</section>';
     }
   } else app.innerHTML=stage==='lobby'?lobbyView():setup();
   app.setAttribute('aria-busy','false');

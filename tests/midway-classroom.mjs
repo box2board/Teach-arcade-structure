@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {openRoomDatabase} from '../lib/multiplayer/database/sqlite.js';
 import {serveSession} from '../lib/multiplayer/http.js';
+import {qrImage} from '../lib/multiplayer/qr.js';
 import {getMiniGame, multiplayerIds} from '../lib/multiplayer/minigames.js';
 import {miniGames} from '../public/multiplayer/lib/game-labels.js';
 import {questionIndex} from '../public/multiplayer/mayhem/rules.js';
@@ -51,8 +52,9 @@ try{
    assert.equal(joined.state.player.characterId,join.characterId);
    return {...join,token:joined.token,publicId:joined.state.player.miniPlayerId};
  }));
- assert.equal((await checked({code,action:'projection'})).count,12);
- assert.equal((await checked({code,action:'projection'})).qr.startsWith('data:image/svg+xml;base64,'),true);
+ const waitingProjection=await checked({code,action:'projection'});
+ assert.equal(waitingProjection.count,12);
+ assert.equal(waitingProjection.qr,qrImage(origin+'/join?code='+code));
  await checked({code,token:host,action:'start'});
  assert.deepEqual(read().teams.map((_,i)=>read().players.filter(p=>p.team===i).length),[3,3,3,3]);
  const studentGet=token=>checked({code,token,action:'state'},{game:true});
