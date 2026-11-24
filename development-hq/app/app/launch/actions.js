@@ -1,4 +1,5 @@
 'use server';
+import inventory from '../../lib/launch-inventory.json';
 import { requireAdmin } from '../../lib/neon';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
@@ -39,4 +40,21 @@ export async function saveDecision(form) {
  } catch { redirect('/launch?error=save'); }
  if(!changed.length) redirect('/launch?error=conflict');
  revalidatePath('/launch'); redirect('/launch?saved=1');
+}
+
+export async function importInventory() {
+ const {user,sql}=await requireAdmin();
+ // Fixed, reviewed repository snapshot; never accept seed rows from a client.
+ const rows=inventory.features.map(({slug,name,category,public_path})=>({slug,name,category,public_path}));
+ try {
+  await sql`WITH added AS (
+    INSERT INTO devhq_features(owner_id,slug,name,category,public_path)
+    SELECT ${user.id}, seed.slug, seed.name, seed.category, seed.public_path
+    FROM jsonb_to_recordset(${JSON.stringify(rows)}::jsonb) AS seed(slug text,name text,category text,public_path text)
+    ON CONFLICT(owner_id,slug) DO NOTHING
+    RETURNING owner_id,slug,revision,desired_status,reason
+  ) INSERT INTO devhq_feature_history(owner_id,slug,revision,desired_status,reason)
+    SELECT owner_id,slug,revision,desired_status,reason FROM added`;
+ } catch { redirect('/launch?error=save'); }
+ revalidatePath('/launch'); redirect('/launch?imported=1');
 }

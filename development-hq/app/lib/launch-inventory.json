@@ -1,0 +1,1464 @@
+{
+  "source_commit": "abae0d1f3c6d392997a2414fc0616feab2d88284",
+  "scope": "Main-branch catalog and route snapshot; not a production availability or playability test. Section and route-review entries are not necessarily independent experiences.",
+  "counts": {
+    "Arcade Review Games": 18,
+    "Brain Arcade": 24,
+    "Escape Rooms": 4,
+    "Graphic Organizers": 12,
+    "Mini Games (test access)": 21,
+    "Multiplayer": 4,
+    "Review Lab": 8,
+    "Science Lab": 10,
+    "Simulations and Adventures": 4,
+    "Site Sections": 26,
+    "Teacher Tools": 20,
+    "Uncataloged / Route Review": 8
+  },
+  "features": [
+    {
+      "slug": "arcade-algebra-city-run",
+      "name": "Algebra City Run",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/math/algebra-city-run.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-cold-war-shadow-run",
+      "name": "Cold War: Shadow Run",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/social-studies/cold-war-shadow-run/",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-colony-builder",
+      "name": "Colony Builder",
+      "category": "Arcade Review Games",
+      "public_path": "/simulations/colony-builder/",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-concept-stack-cells",
+      "name": "Concept Stack: Cells",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/science/concept-stack-cells/",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-constitution-courthouse-run",
+      "name": "Constitution Courthouse Run — U.S. Constitution",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/social-studies/constitution-courthouse-run.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-grammar-gauntlet",
+      "name": "Grammar Gauntlet",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/ela/grammar-gauntlet.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-math-rush-genesis-addition",
+      "name": "Math Rush Genesis — Addition Zone",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/math/math-rush-genesis-addition.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-math-track-racer",
+      "name": "Math Track Racer",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/math/math-track-racer.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-moon-mission-run",
+      "name": "Moon Mission Run",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/science/moon-mission-run.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-pyramid-escape-run",
+      "name": "Pyramid Escape Run — Ancient Egypt",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/social-studies/pyramid-escape-run.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-scientific-method",
+      "name": "Scientific Method Maze",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/science/scientific-method.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-slope-street-sprint",
+      "name": "Slope Street Sprint — Slope & Linear Functions",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/math/slope-street-sprint.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-survey-showdown",
+      "name": "Survey Showdown",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/survey-showdown/",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-territory-takedown",
+      "name": "Territory Takedown",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/territory-takedown/",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-french-revolution",
+      "name": "Territory Takedown: French Revolution",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/territory-takedown/french-revolution/",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-undertext-rifts-mood-tone",
+      "name": "Undertext Rifts — Mood & Tone",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/ela/undertext-rifts-mood-tone.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-volcano-ascent",
+      "name": "Volcano Ascent",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/science/volcano-ascent/",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "arcade-wwi-trench-run",
+      "name": "WWI Trench Run",
+      "category": "Arcade Review Games",
+      "public_path": "/arcade-review-games/social-studies/wwi-trench-run.html",
+      "source": "public/teacher/arcade-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-block-logic",
+      "name": "Block Logic",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/block-logic/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-brain-crush",
+      "name": "Brain Crush",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/brain-crush/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-checkers",
+      "name": "Checkers",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/checkers/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-chess",
+      "name": "Chess",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/chess/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-citycanvas",
+      "name": "CityCanvas",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/citycanvas/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "also_listed_in": [
+        "Teacher Tools"
+      ],
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-crossword",
+      "name": "Crossword",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/crossword/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-emoji-case-files",
+      "name": "Emoji Case Files",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/emoji-case-files/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-jigsaw-puzzle",
+      "name": "Jigsaw Puzzle",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/jigsaw-puzzle/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-knotwork",
+      "name": "Knotwork",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/knotwork/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-mahjong",
+      "name": "Mahjong Solitaire",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/mahjong/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-memory-heist",
+      "name": "Memory Heist",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/memory-heist/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-memory-match",
+      "name": "Memory Match",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/memory-match/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-moviemind",
+      "name": "MovieMind",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/moviemind/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-rv-road-trip-mayhem",
+      "name": "RV Road Trip Mayhem",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/rv-road-trip-mayhem/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-sequence-breaker",
+      "name": "Sequence Breaker",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/sequence-breaker/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-slide-and-snap",
+      "name": "Slide & Snap",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/slide-and-snap/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-solitaire",
+      "name": "Solitaire (Klondike)",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/solitaire.html",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-sudoku",
+      "name": "Sudoku",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/sudoku/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-trivia-hack",
+      "name": "Trivia Hack",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/trivia-hack/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-type-turbo",
+      "name": "Type Turbo",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/type-turbo/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-word-grid",
+      "name": "Word Grid",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/word-grid/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-word-rescue",
+      "name": "Word Rescue",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/word-rescue/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-word-search",
+      "name": "Word Search",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/word-search/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "brain-apprentice-restorer",
+      "name": "Worldsmith",
+      "category": "Brain Arcade",
+      "public_path": "/brain-arcade/apprentice-restorer/",
+      "source": "public/teacher/brain-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "escape-equation-vault",
+      "name": "Equation Vault",
+      "category": "Escape Rooms",
+      "public_path": "/escape/play.html?room=equation-vault",
+      "source": "public/escape/index.html",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "escape-long-road-west",
+      "name": "Long Road West",
+      "category": "Escape Rooms",
+      "public_path": "/escape/rooms/long-road-west/",
+      "source": "public/escape/index.html",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "escape-scientific-method",
+      "name": "Scientific Method Escape Room",
+      "category": "Escape Rooms",
+      "public_path": "/escape/play.html?room=scientific-method",
+      "source": "public/escape/index.html",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "escape-wwi",
+      "name": "WWI Escape Room",
+      "category": "Escape Rooms",
+      "public_path": "/escape/play.html?room=wwi",
+      "source": "public/escape/index.html",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-cause-effect",
+      "name": "Cause and Effect",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/cause-effect/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-character-map",
+      "name": "Character Map",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/character-map/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-frayer-model",
+      "name": "Frayer Model",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/frayer-model/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-kwl-chart",
+      "name": "KWL Chart",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/kwl-chart/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-main-idea-details",
+      "name": "Main Idea and Details",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/main-idea-details/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-pros-cons",
+      "name": "Pros and Cons",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/pros-cons/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-sequence-chart",
+      "name": "Sequence Chart",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/sequence-chart/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-story-plot-diagram",
+      "name": "Story Plot Diagram",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/story-plot-diagram/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-t-chart",
+      "name": "T-Chart",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/t-chart/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-timeline-template",
+      "name": "Timeline Template",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/timeline-template/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-venn-diagram",
+      "name": "Venn Diagram",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/venn-diagram/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "organizer-vocabulary-organizer",
+      "name": "Vocabulary Organizer",
+      "category": "Graphic Organizers",
+      "public_path": "/tools/graphic-organizers/vocabulary-organizer/",
+      "source": "public/tools/graphic-organizers/ directory listing",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-darts",
+      "name": "Arcade Darts",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/darts/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-avalanche-escape",
+      "name": "Avalanche Escape",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/avalanche-escape/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-balance-bridge",
+      "name": "Balance Bridge",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/balance-bridge/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-balloon-pop",
+      "name": "Balloon Pop",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/balloon-pop/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-bumper-boats",
+      "name": "Bumper Boats",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/bumper-boats/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-conveyor-catch",
+      "name": "Conveyor Catch",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/conveyor-catch/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-fishing-frenzy",
+      "name": "Fishing Frenzy",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/fishing-frenzy/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-free-throws",
+      "name": "Free Throw Fever",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/free-throws/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-racing",
+      "name": "Jump Rush",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/racing/?v=6",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-lily-pad-leap",
+      "name": "Lily Pad Leap",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/lily-pad-leap/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-magnet-mayhem",
+      "name": "Magnet Mayhem",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/magnet-mayhem/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-memory-match",
+      "name": "Memory Match",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/memory-match/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-ultimate-skeeball",
+      "name": "Midway Skee-Ball",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/ultimate-skeeball/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-red-light-green-light",
+      "name": "Red Light, Green Light",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/red-light-green-light/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-rocket-landing",
+      "name": "Rocket Landing",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/rocket-landing/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-roller-balls",
+      "name": "Roller Balls",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/roller-balls/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-safe-cracker",
+      "name": "Safe Cracker",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/safe-cracker/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-spotlight-sneak",
+      "name": "Spotlight Sneak",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/spotlight-sneak/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-stop-symbol",
+      "name": "Stop the Symbol",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/stop-symbol/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-tower-drop",
+      "name": "Tower Drop",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/tower-drop/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "mini-treasure-claw",
+      "name": "Treasure Claw",
+      "category": "Mini Games (test access)",
+      "public_path": "/mini-games/games/treasure-claw/",
+      "source": "public/teacher/mini-catalog.js",
+      "kind": "test_access",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "multiplayer-mayhem",
+      "name": "Midway Mayhem",
+      "category": "Multiplayer",
+      "public_path": "/multiplayer/mayhem/",
+      "source": "public/multiplayer/ directory and page titles",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "multiplayer-lobby",
+      "name": "Multiplayer Lobby",
+      "category": "Multiplayer",
+      "public_path": "/multiplayer/",
+      "source": "public/multiplayer/ directory and page titles",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "multiplayer-project",
+      "name": "Multiplayer Project",
+      "category": "Multiplayer",
+      "public_path": "/multiplayer/project/",
+      "source": "public/multiplayer/ directory and page titles",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "multiplayer-join",
+      "name": "Shared Join Entry",
+      "category": "Multiplayer",
+      "public_path": "/join",
+      "source": "public/multiplayer/ directory and page titles",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "review-acorn-dash",
+      "name": "Acorn Dash",
+      "category": "Review Lab",
+      "public_path": "/review-lab/acorn-dash/",
+      "source": "public/review-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "review-category-clash",
+      "name": "Category Clash",
+      "category": "Review Lab",
+      "public_path": "/review-lab/category-clash/",
+      "source": "public/review-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "review-power-clash",
+      "name": "Power Clash",
+      "category": "Review Lab",
+      "public_path": "/review-lab/power-clash/",
+      "source": "public/review-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "review-raceway-rivals",
+      "name": "Raceway Rivals",
+      "category": "Review Lab",
+      "public_path": "/review-lab/raceway-rivals/",
+      "source": "public/review-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "review-review-pinball",
+      "name": "Review Pinball",
+      "category": "Review Lab",
+      "public_path": "/review-lab/review-pinball/",
+      "source": "public/review-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "review-slime-slinger",
+      "name": "Slime Slinger",
+      "category": "Review Lab",
+      "public_path": "/review-lab/slime-slinger/",
+      "source": "public/review-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "review-snow-day-defenders",
+      "name": "Snow Day Defenders",
+      "category": "Review Lab",
+      "public_path": "/review-lab/snow-day-defenders/",
+      "source": "public/review-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "review-treasure-trail",
+      "name": "Treasure Trail",
+      "category": "Review Lab",
+      "public_path": "/review-lab/treasure-trail/",
+      "source": "public/review-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-advanced-circuit",
+      "name": "Advanced Circuit",
+      "category": "Science Lab",
+      "public_path": "/science-lab/circuit-advanced.html",
+      "source": "public/science-lab/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-warning-circuit",
+      "name": "Design a Reliable Warning Circuit",
+      "category": "Science Lab",
+      "public_path": "/science-lab/circuit-investigation.html",
+      "source": "public/science-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-density",
+      "name": "Identify the Metal",
+      "category": "Science Lab",
+      "public_path": "/science-lab/density-investigation.html",
+      "source": "public/science-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-unknown-acid",
+      "name": "Identify the Unknown Acid",
+      "category": "Science Lab",
+      "public_path": "/science-lab/chemistry-investigation.html",
+      "source": "public/science-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-ground-cover",
+      "name": "Keep the Soil in Place",
+      "category": "Science Lab",
+      "public_path": "/science-lab/earth-investigation.html",
+      "source": "public/science-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-report",
+      "name": "Lab Report",
+      "category": "Science Lab",
+      "public_path": "/science-lab/lab-report.html",
+      "source": "public/science-lab/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-temperature-rate",
+      "name": "Race to the Same Color",
+      "category": "Science Lab",
+      "public_path": "/science-lab/rate-investigation.html",
+      "source": "public/science-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-teacher-overview",
+      "name": "Science Lab Teacher Overview",
+      "category": "Science Lab",
+      "public_path": "/science-lab/teacher-overview.html",
+      "source": "public/science-lab/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-pendulum",
+      "name": "What Sets the Swing?",
+      "category": "Science Lab",
+      "public_path": "/science-lab/pendulum-investigation.html",
+      "source": "public/science-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "lab-osmosis",
+      "name": "Where Does the Water Go?",
+      "category": "Science Lab",
+      "public_path": "/science-lab/biology-investigation.html",
+      "source": "public/science-lab/catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "adventure-cuban-missile-crisis",
+      "name": "13 Days: Cuban Missile Crisis Survival",
+      "category": "Simulations and Adventures",
+      "public_path": "/choose-your-path-adventure/cuban-missile-crisis.html",
+      "source": "public/decision-simulator/index.html; public/choose-your-path-adventure/index.html; public/index.html",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "sim-american-revolution",
+      "name": "American Revolution: The Breaking Point",
+      "category": "Simulations and Adventures",
+      "public_path": "/decision-simulator/american-revolution-breaking-point/",
+      "source": "public/decision-simulator/index.html; public/choose-your-path-adventure/index.html; public/index.html",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "career-career-quest",
+      "name": "Career Quest",
+      "category": "Simulations and Adventures",
+      "public_path": "/career-arcade/career-quest/",
+      "source": "public/decision-simulator/index.html; public/choose-your-path-adventure/index.html; public/index.html",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "adventure-knowledge-expedition",
+      "name": "Knowledge Expedition",
+      "category": "Simulations and Adventures",
+      "public_path": "/games/knowledge-expedition/",
+      "source": "public/decision-simulator/index.html; public/choose-your-path-adventure/index.html; public/index.html",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-arcade-review",
+      "name": "Arcade Review Games",
+      "category": "Site Sections",
+      "public_path": "/arcade-review-games/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-brain-arcade",
+      "name": "Brain Arcade",
+      "category": "Site Sections",
+      "public_path": "/brain-arcade/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-career-arcade",
+      "name": "Career Arcade",
+      "category": "Site Sections",
+      "public_path": "/career-arcade/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-adventures",
+      "name": "Choose Your Path Adventures",
+      "category": "Site Sections",
+      "public_path": "/choose-your-path-adventure/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-educational-games",
+      "name": "Educational Games",
+      "category": "Site Sections",
+      "public_path": "/educational-games/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-escape",
+      "name": "Escape Rooms",
+      "category": "Site Sections",
+      "public_path": "/escape/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-decision-simulator",
+      "name": "Historical Decision Simulators",
+      "category": "Site Sections",
+      "public_path": "/decision-simulator/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-mini-games",
+      "name": "Mini Games Testing Hub",
+      "category": "Site Sections",
+      "public_path": "/mini-games/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-movie-guides",
+      "name": "Movie Guides",
+      "category": "Site Sections",
+      "public_path": "/movie-guides/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-playbook",
+      "name": "Playbook",
+      "category": "Site Sections",
+      "public_path": "/playbook/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-print-play",
+      "name": "Print & Play Games",
+      "category": "Site Sections",
+      "public_path": "/print-play-games/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-print-board",
+      "name": "Printable Board Games",
+      "category": "Site Sections",
+      "public_path": "/print-play-games/board-games/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-print-card",
+      "name": "Printable Card Games",
+      "category": "Site Sections",
+      "public_path": "/print-play-games/card-games/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-print-crosswords",
+      "name": "Printable Crosswords",
+      "category": "Site Sections",
+      "public_path": "/print-play-games/crosswords/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-print-scenarios",
+      "name": "Printable Decision & Scenario Games",
+      "category": "Site Sections",
+      "public_path": "/print-play-games/decision-scenarios/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-print-escape",
+      "name": "Printable Escape-Style Games",
+      "category": "Site Sections",
+      "public_path": "/print-play-games/escape-style/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-professional-development",
+      "name": "Professional Development",
+      "category": "Site Sections",
+      "public_path": "/professional-development/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-question-sets",
+      "name": "Question Sets",
+      "category": "Site Sections",
+      "public_path": "/teacher/sets/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-review-lab",
+      "name": "Review Lab",
+      "category": "Site Sections",
+      "public_path": "/review-lab/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-science-lab",
+      "name": "Science Lab",
+      "category": "Site Sections",
+      "public_path": "/science-lab/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-store",
+      "name": "Store",
+      "category": "Site Sections",
+      "public_path": "/store/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-subjects",
+      "name": "Subjects",
+      "category": "Site Sections",
+      "public_path": "/subjects/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-teacher-hq",
+      "name": "Teacher HQ / Arcade Cabinet",
+      "category": "Site Sections",
+      "public_path": "/teacher/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-teacher-resources",
+      "name": "Teacher Resources",
+      "category": "Site Sections",
+      "public_path": "/teacher-tools/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-tools",
+      "name": "Teacher Tools",
+      "category": "Site Sections",
+      "public_path": "/tools/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "section-toy-toolbox",
+      "name": "Toy Toolbox",
+      "category": "Site Sections",
+      "public_path": "/classroom/toy-toolbox/",
+      "source": "public/index.html; public/print-play-games/index.html; public/ directory listing",
+      "kind": "section",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-art-studio",
+      "name": "Art Studio Beta",
+      "category": "Teacher Tools",
+      "public_path": "/tools/art-studio/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-bell-ringers",
+      "name": "Bell Ringers",
+      "category": "Teacher Tools",
+      "public_path": "/teacher-tools/bell-ringers/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-block-builder",
+      "name": "Block Builder",
+      "category": "Teacher Tools",
+      "public_path": "/brain-arcade/block-builder/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-group-maker",
+      "name": "Classroom Group Maker",
+      "category": "Teacher Tools",
+      "public_path": "/tools/group-maker.html",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-comic-studio",
+      "name": "Comic Studio Beta",
+      "category": "Teacher Tools",
+      "public_path": "/tools/comic-studio/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-exit-tickets",
+      "name": "Exit Tickets",
+      "category": "Teacher Tools",
+      "public_path": "/teacher-tools/exit-tickets/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-flashcards",
+      "name": "Flashcard Studio",
+      "category": "Teacher Tools",
+      "public_path": "/tools/flashcards.html",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-graphic-organizers",
+      "name": "Graphic Organizers",
+      "category": "Teacher Tools",
+      "public_path": "/tools/graphic-organizers/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-graphing-calculator",
+      "name": "Graphing Calculator",
+      "category": "Teacher Tools",
+      "public_path": "/tools/graphing-calculator/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-icebreakers",
+      "name": "Icebreakers",
+      "category": "Teacher Tools",
+      "public_path": "/teacher-tools/icebreakers/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-mystery-pick",
+      "name": "Mystery Pick Board",
+      "category": "Teacher Tools",
+      "public_path": "/tools/mystery-pick/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-noise-meter",
+      "name": "Noise Meter",
+      "category": "Teacher Tools",
+      "public_path": "/tools/noise-meter.html",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-pdf-workspace",
+      "name": "PDF Workspace",
+      "category": "Teacher Tools",
+      "public_path": "/tools/pdf-workspace/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-prompt-generator",
+      "name": "Prompt Generator",
+      "category": "Teacher Tools",
+      "public_path": "/tools/prompt-generator.html",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-buzzer",
+      "name": "Quiz Buzzer",
+      "category": "Teacher Tools",
+      "public_path": "/tools/buzzer.html",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-name-picker",
+      "name": "Random Name Picker",
+      "category": "Teacher Tools",
+      "public_path": "/tools/name-picker.html",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-wheel",
+      "name": "Spin the Wheel",
+      "category": "Teacher Tools",
+      "public_path": "/tools/wheel.html",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-text-randomizer",
+      "name": "Text Randomizer",
+      "category": "Teacher Tools",
+      "public_path": "/tools/text-randomizer.html",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-timeline-creator",
+      "name": "Timeline Creator",
+      "category": "Teacher Tools",
+      "public_path": "/tools/timeline-creator/",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "tool-timer",
+      "name": "Timer & Stopwatch",
+      "category": "Teacher Tools",
+      "public_path": "/tools/timer.html",
+      "source": "public/teacher/tool-catalog.js",
+      "kind": "experience",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "route-adventure-wwii",
+      "name": "Adventure Review WWII",
+      "category": "Uncataloged / Route Review",
+      "public_path": "/arcade-review-games/adventure-review-wwii/",
+      "source": "public/arcade-review-games/ directory listings; public/games/ directory listing; public/mini-games/games/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "route-arcade-five",
+      "name": "Arcade Five",
+      "category": "Uncataloged / Route Review",
+      "public_path": "/mini-games/games/arcade-five/",
+      "source": "public/arcade-review-games/ directory listings; public/games/ directory listing; public/mini-games/games/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "route-cell-city",
+      "name": "Cell City Organelle Run",
+      "category": "Uncataloged / Route Review",
+      "public_path": "/arcade-review-games/science/cell-city-organelle-run/",
+      "source": "public/arcade-review-games/ directory listings; public/games/ directory listing; public/mini-games/games/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "route-crossing-quest",
+      "name": "Crossing Quest",
+      "category": "Uncataloged / Route Review",
+      "public_path": "/arcade-review-games/crossing-quest/",
+      "source": "public/arcade-review-games/ directory listings; public/games/ directory listing; public/mini-games/games/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "route-progressive-era",
+      "name": "Progressive Era Sky Climb",
+      "category": "Uncataloged / Route Review",
+      "public_path": "/arcade-review-games/social-studies/progressive-era-sky-climb.html",
+      "source": "public/arcade-review-games/ directory listings; public/games/ directory listing; public/mini-games/games/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "route-quest-arcade",
+      "name": "Quest Arcade",
+      "category": "Uncataloged / Route Review",
+      "public_path": "/arcade-review-games/quest-arcade/",
+      "source": "public/arcade-review-games/ directory listings; public/games/ directory listing; public/mini-games/games/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "route-side-scroller",
+      "name": "Side Scroller",
+      "category": "Uncataloged / Route Review",
+      "public_path": "/side-scroller.html",
+      "source": "public/arcade-review-games/ directory listings; public/games/ directory listing; public/mini-games/games/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    },
+    {
+      "slug": "route-print-revolutionary-spy",
+      "name": "The Revolutionary Spy Escape",
+      "category": "Uncataloged / Route Review",
+      "public_path": "/print-play-games/escape-style/revolutionary-spy-escape/",
+      "source": "public/arcade-review-games/ directory listings; public/games/ directory listing; public/mini-games/games/ directory listing",
+      "kind": "route_review",
+      "desired_status": "unreviewed"
+    }
+  ],
+  "excluded_or_pending": [
+    "public/dev/* and public/arcade-review-games/*/v2 and v3 variants: map separately before enforcing; some may be live dependencies",
+    "public/arcade-review-games/shared, characters, side-scroller-engine, results-preview; public/mini-games/shared, vendor, games/recovery-shared; public/multiplayer/lib, mini-games: component or test surface, not automatic feature flag targets",
+    "Original skeeball route redirects to Magnet Mayhem per vercel.json; category-clash old routes redirect to Review Lab; /join and /join/ share an endpoint. Map aliases during integration.",
+    "American Revolution alternate /games/american-revolution-breaking-point/ and Cuban Missile Crisis root /cuban-missile-crisis.html: investigate aliases before enforcement.",
+    "Science Lab catalog has additional generic sandbox activities; enumerate their actual query/route mappings separately.",
+    "Individual subject resources, movie guides, printable PDFs, question bank topics and graphic organizer shared modules are not individually enumerated except listed organizer pages; manage collections initially.",
+    "Unmerged prototypes and external multiplayer service endpoints not inventoried from this main snapshot; verify branch and service registry separately.",
+    "No live route or game testing performed. Route-review entries require verification of purpose, actual route and dependencies; do not treat as launch-ready."
+  ]
+}

@@ -1,5 +1,6 @@
 import { requireAdmin } from '../../lib/neon';
-import { addFeature, saveDecision } from './actions';
+import inventory from '../../lib/launch-inventory.json';
+import { addFeature, saveDecision, importInventory } from './actions';
 export const dynamic='force-dynamic';
 const labels={unreviewed:'Not reviewed',live:'Live',beta:'Beta',coming_soon:'Coming Soon',under_improvement:'Under Improvement',hidden:'Hidden'};
 const meanings={unreviewed:'No decision yet',live:'Visible and playable',beta:'Visible and playable with a beta label',coming_soon:'Visible; play blocked',under_improvement:'Visible; play blocked temporarily',hidden:'Not visible; play blocked'};
@@ -23,6 +24,8 @@ export default async function Launch({searchParams}) {
   {q?.error && <p role="alert" className="error">{q.error==='conflict'?'Another change was saved first. Review the latest decision and try again.':'Could not save. Check fields, duplicate IDs and HQ database setup.'}</p>}
   {unavailable && <p role="alert" className="error">Feature registry unavailable. The separate HQ migration may not have been applied. No public availability has changed.</p>}
   <section className="stats">{counts.map(({key,n})=><article key={key}><span>{labels[key]}</span><strong>{unavailable?'—':n}</strong><small>{meanings[key]}</small></article>)}</section>
+  {q?.imported && <p className="alert">Inventory imported. Existing entries and decisions were preserved.</p>}
+  <section className="card"><h2>Repository inventory</h2><p>{inventory.features.length} entries from main commit <code>{inventory.source_commit.slice(0,7)}</code>. Import missing entries as Not reviewed; existing decisions will never be overwritten.</p><p>{inventory.scope}</p><div className="fields">{Object.entries(inventory.counts).map(([category,count])=><p key={category}><b>{category}</b> · {count}</p>)}</div><details><summary>Scope limitations and route review</summary>{inventory.excluded_or_pending.map(note=><p key={note}>{note}</p>)}</details><form action={importInventory}><button disabled={unavailable}>Import missing inventory entries</button></form></section>
   <section className="card"><h2>Add feature</h2><p>Register an individual game or tool, not a shared engine. Every new entry starts Not reviewed.</p>
    <form action={addFeature}><div className="fields"><label>Feature name<input name="name" required maxLength={100} minLength={2}/></label><label>Stable feature ID<input name="slug" required pattern="[a-z0-9]+(-[a-z0-9]+)*" maxLength={80} placeholder="midway-mayhem"/></label></div><div className="fields"><label>Category<input name="category" required minLength={2} maxLength={80} placeholder="Multiplayer"/></label><label>Public path (optional)<input name="path" maxLength={500} placeholder="/games/example/"/></label></div><button disabled={unavailable}>Register feature</button></form>
   </section>
