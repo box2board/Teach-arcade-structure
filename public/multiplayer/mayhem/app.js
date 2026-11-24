@@ -1,3 +1,4 @@
+import {readDuringSlowPoll} from './slow-poll.js';
 import {createMiniGameHost} from '../lib/minigame-host.js';
 import {postSession,createLivePolling} from '../lib/session-network.js';
 import {boardPoint,boardMoving} from './board-motion.js';
@@ -17,8 +18,8 @@ const miniContext=s=>({snapshot:s.minigame,playerId:s.player?.miniPlayerId,canPl
 window.addEventListener('pagehide',()=>miniHost.destroy());
 window.addEventListener('pageshow',e=>{if(e.persisted&&state){delete $('content').dataset.miniRound;render();}});
 const error=message=>{$('error').hidden=!message;$('error').textContent=message;};
-async function call(input){
-  const res=await postSession('/api/mayhem',{...credentials,...input});
+async function call(input,signal){
+  const res=await postSession('/api/mayhem',{...credentials,...input},{signal});
   return {...res.data,status:res.status};
 }
 function accept(next){
@@ -62,7 +63,9 @@ async function poll(){
   try{
     const input=state?.phase==='mini'?miniHost.input():null;
     const packet=input?{action:'mini-input',phase:state.phase,since:state.since,packet:input}:{action:'state'};
-    const r=await call(packet);
+    const r=state?.phase==='mini' ? await readDuringSlowPoll(call,packet,{
+      onSnapshot:next=>{if(!busy)accept(next);}
+    }) : await call(packet);
     if(r.status>=500||r.status===429){error('Connection interrupted. Reconnecting…');return false;}
     if(busy)return;
     if(r.state&&(!state||r.state.revision>=state.revision)){accept(r.state);error('');}
