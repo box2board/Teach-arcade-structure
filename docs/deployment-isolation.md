@@ -1,0 +1,5 @@
+# Deployment isolation
+
+Teach Arcade and Development HQ are linked to the same GitHub repository. The HQ project has root `development-hq/app`; the public site has root `.` and output `public`. The public-feature-blockers branch previously lacked the HQ root, causing HQ's unrelated preview build to fail. This branch carries the unchanged HQ baseline subtree from b1803e1ba02ccd0b0488c76860a9a67eb3cfc893 and a project-local Vercel Git/ignore guard for this branch only. The public-site preview remains enabled. No HQ feature work or DB changes are included in this baseline.
+
+For durable isolation, ensure the canonical HQ subtree exists in the shared base of future website branches, keep both apps' project-local branch guards, or move HQ into its own repository and reconnect the existing HQ project (do not create a duplicate deployment). This change is scoped to the current pilot; other existing branches and main are unchanged. Verify the next Vercel Git status and confirm the HQ preview is skipped, not failed. Do not disable production deploys or change project root settings.

@@ -1,0 +1,8 @@
+{
+  "git": {
+    "deploymentEnabled": {
+      "prototype/public-feature-blockers": false
+    }
+  },
+  "ignoreCommand": "if [ \"$VERCEL_GIT_COMMIT_REF\" = \"prototype/public-feature-blockers\" ]; then exit 0; else exit 1; fi"
+}
