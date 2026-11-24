@@ -90,7 +90,14 @@ export function mount({container,initial,now}){
  on(canvas,'pointerdown',e=>{e.preventDefault();canvas.setPointerCapture(e.pointerId);setTarget(e)});on(canvas,'pointermove',e=>{if(canvas.hasPointerCapture(e.pointerId))setTarget(e)});on(canvas,'pointercancel',()=>{target=null});
  on(d.defaultView,'keydown',e=>{if(context.canPlay&&['arrowleft','arrowright','arrowup','arrowdown','w','a','s','d'].includes(e.key.toLowerCase())){e.preventDefault();keys.add(e.key.length===1?e.key.toLowerCase():e.key)}});on(d.defaultView,'keyup',e=>keys.delete(e.key.length===1?e.key.toLowerCase():e.key));
  on(d.defaultView,'blur',()=>{keys.clear();touches.clear();target=null});for(const b of wrap.querySelectorAll('[data-x],[data-y]')){const down=e=>{e.preventDefault();b.setPointerCapture(e.pointerId);touches.set(e.pointerId,[Number(b.dataset.x||0),Number(b.dataset.y||0)])};const up=e=>touches.delete(e.pointerId);on(b,'pointerdown',down);for(const type of ['pointerup','pointercancel','lostpointercapture'])on(b,type,up)}
+ let stopSeq=null;
  function update(next){if(next.snapshot!==context.snapshot)motion.receive(performance.now());context=next;const p=next.snapshot?.players.find(p=>p.id===next.playerId);seq=Math.max(seq,p?.seq??-1)}
  update(initial);frame=requestAnimationFrame(render);
- return{update,pollInterval:100,input(){if(!context.canPlay||context.snapshot?.phase!=='playing')return null;const dir=direction();return{seq:++seq,...dir}},destroy(){dead=true;abort.abort();cancelAnimationFrame(frame);host.remove();keys.clear();touches.clear()}}
+ return{update,pollInterval:100,input(){if(!context.canPlay||context.snapshot?.phase!=='playing')return null;const dir=direction();
+   const idle=!dir.x&&!dir.y;
+   const me=context.snapshot.players.find(p=>p.id===context.playerId);
+   if(idle && stopSeq!==null && me?.seq>=stopSeq)return null;
+   const packet={seq:++seq,...dir};
+   stopSeq=idle?seq:null;
+   return packet;},destroy(){dead=true;abort.abort();cancelAnimationFrame(frame);host.remove();keys.clear();touches.clear()}}
 }

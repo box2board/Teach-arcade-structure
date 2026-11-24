@@ -53,7 +53,7 @@ export function mount({container,initial}){
  ellipse(bg,300,315,CENTER_R+10,CENTER_R+10,'#172b4a');ellipse(bg,300,315,CENTER_R,CENTER_R,'#e7b884');ellipse(bg,300,315,CENTER_R-9,CENTER_R-9,'#814f69');ellipse(bg,300,315,CENTER_R-17,CENTER_R-17,'#293c59');star(bg,300,306,23,'#ffd279');text(bg,'TICKET SPILL',300,352,10,'#ffe7c7');
  // Small pier marquees keep the attraction readable when the field is busy.
  round(bg,26,20,174,45,12,'#14263c');text(bg,'SPLASH PIER',113,39,13,'#ffe0a0');text(bg,'BUMPER BOATS',113,56,9,'#aeeadd');round(bg,414,20,160,45,12,'#14263c');text(bg,'GOLD TICKET',494,39,11,'#ffdf79');text(bg,'20 TICKETS',494,56,9,'#aeeadd');
- function direction(){let x=Number(keys.has('ArrowRight')||keys.has('d'))-Number(keys.has('ArrowLeft')||keys.has('a')),y=Number(keys.has('ArrowDown')||keys.has('s'))-Number(keys.has('ArrowUp')||keys.has('w'));for(const [dx,dy] of touches.values()){x+=dx;y+=dy}if(x||y)target=null;else if(target){const p=context.snapshot?.boats.find(p=>p.id===context.playerId);if(p){x=target.x-p.x;y=target.y-p.y;if(Math.hypot(x,y)<8){target=null;x=y=0}}}const n=Math.max(1,Math.hypot(x,y));return{x:x/n,y:y/n}}
+ function direction(){let x=Number(keys.has('arrowright')||keys.has('d'))-Number(keys.has('arrowleft')||keys.has('a')),y=Number(keys.has('arrowdown')||keys.has('s'))-Number(keys.has('arrowup')||keys.has('w'));for(const [dx,dy] of touches.values()){x+=dx;y+=dy}if(x||y)target=null;else if(target){const p=context.snapshot?.boats.find(p=>p.id===context.playerId);if(p){x=target.x-p.x;y=target.y-p.y;if(Math.hypot(x,y)<8){target=null;x=y=0}}}const n=Math.max(1,Math.hypot(x,y));return{x:x/n,y:y/n}}
  function drawBoat(b,isMe){const teamColor=colors[(Number(b.team)||0)%colors.length];ctx.save();ctx.translate(b.x,b.y);ctx.rotate(b.angle);ellipse(ctx,3,7,27,22,'#07182b70');round(ctx,-25,-20,50,40,17,'#172943');round(ctx,-23,-18,46,36,16,teamColor);round(ctx,-16,-15,31,29,13,'#ffffff38');round(ctx,-7,-13,20,24,8,'#32475b');ellipse(ctx,3,1,7,9,'#f5c78f');round(ctx,8,-10,6,19,3,'#e5f2dc');line(ctx,18,-14,22,-7,'#fff6d9',3);if(b.boost>0){for(let i=0;i<3;i++)line(ctx,-26-i*8,-9+i*8,-36-i*8,-9+i*8,'#fff0a8',3)}ctx.restore();
    ctx.save();ctx.translate(b.x,b.y-6);ctx.scale(.7,.7);ctx.translate(-b.x,-(b.y-6));drawCharacterToken(ctx,b,teamColor);ctx.restore();
    if(isMe){ctx.strokeStyle=b.marked>0?'#ffd183':'#b6fff0';ctx.lineWidth=3;ctx.beginPath();ctx.arc(b.x,b.y,30,0,Math.PI*2);ctx.stroke();text(ctx,'YOU',b.x,b.y-42,11,'#d9fff1')}
@@ -77,7 +77,15 @@ export function mount({container,initial}){
  on(canvas,'pointerdown',e=>{e.preventDefault();canvas.setPointerCapture(e.pointerId);const r=canvas.getBoundingClientRect();target={x:clamp((e.clientX-r.left)*600/r.width,0,600),y:clamp((e.clientY-r.top)*650/r.height,0,650)}});on(canvas,'pointermove',e=>{if(canvas.hasPointerCapture(e.pointerId)){const r=canvas.getBoundingClientRect();target={x:clamp((e.clientX-r.left)*600/r.width,0,600),y:clamp((e.clientY-r.top)*650/r.height,0,650)}}});on(canvas,'pointercancel',()=>target=null);
  for(const button of frame.querySelectorAll('.pad button')){const down=e=>{e.preventDefault();button.setPointerCapture(e.pointerId);touches.set(e.pointerId,[Number(button.dataset.x),Number(button.dataset.y)])};const up=e=>touches.delete(e.pointerId);on(button,'pointerdown',down);for(const type of ['pointerup','pointercancel','lostpointercapture'])on(button,type,up)}
  on(boostButton,'pointerdown',e=>{e.preventDefault();queueBoost()});on(d.defaultView,'keydown',e=>{if(!context.canPlay||(e.composedPath()[0]?.matches?.('input, select, textarea, button')&&e.key!==' '))return;const key=e.key.toLowerCase();if(['arrowleft','arrowright','arrowup','arrowdown','w','a','s','d',' '].includes(key)){e.preventDefault();if(key===' '&&!e.repeat)queueBoost();else keys.add(key)}});on(d.defaultView,'keyup',e=>keys.delete(e.key.toLowerCase()));on(d.defaultView,'blur',()=>{keys.clear();touches.clear();target=null});
+ let stopSeq=null;
  function update(next){if(next.snapshot!==context.snapshot)motion.receive(performance.now());context=next;const p=next.snapshot?.boats.find(p=>p.id===next.playerId);seq=Math.max(seq,p?.seq??-1)}
  update(initial);frameId=requestAnimationFrame(render);
- return{update,pollInterval:100,input(){if(!context.canPlay||context.snapshot?.phase!=='playing')return null;const dir=direction(),boost=boostQueued;boostQueued=false;return{seq:++seq,...dir,boost}},destroy(){dead=true;abort.abort();cancelAnimationFrame(frameId);host.remove();keys.clear();touches.clear()}};
+ return{update,pollInterval:100,input(){if(!context.canPlay||context.snapshot?.phase!=='playing')return null;const dir=direction();
+   const idle=!dir.x&&!dir.y&&!boostQueued;
+   const me=context.snapshot.boats.find(p=>p.id===context.playerId);
+   if(idle && stopSeq!==null && me?.seq>=stopSeq)return null;
+   const packet={seq:++seq,...dir,boost:boostQueued};
+   stopSeq=idle?seq:null;
+   boostQueued=false;
+   return packet;},destroy(){dead=true;abort.abort();cancelAnimationFrame(frameId);host.remove();keys.clear();touches.clear()}};
 }
