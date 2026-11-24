@@ -44,7 +44,7 @@ export async function inspectDirect(){
  if(!directEnabled())return {enabled:false,checks:[],configured:false};
  const work=[['Existing HQ project',verifyHQ],['Existing public project',verifyPublic],['Dedicated preview config',verifyStore],['Public preview variables',envState]];
  const checks=await Promise.all(work.map(async ([name,fn])=>{try{const data=await fn();return {name,ok:true,detail:name==='Public preview variables'?data.length+' of 2 branch-specific keys present':'Verified',configured:name==='Public preview variables'&&ENV_KEYS.every(k=>data.includes(k))};}catch(e){return {name,ok:false,detail:/^Vercel HTTP \d{3}$/.test(e.message)?e.message:'Verification failed'};}}));
- return {enabled:true,checks,configured:checks.every(x=>x.ok)&&checks[3].configured,ready:checks.every(x=>x.ok)};
+ return {enabled:true,checks,configured:checks.every(x=>x.ok)&&checks[3].configured,ready:checks.every(x=>x.ok),partial:checks[3].ok&&!checks[3].configured&&checks[3].detail!=='0 of 2 branch-specific keys present'};
 }
 export async function connectPublicPreview(){
  // No production target, no arbitrary project, no overwrite, no deployment.

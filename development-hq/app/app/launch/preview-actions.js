@@ -1,4 +1,5 @@
 'use server';
+import {inspectDirect} from '../../lib/direct-vercel';
 import {requireAdmin} from '../../lib/neon';
 import {readPreview,writePreview} from '../../lib/preview-release-store';
 import {makePlan} from '../../lib/preview-release-policy';
@@ -10,6 +11,7 @@ export async function publishPreview(form){
  if(form.get('confirm')!=='PUBLISH PREVIEW')redirect('/launch?publish=invalid');
  let plan;
  try {
+  if(!(await inspectDirect()).configured)throw Error('Public preview not configured');
   const rows=await sql`SELECT slug,desired_status,revision,reason FROM devhq_features WHERE owner_id=${user.id}`;
   plan=makePlan(rows,await readPreview());
   if(JSON.stringify(plan)!==String(form.get('snapshot'))||!plan.changed)throw Error('Stale or unchanged plan');
