@@ -1,3 +1,4 @@
+import DirectConnection from './DirectConnection';
 import PreviewRelease from './PreviewRelease';
 import { requireAdmin } from '../../lib/neon';
 import inventory from '../../lib/launch-inventory.json';
@@ -30,6 +31,7 @@ export default async function Launch({searchParams}) {
   <section className="card"><h2>Add feature</h2><p>Register an individual game or tool, not a shared engine. Every new entry starts Not reviewed.</p>
    <form action={addFeature}><div className="fields"><label>Feature name<input name="name" required maxLength={100} minLength={2}/></label><label>Stable feature ID<input name="slug" required pattern="[a-z0-9]+(-[a-z0-9]+)*" maxLength={80} placeholder="midway-mayhem"/></label></div><div className="fields"><label>Category<input name="category" required minLength={2} maxLength={80} placeholder="Multiplayer"/></label><label>Public path (optional)<input name="path" maxLength={500} placeholder="/games/example/"/></label></div><button disabled={unavailable}>Register feature</button></form>
   </section>
+  <DirectConnection query={q}/>
   <PreviewRelease rows={rows} user={user} sql={sql} query={q}/>
   <section className="card"><h2>Feature inventory</h2><nav className="queue-filters" aria-label="Filter feature decisions"><a href="/launch" className={filter==='all'?'selected':''}>All</a>{Object.entries(labels).map(([key,label])=><a key={key} href={'/launch?status='+key} className={filter===key?'selected':''}>{label}</a>)}</nav>
    {!unavailable&&!shown.length&&<p>No features in this view. Add features above after verifying their public paths.</p>}

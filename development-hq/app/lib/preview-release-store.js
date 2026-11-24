@@ -1,12 +1,11 @@
 import 'server-only';
+import {directEnabled,TEAM,STORE,inspectDirect} from './direct-vercel.js';
 import {validateConfig} from './preview-release-policy.js';
 const KEY='teach_arcade_pilot';
 const SLUG='teach-arcade-blocker-preview';
 function settings(){
- if(process.env.DEVHQ_PREVIEW_PUBLISH_ENABLED!=='1')throw Error('Preview publishing disabled');
- const id=process.env.DEVHQ_PREVIEW_EDGE_CONFIG_ID,team=process.env.DEVHQ_PREVIEW_VERCEL_TEAM_ID,token=process.env.DEVHQ_PREVIEW_VERCEL_TOKEN;
- if(!/^ecfg_[a-zA-Z0-9]+$/.test(id??'')||!/^team_[a-zA-Z0-9]+$/.test(team??'')||!token)throw Error('Preview store not configured');
- return {id,team,token};
+ if(!directEnabled())throw Error('Preview publishing disabled');
+ return {id:STORE,team:TEAM,token:process.env.DEVHQ_PREVIEW_VERCEL_TOKEN};
 }
 async function request(cfg,suffix='',options={}){
  const url=new URL('https://api.vercel.com/v1/edge-config/'+cfg.id+suffix);
@@ -26,6 +25,8 @@ export async function readPreview(){
  return validateConfig(item.value);
 }
 export async function writePreview(before,after){
+ const diagnostics=await inspectDirect();
+ if(!diagnostics.configured)throw Error('Public preview configuration is not verified');
  const cfg=await verifiedTarget(),item=await request(cfg,'/item/'+KEY);
  if(item.key!==KEY||JSON.stringify(validateConfig(item.value))!==JSON.stringify(validateConfig(before)))throw Error('Preview configuration changed');
  await request(cfg,'/items',{method:'PATCH',body:JSON.stringify({items:[{operation:'update',key:KEY,value:validateConfig(after)}]})});
