@@ -13,6 +13,10 @@
     "test:crosswords": "node scripts/check-crossword-assets.mjs && python3 scripts/validate-crosswords.py",
     "test:science-lab": "node scripts/test-science-lab.mjs",
     "dev:midway": "node lib/multiplayer/serve.js",
-    "test:midway": "node tests/midway-classroom.mjs"
+    "test:midway": "node tests/midway-classroom.mjs",
+    "test:feature-gate": "node tests/feature-gate.mjs"
+  },
+  "dependencies": {
+    "@vercel/functions": "3.11.3"
   }
 }
