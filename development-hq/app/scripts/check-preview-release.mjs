@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {IDS,makePlan,validateConfig} from '../lib/preview-release-policy.js';
+const ids=IDS,live=Object.fromEntries(ids.map(id=>[id,'live'])),rows=ids.map(slug=>({slug,revision:1,desired_status:'unreviewed',reason:''})),updated=rows.map((r,i)=>i===0?{...r,desired_status:'coming_soon',reason:'Preview test'}:r);
+assert.ok((()=>!makePlan(rows,live).changed)(),"all unreviewed unchanged");
+assert.ok((()=>makePlan(updated,live).after[ids[0]]==="coming_soon")(),"one block");
+assert.ok((()=>makePlan(updated,live).after[ids[1]]==="live")(),"other features retained");
+assert.ok((()=>makePlan(updated,live).revisions[ids[0]]===1)(),"revisions preserved");
+assert.ok((()=>{try{makePlan([{...updated[0],desired_status:"hidden"},...updated.slice(1)],live);return false}catch{return true}})(),"unsupported blocked");
+assert.ok((()=>{try{makePlan([{...updated[0],reason:""},...updated.slice(1)],live);return false}catch{return true}})(),"missing reason");
+assert.ok((()=>{try{makePlan(updated.slice(1),live);return false}catch{return true}})(),"missing row");
+assert.ok((()=>{try{validateConfig({...live,unknown:"live"});return false}catch{return true}})(),"bad current config");
+assert.ok((()=>makePlan([{...updated[0],desired_status:"live"},...updated.slice(1)],{...live,[ids[0]]:"coming_soon"}).after[ids[0]]==="live")(),"unblock");
+console.log('9 preview publication policy checks passed');

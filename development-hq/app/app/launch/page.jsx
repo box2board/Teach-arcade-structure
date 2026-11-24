@@ -1,3 +1,4 @@
+import PreviewRelease from './PreviewRelease';
 import { requireAdmin } from '../../lib/neon';
 import inventory from '../../lib/launch-inventory.json';
 import { addFeature, saveDecision, importInventory } from './actions';
@@ -19,7 +20,7 @@ export default async function Launch({searchParams}) {
  const shown=rows.filter(r=>filter==='all'||r.desired_status===filter);
  return <main className="shell">
   <header><div><div className="eyebrow">TEACH ARCADE · PRIVATE HQ</div><h1>Launch &amp; Feature Management</h1><p>Plan availability without deleting games, tools or shared engines.</p></div><a href="/">Back to HQ</a></header>
-  <div className="banner"><b>Planning only — public enforcement not connected.</b> Decisions here do not change the live website. Public status is not verified. Coming Soon and Under Improvement are intended to keep tiles visible but block play after integration. No production deployment or automatic release.</div>
+  <div className="banner"><b>Planning decisions — production enforcement not connected.</b> Decisions here do not change the live website. Public status is not verified. Coming Soon and Under Improvement are intended to keep tiles visible but block play after integration. No production deployment or automatic release.</div>
   {q?.saved && <p className="alert">Launch decision saved in HQ only.</p>}
   {q?.error && <p role="alert" className="error">{q.error==='conflict'?'Another change was saved first. Review the latest decision and try again.':'Could not save. Check fields, duplicate IDs and HQ database setup.'}</p>}
   {unavailable && <p role="alert" className="error">Feature registry unavailable. The separate HQ migration may not have been applied. No public availability has changed.</p>}
@@ -29,6 +30,7 @@ export default async function Launch({searchParams}) {
   <section className="card"><h2>Add feature</h2><p>Register an individual game or tool, not a shared engine. Every new entry starts Not reviewed.</p>
    <form action={addFeature}><div className="fields"><label>Feature name<input name="name" required maxLength={100} minLength={2}/></label><label>Stable feature ID<input name="slug" required pattern="[a-z0-9]+(-[a-z0-9]+)*" maxLength={80} placeholder="midway-mayhem"/></label></div><div className="fields"><label>Category<input name="category" required minLength={2} maxLength={80} placeholder="Multiplayer"/></label><label>Public path (optional)<input name="path" maxLength={500} placeholder="/games/example/"/></label></div><button disabled={unavailable}>Register feature</button></form>
   </section>
+  <PreviewRelease rows={rows} user={user} sql={sql} query={q}/>
   <section className="card"><h2>Feature inventory</h2><nav className="queue-filters" aria-label="Filter feature decisions"><a href="/launch" className={filter==='all'?'selected':''}>All</a>{Object.entries(labels).map(([key,label])=><a key={key} href={'/launch?status='+key} className={filter===key?'selected':''}>{label}</a>)}</nav>
    {!unavailable&&!shown.length&&<p>No features in this view. Add features above after verifying their public paths.</p>}
    <div className="project-grid">{shown.map(r=><article className="project-card" key={r.slug}><div className="project-title"><h3>{r.name}</h3><span className="pill">{labels[r.desired_status]}</span></div><p>{r.category} · <code>{r.slug}</code></p><p>{r.public_path||'Public path not mapped'}</p><form action={saveDecision}><input type="hidden" name="slug" value={r.slug}/><input type="hidden" name="revision" value={r.revision}/><label>Desired release status<select name="status" defaultValue={r.desired_status}>{Object.entries(labels).map(([key,label])=><option key={key} value={key}>{label}</option>)}</select></label><label>Reason / remaining work<textarea name="reason" maxLength={1000} defaultValue={r.reason}/></label><button>Save planning decision</button></form></article>)}</div>
