@@ -109,6 +109,7 @@ function renderQuestionsPreview(questions){
 }
 function renderGameLinks(id){
  $('teacher-set-games').replaceChildren(el('p','Play this set. Games with fixed rounds or timed play may repeat questions from shorter sets.'));
+ const multiplayer=el('a','Use this set in multiplayer');multiplayer.href='/multiplayer/?set='+encodeURIComponent(id);$('teacher-set-games').append(multiplayer);
  for(const game of GAMES.filter(g=>g.supportsQuestionBank)){const a=el('a',game.title+' ↗');a.href=game.url+'?set='+encodeURIComponent(id)+'&from=teacher-hq';a.target='_blank';a.rel='noopener';$('teacher-set-games').append(a);}
 }
 async function openOriginal(id){

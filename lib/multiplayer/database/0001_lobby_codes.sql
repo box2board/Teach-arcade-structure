@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS lobby_codes (
+  code TEXT PRIMARY KEY,
+  game TEXT NOT NULL
+);
