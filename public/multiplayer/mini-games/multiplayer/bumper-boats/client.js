@@ -11,6 +11,24 @@ export function mount({container,initial}){
  h2,p{margin:0}h2{color:#ffe4a9;font:700 22px Georgia,serif}small{color:#b4e1d2;font-weight:700;letter-spacing:.06em}.stats{display:flex;gap:10px;font-weight:800}.stats span{border:1px solid #778d89;border-radius:8px;padding:5px 8px;white-space:nowrap}
  canvas{width:100%;display:block;aspect-ratio:600/650;touch-action:none;background:#15394a}.foot{padding:8px 12px 10px}.notice{min-height:22px;text-align:center;color:#c6ecd9;font-weight:750}.bar{display:flex;align-items:center;justify-content:space-between;gap:8px}.pad{display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,40px);gap:4px}.pad button:nth-child(1){grid-column:2}.pad button:nth-child(2){grid-column:1;grid-row:2}.pad button:nth-child(3){grid-column:2;grid-row:2}.pad button:nth-child(4){grid-column:3;grid-row:2}
  button{min-width:46px;min-height:40px;border:0;border-radius:9px;background:#ffe0a0;color:#1a2f3d;font:800 19px system-ui;touch-action:none}.boost{min-width:118px;padding:8px 12px;background:#f0a951;font-size:14px}.hint{text-align:center;color:#a8c8c3;font-size:12px;margin-top:7px}
+ @media (min-width: 940px) and (min-height: 620px) {
+  .frame{
+   --arena-height:min(840px, calc(100dvh - 110px));
+   --arena-width:calc(var(--arena-height) * 600/650);
+   width:min(100%, calc(var(--arena-width) + 232px));
+   max-width:none;
+   display:grid;
+   grid-template-columns:minmax(0,1fr) 228px;
+   grid-template-rows:auto 1fr;
+  }
+  canvas{grid-column:1;grid-row:1 / 3;aspect-ratio:600/650;align-self:start}
+  header, .foot{grid-column:2}
+  header{grid-row:1;align-items:flex-start;flex-direction:column;gap:12px;padding:16px}
+  .foot{grid-row:2;padding:16px}
+  .stats{flex-wrap:wrap}
+  .bar{flex-direction:column;gap:14px}
+ }
+
  `;shadow.append(style);
  const frame=d.createElement('section');frame.className='frame';frame.innerHTML='<header><div><small>TEACH ARCADE · BOARDWALK PIER</small><h2>Bumper Boats</h2></div><div class="stats"><span id="score">0 tickets</span><span id="clock">45s</span></div></header><canvas width="600" height="650" aria-label="Shared bumper boat arena. Collect tickets and bump rivals toward the center spill ring."></canvas><div class="foot"><p class="notice" aria-live="polite"></p><div class="bar"><div class="pad"><button data-x="0" data-y="-1" aria-label="Steer up">↑</button><button data-x="-1" data-y="0" aria-label="Steer left">←</button><button data-x="0" data-y="1" aria-label="Steer down">↓</button><button data-x="1" data-y="0" aria-label="Steer right">→</button></div><button class="boost">BOOST · SPACE</button></div><p class="hint">Steer with arrows/WASD or drag · Boost into rivals · Collect shared tickets</p></div>';
  shadow.append(frame);

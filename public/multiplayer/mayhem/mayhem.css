@@ -54,7 +54,7 @@
 
 
 /* Keep the arena and its controls in view during student play. */
-body>main.mini-active{padding:8px clamp(8px,2vw,18px)}
+body>main.mini-active{max-width:1680px;padding:8px clamp(8px,2vw,18px)}
 .mini-active>header{align-items:center;margin:0 0 4px;min-height:30px;gap:8px}
 .mini-active>header .brand{display:none}
 .mini-active>header h1{font-size:clamp(16px,2vw,24px);line-height:1.2;margin:0}

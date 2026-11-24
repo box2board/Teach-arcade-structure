@@ -14,6 +14,23 @@ export function mount({container,initial,now}){
  .controls[hidden]{display:none}.controls{display:flex;gap:8px;justify-content:center}.controls button{min-width:54px;min-height:44px;font-size:22px}
  button{border:0;border-radius:9px;padding:8px 14px;background:#ffe0a1;color:#182b37;font:700 16px system-ui;touch-action:none}
  .notice{text-align:center;color:#bfe9de;min-height:1.3em}
+ @media (min-width: 940px) and (min-height: 620px) {
+  .wrap{
+   --arena-height:min(840px, calc(100dvh - 110px));
+   --arena-width:calc(var(--arena-height) * 600/700);
+   width:min(100%, calc(var(--arena-width) + 232px));
+   max-width:none;
+   display:grid;
+   grid-template-columns:minmax(0,1fr) 228px;
+   grid-template-rows:auto 1fr;
+  }
+  canvas{grid-column:1;grid-row:1 / 3;aspect-ratio:600/700;align-self:start}
+  header, footer{grid-column:2}
+  header{grid-row:1;align-items:flex-start;flex-direction:column;gap:12px;padding:16px}
+  footer{grid-row:2;padding:16px}
+  .stats,.controls{flex-wrap:wrap}
+ }
+
  `;
  const wrap=d.createElement('section');wrap.className='wrap';wrap.innerHTML='<header><div><small>TEACH ARCADE · MOONLIT MIDWAY</small><h2>Spotlight Sneak</h2></div><div class="stats"><span id="score">0 tickets</span><span id="clock">35s</span></div></header><canvas width="600" height="700" tabindex="0" aria-label="Shared moonlit midway; sneak around booths and collect tickets while avoiding the spotlights"></canvas><footer><p class="notice" aria-live="polite"></p><div class="controls"><button data-x="-1" aria-label="Move left">←</button><button data-y="-1" aria-label="Move up">↑</button><button data-y="1" aria-label="Move down">↓</button><button data-x="1" aria-label="Move right">→</button></div></footer>';
  shadow.append(style,wrap);
