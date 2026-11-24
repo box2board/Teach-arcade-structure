@@ -1,4 +1,5 @@
 import { createArena } from './arena.js';
+import { createCanvasArena } from './arena-2d.js';
 import { characters } from '../../../lib/characters.js';
 import { FIELD, standings } from './rules.js';
 import { createMovementPreview } from './movement-preview.js';
@@ -19,17 +20,13 @@ export function mountSession(root, { initial, now: serverNow, makeAvatar, avatar
   let pendingPress = false;
   const room = {sessionId:initial.playerId,roomId:''};
   let state, arena, round = -1, phase, received = 0, inputSeq = 0;
-  let audio, sound = false, frame, active = false, spectator = false, disposed = false, arenaError = '';
+  let audio, sound = false, frame, active = false, spectator = false, disposed = false;
 
   function on(target, event, handler) {
     target.addEventListener(event, handler, { signal: events.signal });
   }
   function content(id, value) {
     if (el(id).textContent !== value) el(id).textContent = value;
-  }
-  function status(message) {
-    content('connection', message);
-    el('connection').hidden = !message;
   }
   function playTone(next) {
     if (!sound || audio?.state !== 'running') return;
@@ -162,11 +159,19 @@ export function mountSession(root, { initial, now: serverNow, makeAvatar, avatar
     if (!disposed) frame = view.requestAnimationFrame(draw);
   }
   updateOptions(el('character'), avatars.map(avatar => [avatar.id, avatar.name + (avatar.species ? ' · ' + avatar.species : '')]));
+  const field = el('field');
+  function useCanvasField() {
+    arena?.dispose();
+    const canvas=el('field').cloneNode(false);
+    canvas.setAttribute('aria-label','Top-down race field');
+    el('field').replaceWith(canvas);
+    arena=createCanvasArena(canvas);
+  }
   try {
-    arena = arenaFactory(el('field'), { makeAvatar });
+    arena = arenaFactory(field, { makeAvatar });
+    on(field,'webglcontextlost',event=>{event.preventDefault();useCanvasField();});
   } catch {
-    arenaError = '3D graphics unavailable on this device.';
-    status(arenaError);
+    useCanvasField();
   }
   on(el('sound'), 'click', async () => {
     sound = !sound;

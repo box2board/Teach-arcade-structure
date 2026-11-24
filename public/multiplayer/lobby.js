@@ -145,7 +145,6 @@ function lobbyView() {
     '</section><aside class="panel"><h2>Room code</h2><div class="slot">'+text(state.code)+'</div>'+
     '<p class="muted"><a href="'+text(url.href)+'" target="_blank" rel="noopener">'+text(url.host)+'/multiplayer/join</a></p>'+
     '<p class="actions">'+button('Copy join link','copy')+'<a href="/multiplayer/project/?code='+text(state.code)+'" target="_blank" rel="noopener">Open projector view</a></p>'+
-    (['localhost','127.0.0.1'].includes(location.hostname)?'<p><small>For other devices, open the teacher setup using the network address printed by the launcher.</small></p>':'')+
     '</aside></div>';
 }
 
@@ -251,6 +250,7 @@ function remember(data) {
   current={code:data.state.code,token:data.token};
   sessionStorage.setItem(key,JSON.stringify(current));
   stage='lobby';
+  if(mode==='host')history.replaceState(null,'','/multiplayer/');
   accept(data);
 }
 
