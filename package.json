@@ -11,6 +11,8 @@
     "test:search": "node scripts/test-search.mjs",
     "build:crosswords": "python3 scripts/build-crosswords.py && python3 scripts/render-crossword-library.py",
     "test:crosswords": "node scripts/check-crossword-assets.mjs && python3 scripts/validate-crosswords.py",
-    "test:science-lab": "node scripts/test-science-lab.mjs"
+    "test:science-lab": "node scripts/test-science-lab.mjs",
+    "dev:midway": "node lib/multiplayer/serve.js",
+    "test:midway": "node tests/midway-classroom.mjs"
   }
 }

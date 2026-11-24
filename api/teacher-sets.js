@@ -1,6 +1,6 @@
 import {settings,backend,authenticate} from '../lib/teacher/backend.js';
 import {SET_SUBJECTS,setInput,teacherSetId} from '../public/teacher/set-contract.js';
-const metadata='id,owner_id,title,description,subject,topic,primary_grade,grade_band,difficulty,visibility,question_count,revision,updated_at,moderation_hidden';
+import {setMetadata as metadata,readSetQuestions} from '../lib/teacher/set-reader.js';
 export default async function handler(req,res){
  res.setHeader('Cache-Control','private, no-store');res.setHeader('Vary','Cookie, Origin');
  const send=(status,data)=>res.status(status).json(data),config=settings(),action=req.query?.action||'public';
@@ -19,7 +19,7 @@ export default async function handler(req,res){
   if(!['public','detail'].includes(action)&&!user?.id)return send(401,{error:'Sign in to create or save question sets.'});
   const options={...(token?{token}:{})},base='/rest/v1/teacher_question_sets';
   const getById=async setId=>(await backend(`${base}?id=eq.${setId}&select=${metadata}`,options))[0];
-  const withQuestions=async set=>{if(!set)return set;const items=await backend(`/rest/v1/teacher_question_set_items?set_id=eq.${set.id}&select=position,question_version_id,source_attribution,question_content_versions!inner(question,source_key)&order=position.asc`,options);return {...set,questions:items.map(item=>{const v=Array.isArray(item.question_content_versions)?item.question_content_versions[0]:item.question_content_versions;return {...v.question,_versionId:item.question_version_id,_sourceKey:v.source_key,_attribution:item.source_attribution};})};};
+  const withQuestions=set=>readSetQuestions(set,options);
   const rpc=(name,payload)=>backend(`/rest/v1/rpc/${name}`,{...options,method:'POST',body:payload});
   if(['public','mine','saved'].includes(action)){
    const offset=Number(req.query?.offset||0);if(!Number.isSafeInteger(offset)||offset<0||offset>100000)return send(400,{error:'Invalid page.'});
