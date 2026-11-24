@@ -3,7 +3,7 @@ import {test} from 'node:test';
 import {readDuringSlowPoll} from '../public/multiplayer/mayhem/slow-poll.js';
 
 const move = {action:'mini-input', since:100, packet:{seq:12,boost:true}};
-const snapshot = seq => ({status:200, state:{phase:'mini',since:100,
+const snapshot = seq => ({status:200, state:{phase:'mini',since:100,game:'bumper-boats',
   player:{miniPlayerId:'fox'}, minigame:{boats:[{id:'fox',seq},{id:'frog',seq:20}]}}});
 
 test('a prompt input reply uses one request', async () => {
@@ -50,4 +50,15 @@ test('a failed recovery read cannot replace a successful primary response',async
     return Promise.resolve({status:502});
   },move,{delay:1});
   assert.deepEqual(reply,snapshot(12));
+});
+
+test('steering can supersede an unacknowledged direction without waiting for a stalled write',async()=>{
+  const direction={...move,packet:{seq:12,x:1,y:0,boost:false}};
+  const actions=[];
+  const result=await readDuringSlowPoll(packet=>{
+    actions.push(packet.action);
+    return packet.action==='state'?Promise.resolve(snapshot(11)):new Promise(()=>{});
+  },direction,{delay:1});
+  assert.deepEqual(actions,['mini-input','state']);
+  assert.deepEqual(result,snapshot(11));
 });

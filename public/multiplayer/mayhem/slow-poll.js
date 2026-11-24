@@ -1,11 +1,16 @@
 // Recovery reads never repeat a movement or a one-time boost. A room snapshot
 // can replace a delayed reply once the room has applied that player's packet.
-function confirmsInput(state, request) {
+function canResume(state, request) {
   if (request.action === 'state' || state.phase !== 'mini' || state.since !== request.since) return true;
   const arena = state.minigame;
   const actors = arena?.players ?? arena?.boats;
   const player = actors?.find(actor => actor.id === state.player?.miniPlayerId);
-  return player?.seq >= request.packet.seq;
+  if (!player) return false;
+  if (player.seq >= request.packet.seq) return true;
+  // In these games a new steering sample supersedes an older direction.
+  // Both engines reject out-of-order sequences. Boosts and RLGL presses
+  // have one-time effects, so wait for their sequence acknowledgment.
+  return (state.game === 'spotlight-sneak' || state.game === 'bumper-boats') && !request.packet.boost;
 }
 
 export async function readDuringSlowPoll(call, request, {delay = 650, onSnapshot} = {}) {
@@ -19,7 +24,7 @@ export async function readDuringSlowPoll(call, request, {delay = 650, onSnapshot
         const reply = await call({action:'state'}, signal);
         if (signal.aborted) return;
         if (reply.status === 200 && reply.state) {
-          if (confirmsInput(reply.state, request)) {
+          if (canResume(reply.state, request)) {
             resolve(reply);
             return;
           }
