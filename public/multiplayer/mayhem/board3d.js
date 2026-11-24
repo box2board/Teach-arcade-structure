@@ -1,3 +1,4 @@
+import {boardPoint, boardMoving} from './board-motion.js';
 import {createRewardArt,createLandingEffect} from '../lib/reward-art.js';
 import {poseCharacter} from '../lib/character-pose.js';
 import {placeScenery} from '../lib/scenery-placement.js';
@@ -9,9 +10,9 @@ import {texture,label} from '../lib/three-polish.js';
 import {islandGeometry,bench} from '../lib/carnival-art.js';
 import {boards,characters,dice} from '../lib/catalog.js';
 import {avatar,disposeAvatar} from '../lib/avatar-models.js';
-export function mount(canvas,getState){
- const renderer=new T.WebGLRenderer({canvas,antialias:true});
- renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+export function mount(canvas,getState,serverNow){
+ const renderer=new T.WebGLRenderer({canvas,antialias:true,powerPreference:'low-power'});
+ renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.15));
  renderer.setClearColor(0x73c9f4);
  const scene=new T.Scene();
  const camera=new T.PerspectiveCamera(42,1,.1,250);
@@ -62,17 +63,25 @@ const staticBatchStats=batchStaticScene(scene,{exclude:[wheel]});
    });
   }
   const dt=Math.min(.05,(now-lastAt)/1000);lastAt=now;
-  for(const model of models){
-   const goal=model.userData.goal,walking=model.position.distanceTo(goal)>.12;
-   if(walking){model.rotation.y=Math.atan2(goal.x-model.position.x,goal.z-model.position.z);model.position.lerp(goal,Math.min(1,dt*5));}
+  const time=serverNow();
+  for(const [i,model] of models.entries()){
+   const team=teams[i];
+   const walking=boardMoving(team.movement,time);
+   const point=boardPoint(nodes,team.position,team.movement,time);
+   const offset=walking?0:model.userData.goal.x-points[team.position].x;
+   const x=(point.x-1200)/30+offset, z=(point.y-900)/30;
+   if(walking&&Math.hypot(x-model.position.x,z-model.position.z)>.01)model.rotation.y=Math.atan2(x-model.position.x,z-model.position.z);
+   if(team.movement)model.position.set(x,1.1,z);
+   else model.position.lerp(model.userData.goal,Math.min(1,dt*5));
    poseCharacter(model,{time:now/1000,walking});
   }
-  const turnIndex=Math.max(0,Math.min(teams.length-1,state?.turn??0));
-  const active=teams[turnIndex],activePoint=active?points[active.position]:null;
+  const focusIndex=state?.turn>=0?state.turn:state?.player?.team;
+  const activePoint=models[focusIndex]?.position;
+  const focused=Boolean(activePoint);
   cameraTarget.set(activePoint?.x??0,0,activePoint?.z??0);
-  if(!cameraReady){cameraFocus.copy(cameraTarget);camera.position.set(cameraFocus.x,cameraFocus.y+42,cameraFocus.z+30);cameraReady=true;}
+  if(!cameraReady){cameraFocus.copy(cameraTarget);camera.position.set(cameraFocus.x,cameraFocus.y+(focused?22:60),cameraFocus.z+(focused?16:46));cameraReady=true;}
   cameraFocus.lerp(cameraTarget,Math.min(1,dt*3.2));
-  cameraGoal.set(cameraFocus.x,cameraFocus.y+42,cameraFocus.z+30);
+  cameraGoal.set(cameraFocus.x,cameraFocus.y+(focused?22:60),cameraFocus.z+(focused?16:46));
   camera.position.lerp(cameraGoal,Math.min(1,dt*2.5));
   camera.lookAt(cameraFocus);
   renderer.render(scene,camera);

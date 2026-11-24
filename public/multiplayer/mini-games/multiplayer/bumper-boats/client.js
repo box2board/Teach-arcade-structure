@@ -1,3 +1,4 @@
+import {createMiniMotion} from '../../../lib/mini-motion.js';
 import {drawCharacterToken} from '../../../lib/character-tokens.js';
 import {CENTER_R} from './constants.js';
 
@@ -13,6 +14,9 @@ export function mount({container,initial}){
  `;shadow.append(style);
  const frame=d.createElement('section');frame.className='frame';frame.innerHTML='<header><div><small>TEACH ARCADE · BOARDWALK PIER</small><h2>Bumper Boats</h2></div><div class="stats"><span id="score">0 tickets</span><span id="clock">45s</span></div></header><canvas width="600" height="650" aria-label="Shared bumper boat arena. Collect tickets and bump rivals toward the center spill ring."></canvas><div class="foot"><p class="notice" aria-live="polite"></p><div class="bar"><div class="pad"><button data-x="0" data-y="-1" aria-label="Steer up">↑</button><button data-x="-1" data-y="0" aria-label="Steer left">←</button><button data-x="0" data-y="1" aria-label="Steer down">↓</button><button data-x="1" data-y="0" aria-label="Steer right">→</button></div><button class="boost">BOOST · SPACE</button></div><p class="hint">Steer with arrows/WASD or drag · Boost into rivals · Collect shared tickets</p></div>';
  shadow.append(frame);
+ const motion=createMiniMotion();
+ const pad=frame.querySelector('.pad');
+ if(!initial.canPlay){pad.hidden=true;pad.style.display='none';frame.querySelector('.boost').hidden=true;}
  const canvas=frame.querySelector('canvas'),ctx=canvas.getContext('2d'),score=frame.querySelector('#score'),clock=frame.querySelector('#clock'),notice=frame.querySelector('.notice'),boostButton=frame.querySelector('.boost');
  let context=initial,seq=-1,frameId=0,dead=false,target=null,boostQueued=false,keys=new Set(),touches=new Map(),lastSize='';
  const abort=new AbortController(),on=(target,type,fn)=>target.addEventListener(type,fn,{signal:abort.signal});
@@ -38,14 +42,14 @@ export function mount({container,initial}){
    else if(context.snapshot.boats.length<=20||Math.hypot(b.x-(context.snapshot.boats.find(p=>p.id===context.playerId)?.x??300),b.y-(context.snapshot.boats.find(p=>p.id===context.playerId)?.y??315))<95)text(ctx,b.name,b.x,b.y-33,9,'#fff1d4');
    if(b.marked>0){ctx.strokeStyle='#ffe08b';ctx.lineWidth=2;ctx.beginPath();ctx.arc(b.x,b.y,34,0,Math.PI*2);ctx.stroke()}
  }
- function render(){if(dead)return;const rect=canvas.getBoundingClientRect(),ratio=Math.min(globalThis.devicePixelRatio||1,1.35),w=Math.max(1,Math.round(rect.width*ratio)),h=Math.max(1,Math.round(rect.height*ratio)),size=w+'x'+h;if(size!==lastSize){canvas.width=w;canvas.height=h;lastSize=size}ctx.setTransform(w/600,0,0,h/650,0,0);ctx.drawImage(scenery,0,0);
+ function render(now){if(dead)return;const rect=canvas.getBoundingClientRect(),ratio=Math.min(globalThis.devicePixelRatio||1,1.35),w=Math.max(1,Math.round(rect.width*ratio)),h=Math.max(1,Math.round(rect.height*ratio)),size=w+'x'+h;if(size!==lastSize){canvas.width=w;canvas.height=h;lastSize=size}ctx.setTransform(w/600,0,0,h/650,0,0);ctx.drawImage(scenery,0,0);
   const s=context.snapshot,me=s?.boats.find(b=>b.id===context.playerId);
   if(s){for(const t of s.tickets){ellipse(ctx,t.x,t.y+7,t.gold?15:11,4,'#10263888');round(ctx,t.x-11,t.y-7,22,14,3,t.gold?'#ffdf6c':'#b7f4d9');text(ctx,t.gold?'20':'T',t.x,t.y+4,t.gold?8:10,'#31534f');if(t.gold)star(ctx,t.x,t.y-12,8,'#fff08f')}
-   const leaders=[...s.boats].sort((a,b)=>b.score-a.score).slice(0,4);for(const b of s.boats)drawBoat(b,b.id===context.playerId);
+   const leaders=[...s.boats].sort((a,b)=>b.score-a.score).slice(0,4);for(const b of motion.draw(s.boats,now,context.playerId,context.canPlay?direction():null,100,()=>s.phase!=='playing'))drawBoat(b,b.id===context.playerId);
    round(ctx,14,578,572,57,12,'#10243bdc');leaders.forEach((b,i)=>text(ctx,(i+1)+'. '+b.name+' '+b.score,82+i*142,602,11,b.id===context.playerId?'#9dffe0':'#fff0d0'));
    if(me&&!leaders.some(p=>p.id===me.id))text(ctx,'YOU · '+me.score,300,624,11,'#9dffe0');
    for(const e of s.effects){ctx.globalAlpha=Math.max(0,1-e.age);text(ctx,e.text,e.x,e.y-e.age*26,13,'#fff0a0');ctx.globalAlpha=1}
-   score.textContent=(me?.score??0)+' tickets';clock.textContent=Math.ceil(Math.max(0,45-s.elapsed))+'s';
+   score.textContent=me ? me.score+' tickets' : (leaders[0]?.score??0)+' leading tickets';clock.textContent=Math.ceil(Math.max(0,45-s.elapsed))+'s';
    notice.textContent=s.phase==='finished'?'RIDE COMPLETE · '+(me?.score??0)+' TICKETS':me?.marked>0?'YOU’RE MARKED · HIT THE CENTER RING':'BUMP RIVALS · COLLECT TICKETS';
    boostButton.textContent=me?.cool>0?'BOOST · '+me.cool.toFixed(1)+'s':'BOOST · SPACE';
   }
@@ -55,7 +59,7 @@ export function mount({container,initial}){
  on(canvas,'pointerdown',e=>{e.preventDefault();canvas.setPointerCapture(e.pointerId);const r=canvas.getBoundingClientRect();target={x:clamp((e.clientX-r.left)*600/r.width,0,600),y:clamp((e.clientY-r.top)*650/r.height,0,650)}});on(canvas,'pointermove',e=>{if(canvas.hasPointerCapture(e.pointerId)){const r=canvas.getBoundingClientRect();target={x:clamp((e.clientX-r.left)*600/r.width,0,600),y:clamp((e.clientY-r.top)*650/r.height,0,650)}}});on(canvas,'pointercancel',()=>target=null);
  for(const button of frame.querySelectorAll('.pad button')){const down=e=>{e.preventDefault();button.setPointerCapture(e.pointerId);touches.set(e.pointerId,[Number(button.dataset.x),Number(button.dataset.y)])};const up=e=>touches.delete(e.pointerId);on(button,'pointerdown',down);for(const type of ['pointerup','pointercancel','lostpointercapture'])on(button,type,up)}
  on(boostButton,'pointerdown',e=>{e.preventDefault();queueBoost()});on(d.defaultView,'keydown',e=>{if(!context.canPlay||(e.composedPath()[0]?.matches?.('input, select, textarea, button')&&e.key!==' '))return;const key=e.key.toLowerCase();if(['arrowleft','arrowright','arrowup','arrowdown','w','a','s','d',' '].includes(key)){e.preventDefault();if(key===' '&&!e.repeat)queueBoost();else keys.add(key)}});on(d.defaultView,'keyup',e=>keys.delete(e.key.toLowerCase()));on(d.defaultView,'blur',()=>{keys.clear();touches.clear();target=null});
- function update(next){context=next;const p=next.snapshot?.boats.find(p=>p.id===next.playerId);seq=Math.max(seq,p?.seq??-1)}
+ function update(next){if(next.snapshot!==context.snapshot)motion.receive(performance.now());context=next;const p=next.snapshot?.boats.find(p=>p.id===next.playerId);seq=Math.max(seq,p?.seq??-1)}
  update(initial);frameId=requestAnimationFrame(render);
  return{update,pollInterval:100,input(){if(!context.canPlay||context.snapshot?.phase!=='playing')return null;const dir=direction(),boost=boostQueued;boostQueued=false;return{seq:++seq,...dir,boost}},destroy(){dead=true;abort.abort();cancelAnimationFrame(frameId);host.remove();keys.clear();touches.clear()}};
 }

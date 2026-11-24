@@ -80,7 +80,7 @@ try{
          await checked({code,token:student.token,action:'answer',phase:current.phase,since:current.since,sequence:player.answers,choice:correct,choices:correct},{game:true});
        }
      }
-     if(room.phase==='lightning'){now=room.deadline+1;await teacherGet();}
+     if(room.phase==='lightning')assert.equal(read().phase,'roll','Completing the questions opens the first board turn directly');
      continue;
    }
    if(room.phase==='mini'){
@@ -98,6 +98,10 @@ try{
      const rejoin=await checked(students[0]);
      assert.equal(rejoin.token,students[0].token);
      assert.equal(rejoin.state.player.miniPlayerId,students[0].publicId);
+     const priorTick=read().miniState.tickAt;
+     now=room.since+80;
+     await teacherGet();
+     assert.equal(read().miniState.tickAt,priorTick,'Watching within a round does not write simulation state');
      for(let frame=1;frame<=5;frame++){
        now=room.since+frame*100;
        for(const student of students){
@@ -120,6 +124,11 @@ try{
      const repeats=await Promise.all(Array.from({length:5},teacherGet));
      for(const {state} of repeats)assert.deepEqual(state.teams.map(t=>t.score),expected);
    }else{
+     if(room.phase==='landing'){
+       const movement=room.teams[room.turn].movement;
+       assert.equal(movement.path.at(-1),room.teams[room.turn].position);
+       assert.ok(movement.path.every(Number.isInteger));
+     }
      now=room.deadline+1;
      await teacherGet();
    }

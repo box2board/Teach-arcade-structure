@@ -1,5 +1,6 @@
 import {createMiniGameHost} from '../lib/minigame-host.js';
-import {postSession,startSessionPolling} from '../lib/session-network.js';
+import {postSession,createLivePolling} from '../lib/session-network.js';
+import {boardPoint,boardMoving} from './board-motion.js';
 import {board,nodes} from './presentation.js';
 const $=id=>document.getElementById(id);
 const node=(tag,value='',className='')=>{const el=document.createElement(tag);el.textContent=value;el.className=className;return el;};
@@ -9,26 +10,28 @@ const savedKey='midway-mayhem:'+slot;
 let credentials;
 try {credentials=JSON.parse(sessionStorage.getItem(savedKey));}catch{}
 if(params.has('code')&&credentials?.code!==params.get('code'))credentials=null;
-let state,clockOffset=0,busy=false,polling=false,board3d,boardLoading=false,renderKey='',mapKey='';
-const miniHost=createMiniGameHost({now:()=>Date.now()+clockOffset});
+let state,clockOffset=0,busy=false,polling=false,board3d,boardLoading=false,renderKey='',mapKey='',mapFrame=0;
+const serverNow=()=>Date.now()+clockOffset;
+const miniHost=createMiniGameHost({now:serverNow});
 const miniContext=s=>({snapshot:s.minigame,playerId:s.player?.miniPlayerId,canPlay:Boolean(s.player?.qualified)});
 window.addEventListener('pagehide',()=>miniHost.destroy());
-window.addEventListener('pageshow',e=>{if(e.persisted&&state)render();});
+window.addEventListener('pageshow',e=>{if(e.persisted&&state){delete $('content').dataset.miniRound;render();}});
 const error=message=>{$('error').hidden=!message;$('error').textContent=message;};
 async function call(input){
   const res=await postSession('/api/mayhem',{...credentials,...input});
   return {...res.data,status:res.status};
 }
 function accept(next){
+  if(state&&(next.revision<state.revision||(next.revision===state.revision&&next.now<state.now)))return;
   clockOffset=next.now-Date.now();
   state=next;
   miniHost.update(miniContext(next));
   $('entry').hidden=true;
   $('session').hidden=false;
   $('room-label').textContent='Room '+state.code+' · Round '+state.round+'/'+state.rounds;
-  const nextMapKey=state.turn+'|'+state.teams.map(team=>team.position).join(',');
-  if(!board3d&&mapKey!==nextMapKey){mapKey=nextMapKey;drawMap();}
+  const nextMapKey=state.phase+'|'+state.turn+'|'+state.teams.map(team=>team.position).join(',');
   const playingMini=state.phase==='mini';
+  if(!playingMini&&!board3d&&mapKey!==nextMapKey){mapKey=nextMapKey;refreshMap();}
   $('stage').hidden=playingMini;
   $('world').hidden=playingMini||!board3d;
   $('session').classList.toggle('mini-round',playingMini);
@@ -41,6 +44,7 @@ function accept(next){
     questionCount:state.questionCount
   });
   renderScores();
+  $('session').classList.toggle('teacher-view',Boolean(state.host));
   if(key!==renderKey){renderKey=key;render();}
 }
 async function command(action,fields={}){
@@ -95,19 +99,27 @@ function renderScores(){
 }
 function render(){
   const s=state,c=$('content');
-  miniHost.destroy();
   if(s.phase==='mini'){
+    const roundKey=s.since+'|'+s.game;
+    if(c.dataset.miniRound===roundKey)return;
+    c.dataset.miniRound=roundKey;
     const container=node('section');
-    c.replaceChildren(container);
+    c.replaceChildren();
+    if(s.host||!s.player?.qualified){
+      c.append(node('p',s.host?'Live mini-game · teacher view':'Live mini-game · spectator view','spectator-label'));
+    }
+    c.append(container);
     if(miniHost.supports(s.game))void miniHost.mount(s.game,container,miniContext(s));
     return;
   }
+  delete c.dataset.miniRound;
+  miniHost.destroy();
   const heading={lobby:'Waiting for players',lightning:'Lightning round',standings:'Team standings',roll:'Roll the die',route:'Choose a path',landing:'Team landing',qualifier:'Mini-game qualifier','round-result':'Round results',finished:'Final standings'};
   c.replaceChildren(node('h2',heading[s.phase]));
   const line=(v)=>c.append(node('p',v));
   if(s.shared&&s.host&&s.phase!=='lobby'){
     const dashboard=node('details','','teacher-overview');
-    dashboard.open=true;
+    dashboard.open=!['roll','route','landing'].includes(s.phase);
     dashboard.append(node('summary','Teacher overview · '+s.roster.length+' students'));
     const answered=s.roster.reduce((sum,player)=>sum+(player.answers||0),0);
     const expected=s.phase==='lightning'?s.roster.length*(s.questionCount||0):s.phase==='qualifier'?s.roster.length*3:0;
@@ -181,12 +193,20 @@ function render(){
     }));
   }
 }
+function refreshMap(){
+  cancelAnimationFrame(mapFrame);
+  if(!state||state.phase==='mini'||board3d)return;
+  drawMap();
+  if(state.teams.some(team=>boardMoving(team.movement,serverNow()))) mapFrame=requestAnimationFrame(refreshMap);
+}
 function drawMap(){
-  const map=$('map');map.width=960;map.height=720;
-  const ctx=map.getContext('2d');ctx.fillStyle='#137d9a';ctx.fillRect(0,0,map.width,map.height);
-  const active=state?.teams?.[Math.max(0,Math.min(state.teams.length-1,state.turn??0))];
-  const focus=active?nodes[active.position]:{x:1200,y:900};
-  const zoom=.9;
+  const map=$('map');
+  if(map.width!==960||map.height!==720){map.width=960;map.height=720;}
+  const ctx=map.getContext('2d');ctx.resetTransform();ctx.fillStyle='#137d9a';ctx.fillRect(0,0,map.width,map.height);
+  const now=serverNow();
+  const active=state.teams[state.turn>=0?state.turn:state.player?.team];
+  const focus=active?boardPoint(nodes,active.position,active.movement,now):{x:1200,y:900};
+  const zoom=active?1.28:.39;
   ctx.setTransform(zoom,0,0,zoom,map.width/2-focus.x*zoom,map.height/2-focus.y*zoom);
   ctx.fillStyle='#137d9a';ctx.fillRect(0,0,2400,1800);
   for(const d of board.districts){
@@ -202,7 +222,7 @@ function drawMap(){
     ctx.beginPath();ctx.arc(n.x,n.y,24,0,Math.PI*2);ctx.fill();
   }
   state.teams.forEach((t,i)=>{
-    const p=nodes[t.position],same=state.teams.filter(x=>x.position===t.position),idx=same.indexOf(t);
+    const p=boardPoint(nodes,t.position,t.movement,now),same=state.teams.filter(x=>x.position===t.position),idx=same.indexOf(t);
     const x=p.x+(idx-(same.length-1)/2)*70;
     ctx.fillStyle=t.color;ctx.strokeStyle=state.turn===i?'white':'#13233b';ctx.lineWidth=8;ctx.beginPath();ctx.arc(x,p.y,37,0,Math.PI*2);ctx.fill();ctx.stroke();
     ctx.fillStyle='#13233b';ctx.font='bold 38px system-ui';ctx.fillText(i+1,x,p.y+13);
@@ -211,17 +231,26 @@ function drawMap(){
 setInterval(()=>{
   if(!state)return;
   const remaining=Math.max(0,state.deadline-(Date.now()+clockOffset));
-  const label=state.deadline?Math.ceil(remaining/1000)+' seconds':'';
+  const label=state.deadline&&['lightning','qualifier','roll','route'].includes(state.phase)?Math.ceil(remaining/1000)+' seconds':'';
   if($('clock').textContent!==label)$('clock').textContent=label;
 },150);
-const stopPolling=startSessionPolling(poll,{interval:()=>state?.phase==='mini'?miniHost.interval():state?.phase==='finished'?5000:650});
-window.addEventListener('pagehide',event=>{if(!event.persisted)stopPolling();});
+const livePolling=createLivePolling(poll,()=>state?.phase==='mini'
+  ? (state.player?.qualified ? miniHost.interval() : 250)
+  : state?.phase==='finished' ? 5000 : 225);
+for(const type of ['keydown','keyup','pointerdown','pointerup','pointercancel']){
+  window.addEventListener(type,event=>{
+    if(state?.phase!=='mini'||!state.player?.qualified||event.repeat)return;
+    if(type.startsWith('key')&&!/^(Arrow(Up|Down|Left|Right)|Key[WASD]|Space)$/.test(event.code))return;
+    livePolling.wake();
+  });
+}
+window.addEventListener('pagehide',event=>{if(!event.persisted)livePolling.stop();});
 if(!credentials)error('Open the multiplayer lobby to enter a room.');
 function loadBoard(){
   if(boardLoading||!window.WebGLRenderingContext)return;
   boardLoading=true;
   import('./board3d.js').then(module=>{
-    board3d=module.mount($('world'),()=>state);
+    board3d=module.mount($('world'),()=>state,serverNow);
     $('map').hidden=true;
-  }).catch(()=>{$('world').hidden=true;$('map').hidden=false;if(state)drawMap();});
+  }).catch(()=>{$('world').hidden=true;$('map').hidden=false;if(state)refreshMap();});
 }

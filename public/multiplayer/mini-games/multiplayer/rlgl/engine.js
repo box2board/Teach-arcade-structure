@@ -12,9 +12,11 @@ export function startRace(roster,now,seed){
   const race=new Race();
   // Public race identities are never the room's authentication tokens.
   roster.forEach((p,index)=>race.join(p.lobbyId??'racer-'+index,{name:p.name,characterId:p.characterId}));
-  race.start(now,{durationMs:55000});
+  race.start(now,{durationMs:55000,countdownMs:0});
   race.randomSeed=seed;race.tickAt=now;
-  return save(race);
+  const seededRace=hydrate(save(race));
+  seededRace.step(now,0);
+  return save(seededRace);
 }
 export function tickRace(saved,now){
   const race=hydrate(saved);
@@ -31,7 +33,7 @@ export function inputRace(saved,id,packet,now){
 export function raceView(saved,now){return saved?hydrate(saved).snapshot(now):null;}
 
 export const engine={
-  id:RLGL,durationMs:58000,
+  id:RLGL,durationMs:55000,
   create:({players,now,seed})=>startRace(players.map(p=>({lobbyId:p.id,name:p.name,characterId:p.characterId})),now,seed),
   advance:tickRace,
   input:inputRace,

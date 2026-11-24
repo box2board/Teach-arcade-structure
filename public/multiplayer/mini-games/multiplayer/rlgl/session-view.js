@@ -136,7 +136,8 @@ export function mountSession(root, { initial, now: serverNow, makeAvatar, avatar
   function draw(now) {
     if (state) {
       const estimated = state.now + Math.max(0, now - received);
-      const observed = spectator ? el('watch').value : room?.sessionId;
+      const watched=el('watch').value;
+      const observed = spectator ? (watched || state.players.values().next().value?.id) : room?.sessionId;
       const player = state.players.get(observed);
       if (live.has(state.phase) || state.phase === 'countdown') {
         const seconds = Math.max(0, Math.ceil((state.deadline - estimated) / 1000));
@@ -168,8 +169,11 @@ export function mountSession(root, { initial, now: serverNow, makeAvatar, avatar
     arena=createCanvasArena(canvas);
   }
   try {
-    arena = arenaFactory(field, { makeAvatar });
-    on(field,'webglcontextlost',event=>{event.preventDefault();useCanvasField();});
+    if(!initial.canPlay)useCanvasField();
+    else {
+      arena = arenaFactory(field, { makeAvatar });
+      on(field,'webglcontextlost',event=>{event.preventDefault();useCanvasField();});
+    }
   } catch {
     useCanvasField();
   }
