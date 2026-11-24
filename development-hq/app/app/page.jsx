@@ -47,6 +47,7 @@ export default async function Home({ searchParams }) {
       <p>Private development operations · Administrator</p></div>
       <form action={signOut}><button className="subtle">Sign out</button></form></header>
     <div className="banner"><b>Safe foundation:</b> No AI tasks are executed. Mode 2 API billing is OFF. No merge, deploy, or production controls are available.</div>
+    <section className="card"><div className="eyebrow">LAUNCH PREPARATION</div><h2>Launch &amp; Feature Management</h2><p>Inventory features, record release decisions and review status history. Planning only until public enforcement is connected.</p><a href="/launch">Open Feature Control Center</a></section>
     <section className="stats">
       <article><span>Active task queue</span><strong>{databaseError ? '—' : activeTaskCount}</strong><small>{readyCount} ready · {reviewCount} need review</small></article>
       <article><span>AI executions</span><strong>0</strong><small>Runner not connected</small></article>
