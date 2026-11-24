@@ -73,8 +73,8 @@ function step(s){
 }
 function clean(s){return{phase:s.phase,elapsed:s.elapsed,boats:s.boats.map(({id,name,characterId,team,x,y,vx,vy,angle,score,seq,boost,cool,marked,status})=>({id,name,characterId,team,x,y,vx,vy,angle,score,seq,boost,cool,marked,status})),tickets:s.tickets.map(({id,x,y,value,gold})=>({id,x,y,value,gold})),effects:s.effects};}
 export function create({players=[],now,seed=1}){return createState(players,now,seed);}
-export function advance(saved,now){const s=structuredClone(saved);let ticks=0;while(s.tickAt+1000/30<=now&&s.phase==='playing'&&ticks++<Math.ceil(durationMs/1000/STEP)){s.tickAt+=1000/30;step(s);}return s;}
-export function input(saved,id,packet,now=saved.tickAt){const s=structuredClone(saved),b=s.boats.find(p=>p.id===id);if(!b||s.phase!=='playing'||b.status!=='playing'||!packet||!Number.isSafeInteger(packet.seq)||packet.seq<=b.seq||!Number.isFinite(packet.x)||!Number.isFinite(packet.y)||Math.abs(packet.x)>1||Math.abs(packet.y)>1||packet.boost!==undefined&&typeof packet.boost!=='boolean')return{accepted:false,state:s};
+export function advance(saved,now,inPlace=false){const s=inPlace?saved:structuredClone(saved);let ticks=0;while(s.tickAt+1000/30<=now&&s.phase==='playing'&&ticks++<Math.ceil(durationMs/1000/STEP)){s.tickAt+=1000/30;step(s);}return s;}
+export function input(saved,id,packet,now=saved.tickAt,inPlace=false){const s=inPlace?saved:structuredClone(saved),b=s.boats.find(p=>p.id===id);if(!b||s.phase!=='playing'||b.status!=='playing'||!packet||!Number.isSafeInteger(packet.seq)||packet.seq<=b.seq||!Number.isFinite(packet.x)||!Number.isFinite(packet.y)||Math.abs(packet.x)>1||Math.abs(packet.y)>1||packet.boost!==undefined&&typeof packet.boost!=='boolean')return{accepted:false,state:s};
  b.seq=packet.seq;b.lastInputAt=now;b.input={x:packet.x,y:packet.y};if(packet.boost&&!b.cool){b.boost=.48;b.cool=2.6;b.vx+=Math.cos(b.angle)*155;b.vy+=Math.sin(b.angle)*155;}return{accepted:true,state:s};}
 export function snapshot(state){return state?clean(state):null;}
 export function finished(state){return state?.phase==='finished';}

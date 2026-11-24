@@ -54,7 +54,7 @@
 
 
 /* Keep the arena and its controls in view during student play. */
-body>main.mini-active{padding:8px clamp(8px,2vw,18px)}
+body>main.mini-active{max-width:1680px;padding:8px clamp(8px,2vw,18px)}
 .mini-active>header{align-items:center;margin:0 0 4px;min-height:30px;gap:8px}
 .mini-active>header .brand{display:none}
 .mini-active>header h1{font-size:clamp(16px,2vw,24px);line-height:1.2;margin:0}
@@ -65,3 +65,11 @@ body>main.mini-active{padding:8px clamp(8px,2vw,18px)}
 .mini-round #scores .score b{display:inline;margin-left:6px;font-size:inherit}
 .mini-round #panel{padding:4px;border:0;background:none;box-shadow:none}
 .mini-round #clock{display:none}
+
+.teacher-view #scores{position:sticky;top:0;z-index:3;padding:6px 0;background:#10182d}
+.teacher-view .score{flex:1 0 88px}
+.spectator-label{margin:0 auto 5px;text-align:center;color:#c3cfe8;font-size:.85rem}
+@media(max-width:740px){
+  .layout:has(.die-roll-control,.die-waiting) #stage{aspect-ratio:16/10;max-height:56vh}
+  .layout:has(.die-roll-control,.die-waiting) .panel{grid-row:auto}
+}

@@ -33,3 +33,39 @@ export function startSessionPolling(task,{interval=1000,maxDelay=8000,
   void tick();
   return ()=>{stopped=true;cancel(timer);};
 }
+
+/** Poll at a start-to-start cadence, with one request in flight. */
+export function createLivePolling(task, interval, timers = {}) {
+  const schedule = timers.schedule ?? setTimeout;
+  const cancel = timers.cancel ?? clearTimeout;
+  const now = timers.now ?? (() => performance.now());
+  let timer, running=false, stopped=false, immediate=false, failures=0;
+
+  function queue(ms) {
+    cancel(timer);
+    timer=schedule(tick,ms);
+  }
+  async function tick() {
+    if(stopped || running)return;
+    const started=now();
+    running=true;
+    try { failures=await task()===false ? failures+1 : 0; }
+    catch { failures++; }
+    running=false;
+    if(stopped)return;
+    const cadence=interval();
+    const delay=failures ? Math.max(300,Math.min(6000,cadence*2**Math.min(failures,6))) :
+      immediate ? 0 : Math.max(12,cadence-(now()-started));
+    immediate=false;
+    queue(delay);
+  }
+  void tick();
+  return {
+    wake() {
+      if(stopped||failures)return;
+      if(running)immediate=true;
+      else queue(0);
+    },
+    stop() { stopped=true;cancel(timer); }
+  };
+}

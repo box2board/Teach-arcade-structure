@@ -136,3 +136,8 @@ footer { padding: .65rem .1rem 0; color: var(--muted); font-size: .82rem; }
 
 #entry, #lobby-details, #host-actions, #leave {display:none!important;}
 :host {display:block;} #game {padding:8px;width:100%;} .connection{position:absolute;}
+
+@media (min-width: 940px) and (min-height: 620px) {
+  #game { width: 100%; max-width: 1640px; }
+  .stage { height: min(940px, calc(100dvh - 155px)); }
+}

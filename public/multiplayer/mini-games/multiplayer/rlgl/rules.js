@@ -4,7 +4,7 @@ const MIDWAY_IDS = midwayCharacters.map(character => character.id);
 export const FIELD = Object.freeze({ width: 66, finish: 89, speed: 11 });
 export const STEP_MS = 1000 / 30;
 const GRACE = 200;
-const FRESH = 180;
+const FRESH = 350;
 const MAX_RED_SAMPLE_AGE = 800;
 const HELD_RED = 145;
 const DEADZONE = .12;
@@ -97,7 +97,7 @@ export class Race {
     this.solo = roster.length === 1;
     this.phase = 'countdown';
     this.phaseId++;
-    this.phaseEndsAt = now + 3000;
+    this.phaseEndsAt = now + bounded(options.countdownMs, 0, 3000, 3000);
     this.startedAt = this.phaseEndsAt;
     this.deadline = this.phaseEndsAt + this.config.durationMs;
     roster.forEach((player, index) => {

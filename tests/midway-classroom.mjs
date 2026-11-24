@@ -8,6 +8,7 @@ import {questionIndex} from '../public/multiplayer/mayhem/rules.js';
 import {isInLight,visibleRayLength} from '../public/multiplayer/mini-games/multiplayer/spotlight-sneak/engine.js';
 import {characters} from '../public/multiplayer/lib/characters.js';
 
+const studentCount = 30;
 const db = openRoomDatabase(':memory:');
 const realNow = Date.now;
 let now = realNow();
@@ -46,17 +47,17 @@ try{
  const {code}=created.state;
  const host=created.token;
  const read=()=>JSON.parse(db.prepare('SELECT state FROM mayhem_rooms WHERE code=?').bind(code).first().state);
- const students=await Promise.all(Array.from({length:12},async(_,i)=>{
-   const join={code,action:'join',name:'Student '+(i+1),characterId:characters[i].id,joinId:crypto.randomUUID()};
+ const students=await Promise.all(Array.from({length:studentCount},async(_,i)=>{
+   const join={code,action:'join',name:'Student '+(i+1),characterId:characters[i % characters.length].id,joinId:crypto.randomUUID()};
    const joined=await checked(join);
    assert.equal(joined.state.player.characterId,join.characterId);
    return {...join,token:joined.token,publicId:joined.state.player.miniPlayerId};
  }));
  const waitingProjection=await checked({code,action:'projection'});
- assert.equal(waitingProjection.count,12);
+ assert.equal(waitingProjection.count,studentCount);
  assert.equal(waitingProjection.qr,qrImage(origin+'/join?code='+code));
  await checked({code,token:host,action:'start'});
- assert.deepEqual(read().teams.map((_,i)=>read().players.filter(p=>p.team===i).length),[3,3,3,3]);
+ assert.deepEqual(read().teams.map((_,i)=>read().players.filter(p=>p.team===i).length),[8,8,7,7]);
  const studentGet=token=>checked({code,token,action:'state'},{game:true});
  const teacherGet=()=>studentGet(host);
  const first=await studentGet(students[0].token);
@@ -68,6 +69,7 @@ try{
  assert.equal((await call({action:'cabinet-set',set:selected})).status,404);
 
  const games=[];
+ const miniGameAttendance={};
  for(let steps=0;steps<115;steps++){
    const room=read();
    if(room.phase==='finished')break;
@@ -80,7 +82,7 @@ try{
          await checked({code,token:student.token,action:'answer',phase:current.phase,since:current.since,sequence:player.answers,choice:correct,choices:correct},{game:true});
        }
      }
-     if(room.phase==='lightning'){now=room.deadline+1;await teacherGet();}
+     if(room.phase==='lightning')assert.equal(read().phase,'roll','Completing the questions opens the first board turn directly');
      continue;
    }
    if(room.phase==='mini'){
@@ -89,7 +91,8 @@ try{
      const engine=getMiniGame(game);
      const original=await teacherGet();
      const all=original.state.minigame.players??original.state.minigame.boats;
-     assert.equal(all.length,12);
+     assert.equal(all.length,studentCount);
+     miniGameAttendance[game]=all.length;
      for(const student of students){
        assert.equal(all.find(p=>p.id===student.publicId).characterId,student.characterId);
        assert.ok(!JSON.stringify(original.state).includes(student.token));
@@ -98,20 +101,37 @@ try{
      const rejoin=await checked(students[0]);
      assert.equal(rejoin.token,students[0].token);
      assert.equal(rejoin.state.player.miniPlayerId,students[0].publicId);
+     const priorTick=read().miniState.tickAt;
+     now=room.since+80;
+     await teacherGet();
+     assert.equal(read().miniState.tickAt,priorTick,'Watching within a round does not write simulation state');
+     const race=game==='red-light-green-light';
+     if(race){
+       assert.equal(original.state.minigame.phase,'countdown');
+       assert.equal(original.state.minigame.phaseEndsAt,room.since+3000);
+       assert.equal(room.deadline,room.since+58000);
+       now=room.since+2980;
+       const countdownViews=await Promise.all(students.map(student=>studentGet(student.token)));
+       for(const {state} of countdownViews){
+         assert.equal(state.minigame.phase,'countdown');
+         assert.equal(state.minigame.phaseEndsAt,room.since+3000);
+       }
+     }
      for(let frame=1;frame<=5;frame++){
-       now=room.since+frame*100;
+       now=room.since+(race?3000:0)+frame*100;
        for(const student of students){
          const current=(await studentGet(student.token)).state;
          assert.deepEqual(current.minigame, (await teacherGet()).state.minigame);
          const packet={seq:frame,x:.5,y:-.5,boost:frame===1,
-           dx:.5,dz:1,phaseId:current.minigame.phaseId,roundId:current.minigame.roundId,sample:now,press:true};
-         if(game==='red-light-green-light'){
-           // RLGL movement timing and elimination are covered separately by its race tests.
-           assert.equal(current.minigame.players.length,12);
-         }else{
-           await checked({code,token:student.token,action:'mini-input',phase:'mini',since:room.since,packet},{game:true});
-         }
+           z:1,phaseId:current.minigame.phaseId,roundId:current.minigame.roundId,sample:now,press:true};
+         if(race)assert.equal(current.minigame.phase,'green');
+         await checked({code,token:student.token,action:'mini-input',phase:'mini',since:room.since,packet},{game:true});
+
        }
+     }
+     if(race){
+       const running=(await teacherGet()).state.minigame.players;
+       for(const player of running)assert.ok(player.z>all.find(p=>p.id===player.id).z);
      }
      const end=engine.advance(read().miniState, room.deadline+1);
      const rewards=new Map(engine.results(end,room.deadline+1).map(p=>[p.playerId,Math.min(10,Math.floor(p.score/miniGames[game].divisor))]));
@@ -120,6 +140,11 @@ try{
      const repeats=await Promise.all(Array.from({length:5},teacherGet));
      for(const {state} of repeats)assert.deepEqual(state.teams.map(t=>t.score),expected);
    }else{
+     if(room.phase==='landing'){
+       const movement=room.teams[room.turn].movement;
+       assert.equal(movement.path.at(-1),room.teams[room.turn].position);
+       assert.ok(movement.path.every(Number.isInteger));
+     }
      now=room.deadline+1;
      await teacherGet();
    }
@@ -133,5 +158,8 @@ try{
  assert.equal(visibleRayLength(spotlight,Math.PI/2),60);
  assert.equal(isInLight(spotlight,0,160,160),true);
  assert.equal(isInLight(spotlight,0,160,270),false);
- console.log('12 students, 4 balanced teams, 3 rounds. All three mini-games, private-set authorization, shared state, seat/character reconnect, QR, cover and once-only team rewards passed.');
+ console.log(JSON.stringify({students:studentCount,teams:final.teams.map((team,index)=>({
+   team:index+1,students:final.players.filter(player=>player.team===index).length,score:team.score
+ })),rounds:games,miniGameAttendance},null,2));
+ console.log('Passed private-set authorization, shared state, seat and character reconnect, QR, RLGL countdown and movement, spotlight cover, and once-only team rewards.');
 }finally{Date.now=realNow;Math.random=realRandom;db.close();}
