@@ -1,11 +1,14 @@
 // Shared same-origin transport. Mutations are never automatically retried:
 // a lost response does not imply that the server rejected the action.
-export async function postSession(path, payload, {headers={}, timeout=10000, fetchImpl=globalThis.fetch}={}) {
+export async function postSession(path, payload, {headers={}, timeout=10000, signal, fetchImpl=globalThis.fetch}={}) {
   const base=globalThis.location?.origin ?? 'https://local.invalid';
   const url=new URL(path,base);
   if(url.origin!==base)throw new Error('Session requests must use the same origin.');
   const controller=new AbortController();
-  const timer=setTimeout(()=>controller.abort(),timeout);
+  const abort=()=>controller.abort();
+  if(signal?.aborted)abort();
+  else signal?.addEventListener('abort',abort,{once:true});
+  const timer=setTimeout(abort,timeout);
   try {
     const response=await fetchImpl(url.pathname+url.search,{
       method:'POST',credentials:'same-origin',cache:'no-store',signal:controller.signal,
@@ -13,7 +16,7 @@ export async function postSession(path, payload, {headers={}, timeout=10000, fet
     });
     const data=await response.json();
     return {status:response.status,ok:response.ok,data};
-  } finally {clearTimeout(timer);}
+  } finally {clearTimeout(timer);signal?.removeEventListener('abort',abort);}
 }
 
 // Schedule after completion so slow networks cannot accumulate requests.
