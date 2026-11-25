@@ -14,5 +14,8 @@
     "test:science-lab": "node scripts/test-science-lab.mjs",
     "dev:midway": "node lib/multiplayer/serve.js",
     "test:midway": "node tests/midway-classroom.mjs"
+  },
+  "dependencies": {
+    "ws": "^8.23.0"
   }
 }

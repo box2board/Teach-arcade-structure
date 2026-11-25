@@ -1,3 +1,4 @@
+import {openBoatTransport} from '../lib/boat-transport.js';
 import {readDuringSlowPoll} from './slow-poll.js';
 import {createMiniGameHost} from '../lib/minigame-host.js';
 import {postSession,createLivePolling} from '../lib/session-network.js';
@@ -22,10 +23,60 @@ async function call(input,signal){
   const res=await postSession('/api/mayhem',{...credentials,...input},{signal});
   return {...res.data,status:res.status};
 }
+let boatTransport, boatRound, reportedMode, reportOrder=0, lastReport=0;
+let lastBoatUpdate, longestGap=0, updateGaps=[];
+function reportBoatMode(mode){
+  if(mode===reportedMode&&performance.now()-lastReport<5000)return;
+  lastReport=performance.now();
+  const ordered=updateGaps.slice().sort((a,b)=>a-b);
+  const medianGap=ordered[Math.floor(ordered.length/2)]??0;
+  reportedMode=mode;
+  const order=reportOrder=Math.max(Date.now(),reportOrder+1);
+  const since=boatRound;
+  async function send(){
+    if(boatRound!==since||order!==reportOrder)return;
+    try{
+      const reply=await call({action:'boat-link',since,order,mode,medianGap,longestGap});
+      if(reply.status===200)return;
+    }catch{}
+    if(boatRound===since&&order===reportOrder)setTimeout(send,1200);
+  }
+  void send();
+}
+function syncBoatTransport(next){
+  const round=next.boatsPilot&&next.game==='bumper-boats'&&next.phase==='mini'&&next.player?next.since:null;
+  if(round===boatRound){
+    if(round){
+      const now=performance.now();
+      const gap=Math.round(now-lastBoatUpdate);
+      updateGaps.push(gap);
+      if(updateGaps.length>60)updateGaps.shift();
+      longestGap=Math.max(longestGap,gap);
+      lastBoatUpdate=now;
+      if(reportedMode)reportBoatMode(reportedMode);
+    }
+    return;
+  }
+  boatTransport?.stop();
+  boatTransport=null;
+  boatRound=round;
+  reportedMode=null;
+  updateGaps=[];longestGap=0;lastBoatUpdate=performance.now();
+  if(round)boatTransport=openBoatTransport({
+    url:'wss://'+location.host+'/api/boats-live',credentials,initial:next,onMode:reportBoatMode
+  });
+}
+async function miniCall(packet,signal){
+  const reply=boatTransport?.request(packet);
+  if(!reply)return call(packet,signal);
+  try{return await reply;}catch{return call({action:'state'},signal);}
+}
+window.addEventListener('pagehide',()=>{boatTransport?.stop();boatTransport=null;boatRound=null;});
 function accept(next){
   if(state&&(next.revision<state.revision||(next.revision===state.revision&&next.now<state.now)))return;
   clockOffset=next.now-Date.now();
   state=next;
+  syncBoatTransport(next);
   miniHost.update(miniContext(next));
   $('entry').hidden=true;
   $('session').hidden=false;
@@ -47,6 +98,12 @@ function accept(next){
   renderScores();
   $('session').classList.toggle('teacher-view',Boolean(state.host));
   if(key!==renderKey){renderKey=key;render();}
+  const connections=$('boat-connections');
+  if(connections){
+    const labels=next.roster.map(p=>p.name+' · '+(p.boatLink||'Connecting')+
+      (p.medianGap?' · '+p.medianGap+' ms typical / '+p.longestGap+' ms longest update gap':'')).join(' | ');
+    if(connections.lastChild.textContent!==labels)connections.lastChild.textContent=labels;
+  }
 }
 async function command(action,fields={}){
   if(busy||!state)return;
@@ -63,7 +120,7 @@ async function poll(){
   try{
     const input=state?.phase==='mini'?miniHost.input():null;
     const packet=input?{action:'mini-input',phase:state.phase,since:state.since,packet:input}:{action:'state'};
-    const r=state?.phase==='mini' ? await readDuringSlowPoll(call,packet,{
+    const r=state?.phase==='mini' ? await readDuringSlowPoll(miniCall,packet,{
       onSnapshot:next=>{if(!busy)accept(next);}
     }) : await call(packet);
     if(r.status>=500||r.status===429){error('Connection interrupted. Reconnecting…');return false;}
@@ -110,6 +167,12 @@ function render(){
     c.replaceChildren();
     if(s.host||!s.player?.qualified){
       c.append(node('p',s.host?'Live mini-game · teacher view':'Live mini-game · spectator view','spectator-label'));
+    }
+    if(s.host&&s.boatsPilot){
+      const details=node('details');
+      details.append(node('summary','Student connections'),node('div'));
+      details.id='boat-connections';
+      c.append(details);
     }
     c.append(container);
     if(miniHost.supports(s.game))void miniHost.mount(s.game,container,miniContext(s));

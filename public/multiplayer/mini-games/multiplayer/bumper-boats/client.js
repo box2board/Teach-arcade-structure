@@ -60,10 +60,22 @@ export function mount({container,initial}){
    else if(context.snapshot.boats.length<=20||Math.hypot(b.x-(context.snapshot.boats.find(p=>p.id===context.playerId)?.x??300),b.y-(context.snapshot.boats.find(p=>p.id===context.playerId)?.y??315))<95)text(ctx,b.name,b.x,b.y-33,9,'#fff1d4');
    if(b.marked>0){ctx.strokeStyle='#ffe08b';ctx.lineWidth=2;ctx.beginPath();ctx.arc(b.x,b.y,34,0,Math.PI*2);ctx.stroke()}
  }
+ let localHeading,lastFrame;
  function render(now){if(dead)return;const rect=canvas.getBoundingClientRect(),ratio=Math.min(globalThis.devicePixelRatio||1,1.35),w=Math.max(1,Math.round(rect.width*ratio)),h=Math.max(1,Math.round(rect.height*ratio)),size=w+'x'+h;if(size!==lastSize){canvas.width=w;canvas.height=h;lastSize=size}ctx.setTransform(w/600,0,0,h/650,0,0);ctx.drawImage(scenery,0,0);
   const s=context.snapshot,me=s?.boats.find(b=>b.id===context.playerId);
   if(s){for(const t of s.tickets){ellipse(ctx,t.x,t.y+7,t.gold?15:11,4,'#10263888');round(ctx,t.x-11,t.y-7,22,14,3,t.gold?'#ffdf6c':'#b7f4d9');text(ctx,t.gold?'20':'T',t.x,t.y+4,t.gold?8:10,'#31534f');if(t.gold)star(ctx,t.x,t.y-12,8,'#fff08f')}
-   const leaders=[...s.boats].sort((a,b)=>b.score-a.score).slice(0,4);for(const b of motion.draw(s.boats,now,context.playerId,context.canPlay?direction():null,100,()=>s.phase!=='playing'))drawBoat(b,b.id===context.playerId);
+   const leaders=[...s.boats].sort((a,b)=>b.score-a.score).slice(0,4);const steering=context.canPlay?direction():null;
+   const elapsed=Math.min(.08,Math.max(0,(now-(lastFrame??now))/1000));
+   lastFrame=now;
+   for(const boat of motion.draw(s.boats,now,context.playerId,steering,100,()=>s.phase!=='playing')){
+     if(boat.id===context.playerId&&steering){
+       localHeading??=boat.angle;
+       const target=steering.x||steering.y?Math.atan2(steering.y,steering.x):boat.angle;
+       const difference=Math.atan2(Math.sin(target-localHeading),Math.cos(target-localHeading));
+       localHeading+=difference*(1-Math.exp(-elapsed*9));
+       drawBoat({...boat,angle:localHeading},true);
+     }else drawBoat(boat,false);
+   }
    round(ctx,14,578,572,57,12,'#10243bdc');leaders.forEach((b,i)=>text(ctx,(i+1)+'. '+b.name+' '+b.score,82+i*142,602,11,b.id===context.playerId?'#9dffe0':'#fff0d0'));
    if(me&&!leaders.some(p=>p.id===me.id))text(ctx,'YOU · '+me.score,300,624,11,'#9dffe0');
    for(const e of s.effects){ctx.globalAlpha=Math.max(0,1-e.age);text(ctx,e.text,e.x,e.y-e.age*26,13,'#fff0a0');ctx.globalAlpha=1}
