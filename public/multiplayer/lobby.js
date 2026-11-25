@@ -26,6 +26,7 @@ let polling = false;
 let lastProjection = '';
 let reviewEnabled=false;
 const boatsPilot=params.get('pilot')==='bumper-boats';
+const magnetPilot=params.get('pilot')==='magnet-mayhem';
 let reviewGame=params.get('review')??'';
 let teacherSetsConfigured=false;
 function load(storeKey) {
@@ -118,9 +119,9 @@ function setup() {
   }
   const bankTitle=banks.find(bank=>bank.id===setupChoices.bank)?.title||'Selected question set';
   const reviewPicker=reviewEnabled?'<label>Review a mini-game<select name="reviewGame">'+selectOptions([{id:'',title:'Play the full session'},...Object.entries(miniGames).map(([id,game])=>({id,title:game.name}))],reviewGame)+'</select></label>':'';
-  return '<section class="panel narrow setup-step"><p class="step-kicker">STEP 3 OF 3 · TEAM SETUP</p><h1>Set up '+text(selectedGame.title)+'</h1><p class="muted">Choose the team count and rounds, then open your lobby.</p><div class="chosen-set"><small>QUESTION SET · GAME MODE</small><strong>'+text(bankTitle)+'</strong><span>'+text(selectedGame.title)+(boatsPilot?' · Bumper Boats connection playtest':' · mini-games selected randomly')+'</span></div><form id="create"><input type="hidden" name="game" value="'+text(selectedGame.id)+'"><input type="hidden" name="bank" value="'+text(setupChoices.bank)+'"><div class="fields">'+
+  return '<section class="panel narrow setup-step"><p class="step-kicker">STEP 3 OF 3 · TEAM SETUP</p><h1>Set up '+text(selectedGame.title)+'</h1><p class="muted">Choose the team count and rounds, then open your lobby.</p><div class="chosen-set"><small>QUESTION SET · GAME MODE</small><strong>'+text(bankTitle)+'</strong><span>'+text(selectedGame.title)+(boatsPilot?' · Bumper Boats connection playtest':magnetPilot?' · Magnet Mayhem playtest':' · mini-games selected randomly')+'</span></div><form id="create"><input type="hidden" name="game" value="'+text(selectedGame.id)+'"><input type="hidden" name="bank" value="'+text(setupChoices.bank)+'"><div class="fields">'+
     selectedGame.settings.map(setting=>'<label>'+text(setting.label)+'<select name="'+text(setting.id)+'">'+
-      numericOptions(setting.min,boatsPilot&&setting.id==='rounds'?1:setting.max,setupChoices[setting.id])+'</select></label>').join('')+
+      numericOptions(setting.min,(boatsPilot||magnetPilot)&&setting.id==='rounds'?1:setting.max,setupChoices[setting.id])+'</select></label>').join('')+
     '</div>'+reviewPicker+'<button class="primary" '+(setUnavailable?'disabled':'')+'>Open '+text(selectedGame.title)+' lobby</button></form>'+button('Back to game mode','back-mode')+'</section>';
 }
 
@@ -281,7 +282,7 @@ app.addEventListener('submit',event=>{
       stage='mode';render();return;
     }
     if(form.id==='create') remember(await api('create',{
-      boatsPilot,game:data.get('game'),bank:data.get('bank'),reviewGame:data.get('reviewGame'),...Object.fromEntries(selectedGame.settings.map(setting=>[setting.id,Number(data.get(setting.id))]))
+      boatsPilot,magnetPilot,game:data.get('game'),bank:data.get('bank'),reviewGame:data.get('reviewGame'),...Object.fromEntries(selectedGame.settings.map(setting=>[setting.id,Number(data.get(setting.id))]))
     }));
     if(form.id==='lookup') await lookUp(data.get('code'));
     if(form.id==='nickname') remember(await api('join',{code:info.code,name:data.get('name'),characterId:data.get('characterId'),joinId:attemptFor(info.code)}));
@@ -344,7 +345,7 @@ if(mode==='host'){
     teacherSetsConfigured=catalog.teacherSetsConfigured;
     await useGame(games.find(game=>game.id===params.get('game'))??games[0]);
     if(!current&&params.has('set')&&!setUnavailable)stage='mode';
-    if(!current&&(boatsPilot||reviewEnabled&&Object.hasOwn(miniGames,reviewGame))){
+    if(!current&&(boatsPilot||magnetPilot||reviewEnabled&&Object.hasOwn(miniGames,reviewGame))){
       stage='settings';
       setupChoices.teams=2;
       setupChoices.rounds=1;
