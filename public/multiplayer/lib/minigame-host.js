@@ -2,7 +2,8 @@
 const loaders={
   'red-light-green-light':()=>import('../mini-games/multiplayer/rlgl/client.js'),
   'spotlight-sneak':()=>import('../mini-games/multiplayer/spotlight-sneak/client.js'),
-  'bumper-boats':()=>import('../mini-games/multiplayer/bumper-boats/client.js')
+  'bumper-boats':()=>import('../mini-games/multiplayer/bumper-boats/client.js'),
+  'magnet-mayhem':()=>import('../mini-games/multiplayer/magnet-mayhem/client.js')
 };
 export function createMiniGameHost({now,loaders:registry=loaders}){
   let instance=null,generation=0,latest;

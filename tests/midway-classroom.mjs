@@ -39,7 +39,7 @@ const checked=async(input,options)=>{
 };
 
 try{
- const settings={action:'create',game:'midway-mayhem',bank:selected,teams:4,rounds:3};
+ const settings={action:'create',game:'midway-mayhem',bank:selected,teams:4,rounds:4};
  assert.equal((await call(settings)).status,404);
  const created=await checked(settings,{teacher:true});
  assert.equal(created.state.questionSetTitle,privateSet.title);
@@ -90,7 +90,7 @@ try{
      games.push(game);
      const engine=getMiniGame(game);
      const original=await teacherGet();
-     const all=original.state.minigame.players??original.state.minigame.boats;
+     const all=original.state.minigame.players??original.state.minigame.boats??original.state.minigame.magnets;
      assert.equal(all.length,studentCount);
      miniGameAttendance[game]=all.length;
      for(const student of students){
@@ -122,7 +122,7 @@ try{
        for(const student of students){
          const current=(await studentGet(student.token)).state;
          assert.deepEqual(current.minigame, (await teacherGet()).state.minigame);
-         const packet={seq:frame,x:.5,y:-.5,boost:frame===1,
+         const packet={seq:frame,x:.5,y:-.5,boost:frame===1,attract:frame%2===0,
            z:1,phaseId:current.minigame.phaseId,roundId:current.minigame.roundId,sample:now,press:true};
          if(race)assert.equal(current.minigame.phase,'green');
          await checked({code,token:student.token,action:'mini-input',phase:'mini',since:room.since,packet},{game:true});
@@ -152,6 +152,17 @@ try{
  const final=read();
  assert.equal(final.phase,'finished');
  assert.deepEqual(games.toSorted(),multiplayerIds().toSorted());
+ const pilot=await checked({...settings,rounds:1,magnetPilot:true},{teacher:true});
+ const pilotCode=pilot.state.code;
+ assert.equal(JSON.parse(db.prepare('SELECT state FROM mayhem_rooms WHERE code=?').bind(pilotCode).first().state).rounds,1);
+ for(const [i,characterId] of ['fox','frog','rabbit','bear'].entries()){
+   await checked({code:pilotCode,action:'join',name:'Pilot '+i,characterId,joinId:crypto.randomUUID()});
+ }
+ const pilotStart=await checked({code:pilotCode,token:pilot.token,action:'start'});
+ assert.equal(pilotStart.state.phase,'mini');
+ const pilotGame=await checked({code:pilotCode,token:pilot.token,action:'state'},{game:true});
+ assert.equal(pilotGame.state.game,'magnet-mayhem');
+ assert.equal(pilotGame.state.minigame.magnets.length,4);
  const projected=await checked({code,action:'projection'});
  assert.deepEqual(projected.teams.map(t=>t.score),final.teams.map(t=>t.score));
  const spotlight={on:true,x:160,y:120,base:Math.PI/2,rate:0,phase:0};
