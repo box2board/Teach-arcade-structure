@@ -1,5 +1,5 @@
 {
-  "git": { "deploymentEnabled": { "prototype/devhq-launch-feature-management": false } },
+  "ignoreCommand": "if [ \"$VERCEL_GIT_COMMIT_REF\" = \"prototype/devhq-launch-feature-management\" ] && [ -f public/index.html ] && [ -d development-hq/app ]; then exit 0; else exit 1; fi",
   "headers": [
     {
       "source": "/(.*)",
