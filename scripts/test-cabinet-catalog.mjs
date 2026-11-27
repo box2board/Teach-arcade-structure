@@ -62,7 +62,7 @@ test('every public Brain Arcade game is available in Cabinet Explore without cha
 
 test('new Mini Games and RV releases feed the Cabinet from their public cards',async()=>{
  const entries=miniEntries(await readFile(new URL('../public/mini-games/index.html',import.meta.url),'utf8'));
- const games=await cabinetMiniGames(entries);assert.equal(games.length,20);
+ const games=await cabinetMiniGames(entries);assert.deepEqual(CABINET_GAMES.filter(game=>game.collection==='Mini Games'),games);
  for(const game of games){assert.deepEqual(CABINET_GAMES.find(g=>g.id===game.id),game);assert.equal(game.collection,'Mini Games');assert.equal(game.chooseTopic,undefined);}
  assert.ok(CABINET_GAMES.some(g=>g.id==='brain:rv-road-trip-mayhem'));
  for(const id of ['mini:magnet-mayhem','mini:avalanche-escape','mini:ultimate-skeeball'])assert.ok(CABINET_GAMES.some(g=>g.id===id),id);

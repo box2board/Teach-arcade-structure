@@ -1,0 +1,350 @@
+{
+  "subjects:fine-arts": {
+    "title": "Fine Arts",
+    "url": "/subjects/fine-arts/",
+    "description": "Art, music, drama, and media arts.",
+    "image": "/assets/images/subjects/fine-arts-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history": {
+    "title": "Art History",
+    "url": "/subjects/fine-arts/art-history/",
+    "description": "Explore artists and movements across time.",
+    "image": "/assets/images/subjects/art-history-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history:19th-century-movements": {
+    "title": "19th-Century Art Movements",
+    "url": "/subjects/fine-arts/art-history/19th-century-movements.html",
+    "description": "Neoclassicism, Romanticism, Realism, and early modern shifts in art.",
+    "image": "/assets/images/topics/fine-arts-art-history--19th-century-art-movements-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history:baroque-rococo": {
+    "title": "Baroque & Rococo",
+    "url": "/subjects/fine-arts/art-history/baroque-rococo.html",
+    "description": "Dramatic lighting, ornate detail, and art that reflects power and emotion.",
+    "image": "/assets/images/topics/fine-arts-art-history--baroque-rococo-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history:contemporary-art-artists": {
+    "title": "Contemporary Art & Artists",
+    "url": "/subjects/fine-arts/art-history/contemporary-art-artists.html",
+    "description": "Current trends, diverse voices, and art in today’s global culture.",
+    "image": "/assets/images/topics/fine-arts-art-history--contemporary-art-artists-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history:how-to-analyze-art": {
+    "title": "How to Analyze & Discuss Art",
+    "url": "/subjects/fine-arts/art-history/how-to-analyze-art.html",
+    "description": "Simple frameworks for looking at artwork, describing it, and interpreting meaning.",
+    "image": "/assets/images/topics/fine-arts-art-history--how-to-analyze-discuss-art-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history:impressionism-post-impressionism": {
+    "title": "Impressionism & Post-Impressionism",
+    "url": "/subjects/fine-arts/art-history/impressionism-post-impressionism.html",
+    "description": "Monet, Degas, Van Gogh, and new ways of seeing light and color.",
+    "image": "/assets/images/topics/fine-arts-art-history--impressionism-post-impressionism-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history:medieval-byzantine-art": {
+    "title": "Medieval & Byzantine Art",
+    "url": "/subjects/fine-arts/art-history/medieval-byzantine-art.html",
+    "description": "Religious art, icons, illuminated manuscripts, and Gothic cathedrals.",
+    "image": "/assets/images/topics/fine-arts-art-history--medieval-byzantine-art-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history:modern-art-movements": {
+    "title": "Modern Art Movements",
+    "url": "/subjects/fine-arts/art-history/modern-art-movements.html",
+    "description": "Cubism, Expressionism, Surrealism, Abstract art, and other 20th-century styles.",
+    "image": "/assets/images/topics/fine-arts-art-history--modern-art-movements-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history:prehistoric-ancient-art": {
+    "title": "Prehistoric & Ancient Art",
+    "url": "/subjects/fine-arts/art-history/prehistoric-ancient-art.html",
+    "description": "Cave paintings, Egyptian tomb art, Greek sculpture, Roman mosaics, and early Asian art.",
+    "image": "/assets/images/topics/fine-arts-art-history--prehistoric-ancient-art-flat-768.webp"
+  },
+  "subjects:fine-arts:art-history:renaissance": {
+    "title": "Renaissance Art",
+    "url": "/subjects/fine-arts/art-history/renaissance.html",
+    "description": "Perspective, realism, and famous artists like Leonardo, Michelangelo, and Raphael.",
+    "image": "/assets/images/topics/fine-arts-art-history--renaissance-art-flat-768.webp"
+  },
+  "subjects:fine-arts:dance": {
+    "title": "Dance",
+    "url": "/subjects/fine-arts/dance/",
+    "description": "Explore movement, styles, expression, and choreography.",
+    "image": "/assets/images/subjects/dance-flat-768.webp"
+  },
+  "subjects:fine-arts:dance:choreography-basics": {
+    "title": "Choreography Basics",
+    "url": "/subjects/fine-arts/dance/choreography-basics.html",
+    "description": "Creating short dance sequences, patterns, and group routines for class.",
+    "image": "/assets/images/topics/fine-arts-dance--choreography-basics-flat-768.webp"
+  },
+  "subjects:fine-arts:dance:cultural-dances": {
+    "title": "Cultural Dances",
+    "url": "/subjects/fine-arts/dance/cultural-dances.html",
+    "description": "Exploring traditional and cultural dances from around the world.",
+    "image": "/assets/images/topics/fine-arts-dance--cultural-dances-flat-768.webp"
+  },
+  "subjects:fine-arts:dance:dance-styles-overview": {
+    "title": "Dance Styles Overview",
+    "url": "/subjects/fine-arts/dance/dance-styles-overview.html",
+    "description": "Introduction to ballet, jazz, hip-hop, modern, and other popular dance forms.",
+    "image": "/assets/images/topics/fine-arts-dance--dance-styles-overview-flat-768.webp"
+  },
+  "subjects:fine-arts:dance:dance-technique-safety": {
+    "title": "Dance Technique & Safety",
+    "url": "/subjects/fine-arts/dance/dance-technique-safety.html",
+    "description": "Basic technique tips, posture, and safety practices for student dancers.",
+    "image": "/assets/images/topics/fine-arts-dance--dance-technique-safety-flat-768.webp"
+  },
+  "subjects:fine-arts:dance:elements-of-dance": {
+    "title": "Elements of Dance",
+    "url": "/subjects/fine-arts/dance/elements-of-dance.html",
+    "description": "Space, time, energy, body, and action as the building blocks of dance.",
+    "image": "/assets/images/topics/fine-arts-dance--elements-of-dance-flat-768.webp"
+  },
+  "subjects:fine-arts:dance:expression-performance": {
+    "title": "Expression & Performance",
+    "url": "/subjects/fine-arts/dance/expression-performance.html",
+    "description": "Using movement to communicate mood, story, and emotion on stage.",
+    "image": "/assets/images/topics/fine-arts-dance--expression-performance-flat-768.webp"
+  },
+  "subjects:fine-arts:dance:movement-basics": {
+    "title": "Movement Basics",
+    "url": "/subjects/fine-arts/dance/movement-basics.html",
+    "description": "Warm-ups, locomotor and non-locomotor moves, and safe stretching routines.",
+    "image": "/assets/images/topics/fine-arts-dance--movement-basics-flat-768.webp"
+  },
+  "subjects:fine-arts:drama-theatre": {
+    "title": "Drama & Theatre",
+    "url": "/subjects/fine-arts/drama-theatre/",
+    "description": "Explore acting, stagecraft, scripts, and performance.",
+    "image": "/assets/images/subjects/drama-theatre-flat-768.webp"
+  },
+  "subjects:fine-arts:drama-theatre:acting-basics": {
+    "title": "Acting Basics",
+    "url": "/subjects/fine-arts/drama-theatre/acting-basics.html",
+    "description": "Voice, body language, facial expression, and building believable characters.",
+    "image": "/assets/images/topics/fine-arts-drama-theatre--acting-basics-flat-768.webp"
+  },
+  "subjects:fine-arts:drama-theatre:character-development": {
+    "title": "Character Development",
+    "url": "/subjects/fine-arts/drama-theatre/character-development.html",
+    "description": "Backstory, motivation, and choices that create dynamic stage characters.",
+    "image": "/assets/images/topics/fine-arts-drama-theatre--character-development-flat-768.webp"
+  },
+  "subjects:fine-arts:drama-theatre:dramatic-structure": {
+    "title": "Dramatic Structure",
+    "url": "/subjects/fine-arts/drama-theatre/dramatic-structure.html",
+    "description": "Exposition, rising action, climax, falling action, and resolution in plays.",
+    "image": "/assets/images/topics/fine-arts-drama-theatre--dramatic-structure-flat-768.webp"
+  },
+  "subjects:fine-arts:drama-theatre:improvisation-games": {
+    "title": "Improvisation Games",
+    "url": "/subjects/fine-arts/drama-theatre/improvisation-games.html",
+    "description": "Short-form improv, warm-ups, and confidence-building drama games.",
+    "image": "/assets/images/topics/fine-arts-drama-theatre--improvisation-games-flat-768.webp"
+  },
+  "subjects:fine-arts:drama-theatre:scriptwriting-dialogue": {
+    "title": "Scriptwriting & Dialogue",
+    "url": "/subjects/fine-arts/drama-theatre/scriptwriting-dialogue.html",
+    "description": "Writing scripts, stage directions, and realistic dialogue for scenes and skits.",
+    "image": "/assets/images/topics/fine-arts-drama-theatre--scriptwriting-dialogue-flat-768.webp"
+  },
+  "subjects:fine-arts:drama-theatre:set-costume-design": {
+    "title": "Set & Costume Design",
+    "url": "/subjects/fine-arts/drama-theatre/set-costume-design.html",
+    "description": "Simple design projects for sets, props, and costumes that support a production.",
+    "image": "/assets/images/topics/fine-arts-drama-theatre--set-costume-design-flat-768.webp"
+  },
+  "subjects:fine-arts:drama-theatre:stage-directions-blocking": {
+    "title": "Stage Directions & Blocking",
+    "url": "/subjects/fine-arts/drama-theatre/stage-directions-blocking.html",
+    "description": "Learning stage areas, movement, and basic blocking for scenes and skits.",
+    "image": "/assets/images/topics/fine-arts-drama-theatre--stage-directions-blocking-flat-768.webp"
+  },
+  "subjects:fine-arts:drama-theatre:theatre-history": {
+    "title": "Theatre History & Traditions",
+    "url": "/subjects/fine-arts/drama-theatre/theatre-history.html",
+    "description": "Overview of theatre traditions, major playwrights, and global performance styles.",
+    "image": "/assets/images/topics/fine-arts-drama-theatre--theatre-history-traditions-flat-768.webp"
+  },
+  "subjects:fine-arts:media-arts": {
+    "title": "Media Arts",
+    "url": "/subjects/fine-arts/media-arts/",
+    "description": "Explore graphic design, photography, animation, and video.",
+    "image": "/assets/images/subjects/media-arts-flat-768.webp"
+  },
+  "subjects:fine-arts:media-arts:animation-basics": {
+    "title": "Animation Basics",
+    "url": "/subjects/fine-arts/media-arts/animation-basics.html",
+    "description": "Frame-by-frame animation, stop-motion, and introductory digital animation tasks.",
+    "image": "/assets/images/topics/fine-arts-media-arts--animation-basics-flat-768.webp"
+  },
+  "subjects:fine-arts:media-arts:digital-citizenship": {
+    "title": "Digital Citizenship",
+    "url": "/subjects/fine-arts/media-arts/digital-citizenship.html",
+    "description": "Responsible use of digital tools, copyright basics, and safe online sharing.",
+    "image": "/assets/images/topics/fine-arts-media-arts--digital-citizenship-flat-768.webp"
+  },
+  "subjects:fine-arts:media-arts:digital-illustration": {
+    "title": "Digital Illustration",
+    "url": "/subjects/fine-arts/media-arts/digital-illustration.html",
+    "description": "Introductory digital drawing and illustration tasks using simple apps or software.",
+    "image": "/assets/images/topics/fine-arts-media-arts--digital-illustration-flat-768.webp"
+  },
+  "subjects:fine-arts:media-arts:graphic-design-basics": {
+    "title": "Graphic Design Basics",
+    "url": "/subjects/fine-arts/media-arts/graphic-design-basics.html",
+    "description": "Layout, typography, color, and simple design projects like posters and flyers.",
+    "image": "/assets/images/topics/fine-arts-media-arts--graphic-design-basics-flat-768.webp"
+  },
+  "subjects:fine-arts:media-arts:intro-media-arts": {
+    "title": "Introduction to Media Arts",
+    "url": "/subjects/fine-arts/media-arts/intro-media-arts.html",
+    "description": "Big-picture overview of media arts, digital storytelling, and creative tools.",
+    "image": "/assets/images/topics/fine-arts-media-arts--introduction-to-media-arts-flat-768.webp"
+  },
+  "subjects:fine-arts:media-arts:photo-editing": {
+    "title": "Photo Editing",
+    "url": "/subjects/fine-arts/media-arts/photo-editing.html",
+    "description": "Simple photo editing techniques and creative image projects for students.",
+    "image": "/assets/images/topics/fine-arts-media-arts--photo-editing-flat-768.webp"
+  },
+  "subjects:fine-arts:media-arts:storyboarding": {
+    "title": "Storyboarding & Visual Storytelling",
+    "url": "/subjects/fine-arts/media-arts/storyboarding.html",
+    "description": "Planning visuals and scenes for videos, animations, and other media projects.",
+    "image": "/assets/images/topics/fine-arts-media-arts--storyboarding-visual-storytelling-flat-768.webp"
+  },
+  "subjects:fine-arts:media-arts:video-editing-projects": {
+    "title": "Video Editing Projects",
+    "url": "/subjects/fine-arts/media-arts/video-editing-projects.html",
+    "description": "Short video projects with storyboarding, filming basics, and editing steps.",
+    "image": "/assets/images/topics/fine-arts-media-arts--video-editing-projects-flat-768.webp"
+  },
+  "subjects:fine-arts:music": {
+    "title": "Music",
+    "url": "/subjects/fine-arts/music/",
+    "description": "Explore rhythm, melody, notation, and instruments.",
+    "image": "/assets/images/subjects/music-flat-768.webp"
+  },
+  "subjects:fine-arts:music:composer-studies": {
+    "title": "Composer Studies",
+    "url": "/subjects/fine-arts/music/composer-studies.html",
+    "description": "Listening activities and mini-biographies about famous composers and musicians.",
+    "image": "/assets/images/topics/fine-arts-music--composer-studies-flat-768.webp"
+  },
+  "subjects:fine-arts:music:composition-creation": {
+    "title": "Composition & Music Creation",
+    "url": "/subjects/fine-arts/music/composition-creation.html",
+    "description": "Simple composition tasks, classroom instrument pieces, and digital music projects.",
+    "image": "/assets/images/topics/fine-arts-music--composition-music-creation-flat-768.webp"
+  },
+  "subjects:fine-arts:music:dynamics-tempo": {
+    "title": "Dynamics & Tempo",
+    "url": "/subjects/fine-arts/music/dynamics-tempo.html",
+    "description": "Loud and soft, fast and slow, and expressive changes in performance.",
+    "image": "/assets/images/topics/fine-arts-music--dynamics-tempo-flat-768.webp"
+  },
+  "subjects:fine-arts:music:genres-styles": {
+    "title": "Genres & Styles of Music",
+    "url": "/subjects/fine-arts/music/genres-styles.html",
+    "description": "Classical, jazz, rock, pop, folk, and other musical styles across history.",
+    "image": "/assets/images/topics/fine-arts-music--genres-styles-of-music-flat-768.webp"
+  },
+  "subjects:fine-arts:music:instrument-families": {
+    "title": "Instrument Families",
+    "url": "/subjects/fine-arts/music/instrument-families.html",
+    "description": "Strings, woodwinds, brass, percussion, and keyboard instruments in the orchestra.",
+    "image": "/assets/images/topics/fine-arts-music--instrument-families-flat-768.webp"
+  },
+  "subjects:fine-arts:music:melody-pitch": {
+    "title": "Melody & Pitch",
+    "url": "/subjects/fine-arts/music/melody-pitch.html",
+    "description": "High and low sounds, scales, and melodic patterns using voice and instruments.",
+    "image": "/assets/images/topics/fine-arts-music--melody-pitch-flat-768.webp"
+  },
+  "subjects:fine-arts:music:music-notation": {
+    "title": "Music Notation",
+    "url": "/subjects/fine-arts/music/music-notation.html",
+    "description": "Reading notes on the staff, clefs, basic symbols, and simple written music.",
+    "image": "/assets/images/topics/fine-arts-music--music-notation-flat-768.webp"
+  },
+  "subjects:fine-arts:music:rhythm-beat": {
+    "title": "Rhythm & Beat",
+    "url": "/subjects/fine-arts/music/rhythm-beat.html",
+    "description": "Clapping patterns, note values, and beat-keeping games for all ages.",
+    "image": "/assets/images/topics/fine-arts-music--rhythm-beat-flat-768.webp"
+  },
+  "subjects:fine-arts:music:scales-keys": {
+    "title": "Scales & Keys",
+    "url": "/subjects/fine-arts/music/scales-keys.html",
+    "description": "Major and minor scales, key signatures, and basic music theory practice.",
+    "image": "/assets/images/topics/fine-arts-music--scales-keys-flat-768.webp"
+  },
+  "subjects:fine-arts:music:world-instruments": {
+    "title": "World Instruments",
+    "url": "/subjects/fine-arts/music/world-instruments.html",
+    "description": "Exploring musical instruments and traditions from cultures around the world.",
+    "image": "/assets/images/topics/fine-arts-music--world-instruments-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts": {
+    "title": "Visual Arts",
+    "url": "/subjects/fine-arts/visual-arts/",
+    "description": "Explore drawing, painting, color, and design.",
+    "image": "/assets/images/subjects/visual-arts-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts:art-critique-process": {
+    "title": "Art Critique & Creative Process",
+    "url": "/subjects/fine-arts/visual-arts/art-critique-process.html",
+    "description": "Structured critique routines and steps of the creative process for student artists.",
+    "image": "/assets/images/topics/fine-arts-visual-arts--art-critique-creative-process-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts:color-theory": {
+    "title": "Color Theory",
+    "url": "/subjects/fine-arts/visual-arts/color-theory.html",
+    "description": "Color wheel, warm and cool colors, tints and shades, and color schemes for students.",
+    "image": "/assets/images/topics/fine-arts-visual-arts--color-theory-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts:digital-illustration": {
+    "title": "Digital Illustration",
+    "url": "/subjects/fine-arts/visual-arts/digital-illustration.html",
+    "description": "Introductory digital drawing and illustration projects using simple tools and apps.",
+    "image": "/assets/images/topics/fine-arts-visual-arts--digital-illustration-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts:drawing-basics": {
+    "title": "Drawing Basics",
+    "url": "/subjects/fine-arts/visual-arts/drawing-basics.html",
+    "description": "Line drawing, contour drawing, shading, and simple perspective techniques.",
+    "image": "/assets/images/topics/fine-arts-visual-arts--drawing-basics-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts:elements-of-art": {
+    "title": "Elements of Art",
+    "url": "/subjects/fine-arts/visual-arts/elements-of-art.html",
+    "description": "Line, shape, form, color, value, texture, and space with guided practice and projects.",
+    "image": "/assets/images/topics/fine-arts-visual-arts--elements-of-art-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts:mixed-media": {
+    "title": "Mixed Media",
+    "url": "/subjects/fine-arts/visual-arts/mixed-media.html",
+    "description": "Combining materials and textures in creative mixed-media art projects.",
+    "image": "/assets/images/topics/fine-arts-visual-arts--mixed-media-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts:painting-techniques": {
+    "title": "Painting Techniques",
+    "url": "/subjects/fine-arts/visual-arts/painting-techniques.html",
+    "description": "Brushwork, blending, watercolor and acrylic projects, and expressive painting ideas.",
+    "image": "/assets/images/topics/fine-arts-visual-arts--painting-techniques-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts:principles-of-design": {
+    "title": "Principles of Design",
+    "url": "/subjects/fine-arts/visual-arts/principles-of-design.html",
+    "description": "Balance, contrast, emphasis, movement, pattern, rhythm, and unity in artwork.",
+    "image": "/assets/images/topics/fine-arts-visual-arts--principles-of-design-flat-768.webp"
+  },
+  "subjects:fine-arts:visual-arts:sculpture-3d-art": {
+    "title": "Sculpture & 3D Art",
+    "url": "/subjects/fine-arts/visual-arts/sculpture-3d-art.html",
+    "description": "Clay, paper, and recycled-material sculpture activities focused on form and space.",
+    "image": "/assets/images/topics/fine-arts-visual-arts--sculpture-3d-art-flat-768.webp"
+  }
+}

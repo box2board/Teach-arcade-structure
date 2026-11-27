@@ -40,21 +40,7 @@
   </script>
 
   <!-- Topic Explorer micro styles -->
-  <style>
-    .tabs{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:#f1f5f9;border:1px solid #e5e7eb;border-radius:12px;padding:10px;margin:18px 0 16px}
-    .tab{appearance:none;border:1px solid #cbd5e1;background:#fff;color:#1f2937;padding:8px 12px;border-radius:999px;cursor:pointer;font:600 14px/1 Poppins,sans-serif}
-    .tab[aria-selected="true"]{background:#2563eb;color:#fff;border-color:#2563eb}
-    .pill{display:inline-block;padding:4px 8px;border-radius:999px;font:600 12px/1 Nunito,sans-serif;background:#eef2ff;color:#3730a3;margin-right:6px}
-    .pill.gray{background:#f1f5f9;color:#334155}
-    .pill.green{background:#ecfdf5;color:#065f46}
-    .pill.orange{background:#fff7ed;color:#9a3412}
-    .pill.blue{background:#eff6ff;color:#1d4ed8}
-    .filters-row{display:flex;gap:10px;align-items:center;margin:12px 0 8px}
-    .filters-row input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px}
-    #resource-list.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card h3{margin:0 0 8px}
-    .meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
-  </style>
+  <link rel="stylesheet" href="/assets/topic-resource-guide.css">
 </head>
 
 <body>
@@ -79,12 +65,10 @@
     <h1>Classification &amp; Taxonomy</h1>
     <p>Curated lessons, worksheets, labs, simulations, and activities on how scientists classify organisms, including binomial nomenclature, phylogeny, and evolutionary relationships.</p>
 
-    <div class="filters-row">
-      <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
-    </div>
 
-    <div id="tabs" class="tabs" role="tablist" aria-label="Resource categories"></div>
-    <section id="resource-list" class="card-grid" aria-live="polite"></section>
+
+
+    <section id="resource-list" class="card-grid" aria-live="polite"><!-- resource-card {"id":"subjects:science","view":"subject-guide"} --><article class="card"><h3>Original Teach Arcade Resources</h3><p>This subject page now focuses on activities created for Teach Arcade. Visit the subject hub to browse original games, tools, and materials currently available.</p><a class="cta" href="/subjects/science/">Browse Science</a></article><!-- /resource-card --></section>
 
   </main>
 
@@ -94,6 +78,6 @@
     <a href="/terms.html">Terms</a>
   </footer>
 
-  <script src="/assets/scripts/topic.v1.js?v=2" defer></script>
+
 </body>
 </html>

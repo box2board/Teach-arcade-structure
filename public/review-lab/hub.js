@@ -1,3 +1,4 @@
+import {isComingSoon} from '../assets/resource-availability.js';
 import {matchesSetSearch,matchesSetFields,mountSetFilters,originalSetLine} from './set-filters.js';
 import {GAMES,QUESTION_SETS,gamesForSet,setsForGame,gameUrl} from './catalog.js';
 const $=id=>document.getElementById(id);
@@ -18,7 +19,8 @@ function gameCard(game){
   const sets=setsForGame(game.id),topics=`${sets.length} topics`;
   const facts=game.facts||[`${game.levels} levels`,`${game.questionCount} questions per run`,'3 gameplay difficulties'];
   const topic=selectedSet?.title||topics||game.topicLabel;
-  return `<article class="game-card"><img class="game-art" src="${escapeHTML(game.image)}" srcset="${escapeHTML(game.imageSrcset)}" sizes="(max-width:720px) 92vw, 510px" alt="${escapeHTML(game.imageAlt)}" width="768" height="512" loading="lazy" decoding="async"><div class="game-details"><p class="eyebrow">${escapeHTML(game.mode)} REVIEW GAME</p><h2>${escapeHTML(game.title)}</h2><p>${escapeHTML(game.description)}</p><ul class="facts">${facts.map(fact=>`<li>${escapeHTML(fact)}</li>`).join('')}</ul><p class="topic-label">${selectedSet?'Review topic':sets.length?'Available topic'+(sets.length===1?'':'s'):'Available now'}: <strong>${escapeHTML(topic)}</strong></p><a class="primary" href="${gameUrl(game.id,selectedSet?.id)}">${selectedSet?'Play '+escapeHTML(game.title):game.launchLabel?escapeHTML(game.launchLabel):'Choose a topic &amp; play'}</a></div></article>`;
+  const launch=isComingSoon(game.id) ? '<strong class="resource-availability">Coming soon</strong>' : `<a class="primary" href="${gameUrl(game.id,selectedSet?.id)}">${selectedSet?'Play '+escapeHTML(game.title):game.launchLabel?escapeHTML(game.launchLabel):'Choose a topic &amp; play'}</a>`;
+  return `<article class="game-card"><img class="game-art" src="${escapeHTML(game.image)}" srcset="${escapeHTML(game.imageSrcset)}" sizes="(max-width:720px) 92vw, 510px" alt="${escapeHTML(game.imageAlt)}" width="768" height="512" loading="lazy" decoding="async"><div class="game-details"><p class="eyebrow">${escapeHTML(game.mode)} REVIEW GAME</p><h2>${escapeHTML(game.title)}</h2><p>${escapeHTML(game.description)}</p><ul class="facts">${facts.map(fact=>`<li>${escapeHTML(fact)}</li>`).join('')}</ul><p class="topic-label">${selectedSet?'Review topic':sets.length?'Available topic'+(sets.length===1?'':'s'):'Available now'}: <strong>${escapeHTML(topic)}</strong></p>${launch}</div></article>`;
 }
 function render(){
   $('topic-filters').hidden=view!=='topics';
@@ -29,7 +31,7 @@ function render(){
   if(selectedSet)$('clear-topic').onclick=()=>navigate('topics');
   if(view==='games'){
     const games=selectedSet?gamesForSet(selectedSet.id):GAMES;
-    $('catalog-count').textContent=`${games.length} game${games.length===1?'':'s'} available`;
+    $('catalog-count').textContent=`${games.length} game${games.length===1?'':'s'}`;
     $('catalog').innerHTML='<h2 id="catalog-heading" class="sr-only">Review games</h2>'+games.map(gameCard).join('');
   }else{
     const search=$('topic-search').value,selected=filters.values();

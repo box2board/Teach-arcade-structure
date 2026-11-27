@@ -1,0 +1,530 @@
+{
+  "subjects:social-studies": {
+    "title": "Social Studies",
+    "url": "/subjects/social-studies/",
+    "description": "History, civics, geography, and economics.",
+    "image": "/assets/images/subjects/social-studies-flat-768.webp"
+  },
+  "subjects:social-studies:economics": {
+    "title": "Economics",
+    "url": "/subjects/social-studies/economics/",
+    "description": "Economic concepts, markets, and personal finance.",
+    "image": "/assets/images/subjects/economics-flat-768.webp"
+  },
+  "subjects:social-studies:economics:basic-economic-concepts": {
+    "title": "Basic Economic Concepts",
+    "url": "/subjects/social-studies/economics/basic-economic-concepts.html",
+    "description": "Scarcity, opportunity cost, trade-offs, incentives, and rational decision-making.",
+    "image": "/assets/images/topics/social-studies-economics--basic-economic-concepts-flat-768.webp"
+  },
+  "subjects:social-studies:economics:business-market-structures": {
+    "title": "Business & Market Structures",
+    "url": "/subjects/social-studies/economics/business-market-structures.html",
+    "description": "Perfect competition, monopolies, oligopolies, and monopolistic competition.",
+    "image": "/assets/images/topics/social-studies-economics--business-market-structures-flat-768.webp"
+  },
+  "subjects:social-studies:economics:costs-production-profit": {
+    "title": "Costs, Production & Profit",
+    "url": "/subjects/social-studies/economics/costs-production-profit.html",
+    "description": "Marginal analysis, productivity, costs of production, and business decision-making.",
+    "image": "/assets/images/topics/social-studies-economics--costs-production-profit-flat-768.webp"
+  },
+  "subjects:social-studies:economics:economic-development": {
+    "title": "Economic Development",
+    "url": "/subjects/social-studies/economics/economic-development.html",
+    "description": "Developed and developing nations, growth, poverty, sustainability, and global inequality.",
+    "image": "/assets/images/topics/social-studies-economics--economic-development-flat-768.webp"
+  },
+  "subjects:social-studies:economics:economic-indicators": {
+    "title": "Economic Indicators",
+    "url": "/subjects/social-studies/economics/economic-indicators.html",
+    "description": "GDP, unemployment, inflation, and business cycles as measures of economic performance.",
+    "image": "/assets/images/topics/social-studies-economics--economic-indicators-flat-768.webp"
+  },
+  "subjects:social-studies:economics:economic-systems": {
+    "title": "Economic Systems",
+    "url": "/subjects/social-studies/economics/economic-systems.html",
+    "description": "Traditional, command, market, and mixed economies and how they answer key economic questions.",
+    "image": "/assets/images/topics/social-studies-economics--economic-systems-flat-768.webp"
+  },
+  "subjects:social-studies:economics:entrepreneurship-small-business": {
+    "title": "Entrepreneurship & Small Business",
+    "url": "/subjects/social-studies/economics/entrepreneurship-small-business.html",
+    "description": "Risk, innovation, starting a business, and the role of entrepreneurs in the economy.",
+    "image": "/assets/images/topics/social-studies-economics--entrepreneurship-small-business-flat-768.webp"
+  },
+  "subjects:social-studies:economics:fiscal-policy": {
+    "title": "Fiscal Policy",
+    "url": "/subjects/social-studies/economics/fiscal-policy.html",
+    "description": "Government spending, taxation, budgets, and their impact on the economy.",
+    "image": "/assets/images/topics/social-studies-economics--fiscal-policy-flat-768.webp"
+  },
+  "subjects:social-studies:economics:international-trade-globalization": {
+    "title": "International Trade & Globalization",
+    "url": "/subjects/social-studies/economics/international-trade-globalization.html",
+    "description": "Comparative advantage, trade barriers, exchange rates, and global trade networks.",
+    "image": "/assets/images/topics/social-studies-economics--international-trade-globalization-flat-768.webp"
+  },
+  "subjects:social-studies:economics:labor-markets-income": {
+    "title": "Labor Markets & Income",
+    "url": "/subjects/social-studies/economics/labor-markets-income.html",
+    "description": "How wages are determined, human capital, unions, and income distribution.",
+    "image": "/assets/images/topics/social-studies-economics--labor-markets-income-flat-768.webp"
+  },
+  "subjects:social-studies:economics:monetary-policy": {
+    "title": "Monetary Policy",
+    "url": "/subjects/social-studies/economics/monetary-policy.html",
+    "description": "How central banks use interest rates and the money supply to influence economic activity.",
+    "image": "/assets/images/topics/social-studies-economics--monetary-policy-flat-768.webp"
+  },
+  "subjects:social-studies:economics:money-banking-financial-institutions": {
+    "title": "Money, Banking & Financial Institutions",
+    "url": "/subjects/social-studies/economics/money-banking-financial-institutions.html",
+    "description": "The role of money, banks, the Federal Reserve, and financial markets.",
+    "image": "/assets/images/topics/social-studies-economics--money-banking-financial-institutions-flat-768.webp"
+  },
+  "subjects:social-studies:economics:personal-finance-financial-literacy": {
+    "title": "Personal Finance & Financial Literacy",
+    "url": "/subjects/social-studies/economics/personal-finance-financial-literacy.html",
+    "description": "Budgeting, saving, investing, credit, banking, and responsible money management.",
+    "image": "/assets/images/topics/social-studies-economics--personal-finance-financial-literacy-flat-768.webp"
+  },
+  "subjects:social-studies:economics:supply-demand-market-equilibrium": {
+    "title": "Supply, Demand & Market Equilibrium",
+    "url": "/subjects/social-studies/economics/supply-demand-market-equilibrium.html",
+    "description": "How buyers and sellers interact to set prices, including shifts in supply and demand.",
+    "image": "/assets/images/topics/social-studies-economics--supply-demand-market-equilibrium-flat-768.webp"
+  },
+  "subjects:social-studies:geography": {
+    "title": "Geography",
+    "url": "/subjects/social-studies/geography/",
+    "description": "Map skills, regions, and human and physical geography.",
+    "image": "/assets/images/subjects/geography-flat-768.webp"
+  },
+  "subjects:social-studies:geography:africa": {
+    "title": "Africa",
+    "url": "/subjects/social-studies/geography/africa.html",
+    "description": "Climate zones, regions, resources, development, and cultural diversity.",
+    "image": "/assets/images/topics/social-studies-geography--africa-flat-768.webp"
+  },
+  "subjects:social-studies:geography:cultural-geography": {
+    "title": "Cultural Geography",
+    "url": "/subjects/social-studies/geography/cultural-geography.html",
+    "description": "Culture traits, language, religion, ethnicity, diffusion, and globalization.",
+    "image": "/assets/images/topics/social-studies-geography--cultural-geography-flat-768.webp"
+  },
+  "subjects:social-studies:geography:east-asia": {
+    "title": "East Asia",
+    "url": "/subjects/social-studies/geography/east-asia.html",
+    "description": "China, Japan, Korea; population distribution, industry, and culture.",
+    "image": "/assets/images/topics/social-studies-geography--east-asia-flat-768.webp"
+  },
+  "subjects:social-studies:geography:economic-geography": {
+    "title": "Economic Geography",
+    "url": "/subjects/social-studies/geography/economic-geography.html",
+    "description": "Resources, agriculture, industry, trade, and global economic systems.",
+    "image": "/assets/images/topics/social-studies-geography--economic-geography-flat-768.webp"
+  },
+  "subjects:social-studies:geography:environmental-geography": {
+    "title": "Environmental Geography",
+    "url": "/subjects/social-studies/geography/environmental-geography.html",
+    "description": "Human–environment interaction, sustainability, and global environmental challenges.",
+    "image": "/assets/images/topics/social-studies-geography--environmental-geography-flat-768.webp"
+  },
+  "subjects:social-studies:geography:europe": {
+    "title": "Europe",
+    "url": "/subjects/social-studies/geography/europe.html",
+    "description": "Regions, economies, EU integration, and cultural landscapes.",
+    "image": "/assets/images/topics/social-studies-geography--europe-flat-768.webp"
+  },
+  "subjects:social-studies:geography:latin-america": {
+    "title": "Latin America",
+    "url": "/subjects/social-studies/geography/latin-america.html",
+    "description": "Central and South America, cultural blending, landforms, and development issues.",
+    "image": "/assets/images/topics/social-studies-geography--latin-america-flat-768.webp"
+  },
+  "subjects:social-studies:geography:maps-skills-tools": {
+    "title": "Maps, Skills & Geographic Tools",
+    "url": "/subjects/social-studies/geography/maps-skills-tools.html",
+    "description": "Latitude and longitude, map types, GIS, GPS, and interpreting geographic data.",
+    "image": "/assets/images/topics/social-studies-geography--maps-skills-geographic-tools-flat-768.webp"
+  },
+  "subjects:social-studies:geography:middle-east-north-africa": {
+    "title": "Middle East & North Africa (MENA)",
+    "url": "/subjects/social-studies/geography/middle-east-north-africa.html",
+    "description": "Religion, resources, conflict, cooperation, and cultural geography.",
+    "image": "/assets/images/topics/social-studies-geography--middle-east-north-africa-mena-flat-768.webp"
+  },
+  "subjects:social-studies:geography:north-america": {
+    "title": "North America",
+    "url": "/subjects/social-studies/geography/north-america.html",
+    "description": "Physical features, climate, population, culture, and economic patterns.",
+    "image": "/assets/images/topics/social-studies-geography--north-america-flat-768.webp"
+  },
+  "subjects:social-studies:geography:physical-geography-earth-systems": {
+    "title": "Physical Geography & Earth Systems",
+    "url": "/subjects/social-studies/geography/physical-geography-earth-systems.html",
+    "description": "Landforms, plate tectonics, climate systems, and global biomes.",
+    "image": "/assets/images/topics/social-studies-geography--physical-geography-earth-systems-flat-768.webp"
+  },
+  "subjects:social-studies:geography:political-geography": {
+    "title": "Political Geography",
+    "url": "/subjects/social-studies/geography/political-geography.html",
+    "description": "Borders, nation-states, governments, and international organizations.",
+    "image": "/assets/images/topics/social-studies-geography--political-geography-flat-768.webp"
+  },
+  "subjects:social-studies:geography:population-migration": {
+    "title": "Human Geography: Population & Migration",
+    "url": "/subjects/social-studies/geography/population-migration.html",
+    "description": "Population patterns, demographic data, and global migration trends.",
+    "image": "/assets/images/topics/social-studies-geography--human-geography-population-migration-flat-768.webp"
+  },
+  "subjects:social-studies:geography:south-asia": {
+    "title": "South Asia",
+    "url": "/subjects/social-studies/geography/south-asia.html",
+    "description": "India, Pakistan, Bangladesh; monsoons, population, and development.",
+    "image": "/assets/images/topics/social-studies-geography--south-asia-flat-768.webp"
+  },
+  "subjects:social-studies:geography:southeast-asia-oceania": {
+    "title": "Southeast Asia & Oceania",
+    "url": "/subjects/social-studies/geography/southeast-asia-oceania.html",
+    "description": "Archipelagos, biodiversity, tourism, and regional development.",
+    "image": "/assets/images/topics/social-studies-geography--southeast-asia-oceania-flat-768.webp"
+  },
+  "subjects:social-studies:geography:urban-geography-development": {
+    "title": "Urban Geography & Development",
+    "url": "/subjects/social-studies/geography/urban-geography-development.html",
+    "description": "Urbanization, settlement patterns, megacities, and development levels.",
+    "image": "/assets/images/topics/social-studies-geography--urban-geography-development-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:civil-liberties-civil-rights": {
+    "title": "Civil Liberties & Civil Rights",
+    "url": "/subjects/social-studies/government-and-political-science/civil-liberties-civil-rights.html",
+    "description": "Individual rights, due process, equal protection, and movements for expanded civil rights.",
+    "image": "/assets/images/topics/social-studies-government-political-science--civil-liberties-civil-rights-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:comparative-government-systems": {
+    "title": "Comparative Government Systems",
+    "url": "/subjects/social-studies/government-and-political-science/comparative-government-systems.html",
+    "description": "Parliamentary vs. presidential systems, federal vs. unitary states, democracies and authoritarian regimes.",
+    "image": "/assets/images/topics/social-studies-government-political-science--comparative-government-systems-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:executive-president-bureaucracy": {
+    "title": "Executive Branch: President & Bureaucracy",
+    "url": "/subjects/social-studies/government-and-political-science/executive-president-bureaucracy.html",
+    "description": "Powers of the president, the cabinet, federal agencies, and the modern administrative state.",
+    "image": "/assets/images/topics/social-studies-government-political-science--executive-branch-president-bureaucracy-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:federalism-state-national-power": {
+    "title": "Federalism & State vs. National Power",
+    "url": "/subjects/social-studies/government-and-political-science/federalism-state-national-power.html",
+    "description": "Division of powers, federal and state authority, and modern debates over federalism.",
+    "image": "/assets/images/topics/social-studies-government-political-science--federalism-state-vs-national-power-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:foreign-policy-national-security": {
+    "title": "U.S. Foreign Policy & National Security",
+    "url": "/subjects/social-studies/government-and-political-science/foreign-policy-national-security.html",
+    "description": "Diplomacy, defense, international alliances, and the role of the United States in world affairs.",
+    "image": "/assets/images/topics/social-studies-government-political-science--u-s-foreign-policy-national-security-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:foundations-government-political-theory": {
+    "title": "Foundations of Government & Political Theory",
+    "url": "/subjects/social-studies/government-and-political-science/foundations-government-political-theory.html",
+    "description": "Origins of government, power, legitimacy, and classic political thinkers like Locke, Hobbes, and Montesquieu.",
+    "image": "/assets/images/topics/social-studies-government-political-science--foundations-of-government-political-theory-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:global-conflict-peacekeeping": {
+    "title": "Global Conflict & Peacekeeping",
+    "url": "/subjects/social-studies/government-and-political-science/global-conflict-peacekeeping.html",
+    "description": "International organizations, alliances, conflict, peacekeeping missions, and collective security.",
+    "image": "/assets/images/topics/social-studies-government-political-science--global-conflict-peacekeeping-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:globalization-economy-environment": {
+    "title": "Globalization, Economy & Environmental Politics",
+    "url": "/subjects/social-studies/government-and-political-science/globalization-economy-environment.html",
+    "description": "Global economic institutions, trade, environmental policy, and shared global challenges.",
+    "image": "/assets/images/topics/social-studies-government-political-science--globalization-economy-environmental-politics-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:governments-world-regions": {
+    "title": "Governments of Major World Regions",
+    "url": "/subjects/social-studies/government-and-political-science/governments-world-regions.html",
+    "description": "Political systems in Europe, the Americas, Africa, Asia, and the Middle East.",
+    "image": "/assets/images/topics/social-studies-government-political-science--governments-of-major-world-regions-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:human-rights-international-law": {
+    "title": "Human Rights & International Law",
+    "url": "/subjects/social-studies/government-and-political-science/human-rights-international-law.html",
+    "description": "Universal human rights, international courts, war crimes, and global justice.",
+    "image": "/assets/images/topics/social-studies-government-political-science--human-rights-international-law-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:interest-groups-campaign-finance": {
+    "title": "Interest Groups, Lobbying & Campaign Finance",
+    "url": "/subjects/social-studies/government-and-political-science/interest-groups-campaign-finance.html",
+    "description": "Interest groups, PACs, Super PACs, lobbying strategies, and money in politics.",
+    "image": "/assets/images/topics/social-studies-government-political-science--interest-groups-lobbying-campaign-finance-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:judicial-branch-supreme-court": {
+    "title": "Judicial Branch & Supreme Court",
+    "url": "/subjects/social-studies/government-and-political-science/judicial-branch-supreme-court.html",
+    "description": "Judicial review, the federal court system, and landmark Supreme Court decisions.",
+    "image": "/assets/images/topics/social-studies-government-political-science--judicial-branch-supreme-court-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:legislative-congress": {
+    "title": "Legislative Branch: Congress",
+    "url": "/subjects/social-studies/government-and-political-science/legislative-congress.html",
+    "description": "Structure and powers of Congress, lawmaking process, representation, and the role of committees.",
+    "image": "/assets/images/topics/social-studies-government-political-science--legislative-branch-congress-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:political-ideologies-global": {
+    "title": "Political Ideologies Around the World",
+    "url": "/subjects/social-studies/government-and-political-science/political-ideologies-global.html",
+    "description": "Liberalism, conservatism, socialism, communism, nationalism, populism, and other global ideologies.",
+    "image": "/assets/images/topics/social-studies-government-political-science--political-ideologies-around-the-world-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:political-parties-elections": {
+    "title": "Political Parties & Elections",
+    "url": "/subjects/social-studies/government-and-political-science/political-parties-elections.html",
+    "description": "Party systems, platforms, campaigns, primaries, and how elections shape government.",
+    "image": "/assets/images/topics/social-studies-government-political-science--political-parties-elections-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:public-opinion-media": {
+    "title": "Public Opinion, Media & Political Communication",
+    "url": "/subjects/social-studies/government-and-political-science/public-opinion-media.html",
+    "description": "Polling, political socialization, the role of media, and the impact of digital communication.",
+    "image": "/assets/images/topics/social-studies-government-political-science--public-opinion-media-political-communication-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:public-policy-domestic-issues": {
+    "title": "Public Policy & Domestic Issues",
+    "url": "/subjects/social-studies/government-and-political-science/public-policy-domestic-issues.html",
+    "description": "How policy is made and debated on issues like the economy, healthcare, education, and the environment.",
+    "image": "/assets/images/topics/social-studies-government-political-science--public-policy-domestic-issues-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:us-constitution": {
+    "title": "The U.S. Constitution",
+    "url": "/subjects/social-studies/government-and-political-science/us-constitution.html",
+    "description": "Constitutional principles, structure, amendments, and the framework of American government.",
+    "image": "/assets/images/topics/social-studies-government-political-science--the-u-s-constitution-flat-768.webp"
+  },
+  "subjects:social-studies:government-and-political-science:voting-civic-engagement": {
+    "title": "Voting, Participation & Civic Engagement",
+    "url": "/subjects/social-studies/government-and-political-science/voting-civic-engagement.html",
+    "description": "Who votes, how citizens participate, civic duties, and ways to engage in public life.",
+    "image": "/assets/images/topics/social-studies-government-political-science--voting-participation-civic-engagement-flat-768.webp"
+  },
+  "subjects:social-studies:government-political-science": {
+    "title": "Government & Civics",
+    "url": "/subjects/social-studies/government-political-science/",
+    "description": "The Constitution, rights, elections, and public policy.",
+    "image": "/assets/images/subjects/government-political-science-flat-768.webp"
+  },
+  "subjects:social-studies:us-history": {
+    "title": "U.S. History",
+    "url": "/subjects/social-studies/us-history/",
+    "description": "From Colonial America through the present.",
+    "image": "/assets/images/subjects/us-history-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:american-revolution": {
+    "title": "American Revolution",
+    "url": "/subjects/social-studies/us-history/american-revolution.html",
+    "description": "Causes, turning points, founding documents, and independence.",
+    "image": "/assets/images/topics/social-studies-us-history--american-revolution-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:civil-rights": {
+    "title": "Civil Rights",
+    "url": "/subjects/social-studies/us-history/civil-rights.html",
+    "description": "Movements for racial equality and expanding civil liberties.",
+    "image": "/assets/images/topics/social-studies-us-history--civil-rights-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:civil-war-reconstruction": {
+    "title": "Civil War & Reconstruction",
+    "url": "/subjects/social-studies/us-history/civil-war-reconstruction.html",
+    "description": "Sectional crisis, war, emancipation, and rebuilding the Union.",
+    "image": "/assets/images/topics/social-studies-us-history--civil-war-reconstruction-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:cold-war": {
+    "title": "Cold War",
+    "url": "/subjects/social-studies/us-history/cold-war.html",
+    "description": "Containment, crises, proxy wars, and domestic tensions.",
+    "image": "/assets/images/topics/social-studies-us-history--cold-war-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:colonial-america": {
+    "title": "Colonial America",
+    "url": "/subjects/social-studies/us-history/colonial-america.html",
+    "description": "Life in the colonies, regional differences, and early self-government.",
+    "image": "/assets/images/topics/social-studies-us-history--colonial-america-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:constitution-early-republic": {
+    "title": "Constitution & Early Republic",
+    "url": "/subjects/social-studies/us-history/constitution-early-republic.html",
+    "description": "Drafting the Constitution, federalism, and the nation’s first administrations.",
+    "image": "/assets/images/topics/social-studies-us-history--constitution-early-republic-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:contemporary-us-1970s-present": {
+    "title": "Contemporary America (1970s–Present)",
+    "url": "/subjects/social-studies/us-history/contemporary-us-1970s-present.html",
+    "description": "Politics, culture, globalization, and modern U.S. developments.",
+    "image": "/assets/images/topics/social-studies-us-history--contemporary-america-1970s-present-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:expansion-reform-jacksonian-era": {
+    "title": "Expansion & Reform (Jacksonian Era)",
+    "url": "/subjects/social-studies/us-history/expansion-reform-jacksonian-era.html",
+    "description": "Manifest Destiny, democratization, reform movements, and Native displacement.",
+    "image": "/assets/images/topics/social-studies-us-history--expansion-reform-jacksonian-era-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:great-depression-new-deal": {
+    "title": "Great Depression & New Deal",
+    "url": "/subjects/social-studies/us-history/great-depression-new-deal.html",
+    "description": "Economic collapse, relief programs, and long-term reforms.",
+    "image": "/assets/images/topics/social-studies-us-history--great-depression-new-deal-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:industrialization-gilded-age": {
+    "title": "Industrialization & Gilded Age",
+    "url": "/subjects/social-studies/us-history/industrialization-gilded-age.html",
+    "description": "Big business, labor, immigration, and urbanization.",
+    "image": "/assets/images/topics/social-studies-us-history--industrialization-gilded-age-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:progressive-era-imperialism": {
+    "title": "Progressive Era & Imperialism",
+    "url": "/subjects/social-studies/us-history/progressive-era-imperialism.html",
+    "description": "Reform movements, women's suffrage, and expanding global power.",
+    "image": "/assets/images/topics/social-studies-us-history--progressive-era-imperialism-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:world-war-i": {
+    "title": "World War I",
+    "url": "/subjects/social-studies/us-history/world-war-i.html",
+    "description": "U.S. entry, the home front, and postwar settlements.",
+    "image": "/assets/images/topics/social-studies-us-history--world-war-i-flat-768.webp"
+  },
+  "subjects:social-studies:us-history:world-war-ii": {
+    "title": "World War II",
+    "url": "/subjects/social-studies/us-history/world-war-ii.html",
+    "description": "Mobilization, the European and Pacific theaters, and the aftermath.",
+    "image": "/assets/images/topics/social-studies-us-history--world-war-ii-flat-768.webp"
+  },
+  "subjects:social-studies:world-history": {
+    "title": "World History",
+    "url": "/subjects/social-studies/world-history/",
+    "description": "Civilizations, eras, and global connections.",
+    "image": "/assets/images/subjects/world-history-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:african-civilizations": {
+    "title": "African Civilizations",
+    "url": "/subjects/social-studies/world-history/african-civilizations.html",
+    "description": "Kingdoms and empires across Africa, trade networks, and cultural achievements.",
+    "image": "/assets/images/topics/social-studies-world-history--african-civilizations-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:age-of-exploration-colonialism": {
+    "title": "Age of Exploration & Colonialism",
+    "url": "/subjects/social-studies/world-history/age-of-exploration-colonialism.html",
+    "description": "European voyages of discovery, colonization of the Americas, and the Columbian Exchange.",
+    "image": "/assets/images/topics/social-studies-world-history--age-of-exploration-colonialism-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:ancient-egypt": {
+    "title": "Ancient Egypt",
+    "url": "/subjects/social-studies/world-history/ancient-egypt.html",
+    "description": "Start with Pyramid Escape Run, then review the Nile, pharaohs, society, religion, writing, trade, and daily life.",
+    "image": "/assets/images/topics/social-studies-world-history--ancient-egypt-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:ancient-greece": {
+    "title": "Ancient Greece",
+    "url": "/subjects/social-studies/world-history/ancient-greece.html",
+    "description": "City-states, democracy, philosophy, art, and warfare in the Greek world.",
+    "image": "/assets/images/topics/social-studies-world-history--ancient-greece-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:ancient-rome": {
+    "title": "Ancient Rome",
+    "url": "/subjects/social-studies/world-history/ancient-rome.html",
+    "description": "The Roman Republic and Empire, law, engineering, culture, and the fall of Rome.",
+    "image": "/assets/images/topics/social-studies-world-history--ancient-rome-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:byzantine-islamic-world": {
+    "title": "Byzantine Empire & Islamic World",
+    "url": "/subjects/social-studies/world-history/byzantine-islamic-world.html",
+    "description": "Constantinople, Eastern Roman legacy, and the rise and spread of Islam and major caliphates.",
+    "image": "/assets/images/topics/social-studies-world-history--byzantine-empire-islamic-world-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:classical-india-east-asia": {
+    "title": "Classical India & Early East Asia",
+    "url": "/subjects/social-studies/world-history/classical-india-east-asia.html",
+    "description": "The Maurya and Gupta Empires, early Chinese dynasties, Hinduism, Buddhism, and Confucianism.",
+    "image": "/assets/images/topics/social-studies-world-history--classical-india-early-east-asia-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:cold-war-decolonization": {
+    "title": "Cold War & Decolonization",
+    "url": "/subjects/social-studies/world-history/cold-war-decolonization.html",
+    "description": "U.S.–Soviet rivalry, proxy wars, nuclear tension, and independence movements worldwide.",
+    "image": "/assets/images/topics/social-studies-world-history--cold-war-decolonization-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:early-humans-river-valleys": {
+    "title": "Early Humans & River Valley Civilizations",
+    "url": "/subjects/social-studies/world-history/early-humans-river-valleys.html",
+    "description": "Prehistory, human migration, and the first civilizations in Mesopotamia, Egypt, Indus Valley, and ancient China.",
+    "image": "/assets/images/topics/social-studies-world-history--early-humans-river-valley-civilizations-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:east-asia-china-japan": {
+    "title": "East Asia: China & Japan",
+    "url": "/subjects/social-studies/world-history/east-asia-china-japan.html",
+    "description": "Later Chinese dynasties, Mongol rule, and feudal Japan with samurai and shoguns.",
+    "image": "/assets/images/topics/social-studies-world-history--east-asia-china-japan-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:enlightenment-scientific-revolution": {
+    "title": "Enlightenment & Scientific Revolution",
+    "url": "/subjects/social-studies/world-history/enlightenment-scientific-revolution.html",
+    "description": "New ideas about government, rights, and science that reshaped societies around the world.",
+    "image": "/assets/images/topics/social-studies-world-history--enlightenment-scientific-revolution-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:globalization-contemporary-world": {
+    "title": "Globalization & Contemporary World",
+    "url": "/subjects/social-studies/world-history/globalization-contemporary-world.html",
+    "description": "Modern conflicts, global organizations, technology, the environment, and an interconnected world.",
+    "image": "/assets/images/topics/social-studies-world-history--globalization-contemporary-world-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:imperialism-global-change": {
+    "title": "Imperialism & Global Change",
+    "url": "/subjects/social-studies/world-history/imperialism-global-change.html",
+    "description": "European imperialism in Africa and Asia, resistance, and changing global power structures.",
+    "image": "/assets/images/topics/social-studies-world-history--imperialism-global-change-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:industrial-revolution": {
+    "title": "Industrial Revolution",
+    "url": "/subjects/social-studies/world-history/industrial-revolution.html",
+    "description": "Industrialization, urbanization, labor conditions, and new economic systems.",
+    "image": "/assets/images/topics/social-studies-world-history--industrial-revolution-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:medieval-europe": {
+    "title": "Medieval Europe",
+    "url": "/subjects/social-studies/world-history/medieval-europe.html",
+    "description": "Feudalism, the power of the Church, the Crusades, and the Black Death.",
+    "image": "/assets/images/topics/social-studies-world-history--medieval-europe-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:mesoamerican-andean-civilizations": {
+    "title": "Mesoamerican & Andean Civilizations",
+    "url": "/subjects/social-studies/world-history/mesoamerican-andean-civilizations.html",
+    "description": "Pre-Columbian civilizations in Central and South America, including the Maya, Aztec, and Inca.",
+    "image": "/assets/images/topics/social-studies-world-history--mesoamerican-andean-civilizations-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:renaissance-reformation": {
+    "title": "Renaissance & Reformation",
+    "url": "/subjects/social-studies/world-history/renaissance-reformation.html",
+    "description": "Humanism, art and literature, the printing revolution, and religious change in Europe.",
+    "image": "/assets/images/topics/social-studies-world-history--renaissance-reformation-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:revolutions-era": {
+    "title": "Revolutions Era (Europe & Latin America)",
+    "url": "/subjects/social-studies/world-history/revolutions-era.html",
+    "description": "The French and Haitian Revolutions, and independence movements across Latin America.",
+    "image": "/assets/images/topics/social-studies-world-history--revolutions-era-europe-latin-america-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:world-war-i": {
+    "title": "World War I",
+    "url": "/subjects/social-studies/world-history/world-war-i.html",
+    "description": "Causes of the war, trench warfare, total war, and the Treaty of Versailles.",
+    "image": "/assets/images/topics/social-studies-world-history--world-war-i-flat-768.webp"
+  },
+  "subjects:social-studies:world-history:world-war-ii": {
+    "title": "World War II",
+    "url": "/subjects/social-studies/world-history/world-war-ii.html",
+    "description": "Global conflict between the Axis and Allies, the Holocaust, and the war’s aftermath.",
+    "image": "/assets/images/topics/social-studies-world-history--world-war-ii-flat-768.webp"
+  }
+}

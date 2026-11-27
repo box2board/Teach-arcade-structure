@@ -52,3 +52,13 @@ npm run audit
 ```
 
 Then verify the new route and every linked resource in a local static server at desktop and phone widths. Confirm one H1, a self-referencing canonical, unique title/description, valid JSON-LD, reciprocal resource links, parent-subject discovery, no broken links, and inclusion in `public/sitemap.xml` plus the applicable generated content/index files.
+
+## Shared resource cards
+
+The homepage, subject listings and topic resources render as static HTML. The homepage and Subjects hub each have their own ordered `resource-list` blocks. Reorder or remove IDs inside the appropriate block to change that page. Individual placements use a `resource-card` marker. Preserve the matching closing marker. The build replaces the HTML between the markers.
+
+Subject and topic metadata lives in `data/resource-cards/`, grouped by subject. Keep the record ID when changing its title, artwork or URL. Existing Cabinet games and tools use their public library entries and permanent bookmark IDs. Review Lab games use `public/review-lab/catalog.js`. A placement can supply a topic-specific teaching note while taking its title and destination from the catalog.
+
+Set a resource ID to `'coming-soon'` in `public/assets/resource-availability.js` to display its availability and disable launching from participating listings. Remove the entry to reopen it. The resource page and saved bookmarks keep their addresses. This setting controls discovery and launch links, not direct access.
+
+Run `npm run build:cards` to refresh the public placements, or `npm run build` to also regenerate search and the other site indexes. Run `node scripts/build-resource-cards.mjs --check` to detect stale output. Commit the source change and its regenerated cards together.

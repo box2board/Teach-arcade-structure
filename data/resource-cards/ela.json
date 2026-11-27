@@ -1,0 +1,404 @@
+{
+  "subjects:ela": {
+    "title": "English / Language Arts",
+    "url": "/subjects/ela/",
+    "description": "Reading, writing, grammar, and language.",
+    "image": "/assets/images/subjects/ela-flat-768.webp"
+  },
+  "subjects:ela:grammar-language": {
+    "title": "Grammar & Language",
+    "url": "/subjects/ela/grammar-language/",
+    "description": "Build sentence, usage, punctuation, and editing skills.",
+    "image": "/assets/images/subjects/grammar-language-flat-768.webp"
+  },
+  "subjects:ela:grammar-language:editing-revision-practice": {
+    "title": "Editing & Revision Practice",
+    "url": "/subjects/ela/grammar-language/editing-revision-practice.html",
+    "description": "Move from isolated questions to revising short passages.",
+    "image": "/assets/images/topics/ela-grammar-language--editing-revision-practice-flat-768.webp"
+  },
+  "subjects:ela:grammar-language:parts-of-speech": {
+    "title": "Parts of Speech",
+    "url": "/subjects/ela/grammar-language/parts-of-speech.html",
+    "description": "Focus practice on nouns, verbs, modifiers, pronouns, and connecting words.",
+    "image": "/assets/images/topics/ela-grammar-language--parts-of-speech-flat-768.webp"
+  },
+  "subjects:ela:grammar-language:sentence-types-structure": {
+    "title": "Sentence Types & Structure",
+    "url": "/subjects/ela/grammar-language/sentence-types-structure.html",
+    "description": "Review how sentence purpose and construction shape meaning.",
+    "image": "/assets/images/topics/ela-grammar-language--sentence-types-structure-flat-768.webp"
+  },
+  "subjects:ela:poetry": {
+    "title": "Poetry",
+    "url": "/subjects/ela/poetry/",
+    "description": "Read, analyze, and write poetry.",
+    "image": "/assets/images/subjects/poetry-flat-768.webp"
+  },
+  "subjects:ela:poetry:figurative-language-poetry": {
+    "title": "Figurative Language in Poetry",
+    "url": "/subjects/ela/poetry/figurative-language-poetry.html",
+    "description": "Metaphor, simile, personification, and symbolism in poetic texts.",
+    "image": "/assets/images/topics/ela-poetry--figurative-language-in-poetry-flat-768.webp"
+  },
+  "subjects:ela:poetry:forms-types-poetry": {
+    "title": "Forms & Types of Poetry",
+    "url": "/subjects/ela/poetry/forms-types-poetry.html",
+    "description": "Haiku, free verse, sonnets, narrative poems, lyric poems, and more.",
+    "image": "/assets/images/topics/ela-poetry--forms-types-of-poetry-flat-768.webp"
+  },
+  "subjects:ela:poetry:poetic-devices": {
+    "title": "Poetic Devices",
+    "url": "/subjects/ela/poetry/poetic-devices.html",
+    "description": "Alliteration, repetition, imagery, figurative language, and sound devices.",
+    "image": "/assets/images/topics/ela-poetry--poetic-devices-flat-768.webp"
+  },
+  "subjects:ela:poetry:poetry-analysis": {
+    "title": "Poetry Analysis",
+    "url": "/subjects/ela/poetry/poetry-analysis.html",
+    "description": "Close reading, annotation, and breaking down meaning and theme in poems.",
+    "image": "/assets/images/topics/ela-poetry--poetry-analysis-flat-768.webp"
+  },
+  "subjects:ela:poetry:rhyme-rhythm-meter": {
+    "title": "Rhyme, Rhythm & Meter",
+    "url": "/subjects/ela/poetry/rhyme-rhythm-meter.html",
+    "description": "Rhyme schemes, rhythm patterns, and how meter shapes the feel of a poem.",
+    "image": "/assets/images/topics/ela-poetry--rhyme-rhythm-meter-flat-768.webp"
+  },
+  "subjects:ela:poetry:writing-original-poems": {
+    "title": "Writing Original Poems",
+    "url": "/subjects/ela/poetry/writing-original-poems.html",
+    "description": "Guided prompts and challenges for students to craft and share their own poetry.",
+    "image": "/assets/images/topics/ela-poetry--writing-original-poems-flat-768.webp"
+  },
+  "subjects:ela:reading-informational-text": {
+    "title": "Reading Informational Text",
+    "url": "/subjects/ela/reading-informational-text/",
+    "description": "Find central ideas, evidence, structure, and claims.",
+    "image": "/assets/images/subjects/reading-informational-text-flat-768.webp"
+  },
+  "subjects:ela:reading-informational-text:arguments-evidence": {
+    "title": "Arguments & Evidence",
+    "url": "/subjects/ela/reading-informational-text/arguments-evidence.html",
+    "description": "Claims, reasons, and evidence in opinion, argument, and persuasive texts.",
+    "image": "/assets/images/topics/ela-reading-informational-text--arguments-evidence-flat-768.webp"
+  },
+  "subjects:ela:reading-informational-text:author-purpose-tone": {
+    "title": "Author’s Purpose & Tone",
+    "url": "/subjects/ela/reading-informational-text/author-purpose-tone.html",
+    "description": "Understanding why an author wrote a text and how tone shapes message and impact.",
+    "image": "/assets/images/topics/ela-reading-informational-text--author-s-purpose-tone-flat-768.webp"
+  },
+  "subjects:ela:reading-informational-text:fact-opinion-bias": {
+    "title": "Fact, Opinion & Bias",
+    "url": "/subjects/ela/reading-informational-text/fact-opinion-bias.html",
+    "description": "Distinguishing facts from opinions and identifying bias in informational sources.",
+    "image": "/assets/images/topics/ela-reading-informational-text--fact-opinion-bias-flat-768.webp"
+  },
+  "subjects:ela:reading-informational-text:inference-text-evidence-nonfiction": {
+    "title": "Inferences & Evidence (Nonfiction)",
+    "url": "/subjects/ela/reading-informational-text/inference-text-evidence-nonfiction.html",
+    "description": "Making inferences about people, events, and ideas using strong textual evidence.",
+    "image": "/assets/images/topics/ela-reading-informational-text--inferences-evidence-nonfiction-flat-768.webp"
+  },
+  "subjects:ela:reading-informational-text:main-idea-details": {
+    "title": "Main Idea & Supporting Details",
+    "url": "/subjects/ela/reading-informational-text/main-idea-details.html",
+    "description": "Finding central ideas and key details in articles, essays, and informational texts.",
+    "image": "/assets/images/topics/ela-reading-informational-text--main-idea-supporting-details-flat-768.webp"
+  },
+  "subjects:ela:reading-informational-text:summarizing-paraphrasing": {
+    "title": "Summarizing & Paraphrasing",
+    "url": "/subjects/ela/reading-informational-text/summarizing-paraphrasing.html",
+    "description": "Short, clear summaries and accurate paraphrasing of key ideas and details.",
+    "image": "/assets/images/topics/ela-reading-informational-text--summarizing-paraphrasing-flat-768.webp"
+  },
+  "subjects:ela:reading-informational-text:text-features": {
+    "title": "Text Features",
+    "url": "/subjects/ela/reading-informational-text/text-features.html",
+    "description": "Headings, subheadings, captions, charts, graphs, and other features that support comprehension.",
+    "image": "/assets/images/topics/ela-reading-informational-text--text-features-flat-768.webp"
+  },
+  "subjects:ela:reading-informational-text:text-structure": {
+    "title": "Text Structure",
+    "url": "/subjects/ela/reading-informational-text/text-structure.html",
+    "description": "Compare/contrast, cause/effect, problem/solution, sequence, and description structures.",
+    "image": "/assets/images/topics/ela-reading-informational-text--text-structure-flat-768.webp"
+  },
+  "subjects:ela:reading-literature": {
+    "title": "Reading Literature",
+    "url": "/subjects/ela/reading-literature/",
+    "description": "Analyze character, plot, theme, and point of view.",
+    "image": "/assets/images/subjects/reading-literature-flat-768.webp"
+  },
+  "subjects:ela:reading-literature:character-analysis": {
+    "title": "Character Traits & Analysis",
+    "url": "/subjects/ela/reading-literature/character-analysis.html",
+    "description": "Direct and indirect characterization, motivations, and how characters change over time.",
+    "image": "/assets/images/topics/ela-reading-literature--character-traits-analysis-flat-768.webp"
+  },
+  "subjects:ela:reading-literature:conflict-resolution": {
+    "title": "Conflict & Resolution",
+    "url": "/subjects/ela/reading-literature/conflict-resolution.html",
+    "description": "Internal and external conflicts and how they drive the plot forward.",
+    "image": "/assets/images/topics/ela-reading-literature--conflict-resolution-flat-768.webp"
+  },
+  "subjects:ela:reading-literature:figurative-language-in-literature": {
+    "title": "Figurative Language in Literature",
+    "url": "/subjects/ela/reading-literature/figurative-language-in-literature.html",
+    "description": "Similes, metaphors, personification, hyperbole, and symbolism in fiction texts.",
+    "image": "/assets/images/topics/ela-reading-literature--figurative-language-in-literature-flat-768.webp"
+  },
+  "subjects:ela:reading-literature:inference-text-evidence": {
+    "title": "Inferences & Text Evidence",
+    "url": "/subjects/ela/reading-literature/inference-text-evidence.html",
+    "description": "Drawing conclusions and supporting them with strong textual evidence.",
+    "image": "/assets/images/topics/ela-reading-literature--inferences-text-evidence-flat-768.webp"
+  },
+  "subjects:ela:reading-literature:mood-tone": {
+    "title": "Mood & Tone",
+    "url": "/subjects/ela/reading-literature/mood-tone.html",
+    "description": "How authors use word choice, imagery, and details to create feeling and attitude.",
+    "image": "/assets/images/topics/ela-reading-literature--mood-tone-flat-768.webp"
+  },
+  "subjects:ela:reading-literature:plot-structure": {
+    "title": "Plot Structure & Story Elements",
+    "url": "/subjects/ela/reading-literature/plot-structure.html",
+    "description": "Exposition, rising action, climax, falling action, and resolution in narrative texts.",
+    "image": "/assets/images/topics/ela-reading-literature--plot-structure-story-elements-flat-768.webp"
+  },
+  "subjects:ela:reading-literature:point-of-view-perspective": {
+    "title": "Point of View & Perspective",
+    "url": "/subjects/ela/reading-literature/point-of-view-perspective.html",
+    "description": "First-person, third-person, and how point of view shapes readers’ understanding.",
+    "image": "/assets/images/topics/ela-reading-literature--point-of-view-perspective-flat-768.webp"
+  },
+  "subjects:ela:reading-literature:setting-context": {
+    "title": "Setting & Context",
+    "url": "/subjects/ela/reading-literature/setting-context.html",
+    "description": "How time, place, and context shape the events, conflicts, and mood of a story.",
+    "image": "/assets/images/topics/ela-reading-literature--setting-context-flat-768.webp"
+  },
+  "subjects:ela:reading-literature:theme": {
+    "title": "Theme & Central Message",
+    "url": "/subjects/ela/reading-literature/theme.html",
+    "description": "Identifying themes, messages, and lessons across short stories, novels, and fables.",
+    "image": "/assets/images/topics/ela-reading-literature--theme-central-message-flat-768.webp"
+  },
+  "subjects:ela:research-media-literacy": {
+    "title": "Research & Media Literacy",
+    "url": "/subjects/ela/research-media-literacy/",
+    "description": "Evaluate sources, claims, and media.",
+    "image": "/assets/images/subjects/research-media-literacy-flat-768.webp"
+  },
+  "subjects:ela:research-media-literacy:citing-sources-avoiding-plagiarism": {
+    "title": "Citing Sources & Avoiding Plagiarism",
+    "url": "/subjects/ela/research-media-literacy/citing-sources-avoiding-plagiarism.html",
+    "description": "Paraphrasing, quoting, and crediting sources in basic MLA/APA formats.",
+    "image": "/assets/images/topics/ela-research-media-literacy--citing-sources-avoiding-plagiarism-flat-768.webp"
+  },
+  "subjects:ela:research-media-literacy:digital-citizenship": {
+    "title": "Digital Citizenship",
+    "url": "/subjects/ela/research-media-literacy/digital-citizenship.html",
+    "description": "Online safety, responsible sharing, and respectful communication in digital spaces.",
+    "image": "/assets/images/topics/ela-research-media-literacy--digital-citizenship-flat-768.webp"
+  },
+  "subjects:ela:research-media-literacy:finding-credible-sources": {
+    "title": "Finding Credible Sources",
+    "url": "/subjects/ela/research-media-literacy/finding-credible-sources.html",
+    "description": "Using libraries, databases, and the web to locate reliable information.",
+    "image": "/assets/images/topics/ela-research-media-literacy--finding-credible-sources-flat-768.webp"
+  },
+  "subjects:ela:research-media-literacy:media-bias-reliability": {
+    "title": "Media Bias & Reliability",
+    "url": "/subjects/ela/research-media-literacy/media-bias-reliability.html",
+    "description": "Evaluating bias, perspective, and reliability in news and social media.",
+    "image": "/assets/images/topics/ela-research-media-literacy--media-bias-reliability-flat-768.webp"
+  },
+  "subjects:ela:research-media-literacy:note-taking-organizers": {
+    "title": "Note-Taking & Organizers",
+    "url": "/subjects/ela/research-media-literacy/note-taking-organizers.html",
+    "description": "Graphic organizers and strategies for recording and organizing research notes.",
+    "image": "/assets/images/topics/ela-research-media-literacy--note-taking-organizers-flat-768.webp"
+  },
+  "subjects:ela:speaking-listening": {
+    "title": "Speaking & Listening",
+    "url": "/subjects/ela/speaking-listening/",
+    "description": "Practice discussion, presentations, and debate.",
+    "image": "/assets/images/subjects/speaking-listening-flat-768.webp"
+  },
+  "subjects:ela:speaking-listening:class-discussions": {
+    "title": "Class Discussions & Socratic Seminars",
+    "url": "/subjects/ela/speaking-listening/class-discussions.html",
+    "description": "Protocols and prompts for whole-class and small-group discussions.",
+    "image": "/assets/images/topics/ela-speaking-listening--class-discussions-socratic-seminars-flat-768.webp"
+  },
+  "subjects:ela:speaking-listening:collaborative-conversations": {
+    "title": "Collaborative Conversations",
+    "url": "/subjects/ela/speaking-listening/collaborative-conversations.html",
+    "description": "Partner talks, small-group tasks, and accountable talk sentence stems.",
+    "image": "/assets/images/topics/ela-speaking-listening--collaborative-conversations-flat-768.webp"
+  },
+  "subjects:ela:speaking-listening:debates-structured-argument": {
+    "title": "Debates & Structured Argument",
+    "url": "/subjects/ela/speaking-listening/debates-structured-argument.html",
+    "description": "Debate formats and speaking roles for practicing argument and counterargument.",
+    "image": "/assets/images/topics/ela-speaking-listening--debates-structured-argument-flat-768.webp"
+  },
+  "subjects:ela:speaking-listening:listening-comprehension-tasks": {
+    "title": "Listening Comprehension Tasks",
+    "url": "/subjects/ela/speaking-listening/listening-comprehension-tasks.html",
+    "description": "Listening activities using audio, video, lectures, and peer presentations.",
+    "image": "/assets/images/topics/ela-speaking-listening--listening-comprehension-tasks-flat-768.webp"
+  },
+  "subjects:ela:speaking-listening:presentations-speeches": {
+    "title": "Presentations & Speeches",
+    "url": "/subjects/ela/speaking-listening/presentations-speeches.html",
+    "description": "Planning, organizing, and delivering effective classroom presentations.",
+    "image": "/assets/images/topics/ela-speaking-listening--presentations-speeches-flat-768.webp"
+  },
+  "subjects:ela:test-prep": {
+    "title": "Test Prep",
+    "url": "/subjects/ela/test-prep/",
+    "description": "Review reading, writing, and language skills.",
+    "image": "/assets/images/subjects/test-prep-flat-768.webp"
+  },
+  "subjects:ela:test-prep:editing-revising-passages": {
+    "title": "Editing & Revising Passages",
+    "url": "/subjects/ela/test-prep/editing-revising-passages.html",
+    "description": "Passages with errors that students must edit and revise for correctness and clarity.",
+    "image": "/assets/images/topics/ela-test-prep--editing-revising-passages-flat-768.webp"
+  },
+  "subjects:ela:test-prep:grammar-review-sets": {
+    "title": "Grammar Review Sets",
+    "url": "/subjects/ela/test-prep/grammar-review-sets.html",
+    "description": "Continue with grammar practice in the ELA test-prep collection.",
+    "image": "/assets/images/topics/ela-grammar-language--grammar-review-sets-flat-768.webp"
+  },
+  "subjects:ela:test-prep:reading-comprehension-practice": {
+    "title": "Reading Comprehension Practice",
+    "url": "/subjects/ela/test-prep/reading-comprehension-practice.html",
+    "description": "Test-style passages with multiple-choice questions and text-dependent prompts.",
+    "image": "/assets/images/topics/ela-test-prep--reading-comprehension-practice-flat-768.webp"
+  },
+  "subjects:ela:test-prep:sat-act-ela-practice": {
+    "title": "SAT & ACT ELA Practice",
+    "url": "/subjects/ela/test-prep/sat-act-ela-practice.html",
+    "description": "Reading and writing practice passages aligned with college entrance exams.",
+    "image": "/assets/images/topics/ela-test-prep--sat-act-ela-practice-flat-768.webp"
+  },
+  "subjects:ela:test-prep:test-taking-strategies": {
+    "title": "Test-Taking Strategies",
+    "url": "/subjects/ela/test-prep/test-taking-strategies.html",
+    "description": "Tips and activities for pacing, annotating, eliminating answers, and checking work.",
+    "image": "/assets/images/topics/ela-test-prep--test-taking-strategies-flat-768.webp"
+  },
+  "subjects:ela:test-prep:writing-prompts-test-style": {
+    "title": "Test-Style Writing Prompts",
+    "url": "/subjects/ela/test-prep/writing-prompts-test-style.html",
+    "description": "Argument, informational, and narrative prompts modeled after standardized tests.",
+    "image": "/assets/images/topics/ela-test-prep--test-style-writing-prompts-flat-768.webp"
+  },
+  "subjects:ela:vocabulary-word-study": {
+    "title": "Vocabulary & Word Study",
+    "url": "/subjects/ela/vocabulary-word-study/",
+    "description": "Explore context clues, roots, and word relationships.",
+    "image": "/assets/images/subjects/vocabulary-word-study-flat-768.webp"
+  },
+  "subjects:ela:vocabulary-word-study:academic-vocabulary": {
+    "title": "Academic Vocabulary",
+    "url": "/subjects/ela/vocabulary-word-study/academic-vocabulary.html",
+    "description": "High-utility academic words students encounter across subjects and tests.",
+    "image": "/assets/images/topics/ela-vocabulary-word-study--academic-vocabulary-flat-768.webp"
+  },
+  "subjects:ela:vocabulary-word-study:context-clues": {
+    "title": "Context Clues",
+    "url": "/subjects/ela/vocabulary-word-study/context-clues.html",
+    "description": "Using sentence and passage context to figure out unknown word meanings.",
+    "image": "/assets/images/topics/ela-vocabulary-word-study--context-clues-flat-768.webp"
+  },
+  "subjects:ela:vocabulary-word-study:figurative-language-words": {
+    "title": "Figurative Language & Connotation",
+    "url": "/subjects/ela/vocabulary-word-study/figurative-language-words.html",
+    "description": "Understanding connotation, figurative meanings, and tone in word choices.",
+    "image": "/assets/images/topics/ela-vocabulary-word-study--figurative-language-connotation-flat-768.webp"
+  },
+  "subjects:ela:vocabulary-word-study:greek-latin-roots": {
+    "title": "Greek & Latin Roots",
+    "url": "/subjects/ela/vocabulary-word-study/greek-latin-roots.html",
+    "description": "Word roots that unlock meaning across academic and content-area vocabulary.",
+    "image": "/assets/images/topics/ela-vocabulary-word-study--greek-latin-roots-flat-768.webp"
+  },
+  "subjects:ela:vocabulary-word-study:multiple-meaning-words": {
+    "title": "Multiple-Meaning Words",
+    "url": "/subjects/ela/vocabulary-word-study/multiple-meaning-words.html",
+    "description": "Words with more than one meaning and how context determines which meaning fits.",
+    "image": "/assets/images/topics/ela-vocabulary-word-study--multiple-meaning-words-flat-768.webp"
+  },
+  "subjects:ela:vocabulary-word-study:prefixes-suffixes": {
+    "title": "Prefixes & Suffixes",
+    "url": "/subjects/ela/vocabulary-word-study/prefixes-suffixes.html",
+    "description": "Common prefixes and suffixes and how they change word meaning.",
+    "image": "/assets/images/topics/ela-vocabulary-word-study--prefixes-suffixes-flat-768.webp"
+  },
+  "subjects:ela:vocabulary-word-study:synonyms-antonyms": {
+    "title": "Synonyms & Antonyms",
+    "url": "/subjects/ela/vocabulary-word-study/synonyms-antonyms.html",
+    "description": "Building word relationships and shades of meaning using synonyms and antonyms.",
+    "image": "/assets/images/topics/ela-vocabulary-word-study--synonyms-antonyms-flat-768.webp"
+  },
+  "subjects:ela:writing": {
+    "title": "Writing",
+    "url": "/subjects/ela/writing/",
+    "description": "Practice narrative, informational, and argumentative writing.",
+    "image": "/assets/images/subjects/writing-flat-768.webp"
+  },
+  "subjects:ela:writing:argumentative-persuasive-writing": {
+    "title": "Argumentative & Persuasive Writing",
+    "url": "/subjects/ela/writing/argumentative-persuasive-writing.html",
+    "description": "Claim, reasons, evidence, and counterarguments in opinion and argument essays.",
+    "image": "/assets/images/topics/ela-writing--argumentative-persuasive-writing-flat-768.webp"
+  },
+  "subjects:ela:writing:informational-explanatory-writing": {
+    "title": "Informational & Explanatory Writing",
+    "url": "/subjects/ela/writing/informational-explanatory-writing.html",
+    "description": "Explanations, reports, and essays that clearly teach or inform the reader.",
+    "image": "/assets/images/topics/ela-writing--informational-explanatory-writing-flat-768.webp"
+  },
+  "subjects:ela:writing:introductions-conclusions": {
+    "title": "Introductions & Conclusions",
+    "url": "/subjects/ela/writing/introductions-conclusions.html",
+    "description": "Hooks, background information, and satisfying conclusions for all writing types.",
+    "image": "/assets/images/topics/ela-writing--introductions-conclusions-flat-768.webp"
+  },
+  "subjects:ela:writing:narrative-writing": {
+    "title": "Narrative Writing",
+    "url": "/subjects/ela/writing/narrative-writing.html",
+    "description": "Personal narratives, short stories, and descriptive writing with strong characters and events.",
+    "image": "/assets/images/topics/ela-writing--narrative-writing-flat-768.webp"
+  },
+  "subjects:ela:writing:organization-paragraph-structure": {
+    "title": "Organization & Paragraph Structure",
+    "url": "/subjects/ela/writing/organization-paragraph-structure.html",
+    "description": "Body paragraphs, transitions, and logical ordering of ideas and evidence.",
+    "image": "/assets/images/topics/ela-writing--organization-paragraph-structure-flat-768.webp"
+  },
+  "subjects:ela:writing:revising-editing": {
+    "title": "Revising & Editing",
+    "url": "/subjects/ela/writing/revising-editing.html",
+    "description": "Improving clarity, style, grammar, and mechanics through revision and editing.",
+    "image": "/assets/images/topics/ela-writing--revising-editing-flat-768.webp"
+  },
+  "subjects:ela:writing:thesis-claims-topic-sentences": {
+    "title": "Thesis Statements & Claims",
+    "url": "/subjects/ela/writing/thesis-claims-topic-sentences.html",
+    "description": "Writing strong thesis statements, topic sentences, and clear claims.",
+    "image": "/assets/images/topics/ela-writing--thesis-statements-claims-flat-768.webp"
+  },
+  "subjects:ela:writing:using-evidence-citations": {
+    "title": "Using Evidence & Citations",
+    "url": "/subjects/ela/writing/using-evidence-citations.html",
+    "description": "Quoting, paraphrasing, and citing texts to support ideas and arguments.",
+    "image": "/assets/images/topics/ela-writing--using-evidence-citations-flat-768.webp"
+  }
+}
