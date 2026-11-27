@@ -27,3 +27,20 @@ export async function requireAdmin() {
   if (!id || id.length < 8 || user.id !== id) redirect('/unauthorized');
   return { user, sql: db() };
 }
+
+
+// Keep the existing administrator identity, but isolate feature data for the pilot.
+export async function requireFeatureAdmin() {
+  const admin = await requireAdmin();
+  if (process.env.VERCEL_ENV !== 'preview' ||
+      process.env.VERCEL_GIT_COMMIT_REF !== 'prototype/devhq-launch-feature-management') return admin;
+
+  const connection = process.env.DEVHQ_FEATURE_PREVIEW_DATABASE_URL;
+  let url;
+  try { url = new URL(connection); } catch { return {...admin, sql: null}; }
+  const endpoint = 'ep-restless-dream-bed1oy6s';
+  const domain = 'c-9.us-east-2.aws.neon.tech';
+  const isIsolated = [endpoint + '.' + domain, endpoint + '-pooler.' + domain].includes(url.hostname);
+  if (!isIsolated || !['postgres:', 'postgresql:'].includes(url.protocol)) return {...admin, sql: null};
+  return {...admin, sql: neon(connection)};
+}

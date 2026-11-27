@@ -6,7 +6,7 @@ assert.ok((()=>makePlan(updated,live).after[ids[0]]==="coming_soon")(),"one bloc
 assert.ok((()=>makePlan(updated,live).after[ids[1]]==="live")(),"other features retained");
 assert.ok((()=>makePlan(updated,live).revisions[ids[0]]===1)(),"revisions preserved");
 assert.ok((()=>{try{makePlan([{...updated[0],desired_status:"hidden"},...updated.slice(1)],live);return false}catch{return true}})(),"unsupported blocked");
-assert.ok((()=>{try{makePlan([{...updated[0],reason:""},...updated.slice(1)],live);return false}catch{return true}})(),"missing reason");
+assert.equal(makePlan([{...updated[0],reason:""},...updated.slice(1)],live).changed,true,"optional reason");
 assert.ok((()=>{try{makePlan(updated.slice(1),live);return false}catch{return true}})(),"missing row");
 assert.ok((()=>{try{validateConfig({...live,unknown:"live"});return false}catch{return true}})(),"bad current config");
 assert.ok((()=>makePlan([{...updated[0],desired_status:"live"},...updated.slice(1)],{...live,[ids[0]]:"coming_soon"}).after[ids[0]]==="live")(),"unblock");

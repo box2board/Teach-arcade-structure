@@ -1,4 +1,5 @@
 {
+  "git": { "deploymentEnabled": { "prototype/devhq-launch-feature-management": false } },
   "headers": [
     {
       "source": "/(.*)",

@@ -1,6 +1,6 @@
 'use server';
 import inventory from '../../lib/launch-inventory.json';
-import { requireAdmin } from '../../lib/neon';
+import { requireFeatureAdmin } from '../../lib/neon';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 
@@ -9,7 +9,7 @@ const field = (form, name) => String(form.get(name) ?? '').trim();
 const validSlug = slug => /^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug) && slug.length <= 80;
 const validPath = path => !path || (path.length <= 500 && /^\/(?!\/)[a-zA-Z0-9/_\-.%]+$/.test(path) && !path.includes('..') && !path.includes('%'));
 export async function addFeature(form) {
- const {user,sql} = await requireAdmin();
+ const {user,sql} = await requireFeatureAdmin();
  const slug=field(form,'slug'), name=field(form,'name'), category=field(form,'category'), path=field(form,'path');
  if(!validSlug(slug)||name.length<2||name.length>100||category.length<2||category.length>80||!validPath(path)) redirect('/launch?error=invalid');
  try {
@@ -23,9 +23,9 @@ export async function addFeature(form) {
  revalidatePath('/launch'); redirect('/launch?saved=1');
 }
 export async function saveDecision(form) {
- const {user,sql} = await requireAdmin();
+ const {user,sql} = await requireFeatureAdmin();
  const slug=field(form,'slug'), status=field(form,'status'), reason=field(form,'reason'), revision=Number(field(form,'revision'));
- if(!validSlug(slug)||!statuses.includes(status)||reason.length>1000||!Number.isSafeInteger(revision)||revision<1||revision>=2147483647||(status!=='unreviewed'&&!reason)) redirect('/launch?error=invalid');
+ if(!validSlug(slug)||!statuses.includes(status)||reason.length>1000||!Number.isSafeInteger(revision)||revision<1||revision>=2147483647) redirect('/launch?error=invalid');
  let changed;
  try {
   changed=await sql`WITH previous AS (
@@ -43,7 +43,7 @@ export async function saveDecision(form) {
 }
 
 export async function importInventory() {
- const {user,sql}=await requireAdmin();
+ const {user,sql}=await requireFeatureAdmin();
  // Fixed, reviewed repository snapshot; never accept seed rows from a client.
  const rows=inventory.features.map(({slug,name,category,public_path})=>({slug,name,category,public_path}));
  try {

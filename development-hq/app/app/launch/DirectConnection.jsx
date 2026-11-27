@@ -1,7 +1,5 @@
-import {inspectDirect} from '../../lib/direct-vercel';
 import {setupPublicPreview} from './direct-actions';
-export default async function DirectConnection({query}){
- const d=await inspectDirect();
+export default function DirectConnection({query,diagnostics:d}){
  return <section className="card"><div className="eyebrow">DIRECT VERCEL API · PREVIEW ONLY</div><h2>Vercel connection</h2>
  <p>Independent of the ChatGPT connector. This connection never modifies production settings or deploys code.</p>
  {!d.enabled&&<p>Set the server-only <code>DEVHQ_PREVIEW_VERCEL_TOKEN</code> on the HQ feature-management preview branch, then rebuild HQ. No credential is entered in this page.</p>}

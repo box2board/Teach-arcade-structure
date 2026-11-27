@@ -1,14 +1,12 @@
-import {inspectDirect} from '../../lib/direct-vercel';
 import {readPreview} from '../../lib/preview-release-store';
 import {IDS,makePlan} from '../../lib/preview-release-policy';
-import {publishPreview} from './preview-actions';
+import {publishPreview,reconcilePreview} from './preview-actions';
 
 const names={'brain-rv-road-trip-mayhem':'RV Road Trip Mayhem','brain-chess':'Chess','brain-sudoku':'Sudoku'};
-export default async function PreviewRelease({rows,user,sql,query}){
+export default async function PreviewRelease({rows,user,sql,query,direct}){
  let current=null,plan=null,logs=[],error=false;
- try {logs=await sql`SELECT id,state,snapshot,created_at FROM devhq_preview_publications WHERE owner_id=${user.id} ORDER BY created_at DESC LIMIT 10`;}catch{error=true;}
+ try {logs=await sql`SELECT id,state,snapshot,created_at FROM devhq_preview_publications WHERE owner_id=${user.id} ORDER BY (state IN ('pending','uncertain')) DESC,created_at DESC LIMIT 10`;}catch{error=true;}
  try {current=await readPreview();plan=makePlan(rows,current);}catch{/* Missing config or incompatible decision: no publish. */}
- const direct=await inspectDirect();
  const unresolved=logs.some(x=>['pending','uncertain'].includes(x.state));
  return <section className="card"><div className="eyebrow">SEPARATE PREVIEW TARGET</div><h2>Preview blocker publishing</h2>
   <p>Only the three pilot games are supported. Save decisions below first, then explicitly publish a snapshot to the dedicated preview configuration. No production publishing is available.</p>
@@ -22,6 +20,6 @@ export default async function PreviewRelease({rows,user,sql,query}){
   {plan?.changed&&!direct.configured&&<p>Connect the public preview before publishing.</p>}
   {direct.configured&&plan?.changed&&!error&&!unresolved&&<form action={publishPreview}><input type="hidden" name="snapshot" value={JSON.stringify(plan)}/><label>Type PUBLISH PREVIEW to approve these exact changes<input name="confirm" required autoComplete="off"/></label><button>Publish preview flags</button></form>}
   {plan&&!plan.changed&&<p>No preview configuration changes to publish.</p>}
-  <details><summary>Preview publication audit</summary>{logs.map(log=><article className="queue-task" key={log.id}><p>{log.state} · {new Date(log.created_at).toISOString()}</p><pre>{JSON.stringify(log.snapshot,null,2)}</pre></article>)}</details>
+  <details><summary>Preview publication audit</summary>{logs.map(log=><article className="queue-task" key={log.id}><p>{log.state} · {new Date(log.created_at).toISOString()}</p><pre>{JSON.stringify(log.snapshot,null,2)}</pre>{(log.state==='uncertain'||(log.state==='pending'&&Date.now()-new Date(log.created_at).getTime()>600000))&&<form action={reconcilePreview}><input type="hidden" name="id" value={log.id}/><button>Verify against preview config</button></form>}</article>)}</details>
  </section>;
 }

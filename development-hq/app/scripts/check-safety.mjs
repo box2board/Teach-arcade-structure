@@ -14,7 +14,7 @@ const tests = [
  ['disabled paid API', () => { assert.match(settings,/DEVHQ_API_MODE_ENABLED=false/); assert.match(home,/Mode 2 API billing is OFF/); }],
  ['no Supabase dependencies', () => assert.ok(!Object.keys(pkg.dependencies).some(x=>x.includes('supabase')))],
  ['Neon configuration documented', () => assert.match(src('../neon.ts'),/from '@neon\/config\/v1'/)],
- ['private magic-link sign-in', () => { assert.match(login,/auth\.signIn\.magicLink/); assert.match(login,/email !== ADMIN_EMAIL/); assert.match(src('../app/auth/sign-in/page.jsx'),/Email me a sign-in link/); }],
+ ['private one-time-code sign-in', () => { assert.match(login,/auth\.signIn\.emailOtp/); assert.match(login,/email !== ADMIN_EMAIL/); assert.match(src('../app/auth/sign-in/page.jsx'),/Email me a sign-in code/); }],
  ['no password collection on sign-in', () => assert.doesNotMatch(src('../app/auth/sign-in/page.jsx'),/type="password"/)]
 ];
 let failed=0;for(const [name,fn] of tests){try{fn();console.log('PASS',name)}catch(e){failed++;console.error('FAIL',name,e.message)}}
