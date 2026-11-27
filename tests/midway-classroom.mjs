@@ -3,7 +3,7 @@ import {openRoomDatabase} from '../lib/multiplayer/database/sqlite.js';
 import {serveSession} from '../lib/multiplayer/http.js';
 import {qrImage} from '../lib/multiplayer/qr.js';
 import {getMiniGame, multiplayerIds} from '../lib/multiplayer/minigames.js';
-import {miniGames} from '../public/multiplayer/lib/game-labels.js';
+import {midwayMiniGameRewards} from '../public/multiplayer/mayhem/rewards.js';
 import {questionIndex} from '../public/multiplayer/mayhem/rules.js';
 import {isInLight,visibleRayLength} from '../public/multiplayer/mini-games/multiplayer/spotlight-sneak/engine.js';
 import {characters} from '../public/multiplayer/lib/characters.js';
@@ -134,7 +134,7 @@ try{
        for(const player of running)assert.ok(player.z>all.find(p=>p.id===player.id).z);
      }
      const end=engine.advance(read().miniState, room.deadline+1);
-     const rewards=new Map(engine.results(end,room.deadline+1).map(p=>[p.playerId,Math.min(10,Math.floor(p.score/miniGames[game].divisor))]));
+     const rewards=midwayMiniGameRewards(game,engine.results(end,room.deadline+1));
      const expected=room.teams.map((t,team)=>room.players.filter(p=>p.team===team).reduce((score,p)=>score+rewards.get(p.lobbyId),t.score));
      now=room.deadline+1;
      const repeats=await Promise.all(Array.from({length:5},teacherGet));

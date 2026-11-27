@@ -2,7 +2,7 @@ import {getMiniGame} from '../../../lib/multiplayer/minigames.js';
 import {board,nodes,seconds,randomIndex} from './presentation.js';
 import {boardStepMs} from './board-motion.js';
 import {spaces} from '../lib/catalog.js';
-import {miniGames} from '../lib/game-labels.js';
+import {midwayMiniGameRewards} from './rewards.js';
 export {board,nodes} from './presentation.js';
 const active = room => room.teams[room.turn];
 function phase(room, name, now, length = 0) {
@@ -112,9 +112,9 @@ export function advance(room, now, random) {
       case 'mini': {
         const engine=getMiniGame(room.game);
         room.miniState=engine.advance(room.miniState,at);
-        const scores=new Map(engine.results(room.miniState,now).map(result=>[result.playerId,result.score]));
+        const rewards=midwayMiniGameRewards(room.game,engine.results(room.miniState,now));
         for (const player of room.players.filter(p=>p.qualified>=2)) {
-          player.lastAward = Math.min(10,Math.floor((scores.get(player.lobbyId)??0)/miniGames[room.game].divisor));
+          player.lastAward = rewards.get(player.lobbyId)??0;
           room.teams[player.team].score += player.lastAward;
         }
         finishRound(room,at);
