@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import { canSendInput,receiveSnapshot,sampleRemote,recoveryBlend } from './recovery.js';
+const r={samples:[]},sample=(x,rotation=0)=>({x,y:1,z:0,rotation});
+receiveSnapshot(r,sample(0,350),100);
+receiveSnapshot(r,sample(1,10),150);
+assert.equal(sampleRemote(r,225).x,.5);
+assert.equal(sampleRemote(r,225).rotation,360);
+assert.equal(sampleRemote(r,900).x,1,'Hold latest position during starvation; never extrapolate');
+assert(receiveSnapshot(r,sample(9),1150));
+receiveSnapshot(r,sample(10),1151);
+assert.equal(r.samples.length,1,'Coalesce compressed catch-up packets');
+assert.equal(sampleRemote(r,1151).x,10);
+let displayed=1;
+for(let n=0;n<12;n++){displayed+=(10-displayed)*recoveryBlend(1/60);assert(displayed<=10);}
+assert(displayed>9.8,'Converge smoothly after a gap');
+let seq=12;
+for(let n=0;n<1000;n++)if(canSendInput(12,100,110))seq++;
+assert.equal(seq,12,'Do not burn sequence numbers while input window is full');
+assert(!canSendInput(0,100,900));assert(!canSendInput(0,0,100));
+assert(canSendInput(0,1000,1010),'Resume after a fresh authoritative state');
+console.log('PASS: starvation hold, stale-buffer reset, burst coalescing, bounded recovery, input sequence gate');

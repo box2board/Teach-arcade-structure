@@ -1,0 +1,72 @@
+name: Flagship isolated 40-client test
+on:
+  push:
+    branches: [prototype/flagship-3d-world-foundation]
+    paths:
+      - .github/workflows/flagship-scale-40.yml
+      - prototypes/flagship-world-playcanvas/multiplayer/scale-40-test.mjs
+permissions:
+  contents: read
+concurrency:
+  group: flagship-scale-40
+  cancel-in-progress: true
+jobs:
+  isolated-scale:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    defaults:
+      run:
+        shell: bash
+        working-directory: prototypes/flagship-world-playcanvas/multiplayer
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --omit=dev
+      - name: Run five minutes with 40 loopback WebSocket clients
+        run: node scale-40-test.mjs 2>&1 | tee scale40-output.txt
+      - name: Preserve test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flagship-isolated-40-client-results
+          path: prototypes/flagship-world-playcanvas/multiplayer/scale40-output.txt
+          retention-days: 7
+  hosted-network:
+    # The dedicated service accepts load-test joins only during an armed window.
+    if: ${{ contains(github.event.head_commit.message, '[hosted-scale-40]') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    defaults:
+      run:
+        shell: bash
+        working-directory: prototypes/flagship-world-playcanvas/multiplayer
+    env:
+      WORLD_SCALE_TEST_ENDPOINT: wss://flagship-scale-40-review-review.up.railway.app
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --omit=dev
+      - name: Wait for the isolated scale server
+        run: |
+          for attempt in {1..24}; do
+            if curl --fail --max-time 10 https://flagship-scale-40-review-review.up.railway.app/health | grep -q '"networkReview":true'; then exit 0; fi
+            sleep 5
+          done
+          exit 1
+      - name: Run 40 external WebSocket clients with 48 structures
+        run: node scale-40-test.mjs 2>&1 | tee hosted-scale40-output.txt
+      - name: Preserve network test evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: flagship-hosted-40-client-results
+          path: prototypes/flagship-world-playcanvas/multiplayer/hosted-scale40-output.txt
+          retention-days: 7
