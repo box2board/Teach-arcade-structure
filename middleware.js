@@ -10,9 +10,10 @@ let pendingRead;
 function configuredMode() {
  const enabled = process.env.TA_FEATURE_GATE_ENABLED;
  const connection = process.env.TA_FEATURE_CONFIG_URL;
- if (!enabled && !connection) return 'disabled';
- if (enabled !== '1' || !connection || process.env.VERCEL_ENV !== 'preview' ||
-     process.env.VERCEL_GIT_COMMIT_REF !== 'prototype/public-feature-blockers') return 'unavailable';
+ const isPilot = process.env.VERCEL_ENV === 'preview' &&
+     process.env.VERCEL_GIT_COMMIT_REF === 'prototype/public-feature-blockers';
+ if (!isPilot && !enabled && !connection) return 'disabled';
+ if (!isPilot || enabled !== '1' || !connection) return 'unavailable';
  return 'configured';
 }
 

@@ -44,6 +44,9 @@ assert.equal((await request(chess)).status, 503);
 assert.equal(calls, 0);
 process.env.VERCEL_ENV = 'preview';
 process.env.VERCEL_GIT_COMMIT_REF = 'prototype/public-feature-blockers';
+delete process.env.TA_FEATURE_GATE_ENABLED;
+assert.equal((await request(chess)).status, 503, 'missing settings on the pilot fail closed');
+process.env.TA_FEATURE_GATE_ENABLED = '1';
 process.env.TA_FEATURE_CONFIG_URL = store + '?token=' + token;
 
 assert.equal((await (await status()).json()).mode, 'configured');
