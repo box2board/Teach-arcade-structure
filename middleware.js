@@ -3,14 +3,46 @@ import { PILOT,featureForPath,validateFlags,availability,defaultFlags } from './
 
 export const config={matcher:['/brain-arcade/rv-road-trip-mayhem/:path*','/brain-arcade/chess/:path*','/brain-arcade/sudoku/:path*','/api/feature-availability']};
 const noCache={'Cache-Control':'private, no-store, max-age=0','CDN-Cache-Control':'no-store','Vercel-CDN-Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
-async function readFlags(){
- if(process.env.TA_FEATURE_GATE_ENABLED!=='1')return defaultFlags();
- // Read-only connection URL. Never expose it or include it in logs.
- const url=new URL(process.env.TA_FEATURE_CONFIG_URL);
- if(url.protocol!=='https:'||url.hostname!=='edge-config.vercel.com'||url.username||url.password||url.port||url.hash||!/^\/ecfg_[a-zA-Z0-9]+\/item\/teach_arcade_pilot$/.test(url.pathname)||!url.searchParams.get('token'))throw Error('Invalid flag configuration');
- const response=await fetch(url,{cache:'no-store',redirect:'error',signal:AbortSignal.timeout(1500)});
- if(!response.ok)throw Error('Feature config unavailable');
+const configLifetime = 2000;
+let cachedFlags;
+let pendingRead;
+
+function configuredMode() {
+ const enabled = process.env.TA_FEATURE_GATE_ENABLED;
+ const connection = process.env.TA_FEATURE_CONFIG_URL;
+ if (!enabled && !connection) return 'disabled';
+ if (enabled !== '1' || !connection || process.env.VERCEL_ENV !== 'preview' ||
+     process.env.VERCEL_GIT_COMMIT_REF !== 'prototype/public-feature-blockers') return 'unavailable';
+ return 'configured';
+}
+
+async function fetchFlags(){
+ // This deployment accepts only the existing pilot store and never returns its credential.
+ const url = new URL(process.env.TA_FEATURE_CONFIG_URL);
+ if (url.origin !== 'https://edge-config.vercel.com' || url.username || url.password || url.hash ||
+     url.pathname !== '/ecfg_2179bzbbgxjq6ry1pruzbbdhbsii/item/teach_arcade_pilot' ||
+     url.searchParams.size !== 1 || !url.searchParams.get('token')) throw Error('Invalid flag configuration');
+ const token = url.searchParams.get('token');
+ url.search = '';
+ const response = await fetch(url, {
+  headers: {Authorization: 'Bearer ' + token},
+  cache: 'no-store',
+  redirect: 'error',
+  signal: AbortSignal.timeout(1500)
+ });
+ if (!response.ok) throw Error('Feature config unavailable');
  return validateFlags(await response.json());
+}
+
+function readFlags(mode){
+ if (mode === 'disabled') return defaultFlags();
+ if (mode !== 'configured') return null;
+ if (cachedFlags?.expires > Date.now()) return cachedFlags.flags;
+ pendingRead ??= fetchFlags().catch(() => null).then(flags => {
+  cachedFlags = {flags, expires: Date.now() + configLifetime};
+  return flags;
+ }).finally(() => { pendingRead = undefined; });
+ return pendingRead;
 }
 function blockedPage(request,id,state){
  const title=PILOT[id].name;
@@ -29,8 +61,9 @@ export default async function middleware(request){
  const id=featureForPath(path);
  if(!id&&!statusEndpoint)return next();
  if(statusEndpoint&&!['GET','HEAD'].includes(request.method))return new Response(null,{status:405,headers:{...noCache,Allow:'GET, HEAD'}});
- let flags=null;try{flags=await readFlags()}catch{/* fail closed only for explicitly mapped pilot routes */}
- if(statusEndpoint)return new Response(request.method==='HEAD'?null:JSON.stringify({features:flags??Object.fromEntries(Object.keys(PILOT).map(k=>[k,'unavailable']))}),{status:flags?200:503,headers:{...noCache,'Content-Type':'application/json'}});
+ const mode=configuredMode();
+ const flags=await readFlags(mode);
+ if(statusEndpoint)return new Response(request.method==='HEAD'?null:JSON.stringify({mode:flags?mode:'unavailable',features:flags??Object.fromEntries(Object.keys(PILOT).map(k=>[k,'unavailable']))}),{status:flags?200:503,headers:{...noCache,'Content-Type':'application/json'}});
  const result=availability(flags,id);
  if(result==='pass')return next();
  return blockedPage(request,id,result);
