@@ -60,7 +60,7 @@
     LINKS.push({ label: "My Cabinet", href: "/teacher/" });
   }
 
-  const LOGO_SRC = "/assets/images/teach-arcade-logo.png";
+  const LOGO_SRC = document.getElementById("site-header")?.hasAttribute("data-compact-logo") ? "/assets/images/homepage/header-logo.webp" : "/assets/images/teach-arcade-logo.png";
   const BRAND_TEXT = "Teach\nArcade";
 
 
