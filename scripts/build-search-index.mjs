@@ -1,6 +1,7 @@
 // scripts/build-search-index.mjs
 import { promises as fs } from "fs";
 import path from "path";
+import {availability} from "../public/assets/resource-availability.js";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -280,6 +281,13 @@ async function main() {
   }
 
   const out = Array.from(map.values());
+  const upcoming = Object.entries(availability).filter(([, state]) => state === 'coming-soon');
+  if (upcoming.length) {
+    const {loadCards} = await import('./resource-cards/catalog.mjs');
+    const catalog = await loadCards();
+    const urls = new Set(upcoming.map(([id]) => keyFor(catalog.get(id))));
+    for (const record of out) if (urls.has(keyFor(record))) record.availability = 'coming-soon';
+  }
   await fs.writeFile(OUT_FILE, JSON.stringify(out, null, 2) + "\n", "utf8");
   console.log(`Built public/search-index.json with ${out.length} records.`);
 }

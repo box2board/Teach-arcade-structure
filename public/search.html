@@ -614,10 +614,11 @@
         if (r._gradeKey) metaBits.push(`<span>Grade: ${escapeHtml(r._gradeKey)}</span>`);
 
         return `
-          <a class="result" href="${escapeHtml(r.url)}">
+          <a class="result" ${r.availability === "coming-soon" ? 'role="link" aria-disabled="true"' : `href="${escapeHtml(r.url)}"`}>
             <div class="result-top">
               <div style="min-width:0;">
                 <h3>${titleHtml}</h3>
+                ${r.availability === "coming-soon" ? "<strong>Coming soon</strong>" : ""}
                 <p>${snippetHtml}</p>
                 <div class="meta2">
                   <span class="url">${escapeHtml(r.url)}</span>

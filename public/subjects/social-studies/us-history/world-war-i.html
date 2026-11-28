@@ -40,21 +40,14 @@
   </script>
 
   <!-- Topic Explorer micro styles -->
+  <link rel="stylesheet" href="/assets/topic-resource-guide.css">
   <style>
-    .tabs{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:#f1f5f9;border:1px solid #e5e7eb;border-radius:12px;padding:10px;margin:18px 0 16px}
-    .tab{appearance:none;border:1px solid #cbd5e1;background:#fff;color:#1f2937;padding:8px 12px;border-radius:999px;cursor:pointer;font:600 14px/1 Poppins,sans-serif}
-    .tab[aria-selected="true"]{background:#2563eb;color:#fff;border-color:#2563eb}
-    .pill{display:inline-block;padding:4px 8px;border-radius:999px;font:600 12px/1 Nunito,sans-serif;background:#eef2ff;color:#3730a3;margin-right:6px}
-    .pill.gray{background:#f1f5f9;color:#334155}.pill.green{background:#ecfdf5;color:#065f46}.pill.orange{background:#fff7ed;color:#9a3412}.pill.blue{background:#eff6ff;color:#1d4ed8}
-    .filters-row{display:flex;gap:10px;align-items:center;margin:12px 0 8px}
-    .filters-row input[type="search"]{flex:1;min-width:220px;padding:10px 12px;border:1px solid #cbd5e1;border-radius:10px}
-    #resource-list.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card h3{margin:0 0 8px}.meta{margin:0 0 12px;color:#475569;font:600 13px/1.4 Nunito,sans-serif}
+.esc-cta{margin:18px 0 24px 0;padding:12px;border:1px solid #e5e7eb;border-radius:10px;background:#f7f9ff}
 
-    /* Escape Room CTA (added) */
-    .esc-cta{margin:18px 0 24px 0;padding:12px;border:1px solid #e5e7eb;border-radius:10px;background:#f7f9ff}
     .esc-cta-btn{display:inline-block;background:#111827;color:#ffffff;text-decoration:none;padding:10px 14px;border-radius:8px;font-weight:700}
+
     .esc-cta-btn:hover{opacity:.9}
+
     .esc-cta-note{margin:8px 0 0 0;color:#374151;font-size:.95rem}
   </style>
 </head>
@@ -83,17 +76,15 @@
       <p class="esc-cta-note">Student-led mission • 20–40 minutes • Works on Chromebooks & iPads</p>
     </div>
 
-    <div class="filters-row">
-      <input id="searchInput" type="search" placeholder="Search titles…" aria-label="Search resources" />
-    </div>
 
-    <div id="tabs" class="tabs" role="tablist" aria-label="Resource categories"></div>
-    <section id="resource-list" class="card-grid" aria-live="polite"></section>
+
+
+    <section id="resource-list" class="card-grid" aria-live="polite"><!-- resource-card {"id":"subjects:social-studies","view":"subject-guide"} --><article class="card"><h3>Original Teach Arcade Resources</h3><p>This subject page now focuses on activities created for Teach Arcade. Visit the subject hub to browse original games, tools, and materials currently available.</p><a class="cta" href="/subjects/social-studies/">Browse Social Studies</a></article><!-- /resource-card --></section>
 
 <section class="resource-connections" aria-label="Related Teach Arcade resources">
   <h2>Existing Teach Arcade activities</h2>
   <p>Pair the topic materials on this page with these directly related Teach Arcade activities.</p>
-  <ul><li><a href="/arcade-review-games/social-studies/wwi-trench-run-v2/">Play WWI Trench Run v2</a></li><li><a href="/escape/?room=wwi">Play the WWI Escape Room</a></li><li><a href="/movie-guides/guides/war-horse/">Use the War Horse movie guide</a></li></ul>
+  <ul><li><!-- resource-card {"id":"arcade-review-games:social-studies:wwi-trench-run-v2","view":"link","prefix":"Play "} --><a href="/arcade-review-games/social-studies/wwi-trench-run-v2/">Play WWI Trench Run v2</a><!-- /resource-card --></li><li><!-- resource-card {"id":"escape:-room-wwi","view":"link"} --><a href="/escape/?room=wwi">Play the WWI Escape Room</a><!-- /resource-card --></li><li><!-- resource-card {"id":"movie-guides:guides:war-horse","view":"link"} --><a href="/movie-guides/guides/war-horse/">Use the War Horse movie guide</a><!-- /resource-card --></li></ul>
 </section>
 </main>
 
@@ -103,6 +94,6 @@
     <a href="/terms.html">Terms</a>
   </footer>
 
-  <script src="/assets/scripts/topic.v1.js?v=1" defer></script>
+
 </body>
 </html>

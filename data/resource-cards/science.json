@@ -1,0 +1,548 @@
+{
+  "subjects:science": {
+    "title": "Science",
+    "url": "/subjects/science/",
+    "description": "Biology, chemistry, physics, and Earth & space.",
+    "image": "/assets/images/subjects/science-flat-768.webp"
+  },
+  "subjects:science:astronomy:earth-sun-moon-system": {
+    "title": "Earth–Sun–Moon System",
+    "url": "/subjects/science/astronomy/earth-sun-moon-system.html",
+    "description": "Seasons, moon phases, eclipses, and tides.",
+    "image": "/assets/images/topics/science-astronomy--earth-sun-moon-system-flat-768.webp"
+  },
+  "subjects:science:astronomy:galaxies-universe-structure": {
+    "title": "Galaxies & The Universe",
+    "url": "/subjects/science/astronomy/galaxies-universe-structure.html",
+    "description": "Types of galaxies, the Milky Way, and the large-scale structure of the universe.",
+    "image": "/assets/images/topics/science-astronomy--galaxies-the-universe-flat-768.webp"
+  },
+  "subjects:science:astronomy:solar-system-planets": {
+    "title": "Solar System & Planets",
+    "url": "/subjects/science/astronomy/solar-system-planets.html",
+    "description": "Planets, moons, asteroids, comets, and the formation of the solar system.",
+    "image": "/assets/images/topics/science-astronomy--solar-system-planets-flat-768.webp"
+  },
+  "subjects:science:astronomy:space-exploration-missions": {
+    "title": "Space Exploration & Missions",
+    "url": "/subjects/science/astronomy/space-exploration-missions.html",
+    "description": "Space race, satellites, probes, rovers, and crewed missions beyond Earth.",
+    "image": "/assets/images/topics/science-astronomy--space-exploration-missions-flat-768.webp"
+  },
+  "subjects:science:astronomy:stars-constellations": {
+    "title": "Stars & Constellations",
+    "url": "/subjects/science/astronomy/stars-constellations.html",
+    "description": "Properties of stars, constellations, and the life cycle of stars.",
+    "image": "/assets/images/topics/science-astronomy--stars-constellations-flat-768.webp"
+  },
+  "subjects:science:astronomy:telescopes-space-observation": {
+    "title": "Telescopes & Space Observation",
+    "url": "/subjects/science/astronomy/telescopes-space-observation.html",
+    "description": "How telescopes work and how scientists study space.",
+    "image": "/assets/images/topics/science-astronomy--telescopes-space-observation-flat-768.webp"
+  },
+  "subjects:science:biology:biodiversity-conservation": {
+    "title": "Biodiversity & Conservation",
+    "url": "/subjects/science/biology/biodiversity-conservation.html",
+    "description": "Species diversity, threats, and strategies for sustainability.",
+    "image": "/assets/images/topics/science-biology--biodiversity-conservation-flat-768.webp"
+  },
+  "subjects:science:biology:biotechnology-genetic-engineering": {
+    "title": "Biotechnology & Genetic Engineering",
+    "url": "/subjects/science/biology/biotechnology-genetic-engineering.html",
+    "description": "CRISPR, cloning, GMOs, and bioethics in modern biology.",
+    "image": "/assets/images/topics/science-biology--biotechnology-genetic-engineering-flat-768.webp"
+  },
+  "subjects:science:biology:cell-division-mitosis-meiosis": {
+    "title": "Cell Division: Mitosis & Meiosis",
+    "url": "/subjects/science/biology/cell-division-mitosis-meiosis.html",
+    "description": "Growth, repair, and gamete formation; chromosomes and the cell cycle.",
+    "image": "/assets/images/topics/science-biology--cell-division-mitosis-meiosis-flat-768.webp"
+  },
+  "subjects:science:biology:cell-energy-photosynthesis-respiration": {
+    "title": "Cell Energy: Photosynthesis & Respiration",
+    "url": "/subjects/science/biology/cell-energy-photosynthesis-respiration.html",
+    "description": "How cells capture, convert, and use energy to power life processes.",
+    "image": "/assets/images/topics/science-biology--cell-energy-photosynthesis-respiration-flat-768.webp"
+  },
+  "subjects:science:biology:cell-transport-homeostasis": {
+    "title": "Cell Transport & Homeostasis",
+    "url": "/subjects/science/biology/cell-transport-homeostasis.html",
+    "description": "Diffusion, osmosis, active transport, and maintaining balance.",
+    "image": "/assets/images/topics/science-biology--cell-transport-homeostasis-flat-768.webp"
+  },
+  "subjects:science:biology:cells-structure-function": {
+    "title": "Cell Structure & Function",
+    "url": "/subjects/science/biology/cells-structure-function.html",
+    "description": "Prokaryotes vs. eukaryotes, organelles, and specialization.",
+    "image": "/assets/images/topics/science-biology--cell-structure-function-flat-768.webp"
+  },
+  "subjects:science:biology:classification-taxonomy": {
+    "title": "Classification & Taxonomy",
+    "url": "/subjects/science/biology/classification-taxonomy.html",
+    "description": "Binomial nomenclature, phylogeny, and the tree of life.",
+    "image": "/assets/images/topics/science-biology--classification-taxonomy-flat-768.webp"
+  },
+  "subjects:science:biology:dna-rna-protein-synthesis": {
+    "title": "DNA, RNA & Protein Synthesis",
+    "url": "/subjects/science/biology/dna-rna-protein-synthesis.html",
+    "description": "Replication, transcription, translation, and gene expression.",
+    "image": "/assets/images/topics/science-biology--dna-rna-protein-synthesis-flat-768.webp"
+  },
+  "subjects:science:biology:ecology-ecosystems": {
+    "title": "Ecology & Ecosystems",
+    "url": "/subjects/science/biology/ecology-ecosystems.html",
+    "description": "Energy flow, cycles of matter, populations, and communities.",
+    "image": "/assets/images/topics/science-biology--ecology-ecosystems-flat-768.webp"
+  },
+  "subjects:science:biology:evolution-natural-selection": {
+    "title": "Evolution & Natural Selection",
+    "url": "/subjects/science/biology/evolution-natural-selection.html",
+    "description": "Evidence for evolution, adaptation, and speciation.",
+    "image": "/assets/images/topics/science-biology--evolution-natural-selection-flat-768.webp"
+  },
+  "subjects:science:biology:genetics-heredity": {
+    "title": "Genetics & Heredity",
+    "url": "/subjects/science/biology/genetics-heredity.html",
+    "description": "Mendelian inheritance, Punnett squares, and modern genetics.",
+    "image": "/assets/images/topics/science-biology--genetics-heredity-flat-768.webp"
+  },
+  "subjects:science:biology:human-body-systems": {
+    "title": "Human Body Systems",
+    "url": "/subjects/science/biology/human-body-systems.html",
+    "description": "Structure and function across the major organ systems.",
+    "image": "/assets/images/topics/science-biology--human-body-systems-flat-768.webp"
+  },
+  "subjects:science:biology:microorganisms-viruses": {
+    "title": "Microorganisms & Viruses",
+    "url": "/subjects/science/biology/microorganisms-viruses.html",
+    "description": "Bacteria, protists, fungi, and viral structure and replication.",
+    "image": "/assets/images/topics/science-biology--microorganisms-viruses-flat-768.webp"
+  },
+  "subjects:science:biology:scientific-method-introduction-to-biology": {
+    "title": "Scientific Method & Introduction to Biology",
+    "url": "/subjects/science/biology/scientific-method-introduction-to-biology.html",
+    "description": "What science is, variables, controls, and good experimental design.",
+    "image": "/assets/images/topics/science-biology--scientific-method-introduction-to-biology-flat-768.webp"
+  },
+  "subjects:science:biology:scientific-skills-lab-safety": {
+    "title": "Scientific Skills & Lab Safety",
+    "url": "/subjects/science/biology/scientific-skills-lab-safety.html",
+    "description": "Safety symbols, measurement, graphs, and data analysis.",
+    "image": "/assets/images/topics/science-biology--scientific-skills-lab-safety-flat-768.webp"
+  },
+  "subjects:science:chemistry:atomic-structure": {
+    "title": "Atomic Structure",
+    "url": "/subjects/science/chemistry/atomic-structure.html",
+    "description": "Structure of the atom, subatomic particles, isotopes, and models of the atom.",
+    "image": "/assets/images/topics/science-chemistry--atomic-structure-flat-768.webp"
+  },
+  "subjects:science:chemistry:chemical-bonding": {
+    "title": "Chemical Bonding",
+    "url": "/subjects/science/chemistry/chemical-bonding.html",
+    "description": "Ionic, covalent, and metallic bonds, polarity, and molecular structure.",
+    "image": "/assets/images/topics/science-chemistry--chemical-bonding-flat-768.webp"
+  },
+  "subjects:science:chemistry:chemical-reactions": {
+    "title": "Chemical Reactions",
+    "url": "/subjects/science/chemistry/chemical-reactions.html",
+    "description": "Types of reactions, evidence of reactions, and balancing chemical equations.",
+    "image": "/assets/images/topics/science-chemistry--chemical-reactions-flat-768.webp"
+  },
+  "subjects:science:chemistry:intro-matter-properties": {
+    "title": "Matter & Properties",
+    "url": "/subjects/science/chemistry/intro-matter-properties.html",
+    "description": "States of matter, physical vs. chemical properties, and changes in matter.",
+    "image": "/assets/images/topics/science-chemistry--matter-properties-flat-768.webp"
+  },
+  "subjects:science:chemistry:intro-organic-biochemistry": {
+    "title": "Intro to Organic & Biochemistry",
+    "url": "/subjects/science/chemistry/intro-organic-biochemistry.html",
+    "description": "Carbon-based molecules, functional groups, and basic biochemical compounds.",
+    "image": "/assets/images/topics/science-chemistry--intro-to-organic-biochemistry-flat-768.webp"
+  },
+  "subjects:science:chemistry:nuclear-chemistry": {
+    "title": "Nuclear Chemistry",
+    "url": "/subjects/science/chemistry/nuclear-chemistry.html",
+    "description": "Radioactivity, nuclear decay, fission, fusion, and applications of nuclear processes.",
+    "image": "/assets/images/topics/science-chemistry--nuclear-chemistry-flat-768.webp"
+  },
+  "subjects:science:chemistry:periodic-table": {
+    "title": "Periodic Table & Trends",
+    "url": "/subjects/science/chemistry/periodic-table.html",
+    "description": "Organization of the periodic table, groups and periods, and periodic trends.",
+    "image": "/assets/images/topics/science-chemistry--periodic-table-trends-flat-768.webp"
+  },
+  "subjects:science:chemistry:reaction-rates-equilibrium": {
+    "title": "Reaction Rates & Equilibrium",
+    "url": "/subjects/science/chemistry/reaction-rates-equilibrium.html",
+    "description": "Factors affecting reaction rate, catalysts, and dynamic chemical equilibrium.",
+    "image": "/assets/images/topics/science-chemistry--reaction-rates-equilibrium-flat-768.webp"
+  },
+  "subjects:science:chemistry:solutions-acids-bases": {
+    "title": "Solutions, Acids & Bases",
+    "url": "/subjects/science/chemistry/solutions-acids-bases.html",
+    "description": "Concentration, solubility, pH scale, acids, bases, and neutralization.",
+    "image": "/assets/images/topics/science-chemistry--solutions-acids-bases-flat-768.webp"
+  },
+  "subjects:science:chemistry:states-gases-liquids-solids": {
+    "title": "States of Matter & Gases",
+    "url": "/subjects/science/chemistry/states-gases-liquids-solids.html",
+    "description": "Gas laws, kinetic molecular theory, and properties of solids, liquids, and gases.",
+    "image": "/assets/images/topics/science-chemistry--states-of-matter-gases-flat-768.webp"
+  },
+  "subjects:science:chemistry:stoichiometry": {
+    "title": "Stoichiometry",
+    "url": "/subjects/science/chemistry/stoichiometry.html",
+    "description": "Mole ratios, limiting reactants, percent yield, and quantitative reaction calculations.",
+    "image": "/assets/images/topics/science-chemistry--stoichiometry-flat-768.webp"
+  },
+  "subjects:science:chemistry:thermochemistry-energy": {
+    "title": "Thermochemistry & Energy",
+    "url": "/subjects/science/chemistry/thermochemistry-energy.html",
+    "description": "Endothermic and exothermic processes, energy changes, and calorimetry.",
+    "image": "/assets/images/topics/science-chemistry--thermochemistry-energy-flat-768.webp"
+  },
+  "subjects:science:earth-space-science": {
+    "title": "Earth & Space Science",
+    "url": "/subjects/science/earth-space-science/",
+    "description": "Earth systems, weather, geology, and space.",
+    "image": "/assets/images/subjects/earth-space-science-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:atmosphere-weather": {
+    "title": "Atmosphere & Weather",
+    "url": "/subjects/science/earth-space-science/atmosphere-weather.html",
+    "description": "Composition of the atmosphere, air masses, fronts, storms, and weather prediction.",
+    "image": "/assets/images/topics/science-earth-space-science--atmosphere-weather-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:climate-climate-change": {
+    "title": "Climate & Climate Change",
+    "url": "/subjects/science/earth-space-science/climate-climate-change.html",
+    "description": "Climate zones, long-term climate patterns, and evidence and impacts of climate change.",
+    "image": "/assets/images/topics/science-earth-space-science--climate-climate-change-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:earth-sun-moon-systems": {
+    "title": "Earth–Sun–Moon Systems",
+    "url": "/subjects/science/earth-space-science/earth-sun-moon-systems.html",
+    "description": "Seasons, phases of the moon, eclipses, tides, and orbital motion.",
+    "image": "/assets/images/topics/science-earth-space-science--earth-sun-moon-systems-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:earths-structure-plate-tectonics": {
+    "title": "Earth's Structure & Plate Tectonics",
+    "url": "/subjects/science/earth-space-science/earths-structure-plate-tectonics.html",
+    "description": "Layers of the Earth, plate boundaries, earthquakes, volcanoes, and continental drift.",
+    "image": "/assets/images/topics/science-earth-space-science--earth-s-structure-plate-tectonics-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:human-impact-earth-systems": {
+    "title": "Human Impact on Earth Systems",
+    "url": "/subjects/science/earth-space-science/human-impact-earth-systems.html",
+    "description": "Natural resources, pollution, land use, conservation, and sustainability.",
+    "image": "/assets/images/topics/science-earth-space-science--human-impact-on-earth-systems-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:oceans-oceanography": {
+    "title": "Oceans & Oceanography",
+    "url": "/subjects/science/earth-space-science/oceans-oceanography.html",
+    "description": "Ocean basins, currents, waves, tides, and the role of oceans in Earth's systems.",
+    "image": "/assets/images/topics/science-earth-space-science--oceans-oceanography-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:rocks-minerals-geologic-time": {
+    "title": "Rocks, Minerals & Geologic Time",
+    "url": "/subjects/science/earth-space-science/rocks-minerals-geologic-time.html",
+    "description": "Rock cycle, types of rocks, minerals, fossils, and Earth’s long history.",
+    "image": "/assets/images/topics/science-earth-space-science--rocks-minerals-geologic-time-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:solar-system": {
+    "title": "The Solar System",
+    "url": "/subjects/science/earth-space-science/solar-system.html",
+    "description": "Planets, moons, asteroids, comets, and the formation of our solar system.",
+    "image": "/assets/images/topics/science-earth-space-science--the-solar-system-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:stars-galaxies-universe": {
+    "title": "Stars, Galaxies & The Universe",
+    "url": "/subjects/science/earth-space-science/stars-galaxies-universe.html",
+    "description": "Life cycle of stars, galaxies, and the large-scale structure of the universe.",
+    "image": "/assets/images/topics/science-earth-space-science--stars-galaxies-the-universe-flat-768.webp"
+  },
+  "subjects:science:earth-space-science:weathering-erosion-surface-processes": {
+    "title": "Weathering, Erosion & Surface Processes",
+    "url": "/subjects/science/earth-space-science/weathering-erosion-surface-processes.html",
+    "description": "Processes that shape Earth's surface through weathering, erosion, and deposition.",
+    "image": "/assets/images/topics/science-earth-space-science--weathering-erosion-surface-processes-flat-768.webp"
+  },
+  "subjects:science:environmental-science": {
+    "title": "Environmental Science",
+    "url": "/subjects/science/environmental-science/",
+    "description": "Ecosystems, resources, climate, and sustainability.",
+    "image": "/assets/images/subjects/environmental-science-flat-768.webp"
+  },
+  "subjects:science:environmental-science:climate-change-global-warming": {
+    "title": "Climate Change & Global Warming",
+    "url": "/subjects/science/environmental-science/climate-change-global-warming.html",
+    "description": "Evidence of climate change, greenhouse effect, and global consequences.",
+    "image": "/assets/images/topics/science-environmental-science--climate-change-global-warming-flat-768.webp"
+  },
+  "subjects:science:environmental-science:ecosystems-biomes": {
+    "title": "Ecosystems & Biomes",
+    "url": "/subjects/science/environmental-science/ecosystems-biomes.html",
+    "description": "Major biomes, biodiversity, and interactions within ecosystems.",
+    "image": "/assets/images/topics/science-environmental-science--ecosystems-biomes-flat-768.webp"
+  },
+  "subjects:science:environmental-science:energy-resources-renewables": {
+    "title": "Energy Resources & Renewables",
+    "url": "/subjects/science/environmental-science/energy-resources-renewables.html",
+    "description": "Fossil fuels, renewable energy, and the transition to sustainable energy sources.",
+    "image": "/assets/images/topics/science-environmental-science--energy-resources-renewables-flat-768.webp"
+  },
+  "subjects:science:environmental-science:environmental-policy-ethics": {
+    "title": "Environmental Policy & Ethics",
+    "url": "/subjects/science/environmental-science/environmental-policy-ethics.html",
+    "description": "Environmental laws, regulations, organizations, and ethical decision-making.",
+    "image": "/assets/images/topics/science-environmental-science--environmental-policy-ethics-flat-768.webp"
+  },
+  "subjects:science:environmental-science:human-population-growth": {
+    "title": "Human Population & Growth",
+    "url": "/subjects/science/environmental-science/human-population-growth.html",
+    "description": "Population trends, carrying capacity, and impacts on resources and ecosystems.",
+    "image": "/assets/images/topics/science-environmental-science--human-population-growth-flat-768.webp"
+  },
+  "subjects:science:environmental-science:natural-resources": {
+    "title": "Natural Resources",
+    "url": "/subjects/science/environmental-science/natural-resources.html",
+    "description": "Renewable and nonrenewable resources, resource use, and management.",
+    "image": "/assets/images/topics/science-environmental-science--natural-resources-flat-768.webp"
+  },
+  "subjects:science:environmental-science:pollution-human-impact": {
+    "title": "Pollution & Human Impact",
+    "url": "/subjects/science/environmental-science/pollution-human-impact.html",
+    "description": "Air, water, and land pollution, and how human activities affect ecosystems.",
+    "image": "/assets/images/topics/science-environmental-science--pollution-human-impact-flat-768.webp"
+  },
+  "subjects:science:environmental-science:sustainability-conservation": {
+    "title": "Sustainability & Conservation",
+    "url": "/subjects/science/environmental-science/sustainability-conservation.html",
+    "description": "Conservation strategies, sustainable practices, and protecting biodiversity.",
+    "image": "/assets/images/topics/science-environmental-science--sustainability-conservation-flat-768.webp"
+  },
+  "subjects:science:life-science": {
+    "title": "Life Science",
+    "url": "/subjects/science/life-science/",
+    "description": "Cells, ecosystems, heredity, and living systems.",
+    "image": "/assets/images/subjects/life-science-flat-768.webp"
+  },
+  "subjects:science:life-science:adaptations-natural-selection": {
+    "title": "Adaptations & Natural Selection",
+    "url": "/subjects/science/life-science/adaptations-natural-selection.html",
+    "description": "Structural and behavioral adaptations, survival, and basic natural selection.",
+    "image": "/assets/images/topics/science-life-science--adaptations-natural-selection-flat-768.webp"
+  },
+  "subjects:science:life-science:cells-structure-function": {
+    "title": "Cells: Structure & Function",
+    "url": "/subjects/science/life-science/cells-structure-function.html",
+    "description": "Cell structure, organelles, and how cells carry out life processes.",
+    "image": "/assets/images/topics/science-life-science--cells-structure-function-flat-768.webp"
+  },
+  "subjects:science:life-science:classification-living-things": {
+    "title": "Classification of Living Things",
+    "url": "/subjects/science/life-science/classification-living-things.html",
+    "description": "Kingdoms, domains, and how scientists classify organisms.",
+    "image": "/assets/images/topics/science-life-science--classification-of-living-things-flat-768.webp"
+  },
+  "subjects:science:life-science:ecosystems-food-webs": {
+    "title": "Ecosystems & Food Webs",
+    "url": "/subjects/science/life-science/ecosystems-food-webs.html",
+    "description": "Producers, consumers, decomposers, food chains, and energy flow.",
+    "image": "/assets/images/topics/science-life-science--ecosystems-food-webs-flat-768.webp"
+  },
+  "subjects:science:life-science:genetics-heredity-basics": {
+    "title": "Genetics & Heredity (Basics)",
+    "url": "/subjects/science/life-science/genetics-heredity-basics.html",
+    "description": "Traits, genes, simple inheritance patterns, and Punnett squares.",
+    "image": "/assets/images/topics/science-life-science--genetics-heredity-basics-flat-768.webp"
+  },
+  "subjects:science:life-science:human-body-systems": {
+    "title": "Human Body Systems",
+    "url": "/subjects/science/life-science/human-body-systems.html",
+    "description": "Major body systems and how they work together to keep organisms alive.",
+    "image": "/assets/images/topics/science-life-science--human-body-systems-flat-768.webp"
+  },
+  "subjects:science:life-science:life-cycles-reproduction": {
+    "title": "Life Cycles & Reproduction",
+    "url": "/subjects/science/life-science/life-cycles-reproduction.html",
+    "description": "Life cycles of plants and animals, asexual and sexual reproduction.",
+    "image": "/assets/images/topics/science-life-science--life-cycles-reproduction-flat-768.webp"
+  },
+  "subjects:science:life-science:microorganisms-health": {
+    "title": "Microorganisms & Health",
+    "url": "/subjects/science/life-science/microorganisms-health.html",
+    "description": "Bacteria, viruses, helpful vs. harmful microbes, and disease prevention.",
+    "image": "/assets/images/topics/science-life-science--microorganisms-health-flat-768.webp"
+  },
+  "subjects:science:life-science:populations-communities-ecosystems": {
+    "title": "Populations, Communities & Ecosystems",
+    "url": "/subjects/science/life-science/populations-communities-ecosystems.html",
+    "description": "Interactions among organisms, limiting factors, and ecosystem balance.",
+    "image": "/assets/images/topics/science-life-science--populations-communities-ecosystems-flat-768.webp"
+  },
+  "subjects:science:physical-science": {
+    "title": "Physical Science",
+    "url": "/subjects/science/physical-science/",
+    "description": "Matter, forces, motion, energy, and waves.",
+    "image": "/assets/images/subjects/physical-science-flat-768.webp"
+  },
+  "subjects:science:physical-science:atoms-molecules-basics": {
+    "title": "Atoms & Molecules (Basics)",
+    "url": "/subjects/science/physical-science/atoms-molecules-basics.html",
+    "description": "Basic particle model of matter, atoms, molecules, and simple particles.",
+    "image": "/assets/images/topics/science-physical-science--atoms-molecules-basics-flat-768.webp"
+  },
+  "subjects:science:physical-science:electricity-magnetism-intro": {
+    "title": "Electricity & Magnetism (Intro)",
+    "url": "/subjects/science/physical-science/electricity-magnetism-intro.html",
+    "description": "Electric charges, simple circuits, magnets, and basic electromagnetism.",
+    "image": "/assets/images/topics/science-physical-science--electricity-magnetism-intro-flat-768.webp"
+  },
+  "subjects:science:physical-science:energy-forms-transformations": {
+    "title": "Energy Forms & Transformations",
+    "url": "/subjects/science/physical-science/energy-forms-transformations.html",
+    "description": "Potential and kinetic energy, energy transformations, and conservation of energy.",
+    "image": "/assets/images/topics/science-physical-science--energy-forms-transformations-flat-768.webp"
+  },
+  "subjects:science:physical-science:forces-newtons-laws-intro": {
+    "title": "Forces & Newton’s Laws (Intro)",
+    "url": "/subjects/science/physical-science/forces-newtons-laws-intro.html",
+    "description": "Balanced and unbalanced forces, friction, and basic Newton’s laws.",
+    "image": "/assets/images/topics/science-physical-science--forces-newton-s-laws-intro-flat-768.webp"
+  },
+  "subjects:science:physical-science:matter-properties-changes": {
+    "title": "Matter: Properties & Changes",
+    "url": "/subjects/science/physical-science/matter-properties-changes.html",
+    "description": "States of matter, physical and chemical changes, and properties of materials.",
+    "image": "/assets/images/topics/science-physical-science--matter-properties-changes-flat-768.webp"
+  },
+  "subjects:science:physical-science:motion-speed-acceleration": {
+    "title": "Motion, Speed & Acceleration",
+    "url": "/subjects/science/physical-science/motion-speed-acceleration.html",
+    "description": "Describing motion with distance, time, speed, velocity, and acceleration graphs.",
+    "image": "/assets/images/topics/science-physical-science--motion-speed-acceleration-flat-768.webp"
+  },
+  "subjects:science:physical-science:simple-machines-work-power": {
+    "title": "Simple Machines, Work & Power",
+    "url": "/subjects/science/physical-science/simple-machines-work-power.html",
+    "description": "Levers, pulleys, inclined planes, and how machines make work easier.",
+    "image": "/assets/images/topics/science-physical-science--simple-machines-work-power-flat-768.webp"
+  },
+  "subjects:science:physical-science:waves-sound-light-basics": {
+    "title": "Waves, Sound & Light (Basics)",
+    "url": "/subjects/science/physical-science/waves-sound-light-basics.html",
+    "description": "Types of waves, wave properties, sound, and simple light behavior.",
+    "image": "/assets/images/topics/science-physical-science--waves-sound-light-basics-flat-768.webp"
+  },
+  "subjects:science:physics:circular-motion-gravitation": {
+    "title": "Circular Motion & Gravitation",
+    "url": "/subjects/science/physics/circular-motion-gravitation.html",
+    "description": "Uniform circular motion, centripetal force, and universal gravitation.",
+    "image": "/assets/images/topics/science-physics--circular-motion-gravitation-flat-768.webp"
+  },
+  "subjects:science:physics:electricity-circuits": {
+    "title": "Electricity & Circuits",
+    "url": "/subjects/science/physics/electricity-circuits.html",
+    "description": "Electric charge, current, voltage, resistance, and series/parallel circuits.",
+    "image": "/assets/images/topics/science-physics--electricity-circuits-flat-768.webp"
+  },
+  "subjects:science:physics:fluids-thermal-physics": {
+    "title": "Fluids & Thermal Physics",
+    "url": "/subjects/science/physics/fluids-thermal-physics.html",
+    "description": "Pressure, buoyancy, heat, temperature, and laws of thermodynamics.",
+    "image": "/assets/images/topics/science-physics--fluids-thermal-physics-flat-768.webp"
+  },
+  "subjects:science:physics:forces-newtons-laws": {
+    "title": "Forces & Newton's Laws",
+    "url": "/subjects/science/physics/forces-newtons-laws.html",
+    "description": "Balanced and unbalanced forces, Newton’s laws of motion, and free-body diagrams.",
+    "image": "/assets/images/topics/science-physics--forces-newton-s-laws-flat-768.webp"
+  },
+  "subjects:science:physics:light-optics": {
+    "title": "Light & Optics",
+    "url": "/subjects/science/physics/light-optics.html",
+    "description": "Reflection, refraction, lenses, mirrors, and the behavior of light.",
+    "image": "/assets/images/topics/science-physics--light-optics-flat-768.webp"
+  },
+  "subjects:science:physics:magnetism-electromagnetism": {
+    "title": "Magnetism & Electromagnetism",
+    "url": "/subjects/science/physics/magnetism-electromagnetism.html",
+    "description": "Magnetic fields, electromagnets, motors, generators, and electromagnetic induction.",
+    "image": "/assets/images/topics/science-physics--magnetism-electromagnetism-flat-768.webp"
+  },
+  "subjects:science:physics:modern-physics": {
+    "title": "Modern Physics",
+    "url": "/subjects/science/physics/modern-physics.html",
+    "description": "Atomic and nuclear physics, quantum ideas, and relativity basics.",
+    "image": "/assets/images/topics/science-physics--modern-physics-flat-768.webp"
+  },
+  "subjects:science:physics:momentum-collisions": {
+    "title": "Momentum & Collisions",
+    "url": "/subjects/science/physics/momentum-collisions.html",
+    "description": "Momentum, impulse, and conservation of momentum in collisions.",
+    "image": "/assets/images/topics/science-physics--momentum-collisions-flat-768.webp"
+  },
+  "subjects:science:physics:motion-kinematics": {
+    "title": "Motion & Kinematics",
+    "url": "/subjects/science/physics/motion-kinematics.html",
+    "description": "Describing motion with position, velocity, acceleration, and graphs.",
+    "image": "/assets/images/topics/science-physics--motion-kinematics-flat-768.webp"
+  },
+  "subjects:science:physics:waves-sound": {
+    "title": "Waves & Sound",
+    "url": "/subjects/science/physics/waves-sound.html",
+    "description": "Wave properties, sound waves, frequency, wavelength, and resonance.",
+    "image": "/assets/images/topics/science-physics--waves-sound-flat-768.webp"
+  },
+  "subjects:science:physics:work-energy-power": {
+    "title": "Work, Energy & Power",
+    "url": "/subjects/science/physics/work-energy-power.html",
+    "description": "Kinetic and potential energy, conservation of energy, and calculating work and power.",
+    "image": "/assets/images/topics/science-physics--work-energy-power-flat-768.webp"
+  },
+  "subjects:science:stem-engineering": {
+    "title": "STEM & Engineering",
+    "url": "/subjects/science/stem-engineering/",
+    "description": "Design challenges, coding, robotics, and engineering.",
+    "image": "/assets/images/subjects/stem-engineering-flat-768.webp"
+  },
+  "subjects:science:stem-engineering:coding-robotics-basics": {
+    "title": "Coding & Robotics Basics",
+    "url": "/subjects/science/stem-engineering/coding-robotics-basics.html",
+    "description": "Intro to coding logic, block-based coding, and simple classroom robotics.",
+    "image": "/assets/images/topics/science-stem-engineering--coding-robotics-basics-flat-768.webp"
+  },
+  "subjects:science:stem-engineering:data-measurement-models": {
+    "title": "Data, Measurement & Models",
+    "url": "/subjects/science/stem-engineering/data-measurement-models.html",
+    "description": "Collecting data, graphing results, and using models to explain designs.",
+    "image": "/assets/images/topics/science-stem-engineering--data-measurement-models-flat-768.webp"
+  },
+  "subjects:science:stem-engineering:engineering-design-process": {
+    "title": "Engineering Design Process",
+    "url": "/subjects/science/stem-engineering/engineering-design-process.html",
+    "description": "Define, imagine, plan, create, test, and improve solutions to real-world problems.",
+    "image": "/assets/images/topics/science-stem-engineering--engineering-design-process-flat-768.webp"
+  },
+  "subjects:science:stem-engineering:simple-machines-structures": {
+    "title": "Simple Machines & Structures",
+    "url": "/subjects/science/stem-engineering/simple-machines-structures.html",
+    "description": "Using levers, pulleys, gears, and bridges in engineering designs.",
+    "image": "/assets/images/topics/science-stem-engineering--simple-machines-structures-flat-768.webp"
+  },
+  "subjects:science:stem-engineering:stem-careers-real-world": {
+    "title": "STEM Careers & Real-World Connections",
+    "url": "/subjects/science/stem-engineering/stem-careers-real-world.html",
+    "description": "Exploring real STEM jobs and how engineers solve everyday problems.",
+    "image": "/assets/images/topics/science-stem-engineering--stem-careers-real-world-connections-flat-768.webp"
+  },
+  "subjects:science:stem-engineering:stem-challenges-projects": {
+    "title": "STEM Challenges & Projects",
+    "url": "/subjects/science/stem-engineering/stem-challenges-projects.html",
+    "description": "Classroom-ready STEM builds, competitions, and design challenges.",
+    "image": "/assets/images/topics/science-stem-engineering--stem-challenges-projects-flat-768.webp"
+  }
+}

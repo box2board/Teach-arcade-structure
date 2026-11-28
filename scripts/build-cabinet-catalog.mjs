@@ -3,6 +3,8 @@ import {fileURLToPath} from 'node:url';
 import {validateCatalog} from '../public/teacher/catalog-contract.js';
 import {GAMES} from '../public/review-lab/catalog.js';
 
+import {restoreLibraryLinks} from './resource-cards/library-links.mjs';
+
 const root=new URL('../public/',import.meta.url);
 const decode=text=>text.replace(/<[^>]*>/g,'').replace(/&(amp|lt|gt|quot|#39|nbsp);/g,(_,name)=>({amp:'&',lt:'<',gt:'>',quot:'"','#39':"'",nbsp:' '}[name])).trim();
 const attribute=(tag,name)=>decode(tag?.match(new RegExp('\\b'+name+'=["\\\']([^"\\\']*)["\\\']','i'))?.[1]||'');
@@ -11,6 +13,7 @@ const artwork=html=>{
  return {image:attribute(img,'src'),imageAlt:attribute(img,'alt')};
 };
 export function arcadeEntries(html){
+ html=restoreLibraryLinks(html);
  const legacy=html.match(/const games=(\[[\s\S]*?\]);/);
  if(legacy)return JSON.parse(legacy[1]);
  return [...html.matchAll(/(<article\b[^>]*class="card [^"]*"[^>]*>)([\s\S]*?)<\/article>/g)].map(([,tag,card])=>({
@@ -24,6 +27,7 @@ export function arcadeEntries(html){
  }));
 }
 export function brainEntries(html){
+ html=restoreLibraryLinks(html);
  return [...html.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)]
  .filter(([,tag])=>attribute(tag,'class').split(/\s+/).includes('game-card'))
  .map(([,tag,card])=>({id:attribute(tag,'data-resource-id'),title:decode(card.match(/<h3\b[^>]*>([\s\S]*?)<\/h3>/)?.[1]||''),
@@ -31,12 +35,14 @@ export function brainEntries(html){
   icon:decode(card.match(/<div class="icon"[^>]*>([\s\S]*?)<\/div>/)?.[1]||'▶'),...artwork(card)}));
 }
 export function miniEntries(html){
+ html=restoreLibraryLinks(html);
  return [...html.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)]
  .filter(([,tag])=>attribute(tag,'class').split(/\s+/).includes('mini-card'))
  .map(([,tag,card])=>{const href=attribute(tag,'href');return {id:attribute(tag,'data-resource-id'),title:decode(card.match(/<h2\b[^>]*>([\s\S]*?)<\/h2>/)?.[1]||''),
   href:href.startsWith('games/')?'/mini-games/'+href:href,desc:decode(card.match(/<p\b[^>]*>([\s\S]*?)<\/p>/)?.[1]||''),icon:'✦',...artwork(card)};});
 }
 export function toolEntries(html){
+ html=restoreLibraryLinks(html);
  return [...html.matchAll(/(<a\b[^>]*>)([\s\S]*?)<\/a>/g)]
  .filter(([,tag])=>attribute(tag,'class').split(/\s+/).includes('card-link'))
  .map(([,tag,card])=>({

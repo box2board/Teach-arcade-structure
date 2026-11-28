@@ -75,7 +75,7 @@ export const TOOLS=Object.freeze(validateCatalog([
     "id": "mystery-pick",
     "title": "Mystery Pick Board",
     "url": "/tools/mystery-pick/",
-    "description": "Create a numbered mystery board, reveal random assigned topics or names, and eliminate picks without repeats.",
+    "description": "Choose a number, reveal a randomly assigned topic or name, and play without repeats.",
     "symbol": "✦",
     "collection": "Teacher Tools"
   },

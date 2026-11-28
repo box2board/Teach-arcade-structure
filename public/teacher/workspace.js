@@ -4,6 +4,7 @@ import {matchesSetSearch,matchesSetFields,mountSetFilters,originalSetLine} from 
 import {mountProjects} from './projects-view.js';
 import {request} from './project-client.js';
 import {QUESTION_SETS,GAMES,loadQuestionSet,gamesForSet,gameUrl} from '../review-lab/catalog.js';
+import {isComingSoon} from '../assets/resource-availability.js';
 import {TOOLS,CABINET_GAMES} from './cabinet-catalog.js';
 const $=id=>document.getElementById(id);
 const renderProjects=mountProjects($('projects'));
@@ -113,6 +114,7 @@ async function loadRecentSets(){
   // The account's full collection remains available from My Question Sets.
  }
 }
+const upcomingUrls = new Set([...TOOLS,...CABINET_GAMES].filter(item=>isComingSoon(item.id)).map(item=>item.url));
 function renderCollections(){
  renderRecentSets();
  for(const [type,items,container,routeName] of [['game',CABINET_GAMES,'cabinet-games','my-games'],['tool',TOOLS,'cabinet-tools','tools']]){
@@ -128,6 +130,11 @@ function renderCollections(){
    if(item.image){const img=node('img');img.src=item.image;img.alt=item.imageAlt;img.loading='lazy';img.width=640;img.height=360;card.append(img);}else {const art=node('span',item.symbol,type==='game'?'arcade-game-art':'tool-symbol');art.setAttribute('aria-hidden','true');card.append(art);}
    const content=node('div',undefined,'launch-game-content');content.append(node('p',type==='game'?item.collection:'FREE PUBLIC TOOL','eyebrow'),node('h2',item.title),node('p',item.description));
    if(item.subject)content.append(node('p',item.subject,'muted'));
+   if(upcomingUrls.has(item.url)){
+    content.append(node('strong','Coming soon','resource-availability'),bookmarkButton(type,item));
+    card.append(content);
+    return card;
+   }
    const open=node('a',type==='game'?(item.chooseTopic?'Choose a topic & play →':'Open game ↗'):'Open free tool ↗','primary');
    open.href=item.chooseTopic?'#sets':item.url;
    if(item.chooseTopic)open.onclick=()=>{preferredGame=item.id;savedView=false;render();};
@@ -145,6 +152,11 @@ function renderGames(){
  $('game-catalog').replaceChildren(...games.map(g=>{
   const card=node('article',undefined,'launch-game'),img=node('img');img.src=g.image;img.alt=g.imageAlt;img.loading='lazy';img.width=640;img.height=360;
   const content=node('div',undefined,'launch-game-content');content.append(node('p',g.mode,'eyebrow'),node('h2',g.title),node('p',g.description),node('p',controls[g.id]||'Choose available settings in the game','muted'));
+  if(upcomingUrls.has(g.url)){
+   content.append(bookmarkButton('game',g),node('strong','Coming soon','resource-availability'));
+   card.append(img,content);
+   return card;
+  }
   const link=node('a',`Open ${g.title} setup ↗`,'primary');link.href=gameUrl(g.id,selectedSet.id)+'&from=teacher-hq';link.target='_blank';link.rel='noopener';link.setAttribute('aria-label',`Open ${g.title} setup for ${selectedSet.title} in a new tab`);
   content.append(bookmarkButton('game',g),link);card.append(img,content);return card;
  }));

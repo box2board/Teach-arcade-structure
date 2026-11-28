@@ -1,0 +1,236 @@
+{
+  "subjects:math": {
+    "title": "Math",
+    "url": "/subjects/math/",
+    "description": "Number sense, algebra, geometry, and more.",
+    "image": "/assets/images/subjects/math-flat-768.webp"
+  },
+  "subjects:math:high-school-math": {
+    "title": "High School Math",
+    "url": "/subjects/math/high-school-math/",
+    "description": "Algebra, geometry, functions, and statistics.",
+    "image": "/assets/images/subjects/high-school-math-flat-768.webp"
+  },
+  "subjects:math:high-school-math:algebra-1": {
+    "title": "Algebra 1",
+    "url": "/subjects/math/high-school-math/algebra-1/",
+    "description": "Linear equations, inequalities, systems, functions, and quadratic basics.",
+    "image": "/assets/images/topics/math-high-school-math--algebra-1-flat-768.webp"
+  },
+  "subjects:math:high-school-math:algebra-2": {
+    "title": "Algebra 2",
+    "url": "/subjects/math/high-school-math/algebra-2/",
+    "description": "Polynomials, rational expressions, radical functions, and logarithms.",
+    "image": "/assets/images/topics/math-high-school-math--algebra-2-flat-768.webp"
+  },
+  "subjects:math:high-school-math:calculus": {
+    "title": "Calculus",
+    "url": "/subjects/math/high-school-math/calculus/",
+    "description": "Limits, derivatives, integrals (intro), and applications of calculus.",
+    "image": "/assets/images/topics/math-high-school-math--calculus-flat-768.webp"
+  },
+  "subjects:math:high-school-math:geometry": {
+    "title": "Geometry",
+    "url": "/subjects/math/high-school-math/geometry/",
+    "description": "Lines, angles, triangles, similarity, congruence, circles, and proofs.",
+    "image": "/assets/images/topics/math-high-school-math--geometry-flat-768.webp"
+  },
+  "subjects:math:high-school-math:precalculus": {
+    "title": "Precalculus",
+    "url": "/subjects/math/high-school-math/precalculus/",
+    "description": "Advanced functions, sequences and series, and trigonometric applications.",
+    "image": "/assets/images/topics/math-high-school-math--precalculus-flat-768.webp"
+  },
+  "subjects:math:high-school-math:sat-act-math-prep": {
+    "title": "SAT & ACT Math Prep",
+    "url": "/subjects/math/high-school-math/sat-act-math-prep/",
+    "description": "Mixed-skill practice sets, test-style questions, and timed review activities.",
+    "image": "/assets/images/topics/math-high-school-math--sat-act-math-prep-flat-768.webp"
+  },
+  "subjects:math:high-school-math:statistics-data-analysis": {
+    "title": "Statistics & Data Analysis",
+    "url": "/subjects/math/high-school-math/statistics-data-analysis/",
+    "description": "Data displays, probability, distributions, and basic inference topics.",
+    "image": "/assets/images/topics/math-high-school-math--statistics-data-analysis-flat-768.webp"
+  },
+  "subjects:math:high-school-math:trigonometry": {
+    "title": "Trigonometry",
+    "url": "/subjects/math/high-school-math/trigonometry/",
+    "description": "Trigonometric ratios, unit circle basics, and trig graphs and identities (intro).",
+    "image": "/assets/images/topics/math-high-school-math--trigonometry-flat-768.webp"
+  },
+  "subjects:math:k-5-math": {
+    "title": "K–5 Math",
+    "url": "/subjects/math/k-5-math/",
+    "description": "Number sense, operations, fractions, geometry, and measurement.",
+    "image": "/assets/images/subjects/k-5-math-flat-768.webp"
+  },
+  "subjects:math:k-5-math:addition-subtraction": {
+    "title": "Addition & Subtraction",
+    "url": "/subjects/math/k-5-math/addition-subtraction/",
+    "description": "Basic facts, regrouping, multi-digit operations, and word problems.",
+    "image": "/assets/images/topics/math-k-5-math--addition-subtraction-flat-768.webp"
+  },
+  "subjects:math:k-5-math:decimals-intro": {
+    "title": "Decimals (Intro)",
+    "url": "/subjects/math/k-5-math/decimals-intro/",
+    "description": "Tenths, hundredths, simple decimal models, and money connections.",
+    "image": "/assets/images/topics/math-k-5-math--decimals-intro-flat-768.webp"
+  },
+  "subjects:math:k-5-math:fractions-basics": {
+    "title": "Fractions (Basics)",
+    "url": "/subjects/math/k-5-math/fractions-basics/",
+    "description": "Parts of a whole, fraction models, equivalent fractions, and simple comparisons.",
+    "image": "/assets/images/topics/math-k-5-math--fractions-basics-flat-768.webp"
+  },
+  "subjects:math:k-5-math:geometry-shapes": {
+    "title": "Geometry & Shapes",
+    "url": "/subjects/math/k-5-math/geometry-shapes/",
+    "description": "2D and 3D shapes, lines, angles (intro), area, and perimeter.",
+    "image": "/assets/images/topics/math-k-5-math--geometry-shapes-flat-768.webp"
+  },
+  "subjects:math:k-5-math:measurement-data": {
+    "title": "Measurement & Data",
+    "url": "/subjects/math/k-5-math/measurement-data/",
+    "description": "Length, weight, capacity, graphs, charts, and interpreting data.",
+    "image": "/assets/images/topics/math-k-5-math--measurement-data-flat-768.webp"
+  },
+  "subjects:math:k-5-math:money": {
+    "title": "Money",
+    "url": "/subjects/math/k-5-math/money/",
+    "description": "Counting coins, making change, and simple money word problems.",
+    "image": "/assets/images/topics/math-k-5-math--money-flat-768.webp"
+  },
+  "subjects:math:k-5-math:multiplication-division": {
+    "title": "Multiplication & Division",
+    "url": "/subjects/math/k-5-math/multiplication-division/",
+    "description": "Multiplication facts, division facts, arrays, and equal groups.",
+    "image": "/assets/images/topics/math-k-5-math--multiplication-division-flat-768.webp"
+  },
+  "subjects:math:k-5-math:place-value-rounding": {
+    "title": "Place Value & Rounding",
+    "url": "/subjects/math/k-5-math/place-value-rounding/",
+    "description": "Reading, writing, comparing numbers, and rounding to the nearest ten, hundred, or beyond.",
+    "image": "/assets/images/topics/math-k-5-math--place-value-rounding-flat-768.webp"
+  },
+  "subjects:math:k-5-math:time": {
+    "title": "Time",
+    "url": "/subjects/math/k-5-math/time/",
+    "description": "Reading analog and digital clocks, elapsed time, and schedules.",
+    "image": "/assets/images/topics/math-k-5-math--time-flat-768.webp"
+  },
+  "subjects:math:k-5-math:word-problems-problem-solving": {
+    "title": "Word Problems & Problem Solving",
+    "url": "/subjects/math/k-5-math/word-problems-problem-solving/",
+    "description": "Multi-step word problems, strategies, and real-world math scenarios.",
+    "image": "/assets/images/topics/math-k-5-math--word-problems-problem-solving-flat-768.webp"
+  },
+  "subjects:math:math-games-puzzles": {
+    "title": "Math Games & Puzzles",
+    "url": "/subjects/math/math-games-puzzles/",
+    "description": "Play through math practice, logic challenges, and puzzles.",
+    "image": "/assets/images/subjects/math-games-puzzles-flat-768.webp"
+  },
+  "subjects:math:math-games-puzzles:algebra-equations-games": {
+    "title": "Algebra & Equation Games",
+    "url": "/subjects/math/math-games-puzzles/algebra-equations-games/",
+    "description": "Solving equations, inequalities, and algebraic puzzles in game formats.",
+    "image": "/assets/images/topics/math-math-games-puzzles--algebra-equation-games-flat-768.webp"
+  },
+  "subjects:math:math-games-puzzles:escape-room-review-games": {
+    "title": "Escape Room & Adventure Review Games",
+    "url": "/subjects/math/math-games-puzzles/escape-room-review-games/",
+    "description": "Story-driven review games and escape-style activities for unit and test prep.",
+    "image": "/assets/images/topics/math-math-games-puzzles--escape-room-adventure-review-games-flat-768.webp"
+  },
+  "subjects:math:math-games-puzzles:fact-fluency-games": {
+    "title": "Fact Fluency Games",
+    "url": "/subjects/math/math-games-puzzles/fact-fluency-games/",
+    "description": "Fast-paced games for addition, subtraction, multiplication, and division facts.",
+    "image": "/assets/images/topics/math-math-games-puzzles--fact-fluency-games-flat-768.webp"
+  },
+  "subjects:math:math-games-puzzles:fractions-integers-games": {
+    "title": "Fraction & Integer Games",
+    "url": "/subjects/math/math-games-puzzles/fractions-integers-games/",
+    "description": "Interactive games focused on fraction operations and integer operations.",
+    "image": "/assets/images/topics/math-math-games-puzzles--fraction-integer-games-flat-768.webp"
+  },
+  "subjects:math:math-games-puzzles:geometry-coordinate-plane-games": {
+    "title": "Geometry & Coordinate Plane Games",
+    "url": "/subjects/math/math-games-puzzles/geometry-coordinate-plane-games/",
+    "description": "Games involving angles, area, perimeter, transformations, and graphing.",
+    "image": "/assets/images/topics/math-math-games-puzzles--geometry-coordinate-plane-games-flat-768.webp"
+  },
+  "subjects:math:math-games-puzzles:logic-puzzles-brain-teasers": {
+    "title": "Logic Puzzles & Brain Teasers",
+    "url": "/subjects/math/math-games-puzzles/logic-puzzles-brain-teasers/",
+    "description": "Non-routine problem-solving puzzles and logical reasoning challenges.",
+    "image": "/assets/images/topics/math-math-games-puzzles--logic-puzzles-brain-teasers-flat-768.webp"
+  },
+  "subjects:math:middle-school-math": {
+    "title": "Middle School Math",
+    "url": "/subjects/math/middle-school-math/",
+    "description": "Ratios, expressions, equations, geometry, and data.",
+    "image": "/assets/images/subjects/middle-school-math-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:expressions-equations": {
+    "title": "Expressions & Equations",
+    "url": "/subjects/math/middle-school-math/expressions-equations/",
+    "description": "Simplifying expressions and solving one- and multi-step equations.",
+    "image": "/assets/images/topics/math-middle-school-math--expressions-equations-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:functions-graphs": {
+    "title": "Functions & Graphs",
+    "url": "/subjects/math/middle-school-math/functions-graphs/",
+    "description": "Identifying functions, tables, graphs, and function notation (intro).",
+    "image": "/assets/images/topics/math-middle-school-math--functions-graphs-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:geometry-area-volume": {
+    "title": "Geometry: Area & Volume",
+    "url": "/subjects/math/middle-school-math/geometry-area-volume/",
+    "description": "Area of 2D figures and volume of prisms, cylinders, and other solids.",
+    "image": "/assets/images/topics/math-middle-school-math--geometry-area-volume-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:inequalities": {
+    "title": "Inequalities",
+    "url": "/subjects/math/middle-school-math/inequalities/",
+    "description": "Solving and graphing linear inequalities in one variable.",
+    "image": "/assets/images/topics/math-middle-school-math--inequalities-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:integer-operations": {
+    "title": "Integer Operations",
+    "url": "/subjects/math/middle-school-math/integer-operations/",
+    "description": "Adding, subtracting, multiplying, and dividing positive and negative numbers.",
+    "image": "/assets/images/topics/math-middle-school-math--integer-operations-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:percents": {
+    "title": "Percents",
+    "url": "/subjects/math/middle-school-math/percents/",
+    "description": "Percent of a number, discounts, markups, tax, tip, and simple interest.",
+    "image": "/assets/images/topics/math-middle-school-math--percents-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:ratios-proportions-unit-rate": {
+    "title": "Ratios, Proportions & Unit Rates",
+    "url": "/subjects/math/middle-school-math/ratios-proportions-unit-rate/",
+    "description": "Writing and solving proportions, unit rates, and real-world ratio problems.",
+    "image": "/assets/images/topics/math-middle-school-math--ratios-proportions-unit-rates-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:slope-linear-relationships": {
+    "title": "Slope & Linear Relationships",
+    "url": "/subjects/math/middle-school-math/slope-linear-relationships/",
+    "description": "Rate of change, graphing lines, and interpreting slope in context.",
+    "image": "/assets/images/topics/math-middle-school-math--slope-linear-relationships-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:statistics-probability": {
+    "title": "Statistics & Probability",
+    "url": "/subjects/math/middle-school-math/statistics-probability/",
+    "description": "Analyzing data, measures of center and spread, and basic probability models.",
+    "image": "/assets/images/topics/math-middle-school-math--statistics-probability-flat-768.webp"
+  },
+  "subjects:math:middle-school-math:transformations-congruence": {
+    "title": "Transformations & Congruence",
+    "url": "/subjects/math/middle-school-math/transformations-congruence/",
+    "description": "Translations, reflections, rotations, dilations, and congruent figures.",
+    "image": "/assets/images/topics/math-middle-school-math--transformations-congruence-flat-768.webp"
+  }
+}

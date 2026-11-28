@@ -69,7 +69,7 @@ export const MINI_GAMES=Object.freeze(validateCatalog([
     "id": "mini:free-throws",
     "title": "Free Throw Fever",
     "url": "/mini-games/games/free-throws/",
-    "description": "Lead moving hoops, master four ball types, and build a hot streak. A forty-second challenge with tighter shot timing.",
+    "description": "Hold, release in the green, and sink your shot. Assisted aim, gold-ball bonuses and hot streaks in a forty-second arcade challenge.",
     "symbol": "✦",
     "collection": "Mini Games"
   },

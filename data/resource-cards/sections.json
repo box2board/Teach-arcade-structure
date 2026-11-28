@@ -1,0 +1,149 @@
+{
+  "arcade-review-games": {
+    "title": "Arcade Review Games",
+    "url": "/arcade-review-games/",
+    "description": "Play original games that make subject review active and memorable.",
+    "image": "/assets/images/homepage/arcade-review-games-cabinet-768.webp"
+  },
+  "arcade-review-games:adventure-review-wwii": {
+    "title": "World War II Review Adventure",
+    "url": "/arcade-review-games/adventure-review-wwii/"
+  },
+  "arcade-review-games:social-studies:progressive-era-sky-climb": {
+    "title": "Progressive Era Sky Climb",
+    "url": "/arcade-review-games/social-studies/progressive-era-sky-climb.html",
+    "description": "Students jump between city rooftops and land on question platforms to answer 15 questions about muckrakers, settlement houses, temperance, women’s suffrage, trust-busting, consumer protection, direct democracy, Theodore Roosevelt, Woodrow Wilson, and labor reform."
+  },
+  "arcade-review-games:social-studies:wwi-trench-run-v2": {
+    "title": "WWI Trench Run v2",
+    "url": "/arcade-review-games/social-studies/wwi-trench-run-v2/"
+  },
+  "brain-arcade": {
+    "title": "Brain Arcade",
+    "url": "/brain-arcade/",
+    "description": "Logic, focus, and strategy games.",
+    "image": "/assets/images/homepage/brain-arcade-flat-768.webp"
+  },
+  "career-arcade": {
+    "title": "Career Arcade",
+    "url": "/career-arcade/",
+    "description": "Career and personal finance games.",
+    "image": "/assets/images/homepage/career-arcade-flat-768.webp"
+  },
+  "choose-your-path-adventure": {
+    "title": "Choose Your Path",
+    "url": "/choose-your-path-adventure/",
+    "description": "Branching stories with consequences.",
+    "image": "/assets/images/homepage/choose-your-path-flat-768.webp"
+  },
+  "choose-your-path-adventure:cuban-missile-crisis": {
+    "title": "Explore the Cuban Missile Crisis",
+    "url": "/choose-your-path-adventure/cuban-missile-crisis.html"
+  },
+  "classroom:toy-toolbox": {
+    "title": "Toy Toolbox",
+    "url": "/classroom/toy-toolbox/",
+    "description": "Hands-on builds and learning play.",
+    "image": "/assets/images/homepage/toy-toolbox-flat-768.webp"
+  },
+  "decision-simulator": {
+    "title": "Decision Simulators",
+    "url": "/decision-simulator/",
+    "description": "Explore choices and their outcomes.",
+    "image": "/assets/images/homepage/decision-simulators-flat-768.webp"
+  },
+  "escape": {
+    "title": "Escape Rooms",
+    "url": "/escape/",
+    "description": "Gather clues, solve connected puzzles, and crack the final challenge.",
+    "image": "/assets/images/homepage/escape-rooms-cabinet-768.webp"
+  },
+  "escape:-room-wwi": {
+    "title": "Play the WWI Escape Room",
+    "url": "/escape/?room=wwi"
+  },
+  "games:american-revolution-breaking-point": {
+    "title": "American Revolution: Breaking Point",
+    "url": "/games/american-revolution-breaking-point/"
+  },
+  "games:knowledge-expedition": {
+    "title": "Knowledge Expedition",
+    "url": "/games/knowledge-expedition/",
+    "description": "Adventure-style subject review.",
+    "image": "/assets/images/homepage/knowledge-expedition-flat-768.webp"
+  },
+  "games:knowledge-expedition:ela": {
+    "title": "Knowledge Expedition: ELA",
+    "url": "/games/knowledge-expedition/ela/"
+  },
+  "games:knowledge-expedition:science": {
+    "title": "Knowledge Expedition: Science",
+    "url": "/games/knowledge-expedition/science/"
+  },
+  "games:knowledge-expedition:social-studies:wwii-expedition": {
+    "title": "Open WWII Knowledge Expedition",
+    "url": "/games/knowledge-expedition/social-studies/wwii-expedition/"
+  },
+  "mini-games": {
+    "title": "Mini Games",
+    "url": "/mini-games/",
+    "description": "Twenty-one quick arcade challenges, including a real-time multiplayer race.",
+    "image": "/assets/images/homepage/mini-games-cabinet.svg"
+  },
+  "movie-guides": {
+    "title": "Movie Guides",
+    "url": "/movie-guides/",
+    "description": "Original classroom viewing guides.",
+    "image": "/assets/images/homepage/movie-guides-flat-768.webp"
+  },
+  "movie-guides:guides:flags-of-our-fathers": {
+    "title": "Use the Flags of Our Fathers movie guide",
+    "url": "/movie-guides/guides/flags-of-our-fathers/"
+  },
+  "movie-guides:guides:mississippi-burning": {
+    "title": "Use the Mississippi Burning movie guide",
+    "url": "/movie-guides/guides/mississippi-burning/"
+  },
+  "movie-guides:guides:rocky-iv": {
+    "title": "Use the Rocky IV movie guide",
+    "url": "/movie-guides/guides/rocky-iv/"
+  },
+  "movie-guides:guides:schindlers-list": {
+    "title": "Schindler’s List movie guide",
+    "url": "/movie-guides/guides/schindlers-list/"
+  },
+  "movie-guides:guides:war-horse": {
+    "title": "Use the War Horse movie guide",
+    "url": "/movie-guides/guides/war-horse/"
+  },
+  "playbook": {
+    "title": "Teach Arcade Playbook",
+    "url": "/playbook/",
+    "description": "Guides for using activities in class.",
+    "image": "/assets/images/homepage/playbook-flat-768.webp"
+  },
+  "print-play-games": {
+    "title": "Print & Play Games",
+    "url": "/print-play-games/",
+    "description": "Original paper-based games for classrooms with or without devices.",
+    "image": "/assets/images/homepage/print-play-games-cabinet-768.webp"
+  },
+  "review-lab": {
+    "title": "Review Lab",
+    "url": "/review-lab/",
+    "description": "Choose a topic. Pick a game. Make review your own.",
+    "image": "/assets/images/homepage/review-lab-cabinet-768.webp"
+  },
+  "store": {
+    "title": "Teach Arcade Merch",
+    "url": "/store/",
+    "description": "Browse original branded gear.",
+    "image": "/assets/images/homepage/merch-flat-768.webp"
+  },
+  "tools": {
+    "title": "Teacher Tools",
+    "url": "/tools/",
+    "description": "Quick classroom helpers for participation, practice, and routines.",
+    "image": "/assets/images/homepage/teacher-tools-cabinet-768.webp"
+  }
+}
