@@ -6,7 +6,7 @@ export const capacity=64;
 const STEP=1/30;
 const TAU=Math.PI*2;
 function random(s){s.seed=(Math.imul(s.seed,1664525)+1013904223)>>>0;return s.seed/4294967296;}
-const nextGate=s=>createGate(()=>random(s),s.ball,s.gates);
+const nextGate=s=>{s.gate=createGate(()=>random(s),s.ball,s.gates);};
 export function create({players=[],now,seed=1}){
   if(!players.length||players.length>capacity||new Set(players.map(p=>p.id)).size!==players.length)throw new RangeError('Magnet Mayhem needs 1–64 distinct players.');
   const s={phase:'playing',elapsed:0,tickAt:now,seed:seed>>>0||1,gate:null,gates:0,
@@ -24,6 +24,8 @@ function step(s){
   }
   const b=s.ball;
   advanceBall(b,s.magnets.map(m=>({x:m.x,y:m.y,attract:m.input.attract})),STEP,s.elapsed);
+  // Recover rooms created by the previous build, which left gate null.
+  if(!s.gate)nextGate(s);
   const g=s.gate;
   updateGate(g,s.elapsed,s.gates);
   if(gateContains(b,g)){
