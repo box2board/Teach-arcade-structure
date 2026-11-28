@@ -28,20 +28,20 @@ export function renderCard(resource, placement, comingSoon = false) {
   switch (view) {
     case 'cabinet': {
       if (!/^#[a-f0-9]{6}$/i.test(placement.accent)) throw Error('Invalid cabinet accent');
-      const art = image(resource, 'home-tile-art', '(max-width: 520px) 82vw, (max-width: 900px) 38vw, 300px', 768);
+      const art = image(resource, 'home-tile-art', '(max-width: 520px) 246px, 196px', 768);
       return link(`<div class="cabinet-shell"><div class="cabinet-marquee"><h3 class="subject-title">${title}</h3></div><div class="cabinet-screen">${art}</div><div class="cabinet-controls" aria-hidden="true"><span class="cabinet-joystick"></span><span class="cabinet-button"></span><span class="cabinet-button"></span></div></div><div class="home-art-copy"><p class="subject-desc">${description}</p></div>`, 'subject-tile home-art-card featured-cabinet', ` style="--cabinet-accent: ${placement.accent};"`);
     }
     case 'subject':
     case 'feature': {
       const subject = view === 'subject';
       const prefix = subject ? 'subject' : 'home';
-      const art = image(resource, prefix+'-tile-art', subject ? subjectSizes : '(max-width: 480px) calc(100vw - 32px), 220px');
+      const art = image(subject ? resource : resource.homeArt ?? resource, prefix+'-tile-art', subject ? subjectSizes : '(max-width: 480px) calc(100vw - 32px), 220px');
       return link(`${art}<div class="${prefix}-art-copy"><h3 class="subject-title">${title}</h3><p class="subject-desc">${description}</p></div>`, subject ? 'subject-tile subject-art-card' : 'subject-tile home-art-card home-feature-card');
     }
     case 'subject-guide':
       return `<article class="card"><h3>Original Teach Arcade Resources</h3><p>This subject page now focuses on activities created for Teach Arcade. Visit the subject hub to browse original games, tools, and materials currently available.</p>${link('Browse '+title,'cta')}</article>`;
     case 'more':
-      return link(`${image(resource,'home-tile-art',homeSizes)}<span class="home-art-copy"><strong>${title}</strong><span>${description}</span></span>`, 'more-tile home-art-card');
+      return link(`${image(resource.homeArt ?? resource,'home-tile-art',homeSizes)}<span class="home-art-copy"><strong>${title}</strong><span>${description}</span></span>`, 'more-tile home-art-card');
     case 'brain-feature':
       return link(`${image(resource,'brain-tile-art','(max-width: 480px) calc(100vw - 34px), (max-width: 800px) calc((100vw - 46px) / 2), 254px')}<strong>${title}</strong><span>${description}</span>`, 'featured-card');
     case 'hub':

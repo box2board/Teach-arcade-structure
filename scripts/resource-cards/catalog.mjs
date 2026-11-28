@@ -2,6 +2,11 @@ import {readFile, readdir, access} from 'node:fs/promises';
 import {CABINET_GAMES, TOOLS} from '../../public/teacher/cabinet-catalog.js';
 
 const directory = new URL('../../data/resource-cards/', import.meta.url);
+const homepageArtwork = {
+  'block-builder': '/assets/images/brain-arcade/block-builder-flat-768.webp',
+  'snow-day-defenders': '/assets/images/homepage/snow-day-defenders-flat-768.webp'
+};
+
 const publicRoot = new URL('../../public/', import.meta.url);
 
 
@@ -23,7 +28,7 @@ export async function loadCards() {
   async function responsiveSources(record) {
     if (record.imageSrcset || !record.image?.endsWith('-768.webp')) return record.imageSrcset;
     const candidates = [];
-    for (const width of [384,768,1536]) {
+    for (const width of (record.image.endsWith('-cabinet-768.webp') ? [224,384,512] : [384,768,1536])) {
       const path = record.image.replace(/-768\.webp$/, '-'+width+'.webp');
       try { await checkFile(path); candidates.push(path+' '+width+'w'); }
       catch (error) { if (error.code !== 'ENOENT') throw error; }
@@ -42,7 +47,13 @@ export async function loadCards() {
         await checkFile(path);
       }
     }
-    resources.set(id, {...record,imageSrcset,id});
+    let homeArt;
+    if (homepageArtwork[id]) {
+      const image = homepageArtwork[id];
+      await checkFile(image);
+      homeArt = {image, imageSrcset: await responsiveSources({image})};
+    }
+    resources.set(id, {...record,imageSrcset,homeArt,id});
   }
   for (const record of [...CABINET_GAMES,...TOOLS]) {
     await add(record.id,record);
